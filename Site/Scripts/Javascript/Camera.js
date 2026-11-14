@@ -11,8 +11,8 @@ export class Camera{
         this.ultimaPosicao = 0;
         
     }
-    Update(){
-        
+    Update(delta){
+        //his.camera.position.x += 10 * delta;
     }
     Resize(){
         this.camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight,1 , 1000)
