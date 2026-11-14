@@ -16,10 +16,11 @@ const BODY = {
   moon: { name: 'Moon', bump: 0.02, radiusKm: 1737.4 },
   mars: { name: 'Mars', bump: 0.015, radiusKm: 3389.5 },
 };
-const TOP_CHIPS = 3;
+const TOP_CHIPS = matchMedia('(max-width: 820px)').matches ? 2 : 3;
 const ALWAYS_SHORT = ['1 g gravity', 'Thick atmosphere', 'Radiation shield'];
 const $ = (id) => document.getElementById(id);
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const phone = matchMedia('(max-width: 820px)').matches;
 const store = {
   get(k) { try { return localStorage.getItem(k); } catch { return null; } },
   set(k, v) { try { localStorage.setItem(k, v); } catch { /* private mode */ } },
@@ -37,7 +38,6 @@ async function init() {
   [cfg, sites, stCfg] = await Promise.all([fetchJson('data/alvos.json'), fetchJson('data/locais.json'), fetchJson('data/estacao.json')]);
   $('sampleChip').hidden = !sites.some((s) => s.exemplo || s.modo_teste);
 
-  const phone = matchMedia('(max-width: 820px)').matches;
   bodyGlobe = new Globe($('bodyGlobe'), { zoom: phone ? 0.68 : 0.86, idleSpin: 0.0006, minDistance: 1.2, radiusKm: 1737.4, name: 'Moon' });
   earthGlobe = new Globe($('earthGlobe'), { zoom: phone ? 0.9 : 0.8, idleSpin: 0.0004, atmosphere: '#6fb6ff', atmosphereStrength: 0.6, minDistance: 1.22, radiusKm: 6371, name: 'Earth' });
   setEarthLayer(store.get('earth-layer') === 'relief' ? 'relief' : 'satellite');
@@ -65,7 +65,23 @@ async function init() {
   $('aboutBtn').onclick = () => $('about').showModal();
   $('profileBtn').onclick = (e) => { e.stopPropagation(); toggleProfile(); };
   document.addEventListener('click', (e) => { if (!$('profilePop').hidden && !$('profilePop').contains(e.target)) toggleProfile(false); });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeDrawer(); toggleProfile(false); } });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { closeDrawer(); toggleProfile(false); return; }
+    // ← / → walk through the Earth twins in ranking order
+    if ((e.key === 'ArrowRight' || e.key === 'ArrowLeft') && !e.target.closest('input, textarea, select, [contenteditable]')) {
+      const i = state.ranked.findIndex((r) => r.site.id === state.siteId);
+      const next = state.ranked[(i + (e.key === 'ArrowRight' ? 1 : -1) + state.ranked.length) % state.ranked.length];
+      if (next) { e.preventDefault(); selectSite(next.site.id, { focus: true }); }
+    }
+  });
+  // a pasted link or back/forward changes the hash: follow it
+  window.addEventListener('hashchange', () => {
+    const [b, t, si] = location.hash.replace('#', '').split('/');
+    if (!BODY[b]) return;
+    if (b !== state.body) setBody(b, { targetId: t, siteId: si });
+    else if (t && t !== state.targetId) selectTarget(t, { siteId: si, focus: true });
+    else if (si && si !== state.siteId) selectSite(si, { focus: true });
+  });
 
   buildProfile();
   initStation();
@@ -210,10 +226,12 @@ function setBody(body, { targetId = null, siteId = null } = {}) {
   bodyGlobe.ui.home.setAttribute('aria-label', `Show the whole ${BODY[body].name}`);
   bodyGlobe.ui.home.title = `Whole ${BODY[body].name}`;
   bodyGlobe._scaleKey = null;
-  bodyGlobe.setMarkers(targets.map((t) => ({ id: t.id, lat: t.lat, lon: t.lon, label: t.nome, kind: 'target', color: '#7cb6ff' })));
+  bodyGlobe.setMarkers(targets.map((t) => ({ id: t.id, lat: t.lat, lon: t.lon, label: t.nome, kind: 'target', color: '#7cb6ff',
+    // phone: the title already shows the coordinates, keep the pin label short
+    labelHtml: phone ? esc(t.nome) : `${esc(t.nome)}<span class="ll">${fmtLat(t.lat, 2)}, ${fmtLon(t.lon, 2)}</span>` })));
 
   $('targetChips').innerHTML = targets.map((t) =>
-    `<button class="chip" role="option" data-id="${t.id}" aria-selected="false">${esc(shortTarget(t))}</button>`).join('');
+    `<button class="chip" role="option" data-id="${t.id}" aria-selected="false">${esc(phone ? t.nome.split(' ')[0] : shortTarget(t))}</button>`).join('');
   $('targetChips').querySelectorAll('button').forEach((b) => { b.onclick = () => selectTarget(b.dataset.id, { focus: true }); });
 
   selectTarget(targetId || targets[0].id, { siteId });
@@ -231,7 +249,7 @@ function selectTarget(id, { siteId = null, focus = false } = {}) {
   $('targetChips').querySelectorAll('button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.id === id)));
   $('bodyKicker').textContent = `${BODY[t.corpo].name} · target`;
   $('targetName').textContent = t.nome;
-  $('targetWhere').textContent = `${t.regiao} · ${fmtLat(t.lat)}, ${fmtLon(t.lon)}`;
+  $('targetWhere').textContent = `${t.regiao} · ${fmtLat(t.lat, 2)}, ${fmtLon(t.lon, 2)}`;
   refreshRanking(siteId);
 }
 
@@ -248,9 +266,9 @@ function refreshRanking(keepSite = state.siteId) {
 
   const more = ranked.length - TOP_CHIPS;
   $('rankChips').innerHTML = ranked.slice(0, TOP_CHIPS).map((r, i) => `
-    <button class="chip" data-id="${r.site.id}" aria-selected="false"><span class="n">${i + 1}</span>${esc(shortName(r.site))}
+    <button class="chip" data-id="${r.site.id}" aria-selected="false"><span class="n">${i + 1}</span>${esc(chipName(r.site))}
       <span class="s" style="color:${scoreColor(r.score)}">${pct(r.score)}</span></button>`).join('')
-    + (more > 0 ? `<button class="chip" data-all="1">+${more} more</button>` : '');
+    + (more > 0 ? `<button class="chip" data-all="1" aria-label="${more} more sites">+${more}${phone ? '' : ' more'}</button>` : '');
   $('rankChips').querySelectorAll('button').forEach((b) => {
     b.onclick = () => (b.dataset.all ? openDrawer('list') : selectSite(b.dataset.id, { focus: true }));
   });
@@ -272,13 +290,14 @@ function selectSite(id, { focus = false } = {}) {
 
   $('siteName').textContent = siteName(r.site);
   $('siteWhere').textContent = `#${rank} · ${r.site.regiao}`;
-  $('siteCoords').textContent = `${fmtLat(r.site.lat, 2)}, ${fmtLon(r.site.lon, 2)}${elevText(r.site.lat, r.site.lon, ' · ')}`;
+  const dp = phone ? 1 : 2;
+  $('siteCoords').textContent = `${fmtLat(r.site.lat, dp)}, ${fmtLon(r.site.lon, dp)}${elevText(r.site.lat, r.site.lon, ' · ')}`;
   const role = $('siteRole');
   role.textContent = isClassic(r.site) ? 'Classic' : (isBR(r.site) ? 'New · BR' : 'New');
   role.className = 'role' + (isClassic(r.site) ? '' : ' br');
   $('matchScore').textContent = pct(r.score);
   $('matchScore').style.color = scoreColor(r.score);
-  $('mScore').innerHTML = `<b style="color:${scoreColor(r.score)}">${pct(r.score)}</b> match`;
+  $('mScore').innerHTML = `<b style="color:${scoreColor(r.score)}">${pct(r.score)}</b> match · #${rank}`;
   $('matchBadge').setAttribute('aria-label', `${pct(r.score)} match. Open details`);
 
   if ($('drawer').classList.contains('open')) openDrawer('analog');
@@ -289,6 +308,8 @@ function selectSite(id, { focus = false } = {}) {
 const isClassic = (s) => /^refer/.test(s.papel || '');
 const isBR = (s) => /\bBR$/.test(s.regiao || '');
 const siteName = (s) => s.nome_en || s.nome;
+// phone chips: long names keep only the first word ("McMurdo Dry Valleys" -> "McMurdo")
+const chipName = (s) => { const n = shortName(s); return phone && n.length > 12 ? n.split(' ')[0] : n; };
 function shortName(s) {
   if (s.nome_curto) return s.nome_curto;
   return siteName(s).replace(/^(Domo de|Cratera de|Serra Norte de)\s+/i, '').replace(/\s*\(.*\)$/, '').replace(/, Yungay$/, '').replace(/ (crater|Dome|caves)$/i, '');
@@ -376,10 +397,22 @@ function openDrawer(mode) {
   if (mode === 'list') {
     $('drawerBody').querySelectorAll('[data-id]').forEach((b) => { b.onclick = () => { selectSite(b.dataset.id, { focus: true }); openDrawer('analog'); }; });
   }
+  const share = $('shareBtn');
+  if (share) share.onclick = () => shareLink(share);
   $('drawer').classList.add('open');
   $('drawer').setAttribute('aria-hidden', 'false');
   $('scrim').hidden = false;
   $('drawerClose').focus();
+}
+
+async function shareLink(btn) {
+  const url = location.href;
+  try {
+    if (phone && navigator.share) { await navigator.share({ title: document.title, url }); return; }
+    await navigator.clipboard.writeText(url);
+    btn.textContent = 'Link copied';
+  } catch { btn.textContent = 'Could not copy'; }
+  setTimeout(() => { btn.textContent = 'Share link'; }, 1800);
 }
 
 function closeDrawer() {
@@ -440,7 +473,11 @@ function analogHtml() {
       <h3 style="font-size:13px;margin:16px 0 0;color:var(--muted)">${esc(t.nome)}</h3>
       <div class="facts">${tfacts}</div>
       <p class="src">Target data: ${esc((t.fontes || []).join(' · '))}</p>
-    </details>`;
+    </details>
+    <div class="d-actions">
+      <a class="ghost small" href="https://www.google.com/maps/@${s.lat},${s.lon},11z/data=!3m1!1e3" target="_blank" rel="noopener">See it on a map ↗</a>
+      <button class="ghost small" type="button" id="shareBtn">Share link</button>
+    </div>`;
 }
 
 function radarSvg(dims) {
