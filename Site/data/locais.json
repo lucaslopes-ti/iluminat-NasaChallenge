@@ -1,0 +1,1452 @@
+[
+ {
+  "id": "vargeao",
+  "nome": "Domo de Vargeão",
+  "regiao": "SC, BR",
+  "papel": "candidato",
+  "tipo": "cratera de impacto em basalto",
+  "tipo_en": "12 km impact crater in basalt",
+  "lat": -26.82,
+  "lon": -52.17,
+  "lon_min": -52.25,
+  "lat_min": -26.9,
+  "lon_max": -52.09,
+  "lat_max": -26.74,
+  "elev_media_m": 820,
+  "declividade_media": 6.1,
+  "rugosidade_tri_m": 3.2,
+  "frac_transitavel_15": 0.91,
+  "t2m_c": 17.4,
+  "chuva_anual_mm": 1890,
+  "ndvi_medio": 0.68,
+  "notas": {
+   "shackleton": {
+    "terrain": 0.86,
+    "materials": 0.78,
+    "thermal": 0.4,
+    "water_ice": 0.2,
+    "dust": 0.3,
+    "biology": 0.4,
+    "operations": 0.8
+   },
+   "malapert": {
+    "terrain": 0.89,
+    "materials": 0.78,
+    "thermal": 0.35,
+    "water_ice": 0.15,
+    "dust": 0.3,
+    "biology": 0.4,
+    "operations": 0.82
+   },
+   "haworth": {
+    "terrain": 0.83,
+    "materials": 0.78,
+    "thermal": 0.41,
+    "water_ice": 0.23,
+    "dust": 0.3,
+    "biology": 0.4,
+    "operations": 0.8
+   },
+   "marius": {
+    "terrain": 0.71,
+    "materials": 0.81,
+    "thermal": 0.1,
+    "water_ice": 0,
+    "dust": 0.3,
+    "biology": 0.4,
+    "operations": 0.8
+   },
+   "jezero": {
+    "terrain": 0.74,
+    "materials": 0.62,
+    "thermal": 0.3,
+    "water_ice": 0.25,
+    "dust": 0.3,
+    "biology": 0.49,
+    "operations": 0.8
+   },
+   "gale": {
+    "terrain": 0.74,
+    "materials": 0.65,
+    "thermal": 0.3,
+    "water_ice": 0.2,
+    "dust": 0.34,
+    "biology": 0.45,
+    "operations": 0.8
+   },
+   "arcadia": {
+    "terrain": 0.69,
+    "materials": 0.62,
+    "thermal": 0.3,
+    "water_ice": 0.32,
+    "dust": 0.3,
+    "biology": 0.37,
+    "operations": 0.8
+   }
+  },
+  "analogia": {
+   "moon": {
+    "works": [
+     "Complex impact structure with central uplift, like lunar craters",
+     "Shocked basalt and breccias, similar to mare basalt impacts",
+     "Easy road access for rover and drilling tests"
+    ],
+    "breaks": [
+     "Vegetation and soil cover hide much of the rock",
+     "Humid subtropical climate, far from lunar cold"
+    ]
+   },
+   "mars": {
+    "works": [
+     "Impact into basalt, the dominant Martian crust rock",
+     "Hydrothermal alteration after impact, as proposed for Martian craters"
+    ],
+    "breaks": [
+     "Rainfall and forest, no Martian aridity",
+     "Rock surface heavily weathered"
+    ]
+   }
+  },
+  "periodo": "2024-01-01 a 2024-12-31",
+  "modo_teste": true,
+  "exemplo": true,
+  "gerado_em": "2026-11-14T00:00Z"
+ },
+ {
+  "id": "vista_alegre",
+  "nome": "Cratera de Vista Alegre",
+  "regiao": "PR, BR",
+  "papel": "candidato",
+  "tipo": "cratera de impacto em basalto",
+  "tipo_en": "9.5 km impact crater in basalt",
+  "lat": -25.95,
+  "lon": -52.69,
+  "lon_min": -52.75,
+  "lat_min": -26.01,
+  "lon_max": -52.63,
+  "lat_max": -25.89,
+  "elev_media_m": 690,
+  "declividade_media": 5.0,
+  "rugosidade_tri_m": 2.6,
+  "frac_transitavel_15": 0.94,
+  "t2m_c": 19.1,
+  "chuva_anual_mm": 1980,
+  "ndvi_medio": 0.71,
+  "notas": {
+   "shackleton": {
+    "terrain": 0.8,
+    "materials": 0.76,
+    "thermal": 0.38,
+    "water_ice": 0.2,
+    "dust": 0.28,
+    "biology": 0.4,
+    "operations": 0.76
+   },
+   "malapert": {
+    "terrain": 0.83,
+    "materials": 0.76,
+    "thermal": 0.33,
+    "water_ice": 0.15,
+    "dust": 0.28,
+    "biology": 0.4,
+    "operations": 0.78
+   },
+   "haworth": {
+    "terrain": 0.77,
+    "materials": 0.76,
+    "thermal": 0.39,
+    "water_ice": 0.23,
+    "dust": 0.28,
+    "biology": 0.4,
+    "operations": 0.76
+   },
+   "marius": {
+    "terrain": 0.65,
+    "materials": 0.79,
+    "thermal": 0.08,
+    "water_ice": 0,
+    "dust": 0.28,
+    "biology": 0.4,
+    "operations": 0.76
+   },
+   "jezero": {
+    "terrain": 0.7,
+    "materials": 0.6,
+    "thermal": 0.3,
+    "water_ice": 0.23,
+    "dust": 0.28,
+    "biology": 0.46,
+    "operations": 0.76
+   },
+   "gale": {
+    "terrain": 0.7,
+    "materials": 0.63,
+    "thermal": 0.3,
+    "water_ice": 0.18,
+    "dust": 0.32,
+    "biology": 0.42,
+    "operations": 0.76
+   },
+   "arcadia": {
+    "terrain": 0.65,
+    "materials": 0.6,
+    "thermal": 0.3,
+    "water_ice": 0.3,
+    "dust": 0.28,
+    "biology": 0.34,
+    "operations": 0.76
+   }
+  },
+  "analogia": {
+   "moon": {
+    "works": [
+     "Simple-to-complex crater in basalt, like small lunar craters",
+     "Impact melt and breccia outcrops"
+    ],
+    "breaks": [
+     "Mostly farmland: little exposed rock",
+     "Humid climate"
+    ]
+   },
+   "mars": {
+    "works": [
+     "Basaltic target rock, as on Mars"
+    ],
+    "breaks": [
+     "Heavy erosion and vegetation",
+     "Rain-driven processes dominate"
+    ]
+   }
+  },
+  "periodo": "2024-01-01 a 2024-12-31",
+  "modo_teste": true,
+  "exemplo": true,
+  "gerado_em": "2026-11-14T00:00Z"
+ },
+ {
+  "id": "cangalha",
+  "nome": "Serra da Cangalha",
+  "regiao": "TO, BR",
+  "papel": "candidato",
+  "tipo": "cratera de impacto em arenito",
+  "tipo_en": "13 km impact crater in sedimentary rock",
+  "lat": -8.08,
+  "lon": -46.86,
+  "lon_min": -46.98,
+  "lat_min": -8.2,
+  "lon_max": -46.74,
+  "lat_max": -7.96,
+  "elev_media_m": 470,
+  "declividade_media": 8.7,
+  "rugosidade_tri_m": 5.1,
+  "frac_transitavel_15": 0.82,
+  "t2m_c": 26.3,
+  "chuva_anual_mm": 1350,
+  "ndvi_medio": 0.44,
+  "notas": {
+   "shackleton": {
+    "terrain": 0.88,
+    "materials": 0.55,
+    "thermal": 0.5,
+    "water_ice": 0.15,
+    "dust": 0.5,
+    "biology": 0.35,
+    "operations": 0.7
+   },
+   "malapert": {
+    "terrain": 0.91,
+    "materials": 0.55,
+    "thermal": 0.45,
+    "water_ice": 0.1,
+    "dust": 0.5,
+    "biology": 0.35,
+    "operations": 0.72
+   },
+   "haworth": {
+    "terrain": 0.85,
+    "materials": 0.55,
+    "thermal": 0.51,
+    "water_ice": 0.18,
+    "dust": 0.5,
+    "biology": 0.35,
+    "operations": 0.7
+   },
+   "marius": {
+    "terrain": 0.73,
+    "materials": 0.58,
+    "thermal": 0.2,
+    "water_ice": 0,
+    "dust": 0.5,
+    "biology": 0.35,
+    "operations": 0.7
+   },
+   "jezero": {
+    "terrain": 0.85,
+    "materials": 0.7,
+    "thermal": 0.5,
+    "water_ice": 0.25,
+    "dust": 0.55,
+    "biology": 0.49,
+    "operations": 0.7
+   },
+   "gale": {
+    "terrain": 0.85,
+    "materials": 0.73,
+    "thermal": 0.5,
+    "water_ice": 0.2,
+    "dust": 0.59,
+    "biology": 0.45,
+    "operations": 0.7
+   },
+   "arcadia": {
+    "terrain": 0.8,
+    "materials": 0.7,
+    "thermal": 0.5,
+    "water_ice": 0.32,
+    "dust": 0.55,
+    "biology": 0.37,
+    "operations": 0.7
+   }
+  },
+  "analogia": {
+   "moon": {
+    "works": [
+     "Very well-exposed ring structure with central peak",
+     "Sparse cerrado vegetation leaves rims visible from orbit"
+    ],
+    "breaks": [
+     "Sandstone target, unlike lunar anorthosite and basalt",
+     "Wet season every year"
+    ]
+   },
+   "mars": {
+    "works": [
+     "Impact into layered sediments, like Gale and Jezero rims",
+     "Dry season with dust and exposed soils"
+    ],
+    "breaks": [
+     "Liquid water every rainy season",
+     "Thick oxygen atmosphere"
+    ]
+   }
+  },
+  "periodo": "2024-01-01 a 2024-12-31",
+  "modo_teste": true,
+  "exemplo": true,
+  "gerado_em": "2026-11-14T00:00Z"
+ },
+ {
+  "id": "araguainha",
+  "nome": "Domo de Araguainha",
+  "regiao": "MT/GO, BR",
+  "papel": "candidato",
+  "tipo": "maior cratera de impacto da América do Sul",
+  "tipo_en": "40 km impact structure, largest in South America",
+  "lat": -16.78,
+  "lon": -52.98,
+  "lon_min": -53.18,
+  "lat_min": -16.98,
+  "lon_max": -52.78,
+  "lat_max": -16.58,
+  "elev_media_m": 560,
+  "declividade_media": 7.3,
+  "rugosidade_tri_m": 4.4,
+  "frac_transitavel_15": 0.86,
+  "t2m_c": 24.8,
+  "chuva_anual_mm": 1550,
+  "ndvi_medio": 0.52,
+  "notas": {
+   "shackleton": {
+    "terrain": 0.82,
+    "materials": 0.6,
+    "thermal": 0.45,
+    "water_ice": 0.17,
+    "dust": 0.4,
+    "biology": 0.38,
+    "operations": 0.65
+   },
+   "malapert": {
+    "terrain": 0.85,
+    "materials": 0.6,
+    "thermal": 0.4,
+    "water_ice": 0.12,
+    "dust": 0.4,
+    "biology": 0.38,
+    "operations": 0.67
+   },
+   "haworth": {
+    "terrain": 0.79,
+    "materials": 0.6,
+    "thermal": 0.46,
+    "water_ice": 0.2,
+    "dust": 0.4,
+    "biology": 0.38,
+    "operations": 0.65
+   },
+   "marius": {
+    "terrain": 0.67,
+    "materials": 0.63,
+    "thermal": 0.15,
+    "water_ice": 0,
+    "dust": 0.4,
+    "biology": 0.38,
+    "operations": 0.65
+   },
+   "jezero": {
+    "terrain": 0.8,
+    "materials": 0.68,
+    "thermal": 0.45,
+    "water_ice": 0.27,
+    "dust": 0.45,
+    "biology": 0.52,
+    "operations": 0.65
+   },
+   "gale": {
+    "terrain": 0.8,
+    "materials": 0.71,
+    "thermal": 0.45,
+    "water_ice": 0.22,
+    "dust": 0.49,
+    "biology": 0.48,
+    "operations": 0.65
+   },
+   "arcadia": {
+    "terrain": 0.75,
+    "materials": 0.68,
+    "thermal": 0.45,
+    "water_ice": 0.34,
+    "dust": 0.45,
+    "biology": 0.4,
+    "operations": 0.65
+   }
+  },
+  "analogia": {
+   "moon": {
+    "works": [
+     "Large multi-ring structure: scale closer to lunar basins",
+     "Shocked quartz and impact melt rocks"
+    ],
+    "breaks": [
+     "Eroded, 250 million years old",
+     "Sedimentary target"
+    ]
+   },
+   "mars": {
+    "works": [
+     "Sedimentary layers and hydrothermal veins, like Martian craters",
+     "Visible concentric rings for orbital mapping tests"
+    ],
+    "breaks": [
+     "River erosion and vegetation",
+     "Wet tropical climate"
+    ]
+   }
+  },
+  "periodo": "2024-01-01 a 2024-12-31",
+  "modo_teste": true,
+  "exemplo": true,
+  "gerado_em": "2026-11-14T00:00Z"
+ },
+ {
+  "id": "carajas",
+  "nome": "Serra Norte de Carajás (cavernas)",
+  "regiao": "PA, BR",
+  "papel": "candidato",
+  "tipo": "canga ferrífera e cavernas",
+  "tipo_en": "Iron-rich duricrust (canga) with over 1,000 caves",
+  "lat": -6.05,
+  "lon": -50.15,
+  "lon_min": -50.25,
+  "lat_min": -6.15,
+  "lon_max": -50.05,
+  "lat_max": -5.95,
+  "elev_media_m": 690,
+  "declividade_media": 9.8,
+  "rugosidade_tri_m": 6.0,
+  "frac_transitavel_15": 0.78,
+  "t2m_c": 25.6,
+  "chuva_anual_mm": 2050,
+  "ndvi_medio": 0.35,
+  "emit_mineral_dominante": "Hematite",
+  "notas": {
+   "shackleton": {
+    "terrain": 0.55,
+    "materials": 0.5,
+    "thermal": 0.45,
+    "water_ice": 0.25,
+    "dust": 0.35,
+    "biology": 0.45,
+    "operations": 0.6
+   },
+   "malapert": {
+    "terrain": 0.58,
+    "materials": 0.5,
+    "thermal": 0.4,
+    "water_ice": 0.2,
+    "dust": 0.35,
+    "biology": 0.45,
+    "operations": 0.62
+   },
+   "haworth": {
+    "terrain": 0.52,
+    "materials": 0.5,
+    "thermal": 0.46,
+    "water_ice": 0.28,
+    "dust": 0.35,
+    "biology": 0.45,
+    "operations": 0.6
+   },
+   "marius": {
+    "terrain": 0.78,
+    "materials": 0.63,
+    "thermal": 0.7,
+    "water_ice": 0.2,
+    "dust": 0.35,
+    "biology": 0.45,
+    "operations": 0.75
+   },
+   "jezero": {
+    "terrain": 0.6,
+    "materials": 0.9,
+    "thermal": 0.45,
+    "water_ice": 0.4,
+    "dust": 0.4,
+    "biology": 0.74,
+    "operations": 0.6
+   },
+   "gale": {
+    "terrain": 0.6,
+    "materials": 0.93,
+    "thermal": 0.45,
+    "water_ice": 0.35,
+    "dust": 0.44,
+    "biology": 0.7,
+    "operations": 0.6
+   },
+   "arcadia": {
+    "terrain": 0.55,
+    "materials": 0.9,
+    "thermal": 0.45,
+    "water_ice": 0.47,
+    "dust": 0.4,
+    "biology": 0.62,
+    "operations": 0.6
+   }
+  },
+  "analogia": {
+   "moon": {
+    "works": [
+     "Natural caves for testing navigation and mapping in the dark, like lava-tube skylights",
+     "Hard iron crust similar to a construction substrate"
+    ],
+    "breaks": [
+     "Iron-oxide chemistry differs from lunar regolith",
+     "Rainforest surroundings"
+    ]
+   },
+   "mars": {
+    "works": [
+     "Iron oxides (hematite, goethite) give the same red spectral signal as Mars",
+     "Caves host microbes living on iron: biosignature tests",
+     "Cave systems as Mars habitat and shelter analogs"
+    ],
+    "breaks": [
+     "Humid equatorial climate",
+     "Active mining changes the terrain"
+    ]
+   }
+  },
+  "periodo": "2024-01-01 a 2024-12-31",
+  "modo_teste": true,
+  "exemplo": true,
+  "gerado_em": "2026-11-14T00:00Z"
+ },
+ {
+  "id": "lencois",
+  "nome": "Lençóis Maranhenses",
+  "regiao": "MA, BR",
+  "papel": "candidato",
+  "tipo": "campo de dunas e lagoas",
+  "tipo_en": "Coastal dune field with seasonal lagoons",
+  "lat": -2.53,
+  "lon": -43.12,
+  "lon_min": -43.27,
+  "lat_min": -2.68,
+  "lon_max": -42.97,
+  "lat_max": -2.38,
+  "elev_media_m": 30,
+  "declividade_media": 4.2,
+  "rugosidade_tri_m": 1.4,
+  "frac_transitavel_15": 0.95,
+  "t2m_c": 27.2,
+  "chuva_anual_mm": 1600,
+  "ndvi_medio": 0.1,
+  "vento_10m_ms": 5.8,
+  "notas": {
+   "shackleton": {
+    "terrain": 0.4,
+    "materials": 0.35,
+    "thermal": 0.3,
+    "water_ice": 0.35,
+    "dust": 0.55,
+    "biology": 0.3,
+    "operations": 0.75
+   },
+   "malapert": {
+    "terrain": 0.43,
+    "materials": 0.35,
+    "thermal": 0.25,
+    "water_ice": 0.3,
+    "dust": 0.55,
+    "biology": 0.3,
+    "operations": 0.77
+   },
+   "haworth": {
+    "terrain": 0.37,
+    "materials": 0.35,
+    "thermal": 0.31,
+    "water_ice": 0.38,
+    "dust": 0.55,
+    "biology": 0.3,
+    "operations": 0.75
+   },
+   "marius": {
+    "terrain": 0.25,
+    "materials": 0.38,
+    "thermal": 0,
+    "water_ice": 0,
+    "dust": 0.55,
+    "biology": 0.3,
+    "operations": 0.75
+   },
+   "jezero": {
+    "terrain": 0.7,
+    "materials": 0.45,
+    "thermal": 0.3,
+    "water_ice": 0.6,
+    "dust": 0.92,
+    "biology": 0.59,
+    "operations": 0.75
+   },
+   "gale": {
+    "terrain": 0.7,
+    "materials": 0.48,
+    "thermal": 0.3,
+    "water_ice": 0.55,
+    "dust": 0.96,
+    "biology": 0.55,
+    "operations": 0.75
+   },
+   "arcadia": {
+    "terrain": 0.65,
+    "materials": 0.45,
+    "thermal": 0.3,
+    "water_ice": 0.67,
+    "dust": 0.92,
+    "biology": 0.47,
+    "operations": 0.75
+   }
+  },
+  "analogia": {
+   "moon": {
+    "works": [
+     "Loose sand for wheel-slip and mobility tests"
+    ],
+    "breaks": [
+     "No craters, no regolith fines",
+     "Water everywhere in the rainy season"
+    ]
+   },
+   "mars": {
+    "works": [
+     "Wind-driven dunes and ripples, like Martian dune fields",
+     "Seasonal lakes between dunes recall ancient Martian water",
+     "Sand transport measurable from orbit"
+    ],
+    "breaks": [
+     "Wind and water are much stronger than on Mars today",
+     "Quartz sand, while Martian sand is basaltic"
+    ]
+   }
+  },
+  "periodo": "2024-01-01 a 2024-12-31",
+  "modo_teste": true,
+  "exemplo": true,
+  "gerado_em": "2026-11-14T00:00Z"
+ },
+ {
+  "id": "raso_catarina",
+  "nome": "Raso da Catarina",
+  "regiao": "BA, BR",
+  "papel": "candidato",
+  "tipo": "semiárido com arenito e solo exposto",
+  "tipo_en": "Semi-arid sandstone plateau with bare soils",
+  "lat": -9.65,
+  "lon": -38.45,
+  "lon_min": -38.6,
+  "lat_min": -9.8,
+  "lon_max": -38.3,
+  "lat_max": -9.5,
+  "elev_media_m": 560,
+  "declividade_media": 4.9,
+  "rugosidade_tri_m": 2.1,
+  "frac_transitavel_15": 0.93,
+  "t2m_c": 25.9,
+  "chuva_anual_mm": 460,
+  "ndvi_medio": 0.28,
+  "rad_solar_wm2": 255,
+  "notas": {
+   "shackleton": {
+    "terrain": 0.6,
+    "materials": 0.45,
+    "thermal": 0.55,
+    "water_ice": 0.1,
+    "dust": 0.65,
+    "biology": 0.35,
+    "operations": 0.7
+   },
+   "malapert": {
+    "terrain": 0.63,
+    "materials": 0.45,
+    "thermal": 0.5,
+    "water_ice": 0.05,
+    "dust": 0.65,
+    "biology": 0.35,
+    "operations": 0.72
+   },
+   "haworth": {
+    "terrain": 0.57,
+    "materials": 0.45,
+    "thermal": 0.56,
+    "water_ice": 0.13,
+    "dust": 0.65,
+    "biology": 0.35,
+    "operations": 0.7
+   },
+   "marius": {
+    "terrain": 0.45,
+    "materials": 0.48,
+    "thermal": 0.25,
+    "water_ice": 0,
+    "dust": 0.65,
+    "biology": 0.35,
+    "operations": 0.7
+   },
+   "jezero": {
+    "terrain": 0.72,
+    "materials": 0.55,
+    "thermal": 0.58,
+    "water_ice": 0.2,
+    "dust": 0.75,
+    "biology": 0.49,
+    "operations": 0.7
+   },
+   "gale": {
+    "terrain": 0.72,
+    "materials": 0.58,
+    "thermal": 0.58,
+    "water_ice": 0.15,
+    "dust": 0.79,
+    "biology": 0.45,
+    "operations": 0.7
+   },
+   "arcadia": {
+    "terrain": 0.67,
+    "materials": 0.55,
+    "thermal": 0.58,
+    "water_ice": 0.27,
+    "dust": 0.75,
+    "biology": 0.37,
+    "operations": 0.7
+   }
+  },
+  "analogia": {
+   "moon": {
+    "works": [
+     "Bare, dusty ground for dust-mitigation tests"
+    ],
+    "breaks": [
+     "Vegetation (caatinga) and sedimentary rock"
+    ]
+   },
+   "mars": {
+    "works": [
+     "Dust and solar-panel soiling, as on Mars rovers",
+     "Dry, high-insolation climate with large daily swings"
+    ],
+    "breaks": [
+     "Still gets ~450 mm of rain per year",
+     "Warm, not freezing"
+    ]
+   }
+  },
+  "periodo": "2024-01-01 a 2024-12-31",
+  "modo_teste": true,
+  "exemplo": true,
+  "gerado_em": "2026-11-14T00:00Z"
+ },
+ {
+  "id": "atacama",
+  "nome": "Atacama, Yungay",
+  "regiao": "Chile",
+  "papel": "referência",
+  "tipo": "deserto hiperárido",
+  "tipo_en": "Hyper-arid desert, driest non-polar place on Earth",
+  "lat": -24.08,
+  "lon": -69.93,
+  "lon_min": -70.03,
+  "lat_min": -24.18,
+  "lon_max": -69.83,
+  "lat_max": -23.98,
+  "elev_media_m": 1000,
+  "declividade_media": 3.8,
+  "rugosidade_tri_m": 1.9,
+  "frac_transitavel_15": 0.96,
+  "t2m_c": 16.5,
+  "chuva_anual_mm": 2,
+  "ndvi_medio": 0.03,
+  "notas": {
+   "shackleton": {
+    "terrain": 0.7,
+    "materials": 0.5,
+    "thermal": 0.6,
+    "water_ice": 0.15,
+    "dust": 0.75,
+    "biology": 0.3,
+    "operations": 0.85
+   },
+   "malapert": {
+    "terrain": 0.73,
+    "materials": 0.5,
+    "thermal": 0.55,
+    "water_ice": 0.1,
+    "dust": 0.75,
+    "biology": 0.3,
+    "operations": 0.87
+   },
+   "haworth": {
+    "terrain": 0.67,
+    "materials": 0.5,
+    "thermal": 0.61,
+    "water_ice": 0.18,
+    "dust": 0.75,
+    "biology": 0.3,
+    "operations": 0.85
+   },
+   "marius": {
+    "terrain": 0.55,
+    "materials": 0.53,
+    "thermal": 0.3,
+    "water_ice": 0,
+    "dust": 0.75,
+    "biology": 0.3,
+    "operations": 0.85
+   },
+   "jezero": {
+    "terrain": 0.82,
+    "materials": 0.8,
+    "thermal": 0.65,
+    "water_ice": 0.25,
+    "dust": 0.85,
+    "biology": 0.94,
+    "operations": 0.85
+   },
+   "gale": {
+    "terrain": 0.82,
+    "materials": 0.83,
+    "thermal": 0.65,
+    "water_ice": 0.2,
+    "dust": 0.89,
+    "biology": 0.9,
+    "operations": 0.85
+   },
+   "arcadia": {
+    "terrain": 0.77,
+    "materials": 0.8,
+    "thermal": 0.65,
+    "water_ice": 0.32,
+    "dust": 0.85,
+    "biology": 0.82,
+    "operations": 0.85
+   }
+  },
+  "analogia": {
+   "moon": {
+    "works": [
+     "Extreme dryness and high UV",
+     "Bare, rocky terrain for rover tests"
+    ],
+    "breaks": [
+     "Mild temperatures compared with lunar extremes"
+    ]
+   },
+   "mars": {
+    "works": [
+     "Hyper-arid soils with oxidants and nitrates, like Martian soil",
+     "Microbial life at the dry limit: biosignature tests",
+     "Classic NASA rover test site"
+    ],
+    "breaks": [
+     "Still has a thick atmosphere",
+     "Warmer than Mars"
+    ]
+   }
+  },
+  "periodo": "2024-01-01 a 2024-12-31",
+  "modo_teste": true,
+  "exemplo": true,
+  "gerado_em": "2026-11-14T00:00Z"
+ },
+ {
+  "id": "dry_valleys",
+  "nome": "McMurdo Dry Valleys",
+  "regiao": "Antarctica",
+  "papel": "referência",
+  "tipo": "vales secos polares",
+  "tipo_en": "Polar desert valleys free of ice",
+  "lat": -77.5,
+  "lon": 162.0,
+  "lon_min": 161.7,
+  "lat_min": -77.8,
+  "lon_max": 162.3,
+  "lat_max": -77.2,
+  "elev_media_m": 700,
+  "declividade_media": 12.0,
+  "rugosidade_tri_m": 7.4,
+  "frac_transitavel_15": 0.7,
+  "t2m_c": -20.0,
+  "chuva_anual_mm": 50,
+  "ndvi_medio": 0.0,
+  "notas": {
+   "shackleton": {
+    "terrain": 0.65,
+    "materials": 0.5,
+    "thermal": 0.85,
+    "water_ice": 0.9,
+    "dust": 0.5,
+    "biology": 0.45,
+    "operations": 0.4
+   },
+   "malapert": {
+    "terrain": 0.68,
+    "materials": 0.5,
+    "thermal": 0.8,
+    "water_ice": 0.85,
+    "dust": 0.5,
+    "biology": 0.45,
+    "operations": 0.42
+   },
+   "haworth": {
+    "terrain": 0.62,
+    "materials": 0.5,
+    "thermal": 0.86,
+    "water_ice": 0.93,
+    "dust": 0.5,
+    "biology": 0.45,
+    "operations": 0.4
+   },
+   "marius": {
+    "terrain": 0.5,
+    "materials": 0.53,
+    "thermal": 0.55,
+    "water_ice": 0.55,
+    "dust": 0.5,
+    "biology": 0.45,
+    "operations": 0.4
+   },
+   "jezero": {
+    "terrain": 0.75,
+    "materials": 0.65,
+    "thermal": 0.85,
+    "water_ice": 0.85,
+    "dust": 0.65,
+    "biology": 0.84,
+    "operations": 0.4
+   },
+   "gale": {
+    "terrain": 0.75,
+    "materials": 0.68,
+    "thermal": 0.85,
+    "water_ice": 0.8,
+    "dust": 0.69,
+    "biology": 0.8,
+    "operations": 0.4
+   },
+   "arcadia": {
+    "terrain": 0.7,
+    "materials": 0.65,
+    "thermal": 0.85,
+    "water_ice": 0.92,
+    "dust": 0.65,
+    "biology": 0.72,
+    "operations": 0.4
+   }
+  },
+  "analogia": {
+   "moon": {
+    "works": [
+     "Cold, dark polar winters and frozen ground, like lunar polar regions",
+     "Ice-cemented soils for drilling tests"
+    ],
+    "breaks": [
+     "Has an atmosphere and weather",
+     "Hard logistics"
+    ]
+   },
+   "mars": {
+    "works": [
+     "Cold, dry, wind-scoured soils and permafrost",
+     "Microbes inside rocks: classic Mars life analog"
+    ],
+    "breaks": [
+     "Temperatures still far above Mars night",
+     "Hard to reach"
+    ]
+   }
+  },
+  "periodo": "2024-01-01 a 2024-12-31",
+  "modo_teste": true,
+  "exemplo": true,
+  "gerado_em": "2026-11-14T00:00Z"
+ },
+ {
+  "id": "haughton",
+  "nome": "Cratera de Haughton",
+  "regiao": "Nunavut, Canada",
+  "papel": "referência",
+  "tipo": "cratera de impacto polar",
+  "tipo_en": "23 km impact crater in polar desert",
+  "lat": 75.37,
+  "lon": -89.68,
+  "lon_min": -89.83,
+  "lat_min": 75.22,
+  "lon_max": -89.53,
+  "lat_max": 75.52,
+  "elev_media_m": 200,
+  "declividade_media": 7.5,
+  "rugosidade_tri_m": 4.0,
+  "frac_transitavel_15": 0.85,
+  "t2m_c": -16.0,
+  "chuva_anual_mm": 150,
+  "ndvi_medio": 0.05,
+  "notas": {
+   "shackleton": {
+    "terrain": 0.85,
+    "materials": 0.55,
+    "thermal": 0.8,
+    "water_ice": 0.75,
+    "dust": 0.45,
+    "biology": 0.45,
+    "operations": 0.45
+   },
+   "malapert": {
+    "terrain": 0.88,
+    "materials": 0.55,
+    "thermal": 0.75,
+    "water_ice": 0.7,
+    "dust": 0.45,
+    "biology": 0.45,
+    "operations": 0.47
+   },
+   "haworth": {
+    "terrain": 0.82,
+    "materials": 0.55,
+    "thermal": 0.81,
+    "water_ice": 0.78,
+    "dust": 0.45,
+    "biology": 0.45,
+    "operations": 0.45
+   },
+   "marius": {
+    "terrain": 0.7,
+    "materials": 0.58,
+    "thermal": 0.5,
+    "water_ice": 0.4,
+    "dust": 0.45,
+    "biology": 0.45,
+    "operations": 0.45
+   },
+   "jezero": {
+    "terrain": 0.82,
+    "materials": 0.7,
+    "thermal": 0.78,
+    "water_ice": 0.75,
+    "dust": 0.55,
+    "biology": 0.74,
+    "operations": 0.45
+   },
+   "gale": {
+    "terrain": 0.82,
+    "materials": 0.73,
+    "thermal": 0.78,
+    "water_ice": 0.7,
+    "dust": 0.59,
+    "biology": 0.7,
+    "operations": 0.45
+   },
+   "arcadia": {
+    "terrain": 0.77,
+    "materials": 0.7,
+    "thermal": 0.78,
+    "water_ice": 0.82,
+    "dust": 0.55,
+    "biology": 0.62,
+    "operations": 0.45
+   }
+  },
+  "analogia": {
+   "moon": {
+    "works": [
+     "Impact crater in a cold, permafrost environment",
+     "Long-running NASA Haughton-Mars Project site"
+    ],
+    "breaks": [
+     "Carbonate target rock",
+     "Summer only access"
+    ]
+   },
+   "mars": {
+    "works": [
+     "Polar desert with ground ice and impact hydrothermal deposits"
+    ],
+    "breaks": [
+     "Atmosphere, liquid water in summer"
+    ]
+   }
+  },
+  "periodo": "2024-01-01 a 2024-12-31",
+  "modo_teste": true,
+  "exemplo": true,
+  "gerado_em": "2026-11-14T00:00Z"
+ },
+ {
+  "id": "mauna_kea",
+  "nome": "Mauna Kea",
+  "regiao": "Hawaiʻi, USA",
+  "papel": "referência",
+  "tipo": "vulcão basáltico e cinzas",
+  "tipo_en": "Basaltic volcano with ash and cinder slopes",
+  "lat": 19.82,
+  "lon": -155.47,
+  "lon_min": -155.57,
+  "lat_min": 19.72,
+  "lon_max": -155.37,
+  "lat_max": 19.92,
+  "elev_media_m": 3500,
+  "declividade_media": 14.0,
+  "rugosidade_tri_m": 6.2,
+  "frac_transitavel_15": 0.6,
+  "t2m_c": 4.0,
+  "chuva_anual_mm": 300,
+  "ndvi_medio": 0.05,
+  "notas": {
+   "shackleton": {
+    "terrain": 0.75,
+    "materials": 0.85,
+    "thermal": 0.45,
+    "water_ice": 0.3,
+    "dust": 0.45,
+    "biology": 0.2,
+    "operations": 0.8
+   },
+   "malapert": {
+    "terrain": 0.78,
+    "materials": 0.85,
+    "thermal": 0.4,
+    "water_ice": 0.25,
+    "dust": 0.45,
+    "biology": 0.2,
+    "operations": 0.82
+   },
+   "haworth": {
+    "terrain": 0.72,
+    "materials": 0.85,
+    "thermal": 0.46,
+    "water_ice": 0.33,
+    "dust": 0.45,
+    "biology": 0.2,
+    "operations": 0.8
+   },
+   "marius": {
+    "terrain": 0.8,
+    "materials": 0.93,
+    "thermal": 0.15,
+    "water_ice": 0,
+    "dust": 0.45,
+    "biology": 0.2,
+    "operations": 0.8
+   },
+   "jezero": {
+    "terrain": 0.7,
+    "materials": 0.75,
+    "thermal": 0.4,
+    "water_ice": 0.3,
+    "dust": 0.45,
+    "biology": 0.44,
+    "operations": 0.8
+   },
+   "gale": {
+    "terrain": 0.7,
+    "materials": 0.78,
+    "thermal": 0.4,
+    "water_ice": 0.25,
+    "dust": 0.49,
+    "biology": 0.4,
+    "operations": 0.8
+   },
+   "arcadia": {
+    "terrain": 0.65,
+    "materials": 0.75,
+    "thermal": 0.4,
+    "water_ice": 0.37,
+    "dust": 0.45,
+    "biology": 0.32,
+    "operations": 0.8
+   }
+  },
+  "analogia": {
+   "moon": {
+    "works": [
+     "Basaltic ash close to lunar regolith; used for regolith simulants",
+     "High altitude, thin air, strong UV"
+    ],
+    "breaks": [
+     "Volcanic, not impact, terrain",
+     "Mild temperatures"
+    ]
+   },
+   "mars": {
+    "works": [
+     "Basaltic volcanic rock and alteration minerals"
+    ],
+    "breaks": [
+     "Wet windward side and vegetation"
+    ]
+   }
+  },
+  "periodo": "2024-01-01 a 2024-12-31",
+  "modo_teste": true,
+  "exemplo": true,
+  "gerado_em": "2026-11-14T00:00Z"
+ },
+ {
+  "id": "rio_tinto",
+  "nome": "Río Tinto",
+  "regiao": "Spain",
+  "papel": "referência",
+  "tipo": "rio ácido rico em ferro",
+  "tipo_en": "Acidic, iron- and sulfate-rich river",
+  "lat": 37.72,
+  "lon": -6.55,
+  "lon_min": -6.65,
+  "lat_min": 37.62,
+  "lon_max": -6.45,
+  "lat_max": 37.82,
+  "elev_media_m": 200,
+  "declividade_media": 9.0,
+  "rugosidade_tri_m": 4.5,
+  "frac_transitavel_15": 0.8,
+  "t2m_c": 17.5,
+  "chuva_anual_mm": 600,
+  "ndvi_medio": 0.3,
+  "notas": {
+   "shackleton": {
+    "terrain": 0.3,
+    "materials": 0.4,
+    "thermal": 0.35,
+    "water_ice": 0.35,
+    "dust": 0.2,
+    "biology": 0.4,
+    "operations": 0.8
+   },
+   "malapert": {
+    "terrain": 0.33,
+    "materials": 0.4,
+    "thermal": 0.3,
+    "water_ice": 0.3,
+    "dust": 0.2,
+    "biology": 0.4,
+    "operations": 0.82
+   },
+   "haworth": {
+    "terrain": 0.27,
+    "materials": 0.4,
+    "thermal": 0.36,
+    "water_ice": 0.38,
+    "dust": 0.2,
+    "biology": 0.4,
+    "operations": 0.8
+   },
+   "marius": {
+    "terrain": 0.15,
+    "materials": 0.43,
+    "thermal": 0.05,
+    "water_ice": 0,
+    "dust": 0.2,
+    "biology": 0.4,
+    "operations": 0.8
+   },
+   "jezero": {
+    "terrain": 0.5,
+    "materials": 0.88,
+    "thermal": 0.35,
+    "water_ice": 0.6,
+    "dust": 0.3,
+    "biology": 0.89,
+    "operations": 0.8
+   },
+   "gale": {
+    "terrain": 0.5,
+    "materials": 0.91,
+    "thermal": 0.35,
+    "water_ice": 0.55,
+    "dust": 0.34,
+    "biology": 0.85,
+    "operations": 0.8
+   },
+   "arcadia": {
+    "terrain": 0.45,
+    "materials": 0.88,
+    "thermal": 0.35,
+    "water_ice": 0.67,
+    "dust": 0.3,
+    "biology": 0.77,
+    "operations": 0.8
+   }
+  },
+  "analogia": {
+   "moon": {
+    "works": [
+     "Well-studied site for instrument tests"
+    ],
+    "breaks": [
+     "Liquid water chemistry has no lunar counterpart"
+    ]
+   },
+   "mars": {
+    "works": [
+     "Jarosite and iron sulfates, the same minerals found by Opportunity at Meridiani",
+     "Acid-loving microbes: model for life in Martian acidic waters"
+    ],
+    "breaks": [
+     "Running water today",
+     "Mediterranean climate"
+    ]
+   }
+  },
+  "periodo": "2024-01-01 a 2024-12-31",
+  "modo_teste": true,
+  "exemplo": true,
+  "gerado_em": "2026-11-14T00:00Z"
+ },
+ {
+  "id": "lonar",
+  "nome": "Cratera de Lonar",
+  "regiao": "Maharashtra, India",
+  "papel": "candidato",
+  "tipo": "cratera de impacto em basalto",
+  "tipo_en": "1.8 km young impact crater in Deccan basalt",
+  "lat": 19.98,
+  "lon": 76.51,
+  "lon_min": 76.46,
+  "lat_min": 19.93,
+  "lon_max": 76.56,
+  "lat_max": 20.03,
+  "elev_media_m": 560,
+  "declividade_media": 10.0,
+  "rugosidade_tri_m": 5.0,
+  "frac_transitavel_15": 0.8,
+  "t2m_c": 26.0,
+  "chuva_anual_mm": 780,
+  "ndvi_medio": 0.4,
+  "notas": {
+   "shackleton": {
+    "terrain": 0.84,
+    "materials": 0.8,
+    "thermal": 0.45,
+    "water_ice": 0.25,
+    "dust": 0.35,
+    "biology": 0.4,
+    "operations": 0.75
+   },
+   "malapert": {
+    "terrain": 0.87,
+    "materials": 0.8,
+    "thermal": 0.4,
+    "water_ice": 0.2,
+    "dust": 0.35,
+    "biology": 0.4,
+    "operations": 0.77
+   },
+   "haworth": {
+    "terrain": 0.81,
+    "materials": 0.8,
+    "thermal": 0.46,
+    "water_ice": 0.28,
+    "dust": 0.35,
+    "biology": 0.4,
+    "operations": 0.75
+   },
+   "marius": {
+    "terrain": 0.69,
+    "materials": 0.83,
+    "thermal": 0.15,
+    "water_ice": 0,
+    "dust": 0.35,
+    "biology": 0.4,
+    "operations": 0.75
+   },
+   "jezero": {
+    "terrain": 0.75,
+    "materials": 0.7,
+    "thermal": 0.4,
+    "water_ice": 0.45,
+    "dust": 0.35,
+    "biology": 0.64,
+    "operations": 0.75
+   },
+   "gale": {
+    "terrain": 0.75,
+    "materials": 0.73,
+    "thermal": 0.4,
+    "water_ice": 0.4,
+    "dust": 0.39,
+    "biology": 0.6,
+    "operations": 0.75
+   },
+   "arcadia": {
+    "terrain": 0.7,
+    "materials": 0.7,
+    "thermal": 0.4,
+    "water_ice": 0.52,
+    "dust": 0.35,
+    "biology": 0.52,
+    "operations": 0.75
+   }
+  },
+  "analogia": {
+   "moon": {
+    "works": [
+     "Young, well-preserved simple crater in basalt, close to lunar mare craters",
+     "Shock features in basalt"
+    ],
+    "breaks": [
+     "Lake inside the crater",
+     "Monsoon climate"
+    ]
+   },
+   "mars": {
+    "works": [
+     "Basaltic target rock and a saline crater lake"
+    ],
+    "breaks": [
+     "Monsoon rains and vegetation"
+    ]
+   }
+  },
+  "periodo": "2024-01-01 a 2024-12-31",
+  "modo_teste": true,
+  "exemplo": true,
+  "gerado_em": "2026-11-14T00:00Z"
+ }
+]
