@@ -1,7 +1,7 @@
 # Plano de Projeto: Gêmeo Digital de Análogos Terrestres da Lua e de Marte
 
 **NASA Space Apps Challenge 2026: "Identify Earth Locations that Analog the Permanent Moon Base Locations and Mars"**
-versão 4 · 13/11/2026 (só ferramentas NASA e de agências parceiras listadas no desafio)
+versão 5 · 14/11/2026 (pipeline de dados em Parquet no Colab)
 
 ---
 
@@ -180,7 +180,7 @@ A narrativa que recomendo: **"O algoritmo reencontrou os análogos clássicos (v
  [Earthdata/AppEEARS: MODIS CMG, GMTED, SMAP,     [Recortes Lua/Marte: LOLA, Diviner, MOLA, CTX, THEMIS, CRISM]
                │  GPM, MERRA-2, NASADEM] (Python)           │ (Python: rasterio, xarray, numpy)
                ▼                                           ▼
-        Grades de indicadores Terra (COG 5 km)    Vetores de referência dos alvos (JSON)
+   Tabela de indicadores Terra (Parquet, ~5 km)  Vetores de referência dos alvos (JSON)
                └──────────────► Motor de similaridade (Python) ◄──────────┘
                                          │
                        mapas de score (PNG/COG tiles) + ranking (GeoJSON)
@@ -191,8 +191,41 @@ A narrativa que recomendo: **"O algoritmo reencontrou os análogos clássicos (v
                                                                                   + painel ao vivo)
 ```
 
+### Pipeline de dados: Parquet + Colab + Drive
+
+Os rasters da NASA (GeoTIFF/NetCDF) são convertidos numa **tabela de indicadores em Parquet**, com uma linha por célula de ~5 km da Terra (`lat, lon, declividade, rugosidade, LST_dia, LST_noite, NDVI, albedo, AOD, chuva, ...`). Essa tabela é o **contrato entre quem prepara os dados (P2) e quem faz o motor de similaridade (P3)**: cada um trabalha em paralelo sem esperar o outro.
+
+- **Tamanho:** só as células de terra (sem oceano) dão ~8 milhões de linhas, algumas centenas de MB em memória. Em Parquet fica compacto e abre em segundos com pandas, Polars ou DuckDB. Em CSV seria lento e pesado.
+- **Onde roda:** **Google Colab** (gratuito, ~12 GB de RAM, sem instalar nada; `pip install earthaccess rioxarray duckdb`). Alternativa: Jupyter ou VS Code num notebook com 16 GB de RAM.
+- **Onde ficam os dados:** numa **pasta compartilhada do Google Drive** da equipe, montada no Colab. Dados brutos e Parquet **não vão para o GitHub**, que recusa arquivos acima de 100 MB. No repositório entram só o código e os resultados pequenos que o site usa (GeoJSON do ranking, PNG/tiles do mapa).
+- **Sem exagero:** nada de Spark, data lake ou banco de dados. Arquivos Parquet numa pasta + DuckDB/pandas bastam para 48h.
+- **Bônus:** o histórico de leituras da estação ESP32 também pode ser salvo em Parquet para análise e para a reprodução na demo.
+
+Estrutura no Drive:
+```
+Drive/AnaloGemeo/
+  bruto/          # downloads do Earthdata, AppEEARS, PDS (GeoTIFF, NetCDF, HDF)
+  parquet/
+    terra_indicadores.parquet        # 1 linha por célula de ~5 km
+    alvos.parquet                    # vetores de referência Lua/Marte
+    scores_<alvo>_<perfil>.parquet   # índice calculado
+    esp32_leituras.parquet           # histórico da estação
+```
+
+Estrutura no repositório:
+```
+pipeline/
+  01_baixar_dados.ipynb        # earthaccess: MODIS CMG, GMTED, GPM, SMAP, MERRA-2
+  02_tabela_indicadores.ipynb  # raster → Parquet (1 linha por célula)
+  03_alvos_lua_marte.ipynb     # recortes LOLA/Diviner/MOLA/THEMIS → vetor de referência
+  04_motor_similaridade.ipynb  # Parquet → índice por alvo e perfil → GeoJSON/PNG para o site
+web/                           # front-end estático (CesiumJS + painel ao vivo)
+firmware/                      # código do ESP32
+docs/                          # este plano
+```
+
 ### Stack recomendada (simples e robusta para 48h)
-- **Dados/ciência:** Python 3.11, `earthaccess` (download autenticado do Earthdata), `rasterio`, `rioxarray`, `xarray`, `numpy`, `scikit-learn`, Jupyter.
+- **Dados/ciência:** Google Colab com Python, `earthaccess` (download autenticado do Earthdata), `rasterio`, `rioxarray`, `xarray`, `numpy`, `pandas` + `pyarrow` (Parquet), `duckdb`, `scikit-learn`.
 - **Front-end:** HTML/JS ou React + **CesiumJS** (globo 3D, relevo, camadas) + Chart.js (radar). O front é **estático**: os resultados são pré-calculados em GeoJSON/PNG, então nada quebra na hora da demo.
 - **Tempo real:** MQTT via WebSocket direto no navegador (biblioteca `mqtt.js`), usando um broker gratuito (HiveMQ Cloud). Sem back-end próprio.
 - **Hospedagem:** GitHub Pages ou Vercel (gratuito). Repositório público no GitHub, que é bom para a submissão.
@@ -223,8 +256,8 @@ Custo estimado dos componentes: R$ 250–450 (componentes comuns de eletrônica,
 | Papel | Perfil sugerido | Responsabilidade |
 |---|---|---|
 | **P1 Líder de produto e pitch** | qualquer área, boa comunicação | Escopo, decisões, roteiro do vídeo, submissão |
-| **P2 Dados da Terra** | TI / desenvolvimento | Download Earthdata/AppEEARS, indicadores, grades globais e recortes |
-| **P3 Dados planetários e métrica** | TI / ciência de dados | Recortes Lua/Marte, vetores de referência, motor de similaridade, validação |
+| **P2 Dados da Terra** | TI / desenvolvimento | Download Earthdata/AppEEARS, indicadores e **tabela Parquet** de indicadores (notebooks 01 e 02) |
+| **P3 Dados planetários e métrica** | TI / ciência de dados | Recortes Lua/Marte, vetores de referência, motor de similaridade sobre o Parquet, validação (notebooks 03 e 04) |
 | **P4 Front-end e visualização 3D** | desenvolvimento web | CesiumJS, cartão do análogo, radar, painel ao vivo |
 | **P5 IoT e hardware** | eletrônica / automação / mecatrônica | ESP32, sensores, MQTT, mini-rover, caixa de regolito |
 | **P6 Pesquisa, conteúdo e vídeo** | qualquer área | Fichas dos análogos, textos "funciona/quebra", gravação e edição do vídeo |
@@ -287,7 +320,7 @@ Critérios típicos de avaliação: impacto, criatividade, validade científica,
 | Risco | Mitigação |
 |---|---|
 | Fila do AppEEARS demorar durante o evento | Disparar os pedidos dos recortes logo na primeira noite; o mapa global (MODIS CMG) não depende do AppEEARS |
-| Download lento na rede do evento | Baixar os arquivos globais (são poucos e pequenos) numa única máquina e compartilhar num pendrive ou drive da equipe |
+| Download lento na rede do evento | Baixar os arquivos globais (são poucos e pequenos) numa única máquina e compartilhar pela pasta do Drive da equipe |
 | Dados de Lua/Marte grandes demais | Usar Moon Trek / Mars Trek para recortes; trabalhar em resolução reduzida |
 | Wi-Fi do evento instável para o MQTT | Gravar um log de dados da estação para reprodução; usar um roteador de celular |
 | Métrica gera resultados estranhos | Checkpoint de validação às 20 h com análogos conhecidos; ajustar pesos e σ |
