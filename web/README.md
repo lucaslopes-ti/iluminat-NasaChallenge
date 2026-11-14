@@ -1,4 +1,6 @@
-# Site Illuminat Horizontes (three.js)
+# Site Illuminat Horizontes (three.js) — pasta web/
+
+Esta versão fica em `web/` para não mexer na pasta `Site/`, onde a equipe está trabalhando. A prévia publicada está na branch `gh-pages`.
 
 Site estático, todo em inglês, em tela cheia e com pouca informação à vista: a Lua ou Marte de um lado e a Terra do outro (empilhados no celular), ligados por uma linha animada com a nota de semelhança no meio. Clicar num alvo (Shackleton, Malapert, Haworth, Marius Hills, Jezero, Gale, Arcadia) leva a Terra até o melhor análogo; os outros aparecem como botões embaixo. "Why it matches" abre o painel com radar Terra × alvo, onde a analogia funciona e onde quebra, e os dados em "More data". O perfil de missão (pesos por dimensão) fica no botão de ajustes do topo.
 
@@ -7,7 +9,7 @@ Site estático, todo em inglês, em tela cheia e com pouca informação à vista
 O site lê arquivos JSON com `fetch`, então precisa de um servidor (abrir o `index.html` direto com `file://` não funciona):
 
 ```bash
-cd Site
+cd web
 python3 -m http.server 8000
 # abra http://localhost:8000
 ```
@@ -17,7 +19,7 @@ Link direto para um alvo e um local: `index.html#moon/shackleton/vargeao`, `inde
 ## Estrutura
 
 ```
-Site/
+web/
   index.html                 layout (painel esquerdo, globo central, painel da Terra, cartão)
   Main.js                    estado da página, ranking, cartões
   Scripts/Javascript/Globe.js    globo three.js reutilizável (textura, marcadores clicáveis, rótulos, voo da câmera)
@@ -60,4 +62,4 @@ Para trocar pelos dados reais: rodar o notebook, acrescentar as notas (notebook 
 
 **Pendente:** trocar `moon.jpg` pelo NASA SVS CGI Moon Kit (`lroc_color_poles_2k.jpg`, LRO LROC + LOLA, com os polos corretos): https://svs.gsfc.nasa.gov/4720. Basta salvar com o mesmo nome em `Assets/Textures/`.
 
-Os modelos `.glb` em `Assets/Models/` não são usados no globo: a textura deles vem em formato de cubo (não equiretangular), o da Terra tem nuvens que escondem os locais e pesa 19 MB, o que deixaria o site lento no celular.
+Os modelos `.glb` da pasta `Site/Assets/Models/` (da equipe) não são usados aqui: a textura deles vem em formato de cubo (não equiretangular), o da Terra tem nuvens que escondem os locais e pesa 19 MB, o que deixaria o site lento no celular.

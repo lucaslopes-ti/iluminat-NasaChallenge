@@ -1,330 +1,81 @@
-import { Globe, escapeHtml as esc } from './Scripts/Javascript/Globe.js';
-import { rankSites, scoreColor, pct } from './Scripts/Javascript/Scoring.js';
+import {Camera} from './Scripts/Javascript/Camera.js';
+import * as THREE from 'three';
+import {GLTFLoader} from '../three.js/examples/jsm/loaders/GLTFLoader.js';
+import { Scene } from './Scripts/Javascript/Scene.js';
 
-const TEXTURES = {
-  moon: 'Assets/Textures/moon.jpg',
-  mars: 'Assets/Textures/mars.jpg',
-  earth: 'Assets/Textures/earth.jpg',
-};
-const BODY = {
-  moon: { name: 'Moon', bump: 0.02 },
-  mars: { name: 'Mars', bump: 0.015 },
-};
-const TOP_CHIPS = 3;
-const ALWAYS_SHORT = ['1 g gravity', 'Thick atmosphere', 'Radiation shield'];
-const $ = (id) => document.getElementById(id);
-const store = {
-  get(k) { try { return localStorage.getItem(k); } catch { return null; } },
-  set(k, v) { try { localStorage.setItem(k, v); } catch { /* private mode */ } },
-};
+var camera, renderer;
+var scene;
+var delta = 0;
 
-const state = { body: 'moon', targetId: null, siteId: null, profileId: 'general', weights: {}, ranked: [] };
-let cfg, sites, bodyGlobe, earthGlobe;
+init();
+render();
+function init()
+    {
+    
+    camera = new Camera();
+    
+    scene = new Scene(1);
+    
 
-init().catch((err) => {
-  console.error(err);
-  document.body.insertAdjacentHTML('beforeend', `<div class="intro"><div class="intro-card"><h2>Could not load data</h2><p>${esc(err.message)}. Serve the site over http(s), not file://.</p></div></div>`);
-});
+    
 
-async function init() {
-  [cfg, sites] = await Promise.all([fetchJson('data/alvos.json'), fetchJson('data/locais.json')]);
-  $('sampleChip').hidden = !sites.some((s) => s.exemplo || s.modo_teste);
+    renderer = new THREE.WebGLRenderer();
+    renderer.setPixelRatio(window.devicePixelRatio);
+    //renderer.setSize(window.innerWidth/2,window.innerHeight/2);
+    renderer.setSize(document.getElementById('planetas').offsetWidth,document.getElementById('planetas').offsetHeight)
 
-  const phone = matchMedia('(max-width: 820px)').matches;
-  bodyGlobe = new Globe($('bodyGlobe'), { zoom: phone ? 0.68 : 0.86, idleSpin: 0.0006 });
-  earthGlobe = new Globe($('earthGlobe'), { zoom: phone ? 0.9 : 0.8, atmosphere: '#6fb6ff', atmosphereStrength: 0.6, minDistance: 1.4 });
-  earthGlobe.setTexture(TEXTURES.earth, { bump: 0.01 });
-  bodyGlobe.onPick = (id) => selectTarget(id);
-  earthGlobe.onPick = (id) => selectSite(id);
-  earthGlobe.onFrame = drawLink;
+    //document.body.appendChild(renderer.domElement);
+    document.getElementById('planetas').appendChild(renderer.domElement);
 
-  document.querySelectorAll('.seg button').forEach((b) => { b.onclick = () => setBody(b.dataset.body); });
-  $('detailsBtn').onclick = () => openDrawer('analog');
-  $('matchBadge').onclick = () => openDrawer('analog');
-  $('drawerClose').onclick = closeDrawer;
-  $('scrim').onclick = closeDrawer;
-  $('aboutBtn').onclick = () => $('about').showModal();
-  $('profileBtn').onclick = (e) => { e.stopPropagation(); toggleProfile(); };
-  document.addEventListener('click', (e) => { if (!$('profilePop').hidden && !$('profilePop').contains(e.target)) toggleProfile(false); });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeDrawer(); toggleProfile(false); } });
+    
+    scene.scene.background = new THREE.Color("#789C75");
+    
 
-  buildProfile();
+    //window.onresize = Resize;
+    
 
-  const deepLink = location.hash.length > 1;
-  const [hb, ht, hs] = location.hash.replace('#', '').split('/');
-  const body = BODY[hb] ? hb : 'moon';
-  setBody(body, { targetId: cfg.alvos.some((a) => a.id === ht && a.corpo === body) ? ht : null, siteId: hs });
+    
+    }
 
-  if (!deepLink && !store.get('intro-seen')) {
-    $('intro').hidden = false;
-    $('introGo').onclick = () => { $('intro').hidden = true; store.set('intro-seen', '1'); };
-  }
-}
+ function render(){
+        
+        requestAnimationFrame(render); 
+        
+        //delta = clock.getDelta();
+        
+        camera.Update();
+        scene.Update(0);
+        renderer.render(scene.scene,camera.camera);
+        
+    }
 
-async function fetchJson(url) {
-  const r = await fetch(url, { cache: 'no-cache' });
-  if (!r.ok) throw new Error(`${url}: HTTP ${r.status}`);
-  return r.json();
-}
+ export function Load(id){
+        const loader = new GLTFLoader();
+        var model = new THREE.Scene();
+        loader.load('./Models/scene.glb',function(glb){
+            scene.scene.clear();
+            /*
+            const light1 = new THREE.AmbientLight( 0x404040 ,30);
+            const light2 = new THREE.PointLight(0xFFFFFF,300,1000);
+            light2.position.y = 10;
+            light2.position.z = -25;
+            
+            scene.scene.add( light1 );
+            scene.scene.add( light2 );
+            */
 
-const target = () => cfg.alvos.find((a) => a.id === state.targetId);
+            scene.scene.rotation.y = 0;
 
-/* ---------------- body + target ---------------- */
+            scene.scene.add(glb.scene);
 
-function setBody(body, { targetId = null, siteId = null } = {}) {
-  state.body = body;
-  document.querySelectorAll('.seg button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.body === body)));
-  const targets = cfg.alvos.filter((a) => a.corpo === body);
-  bodyGlobe.setTexture(TEXTURES[body], { bump: BODY[body].bump });
-  bodyGlobe.setMarkers(targets.map((t) => ({ id: t.id, lat: t.lat, lon: t.lon, label: t.nome, kind: 'target', color: '#7cb6ff' })));
+            ChangeScene(id);
 
-  $('targetChips').innerHTML = targets.map((t) =>
-    `<button class="chip" role="option" data-id="${t.id}" aria-selected="false">${esc(shortTarget(t))}</button>`).join('');
-  $('targetChips').querySelectorAll('button').forEach((b) => { b.onclick = () => selectTarget(b.dataset.id); });
-
-  selectTarget(targetId || targets[0].id, { siteId });
-}
-
-function shortTarget(t) { return t.nome.replace(/ (crater rim|crater|skylight|Massif)$/i, (m) => (/massif/i.test(m) ? m : '')); }
-
-function selectTarget(id, { siteId = null } = {}) {
-  const t = cfg.alvos.find((a) => a.id === id);
-  if (!t) return;
-  state.targetId = id;
-  bodyGlobe.setActive(id);
-  bodyGlobe.flyTo(t.lat, t.lon);
-  $('targetChips').querySelectorAll('button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.id === id)));
-  $('bodyKicker').textContent = `${BODY[t.corpo].name} · target`;
-  $('targetName').textContent = t.nome;
-  $('targetWhere').textContent = `${t.regiao} · ${fmtLat(t.lat)}, ${fmtLon(t.lon)}`;
-  refreshRanking(siteId);
-}
-
-/* ---------------- ranking ---------------- */
-
-function refreshRanking(keepSite = state.siteId) {
-  const ranked = rankSites(sites, state.targetId, state.weights);
-  state.ranked = ranked;
-  earthGlobe.setMarkers(ranked.map((r) => ({
-    id: r.site.id, lat: r.site.lat, lon: r.site.lon, kind: 'analog',
-    color: scoreColor(r.score), size: 0.6 + r.score * 0.8, label: shortName(r.site),
-  })));
-
-  const more = ranked.length - TOP_CHIPS;
-  $('rankChips').innerHTML = ranked.slice(0, TOP_CHIPS).map((r, i) => `
-    <button class="chip" data-id="${r.site.id}" aria-selected="false"><span class="n">${i + 1}</span>${esc(shortName(r.site))}
-      <span class="s" style="color:${scoreColor(r.score)}">${pct(r.score)}</span></button>`).join('')
-    + (more > 0 ? `<button class="chip" data-all="1">+${more} more</button>` : '');
-  $('rankChips').querySelectorAll('button').forEach((b) => {
-    b.onclick = () => (b.dataset.all ? openDrawer('list') : selectSite(b.dataset.id));
-  });
-
-  const keep = keepSite && ranked.some((r) => r.site.id === keepSite);
-  selectSite(keep ? keepSite : ranked[0]?.site.id);
-}
-
-function selectSite(id) {
-  const r = state.ranked.find((x) => x.site.id === id);
-  if (!r) return;
-  state.siteId = id;
-  const rank = state.ranked.indexOf(r) + 1;
-  earthGlobe.setActive(id);
-  earthGlobe.flyTo(r.site.lat, r.site.lon);
-  $('rankChips').querySelectorAll('button[data-id]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.id === id)));
-
-  $('siteName').textContent = siteName(r.site);
-  $('siteWhere').textContent = `#${rank} · ${r.site.regiao}`;
-  const role = $('siteRole');
-  role.textContent = isClassic(r.site) ? 'Classic' : (isBR(r.site) ? 'New · BR' : 'New');
-  role.className = 'role' + (isClassic(r.site) ? '' : ' br');
-  $('matchScore').textContent = pct(r.score);
-  $('matchScore').style.color = scoreColor(r.score);
-  $('mScore').innerHTML = `<b style="color:${scoreColor(r.score)}">${pct(r.score)}</b> match`;
-  $('matchBadge').setAttribute('aria-label', `${pct(r.score)} match. Open details`);
-
-  if ($('drawer').classList.contains('open')) openDrawer('analog');
-  history.replaceState(null, '', `#${state.body}/${state.targetId}/${id}`);
-}
-
-const isClassic = (s) => /^refer/.test(s.papel || '');
-const isBR = (s) => /\bBR$/.test(s.regiao || '');
-const siteName = (s) => s.nome_en || s.nome;
-function shortName(s) {
-  if (s.nome_curto) return s.nome_curto;
-  return siteName(s).replace(/^(Domo de|Cratera de|Serra Norte de)\s+/i, '').replace(/\s*\(.*\)$/, '').replace(/, Yungay$/, '').replace(/ (crater|Dome|caves)$/i, '');
-}
-
-/* ---------------- link between the two globes ---------------- */
-
-function drawLink() {
-  const twin = $('twin').getBoundingClientRect();
-  const a = bodyGlobe.screenPos(state.targetId), b = earthGlobe.screenPos(state.siteId);
-  const svg = $('link');
-  if (!a || !b) { svg.classList.add('off'); return; }
-  const ra = bodyGlobe.container.getBoundingClientRect(), rb = earthGlobe.container.getBoundingClientRect();
-  const ax = ra.left - twin.left + a.x, ay = ra.top - twin.top + a.y;
-  const bx = rb.left - twin.left + b.x, by = rb.top - twin.top + b.y;
-  const vertical = rb.top > ra.top + 10;
-  const k = vertical ? (by - ay) * 0.5 : (bx - ax) * 0.5;
-  const c1 = vertical ? [ax, ay + k] : [ax + k, ay - 40];
-  const c2 = vertical ? [bx, by - k] : [bx - k, by - 40];
-  $('linkPath').setAttribute('d', `M${ax},${ay} C${c1} ${c2} ${bx},${by}`);
-  $('linkA').setAttribute('cx', ax); $('linkA').setAttribute('cy', ay);
-  $('linkB').setAttribute('cx', bx); $('linkB').setAttribute('cy', by);
-  svg.classList.toggle('off', a.facing < 0.15 || b.facing < 0.15);
-  // badge sits at the curve midpoint (cubic Bézier at t = 0.5)
-  const mx = (ax + 3 * c1[0] + 3 * c2[0] + bx) / 8, my = (ay + 3 * c1[1] + 3 * c2[1] + by) / 8;
-  const badge = $('matchBadge');
-  // stacked (phone) layout: keep the badge at the right edge of the seam so it never covers the chips
-  badge.style.left = `${vertical ? twin.width - 44 : mx}px`;
-  badge.style.top = `${vertical ? rb.top - twin.top : my}px`;
-}
-
-/* ---------------- mission profile ---------------- */
-
-function buildProfile() {
-  $('presets').innerHTML = cfg.perfis.map((p) => `<button data-id="${p.id}" aria-pressed="false">${esc(p.label.replace(' (equal weights)', ''))}</button>`).join('');
-  $('presets').querySelectorAll('button').forEach((b) => { b.onclick = () => applyProfile(b.dataset.id); });
-  $('sliders').innerHTML = cfg.dimensoes.map((d) => `
-    <label>${esc(d.label)}<input type="range" min="0" max="3" step="1" data-dim="${d.id}"><output data-o="${d.id}"></output></label>`).join('');
-  $('sliders').querySelectorAll('input').forEach((inp) => {
-    inp.oninput = () => {
-      state.weights[inp.dataset.dim] = Number(inp.value);
-      state.profileId = 'custom';
-      syncProfileUi();
-      refreshRanking();
-    };
-  });
-  applyProfile('general', false);
-}
-
-function applyProfile(id, refresh = true) {
-  const p = cfg.perfis.find((x) => x.id === id) || cfg.perfis[0];
-  state.profileId = p.id;
-  state.weights = { ...p.pesos };
-  syncProfileUi();
-  if (refresh) refreshRanking();
-}
-
-function syncProfileUi() {
-  const p = cfg.perfis.find((x) => x.id === state.profileId);
-  $('profileName').textContent = p ? p.label.replace(' (equal weights)', '') : 'Custom';
-  $('presets').querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.id === state.profileId)));
-  cfg.dimensoes.forEach((d) => {
-    const w = state.weights[d.id] ?? 0;
-    document.querySelector(`[data-dim="${d.id}"]`).value = w;
-    document.querySelector(`[data-o="${d.id}"]`).textContent = w ? `×${w}` : 'off';
-  });
-}
-
-function toggleProfile(force) {
-  const pop = $('profilePop');
-  const show = force ?? pop.hidden;
-  pop.hidden = !show;
-  $('profileBtn').setAttribute('aria-expanded', String(show));
-}
-
-/* ---------------- details drawer ---------------- */
-
-function openDrawer(mode) {
-  $('drawerBody').innerHTML = mode === 'list' ? listHtml() : analogHtml();
-  if (mode === 'list') {
-    $('drawerBody').querySelectorAll('[data-id]').forEach((b) => { b.onclick = () => { selectSite(b.dataset.id); openDrawer('analog'); }; });
-  }
-  $('drawer').classList.add('open');
-  $('drawer').setAttribute('aria-hidden', 'false');
-  $('scrim').hidden = false;
-  $('drawerClose').focus();
-}
-
-function closeDrawer() {
-  $('drawer').classList.remove('open');
-  $('drawer').setAttribute('aria-hidden', 'true');
-  $('scrim').hidden = true;
-}
-
-function listHtml() {
-  const t = target();
-  return `<div class="d-head"><span class="kicker">All Earth twins</span><h2 id="dTitle">${esc(t.nome)}</h2><p>${esc(profileLabel())}</p></div>
-    <div class="chips" style="position:static;flex-direction:column;align-items:stretch;padding:18px 0 0">
-    ${state.ranked.map((r, i) => `<button class="chip" data-id="${r.site.id}" aria-selected="${r.site.id === state.siteId}" style="justify-content:space-between">
-      <span><span class="n">${i + 1}</span> ${esc(siteName(r.site))} <span class="n">${esc(r.site.regiao)}</span></span>
-      <span class="s" style="color:${scoreColor(r.score)}">${pct(r.score)}</span></button>`).join('')}
-    </div>`;
-}
-
-function analogHtml() {
-  const t = target();
-  const r = state.ranked.find((x) => x.site.id === state.siteId);
-  const s = r.site;
-  const rank = state.ranked.indexOf(r) + 1;
-  const a = s.analogia?.[t.id] || s.analogia?.[t.corpo] || {};
-  const li = (arr) => arr.slice(0, 3).map((x) => `<li>${esc(x)}</li>`).join('');
-
-  const facts = [
-    ['Type', s.tipo_en || s.tipo],
-    ['Elevation', num(s.elev_media_m, ' m')],
-    ['Mean slope', num(s.declividade_media, '°', 1)],
-    ['Drivable (<15°)', s.frac_transitavel_15 != null ? pct(s.frac_transitavel_15) : null],
-    ['Air temperature', num(s.t2m_c, ' °C', 1)],
-    ['Rain', num(s.chuva_anual_mm, ' mm/yr')],
-    ['Vegetation (NDVI)', num(s.ndvi_medio, '', 2)],
-    ['Mineral (EMIT)', s.emit_mineral_dominante],
-  ].filter(([, v]) => v != null && v !== '').map(([k, v]) => `<div><span>${esc(k)}</span>${esc(v)}</div>`).join('');
-  const tfacts = Object.entries(t.indicadores || {}).map(([k, v]) => `<div><span>${esc(k)}</span>${esc(v)}</div>`).join('');
-
-  return `
-    <div class="d-head">
-      <span class="kicker">Earth twin of ${esc(t.nome)}</span>
-      <h2 id="dTitle">${esc(siteName(s))}</h2>
-      <p>${esc(s.regiao)} · ${esc(s.tipo_en || s.tipo || '')}</p>
-    </div>
-    <div class="d-score">
-      <span class="big" style="color:${scoreColor(r.score)}">${pct(r.score)}</span>
-      <span class="sub">match · #${rank} of ${state.ranked.length}<br>${esc(profileLabel())}</span>
-    </div>
-    ${radarSvg(s.notas?.[t.id] || {})}
-    <div class="legend"><span><i></i>${esc(shortName(s))}</span><span><i class="t"></i>${esc(shortTarget(t))} (perfect match)</span></div>
-    <div class="wb works"><h3>Where it works</h3><ul>${li(a.works || []) || '<li>No notes yet.</li>'}</ul></div>
-    <div class="wb breaks"><h3>Where it breaks</h3><ul>${li(a.breaks || [])}</ul>
-      <div class="always" title="${esc(cfg.sempre_quebra.join(' · '))}">${ALWAYS_SHORT.map((x) => `<span>${x}</span>`).join('')}</div></div>
-    <details class="more"><summary>More data</summary>
-      <div class="facts">${facts}</div>
-      <h3 style="font-size:13px;margin:16px 0 0;color:var(--muted)">${esc(t.nome)}</h3>
-      <div class="facts">${tfacts}</div>
-      <p class="src">Target data: ${esc((t.fontes || []).join(' · '))}</p>
-    </details>`;
-}
-
-function radarSvg(dims) {
-  const D = cfg.dimensoes, n = D.length, R = 92, cx = 150, cy = 125;
-  const pt = (i, v) => {
-    const ang = -Math.PI / 2 + (i * 2 * Math.PI) / n;
-    return [cx + Math.cos(ang) * R * v, cy + Math.sin(ang) * R * v];
-  };
-  const poly = (vals) => vals.map((v, i) => pt(i, v).map((x) => x.toFixed(1)).join(',')).join(' ');
-  const rings = [0.25, 0.5, 0.75].map((k) => `<polygon class="grid" points="${poly(D.map(() => k))}"/>`).join('');
-  const axes = D.map((_, i) => { const [x, y] = pt(i, 1); return `<line class="axis" x1="${cx}" y1="${cy}" x2="${x}" y2="${y}"/>`; }).join('');
-  const labels = D.map((d, i) => {
-    const [x, y] = pt(i, 1.2);
-    const anchor = Math.abs(x - cx) < 8 ? 'middle' : x > cx ? 'start' : 'end';
-    const on = (state.weights[d.id] ?? 0) > 0;
-    return `<text x="${x.toFixed(1)}" y="${(y + 4).toFixed(1)}" text-anchor="${anchor}" class="${on ? '' : 'off'}">${esc(d.label.split(' ')[0].replace(/&$/, ''))}</text>`;
-  }).join('');
-  return `<svg class="radar" viewBox="-30 0 360 250" role="img" aria-label="Similarity by dimension">
-    ${rings}${axes}
-    <polygon class="target" points="${poly(D.map(() => 1))}"/>
-    <polygon class="earth" points="${poly(D.map((d) => dims[d.id] ?? 0))}"/>
-    ${labels}</svg>`;
-}
-
-function profileLabel() {
-  const p = cfg.perfis.find((x) => x.id === state.profileId);
-  return p ? `${p.label} profile` : 'Custom weights';
-}
-
-function num(v, unit = '', d = 0) {
-  return typeof v === 'number' ? `${v.toLocaleString('en-US', { maximumFractionDigits: d, minimumFractionDigits: d })}${unit}` : null;
-}
-const fmtLat = (v) => `${Math.abs(v).toFixed(1)}°${v < 0 ? 'S' : 'N'}`;
-const fmtLon = (v) => `${Math.abs(v).toFixed(1)}°${v < 0 ? 'W' : 'E'}`;
+        },function(xhr){
+            console.log((xhr.loaded/xhr.total * 100) + "% loaded");
+            
+        },function(error){
+            console.log('Error: ' + error);
+        });
+        return model;
+    }
+        
