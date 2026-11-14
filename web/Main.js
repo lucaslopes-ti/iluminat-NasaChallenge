@@ -345,10 +345,14 @@ function drawLink() {
     badge.style.top = `${my}px`;
   }
   $('linkPath').setAttribute('d', d);
+  // gradient in page units: with the default (bounding-box) units, a perfectly vertical
+  // line has a zero-width box and the browser draws nothing
+  const g = $('linkGrad');
+  g.setAttribute('x1', ax); g.setAttribute('y1', ay); g.setAttribute('x2', bx); g.setAttribute('y2', by + (bx === ax && by === ay ? 1 : 0));
   $('linkA').setAttribute('cx', ax); $('linkA').setAttribute('cy', ay);
   $('linkB').setAttribute('cx', bx); $('linkB').setAttribute('cy', by);
   const inside = (p, r) => p.x >= 0 && p.y >= 0 && p.x <= r.width && p.y <= r.height;
-  svg.classList.toggle('off', a.facing < 0.15 || b.facing < 0.15 || !inside(a, ra) || !inside(b, rb));
+  svg.classList.toggle('off', a.facing < 0.06 || b.facing < 0.06 || !inside(a, ra) || !inside(b, rb));
 }
 
 /* ---------------- mission profile ---------------- */
