@@ -1,6 +1,6 @@
-import { Globe, escapeHtml as esc } from './Scripts/Javascript/Globe.js?v=1794685084';
-import { rankSites, scoreColor, pct } from './Scripts/Javascript/Scoring.js?v=1794685084';
-import { Station } from './Scripts/Javascript/Station.js?v=1794685084';
+import { Globe, escapeHtml as esc } from './Scripts/Javascript/Globe.js?v=1794685352';
+import { rankSites, scoreColor, pct } from './Scripts/Javascript/Scoring.js?v=1794685352';
+import { Station } from './Scripts/Javascript/Station.js?v=1794685352';
 
 const TEXTURES = {
   moon: 'Assets/Textures/moon.jpg',
@@ -159,14 +159,6 @@ function renderStation() {
   $('roverDot').dataset.status = $('stStatus').dataset.status;
   $('stDetail').textContent = detail;
   $('stCsv').hidden = !station.log.length;
-  const f = station.solarFraction;
-  $('stImpact').hidden = f == null;
-  if (f != null) {
-    const drop = Math.round((1 - f) * 100);
-    $('stImpactPct').textContent = drop >= 3 ? `−${drop}%` : 'Clear sky';
-    $('stImpactPct').dataset.level = drop >= 40 ? 'high' : drop >= 15 ? 'mid' : 'low';
-    $('stImpactBar').style.width = `${(f * 100).toFixed(1)}%`;
-  }
 
   const t = cfg?.alvos.find((a) => a.id === state.targetId);
   const r = state.ranked.find((x) => x.site.id === state.siteId);
@@ -183,7 +175,12 @@ function renderStation() {
     const sv = r && m.local ? r.site[m.local] : null;
     const site = sv == null ? '<span class="na">–</span>'
       : `${Number(sv).toFixed(m.casas)} <span class="u">${esc(m.unidade)}</span>${m.local_nome ? ` <span class="u">(${esc(m.local_nome)})</span>` : ''}`;
-    return `<tr><th scope="row">${esc(m.nome)}</th><td class="now">${now}${spark(station.history[m.id])}</td><td class="site" data-label="${esc(siteCol)}">${site}</td><td class="ref" data-label="${esc(targetCol)}">${esc(ref[m.id] || '–')}</td></tr>`;
+    let drop = '';
+    if (m.id === 'solar' && station.solarFraction != null) {
+      const d = Math.round((1 - station.solarFraction) * 100);
+      if (d >= 10) drop = ` <span class="drop" title="Below the best reading of this session (dust on the panel)">−${d}%</span>`;
+    }
+    return `<tr><th scope="row">${esc(m.nome)}</th><td class="now">${now}${drop}${spark(station.history[m.id])}</td><td class="site" data-label="${esc(siteCol)}">${site}</td><td class="ref" data-label="${esc(targetCol)}">${esc(ref[m.id] || '–')}</td></tr>`;
   }).join('');
 }
 

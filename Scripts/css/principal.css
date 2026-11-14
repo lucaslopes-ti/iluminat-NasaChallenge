@@ -258,14 +258,7 @@ dialog p, dialog li { font-size: 14px; line-height: 1.55; color: #c9d6ea; }
 
 /* ---------- field rover section ---------- */
 .ghost.small { height: 32px; padding: 0 12px; font-size: 13px; gap: 6px; }
-.st-impact { margin: 4px 0 16px; padding: 16px 18px; border-radius: 16px; background: linear-gradient(120deg, rgba(245, 196, 107, .10), rgba(10, 18, 32, .6)); border: 1px solid rgba(245, 196, 107, .25); }
-.st-impact-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 14px; color: var(--muted); }
-.st-impact-head b { font-family: var(--display); font-size: 28px; color: var(--good); transition: color .3s; }
-.st-impact-head b[data-level="mid"] { color: #f5c46b; }
-.st-impact-head b[data-level="high"] { color: var(--bad); }
-.st-meter { height: 8px; margin: 10px 0 10px; border-radius: 999px; background: rgba(255, 255, 255, .07); overflow: hidden; }
-.st-meter i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #f59e4b, #f5c46b); transition: width .6s ease; }
-.st-impact p { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.45; }
+.st-table .drop { font-size: 12px; font-weight: 600; color: var(--bad); margin-left: 4px; }
 .station { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; padding: 56px 22px 80px; border-top: 1px solid var(--line); }
 .st-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
 .st-head h2 { margin: 6px 0 4px; font-size: 30px; }
