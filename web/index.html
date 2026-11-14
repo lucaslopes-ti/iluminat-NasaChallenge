@@ -55,7 +55,7 @@
     <!-- Moon / Mars -->
     <section class="world world-body" aria-label="Moon or Mars">
       <div class="globe" id="bodyGlobe"></div>
-      <div class="world-head">
+      <div class="world-head pin-card unplaced" id="bodyCard">
         <span class="kicker" id="bodyKicker">Moon · target</span>
         <h1 class="target-title"><span id="targetName">–</span><span class="pick" aria-hidden="true">▾</span>
           <select id="targetSelect" aria-label="Choose a target"></select></h1>
@@ -83,19 +83,19 @@
     <!-- Earth -->
     <section class="world world-earth" aria-label="Earth analogs">
       <div class="globe" id="earthGlobe"></div>
-      <div class="world-head right">
+      <div class="world-head pin-card unplaced" id="earthCard">
         <span class="kicker">Earth · twin <span class="role" id="siteRole"></span></span>
         <h2 id="siteName">–</h2>
         <span class="m-score" id="mScore"></span>
         <p id="siteWhere">–</p>
         <p class="coords" id="siteCoords">–</p>
         <button class="cta" id="detailsBtn">Why it matches <span aria-hidden="true">→</span></button>
+        <div class="layer-seg" id="layerSeg" role="group" aria-label="Earth layer">
+          <button data-layer="satellite" aria-pressed="true">Satellite</button>
+          <button data-layer="relief" aria-pressed="false" title="Elevation from NASA SRTM30 (SRTMGL30)">Relief</button>
+        </div>
       </div>
       <span class="hover-ll" id="earthHover" hidden></span>
-      <div class="layer-seg" id="layerSeg" role="group" aria-label="Earth layer">
-        <button data-layer="satellite" aria-pressed="true">Satellite</button>
-        <button data-layer="relief" aria-pressed="false" title="Elevation from NASA SRTM30 (SRTMGL30)">Relief</button>
-      </div>
       <div class="chips" id="rankChips" aria-label="Best Earth analogs"></div>
     </section>
 

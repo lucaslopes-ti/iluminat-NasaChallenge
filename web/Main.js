@@ -45,7 +45,8 @@ async function init() {
   loadElevation();
   bodyGlobe.onPick = (id) => selectTarget(id, { focus: true });
   earthGlobe.onPick = (id) => selectSite(id, { focus: true });
-  earthGlobe.onFrame = drawLink;
+  earthGlobe.onFrame = () => { drawLink(); placeCard(earthGlobe, $('earthCard'), state.siteId, phone ? ['left', 'right', 'above', 'below'] : ['right', 'above', 'below', 'left']); };
+  bodyGlobe.onFrame = () => placeCard(bodyGlobe, $('bodyCard'), state.targetId, phone ? ['above', 'left', 'right', 'below'] : ['left', 'above', 'below', 'right']);
   bodyGlobe.onHover = (ll) => {
     const el = $('bodyHover');
     el.hidden = !ll;
@@ -353,6 +354,55 @@ function drawLink() {
   $('linkB').setAttribute('cx', bx); $('linkB').setAttribute('cy', by);
   const inside = (p, r) => p.x >= 0 && p.y >= 0 && p.x <= r.width && p.y <= r.height;
   svg.classList.toggle('off', a.facing < 0.06 || b.facing < 0.06 || !inside(a, ra) || !inside(b, rb));
+}
+
+/* ---------------- info cards pinned to the chosen place ---------------- */
+
+// Each world's info card sits next to its pin, on the first side (in `prefs` order) where it
+// fits inside the panel; it keeps its side while it still fits, so it does not jump around.
+// When the pin is behind the globe or nowhere fits, the card docks in the panel's top corner.
+function placeCard(globe, card, id, prefs) {
+  const sec = card.parentElement;
+  const sr = sec.getBoundingClientRect(), gr = globe.container.getBoundingClientRect();
+  const cw = card.offsetWidth, ch = card.offsetHeight;
+  const m = 8, gap = 15;
+  const chips = sec.querySelector('.chips');
+  const bottom = chips && chips.offsetParent && chips.children.length ? chips.offsetTop - 4 : sr.height - m;
+  const side = phone ? m : 62;   // keep clear of the zoom buttons on the outer edges
+  const B = { l: card.id === 'bodyCard' ? side : m, t: m, r: sr.width - (card.id === 'earthCard' ? side : m), b: Math.min(bottom, gr.bottom - sr.top - m) };
+  const p = globe.screenPos(id);
+  let pos = null;
+  if (p && p.facing > 0.06) {
+    const px = gr.left - sr.left + p.x, py = gr.top - sr.top + p.y;
+    if (px >= B.l && px <= B.r && py >= B.t && py <= B.b) {
+      const clampX = (x) => Math.min(Math.max(x, B.l), B.r - cw), clampY = (y) => Math.min(Math.max(y, B.t), B.b - ch);
+      const at = {
+        above: () => ({ x: clampX(px - cw / 2), y: py - gap - ch }),
+        below: () => ({ x: clampX(px - cw / 2), y: py + gap }),
+        left: () => ({ x: px - gap - cw, y: clampY(py - ch / 2) }),
+        right: () => ({ x: px + gap, y: clampY(py - ch / 2) }),
+      };
+      const fits = (c, e = 0) => c.x >= B.l + e && c.y >= B.t + e && c.x + cw <= B.r - e && c.y + ch <= B.b - e;
+      // the most preferred side that fits wins; moving off the current side needs some room to
+      // spare, so the card does not flip back and forth at the edge
+      const cur = card.dataset.side;
+      for (const side of prefs) {
+        const c = at[side]();
+        if (fits(c, side === cur ? -0.5 : 10)) { pos = { ...c, side, px, py }; break; }
+      }
+    }
+  }
+  if (pos) {
+    card.dataset.side = pos.side;
+    card.style.setProperty('--ax', `${Math.min(Math.max(pos.px - pos.x, 14), cw - 14)}px`);
+    card.style.setProperty('--ay', `${Math.min(Math.max(pos.py - pos.y, 14), ch - 14)}px`);
+  } else {
+    delete card.dataset.side;
+    const right = card.id === 'earthCard' && !phone;
+    pos = { x: right ? B.r - cw : B.l + 8, y: B.t };
+  }
+  card.style.transform = `translate(${Math.round(pos.x)}px, ${Math.round(pos.y)}px)`;
+  card.classList.remove('unplaced');
 }
 
 /* ---------------- mission profile ---------------- */
