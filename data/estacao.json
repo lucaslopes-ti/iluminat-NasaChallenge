@@ -1,0 +1,46 @@
+{
+  "mqtt": {
+    "broker": "wss://broker.hivemq.com:8884/mqtt",
+    "topico": "illuminat-horizontes/carrinho"
+  },
+  "serial_baud": 115200,
+  "medidas": [
+    { "id": "temp",  "nome": "Air temperature", "unidade": "°C",     "casas": 1, "local": "t2m_c" },
+    { "id": "uv",    "nome": "UV index",        "unidade": "",       "casas": 1 },
+    { "id": "pm25",  "nome": "Dust (PM2.5)",    "unidade": "µg/m³",  "casas": 0 },
+    { "id": "solar", "nome": "Solar power",     "unidade": "mW",     "casas": 0 },
+    { "id": "soil",  "nome": "Soil moisture",   "unidade": "%",      "casas": 0 },
+    { "id": "tilt",  "nome": "Rover tilt",      "unidade": "°",      "casas": 1, "local": "declividade_media", "local_nome": "mean slope" },
+    { "id": "vib",   "nome": "Vibration",       "unidade": "g",      "casas": 2 },
+    { "id": "slip",  "nome": "Wheel slip",      "unidade": "%",      "casas": 0 }
+  ],
+  "referencias": {
+    "moon": {
+      "temp": "−170 to +120 °C",
+      "uv": "Full solar UV (no air)",
+      "pm25": "No air; charged dust",
+      "solar": "14-day day, 14-day night",
+      "soil": "Dry",
+      "tilt": "Mostly < 15°",
+      "vib": "Rocky regolith",
+      "slip": "Loose regolith"
+    },
+    "mars": {
+      "temp": "−80 to −20 °C",
+      "uv": "No ozone; UV-C reaches ground",
+      "pm25": "Global dust storms",
+      "solar": "~43% of Earth's sunlight",
+      "soil": "Dry; ice below some areas",
+      "tilt": "Mostly < 15°",
+      "vib": "Rocks and ripples",
+      "slip": "Sand traps (Spirit got stuck)"
+    },
+    "shackleton": { "temp": "−230 °C (shadow) to −50 °C", "solar": "Low sun up to ~90% of the year", "soil": "Water ice in shadowed floor" },
+    "malapert":   { "temp": "−200 to −50 °C", "solar": "Low sun most of the year" },
+    "haworth":    { "temp": "−230 °C in shadow", "soil": "Water ice likely in shadow" },
+    "marius":     { "solar": "14-day day, 14-day night", "tilt": "Domes and rilles; lava tube skylight" },
+    "jezero":     { "soil": "Ancient lake delta, dry now", "tilt": "Gentle floor, steep delta front" },
+    "gale":       { "tilt": "Mount Sharp slopes > 20°", "slip": "Sharp rocks damaged Curiosity's wheels" },
+    "arcadia":    { "soil": "Shallow ground ice", "tilt": "Flat plains" }
+  }
+}
