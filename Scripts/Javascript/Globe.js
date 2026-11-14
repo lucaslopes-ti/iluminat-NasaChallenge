@@ -51,7 +51,12 @@ function getGlowTexture() {
  * markers: [{ id, lat, lon, label, color, size, kind: 'target' | 'analog', showLabel }]
  */
 export class Globe {
-  constructor(container, { zoom = 1, atmosphere = null, atmosphereStrength = 0.6, minDistance = 1.25, maxDistance = 7, idleSpin = 0, radiusKm = 6371, name = 'globe' } = {}) {
+  constructor(container, { zoom = 1, atmosphere = null, atmosphereStrength = 0.6, minDistance = 1.25, maxDistance = 7, idleSpin = 0, radiusKm = 6371, name = 'globe', offsetX = 0 } = {}) {
+    // offsetX: shift the globe right by this fraction of the width, without clipping it
+    // (the canvas stays full width, so a zoomed-in globe can still fill the whole panel)
+    this.offsetX = offsetX;
+    // closest zoom, as a fraction of the whole-globe height above the surface
+    this.minAltFrac = matchMedia('(max-width: 820px)').matches ? 0.5 : 0.32;
     this.radiusKm = radiusKm;
     this.minDistanceFloor = minDistance;
     this.name = name;
@@ -146,17 +151,20 @@ export class Globe {
     if (!w || !h) return;
     this.renderer.setSize(w, h, false);
     this.camera.aspect = w / h;
+    if (this.offsetX) this.camera.setViewOffset(w, h, -this.offsetX * w, 0, w, h);
+    else this.camera.clearViewOffset();
     this.camera.updateProjectionMatrix();
-    // Distance at which the unit sphere fits the narrower side of the viewport.
+    // Distance at which the unit sphere fits the narrower side of the viewport
+    // (with an offset, only the part right of the shifted centre counts).
     const vHalf = (this.camera.fov * DEG) / 2;
-    const hHalf = Math.atan(Math.tan(vHalf) * this.camera.aspect);
+    const hHalf = Math.atan(Math.tan(vHalf) * this.camera.aspect * (1 - 2 * this.offsetX));
     const fit = 1.1 / Math.sin(Math.min(vHalf, hHalf));
     const ratio = this.camera.position.length() / this.homeDistance;
     this.homeDistance = fit / this.zoomFactor;
     // Zoom limits: never farther than a little past the whole-globe view, never closer than
     // ~1/3 of its height above the surface (closer, the texture blurs and the globe covers the text).
     this.controls.maxDistance = this.homeDistance * 1.12;
-    this.controls.minDistance = Math.max(this.minDistanceFloor, 1 + (this.homeDistance - 1) * 0.32);
+    this.controls.minDistance = Math.max(this.minDistanceFloor, 1 + (this.homeDistance - 1) * this.minAltFrac);
     this.camera.position.setLength(this.homeDistance * (this._fitted ? ratio : 1));
     this._fitted = true;
   }
@@ -216,7 +224,8 @@ export class Globe {
     const from = this.camera.position.clone();
     const dist = distance ?? Math.min(this.homeDistance, from.length());
     // Never look straight down a pole: the pole sits a bit off the centre and stays readable.
-    const limit = dist < this.homeDistance * 0.8 ? 72 : 55;
+    // close in, look almost straight at the place (polar targets stay near the centre)
+    const limit = dist < this.homeDistance * 0.8 ? 84 : 55;
     const safeLat = Math.max(-limit, Math.min(limit, lat));
     const to = latLonToVec3(safeLat, lon, dist);
     const ang = from.angleTo(to);                         // radians to travel
