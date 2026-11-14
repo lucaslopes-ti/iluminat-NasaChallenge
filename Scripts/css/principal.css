@@ -78,6 +78,9 @@ h1, h2, h3 { font-family: var(--display); letter-spacing: -.01em; }
 
 .world-head { position: absolute; top: 8px; left: 28px; max-width: 70%; z-index: 3; pointer-events: none; }
 .world-head.right { left: auto; right: 28px; text-align: right; }
+.world-head p.coords { margin-top: 2px; font-variant-numeric: tabular-nums; color: var(--earth); font-size: 13px; letter-spacing: .02em; }
+.marker-label .ll { margin-left: 6px; color: var(--muted); font-variant-numeric: tabular-nums; font-weight: 400; }
+.hover-ll { position: absolute; left: 50%; bottom: 72px; transform: translateX(-50%); z-index: 3; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; padding: 3px 10px; border-radius: 999px; background: rgba(8, 14, 26, .7); border: 1px solid var(--line); pointer-events: none; }
 .m-score { display: none; font-size: 14px; color: var(--muted); }
 .m-score b { font-family: var(--display); font-size: 18px; }
 .world-head > * { pointer-events: auto; }

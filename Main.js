@@ -37,6 +37,11 @@ async function init() {
   bodyGlobe.onPick = (id) => selectTarget(id);
   earthGlobe.onPick = (id) => selectSite(id);
   earthGlobe.onFrame = drawLink;
+  earthGlobe.onHover = (ll) => {
+    const el = $('earthHover');
+    el.hidden = !ll;
+    if (ll) el.textContent = `Cursor ${fmtLat(ll.lat, 2)}, ${fmtLon(ll.lon, 2)}`;
+  };
 
   document.querySelectorAll('.seg button').forEach((b) => { b.onclick = () => setBody(b.dataset.body); });
   $('detailsBtn').onclick = () => openDrawer('analog');
@@ -108,6 +113,7 @@ function refreshRanking(keepSite = state.siteId) {
   earthGlobe.setMarkers(ranked.map((r) => ({
     id: r.site.id, lat: r.site.lat, lon: r.site.lon, kind: 'analog',
     color: scoreColor(r.score), size: 0.6 + r.score * 0.8, label: shortName(r.site),
+    labelHtml: `${esc(shortName(r.site))}<span class="ll">${fmtLat(r.site.lat, 2)}, ${fmtLon(r.site.lon, 2)}</span>`,
   })));
 
   const more = ranked.length - TOP_CHIPS;
@@ -134,6 +140,7 @@ function selectSite(id) {
 
   $('siteName').textContent = siteName(r.site);
   $('siteWhere').textContent = `#${rank} · ${r.site.regiao}`;
+  $('siteCoords').textContent = `${fmtLat(r.site.lat, 2)}, ${fmtLon(r.site.lon, 2)}`;
   const role = $('siteRole');
   role.textContent = isClassic(r.site) ? 'Classic' : (isBR(r.site) ? 'New · BR' : 'New');
   role.className = 'role' + (isClassic(r.site) ? '' : ' br');
@@ -263,6 +270,7 @@ function analogHtml() {
 
   const facts = [
     ['Type', s.tipo_en || s.tipo],
+    ['Coordinates', `${fmtLat(s.lat, 3)}, ${fmtLon(s.lon, 3)}`],
     ['Elevation', num(s.elev_media_m, ' m')],
     ['Mean slope', num(s.declividade_media, '°', 1)],
     ['Drivable (<15°)', s.frac_transitavel_15 != null ? pct(s.frac_transitavel_15) : null],
@@ -326,5 +334,5 @@ function profileLabel() {
 function num(v, unit = '', d = 0) {
   return typeof v === 'number' ? `${v.toLocaleString('en-US', { maximumFractionDigits: d, minimumFractionDigits: d })}${unit}` : null;
 }
-const fmtLat = (v) => `${Math.abs(v).toFixed(1)}°${v < 0 ? 'S' : 'N'}`;
-const fmtLon = (v) => `${Math.abs(v).toFixed(1)}°${v < 0 ? 'W' : 'E'}`;
+const fmtLat = (v, d = 1) => `${Math.abs(v).toFixed(d)}°${v < 0 ? 'S' : 'N'}`;
+const fmtLon = (v, d = 1) => `${Math.abs(v).toFixed(d)}°${v < 0 ? 'W' : 'E'}`;
