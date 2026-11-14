@@ -51,7 +51,9 @@ function getGlowTexture() {
  * markers: [{ id, lat, lon, label, color, size, kind: 'target' | 'analog', showLabel }]
  */
 export class Globe {
-  constructor(container, { zoom = 1, atmosphere = null, atmosphereStrength = 0.6, minDistance = 1.25, maxDistance = 7, idleSpin = 0 } = {}) {
+  constructor(container, { zoom = 1, atmosphere = null, atmosphereStrength = 0.6, minDistance = 1.25, maxDistance = 7, idleSpin = 0, radiusKm = 6371, name = 'globe' } = {}) {
+    this.radiusKm = radiusKm;
+    this.name = name;
     this.container = container;
     this.zoomFactor = zoom; // 1 = whole globe fits the view with a small margin
     this.homeDistance = 3;
@@ -102,7 +104,11 @@ export class Globe {
       enablePan: false, enableDamping: true, dampingFactor: 0.08, rotateSpeed: 0.55, zoomSpeed: 0.8,
       minDistance, maxDistance,
     });
-    this.controls.addEventListener('start', () => { this.flight = null; this.lastInteraction = performance.now(); });
+    this.baseRotateSpeed = 0.55;
+    this.controls.addEventListener('start', () => { this.flight = null; this.zoomAnim = null; this.lastInteraction = performance.now(); });
+    this.zoomAnim = null;
+    this._buildZoomUi();
+    this._bindWheel();
 
     this.raycaster = new THREE.Raycaster();
     this.pointer = new THREE.Vector2();
@@ -196,21 +202,128 @@ export class Globe {
     return { x: (v.x * 0.5 + 0.5) * this.container.clientWidth, y: (-v.y * 0.5 + 0.5) * this.container.clientHeight, facing };
   }
 
-  /** Smoothly move the camera to look at lat/lon. */
-  flyTo(lat, lon, distance = null, ms = 1200) {
+  /**
+   * Fly the camera to look at lat/lon along an arc: the globe turns under the camera,
+   * and on long trips the camera rises a little mid-way, like a flight.
+   * distance: final distance from the centre (null keeps the current zoom, capped at the whole-globe view).
+   */
+  flyTo(lat, lon, distance = null, ms = null) {
     const from = this.camera.position.clone();
-    const dist = distance ?? this.homeDistance;
-    // Never look straight down a pole: tilt so the pole sits low on the disc and stays readable.
-    const safeLat = Math.max(-55, Math.min(55, lat));
+    const dist = distance ?? Math.min(this.homeDistance, from.length());
+    // Never look straight down a pole: the pole sits a bit off the centre and stays readable.
+    const limit = dist < this.homeDistance * 0.8 ? 72 : 55;
+    const safeLat = Math.max(-limit, Math.min(limit, lat));
     const to = latLonToVec3(safeLat, lon, dist);
-    this.flight = { from, to, t0: performance.now(), ms };
+    const ang = from.angleTo(to);                         // radians to travel
+    const rise = Math.min(0.9, ang / Math.PI) * (this.homeDistance - 1) * 0.55;
+    const time = ms ?? THREE.MathUtils.clamp(700 + ang * 520 + Math.abs(from.length() - dist) * 260, 700, 2200);
+    this.zoomAnim = null;
+    this.flight = { from, to, t0: performance.now(), ms: time, rise };
     this.lastInteraction = performance.now();
   }
 
-  zoom(factor) {
-    const d = THREE.MathUtils.clamp(this.camera.position.length() * factor, this.controls.minDistance, this.controls.maxDistance);
+  /** Fly in close to a place (used when the user clicks it). */
+  focus(lat, lon) {
+    this.flyTo(lat, lon, 1 + (this.homeDistance - 1) * 0.62);
+  }
+
+  /** Back to the whole-globe view, looking at the same place. */
+  home() {
     const ll = vec3ToLatLon(this.camera.position);
-    this.flyTo(ll.lat, ll.lon, d, 350);
+    this.flyTo(ll.lat, ll.lon, this.homeDistance, 700);
+  }
+
+  /**
+   * Zoom by `factor` (<1 = closer). With a surface point, the camera also turns toward it,
+   * so the place under the cursor stays under the cursor (like a map).
+   */
+  zoom(factor, toward = null) {
+    this.flight = null;
+    const c = this.controls;
+    const cur = this.zoomAnim ? this.zoomAnim.dist : this.camera.position.length();
+    const dist = THREE.MathUtils.clamp(cur * factor, c.minDistance, c.maxDistance);
+    let dir = (this.zoomAnim ? this.zoomAnim.dir : this.camera.position.clone().normalize()).clone();
+    if (toward && dist < cur) {
+      // fraction of the way to the point: how much closer to the surface we get
+      const k = THREE.MathUtils.clamp(1 - (dist - 1) / (cur - 1), 0, 1);
+      const target = toward.clone().normalize();
+      const ang = dir.angleTo(target);
+      if (ang > 1e-4) {
+        const axis = new THREE.Vector3().crossVectors(dir, target).normalize();
+        dir.applyAxisAngle(axis, ang * k);
+      }
+    }
+    this.zoomAnim = { dist, dir };
+    this.lastInteraction = performance.now();
+  }
+
+  _buildZoomUi() {
+    const ui = document.createElement('div');
+    ui.className = 'zoom-ui';
+    ui.innerHTML = `
+      <div class="zoom-ctl" role="group" aria-label="Zoom ${this.name}">
+        <button type="button" data-z="in" aria-label="Zoom in">+</button>
+        <button type="button" data-z="out" aria-label="Zoom out">−</button>
+        <button type="button" data-z="home" aria-label="Show the whole ${this.name}" title="Whole ${this.name}">
+          <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><circle cx="12" cy="12" r="7.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 1.5v4M12 18.5v4M1.5 12h4M18.5 12h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="zoom-scale" aria-hidden="true"><i></i><span></span></div>
+      <div class="zoom-hint" aria-hidden="true"></div>`;
+    this.container.appendChild(ui);
+    ui.querySelector('[data-z=in]').onclick = () => this.zoom(0.6);
+    ui.querySelector('[data-z=out]').onclick = () => this.zoom(1 / 0.6);
+    ui.querySelector('[data-z=home]').onclick = () => this.home();
+    this.ui = { root: ui, bar: ui.querySelector('.zoom-scale i'), text: ui.querySelector('.zoom-scale span'), hint: ui.querySelector('.zoom-hint'), home: ui.querySelector('[data-z=home]') };
+    const mac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
+    this.ui.hint.textContent = `${mac ? '⌘' : 'Ctrl'} + scroll to zoom`;
+  }
+
+  _bindWheel() {
+    // Plain wheel scrolls the page (the site scrolls down to the rover section).
+    // Ctrl/⌘ + wheel, or a trackpad pinch (sent as ctrl+wheel), zooms toward the cursor.
+    // Capture phase on the container, so OrbitControls never sees the wheel.
+    this.container.addEventListener('wheel', (e) => {
+      e.stopPropagation();
+      if (!(e.ctrlKey || e.metaKey)) { this._showHint(); return; }
+      e.preventDefault();
+      const delta = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaY;
+      const factor = Math.exp(THREE.MathUtils.clamp(delta, -120, 120) * 0.0022);
+      const hit = this._raycast(e, [this.sphere]);
+      this.zoom(factor, hit ? hit.point : null);
+    }, { capture: true, passive: false });
+    this.renderer.domElement.addEventListener('dblclick', (e) => {
+      const hit = this._raycast(e, [this.sphere]);
+      if (hit) this.zoom(e.shiftKey ? 1 / 0.5 : 0.5, hit.point);
+    });
+  }
+
+  _showHint() {
+    const h = this.ui.hint;
+    h.classList.add('show');
+    clearTimeout(this._hintT);
+    this._hintT = setTimeout(() => h.classList.remove('show'), 1400);
+  }
+
+  _updateZoomUi() {
+    const d = this.camera.position.length();
+    const h = this.container.clientHeight || 1;
+    const kmPerPx = (2 * (d - 1) * Math.tan((this.camera.fov * DEG) / 2) / h) * this.radiusKm;
+    const maxKm = kmPerPx * 90;
+    const p = Math.pow(10, Math.floor(Math.log10(maxKm)));
+    const nice = [5, 2, 1].map((m) => m * p).find((v) => v <= maxKm) || p;
+    const px = nice / kmPerPx;
+    const key = `${nice}|${Math.round(px)}`;
+    if (key !== this._scaleKey) {
+      this._scaleKey = key;
+      this.ui.bar.style.width = `${px.toFixed(0)}px`;
+      this.ui.text.textContent = `${nice.toLocaleString('en-US')} km`;
+    }
+    const zoomed = d < this.homeDistance * 0.92;
+    if (zoomed !== this._zoomed) {
+      this._zoomed = zoomed;
+      this.ui.root.classList.toggle('zoomed', zoomed);
+    }
   }
 
   _bindPointer() {
@@ -249,8 +362,8 @@ export class Globe {
     }
     const hit = this._raycast(e, [this.sphere]);
     if (!hit) return;
-    // Clicking the surface picks the nearest marker (within 25°).
-    let best = null, bestAng = 25 * DEG;
+    // Clicking the surface picks the nearest marker (within 25° in the whole view, less when zoomed in).
+    let best = null, bestAng = THREE.MathUtils.clamp(25 * this._altFrac(), 2, 25) * DEG;
     for (const [id, m] of this.markers) {
       const ang = m.pos.angleTo(hit.point);
       if (ang < bestAng) { bestAng = ang; best = id; }
@@ -263,22 +376,49 @@ export class Globe {
     const t = this.clock.getElapsedTime();
     const now = performance.now();
     if (this.flight) {
-      const { from, to, t0, ms } = this.flight;
+      const { from, to, t0, ms, rise = 0 } = this.flight;
       const k = Math.min(1, (now - t0) / ms);
-      const e = k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
-      const dir = from.clone().normalize().lerp(to.clone().normalize(), e).normalize();
-      if (dir.lengthSq() < 1e-6) dir.copy(to).normalize();
-      this.camera.position.copy(dir.multiplyScalar(THREE.MathUtils.lerp(from.length(), to.length(), e)));
+      const e = k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;       // ease in-out
+      // turn along the great circle (slerp), so the globe spins smoothly under the camera
+      const a = from.clone().normalize(), b = to.clone().normalize();
+      const omega = a.angleTo(b);
+      let dir;
+      if (omega < 1e-4) dir = b;
+      else if (Math.PI - omega < 1e-3) dir = a.clone().applyAxisAngle(new THREE.Vector3(0, 1, 0), omega * e);
+      else {
+        const so = Math.sin(omega);
+        dir = a.multiplyScalar(Math.sin((1 - e) * omega) / so).add(b.multiplyScalar(Math.sin(e * omega) / so));
+      }
+      // zoom eases a bit later than the turn, so you see where you are going before diving in
+      const ez = Math.pow(e, 1.4);
+      const len = THREE.MathUtils.lerp(from.length(), to.length(), ez) + rise * Math.sin(Math.PI * e);
+      this.camera.position.copy(dir.normalize().multiplyScalar(len));
       this.camera.lookAt(0, 0, 0);
       if (k >= 1) { this.flight = null; this.lastInteraction = now; }
-    } else if (this.idleSpin && now - this.lastInteraction > 6000) {
+    } else if (this.zoomAnim) {
+      const { dist, dir } = this.zoomAnim;
+      const cur = this.camera.position.clone().normalize();
+      const len = this.camera.position.length();
+      const nd = cur.lerp(dir, 0.18).normalize();
+      const nl = THREE.MathUtils.lerp(len, dist, 0.18);
+      this.camera.position.copy(nd.multiplyScalar(nl));
+      this.camera.lookAt(0, 0, 0);
+      if (Math.abs(nl - dist) < 1e-4 && this.camera.position.clone().normalize().angleTo(dir) < 1e-4) this.zoomAnim = null;
+      this.lastInteraction = now;
+    } else if (this.idleSpin && now - this.lastInteraction > 9000 && !this._zoomed) {
       this.camera.position.applyAxisAngle(new THREE.Vector3(0, 1, 0), this.idleSpin);
     }
+    const alt = this._altFrac();
+    this.controls.rotateSpeed = this.baseRotateSpeed * THREE.MathUtils.clamp(alt, 0.06, 1.2);
     this.controls.update();
+    this._updateZoomUi();
 
+    // pins keep about the same size on screen when zooming in
+    const pinScale = THREE.MathUtils.clamp(alt, 0.22, 1);
     const camDir = this.camera.position.clone().normalize();
     for (const m of this.markers.values()) {
       m.obj.visible = m.pos.dot(camDir) > 0.18; // hide markers (and their glow) on the far side
+      m.obj.scale.setScalar(pinScale * (m.obj.userData.active ? 1.35 : 1));
       const { pulse, glow } = m.obj.userData;
       const ph = (t * 0.9) % 1;
       if (pulse) {
@@ -292,6 +432,11 @@ export class Globe {
     this.renderer.render(this.scene, this.camera);
     this._updateLabels();
     if (this.onFrame) this.onFrame();
+  }
+
+  /** Camera height above the surface, relative to the whole-globe view (1 = home). */
+  _altFrac() {
+    return (this.camera.position.length() - 1) / Math.max(1e-3, this.homeDistance - 1);
   }
 
   _updateLabels() {
