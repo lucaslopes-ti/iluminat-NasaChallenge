@@ -1,0 +1,26 @@
+{
+ "fonte": "NASA SRTM30 (SRTMGL30, LP DAAC), média por célula de 0,25°",
+ "resolucao_graus": 0.25,
+ "largura": 1440,
+ "altura": 720,
+ "ordem": "linha 0 = 90°N, coluna 0 = 180°W; int16 little-endian",
+ "oceano": -9999,
+ "sem_dado": -32768,
+ "blocos": [
+  "E100N40",
+  "E100N90",
+  "E100S10",
+  "E140N90",
+  "E140S10",
+  "W020N40",
+  "W020N90",
+  "W020S10",
+  "W100N90",
+  "W100S10",
+  "W140N90",
+  "W140S10",
+  "W180N40",
+  "W180S10"
+ ],
+ "cobertura_frac": 0.432
+}

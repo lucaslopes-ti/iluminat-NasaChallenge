@@ -5,7 +5,12 @@ const TEXTURES = {
   moon: 'Assets/Textures/moon.jpg',
   mars: 'Assets/Textures/mars.jpg',
   earth: 'Assets/Textures/earth.jpg',
+  earthRelief: 'Assets/Textures/earth_srtm30.jpg',
+  earthReliefBump: 'Assets/Textures/earth_bump_srtm30.jpg',
 };
+// NASA SRTM30 (SRTMGL30) averaged to a 0.25° grid: int16 LE, row 0 = 90°N, col 0 = 180°W
+const ELEV = { url: 'data/elevacao_srtm30_025.bin', res: 0.25, w: 1440, h: 720, ocean: -9999, nodata: -32768 };
+let elevGrid = null;
 const BODY = {
   moon: { name: 'Moon', bump: 0.02 },
   mars: { name: 'Mars', bump: 0.015 },
@@ -33,14 +38,16 @@ async function init() {
   const phone = matchMedia('(max-width: 820px)').matches;
   bodyGlobe = new Globe($('bodyGlobe'), { zoom: phone ? 0.68 : 0.86, idleSpin: 0.0006 });
   earthGlobe = new Globe($('earthGlobe'), { zoom: phone ? 0.9 : 0.8, atmosphere: '#6fb6ff', atmosphereStrength: 0.6, minDistance: 1.4 });
-  earthGlobe.setTexture(TEXTURES.earth, { bump: 0.01 });
+  setEarthLayer(store.get('earth-layer') === 'relief' ? 'relief' : 'satellite');
+  document.querySelectorAll('#layerSeg button').forEach((b) => { b.onclick = () => setEarthLayer(b.dataset.layer); });
+  loadElevation();
   bodyGlobe.onPick = (id) => selectTarget(id);
   earthGlobe.onPick = (id) => selectSite(id);
   earthGlobe.onFrame = drawLink;
   earthGlobe.onHover = (ll) => {
     const el = $('earthHover');
     el.hidden = !ll;
-    if (ll) el.textContent = `Cursor ${fmtLat(ll.lat, 2)}, ${fmtLon(ll.lon, 2)}`;
+    if (ll) el.textContent = `${fmtLat(ll.lat, 2)}, ${fmtLon(ll.lon, 2)}${elevText(ll.lat, ll.lon, ' · ')}`;
   };
 
   document.querySelectorAll('.seg button').forEach((b) => { b.onclick = () => setBody(b.dataset.body); });
@@ -64,6 +71,33 @@ async function init() {
     $('intro').hidden = false;
     $('introGo').onclick = () => { $('intro').hidden = true; store.set('intro-seen', '1'); };
   }
+}
+
+function setEarthLayer(layer) {
+  const relief = layer === 'relief';
+  earthGlobe.setTexture(relief ? TEXTURES.earthRelief : TEXTURES.earth,
+    relief ? { bump: 0.03, bumpUrl: TEXTURES.earthReliefBump } : { bump: 0.01 });
+  document.querySelectorAll('#layerSeg button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.layer === layer)));
+  store.set('earth-layer', layer);
+}
+
+async function loadElevation() {
+  try {
+    const res = await fetch(ELEV.url);
+    if (!res.ok) throw new Error(res.status);
+    elevGrid = new Int16Array(await res.arrayBuffer());
+    if (state.siteId) selectSite(state.siteId);
+  } catch (err) { console.warn('Elevation grid not loaded', err); }
+}
+
+// Returns "812 m", "ocean", "no SRTM data" or '' while loading.
+function elevText(lat, lon, sep = '') {
+  if (!elevGrid) return '';
+  const row = Math.min(ELEV.h - 1, Math.max(0, Math.floor((90 - lat) / ELEV.res)));
+  const col = ((Math.floor((lon + 180) / ELEV.res) % ELEV.w) + ELEV.w) % ELEV.w;
+  const v = elevGrid[row * ELEV.w + col];
+  const txt = v === ELEV.ocean ? 'ocean' : v === ELEV.nodata ? 'no SRTM data' : `${v.toLocaleString('en-US')} m`;
+  return sep + txt;
 }
 
 async function fetchJson(url) {
@@ -140,7 +174,7 @@ function selectSite(id) {
 
   $('siteName').textContent = siteName(r.site);
   $('siteWhere').textContent = `#${rank} · ${r.site.regiao}`;
-  $('siteCoords').textContent = `${fmtLat(r.site.lat, 2)}, ${fmtLon(r.site.lon, 2)}`;
+  $('siteCoords').textContent = `${fmtLat(r.site.lat, 2)}, ${fmtLon(r.site.lon, 2)}${elevText(r.site.lat, r.site.lon, ' · ')}`;
   const role = $('siteRole');
   role.textContent = isClassic(r.site) ? 'Classic' : (isBR(r.site) ? 'New · BR' : 'New');
   role.className = 'role' + (isClassic(r.site) ? '' : ' br');
@@ -272,6 +306,7 @@ function analogHtml() {
     ['Type', s.tipo_en || s.tipo],
     ['Coordinates', `${fmtLat(s.lat, 3)}, ${fmtLon(s.lon, 3)}`],
     ['Elevation', num(s.elev_media_m, ' m')],
+    ['SRTM30 (0.25° cell)', elevText(s.lat, s.lon) || null],
     ['Mean slope', num(s.declividade_media, '°', 1)],
     ['Drivable (<15°)', s.frac_transitavel_15 != null ? pct(s.frac_transitavel_15) : null],
     ['Air temperature', num(s.t2m_c, ' °C', 1)],
