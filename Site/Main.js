@@ -2,11 +2,14 @@ import {Camera} from './Scripts/Javascript/Camera.js';
 import * as THREE from 'three';
 import {GLTFLoader} from '../three.js/examples/jsm/loaders/GLTFLoader.js';
 import { Scene } from './Scripts/Javascript/Scene.js';
+import {Vector3} from '../../three.js/build/three.module.js';
 
 var camera, renderer;
 var scene;
 var delta = 0;
 var object = null;
+var MousePositionAtual = {};
+var arrastar = false;
 const clock = new THREE.Clock();
 
 init();
@@ -30,7 +33,7 @@ function init()
     document.getElementById('planetas').appendChild(renderer.domElement);
 
     
-    //scene.scene.background = new THREE.Color("#789C75");
+    scene.scene.background = new THREE.Color("#313131");
     
 
     //window.onresize = Resize;
@@ -57,11 +60,57 @@ function init()
                 const localPoint = object.worldToLocal(intersections[0].point.clone());
                 //const coords = vector3ToLatLon(localPoint, radius);
                 const lat_log = vector3ToLatLon(localPoint, 1);
+
+                camera.camera.lookAt(latLonToVector3(lat_log.lat, lat_log.lon, 1));
+                MousePositionAtual[0] = m.pageX;
+                MousePositionAtual[1] = m.pageY;
+                arrastar = true;
                 console.log(lat_log);
            // }
+        }else{
+            arrastar = false;
         }        
 
     });
+
+    document.addEventListener('mousemove',function(m){
+        
+               
+        //movimentação do objeto
+        if(arrastar)
+            { 
+                           
+                if(m.pageX < MousePositionAtual[0])
+                {
+                    //scene.scene.rotation.y -= 0.50 * delta;
+                    object.parent.rotation.y -= 0.80 * delta;
+                }else{
+                    //scene.scene.rotation.y += 0.50 * delta;
+                    object.parent.rotation.y += 0.80 * delta;
+                }
+                /*
+                 if(m.pageY < MousePositionAtual[1])
+                {
+                    //scene.scene.rotation.y -= 0.50 * delta;
+                    object.parent.rotation.z -= 0.80 * delta;
+                }else{
+                    //scene.scene.rotation.y += 0.50 * delta;
+                    object.parent.rotation.z += 0.80 * delta;
+                }
+                    */
+                
+                
+            }  
+        
+    });
+     document.addEventListener('mouseup',function(m){
+        //movimento de arrastar false
+       
+            arrastar = false;
+          
+    });
+
+
 }
 
  function render(){
@@ -119,3 +168,24 @@ function init()
 
     return { lat, lon };
     }
+
+    function latLonToVector3(lat, lon, sphereRadius) {
+    // 1. Converter graus para radianos
+    const latRad = lat * (Math.PI / 180);
+    const lonRad = lon * (Math.PI / 180);
+
+    // 2. Inverter o cálculo da latitude (Math.asin)
+    const y = Math.sin(latRad);
+
+    // 3. O raio horizontal da projeção no plano XZ
+    const horizontalCos = Math.cos(latRad);
+
+    // 4. Inverter o cálculo da longitude (Math.atan2(-p.z, p.x))
+    const x = horizontalCos * Math.cos(lonRad);
+    const z = -horizontalCos * Math.sin(lonRad);
+
+    // 5. Retornar o vetor ajustado pelo raio da esfera
+    return new THREE.Vector3(x, y, z).multiplyScalar(sphereRadius);
+    }
+
+    
