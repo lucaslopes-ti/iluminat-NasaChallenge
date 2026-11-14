@@ -61,6 +61,7 @@ h1, h2, h3 { font-family: var(--display); letter-spacing: -.01em; }
 .ghost:hover { border-color: var(--line-2); }
 .ghost.round { width: 38px; padding: 0; justify-content: center; font-size: 16px; }
 
+#roverBtn .dot { margin-left: -2px; }
 #roverBtn .dot, .st-status i { width: 8px; height: 8px; border-radius: 50%; background: var(--dim); flex: none; }
 [data-status="live"] i, #roverDot[data-status="live"] { background: var(--earth); box-shadow: 0 0 8px var(--earth); animation: blink 1.6s infinite; }
 [data-status="demo"] i, #roverDot[data-status="demo"] { background: #f5c46b; }
@@ -142,7 +143,7 @@ h1, h2, h3 { font-family: var(--display); letter-spacing: -.01em; }
 .link.off { opacity: 0; }
 @keyframes flow { to { stroke-dashoffset: -24; } }
 .match {
-  position: absolute; z-index: 4; transform: translate(-50%, -50%); left: 55%; top: 50%;
+  position: absolute; z-index: 4; transform: translate(-50%, -50%); left: 50%; top: 50%;
   width: 84px; height: 84px; border-radius: 50%; display: grid; place-content: center; text-align: center;
   background: radial-gradient(circle at 30% 30%, rgba(40, 60, 95, .95), rgba(8, 14, 26, .95));
   border: 1px solid var(--line-2); box-shadow: 0 0 0 6px rgba(94, 240, 181, .06), 0 10px 40px rgba(0, 0, 0, .5);
@@ -223,6 +224,9 @@ dialog::backdrop { background: rgba(0, 0, 0, .6); }
 dialog p, dialog li { font-size: 14px; line-height: 1.55; color: #c9d6ea; }
 
 /* ---------- small screens ---------- */
+.d-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); }
+.d-actions a { color: var(--text); text-decoration: none; }
+
 /* ---------- zoom controls (one set per globe) ---------- */
 .zoom-ui { position: absolute; inset: 0; pointer-events: none; z-index: 4; }
 .zoom-ctl {
@@ -235,7 +239,8 @@ dialog p, dialog li { font-size: 14px; line-height: 1.55; color: #c9d6ea; }
 .world:hover .zoom-ctl, .zoom-ctl:focus-within, .zoom-ui.zoomed .zoom-ctl { opacity: 1; }
 .zoom-ctl button { width: 36px; height: 34px; border: 0; background: none; color: var(--text); font-size: 18px; line-height: 1; display: grid; place-items: center; }
 .zoom-ctl button + button { border-top: 1px solid var(--line); }
-.zoom-ctl button:hover { background: rgba(255, 255, 255, .06); }
+.zoom-ctl button:hover:not(:disabled) { background: rgba(255, 255, 255, .06); }
+.zoom-ctl button:disabled { color: var(--dim); opacity: .45; cursor: default; }
 .zoom-ctl button:first-child { border-radius: 13px 13px 0 0; }
 .zoom-ctl button:last-child { border-radius: 0 0 13px 13px; color: var(--muted); }
 .zoom-ui:not(.zoomed) [data-z=home] { display: none; }
@@ -256,6 +261,8 @@ dialog p, dialog li { font-size: 14px; line-height: 1.55; color: #c9d6ea; }
 .zoom-hint.show { opacity: 1; }
 
 /* ---------- field rover section ---------- */
+.ghost.small { height: 32px; padding: 0 12px; font-size: 13px; gap: 6px; }
+.st-table .drop { font-size: 12px; font-weight: 600; color: var(--bad); margin-left: 4px; }
 .station { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; padding: 56px 22px 80px; border-top: 1px solid var(--line); }
 .st-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
 .st-head h2 { margin: 6px 0 4px; font-size: 30px; }
@@ -302,7 +309,7 @@ dialog p, dialog li { font-size: 14px; line-height: 1.55; color: #c9d6ea; }
   .st-table td:not(.now) { grid-column: 1 / -1; font-size: 13px; }
   .st-table td:not(.now)::before { content: attr(data-label) ": "; color: var(--dim); }
   #roverBtn span { display: none; }
-  #roverBtn { width: 38px; padding: 0; justify-content: center; }
+  #roverBtn { width: auto; padding: 0 10px; gap: 6px; }
   .layer-seg { left: auto; right: 12px; }
   .world-body .zoom-ctl { left: auto; right: 12px; }
   .world-body .zoom-scale { left: auto; right: 12px; justify-items: end; }
@@ -326,7 +333,14 @@ dialog p, dialog li { font-size: 14px; line-height: 1.55; color: #c9d6ea; }
   .cta { margin-top: 8px; padding: 6px 12px; font-size: 13px; }
   .chips { bottom: 10px; padding: 4px 16px; justify-content: flex-start; }
   .world-body .chips { bottom: 6px; }
-  .chip { height: 34px; font-size: 13px; padding: 0 12px; }
+  .chip { height: 32px; font-size: 13px; padding: 0 11px; gap: 6px; }
+  .chips { justify-content: safe center; gap: 6px; }
+  .zoom-ui .zoom-ctl, .zoom-ui .zoom-scale, .hover-ll { display: none; }
+  .world-earth .role, #siteWhere { display: none; }
+  .world-earth .world-head { max-width: 44%; }
+  .world-earth .coords { font-size: 12px; }
+  .layer-seg { bottom: 56px; }
+  .layer-seg button { padding: 3px 10px; font-size: 11px; }
   .world-earth .globe { left: 34%; bottom: 50px; }
   .world-earth .marker-label { display: none; }
   .world-earth .world-head h2 { font-size: 18px; }
@@ -335,4 +349,8 @@ dialog p, dialog li { font-size: 14px; line-height: 1.55; color: #c9d6ea; }
   .sample { top: 6px; right: 12px; bottom: auto; }
   .drawer { top: auto; left: 0; right: 0; bottom: 0; width: auto; max-height: 86dvh; border-radius: 22px 22px 0 0; transform: translateY(105%); padding: 22px 18px 30px; }
   .popover { left: 12px; right: 12px; width: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-duration: 0s !important; scroll-behavior: auto !important; }
 }
