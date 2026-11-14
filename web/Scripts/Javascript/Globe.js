@@ -167,6 +167,7 @@ export class Globe {
     this.controls.minDistance = Math.max(this.minDistanceFloor, 1 + (this.homeDistance - 1) * this.minAltFrac);
     this.camera.position.setLength(this.homeDistance * (this._fitted ? ratio : 1));
     this._fitted = true;
+    this._offNow = null;
   }
 
   setMarkers(list) {
@@ -424,9 +425,16 @@ export class Globe {
       if (Math.abs(nl - dist) < 1e-4 && this.camera.position.clone().normalize().angleTo(dir) < 1e-4) this.zoomAnim = null;
       this.lastInteraction = now;
     } else if (this.idleSpin && now - this.lastInteraction > 9000 && !this._zoomed) {
-      this.camera.position.applyAxisAngle(new THREE.Vector3(0, 1, 0), this.idleSpin);
+      // idle: sway gently back and forth around where the user left the globe, instead of
+      // turning all the way round, so the chosen place (and the link line) never goes behind it
+      if (!this._idle || this._idle.t0 < this.lastInteraction) this._idle = { anchor: this.camera.position.clone(), t0: now };
+      const amp = 0.45;                                    // ~26° each way
+      const w = (this.idleSpin * 60) / amp;                // starts at the old spin speed
+      const ang = amp * Math.sin(((now - this._idle.t0) / 1000) * w);
+      this.camera.position.copy(this._idle.anchor).applyAxisAngle(new THREE.Vector3(0, 1, 0), ang);
     }
     const alt = this._altFrac();
+    this._applyOffset(alt);
     this.controls.rotateSpeed = this.baseRotateSpeed * THREE.MathUtils.clamp(alt, 0.06, 1.2);
     this.controls.update();
     this._updateZoomUi();
@@ -435,7 +443,7 @@ export class Globe {
     const pinScale = THREE.MathUtils.clamp(alt, 0.22, 1);
     const camDir = this.camera.position.clone().normalize();
     for (const m of this.markers.values()) {
-      m.obj.visible = m.pos.dot(camDir) > 0.18; // hide markers (and their glow) on the far side
+      m.obj.visible = m.pos.dot(camDir) > 0.06; // hide markers (and their glow) on the far side
       m.obj.scale.setScalar(pinScale * (m.obj.userData.active ? 1.35 : 1));
       const { pulse, glow } = m.obj.userData;
       const ph = (t * 0.9) % 1;
@@ -450,6 +458,23 @@ export class Globe {
     this.renderer.render(this.scene, this.camera);
     this._updateLabels();
     if (this.onFrame) this.onFrame();
+  }
+
+  /**
+   * The off-centre shift (offsetX) fades out as the camera comes close: zoomed in, the globe
+   * fills the panel from the centre, so no empty strip of space shows on the left.
+   */
+  _applyOffset(alt) {
+    if (!this.offsetX) return;
+    const altMin = (this.controls.minDistance - 1) / Math.max(1e-3, this.homeDistance - 1);
+    const k = THREE.MathUtils.smoothstep(alt, altMin, altMin + (1 - altMin) * 0.85);
+    const off = this.offsetX * k;
+    if (this._offNow != null && Math.abs(off - this._offNow) < 5e-4) return;
+    this._offNow = off;
+    const w = this.container.clientWidth, h = this.container.clientHeight;
+    if (!w || !h) return;
+    this.camera.setViewOffset(w, h, -off * w, 0, w, h);
+    this.camera.updateProjectionMatrix();
   }
 
   /** Camera height above the surface, relative to the whole-globe view (1 = home). */
