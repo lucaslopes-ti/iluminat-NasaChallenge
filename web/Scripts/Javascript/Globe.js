@@ -64,7 +64,8 @@ export class Globe {
     this.onFrame = null;
     this.flight = null;
     this.visible = true;
-    this.idleSpin = idleSpin;
+    this.reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.idleSpin = this.reduceMotion ? 0 : idleSpin;
     this.lastInteraction = performance.now();
 
     const w = container.clientWidth || 300, h = container.clientHeight || 300;
@@ -218,7 +219,7 @@ export class Globe {
     const rise = Math.min(0.9, ang / Math.PI) * (this.homeDistance - 1) * 0.55;
     const time = ms ?? THREE.MathUtils.clamp(700 + ang * 520 + Math.abs(from.length() - dist) * 260, 700, 2200);
     this.zoomAnim = null;
-    this.flight = { from, to, t0: performance.now(), ms: time, rise };
+    this.flight = { from, to, t0: performance.now(), ms: this.reduceMotion ? 1 : time, rise: this.reduceMotion ? 0 : rise };
     this.lastInteraction = performance.now();
   }
 
@@ -422,8 +423,8 @@ export class Globe {
       const { pulse, glow } = m.obj.userData;
       const ph = (t * 0.9) % 1;
       if (pulse) {
-        pulse.scale.setScalar(m.obj.userData.active ? 1 + 1.4 * ph : 1);
-        pulse.material.opacity = m.obj.userData.active ? 0.9 * (1 - ph) : 0;
+        pulse.scale.setScalar(m.obj.userData.active && !this.reduceMotion ? 1 + 1.4 * ph : 1);
+        pulse.material.opacity = m.obj.userData.active && !this.reduceMotion ? 0.9 * (1 - ph) : 0;
       }
       if (glow) glow.material.opacity = m.obj.userData.active ? 0.6 : 0.3;
       if (m.obj.userData.beam) m.obj.userData.beam.forEach((o) => { o.visible = !!m.obj.userData.active; });

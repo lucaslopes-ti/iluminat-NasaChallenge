@@ -16,6 +16,8 @@ export class Station {
     this.latest = {};
     this.history = Object.fromEntries(measureIds.map((id) => [id, []]));
     this.lastAt = 0;
+    this.log = [];               // every reading of this session, for the CSV download
+    this.solarMax = null;        // brightest solar reading so far = "clear sky" reference
     this.onChange = () => {};
     this._stop = null;
     setInterval(() => this._checkStale(), 2000);
@@ -132,11 +134,29 @@ export class Station {
     }
     if (!any) return;
     this.lastAt = Date.now();
+    const row = { time: new Date(this.lastAt).toISOString() };
+    for (const id of this.ids) row[id] = obj[id] != null && Number.isFinite(Number(obj[id])) ? Number(obj[id]) : '';
+    this.log.push(row);
+    if (this.log.length > 20000) this.log.shift();
+    if (Number.isFinite(this.latest.solar) && obj.solar != null) this.solarMax = Math.max(this.solarMax ?? 0, this.latest.solar);
     if (this.status !== 'live') this._set(this.mode, 'live', this.mode === 'demo' ? this.detail : 'Receiving data');
     else this.onChange();
   }
 
+  /** Solar power now as a fraction of the brightest reading (1 = clear), or null. */
+  get solarFraction() {
+    if (!Number.isFinite(this.latest.solar) || !this.solarMax) return null;
+    return Math.max(0, Math.min(1, this.latest.solar / this.solarMax));
+  }
+
+  csv() {
+    const cols = ['time', ...this.ids];
+    return [cols.join(','), ...this.log.map((r) => cols.map((c) => (typeof r[c] === 'number' ? +r[c].toFixed(3) : r[c])).join(','))].join('\n');
+  }
+
   clear() {
+    this.log = [];
+    this.solarMax = null;
     this.latest = {};
     for (const id of this.ids) this.history[id] = [];
     this.lastAt = 0;

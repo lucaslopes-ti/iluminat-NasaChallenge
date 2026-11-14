@@ -19,6 +19,7 @@ const BODY = {
 const TOP_CHIPS = 3;
 const ALWAYS_SHORT = ['1 g gravity', 'Thick atmosphere', 'Radiation shield'];
 const $ = (id) => document.getElementById(id);
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const store = {
   get(k) { try { return localStorage.getItem(k); } catch { return null; } },
   set(k, v) { try { localStorage.setItem(k, v); } catch { /* private mode */ } },
@@ -45,6 +46,11 @@ async function init() {
   bodyGlobe.onPick = (id) => selectTarget(id, { focus: true });
   earthGlobe.onPick = (id) => selectSite(id, { focus: true });
   earthGlobe.onFrame = drawLink;
+  bodyGlobe.onHover = (ll) => {
+    const el = $('bodyHover');
+    el.hidden = !ll;
+    if (ll) el.textContent = `${fmtLat(ll.lat, 2)}, ${fmtLon(ll.lon, 2)}`;
+  };
   earthGlobe.onHover = (ll) => {
     const el = $('earthHover');
     el.hidden = !ll;
@@ -110,7 +116,13 @@ function initStation() {
   station.onChange = renderStation;
   $('stBroker').value = store.get('st-broker') || stCfg.mqtt.broker;
   $('stTopic').value = store.get('st-topic') || stCfg.mqtt.topico;
-  $('roverBtn').onclick = () => $('station').scrollIntoView({ behavior: 'smooth' });
+  $('roverBtn').onclick = () => $('station').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+  $('stCsv').onclick = () => {
+    const url = URL.createObjectURL(new Blob([station.csv()], { type: 'text/csv' }));
+    const a = Object.assign(document.createElement('a'), { href: url, download: `rover-${station.mode}-${new Date().toISOString().slice(0, 19).replace(/[:T]/g, '-')}.csv` });
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  };
   if (!station.supportsUsb) $('stModes').querySelector('[data-mode=usb]').title = 'USB needs Chrome or Edge on a computer';
   $('stModes').querySelectorAll('button').forEach((b) => {
     b.onclick = () => {
@@ -146,6 +158,15 @@ function renderStation() {
   $('stStatusText').textContent = text;
   $('roverDot').dataset.status = $('stStatus').dataset.status;
   $('stDetail').textContent = detail;
+  $('stCsv').hidden = !station.log.length;
+  const f = station.solarFraction;
+  $('stImpact').hidden = f == null;
+  if (f != null) {
+    const drop = Math.round((1 - f) * 100);
+    $('stImpactPct').textContent = drop >= 3 ? `−${drop}%` : 'Clear sky';
+    $('stImpactPct').dataset.level = drop >= 40 ? 'high' : drop >= 15 ? 'mid' : 'low';
+    $('stImpactBar').style.width = `${(f * 100).toFixed(1)}%`;
+  }
 
   const t = cfg?.alvos.find((a) => a.id === state.targetId);
   const r = state.ranked.find((x) => x.site.id === state.siteId);

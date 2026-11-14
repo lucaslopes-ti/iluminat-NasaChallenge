@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Illuminat Horizontes · Earth twins of the Moon and Mars</title>
   <meta name="description" content="Click a place on the Moon or Mars and find its twin on Earth, scored with NASA open data.">
+  <meta name="theme-color" content="#03060d">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2303060d'/%3E%3Ccircle cx='12' cy='16' r='7.5' fill='none' stroke='%237cb6ff' stroke-width='2.4'/%3E%3Ccircle cx='23' cy='16' r='4.6' fill='%235ef0b5'/%3E%3C/svg%3E">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Illuminat Horizontes · Earth twins of the Moon and Mars">
+  <meta property="og:description" content="Click a place on the Moon or Mars and find its twin on Earth, scored with NASA open data.">
+  <meta property="og:image" content="https://lucaslopes-ti.github.io/iluminat-NasaChallenge/Assets/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
@@ -33,7 +40,8 @@
     </div>
     <div class="top-actions">
       <button class="ghost" id="roverBtn" aria-label="Field rover readings">
-        <i class="dot" id="roverDot"></i><span>Rover</span>
+        <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M4 14h16l-1.5-5h-13z M8 9V6h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="7" cy="17" r="2.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="17" r="2.2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+        <span>Rover</span><i class="dot" id="roverDot"></i>
       </button>
       <button class="ghost" id="profileBtn" aria-haspopup="dialog" aria-expanded="false">
         <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="10" cy="12" r="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="18" r="2" fill="none" stroke="currentColor" stroke-width="2"/></svg>
@@ -52,6 +60,7 @@
         <h1 id="targetName">–</h1>
         <p id="targetWhere">–</p>
       </div>
+      <span class="hover-ll" id="bodyHover" hidden></span>
       <div class="chips" id="targetChips" role="listbox" aria-label="Targets"></div>
     </section>
 
@@ -102,6 +111,10 @@
       </div>
       <div class="st-conn">
         <span class="st-status" id="stStatus" data-status="off"><i></i><span id="stStatusText">Offline</span></span>
+        <button class="ghost small" id="stCsv" type="button" title="Download this session's readings as CSV" hidden>
+          <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          CSV
+        </button>
         <div class="seg small" id="stModes" role="group" aria-label="Rover connection">
           <button data-mode="demo" aria-pressed="false">Demo</button>
           <button data-mode="mqtt" aria-pressed="false">Wi-Fi</button>
@@ -115,6 +128,14 @@
       <button class="cta solid" type="submit">Connect</button>
     </form>
     <p class="st-detail" id="stDetail"></p>
+    <div class="st-impact" id="stImpact" hidden>
+      <div class="st-impact-head">
+        <span>Dust effect on solar power</span>
+        <b id="stImpactPct">–</b>
+      </div>
+      <div class="st-meter"><i id="stImpactBar"></i></div>
+      <p id="stImpactNote">Dust on the panel cuts power. On Mars, a 2018 dust storm cut the Opportunity rover's power until it went silent. Solar farms in dusty, dry regions face the same problem.</p>
+    </div>
     <div class="table-wrap">
       <table class="st-table">
         <thead>
@@ -157,7 +178,7 @@
     <h3>Imagery credits</h3>
     <ul>
       <li>Earth: NASA Blue Marble (NASA Earth Observatory).</li>
-      <li>Earth relief and elevation: NASA SRTM30 (SRTMGL30, LP DAAC), averaged to 0.25°. Gray areas have no tile loaded yet.</li>
+      <li>Earth relief and elevation: NASA SRTM30 (SRTMGL30, LP DAAC), averaged to 0.25°. Areas without a tile yet show the satellite image.</li>
       <li>Mars: NASA 3D Resources global map (NASA/JPL-Caltech, USGS).</li>
       <li>Moon: three.js example texture, temporary, to be replaced by the NASA SVS CGI Moon Kit (LRO).</li>
       <li>Target coordinates are approximate. 3D engine: three.js (MIT).</li>
