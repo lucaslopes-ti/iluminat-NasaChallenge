@@ -7,3 +7,4 @@ O projeto usa dados abertos da NASA e de agências parceiras para pontuar, no gl
 ## Documentos
 
 - [Plano do projeto](docs/plano-gemeo-digital-analogos.md)
+- [Site (three.js, pasta web/): como rodar e formato dos dados](web/README.md)
