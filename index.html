@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
-  <link rel="stylesheet" href="Scripts/css/principal.css?v=1794681914">
+  <link rel="stylesheet" href="Scripts/css/principal.css?v=1794682371">
   <script type="importmap">
     {
       "imports": {
@@ -17,7 +17,7 @@
       }
     }
   </script>
-  <script type="module" src="Main.js?v=1794681914"></script>
+  <script type="module" src="Main.js?v=1794682371"></script>
 </head>
 <body>
   <div class="space" aria-hidden="true"></div>
@@ -79,6 +79,10 @@
         <button class="cta" id="detailsBtn">Why it matches <span aria-hidden="true">→</span></button>
       </div>
       <span class="hover-ll" id="earthHover" hidden></span>
+      <div class="layer-seg" id="layerSeg" role="group" aria-label="Earth layer">
+        <button data-layer="satellite" aria-pressed="true">Satellite</button>
+        <button data-layer="relief" aria-pressed="false" title="Elevation from NASA SRTM30 (SRTMGL30)">Relief</button>
+      </div>
       <div class="chips" id="rankChips" aria-label="Best Earth analogs"></div>
     </section>
 
@@ -116,6 +120,7 @@
     <h3>Imagery credits</h3>
     <ul>
       <li>Earth: NASA Blue Marble (NASA Earth Observatory).</li>
+      <li>Earth relief and elevation: NASA SRTM30 (SRTMGL30, LP DAAC), averaged to 0.25°. Gray areas have no tile loaded yet.</li>
       <li>Mars: NASA 3D Resources global map (NASA/JPL-Caltech, USGS).</li>
       <li>Moon: three.js example texture, temporary, to be replaced by the NASA SVS CGI Moon Kit (LRO).</li>
       <li>Target coordinates are approximate. 3D engine: three.js (MIT).</li>

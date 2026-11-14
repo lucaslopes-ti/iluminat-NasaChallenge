@@ -116,11 +116,17 @@ export class Globe {
     this.renderer.setAnimationLoop(() => this._tick());
   }
 
-  async setTexture(url, { bump = 0 } = {}) {
+  async setTexture(url, { bump = 0, bumpUrl = null } = {}) {
     this.container.classList.add('is-loading');
-    const tex = await loadTexture(url, this.renderer);
+    const token = (this._texToken = (this._texToken || 0) + 1);
+    const [tex, bumpTex] = await Promise.all([
+      loadTexture(url, this.renderer),
+      bumpUrl ? loadTexture(bumpUrl, this.renderer) : null,
+    ]);
+    if (token !== this._texToken) return; // a newer texture was requested
+    if (bumpTex) bumpTex.colorSpace = THREE.NoColorSpace;
     this.material.map = tex;
-    this.material.bumpMap = bump ? tex : null;
+    this.material.bumpMap = bump ? (bumpTex || tex) : null;
     this.material.bumpScale = bump;
     this.material.color.set(0xffffff);
     this.material.needsUpdate = true;
