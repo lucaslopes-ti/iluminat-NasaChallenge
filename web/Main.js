@@ -286,7 +286,6 @@ function selectSite(id, { focus = false } = {}) {
   const r = state.ranked.find((x) => x.site.id === id);
   if (!r) return;
   state.siteId = id;
-  const rank = state.ranked.indexOf(r) + 1;
   earthGlobe.setActive(id);
   if (focus) earthGlobe.focus(r.site.lat, r.site.lon);
   else if (id !== earthGlobe.activeFlightId) earthGlobe.flyTo(r.site.lat, r.site.lon);
@@ -294,15 +293,13 @@ function selectSite(id, { focus = false } = {}) {
   $('rankChips').querySelectorAll('button[data-id]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.id === id)));
 
   $('siteName').textContent = siteName(r.site);
-  $('siteWhere').textContent = `#${rank} · ${r.site.regiao}`;
+  $('siteCity').textContent = [r.site.cidade, r.site.regiao].filter(Boolean).join(', ');
+  $('siteTemp').textContent = Number.isFinite(r.site.t2m_c) ? `${r.site.t2m_c.toFixed(1)} °C` : '–';
   const dp = phone ? 1 : 2;
-  $('siteCoords').textContent = `${fmtLat(r.site.lat, dp)}, ${fmtLon(r.site.lon, dp)}${elevText(r.site.lat, r.site.lon, ' · ')}`;
-  const role = $('siteRole');
-  role.textContent = isClassic(r.site) ? 'Classic' : (isBR(r.site) ? 'New · BR' : 'New');
-  role.className = 'role' + (isClassic(r.site) ? '' : ' br');
+  $('siteCoords').textContent = `${fmtLat(r.site.lat, dp)}, ${fmtLon(r.site.lon, dp)}${elevText(r.site.lat, r.site.lon, ' · ').replace(/ m$/, '\u00a0m')}`;
   $('matchScore').textContent = pct(r.score);
   $('matchScore').style.color = scoreColor(r.score);
-  $('mScore').innerHTML = `<b style="color:${scoreColor(r.score)}">${pct(r.score)}</b> match · #${rank}`;
+  $('mScore').innerHTML = `<b style="color:${scoreColor(r.score)}">${pct(r.score)}</b> match`;
   $('matchBadge').setAttribute('aria-label', `${pct(r.score)} match. Open details`);
 
   if ($('drawer').classList.contains('open')) openDrawer('analog');
@@ -494,7 +491,6 @@ function analogHtml() {
   const t = target();
   const r = state.ranked.find((x) => x.site.id === state.siteId);
   const s = r.site;
-  const rank = state.ranked.indexOf(r) + 1;
   const a = s.analogia?.[t.id] || s.analogia?.[t.corpo] || {};
   const li = (arr) => arr.slice(0, 3).map((x) => `<li>${esc(x)}</li>`).join('');
 
@@ -520,7 +516,7 @@ function analogHtml() {
     </div>
     <div class="d-score">
       <span class="big" style="color:${scoreColor(r.score)}">${pct(r.score)}</span>
-      <span class="sub">match · #${rank} of ${state.ranked.length}<br>${esc(profileLabel())}</span>
+      <span class="sub">match · #${state.ranked.indexOf(r) + 1} of ${state.ranked.length}<br>${esc(profileLabel())}</span>
     </div>
     ${radarSvg(s.notas?.[t.id] || {})}
     <div class="legend"><span><i></i>${esc(shortName(s))}</span><span><i class="t"></i>${esc(shortTarget(t))} (perfect match)</span></div>

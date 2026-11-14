@@ -84,11 +84,16 @@
     <section class="world world-earth" aria-label="Earth analogs">
       <div class="globe" id="earthGlobe"></div>
       <div class="world-head pin-card unplaced" id="earthCard">
-        <span class="kicker">Earth · twin <span class="role" id="siteRole"></span></span>
+        <span class="kicker">Earth</span>
         <h2 id="siteName">–</h2>
         <span class="m-score" id="mScore"></span>
-        <p id="siteWhere">–</p>
-        <p class="coords" id="siteCoords">–</p>
+        <dl class="card-facts">
+          <dt>City</dt><dd id="siteCity">–</dd>
+          <dt>Avg temp</dt><dd id="siteTemp">–</dd>
+          <dt>Coords</dt><dd class="coords" id="siteCoords">–</dd>
+        </dl>
+      </div>
+      <div class="earth-actions">
         <button class="cta" id="detailsBtn">Why it matches <span aria-hidden="true">→</span></button>
         <div class="layer-seg" id="layerSeg" role="group" aria-label="Earth layer">
           <button data-layer="satellite" aria-pressed="true">Satellite</button>
