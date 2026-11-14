@@ -305,19 +305,24 @@ function drawLink() {
   const ax = ra.left - twin.left + a.x, ay = ra.top - twin.top + a.y;
   const bx = rb.left - twin.left + b.x, by = rb.top - twin.top + b.y;
   const vertical = rb.top > ra.top + 10;
-  const k = vertical ? (by - ay) * 0.5 : (bx - ax) * 0.5;
-  const c1 = vertical ? [ax, ay + k] : [ax + k, ay - 40];
-  const c2 = vertical ? [bx, by - k] : [bx - k, by - 40];
-  $('linkPath').setAttribute('d', `M${ax},${ay} C${c1} ${c2} ${bx},${by}`);
+  const badge = $('matchBadge');
+  let d;
+  if (vertical) {
+    // stacked (phone) layout: the badge is hidden, one S-curve from top to bottom
+    const k = (by - ay) * 0.5;
+    d = `M${ax},${ay} C${ax},${ay + k} ${bx},${by - k} ${bx},${by}`;
+  } else {
+    // the badge stays still in the middle of the seam; the link runs through it
+    const mx = twin.width / 2, my = twin.height / 2;
+    const k1 = (mx - ax) * 0.55, k2 = (bx - mx) * 0.55;
+    d = `M${ax},${ay} C${ax + k1},${ay} ${mx - k1},${my} ${mx},${my} C${mx + k2},${my} ${bx - k2},${by} ${bx},${by}`;
+    badge.style.left = `${mx}px`;
+    badge.style.top = `${my}px`;
+  }
+  $('linkPath').setAttribute('d', d);
   $('linkA').setAttribute('cx', ax); $('linkA').setAttribute('cy', ay);
   $('linkB').setAttribute('cx', bx); $('linkB').setAttribute('cy', by);
   svg.classList.toggle('off', a.facing < 0.15 || b.facing < 0.15);
-  // badge sits at the curve midpoint (cubic Bézier at t = 0.5)
-  const mx = (ax + 3 * c1[0] + 3 * c2[0] + bx) / 8, my = (ay + 3 * c1[1] + 3 * c2[1] + by) / 8;
-  const badge = $('matchBadge');
-  // stacked (phone) layout: keep the badge at the right edge of the seam so it never covers the chips
-  badge.style.left = `${vertical ? twin.width - 44 : mx}px`;
-  badge.style.top = `${vertical ? rb.top - twin.top : my}px`;
 }
 
 /* ---------------- mission profile ---------------- */

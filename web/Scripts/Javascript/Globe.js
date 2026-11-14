@@ -53,6 +53,7 @@ function getGlowTexture() {
 export class Globe {
   constructor(container, { zoom = 1, atmosphere = null, atmosphereStrength = 0.6, minDistance = 1.25, maxDistance = 7, idleSpin = 0, radiusKm = 6371, name = 'globe' } = {}) {
     this.radiusKm = radiusKm;
+    this.minDistanceFloor = minDistance;
     this.name = name;
     this.container = container;
     this.zoomFactor = zoom; // 1 = whole globe fits the view with a small margin
@@ -152,7 +153,10 @@ export class Globe {
     const fit = 1.1 / Math.sin(Math.min(vHalf, hHalf));
     const ratio = this.camera.position.length() / this.homeDistance;
     this.homeDistance = fit / this.zoomFactor;
-    this.controls.maxDistance = Math.max(this.controls.maxDistance, this.homeDistance * 1.6);
+    // Zoom limits: never farther than a little past the whole-globe view, never closer than
+    // ~1/3 of its height above the surface (closer, the texture blurs and the globe covers the text).
+    this.controls.maxDistance = this.homeDistance * 1.12;
+    this.controls.minDistance = Math.max(this.minDistanceFloor, 1 + (this.homeDistance - 1) * 0.32);
     this.camera.position.setLength(this.homeDistance * (this._fitted ? ratio : 1));
     this._fitted = true;
   }
@@ -275,7 +279,7 @@ export class Globe {
     ui.querySelector('[data-z=in]').onclick = () => this.zoom(0.6);
     ui.querySelector('[data-z=out]').onclick = () => this.zoom(1 / 0.6);
     ui.querySelector('[data-z=home]').onclick = () => this.home();
-    this.ui = { root: ui, bar: ui.querySelector('.zoom-scale i'), text: ui.querySelector('.zoom-scale span'), hint: ui.querySelector('.zoom-hint'), home: ui.querySelector('[data-z=home]') };
+    this.ui = { root: ui, bar: ui.querySelector('.zoom-scale i'), text: ui.querySelector('.zoom-scale span'), hint: ui.querySelector('.zoom-hint'), home: ui.querySelector('[data-z=home]'), zin: ui.querySelector('[data-z=in]'), zout: ui.querySelector('[data-z=out]') };
     const mac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
     this.ui.hint.textContent = `${mac ? '⌘' : 'Ctrl'} + scroll to zoom`;
   }
@@ -320,6 +324,10 @@ export class Globe {
       this.ui.bar.style.width = `${px.toFixed(0)}px`;
       this.ui.text.textContent = `${nice.toLocaleString('en-US')} km`;
     }
+    const c = this.controls;
+    const target = this.zoomAnim ? this.zoomAnim.dist : d;
+    this.ui.zin.disabled = target <= c.minDistance * 1.01;
+    this.ui.zout.disabled = target >= c.maxDistance * 0.99;
     const zoomed = d < this.homeDistance * 0.92;
     if (zoomed !== this._zoomed) {
       this._zoomed = zoomed;

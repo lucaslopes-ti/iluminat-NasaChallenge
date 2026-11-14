@@ -143,7 +143,7 @@ h1, h2, h3 { font-family: var(--display); letter-spacing: -.01em; }
 .link.off { opacity: 0; }
 @keyframes flow { to { stroke-dashoffset: -24; } }
 .match {
-  position: absolute; z-index: 4; transform: translate(-50%, -50%); left: 55%; top: 50%;
+  position: absolute; z-index: 4; transform: translate(-50%, -50%); left: 50%; top: 50%;
   width: 84px; height: 84px; border-radius: 50%; display: grid; place-content: center; text-align: center;
   background: radial-gradient(circle at 30% 30%, rgba(40, 60, 95, .95), rgba(8, 14, 26, .95));
   border: 1px solid var(--line-2); box-shadow: 0 0 0 6px rgba(94, 240, 181, .06), 0 10px 40px rgba(0, 0, 0, .5);
@@ -236,7 +236,8 @@ dialog p, dialog li { font-size: 14px; line-height: 1.55; color: #c9d6ea; }
 .world:hover .zoom-ctl, .zoom-ctl:focus-within, .zoom-ui.zoomed .zoom-ctl { opacity: 1; }
 .zoom-ctl button { width: 36px; height: 34px; border: 0; background: none; color: var(--text); font-size: 18px; line-height: 1; display: grid; place-items: center; }
 .zoom-ctl button + button { border-top: 1px solid var(--line); }
-.zoom-ctl button:hover { background: rgba(255, 255, 255, .06); }
+.zoom-ctl button:hover:not(:disabled) { background: rgba(255, 255, 255, .06); }
+.zoom-ctl button:disabled { color: var(--dim); opacity: .45; cursor: default; }
 .zoom-ctl button:first-child { border-radius: 13px 13px 0 0; }
 .zoom-ctl button:last-child { border-radius: 0 0 13px 13px; color: var(--muted); }
 .zoom-ui:not(.zoomed) [data-z=home] { display: none; }
