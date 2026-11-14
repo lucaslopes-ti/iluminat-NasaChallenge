@@ -100,8 +100,14 @@ h1, h2, h3 { font-family: var(--display); letter-spacing: -.01em; }
 .pin-card[data-side="below"]::after { display: block; left: calc(var(--ax, 50%) - 6px); top: -6px; border-left-width: 1px; border-top-width: 1px; }
 .pin-card[data-side="left"]::after { display: block; top: calc(var(--ay, 50%) - 6px); right: -6px; border-right-width: 1px; border-top-width: 1px; }
 .pin-card[data-side="right"]::after { display: block; top: calc(var(--ay, 50%) - 6px); left: -6px; border-left-width: 1px; border-bottom-width: 1px; }
-.pin-card .layer-seg { position: static; margin-top: 10px; width: max-content; }
-.pin-card .cta { margin-top: 10px; }
+.card-facts { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 3px 10px; margin: 8px 0 0; font-size: 13px; }
+.card-facts dt { color: var(--dim); }
+.card-facts dd { margin: 0; color: var(--text); font-variant-numeric: tabular-nums; }
+.card-facts dd.coords { color: var(--earth); }
+/* Why it matches + Satellite/Relief: fixed in the Earth panel's lower right corner */
+.earth-actions { position: absolute; right: 18px; bottom: 108px; z-index: 3; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+.earth-actions .cta { margin: 0; background: rgba(8, 14, 26, .78); backdrop-filter: blur(10px); }
+.earth-actions .layer-seg { position: static; }
 .marker-label.active { display: none; }
 .world-head p.coords { margin-top: 2px; font-variant-numeric: tabular-nums; color: var(--earth); font-size: 13px; letter-spacing: .02em; }
 .marker-label .ll { margin-left: 6px; color: var(--muted); font-variant-numeric: tabular-nums; font-weight: 400; }
@@ -351,8 +357,9 @@ dialog p, dialog li { font-size: 14px; line-height: 1.55; color: #c9d6ea; }
   .pin-card p, .pin-card .m-score { font-size: 11px; }
   .pin-card .m-score b { font-size: 14px; }
   .world-earth .pin-card .coords { font-size: 11px; }
-  .pin-card .cta { margin-top: 6px; padding: 4px 10px; font-size: 12px; }
-  .pin-card .layer-seg { margin-top: 6px; }
+  .card-facts { font-size: 11px; gap: 2px 8px; margin-top: 5px; }
+  .earth-actions { right: 12px; bottom: 58px; gap: 6px; }
+  .earth-actions .cta { padding: 5px 11px; font-size: 12px; }
   .cta { margin-top: 8px; padding: 6px 12px; font-size: 13px; }
   .chips { bottom: 10px; padding: 4px 16px; justify-content: flex-start; }
   .world-body .chips { bottom: 6px; }
