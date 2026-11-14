@@ -1,6 +1,6 @@
-import { Globe, escapeHtml as esc } from './Scripts/Javascript/Globe.js?v=1794686480';
-import { rankSites, scoreColor, pct } from './Scripts/Javascript/Scoring.js?v=1794686480';
-import { Station } from './Scripts/Javascript/Station.js?v=1794686480';
+import { Globe, escapeHtml as esc } from './Scripts/Javascript/Globe.js?v=1794687243';
+import { rankSites, scoreColor, pct } from './Scripts/Javascript/Scoring.js?v=1794687243';
+import { Station } from './Scripts/Javascript/Station.js?v=1794687243';
 
 const TEXTURES = {
   moon: 'Assets/Textures/moon.jpg',
