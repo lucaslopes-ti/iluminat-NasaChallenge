@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Illuminat Horizontes · Earth twins of the Moon and Mars</title>
+  <meta name="description" content="Click a place on the Moon or Mars and find its twin on Earth, scored with NASA open data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="Scripts/css/principal.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./lib/three/three.module.min.js",
+        "three/addons/": "./lib/three/addons/"
+      }
+    }
+  </script>
+  <script type="module" src="Main.js"></script>
+</head>
+<body>
+  <div class="space" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true"><circle cx="12" cy="16" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="23.5" cy="16" r="5" fill="currentColor"/></svg>
+      <span>Illuminat <b>Horizontes</b></span>
+    </div>
+    <div class="seg" role="tablist" aria-label="Planetary body">
+      <button role="tab" data-body="moon" aria-selected="true">Moon</button>
+      <button role="tab" data-body="mars" aria-selected="false">Mars</button>
+    </div>
+    <div class="top-actions">
+      <button class="ghost" id="profileBtn" aria-haspopup="dialog" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="10" cy="12" r="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="18" r="2" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        <span id="profileName">General</span>
+      </button>
+      <button class="ghost round" id="aboutBtn" aria-label="About and credits">?</button>
+    </div>
+  </header>
+
+  <main class="twin" id="twin">
+    <!-- Moon / Mars -->
+    <section class="world world-body" aria-label="Moon or Mars">
+      <div class="globe" id="bodyGlobe"></div>
+      <div class="world-head">
+        <span class="kicker" id="bodyKicker">Moon · target</span>
+        <h1 id="targetName">–</h1>
+        <p id="targetWhere">–</p>
+      </div>
+      <div class="chips" id="targetChips" role="listbox" aria-label="Targets"></div>
+    </section>
+
+    <!-- link between the two worlds -->
+    <svg class="link" id="link" aria-hidden="true">
+      <defs>
+        <linearGradient id="linkGrad" x1="0" x2="1">
+          <stop offset="0" stop-color="#7cb6ff"/><stop offset="1" stop-color="#5ef0b5"/>
+        </linearGradient>
+      </defs>
+      <path id="linkPath" d=""/>
+      <circle id="linkA" r="4"/><circle id="linkB" r="4"/>
+    </svg>
+    <button class="match" id="matchBadge" aria-label="Open analog details">
+      <span class="match-score" id="matchScore">–</span>
+      <span class="match-lbl">match</span>
+    </button>
+
+    <!-- Earth -->
+    <section class="world world-earth" aria-label="Earth analogs">
+      <div class="globe" id="earthGlobe"></div>
+      <div class="world-head right">
+        <span class="kicker">Earth · twin <span class="role" id="siteRole"></span></span>
+        <h2 id="siteName">–</h2>
+        <span class="m-score" id="mScore"></span>
+        <p id="siteWhere">–</p>
+        <p class="coords" id="siteCoords">–</p>
+        <button class="cta" id="detailsBtn">Why it matches <span aria-hidden="true">→</span></button>
+      </div>
+      <span class="hover-ll" id="earthHover" hidden></span>
+      <div class="chips" id="rankChips" aria-label="Best Earth analogs"></div>
+    </section>
+
+    <span class="sample" id="sampleChip" title="Scores are sample values until the NASA data notebooks deliver data/locais.json">Sample data</span>
+  </main>
+
+  <!-- details drawer -->
+  <aside class="drawer" id="drawer" aria-hidden="true" aria-labelledby="dTitle">
+    <button class="ghost round close" id="drawerClose" aria-label="Close details">×</button>
+    <div id="drawerBody"></div>
+  </aside>
+  <div class="scrim" id="scrim" hidden></div>
+
+  <!-- mission profile popover -->
+  <div class="popover" id="profilePop" hidden role="dialog" aria-label="Mission profile">
+    <div class="presets" id="presets"></div>
+    <div class="sliders" id="sliders"></div>
+    <p class="fine">Weights change the ranking. Gravity, atmosphere and radiation never match on Earth.</p>
+  </div>
+
+  <!-- intro -->
+  <div class="intro" id="intro" hidden>
+    <div class="intro-card">
+      <span class="kicker">NASA Space Apps 2026</span>
+      <h2>Where on Earth can we train for the Moon and Mars?</h2>
+      <p>Pick a place on the Moon or Mars. We find its twins on Earth with open NASA data, and show where the match holds and where it breaks.</p>
+      <button class="cta solid" id="introGo">Start exploring</button>
+    </div>
+  </div>
+
+  <dialog id="about">
+    <h2>About Illuminat Horizontes</h2>
+    <p>Each Earth site gets a similarity score per dimension (terrain, materials, thermal, water and ice, dust, habitability, operations). The match is a weighted average, so changing the mission profile changes the ranking. Every site also shows where the analogy breaks.</p>
+    <p><b>Status:</b> the scores shown now are sample values. They will be replaced by the output of our data notebooks (NASA Earthdata, AppEEARS, Copernicus).</p>
+    <h3>Imagery credits</h3>
+    <ul>
+      <li>Earth: NASA Blue Marble (NASA Earth Observatory).</li>
+      <li>Mars: NASA 3D Resources global map (NASA/JPL-Caltech, USGS).</li>
+      <li>Moon: three.js example texture, temporary, to be replaced by the NASA SVS CGI Moon Kit (LRO).</li>
+      <li>Target coordinates are approximate. 3D engine: three.js (MIT).</li>
+    </ul>
+    <form method="dialog"><button class="cta solid">Close</button></form>
+  </dialog>
+</body>
+</html>
