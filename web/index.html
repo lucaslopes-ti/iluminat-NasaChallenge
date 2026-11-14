@@ -32,6 +32,9 @@
       <button role="tab" data-body="mars" aria-selected="false">Mars</button>
     </div>
     <div class="top-actions">
+      <button class="ghost" id="roverBtn" aria-label="Field rover readings">
+        <i class="dot" id="roverDot"></i><span>Rover</span>
+      </button>
       <button class="ghost" id="profileBtn" aria-haspopup="dialog" aria-expanded="false">
         <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="10" cy="12" r="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="18" r="2" fill="none" stroke="currentColor" stroke-width="2"/></svg>
         <span id="profileName">General</span>
@@ -88,6 +91,40 @@
 
     <span class="sample" id="sampleChip" title="Scores are sample values until the NASA data notebooks deliver data/locais.json">Sample data</span>
   </main>
+
+  <!-- field rover (Arduino + ESP32) -->
+  <section class="station" id="station" aria-labelledby="stTitle">
+    <div class="st-head">
+      <div>
+        <span class="kicker">Field rover · Arduino + ESP32</span>
+        <h2 id="stTitle">Our rover vs. <span id="stTarget">–</span></h2>
+        <p class="st-sub">Live readings from the rover in our regolith box, next to the Earth twin and the target.</p>
+      </div>
+      <div class="st-conn">
+        <span class="st-status" id="stStatus" data-status="off"><i></i><span id="stStatusText">Offline</span></span>
+        <div class="seg small" id="stModes" role="group" aria-label="Rover connection">
+          <button data-mode="demo" aria-pressed="false">Demo</button>
+          <button data-mode="mqtt" aria-pressed="false">Wi-Fi</button>
+          <button data-mode="usb" aria-pressed="false">USB</button>
+        </div>
+      </div>
+    </div>
+    <form class="st-mqtt" id="stMqtt" hidden>
+      <label>Broker <input id="stBroker" spellcheck="false" autocomplete="off"></label>
+      <label>Topic <input id="stTopic" spellcheck="false" autocomplete="off"></label>
+      <button class="cta solid" type="submit">Connect</button>
+    </form>
+    <p class="st-detail" id="stDetail"></p>
+    <div class="table-wrap">
+      <table class="st-table">
+        <thead>
+          <tr><th scope="col">Measure</th><th scope="col">Rover now</th><th scope="col" id="stColSite">Earth twin</th><th scope="col" id="stColTarget">Target</th></tr>
+        </thead>
+        <tbody id="stBody"></tbody>
+      </table>
+    </div>
+    <p class="fine">The rover sends one JSON line per reading, for example <code>{"temp":24.1,"pm25":14,"solar":410,"tilt":3.4}</code>, by Wi-Fi (MQTT) from the ESP32 or by USB from the Arduino. Example code is in the <code>firmware/</code> folder of the repository.</p>
+  </section>
 
   <!-- details drawer -->
   <aside class="drawer" id="drawer" aria-hidden="true" aria-labelledby="dTitle">

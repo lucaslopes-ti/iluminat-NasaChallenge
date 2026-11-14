@@ -1,5 +1,6 @@
 import { Globe, escapeHtml as esc } from './Scripts/Javascript/Globe.js';
 import { rankSites, scoreColor, pct } from './Scripts/Javascript/Scoring.js';
+import { Station } from './Scripts/Javascript/Station.js';
 
 const TEXTURES = {
   moon: 'Assets/Textures/moon.jpg',
@@ -24,7 +25,7 @@ const store = {
 };
 
 const state = { body: 'moon', targetId: null, siteId: null, profileId: 'general', weights: {}, ranked: [] };
-let cfg, sites, bodyGlobe, earthGlobe;
+let cfg, sites, bodyGlobe, earthGlobe, stCfg, station;
 
 init().catch((err) => {
   console.error(err);
@@ -32,7 +33,7 @@ init().catch((err) => {
 });
 
 async function init() {
-  [cfg, sites] = await Promise.all([fetchJson('data/alvos.json'), fetchJson('data/locais.json')]);
+  [cfg, sites, stCfg] = await Promise.all([fetchJson('data/alvos.json'), fetchJson('data/locais.json'), fetchJson('data/estacao.json')]);
   $('sampleChip').hidden = !sites.some((s) => s.exemplo || s.modo_teste);
 
   const phone = matchMedia('(max-width: 820px)').matches;
@@ -50,7 +51,7 @@ async function init() {
     if (ll) el.textContent = `${fmtLat(ll.lat, 2)}, ${fmtLon(ll.lon, 2)}${elevText(ll.lat, ll.lon, ' · ')}`;
   };
 
-  document.querySelectorAll('.seg button').forEach((b) => { b.onclick = () => setBody(b.dataset.body); });
+  document.querySelectorAll('.topbar .seg button').forEach((b) => { b.onclick = () => setBody(b.dataset.body); });
   $('detailsBtn').onclick = () => openDrawer('analog');
   $('matchBadge').onclick = () => openDrawer('analog');
   $('drawerClose').onclick = closeDrawer;
@@ -61,6 +62,7 @@ async function init() {
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeDrawer(); toggleProfile(false); } });
 
   buildProfile();
+  initStation();
 
   const deepLink = location.hash.length > 1;
   const [hb, ht, hs] = location.hash.replace('#', '').split('/');
@@ -100,6 +102,77 @@ function elevText(lat, lon, sep = '') {
   return sep + txt;
 }
 
+// ---------- field rover ----------
+const ST_LABEL = { off: 'Offline', connecting: 'Connecting…', waiting: 'Waiting for data', error: 'Not connected' };
+
+function initStation() {
+  station = new Station(stCfg.medidas.map((m) => m.id));
+  station.onChange = renderStation;
+  $('stBroker').value = store.get('st-broker') || stCfg.mqtt.broker;
+  $('stTopic').value = store.get('st-topic') || stCfg.mqtt.topico;
+  $('roverBtn').onclick = () => $('station').scrollIntoView({ behavior: 'smooth' });
+  if (!station.supportsUsb) $('stModes').querySelector('[data-mode=usb]').title = 'USB needs Chrome or Edge on a computer';
+  $('stModes').querySelectorAll('button').forEach((b) => {
+    b.onclick = () => {
+      const m = b.dataset.mode;
+      $('stMqtt').hidden = m !== 'mqtt';
+      if (m === 'demo') { store.set('st-mode', 'demo'); station.startDemo(); }
+      if (m === 'usb') station.connectUsb(stCfg.serial_baud);
+      if (m === 'mqtt') { syncModes('mqtt'); $('stBroker').focus(); }
+    };
+  });
+  $('stMqtt').onsubmit = (e) => {
+    e.preventDefault();
+    const broker = $('stBroker').value.trim(), topic = $('stTopic').value.trim();
+    if (!broker || !topic) return;
+    store.set('st-broker', broker); store.set('st-topic', topic); store.set('st-mode', 'mqtt');
+    station.connectMqtt(broker, topic);
+  };
+  if (store.get('st-mode') === 'mqtt') station.connectMqtt($('stBroker').value, $('stTopic').value);
+  else station.startDemo();
+}
+
+function syncModes(mode) {
+  $('stModes').querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.mode === mode)));
+}
+
+function renderStation() {
+  if (!station || !stCfg) return;
+  const { mode, status, detail } = station;
+  syncModes(mode);
+  const live = status === 'live';
+  const text = live ? (mode === 'demo' ? 'Demo' : mode === 'usb' ? 'Live · USB' : 'Live · Wi-Fi') : ST_LABEL[status];
+  $('stStatus').dataset.status = live && mode === 'demo' ? 'demo' : status;
+  $('stStatusText').textContent = text;
+  $('roverDot').dataset.status = $('stStatus').dataset.status;
+  $('stDetail').textContent = detail;
+
+  const t = cfg?.alvos.find((a) => a.id === state.targetId);
+  const r = state.ranked.find((x) => x.site.id === state.siteId);
+  $('stTarget').textContent = t ? t.nome : '–';
+  const targetCol = t ? t.nome : 'Target', siteCol = r ? shortName(r.site) : 'Earth twin';
+  $('stColTarget').textContent = targetCol;
+  $('stColSite').textContent = siteCol;
+  const ref = { ...(stCfg.referencias[t?.corpo] || {}), ...(stCfg.referencias[t?.id] || {}) };
+
+  $('stBody').innerHTML = stCfg.medidas.map((m) => {
+    const v = station.latest[m.id];
+    const now = v == null ? '<span class="na">–</span>'
+      : `<b>${v.toFixed(m.casas)}</b> <span class="u">${esc(m.unidade)}</span>`;
+    const sv = r && m.local ? r.site[m.local] : null;
+    const site = sv == null ? '<span class="na">–</span>'
+      : `${Number(sv).toFixed(m.casas)} <span class="u">${esc(m.unidade)}</span>${m.local_nome ? ` <span class="u">(${esc(m.local_nome)})</span>` : ''}`;
+    return `<tr><th scope="row">${esc(m.nome)}</th><td class="now">${now}${spark(station.history[m.id])}</td><td class="site" data-label="${esc(siteCol)}">${site}</td><td class="ref" data-label="${esc(targetCol)}">${esc(ref[m.id] || '–')}</td></tr>`;
+  }).join('');
+}
+
+function spark(h) {
+  if (!h || h.length < 2) return '';
+  const lo = Math.min(...h), hi = Math.max(...h), span = hi - lo || 1;
+  const pts = h.map((v, i) => `${(i / (h.length - 1) * 80).toFixed(1)},${(18 - (v - lo) / span * 16).toFixed(1)}`).join(' ');
+  return `<svg class="spark" viewBox="0 0 80 20" aria-hidden="true"><polyline points="${pts}"/></svg>`;
+}
+
 async function fetchJson(url) {
   const r = await fetch(url, { cache: 'no-cache' });
   if (!r.ok) throw new Error(`${url}: HTTP ${r.status}`);
@@ -112,7 +185,7 @@ const target = () => cfg.alvos.find((a) => a.id === state.targetId);
 
 function setBody(body, { targetId = null, siteId = null } = {}) {
   state.body = body;
-  document.querySelectorAll('.seg button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.body === body)));
+  document.querySelectorAll('.topbar .seg button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.body === body)));
   const targets = cfg.alvos.filter((a) => a.corpo === body);
   bodyGlobe.setTexture(TEXTURES[body], { bump: BODY[body].bump });
   bodyGlobe.setMarkers(targets.map((t) => ({ id: t.id, lat: t.lat, lon: t.lon, label: t.nome, kind: 'target', color: '#7cb6ff' })));
@@ -185,6 +258,7 @@ function selectSite(id) {
 
   if ($('drawer').classList.contains('open')) openDrawer('analog');
   history.replaceState(null, '', `#${state.body}/${state.targetId}/${id}`);
+  renderStation();
 }
 
 const isClassic = (s) => /^refer/.test(s.papel || '');
