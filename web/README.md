@@ -63,3 +63,14 @@ Para trocar pelos dados reais: rodar o notebook, acrescentar as notas (notebook 
 **Pendente:** trocar `moon.jpg` pelo NASA SVS CGI Moon Kit (`lroc_color_poles_2k.jpg`, LRO LROC + LOLA, com os polos corretos): https://svs.gsfc.nasa.gov/4720. Basta salvar com o mesmo nome em `Assets/Textures/`.
 
 Os modelos `.glb` da pasta `Site/Assets/Models/` (da equipe) não são usados aqui: a textura deles vem em formato de cubo (não equiretangular), o da Terra tem nuvens que escondem os locais e pesa 19 MB, o que deixaria o site lento no celular.
+
+## Carrinho (Arduino + ESP32)
+
+Abaixo dos globos há a seção "Field rover", com uma tabela que compara a leitura do carrinho agora, o análogo da Terra selecionado e o alvo na Lua ou em Marte. As medidas e os valores de referência dos alvos ficam em `data/estacao.json`.
+
+O carrinho manda uma linha JSON por leitura (`{"temp":24.1,"pm25":14,"solar":410,"tilt":3.4}`) por um destes caminhos:
+- **Wi-Fi:** ESP32 publica no broker MQTT; o site assina pelo WebSocket (`lib/mqtt/mqtt.esm.js`, mqtt.js 5.10.4, MIT).
+- **USB:** Arduino ligado no computador; o site lê pela Web Serial (Chrome ou Edge).
+- **Demo:** leituras simuladas, usado quando nada está ligado.
+
+Código de exemplo do Arduino e do ESP32: pasta `firmware/` na raiz do repositório.
