@@ -7,4 +7,3 @@ O projeto usa dados abertos da NASA e de agências parceiras para pontuar, no gl
 ## Documentos
 
 - [Plano do projeto](docs/plano-gemeo-digital-analogos.md)
-- [Análise dos vencedores do Space Apps](docs/analise-vencedores-space-apps.md)

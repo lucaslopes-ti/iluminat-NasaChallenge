@@ -1,7 +1,45 @@
 # Plano de Projeto: Gêmeo Digital de Análogos Terrestres da Lua e de Marte
 
 **NASA Space Apps Challenge 2026: "Identify Earth Locations that Analog the Permanent Moon Base Locations and Mars"**
-versão 7 · 14/11/2026 (escopo reorganizado em Núcleo e Extras)
+versão 8 · 14/11/2026
+
+---
+
+## 0. O que vamos fazer (resumo para a equipe)
+
+**A ideia:** um site chamado **AnaloGêmeo** que procura, na Terra inteira, os lugares mais parecidos com Marte (cratera Jezero) e com a Lua (cratera Shackleton, no polo sul), usando dados abertos da NASA. O site mostra um ranking desses lugares, incluindo **locais brasileiros que ninguém estudou como análogo**, e explica para cada um **onde a comparação funciona e onde ela falha**. Uma **estação ESP32** com sensores, ligada ao site ao vivo, simula uma tempestade de poeira e mostra a energia solar caindo. É o mesmo problema dos rovers em Marte e das usinas solares no semiárido.
+
+**O que precisamos entregar funcionando (o "Núcleo"):**
+1. **Globo** com o mapa de semelhança da Terra com Marte e com a Lua.
+2. **Ranking** dos melhores lugares, com os análogos famosos (prova de que o método funciona) e os brasileiros novos.
+3. **Cartão de cada lugar:** o que é parecido, o que não é, e de onde vêm os dados.
+4. **Estação ESP32 + tempestade de poeira** aparecendo ao vivo no site.
+
+Tudo em **inglês**, com o site publicado e testado no celular. Depois disso, se der tempo: mini-rover, radar e mais perfis de missão (seção 1A).
+
+**Quem faz o quê:**
+
+| Pessoa | Papel | Entrega principal |
+|---|---|---|
+| P1 | Líder e apresentação | Decide o escopo, cuida do tempo, escreve a página do projeto e faz a submissão |
+| P2 | Dados da Terra | Baixa os dados da NASA (Earthdata) no Colab e monta a tabela Parquet com os indicadores |
+| P3 | Dados de Marte/Lua e cálculo | Prepara os dados dos alvos, calcula o índice de semelhança e faz a validação |
+| P4 | Site (dono do site) | Globo, ranking, cartões e painel ao vivo. Site publicado desde as primeiras horas |
+| P5 | Hardware | Estação ESP32, sensores, envio via MQTT, caixa de "regolito" e tempestade de poeira |
+| P6 | Conteúdo e vídeo | Textos de cada lugar (funciona/quebra + fontes) e o vídeo de 30 s |
+
+Com 4 pessoas: P1 junta com P6 e P2 junta com P3.
+
+**Próximos passos (agora):**
+1. Distribuir os papéis acima.
+2. Criar as contas: NASA Earthdata, GitHub e HiveMQ Cloud (todas gratuitas).
+3. P4 publica o site "esqueleto" no GitHub Pages nas primeiras 4 horas.
+4. P5 separa o hardware e faz o ESP32 mandar um "olá" via MQTT.
+5. P2 e P3 combinam o formato da tabela Parquet e do JSON que o site vai ler.
+
+**Marcos:** Núcleo completo no ar com **28 h** · congelamento às **36 h** · vídeo gravado às **42 h** · envio com 2 h de folga.
+
+**Regras que eliminam o projeto se não forem seguidas:** página, slides e legendas **em inglês**; vídeo de **até 30 s** (ou até 7 slides); links públicos sem login; **todas** as referências listadas; imagens geradas por IA com marca d'água "AI-generated".
 
 ---
 
@@ -342,6 +380,17 @@ Regras do Guia de Submissão de 2025 (conferir se mudou em 2026). **Se qualquer 
 6. **Equipe:** de 1 a 6 pessoas, todas inscritas no mesmo evento local.
 
 **Critérios de avaliação** (oficiais, sem pesos): **Impacto**, **Criatividade**, **Validade** (cientificamente válido e funcionando no mundo real), **Relevância** (responde ao desafio, completo, viável, utilizável) e **Apresentação**, que tem o mesmo peso dos outros quatro. Como o plano cobre cada um: impacto (seção 9), criatividade (gêmeo + IoT + análogos brasileiros), validade (validação com análogos conhecidos + "onde quebra"), relevância (mapa + métrica + caracterização) e apresentação (globo + demo física).
+
+**O que os vencedores anteriores nos ensinam** (30 Global Winners de 2023, 2024 e 2025):
+- **Um problema, uma resposta clara.** Nenhum vencedor tenta fazer cinco coisas. Por isso separamos Núcleo e Extras.
+- **Produto funcionando, quase sempre web** (site, dashboard, app ou jogo). Modelos aparecem, mas sempre com uma interface.
+- **Dados da NASA no centro e declarados.** O *Best Use of Data* premia quem torna dados espaciais acessíveis.
+- **Impacto concreto na Terra:** agricultura, queimadas, clima e reflorestamento dominam *Galactic Impact* e *Local Impact*.
+- **Hardware ou campo + satélite também vence:** QUEÑARIS (Peru, *Local Impact* 2025) juntou drones, microrganismos, satélite e IA, no mesmo espírito da nossa estação ESP32.
+- **O Brasil vence com frequência:** PureFlow (2025), 42 QuakeHeroes, Connected Earth Museum e G.R.O.W. (2024), e três vencedores em 2023.
+- **Onde precisamos caprichar:** *Validade* (mostrar a validação com número, por exemplo "7 de 8 análogos clássicos no top 5%") e *Impacto* (o semiárido tem que aparecer no site, não só no texto).
+
+Fontes: [NASA 2025](https://www.nasa.gov/learning-resources/stem-engagement-at-nasa/nasa-announces-2025-international-space-apps-challenge-global-winners/), [NASA 2024](https://www.nasa.gov/learning-resources/stem-engagement-at-nasa/nasa-international-space-apps-challenge-announces-2024-global-winners/), [NASA 2023](https://science.nasa.gov/directorates/smd/2023-nasa-international-space-apps-challenge-announces-10-global-winners), [Judging & Awards Guide](https://www.spaceappschallenge.org/resources/judging-awards-guide), [Project Submission Guide](https://www.spaceappschallenge.org/resources/project-submission-guide/).
 
 **Prêmios-alvo:** *Best Use of Data* (dados de várias agências em um índice acessível) e *Local Impact* (semiárido e análogos brasileiros). *Galactic Impact* fica como opção.
 
