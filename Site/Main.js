@@ -6,54 +6,59 @@ const TEXTURES = {
   mars: 'Assets/Textures/mars.jpg',
   earth: 'Assets/Textures/earth.jpg',
 };
-const BODY_NAME = { moon: 'Moon', mars: 'Mars' };
-const RANK_SIZE = 8;
-const $ = (id) => document.getElementById(id);
-
-const state = {
-  body: 'moon',
-  targetId: null,
-  siteId: null,
-  profileId: 'general',
-  weights: {},
-  enabled: {},
+const BODY = {
+  moon: { name: 'Moon', bump: 0.02 },
+  mars: { name: 'Mars', bump: 0.015 },
 };
+const TOP_CHIPS = 3;
+const ALWAYS_SHORT = ['1 g gravity', 'Thick atmosphere', 'Radiation shield'];
+const $ = (id) => document.getElementById(id);
+const store = {
+  get(k) { try { return localStorage.getItem(k); } catch { return null; } },
+  set(k, v) { try { localStorage.setItem(k, v); } catch { /* private mode */ } },
+};
+
+const state = { body: 'moon', targetId: null, siteId: null, profileId: 'general', weights: {}, ranked: [] };
 let cfg, sites, bodyGlobe, earthGlobe;
 
 init().catch((err) => {
   console.error(err);
-  $('stage').insertAdjacentHTML('beforeend', `<div class="loading">Could not load data (${esc(err.message)}). Serve the site over http(s), not file://.</div>`);
+  document.body.insertAdjacentHTML('beforeend', `<div class="intro"><div class="intro-card"><h2>Could not load data</h2><p>${esc(err.message)}. Serve the site over http(s), not file://.</p></div></div>`);
 });
 
 async function init() {
   [cfg, sites] = await Promise.all([fetchJson('data/alvos.json'), fetchJson('data/locais.json')]);
   $('sampleChip').hidden = !sites.some((s) => s.exemplo || s.modo_teste);
 
-  bodyGlobe = new Globe($('bodyGlobe'), { distance: 3.0 });
-  earthGlobe = new Globe($('earthGlobe'), { distance: 3.15, atmosphere: '#4aa3ff', minDistance: 1.4 });
-  earthGlobe.setTexture(TEXTURES.earth);
-
+  const phone = matchMedia('(max-width: 820px)').matches;
+  bodyGlobe = new Globe($('bodyGlobe'), { zoom: phone ? 0.68 : 0.86, idleSpin: 0.0006 });
+  earthGlobe = new Globe($('earthGlobe'), { zoom: phone ? 0.9 : 0.8, atmosphere: '#6fb6ff', atmosphereStrength: 0.6, minDistance: 1.4 });
+  earthGlobe.setTexture(TEXTURES.earth, { bump: 0.01 });
   bodyGlobe.onPick = (id) => selectTarget(id);
-  bodyGlobe.onHover = (ll) => {
-    $('hoverCoords').textContent = ll ? `lat ${ll.lat.toFixed(1)}°, lon ${ll.lon.toFixed(1)}°` : 'lat –, lon –';
-  };
-  earthGlobe.onPick = (id) => selectSite(id, { fly: true });
+  earthGlobe.onPick = (id) => selectSite(id);
+  earthGlobe.onFrame = drawLink;
 
-  $('zoomIn').onclick = () => bodyGlobe.zoom(0.8);
-  $('zoomOut').onclick = () => bodyGlobe.zoom(1.25);
-  $('resetView').onclick = () => {
-    const t = target();
-    t ? bodyGlobe.flyTo(t.lat, t.lon, bodyGlobe.homeDistance) : bodyGlobe.resetView();
-  };
+  document.querySelectorAll('.seg button').forEach((b) => { b.onclick = () => setBody(b.dataset.body); });
+  $('detailsBtn').onclick = () => openDrawer('analog');
+  $('matchBadge').onclick = () => openDrawer('analog');
+  $('drawerClose').onclick = closeDrawer;
+  $('scrim').onclick = closeDrawer;
   $('aboutBtn').onclick = () => $('about').showModal();
-  document.querySelectorAll('.bodyswitch button').forEach((b) => { b.onclick = () => setBody(b.dataset.body); });
+  $('profileBtn').onclick = (e) => { e.stopPropagation(); toggleProfile(); };
+  document.addEventListener('click', (e) => { if (!$('profilePop').hidden && !$('profilePop').contains(e.target)) toggleProfile(false); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeDrawer(); toggleProfile(false); } });
 
-  buildProfileControls();
+  buildProfile();
 
-  // Deep link: #moon/shackleton/vargeao
+  const deepLink = location.hash.length > 1;
   const [hb, ht, hs] = location.hash.replace('#', '').split('/');
-  const body = BODY_NAME[hb] ? hb : 'moon';
+  const body = BODY[hb] ? hb : 'moon';
   setBody(body, { targetId: cfg.alvos.some((a) => a.id === ht && a.corpo === body) ? ht : null, siteId: hs });
+
+  if (!deepLink && !store.get('intro-seen')) {
+    $('intro').hidden = false;
+    $('introGo').onclick = () => { $('intro').hidden = true; store.set('intro-seen', '1'); };
+  }
 }
 
 async function fetchJson(url) {
@@ -63,28 +68,24 @@ async function fetchJson(url) {
 }
 
 const target = () => cfg.alvos.find((a) => a.id === state.targetId);
-const site = () => sites.find((s) => s.id === state.siteId);
 
-/* ---------------- body + targets ---------------- */
+/* ---------------- body + target ---------------- */
 
 function setBody(body, { targetId = null, siteId = null } = {}) {
   state.body = body;
-  document.querySelectorAll('.bodyswitch button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.body === body)));
-  $('crumbBody').textContent = BODY_NAME[body];
+  document.querySelectorAll('.seg button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.body === body)));
   const targets = cfg.alvos.filter((a) => a.corpo === body);
-  $('bodyChip').textContent = `${BODY_NAME[body]} · ${targets.length} targets`;
+  bodyGlobe.setTexture(TEXTURES[body], { bump: BODY[body].bump });
+  bodyGlobe.setMarkers(targets.map((t) => ({ id: t.id, lat: t.lat, lon: t.lon, label: t.nome, kind: 'target', color: '#7cb6ff' })));
 
-  bodyGlobe.setTexture(TEXTURES[body]);
-  bodyGlobe.setMarkers(targets.map((t) => ({
-    id: t.id, lat: t.lat, lon: t.lon, label: t.nome, color: '#3b8cff', size: 1, showLabel: true,
-  })));
-
-  $('targetList').innerHTML = targets.map((t) => `
-    <li><button data-id="${t.id}" aria-pressed="false">${esc(t.nome)}<small>${esc(t.regiao)}</small></button></li>`).join('');
-  $('targetList').querySelectorAll('button').forEach((b) => { b.onclick = () => selectTarget(b.dataset.id); });
+  $('targetChips').innerHTML = targets.map((t) =>
+    `<button class="chip" role="option" data-id="${t.id}" aria-selected="false">${esc(shortTarget(t))}</button>`).join('');
+  $('targetChips').querySelectorAll('button').forEach((b) => { b.onclick = () => selectTarget(b.dataset.id); });
 
   selectTarget(targetId || targets[0].id, { siteId });
 }
+
+function shortTarget(t) { return t.nome.replace(/ (crater rim|crater|skylight|Massif)$/i, (m) => (/massif/i.test(m) ? m : '')); }
 
 function selectTarget(id, { siteId = null } = {}) {
   const t = cfg.alvos.find((a) => a.id === id);
@@ -92,33 +93,108 @@ function selectTarget(id, { siteId = null } = {}) {
   state.targetId = id;
   bodyGlobe.setActive(id);
   bodyGlobe.flyTo(t.lat, t.lon);
-  $('targetList').querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.id === id)));
-  $('crumbTarget').textContent = t.nome;
-  $('rankTarget').textContent = t.nome;
-  renderTargetCard(t);
-  refreshRanking({ keepSite: siteId });
+  $('targetChips').querySelectorAll('button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.id === id)));
+  $('bodyKicker').textContent = `${BODY[t.corpo].name} · target`;
+  $('targetName').textContent = t.nome;
+  $('targetWhere').textContent = `${t.regiao} · ${fmtLat(t.lat)}, ${fmtLon(t.lon)}`;
+  refreshRanking(siteId);
 }
 
-function renderTargetCard(t) {
-  const kv = Object.entries(t.indicadores || {}).map(([k, v]) => `<div><span>${esc(k)}</span>${esc(v)}</div>`).join('');
-  const card = $('targetCard');
-  card.innerHTML = `<h3>${esc(t.nome)}</h3><p>${esc(t.resumo)}</p><div class="kv">${kv}</div>`;
-  card.hidden = false;
-}
+/* ---------------- ranking ---------------- */
 
-/* ---------------- profile + dimensions ---------------- */
+function refreshRanking(keepSite = state.siteId) {
+  const ranked = rankSites(sites, state.targetId, state.weights);
+  state.ranked = ranked;
+  earthGlobe.setMarkers(ranked.map((r) => ({
+    id: r.site.id, lat: r.site.lat, lon: r.site.lon, kind: 'analog',
+    color: scoreColor(r.score), size: 0.6 + r.score * 0.8, label: shortName(r.site),
+  })));
 
-function buildProfileControls() {
-  const sel = $('profileSelect');
-  sel.innerHTML = cfg.perfis.map((p) => `<option value="${p.id}">${esc(p.label)}</option>`).join('');
-  sel.onchange = () => applyProfile(sel.value);
-
-  $('dimList').innerHTML = cfg.dimensoes.map((d) => `
-    <li><label><input type="checkbox" data-dim="${d.id}" checked> ${esc(d.label)} <span class="w" data-w="${d.id}"></span></label></li>`).join('');
-  $('dimList').querySelectorAll('input').forEach((inp) => {
-    inp.onchange = () => { state.enabled[inp.dataset.dim] = inp.checked; refreshRanking({ keepSite: state.siteId }); };
+  const more = ranked.length - TOP_CHIPS;
+  $('rankChips').innerHTML = ranked.slice(0, TOP_CHIPS).map((r, i) => `
+    <button class="chip" data-id="${r.site.id}" aria-selected="false"><span class="n">${i + 1}</span>${esc(shortName(r.site))}
+      <span class="s" style="color:${scoreColor(r.score)}">${pct(r.score)}</span></button>`).join('')
+    + (more > 0 ? `<button class="chip" data-all="1">+${more} more</button>` : '');
+  $('rankChips').querySelectorAll('button').forEach((b) => {
+    b.onclick = () => (b.dataset.all ? openDrawer('list') : selectSite(b.dataset.id));
   });
-  cfg.dimensoes.forEach((d) => { state.enabled[d.id] = true; });
+
+  const keep = keepSite && ranked.some((r) => r.site.id === keepSite);
+  selectSite(keep ? keepSite : ranked[0]?.site.id);
+}
+
+function selectSite(id) {
+  const r = state.ranked.find((x) => x.site.id === id);
+  if (!r) return;
+  state.siteId = id;
+  const rank = state.ranked.indexOf(r) + 1;
+  earthGlobe.setActive(id);
+  earthGlobe.flyTo(r.site.lat, r.site.lon);
+  $('rankChips').querySelectorAll('button[data-id]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.id === id)));
+
+  $('siteName').textContent = siteName(r.site);
+  $('siteWhere').textContent = `#${rank} · ${r.site.regiao}`;
+  const role = $('siteRole');
+  role.textContent = isClassic(r.site) ? 'Classic' : (isBR(r.site) ? 'New · BR' : 'New');
+  role.className = 'role' + (isClassic(r.site) ? '' : ' br');
+  $('matchScore').textContent = pct(r.score);
+  $('matchScore').style.color = scoreColor(r.score);
+  $('mScore').innerHTML = `<b style="color:${scoreColor(r.score)}">${pct(r.score)}</b> match`;
+  $('matchBadge').setAttribute('aria-label', `${pct(r.score)} match. Open details`);
+
+  if ($('drawer').classList.contains('open')) openDrawer('analog');
+  history.replaceState(null, '', `#${state.body}/${state.targetId}/${id}`);
+}
+
+const isClassic = (s) => /^refer/.test(s.papel || '');
+const isBR = (s) => /\bBR$/.test(s.regiao || '');
+const siteName = (s) => s.nome_en || s.nome;
+function shortName(s) {
+  if (s.nome_curto) return s.nome_curto;
+  return siteName(s).replace(/^(Domo de|Cratera de|Serra Norte de)\s+/i, '').replace(/\s*\(.*\)$/, '').replace(/, Yungay$/, '').replace(/ (crater|Dome|caves)$/i, '');
+}
+
+/* ---------------- link between the two globes ---------------- */
+
+function drawLink() {
+  const twin = $('twin').getBoundingClientRect();
+  const a = bodyGlobe.screenPos(state.targetId), b = earthGlobe.screenPos(state.siteId);
+  const svg = $('link');
+  if (!a || !b) { svg.classList.add('off'); return; }
+  const ra = bodyGlobe.container.getBoundingClientRect(), rb = earthGlobe.container.getBoundingClientRect();
+  const ax = ra.left - twin.left + a.x, ay = ra.top - twin.top + a.y;
+  const bx = rb.left - twin.left + b.x, by = rb.top - twin.top + b.y;
+  const vertical = rb.top > ra.top + 10;
+  const k = vertical ? (by - ay) * 0.5 : (bx - ax) * 0.5;
+  const c1 = vertical ? [ax, ay + k] : [ax + k, ay - 40];
+  const c2 = vertical ? [bx, by - k] : [bx - k, by - 40];
+  $('linkPath').setAttribute('d', `M${ax},${ay} C${c1} ${c2} ${bx},${by}`);
+  $('linkA').setAttribute('cx', ax); $('linkA').setAttribute('cy', ay);
+  $('linkB').setAttribute('cx', bx); $('linkB').setAttribute('cy', by);
+  svg.classList.toggle('off', a.facing < 0.15 || b.facing < 0.15);
+  // badge sits at the curve midpoint (cubic Bézier at t = 0.5)
+  const mx = (ax + 3 * c1[0] + 3 * c2[0] + bx) / 8, my = (ay + 3 * c1[1] + 3 * c2[1] + by) / 8;
+  const badge = $('matchBadge');
+  // stacked (phone) layout: keep the badge at the right edge of the seam so it never covers the chips
+  badge.style.left = `${vertical ? twin.width - 44 : mx}px`;
+  badge.style.top = `${vertical ? rb.top - twin.top : my}px`;
+}
+
+/* ---------------- mission profile ---------------- */
+
+function buildProfile() {
+  $('presets').innerHTML = cfg.perfis.map((p) => `<button data-id="${p.id}" aria-pressed="false">${esc(p.label.replace(' (equal weights)', ''))}</button>`).join('');
+  $('presets').querySelectorAll('button').forEach((b) => { b.onclick = () => applyProfile(b.dataset.id); });
+  $('sliders').innerHTML = cfg.dimensoes.map((d) => `
+    <label>${esc(d.label)}<input type="range" min="0" max="3" step="1" data-dim="${d.id}"><output data-o="${d.id}"></output></label>`).join('');
+  $('sliders').querySelectorAll('input').forEach((inp) => {
+    inp.oninput = () => {
+      state.weights[inp.dataset.dim] = Number(inp.value);
+      state.profileId = 'custom';
+      syncProfileUi();
+      refreshRanking();
+    };
+  });
   applyProfile('general', false);
 }
 
@@ -126,129 +202,129 @@ function applyProfile(id, refresh = true) {
   const p = cfg.perfis.find((x) => x.id === id) || cfg.perfis[0];
   state.profileId = p.id;
   state.weights = { ...p.pesos };
+  syncProfileUi();
+  if (refresh) refreshRanking();
+}
+
+function syncProfileUi() {
+  const p = cfg.perfis.find((x) => x.id === state.profileId);
+  $('profileName').textContent = p ? p.label.replace(' (equal weights)', '') : 'Custom';
+  $('presets').querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.id === state.profileId)));
   cfg.dimensoes.forEach((d) => {
     const w = state.weights[d.id] ?? 0;
-    document.querySelector(`[data-w="${d.id}"]`).textContent = w ? `×${w}` : 'off';
+    document.querySelector(`[data-dim="${d.id}"]`).value = w;
+    document.querySelector(`[data-o="${d.id}"]`).textContent = w ? `×${w}` : 'off';
   });
-  if (refresh) refreshRanking({ keepSite: state.siteId });
 }
 
-function effectiveWeights() {
-  const w = {};
-  for (const d of cfg.dimensoes) w[d.id] = state.enabled[d.id] ? (state.weights[d.id] ?? 0) : 0;
-  return w;
+function toggleProfile(force) {
+  const pop = $('profilePop');
+  const show = force ?? pop.hidden;
+  pop.hidden = !show;
+  $('profileBtn').setAttribute('aria-expanded', String(show));
 }
 
-/* ---------------- ranking + Earth globe ---------------- */
+/* ---------------- details drawer ---------------- */
 
-function refreshRanking({ keepSite = null } = {}) {
-  const ranked = rankSites(sites, state.targetId, effectiveWeights());
-  state.ranked = ranked;
-
-  const topIds = new Set(ranked.slice(0, 3).map((r) => r.site.id));
-  earthGlobe.setMarkers(ranked.map((r) => ({
-    id: r.site.id, lat: r.site.lat, lon: r.site.lon,
-    color: scoreColor(r.score), size: 0.7 + r.score * 0.6, small: true,
-    showLabel: topIds.has(r.site.id),
-    labelHtml: `${esc(shortName(r.site))}<span class="s">${pct(r.score)}</span>`,
-  })));
-
-  $('ranking').innerHTML = ranked.slice(0, RANK_SIZE).map((r, i) => `
-    <li><button data-id="${r.site.id}" aria-pressed="false">
-      <span class="pos">${i + 1}</span>
-      <span class="name"><b>${esc(r.site.nome)}</b><small>${esc(r.site.regiao)} ${roleChip(r.site)}</small></span>
-      <span class="score" style="color:${scoreColor(r.score)}">${pct(r.score)}</span>
-    </button></li>`).join('');
-  $('ranking').querySelectorAll('button').forEach((b) => { b.onclick = () => selectSite(b.dataset.id, { fly: true }); });
-
-  const keep = keepSite && ranked.some((r) => r.site.id === keepSite);
-  selectSite(keep ? keepSite : ranked[0]?.site.id, { fly: true });
+function openDrawer(mode) {
+  $('drawerBody').innerHTML = mode === 'list' ? listHtml() : analogHtml();
+  if (mode === 'list') {
+    $('drawerBody').querySelectorAll('[data-id]').forEach((b) => { b.onclick = () => { selectSite(b.dataset.id); openDrawer('analog'); }; });
+  }
+  $('drawer').classList.add('open');
+  $('drawer').setAttribute('aria-hidden', 'false');
+  $('scrim').hidden = false;
+  $('drawerClose').focus();
 }
 
-function selectSite(id, { fly = false } = {}) {
-  const r = state.ranked.find((x) => x.site.id === id);
-  if (!r) return;
-  state.siteId = id;
-  earthGlobe.setActive(id);
-  if (fly) earthGlobe.flyTo(r.site.lat, r.site.lon);
-  $('ranking').querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.id === id)));
-  const rank = state.ranked.indexOf(r) + 1;
-  $('earthLabel').textContent = `#${rank} ${r.site.nome} · ${r.site.lat.toFixed(2)}°, ${r.site.lon.toFixed(2)}°`;
-  renderAnalogCard(r, rank);
-  history.replaceState(null, '', `#${state.body}/${state.targetId}/${id}`);
+function closeDrawer() {
+  $('drawer').classList.remove('open');
+  $('drawer').setAttribute('aria-hidden', 'true');
+  $('scrim').hidden = true;
 }
 
-function shortName(s) {
-  return s.nome.replace(/^(Domo de|Cratera de|Serra Norte de)\s+/i, '').replace(/\s*\(.*\)$/, '');
-}
-
-function roleChip(s) {
-  if (s.papel === 'referência' || s.papel === 'referencia') return '<span class="chip ref">Validation · classic</span>';
-  if (/\bBR$/.test(s.regiao)) return '<span class="chip br">New · BR</span>';
-  return '<span class="chip br">New</span>';
-}
-
-/* ---------------- analog card ---------------- */
-
-function renderAnalogCard({ site: s, score }, rank) {
+function listHtml() {
   const t = target();
-  const w = effectiveWeights();
-  const dims = s.notas?.[t.id] || {};
-  const bars = cfg.dimensoes.map((d) => {
-    const v = dims[d.id];
-    const on = w[d.id] > 0;
-    if (typeof v !== 'number') return '';
-    return `<li class="${on ? '' : 'off'}"><span>${esc(d.label)}${on ? '' : ' (off)'}</span>
-      <span class="track"><span class="fill" style="width:${v * 100}%;background:${scoreColor(v)}"></span></span>
-      <span class="v">${pct(v)}</span></li>`;
-  }).join('');
+  return `<div class="d-head"><span class="kicker">All Earth twins</span><h2 id="dTitle">${esc(t.nome)}</h2><p>${esc(profileLabel())}</p></div>
+    <div class="chips" style="position:static;flex-direction:column;align-items:stretch;padding:18px 0 0">
+    ${state.ranked.map((r, i) => `<button class="chip" data-id="${r.site.id}" aria-selected="${r.site.id === state.siteId}" style="justify-content:space-between">
+      <span><span class="n">${i + 1}</span> ${esc(siteName(r.site))} <span class="n">${esc(r.site.regiao)}</span></span>
+      <span class="s" style="color:${scoreColor(r.score)}">${pct(r.score)}</span></button>`).join('')}
+    </div>`;
+}
 
+function analogHtml() {
+  const t = target();
+  const r = state.ranked.find((x) => x.site.id === state.siteId);
+  const s = r.site;
+  const rank = state.ranked.indexOf(r) + 1;
   const a = s.analogia?.[t.id] || s.analogia?.[t.corpo] || {};
-  const works = (a.works || []).map((x) => `<li>${esc(x)}</li>`).join('') || '<li class="always">No notes yet.</li>';
-  const breaks = (a.breaks || []).map((x) => `<li>${esc(x)}</li>`).join('');
-  const always = cfg.sempre_quebra.map((x) => `<li class="always">${esc(x)}</li>`).join('');
+  const li = (arr) => arr.slice(0, 3).map((x) => `<li>${esc(x)}</li>`).join('');
 
   const facts = [
     ['Type', s.tipo_en || s.tipo],
     ['Elevation', num(s.elev_media_m, ' m')],
     ['Mean slope', num(s.declividade_media, '°', 1)],
     ['Drivable (<15°)', s.frac_transitavel_15 != null ? pct(s.frac_transitavel_15) : null],
-    ['Air temp.', num(s.t2m_c, ' °C', 1)],
+    ['Air temperature', num(s.t2m_c, ' °C', 1)],
     ['Rain', num(s.chuva_anual_mm, ' mm/yr')],
-    ['NDVI', num(s.ndvi_medio, '', 2)],
-    ['Dominant mineral (EMIT)', s.emit_mineral_dominante],
-  ].filter(([, v]) => v != null && v !== '').map(([k, v]) => `<span>${esc(k)}: <b>${esc(v)}</b></span>`).join('');
+    ['Vegetation (NDVI)', num(s.ndvi_medio, '', 2)],
+    ['Mineral (EMIT)', s.emit_mineral_dominante],
+  ].filter(([, v]) => v != null && v !== '').map(([k, v]) => `<div><span>${esc(k)}</span>${esc(v)}</div>`).join('');
+  const tfacts = Object.entries(t.indicadores || {}).map(([k, v]) => `<div><span>${esc(k)}</span>${esc(v)}</div>`).join('');
 
-  const C = 2 * Math.PI * 52;
-  const card = $('analogCard');
-  card.hidden = false;
-  card.innerHTML = `
-    <div class="card-title">
-      <h2>#${rank} ${esc(s.nome)}</h2>
-      <span class="vs">${esc(s.regiao)} ↔ ${esc(t.nome)} (${BODY_NAME[t.corpo]})</span>
-      ${roleChip(s)}
+  return `
+    <div class="d-head">
+      <span class="kicker">Earth twin of ${esc(t.nome)}</span>
+      <h2 id="dTitle">${esc(siteName(s))}</h2>
+      <p>${esc(s.regiao)} · ${esc(s.tipo_en || s.tipo || '')}</p>
     </div>
-    <div class="card-grid">
-      <div class="ring">
-        <svg viewBox="0 0 120 120" role="img" aria-label="Similarity ${pct(score)}">
-          <circle cx="60" cy="60" r="52" fill="none" stroke="#1b2a42" stroke-width="10"/>
-          <circle cx="60" cy="60" r="52" fill="none" stroke="${scoreColor(score)}" stroke-width="10" stroke-linecap="round"
-            stroke-dasharray="${C * score} ${C}" transform="rotate(-90 60 60)"/>
-          <text x="60" y="68" text-anchor="middle" font-size="26" font-weight="700" fill="currentColor">${pct(score)}</text>
-        </svg>
-        <div class="lbl">Analog index · ${esc(cfg.perfis.find((p) => p.id === state.profileId).label)}</div>
-      </div>
-      <div>
-        <h3>Similarity by dimension</h3>
-        <ul class="bars">${bars}</ul>
-      </div>
-      <div class="wb works"><h3>✓ Where it works</h3><ul>${works}</ul></div>
-      <div class="wb breaks"><h3>✗ Where it breaks</h3><ul>${breaks}${always}</ul></div>
+    <div class="d-score">
+      <span class="big" style="color:${scoreColor(r.score)}">${pct(r.score)}</span>
+      <span class="sub">match · #${rank} of ${state.ranked.length}<br>${esc(profileLabel())}</span>
     </div>
-    <div class="facts">${facts}</div>
-    <div class="facts">Data for ${esc(t.nome)}: ${esc((t.fontes || []).join(' · '))}</div>`;
+    ${radarSvg(s.notas?.[t.id] || {})}
+    <div class="legend"><span><i></i>${esc(shortName(s))}</span><span><i class="t"></i>${esc(shortTarget(t))} (perfect match)</span></div>
+    <div class="wb works"><h3>Where it works</h3><ul>${li(a.works || []) || '<li>No notes yet.</li>'}</ul></div>
+    <div class="wb breaks"><h3>Where it breaks</h3><ul>${li(a.breaks || [])}</ul>
+      <div class="always" title="${esc(cfg.sempre_quebra.join(' · '))}">${ALWAYS_SHORT.map((x) => `<span>${x}</span>`).join('')}</div></div>
+    <details class="more"><summary>More data</summary>
+      <div class="facts">${facts}</div>
+      <h3 style="font-size:13px;margin:16px 0 0;color:var(--muted)">${esc(t.nome)}</h3>
+      <div class="facts">${tfacts}</div>
+      <p class="src">Target data: ${esc((t.fontes || []).join(' · '))}</p>
+    </details>`;
+}
+
+function radarSvg(dims) {
+  const D = cfg.dimensoes, n = D.length, R = 92, cx = 150, cy = 125;
+  const pt = (i, v) => {
+    const ang = -Math.PI / 2 + (i * 2 * Math.PI) / n;
+    return [cx + Math.cos(ang) * R * v, cy + Math.sin(ang) * R * v];
+  };
+  const poly = (vals) => vals.map((v, i) => pt(i, v).map((x) => x.toFixed(1)).join(',')).join(' ');
+  const rings = [0.25, 0.5, 0.75].map((k) => `<polygon class="grid" points="${poly(D.map(() => k))}"/>`).join('');
+  const axes = D.map((_, i) => { const [x, y] = pt(i, 1); return `<line class="axis" x1="${cx}" y1="${cy}" x2="${x}" y2="${y}"/>`; }).join('');
+  const labels = D.map((d, i) => {
+    const [x, y] = pt(i, 1.2);
+    const anchor = Math.abs(x - cx) < 8 ? 'middle' : x > cx ? 'start' : 'end';
+    const on = (state.weights[d.id] ?? 0) > 0;
+    return `<text x="${x.toFixed(1)}" y="${(y + 4).toFixed(1)}" text-anchor="${anchor}" class="${on ? '' : 'off'}">${esc(d.label.split(' ')[0].replace(/&$/, ''))}</text>`;
+  }).join('');
+  return `<svg class="radar" viewBox="-30 0 360 250" role="img" aria-label="Similarity by dimension">
+    ${rings}${axes}
+    <polygon class="target" points="${poly(D.map(() => 1))}"/>
+    <polygon class="earth" points="${poly(D.map((d) => dims[d.id] ?? 0))}"/>
+    ${labels}</svg>`;
+}
+
+function profileLabel() {
+  const p = cfg.perfis.find((x) => x.id === state.profileId);
+  return p ? `${p.label} profile` : 'Custom weights';
 }
 
 function num(v, unit = '', d = 0) {
   return typeof v === 'number' ? `${v.toLocaleString('en-US', { maximumFractionDigits: d, minimumFractionDigits: d })}${unit}` : null;
 }
+const fmtLat = (v) => `${Math.abs(v).toFixed(1)}°${v < 0 ? 'S' : 'N'}`;
+const fmtLon = (v) => `${Math.abs(v).toFixed(1)}°${v < 0 ? 'W' : 'E'}`;

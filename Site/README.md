@@ -1,6 +1,6 @@
-# Site AnaloGêmeo (three.js)
+# Site Illuminat Horizontes (three.js)
 
-Site estático, todo em inglês. Mostra a Lua ou Marte num globo 3D clicável; ao escolher um alvo (Shackleton, Malapert, Haworth, Marius Hills, Jezero, Gale, Arcadia), um globo da Terra ao lado marca os análogos, com ranking, nota por dimensão e o cartão "where it works / where it breaks".
+Site estático, todo em inglês, em tela cheia e com pouca informação à vista: a Lua ou Marte de um lado e a Terra do outro (empilhados no celular), ligados por uma linha animada com a nota de semelhança no meio. Clicar num alvo (Shackleton, Malapert, Haworth, Marius Hills, Jezero, Gale, Arcadia) leva a Terra até o melhor análogo; os outros aparecem como botões embaixo. "Why it matches" abre o painel com radar Terra × alvo, onde a analogia funciona e onde quebra, e os dados em "More data". O perfil de missão (pesos por dimensão) fica no botão de ajustes do topo.
 
 ## Rodar localmente
 
