@@ -28,7 +28,6 @@ Tudo em **inglês**, com o site publicado e testado no celular. Depois disso, se
 | P5 | Hardware | Estação ESP32, sensores, envio via MQTT, caixa de "regolito" e tempestade de poeira |
 | P6 | Conteúdo e vídeo | Textos de cada lugar (funciona/quebra + fontes) e o vídeo de 30 s |
 
-Com 4 pessoas: P1 junta com P6 e P2 junta com P3.
 
 **Próximos passos (agora):**
 1. Distribuir os papéis acima.
@@ -325,7 +324,7 @@ Custo estimado dos componentes: R$ 250–450 (componentes comuns de eletrônica,
 
 ## 7. Cronograma de 48 horas e papéis
 
-### Papéis (equipe de até 6)
+### Papéis (equipe de 6 pessoas)
 
 | Papel | Perfil sugerido | Responsabilidade |
 |---|---|---|
@@ -336,7 +335,6 @@ Custo estimado dos componentes: R$ 250–450 (componentes comuns de eletrônica,
 | **P5 IoT e hardware** | eletrônica / automação / mecatrônica | ESP32, sensores, MQTT, caixa de regolito, tempestade de poeira (Núcleo); mini-rover (Extra E1) |
 | **P6 Pesquisa, conteúdo e vídeo** | qualquer área | Fichas dos análogos, textos "funciona/quebra", gravação e edição do vídeo |
 
-Com 4 pessoas: P1+P6 juntos e P2+P3 juntos.
 
 ### Primeiras horas (preparação, já com o evento em andamento)
 - Criar contas: **NASA Earthdata** (gratuita e imediata; dá acesso ao AppEEARS), **Copernicus Data Space** (gratuita), GitHub, HiveMQ Cloud.
@@ -411,7 +409,7 @@ Regras do Guia de Submissão de 2025 (conferir se mudou em 2026). **Se qualquer 
 
 ## 11. Próximos passos imediatos
 
-1. Confirmar o tamanho da equipe e distribuir os papéis da seção 7. **P4 é o dono do site.**
+1. Distribuir os 6 papéis da seção 7. **P4 é o dono do site.**
 2. Criar as contas: Earthdata, GitHub e HiveMQ agora. A Copernicus Data Space só é necessária para o Extra E2.
 3. Alvos do Núcleo definidos: **Marte / Jezero** e **Lua / Shackleton**.
 4. Separar o hardware da estação (seção 6). O mini-rover só depois do Núcleo.
