@@ -1,7 +1,7 @@
 # Plano de Projeto: Gêmeo Digital de Análogos Terrestres da Lua e de Marte
 
 **NASA Space Apps Challenge 2026: "Identify Earth Locations that Analog the Permanent Moon Base Locations and Mars"**
-versão 5 · 14/11/2026 (pipeline de dados em Parquet no Colab)
+versão 6 · 14/11/2026 (regras oficiais de submissão e análise dos vencedores)
 
 ---
 
@@ -289,19 +289,22 @@ Com 4 pessoas: P1+P6 juntos e P2+P3 juntos.
 
 ## 8. Entregáveis do Space Apps
 
-Confirmar o formato exato no regulamento de 2026. Normalmente a submissão pede:
+Regras do Guia de Submissão de 2025 (conferir se mudou em 2026). **Se qualquer limite for ultrapassado, o projeto fica fora do julgamento global.**
 
-1. **Página do projeto** no site do Space Apps: título, resumo, descrição detalhada, desafio escolhido.
-2. **Demonstração:** vídeo curto (em geral ~30 s) **ou** apresentação de poucos slides (em geral até 7). Sugestão de roteiro para o vídeo:
-   - 0–5 s: "Onde na Terra podemos treinar para a Lua e Marte?"
-   - 5–15 s: globo girando com o mapa de calor e o ranking aparecendo (inclui os análogos brasileiros)
-   - 15–25 s: clique em Vargeão ou Carajás, cartão radar, "funciona / quebra"; corte para a estação ESP32 com a tempestade de poeira refletida no gêmeo
-   - 25–30 s: "Os mesmos dados monitoram a desertificação no semiárido. AnaloGêmeo."
-3. **Link do projeto final:** site publicado + repositório GitHub.
-4. **Lista de dados e recursos usados** (NASA e outras agências), com créditos. Os jurados avaliam o uso de dados da NASA.
-5. **Declaração de uso de IA**, se exigida pelo regulamento.
+1. **Página do projeto em inglês:** nome, resumo, descrição detalhada (o que faz, como funciona, ferramentas e hardware), **NASA Data** (campo obrigatório para prêmio global) e **Space Agency Partner & Other Data**. Aceita imagens (até 10 MB), mas não vídeos.
+2. **Demonstração:** **vídeo de até 30 s** (com legenda em inglês) **ou até 7 slides em inglês**, contando o slide de título. Precisa de link público, sem login (YouTube, Drive, GitHub). Roteiro sugerido, com uma única ideia forte:
+   - 0–5 s: "Where on Earth can we train for the Moon and Mars?"
+   - 5–15 s: globo com o mapa de calor; os análogos conhecidos aparecem no topo (validação) e, ao lado deles, os novos brasileiros
+   - 15–25 s: cartão de Vargeão "funciona / quebra" e corte para a estação ESP32 na tempestade de poeira, com a geração solar caindo no painel
+   - 25–30 s: "The same data tracks desertification in Brazil's semi-arid region. AnaloGêmeo."
+3. **Link do projeto final:** público, sem senha nem cadastro (site publicado + repositório GitHub).
+4. **Referências:** listar **todo** recurso externo usado (dados, código aberto, imagens, bibliotecas). O formulário exige marcar que o trabalho é original.
+5. **Uso de IA:** é permitido, mas imagens e vídeos gerados por IA precisam de **marca d'água visível** "AI-generated", e código e dados gerados por IA precisam ser declarados no texto. Não usar logos da NASA em material gerado.
+6. **Equipe:** de 1 a 6 pessoas, todas inscritas no mesmo evento local.
 
-Critérios típicos de avaliação: impacto, criatividade, validade científica, relevância para o desafio e apresentação. O plano cobre cada um: impacto (seção 9), criatividade (gêmeo + IoT + análogos brasileiros), validade (validação com análogos conhecidos + "onde quebra"), relevância (mapa + métrica + caracterização) e apresentação (globo 3D + demo física).
+**Critérios de avaliação** (oficiais, sem pesos): **Impacto**, **Criatividade**, **Validade** (cientificamente válido e funcionando no mundo real), **Relevância** (responde ao desafio, completo, viável, utilizável) e **Apresentação**, que tem o mesmo peso dos outros quatro. Como o plano cobre cada um: impacto (seção 9), criatividade (gêmeo + IoT + análogos brasileiros), validade (validação com análogos conhecidos + "onde quebra"), relevância (mapa + métrica + caracterização) e apresentação (globo + demo física).
+
+**Prêmios-alvo:** *Best Use of Data* (dados de várias agências em um índice acessível) e *Local Impact* (semiárido e análogos brasileiros). *Galactic Impact* fica como opção.
 
 ---
 
