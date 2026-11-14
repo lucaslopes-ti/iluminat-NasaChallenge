@@ -34,8 +34,7 @@ Análise feita em 14/11/2026 a partir dos Global Winners de 2023, 2024 e 2025 (3
 ## O que ajustar
 
 1. **Cortar o escopo para um MVP que cabe em 30 s.**
-   - **Manter:** 1 alvo (Marte/Jezero) e, se der tempo, o segundo (Lua/Shackleton); 2 perfis (Rover e Astrobiologia) em vez de 4; globo + ranking + cartão "funciona / quebra"; estação ESP32 com a tempestade de poeira.
-   - **Opcional, só se sobrar tempo:** mini-rover com encoders, radar Sentinel-1/RADARSAT, JAXA, ML.
+   - **Feito no plano v7 (seção 1A):** o Núcleo é globo com o índice (Jezero e Shackleton, perfil único), ranking com os análogos brasileiros, cartão "funciona / quebra" e estação ESP32 com a tempestade de poeira. Os Extras, em ordem, são mini-rover com patinagem, radar Sentinel-1 e mais perfis de missão.
 2. **Transformar a validação em evidência visível.** Uma frase e um número no produto, por exemplo: "dos 8 análogos clássicos, 7 aparecem no top 5% do índice". É isso que dá *Validade* e diferencia de "um mapa bonito".
 3. **Fazer o impacto na Terra aparecer no produto.** Uma camada ou botão no globo: "Semi-arid watch: as mesmas variáveis mostram onde o semiárido está mais parecido com Marte, e isso é ruim".
 4. **Escrever tudo em inglês desde já:** página, slides, legendas e interface do site. É regra eliminatória.

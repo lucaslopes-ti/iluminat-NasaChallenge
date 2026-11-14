@@ -1,7 +1,7 @@
 # Plano de Projeto: Gêmeo Digital de Análogos Terrestres da Lua e de Marte
 
 **NASA Space Apps Challenge 2026: "Identify Earth Locations that Analog the Permanent Moon Base Locations and Mars"**
-versão 6 · 14/11/2026 (regras oficiais de submissão e análise dos vencedores)
+versão 7 · 14/11/2026 (escopo reorganizado em Núcleo e Extras)
 
 ---
 
@@ -18,6 +18,42 @@ Nome provisório: **AnaloGêmeo** (alternativas: *Espelho Planetário*, *TwinSit
 
 ---
 
+## 1A. Escopo: Núcleo e Extras (leia primeiro)
+
+**Prioridade nº 1: o site funcionando bem e uma história que faça sentido.** Tudo o que não é Núcleo só entra depois que o Núcleo estiver pronto, publicado e testado.
+
+### A história em 3 atos (é ela que guia o site e o vídeo)
+1. **A pergunta:** "Onde na Terra podemos treinar para a Lua e para Marte?" Os análogos famosos (Atacama, Antártida, Havaí) já são conhecidos. Existem outros que ninguém olhou?
+2. **A descoberta:** o AnaloGêmeo compara a Terra inteira com Marte e com a Lua usando dados abertos da NASA e de agências parceiras. Os análogos clássicos aparecem no topo, o que mostra que o método funciona, e **ao lado deles surgem locais brasileiros novos**. Cada local mostra com honestidade **onde a analogia funciona e onde quebra**.
+3. **O gêmeo vivo e o impacto:** uma estação ESP32 de baixo custo traz o "chão" para o gêmeo. Numa tempestade de poeira simulada, a energia solar cai, que é o mesmo problema dos rovers em Marte e das usinas solares no semiárido brasileiro. Explorar Marte ajuda a entender a Terra.
+
+### Núcleo (precisa estar funcionando na entrega)
+
+| # | Entrega | Critério de pronto |
+|---|---|---|
+| N1 | **Globo com o Índice de Analogia** | Mapa de calor da Terra inteira (~5 km) para **Marte/Jezero** e **Lua/Shackleton**, com troca de alvo em 1 clique. Um perfil único ("Geral", pesos iguais entre as dimensões) |
+| N2 | **Ranking com os análogos brasileiros** | Top 10 clicável. Análogos clássicos marcados como "validação" e brasileiros como "novo · BR". Frase de validação com número (ex.: "7 de 8 análogos clássicos no top 5%") |
+| N3 | **Cartão "funciona / quebra"** | Para cada local do ranking: radar por dimensão (Terra × alvo), 3 pontos que funcionam, 3 que quebram (gravidade, atmosfera, radiação sempre visíveis) e fontes de dados |
+| N4 | **Estação ESP32 + tempestade de poeira** | Painel "aqui × Jezero" recebendo dados ao vivo por MQTT. Com o ventilador ligado, a poeira sobe e a geração solar estimada cai no gráfico. Plano B: reprodução de um log gravado |
+
+**Requisitos do site (valem para todo o Núcleo):**
+- Site **estático** (sem back-end próprio), publicado no GitHub Pages ou na Vercel desde as primeiras horas e atualizado a cada entrega.
+- Abre em menos de 3 s, funciona em notebook e celular, **todo em inglês**.
+- Se o MQTT cair, o painel mostra o log gravado com o aviso "replay". O site nunca fica quebrado na frente do jurado.
+- Só entra na `main` o que já funciona. Trabalho em andamento fica em branch.
+
+### Extras (só depois do Núcleo pronto, nesta ordem)
+
+| Ordem | Extra | O que acrescenta |
+|---|---|---|
+| E1 | **Mini-rover com medição de patinagem** | Teste de mobilidade em 3 tipos de "regolito" (vibração, inclinação e patinagem), ligado à dimensão Terreno |
+| E2 | **Radar Sentinel-1** | Rugosidade por radar nos análogos brasileiros, comparada ao Mini-RF lunar |
+| E3 | **Mais perfis de missão** | Rover, Astrobiologia, Gelo/ISRU e Habitat, com pesos diferentes no índice |
+
+Fora do escopo do hackathon (citar só como "próximos passos" no pitch): RADARSAT, JAXA G-Portal, ML, Arcadia Planitia, relevo 3D lado a lado.
+
+---
+
 ## 2. Conceito do Gêmeo Digital
 
 Um gêmeo digital tem três partes: o objeto físico, o modelo virtual e o fluxo de dados que liga os dois. No nosso caso:
@@ -29,11 +65,11 @@ Um gêmeo digital tem três partes: o objeto físico, o modelo virtual e o fluxo
 | **Estação física** (o "objeto real") | Estação ESP32 com sensores ambientais e um mini-rover de teste | Dados ao vivo por MQTT: temperatura, UV, poeira, umidade do solo, inclinação |
 | **Motor de comparação** | Índice de similaridade por dimensão e cartão "onde a analogia quebra" | Python (pré-calculado) + painel web |
 
-**Experiência do usuário (demo):**
+**Experiência do usuário (demo).** Os itens marcados *(extra)* só entram depois do Núcleo:
 1. O usuário escolhe um **alvo**: polo sul lunar (borda da cratera Shackleton / regiões candidatas do Artemis III) ou Marte (Cratera Jezero; Arcadia Planitia, candidata para missões humanas por ter gelo raso).
-2. Escolhe um **perfil de missão**, que muda os pesos do índice: *Teste de rover/mobilidade*, *Astrobiologia*, *Gelo e ISRU*, *Construção/habitat*.
+2. *(extra)* Escolhe um **perfil de missão**, que muda os pesos do índice: *Teste de rover/mobilidade*, *Astrobiologia*, *Gelo e ISRU*, *Construção/habitat*.
 3. Um **globo 3D** mostra o mapa de calor de similaridade da Terra inteira e um ranking dos 10 melhores locais.
-4. Ao clicar em um local, abre o **cartão do análogo**: um gráfico radar por dimensão (Terra x alvo), o relevo 3D lado a lado e a lista "funciona / não funciona".
+4. Ao clicar em um local, abre o **cartão do análogo**: um gráfico radar por dimensão (Terra x alvo), *(extra: relevo 3D lado a lado)* e a lista "funciona / não funciona".
 5. O **painel ao vivo** mostra a estação ESP32 medindo agora e compara com o valor do alvo na mesma hora solar local. Exemplo: "Aqui: 31 °C, UV 9. Jezero agora: −62 °C, UV estimado 3× maior".
 
 ---
@@ -258,8 +294,8 @@ Custo estimado dos componentes: R$ 250–450 (componentes comuns de eletrônica,
 | **P1 Líder de produto e pitch** | qualquer área, boa comunicação | Escopo, decisões, roteiro do vídeo, submissão |
 | **P2 Dados da Terra** | TI / desenvolvimento | Download Earthdata/AppEEARS, indicadores e **tabela Parquet** de indicadores (notebooks 01 e 02) |
 | **P3 Dados planetários e métrica** | TI / ciência de dados | Recortes Lua/Marte, vetores de referência, motor de similaridade sobre o Parquet, validação (notebooks 03 e 04) |
-| **P4 Front-end e visualização 3D** | desenvolvimento web | CesiumJS, cartão do análogo, radar, painel ao vivo |
-| **P5 IoT e hardware** | eletrônica / automação / mecatrônica | ESP32, sensores, MQTT, mini-rover, caixa de regolito |
+| **P4 Front-end e visualização 3D** | desenvolvimento web | **Dono do site**: CesiumJS, ranking, cartão do análogo, painel ao vivo, publicação contínua e qualidade |
+| **P5 IoT e hardware** | eletrônica / automação / mecatrônica | ESP32, sensores, MQTT, caixa de regolito, tempestade de poeira (Núcleo); mini-rover (Extra E1) |
 | **P6 Pesquisa, conteúdo e vídeo** | qualquer área | Fichas dos análogos, textos "funciona/quebra", gravação e edição do vídeo |
 
 Com 4 pessoas: P1+P6 juntos e P2+P3 juntos.
@@ -271,19 +307,22 @@ Com 4 pessoas: P1+P6 juntos e P2+P3 juntos.
 - Separar o hardware e testar a gravação do ESP32 com um "olá mundo" de MQTT.
 - Estudar o Moon Trek e o Mars Trek para saber baixar recortes.
 
-### Durante (48 h)
+### Durante (48 h): Núcleo primeiro
 
-| Bloco | Horas | Entregas |
-|---|---|---|
-| **Sexta à noite: Arrancada** | 0–4 | Escopo travado (2 alvos, 4 perfis, 3 análogos BR em destaque). Repositório criado. P3 baixa os recortes Lua/Marte. P5 monta a estação na protoboard. P4 sobe o globo Cesium "vazio" no ar |
-| **Noite: Dados base** | 4–12 | P2: baixar os produtos globais (MODIS CMG, GMTED, GPM, MERRA-2) e calcular os indicadores da Terra (declividade, rugosidade, LST dia/noite, NDVI, AOD, aridez). P3: vetores de referência dos alvos. P5: sensores publicando no MQTT. P6: fichas dos análogos |
-| **Sábado de manhã: Motor** | 12–20 | Similaridade por dimensão + IAP pelos 4 perfis. **Checkpoint de validação:** Atacama/Haughton/Vales Secos aparecem bem? Ajustar σ e pesos |
-| **Sábado à tarde: Integração** | 20–30 | Mapas de score como camadas no globo. Ranking clicável. Cartão do análogo com radar. Painel ao vivo recebendo o ESP32 |
-| **Sábado à noite: Gêmeo completo** | 30–38 | Comparação "aqui x alvo agora". Mini-rover e caixa de regolito. Cartão "onde a analogia quebra". **Congelar funcionalidades às 38 h** |
-| **Domingo de manhã: Polimento e vídeo** | 38–44 | Corrigir bugs. Gravar o vídeo da demo (tela + estação física). README com dados usados e créditos |
-| **Domingo: Submissão** | 44–48 | Enviar com folga de pelo menos 2 h antes do prazo |
+| Bloco | Horas | Entregas | Marco |
+|---|---|---|---|
+| **Sexta à noite: Arrancada** | 0–4 | Escopo travado no Núcleo. Repositório e branches. P4 publica um **site "esqueleto" no ar** (globo vazio + layout das 4 áreas, em inglês). P3 baixa os recortes de Jezero e Shackleton. P5 monta a estação na protoboard. P6 escreve o texto dos 3 atos | Site no ar |
+| **Noite: Dados base** | 4–12 | P2: produtos globais (MODIS CMG, GMTED, GPM, MERRA-2) → tabela Parquet de indicadores. P3: vetores de referência dos 2 alvos. P4: ranking e cartão com **dados falsos** no formato final (JSON combinado com P3). P5: sensores publicando no MQTT. P6: fichas dos análogos (funciona/quebra + fontes) | Contrato de dados (formato do JSON) fechado |
+| **Sábado de manhã: Motor** | 12–20 | Índice "Geral" para os 2 alvos. **Checkpoint de validação às 18 h:** os análogos clássicos aparecem no topo? Ajustar σ. Gerar a frase de validação com número. P4: painel ao vivo lendo o MQTT | Índice real calculado |
+| **Sábado à tarde: Integração** | 20–28 | Dados reais no site: mapa de calor, ranking, cartões. Tempestade de poeira funcionando de ponta a ponta. **Gravar o log da estação (plano B)** | **Núcleo completo no ar (28 h)** |
+| **Sábado à noite: Teste e Extras** | 28–36 | Teste do site em celular e notebook, por quem não fez o código. Corrigir o que quebrar. **Só então** começar os Extras, na ordem E1 → E2 → E3, cada um em branch | Núcleo estável |
+| **Domingo de manhã: Congelar e gravar** | 36–42 | **Congelamento às 36 h**: nenhuma funcionalidade nova. Extras inacabados ficam fora da `main`. Gravar o vídeo de 30 s (tela + estação). README, referências e declaração de IA | Vídeo gravado |
+| **Domingo: Submissão** | 42–48 | Página do projeto em inglês, links públicos testados numa aba anônima, envio com pelo menos 2 h de folga | Enviado |
 
-**Regra de corte:** se às 20 h o motor de similaridade não estiver funcionando, reduzir para **1 alvo (Marte/Jezero) e 3 dimensões (terreno, térmico, aridez)**. Um gêmeo pequeno funcionando vence um grande quebrado.
+**Regras de corte:**
+- **Às 18 h**, se o índice não estiver confiável: ficar só com **Marte/Jezero** e 3 dimensões (terreno, térmico, aridez). A Lua vira "próximo passo".
+- **Às 28 h**, se o Núcleo não estiver no ar: cancelar todos os Extras e dedicar a equipe inteira a terminar o Núcleo.
+- **Às 36 h**, o que não estiver pronto fica fora. Um site pequeno funcionando vence um grande quebrado.
 
 ---
 
@@ -327,15 +366,15 @@ Regras do Guia de Submissão de 2025 (conferir se mudou em 2026). **Se qualquer 
 | Dados de Lua/Marte grandes demais | Usar Moon Trek / Mars Trek para recortes; trabalhar em resolução reduzida |
 | Wi-Fi do evento instável para o MQTT | Gravar um log de dados da estação para reprodução; usar um roteador de celular |
 | Métrica gera resultados estranhos | Checkpoint de validação às 20 h com análogos conhecidos; ajustar pesos e σ |
-| Escopo grande demais | Regra de corte às 20 h e congelamento de funcionalidades às 38 h |
+| Escopo grande demais | Núcleo e Extras separados; regras de corte às 18 h, 28 h e 36 h |
 | Afirmações científicas erradas | Toda ficha de análogo cita a fonte; usar "indica", "sugere" e evitar exageros |
 
 ---
 
 ## 11. Próximos passos imediatos
 
-1. Confirmar o tamanho da equipe e distribuir os papéis da seção 7.
-2. Criar as contas (Earthdata, Copernicus Data Space, GitHub, HiveMQ) agora.
-3. Escolher os 2 alvos finais (recomendação: **polo sul lunar / Shackleton** e **Marte / Jezero**).
-4. Separar o hardware da seção 6 no laboratório.
-5. Validar o nome do projeto e criar o repositório.
+1. Confirmar o tamanho da equipe e distribuir os papéis da seção 7. **P4 é o dono do site.**
+2. Criar as contas: Earthdata, GitHub e HiveMQ agora. A Copernicus Data Space só é necessária para o Extra E2.
+3. Alvos do Núcleo definidos: **Marte / Jezero** e **Lua / Shackleton**.
+4. Separar o hardware da estação (seção 6). O mini-rover só depois do Núcleo.
+5. P4 publica o site "esqueleto" no GitHub Pages nas primeiras 4 horas.
