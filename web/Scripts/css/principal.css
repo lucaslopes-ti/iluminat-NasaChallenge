@@ -223,6 +223,38 @@ dialog::backdrop { background: rgba(0, 0, 0, .6); }
 dialog p, dialog li { font-size: 14px; line-height: 1.55; color: #c9d6ea; }
 
 /* ---------- small screens ---------- */
+/* ---------- zoom controls (one set per globe) ---------- */
+.zoom-ui { position: absolute; inset: 0; pointer-events: none; z-index: 4; }
+.zoom-ctl {
+  position: absolute; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; pointer-events: auto;
+  border-radius: 14px; background: rgba(8, 14, 26, .62); border: 1px solid var(--line); backdrop-filter: blur(10px);
+  opacity: .55; transition: opacity .2s;
+}
+.world-body .zoom-ctl { left: 18px; }
+.world-earth .zoom-ctl { right: 18px; }
+.world:hover .zoom-ctl, .zoom-ctl:focus-within, .zoom-ui.zoomed .zoom-ctl { opacity: 1; }
+.zoom-ctl button { width: 36px; height: 34px; border: 0; background: none; color: var(--text); font-size: 18px; line-height: 1; display: grid; place-items: center; }
+.zoom-ctl button + button { border-top: 1px solid var(--line); }
+.zoom-ctl button:hover { background: rgba(255, 255, 255, .06); }
+.zoom-ctl button:first-child { border-radius: 13px 13px 0 0; }
+.zoom-ctl button:last-child { border-radius: 0 0 13px 13px; color: var(--muted); }
+.zoom-ui:not(.zoomed) [data-z=home] { display: none; }
+.zoom-ui:not(.zoomed) [data-z=out] { border-radius: 0 0 13px 13px; }
+.zoom-scale {
+  position: absolute; top: calc(50% + 62px); display: grid; gap: 3px; font-size: 11px; color: var(--muted);
+  font-variant-numeric: tabular-nums; opacity: 0; transition: opacity .3s;
+}
+.world-body .zoom-scale { left: 18px; }
+.world-earth .zoom-scale { right: 18px; justify-items: end; }
+.zoom-scale i { display: block; height: 5px; border: 1.5px solid var(--muted); border-top: 0; }
+.zoom-ui.zoomed .zoom-scale { opacity: 1; }
+.zoom-hint {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); padding: 8px 14px; border-radius: 999px;
+  background: rgba(8, 14, 26, .82); border: 1px solid var(--line-2); font-size: 13px; color: var(--text);
+  opacity: 0; transition: opacity .25s; white-space: nowrap;
+}
+.zoom-hint.show { opacity: 1; }
+
 /* ---------- field rover section ---------- */
 .station { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; padding: 56px 22px 80px; border-top: 1px solid var(--line); }
 .st-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
@@ -272,6 +304,11 @@ dialog p, dialog li { font-size: 14px; line-height: 1.55; color: #c9d6ea; }
   #roverBtn span { display: none; }
   #roverBtn { width: 38px; padding: 0; justify-content: center; }
   .layer-seg { left: auto; right: 12px; }
+  .world-body .zoom-ctl { left: auto; right: 12px; }
+  .world-body .zoom-scale { left: auto; right: 12px; justify-items: end; }
+  .world-earth .zoom-ctl, .world-earth .zoom-scale { right: 10px; }
+  .zoom-ctl { opacity: .8; }
+  .zoom-ctl button { width: 34px; height: 32px; }
   .hover-ll { left: 12px; transform: none; }
   :root { --top: 56px; }
   .topbar { grid-template-columns: auto 1fr auto; padding: 0 14px; gap: 8px; }

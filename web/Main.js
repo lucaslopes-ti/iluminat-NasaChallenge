@@ -13,8 +13,8 @@ const TEXTURES = {
 const ELEV = { url: 'data/elevacao_srtm30_025.bin', res: 0.25, w: 1440, h: 720, ocean: -9999, nodata: -32768 };
 let elevGrid = null;
 const BODY = {
-  moon: { name: 'Moon', bump: 0.02 },
-  mars: { name: 'Mars', bump: 0.015 },
+  moon: { name: 'Moon', bump: 0.02, radiusKm: 1737.4 },
+  mars: { name: 'Mars', bump: 0.015, radiusKm: 3389.5 },
 };
 const TOP_CHIPS = 3;
 const ALWAYS_SHORT = ['1 g gravity', 'Thick atmosphere', 'Radiation shield'];
@@ -37,13 +37,13 @@ async function init() {
   $('sampleChip').hidden = !sites.some((s) => s.exemplo || s.modo_teste);
 
   const phone = matchMedia('(max-width: 820px)').matches;
-  bodyGlobe = new Globe($('bodyGlobe'), { zoom: phone ? 0.68 : 0.86, idleSpin: 0.0006 });
-  earthGlobe = new Globe($('earthGlobe'), { zoom: phone ? 0.9 : 0.8, atmosphere: '#6fb6ff', atmosphereStrength: 0.6, minDistance: 1.4 });
+  bodyGlobe = new Globe($('bodyGlobe'), { zoom: phone ? 0.68 : 0.86, idleSpin: 0.0006, minDistance: 1.2, radiusKm: 1737.4, name: 'Moon' });
+  earthGlobe = new Globe($('earthGlobe'), { zoom: phone ? 0.9 : 0.8, idleSpin: 0.0004, atmosphere: '#6fb6ff', atmosphereStrength: 0.6, minDistance: 1.22, radiusKm: 6371, name: 'Earth' });
   setEarthLayer(store.get('earth-layer') === 'relief' ? 'relief' : 'satellite');
   document.querySelectorAll('#layerSeg button').forEach((b) => { b.onclick = () => setEarthLayer(b.dataset.layer); });
   loadElevation();
-  bodyGlobe.onPick = (id) => selectTarget(id);
-  earthGlobe.onPick = (id) => selectSite(id);
+  bodyGlobe.onPick = (id) => selectTarget(id, { focus: true });
+  earthGlobe.onPick = (id) => selectSite(id, { focus: true });
   earthGlobe.onFrame = drawLink;
   earthGlobe.onHover = (ll) => {
     const el = $('earthHover');
@@ -188,23 +188,28 @@ function setBody(body, { targetId = null, siteId = null } = {}) {
   document.querySelectorAll('.topbar .seg button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.body === body)));
   const targets = cfg.alvos.filter((a) => a.corpo === body);
   bodyGlobe.setTexture(TEXTURES[body], { bump: BODY[body].bump });
+  bodyGlobe.radiusKm = BODY[body].radiusKm;
+  bodyGlobe.ui.home.setAttribute('aria-label', `Show the whole ${BODY[body].name}`);
+  bodyGlobe.ui.home.title = `Whole ${BODY[body].name}`;
+  bodyGlobe._scaleKey = null;
   bodyGlobe.setMarkers(targets.map((t) => ({ id: t.id, lat: t.lat, lon: t.lon, label: t.nome, kind: 'target', color: '#7cb6ff' })));
 
   $('targetChips').innerHTML = targets.map((t) =>
     `<button class="chip" role="option" data-id="${t.id}" aria-selected="false">${esc(shortTarget(t))}</button>`).join('');
-  $('targetChips').querySelectorAll('button').forEach((b) => { b.onclick = () => selectTarget(b.dataset.id); });
+  $('targetChips').querySelectorAll('button').forEach((b) => { b.onclick = () => selectTarget(b.dataset.id, { focus: true }); });
 
   selectTarget(targetId || targets[0].id, { siteId });
 }
 
 function shortTarget(t) { return t.nome.replace(/ (crater rim|crater|skylight|Massif)$/i, (m) => (/massif/i.test(m) ? m : '')); }
 
-function selectTarget(id, { siteId = null } = {}) {
+function selectTarget(id, { siteId = null, focus = false } = {}) {
   const t = cfg.alvos.find((a) => a.id === id);
   if (!t) return;
   state.targetId = id;
   bodyGlobe.setActive(id);
-  bodyGlobe.flyTo(t.lat, t.lon);
+  if (focus) bodyGlobe.focus(t.lat, t.lon);
+  else bodyGlobe.flyTo(t.lat, t.lon);
   $('targetChips').querySelectorAll('button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.id === id)));
   $('bodyKicker').textContent = `${BODY[t.corpo].name} · target`;
   $('targetName').textContent = t.nome;
@@ -229,20 +234,22 @@ function refreshRanking(keepSite = state.siteId) {
       <span class="s" style="color:${scoreColor(r.score)}">${pct(r.score)}</span></button>`).join('')
     + (more > 0 ? `<button class="chip" data-all="1">+${more} more</button>` : '');
   $('rankChips').querySelectorAll('button').forEach((b) => {
-    b.onclick = () => (b.dataset.all ? openDrawer('list') : selectSite(b.dataset.id));
+    b.onclick = () => (b.dataset.all ? openDrawer('list') : selectSite(b.dataset.id, { focus: true }));
   });
 
   const keep = keepSite && ranked.some((r) => r.site.id === keepSite);
   selectSite(keep ? keepSite : ranked[0]?.site.id);
 }
 
-function selectSite(id) {
+function selectSite(id, { focus = false } = {}) {
   const r = state.ranked.find((x) => x.site.id === id);
   if (!r) return;
   state.siteId = id;
   const rank = state.ranked.indexOf(r) + 1;
   earthGlobe.setActive(id);
-  earthGlobe.flyTo(r.site.lat, r.site.lon);
+  if (focus) earthGlobe.focus(r.site.lat, r.site.lon);
+  else if (id !== earthGlobe.activeFlightId) earthGlobe.flyTo(r.site.lat, r.site.lon);
+  earthGlobe.activeFlightId = id;
   $('rankChips').querySelectorAll('button[data-id]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.id === id)));
 
   $('siteName').textContent = siteName(r.site);
@@ -344,7 +351,7 @@ function toggleProfile(force) {
 function openDrawer(mode) {
   $('drawerBody').innerHTML = mode === 'list' ? listHtml() : analogHtml();
   if (mode === 'list') {
-    $('drawerBody').querySelectorAll('[data-id]').forEach((b) => { b.onclick = () => { selectSite(b.dataset.id); openDrawer('analog'); }; });
+    $('drawerBody').querySelectorAll('[data-id]').forEach((b) => { b.onclick = () => { selectSite(b.dataset.id, { focus: true }); openDrawer('analog'); }; });
   }
   $('drawer').classList.add('open');
   $('drawer').setAttribute('aria-hidden', 'false');
