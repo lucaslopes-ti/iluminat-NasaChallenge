@@ -381,17 +381,6 @@ Regras do Guia de Submissão de 2025 (conferir se mudou em 2026). **Se qualquer 
 
 **Critérios de avaliação** (oficiais, sem pesos): **Impacto**, **Criatividade**, **Validade** (cientificamente válido e funcionando no mundo real), **Relevância** (responde ao desafio, completo, viável, utilizável) e **Apresentação**, que tem o mesmo peso dos outros quatro. Como o plano cobre cada um: impacto (seção 9), criatividade (gêmeo + IoT + análogos brasileiros), validade (validação com análogos conhecidos + "onde quebra"), relevância (mapa + métrica + caracterização) e apresentação (globo + demo física).
 
-**O que os vencedores anteriores nos ensinam** (30 Global Winners de 2023, 2024 e 2025):
-- **Um problema, uma resposta clara.** Nenhum vencedor tenta fazer cinco coisas. Por isso separamos Núcleo e Extras.
-- **Produto funcionando, quase sempre web** (site, dashboard, app ou jogo). Modelos aparecem, mas sempre com uma interface.
-- **Dados da NASA no centro e declarados.** O *Best Use of Data* premia quem torna dados espaciais acessíveis.
-- **Impacto concreto na Terra:** agricultura, queimadas, clima e reflorestamento dominam *Galactic Impact* e *Local Impact*.
-- **Hardware ou campo + satélite também vence:** QUEÑARIS (Peru, *Local Impact* 2025) juntou drones, microrganismos, satélite e IA, no mesmo espírito da nossa estação ESP32.
-- **O Brasil vence com frequência:** PureFlow (2025), 42 QuakeHeroes, Connected Earth Museum e G.R.O.W. (2024), e três vencedores em 2023.
-- **Onde precisamos caprichar:** *Validade* (mostrar a validação com número, por exemplo "7 de 8 análogos clássicos no top 5%") e *Impacto* (o semiárido tem que aparecer no site, não só no texto).
-
-Fontes: [NASA 2025](https://www.nasa.gov/learning-resources/stem-engagement-at-nasa/nasa-announces-2025-international-space-apps-challenge-global-winners/), [NASA 2024](https://www.nasa.gov/learning-resources/stem-engagement-at-nasa/nasa-international-space-apps-challenge-announces-2024-global-winners/), [NASA 2023](https://science.nasa.gov/directorates/smd/2023-nasa-international-space-apps-challenge-announces-10-global-winners), [Judging & Awards Guide](https://www.spaceappschallenge.org/resources/judging-awards-guide), [Project Submission Guide](https://www.spaceappschallenge.org/resources/project-submission-guide/).
-
 **Prêmios-alvo:** *Best Use of Data* (dados de várias agências em um índice acessível) e *Local Impact* (semiárido e análogos brasileiros). *Galactic Impact* fica como opção.
 
 ---
