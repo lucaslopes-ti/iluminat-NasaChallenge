@@ -227,6 +227,9 @@ dialog p, dialog li { font-size: 14px; line-height: 1.55; color: #c9d6ea; }
 .d-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); }
 .d-actions a { color: var(--text); text-decoration: none; }
 
+.target-title { position: relative; }
+.target-title .pick, .target-title select { display: none; }
+
 /* ---------- zoom controls (one set per globe) ---------- */
 .zoom-ui { position: absolute; inset: 0; pointer-events: none; z-index: 4; }
 .zoom-ctl {
@@ -341,7 +344,11 @@ dialog p, dialog li { font-size: 14px; line-height: 1.55; color: #c9d6ea; }
   .world-earth .coords { font-size: 12px; }
   .layer-seg { bottom: 56px; }
   .layer-seg button { padding: 3px 10px; font-size: 11px; }
-  .world-earth .globe { left: 34%; bottom: 50px; }
+  .world-earth .globe { left: 0; bottom: 50px; }
+  .world-body .chips { display: none; }
+  .target-title { display: inline-flex; align-items: center; gap: 6px; }
+  .target-title .pick { display: inline; font-size: 13px; color: var(--moon); }
+  .target-title select { display: block; position: absolute; inset: 0; width: 100%; opacity: 0; font-size: 16px; cursor: pointer; }
   .world-earth .marker-label { display: none; }
   .world-earth .world-head h2 { font-size: 18px; }
   .match { display: none; }
