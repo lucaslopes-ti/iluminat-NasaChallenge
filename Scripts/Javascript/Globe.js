@@ -272,14 +272,15 @@ export class Globe {
 
     const camDir = this.camera.position.clone().normalize();
     for (const m of this.markers.values()) {
-      m.obj.visible = m.pos.dot(camDir) > 0.08; // hide markers (and their glow) on the far side
+      m.obj.visible = m.pos.dot(camDir) > 0.18; // hide markers (and their glow) on the far side
       const { pulse, glow } = m.obj.userData;
       const ph = (t * 0.9) % 1;
       if (pulse) {
         pulse.scale.setScalar(m.obj.userData.active ? 1 + 1.4 * ph : 1);
         pulse.material.opacity = m.obj.userData.active ? 0.9 * (1 - ph) : 0;
       }
-      if (glow) glow.material.opacity = (m.obj.userData.active ? 0.95 : 0.7) * (0.85 + 0.15 * Math.sin(t * 2 + m.pos.x * 9));
+      if (glow) glow.material.opacity = m.obj.userData.active ? 0.6 : 0.3;
+      if (m.obj.userData.beam) m.obj.userData.beam.forEach((o) => { o.visible = !!m.obj.userData.active; });
     }
 
     this.renderer.render(this.scene, this.camera);
@@ -298,7 +299,10 @@ export class Globe {
       const facing = m.pos.dot(camDir) > 0.2;
       const show = facing && (m.def.showLabel || id === this.activeId);
       if (!show) { m.label.classList.add('hidden'); continue; }
-      v.copy(m.pos).project(this.camera);
+      // a selected pin has a beam: put its label on the beam's tip
+      v.copy(m.pos);
+      if (m.obj.userData.beam && id === this.activeId) v.multiplyScalar(1 + 0.16 * m.obj.scale.x);
+      v.project(this.camera);
       if (!m.size) m.size = { w: m.label.offsetWidth || 80, h: m.label.offsetHeight || 22 };
       const x = THREE.MathUtils.clamp((v.x * 0.5 + 0.5) * w, m.size.w / 2 + 4, w - m.size.w / 2 - 4);
       const y = (-v.y * 0.5 + 0.5) * h;
@@ -327,23 +331,40 @@ function makeTargetMarker({ color = '#5aa2ff' }) {
 }
 
 function makeAnalogMarker({ color = '#34d399', size = 1 }) {
+  // A crisp map pin: dark outline, ring in the score colour, white core,
+  // a soft halo, and (when selected) a beam rising from the surface.
   const g = new THREE.Group();
   const c = new THREE.Color(color);
-  const s = 0.014 * size;
-  const glow = new THREE.Sprite(new THREE.SpriteMaterial({
-    map: getGlowTexture(), color: c, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+  const s = 0.011 * size;
+  const flat = (geo, mat, z) => { const m = new THREE.Mesh(geo, mat); m.position.z = z; return m; };
+  const basic = (o) => new THREE.MeshBasicMaterial({ ...o, transparent: true, depthWrite: false, side: THREE.DoubleSide });
+
+  const halo = new THREE.Sprite(new THREE.SpriteMaterial({
+    map: getGlowTexture(), color: c, transparent: true, opacity: 0.35, depthWrite: false, blending: THREE.AdditiveBlending,
   }));
-  glow.scale.setScalar(s * 9);
-  glow.position.z = 0.01;
-  const dot = new THREE.Mesh(new THREE.CircleGeometry(s, 20), new THREE.MeshBasicMaterial({ color: 0xffffff, depthWrite: false }));
-  dot.position.z = 0.004;
-  const pulse = new THREE.Mesh(new THREE.RingGeometry(s * 1.6, s * 2, 40),
-    new THREE.MeshBasicMaterial({ color: c, transparent: true, opacity: 0, depthWrite: false, side: THREE.DoubleSide }));
-  pulse.position.z = 0.005;
-  const hit = new THREE.Mesh(new THREE.CircleGeometry(0.07, 12), new THREE.MeshBasicMaterial({ visible: false }));
-  g.add(glow, dot, pulse, hit);
+  halo.scale.setScalar(s * 5);
+  halo.position.z = 0.006;
+  const outline = flat(new THREE.CircleGeometry(s * 1.75, 32), basic({ color: 0x050a14, opacity: 0.85 }), 0.003);
+  const ring = flat(new THREE.RingGeometry(s * 0.9, s * 1.45, 40), basic({ color: c }), 0.004);
+  const core = flat(new THREE.CircleGeometry(s * 0.55, 24), basic({ color: 0xffffff }), 0.005);
+  const pulse = flat(new THREE.RingGeometry(s * 1.8, s * 2.15, 48), basic({ color: c, opacity: 0 }), 0.0045);
+
+  const beamLen = 0.16;
+  const beam = new THREE.Mesh(new THREE.CylinderGeometry(s * 0.18, s * 0.45, beamLen, 12, 1, true),
+    new THREE.MeshBasicMaterial({ color: c, transparent: true, opacity: 0.75, depthWrite: false, blending: THREE.AdditiveBlending }));
+  beam.rotation.x = Math.PI / 2;
+  beam.position.z = beamLen / 2;
+  beam.visible = false;
+  const tip = new THREE.Sprite(new THREE.SpriteMaterial({ map: getGlowTexture(), color: c, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending }));
+  tip.scale.setScalar(s * 4);
+  tip.position.z = beamLen;
+  tip.visible = false;
+
+  const hit = new THREE.Mesh(new THREE.CircleGeometry(0.06, 12), new THREE.MeshBasicMaterial({ visible: false }));
+  g.add(halo, outline, ring, core, pulse, beam, tip, hit);
   g.userData.pulse = pulse;
-  g.userData.glow = glow;
+  g.userData.glow = halo;
+  g.userData.beam = [beam, tip];
   return g;
 }
 

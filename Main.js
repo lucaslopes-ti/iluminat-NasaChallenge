@@ -1,5 +1,5 @@
-import { Globe, escapeHtml as esc } from './Scripts/Javascript/Globe.js?v=1794681253';
-import { rankSites, scoreColor, pct } from './Scripts/Javascript/Scoring.js?v=1794681253';
+import { Globe, escapeHtml as esc } from './Scripts/Javascript/Globe.js?v=1794681914';
+import { rankSites, scoreColor, pct } from './Scripts/Javascript/Scoring.js?v=1794681914';
 
 const TEXTURES = {
   moon: 'Assets/Textures/moon.jpg',
