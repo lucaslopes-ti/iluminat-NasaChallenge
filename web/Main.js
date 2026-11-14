@@ -210,7 +210,8 @@ function setBody(body, { targetId = null, siteId = null } = {}) {
   bodyGlobe.ui.home.setAttribute('aria-label', `Show the whole ${BODY[body].name}`);
   bodyGlobe.ui.home.title = `Whole ${BODY[body].name}`;
   bodyGlobe._scaleKey = null;
-  bodyGlobe.setMarkers(targets.map((t) => ({ id: t.id, lat: t.lat, lon: t.lon, label: t.nome, kind: 'target', color: '#7cb6ff' })));
+  bodyGlobe.setMarkers(targets.map((t) => ({ id: t.id, lat: t.lat, lon: t.lon, label: t.nome, kind: 'target', color: '#7cb6ff',
+    labelHtml: `${esc(t.nome)}<span class="ll">${fmtLat(t.lat, 2)}, ${fmtLon(t.lon, 2)}</span>` })));
 
   $('targetChips').innerHTML = targets.map((t) =>
     `<button class="chip" role="option" data-id="${t.id}" aria-selected="false">${esc(shortTarget(t))}</button>`).join('');
@@ -231,7 +232,7 @@ function selectTarget(id, { siteId = null, focus = false } = {}) {
   $('targetChips').querySelectorAll('button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.id === id)));
   $('bodyKicker').textContent = `${BODY[t.corpo].name} · target`;
   $('targetName').textContent = t.nome;
-  $('targetWhere').textContent = `${t.regiao} · ${fmtLat(t.lat)}, ${fmtLon(t.lon)}`;
+  $('targetWhere').textContent = `${t.regiao} · ${fmtLat(t.lat, 2)}, ${fmtLon(t.lon, 2)}`;
   refreshRanking(siteId);
 }
 
