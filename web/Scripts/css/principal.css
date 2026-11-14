@@ -84,8 +84,25 @@ h1, h2, h3 { font-family: var(--display); letter-spacing: -.01em; }
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-.world-head { position: absolute; top: 8px; left: 28px; max-width: 70%; z-index: 3; pointer-events: none; }
-.world-head.right { left: auto; right: 28px; text-align: right; }
+.world-head { position: absolute; z-index: 3; }
+/* info card pinned next to the chosen place on the globe (placed by Main.js every frame) */
+.pin-card {
+  left: 0; top: 0; width: max-content; max-width: 330px; padding: 10px 14px 12px; border-radius: 14px;
+  background: rgba(8, 14, 26, .84); border: 1px solid var(--line-2); backdrop-filter: blur(10px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, .45); will-change: transform; transition: opacity .2s;
+}
+.pin-card.unplaced { opacity: 0; }
+.pin-card::after {
+  content: ""; position: absolute; width: 10px; height: 10px; background: inherit; border: inherit; border-width: 0;
+  transform: rotate(45deg); display: none;
+}
+.pin-card[data-side="above"]::after { display: block; left: calc(var(--ax, 50%) - 6px); bottom: -6px; border-right-width: 1px; border-bottom-width: 1px; }
+.pin-card[data-side="below"]::after { display: block; left: calc(var(--ax, 50%) - 6px); top: -6px; border-left-width: 1px; border-top-width: 1px; }
+.pin-card[data-side="left"]::after { display: block; top: calc(var(--ay, 50%) - 6px); right: -6px; border-right-width: 1px; border-top-width: 1px; }
+.pin-card[data-side="right"]::after { display: block; top: calc(var(--ay, 50%) - 6px); left: -6px; border-left-width: 1px; border-bottom-width: 1px; }
+.pin-card .layer-seg { position: static; margin-top: 10px; width: max-content; }
+.pin-card .cta { margin-top: 10px; }
+.marker-label.active { display: none; }
 .world-head p.coords { margin-top: 2px; font-variant-numeric: tabular-nums; color: var(--earth); font-size: 13px; letter-spacing: .02em; }
 .marker-label .ll { margin-left: 6px; color: var(--muted); font-variant-numeric: tabular-nums; font-weight: 400; }
 .layer-seg { position: absolute; left: 18px; bottom: 72px; z-index: 3; display: flex; padding: 3px; border-radius: 999px; background: rgba(8, 14, 26, .7); border: 1px solid var(--line); backdrop-filter: blur(10px); }
@@ -95,11 +112,10 @@ h1, h2, h3 { font-family: var(--display); letter-spacing: -.01em; }
 .m-score { display: none; font-size: 14px; color: var(--muted); }
 .m-score b { font-family: var(--display); font-size: 18px; }
 .world-head > * { pointer-events: auto; }
-.world-head h1, .world-head h2, .world-head p, .kicker { text-shadow: 0 1px 12px rgba(0, 0, 0, .9), 0 0 2px rgba(0, 0, 0, .8); }
 .kicker { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
 .world-body .kicker { color: var(--moon); }
 .world-earth .kicker { color: var(--earth); }
-.world-head h1, .world-head h2 { margin: 6px 0 4px; font-size: clamp(22px, 2.4vw, 34px); line-height: 1.1; font-weight: 600; }
+.world-head h1, .world-head h2 { margin: 4px 0 4px; font-size: clamp(20px, 1.9vw, 28px); line-height: 1.1; font-weight: 600; }
 .world-head p { margin: 0; color: var(--muted); font-size: 14px; }
 .role { margin-left: 6px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line-2); font-size: 10px; letter-spacing: .08em; color: var(--text); }
 .role.br { border-color: rgba(94, 240, 181, .5); color: var(--earth); }
@@ -314,7 +330,6 @@ dialog p, dialog li { font-size: 14px; line-height: 1.55; color: #c9d6ea; }
   .st-table td:not(.now)::before { content: attr(data-label) ": "; color: var(--dim); }
   #roverBtn span { display: none; }
   #roverBtn { width: auto; padding: 0 10px; gap: 6px; }
-  .layer-seg { left: auto; right: 12px; }
   .world-body .zoom-ctl { left: auto; right: 12px; }
   .world-body .zoom-scale { left: auto; right: 12px; justify-items: end; }
   .world-earth .zoom-ctl, .world-earth .zoom-scale { right: 10px; }
@@ -330,10 +345,14 @@ dialog p, dialog li { font-size: 14px; line-height: 1.55; color: #c9d6ea; }
   #profileName { display: none; }
   .ghost { padding: 0 11px; }
   .twin { grid-template-columns: minmax(0, 1fr); grid-template-rows: 1fr 1fr; }
-  .world-head { top: 4px; left: 16px; max-width: 70%; }
-  .world-head h1, .world-head h2 { font-size: 20px; margin: 2px 0; }
-  .world-head p { font-size: 12px; }
-  .world-earth .world-head { top: 50%; bottom: auto; transform: translateY(-50%); left: 16px; right: auto; text-align: left; max-width: 46%; }
+  .pin-card { max-width: min(196px, 54vw); padding: 7px 10px 9px; border-radius: 11px; }
+  .pin-card .kicker { font-size: 9.5px; letter-spacing: .1em; }
+  .pin-card h1, .pin-card h2, .world-earth .pin-card h2 { font-size: 16px; margin: 2px 0; }
+  .pin-card p, .pin-card .m-score { font-size: 11px; }
+  .pin-card .m-score b { font-size: 14px; }
+  .world-earth .pin-card .coords { font-size: 11px; }
+  .pin-card .cta { margin-top: 6px; padding: 4px 10px; font-size: 12px; }
+  .pin-card .layer-seg { margin-top: 6px; }
   .cta { margin-top: 8px; padding: 6px 12px; font-size: 13px; }
   .chips { bottom: 10px; padding: 4px 16px; justify-content: flex-start; }
   .world-body .chips { bottom: 6px; }
@@ -341,9 +360,6 @@ dialog p, dialog li { font-size: 14px; line-height: 1.55; color: #c9d6ea; }
   .chips { justify-content: safe center; gap: 6px; }
   .zoom-ui .zoom-ctl, .zoom-ui .zoom-scale, .hover-ll { display: none; }
   .world-earth .role, #siteWhere { display: none; }
-  .world-earth .world-head { max-width: 44%; }
-  .world-earth .coords { font-size: 12px; }
-  .layer-seg { bottom: 56px; }
   .layer-seg button { padding: 3px 10px; font-size: 11px; }
   .world-earth .globe { left: 0; bottom: 50px; }
   .world-body .chips { display: none; }
@@ -351,7 +367,6 @@ dialog p, dialog li { font-size: 14px; line-height: 1.55; color: #c9d6ea; }
   .target-title .pick { display: inline; font-size: 13px; color: var(--moon); }
   .target-title select { display: block; position: absolute; inset: 0; width: 100%; opacity: 0; font-size: 16px; cursor: pointer; }
   .world-earth .marker-label { display: none; }
-  .world-earth .world-head h2 { font-size: 18px; }
   .match { display: none; }
   .m-score { display: inline; }
   .sample { top: 6px; right: 12px; bottom: auto; }
