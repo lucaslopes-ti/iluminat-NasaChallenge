@@ -39,7 +39,7 @@ async function init() {
   $('sampleChip').hidden = !sites.some((s) => s.exemplo || s.modo_teste);
 
   bodyGlobe = new Globe($('bodyGlobe'), { zoom: phone ? 0.68 : 0.86, idleSpin: 0.0006, minDistance: 1.2, radiusKm: 1737.4, name: 'Moon' });
-  earthGlobe = new Globe($('earthGlobe'), { zoom: phone ? 0.9 : 0.8, idleSpin: 0.0004, atmosphere: '#6fb6ff', atmosphereStrength: 0.6, minDistance: 1.22, radiusKm: 6371, name: 'Earth' });
+  earthGlobe = new Globe($('earthGlobe'), { offsetX: phone ? 0.17 : 0, zoom: phone ? 0.9 * 0.66 / (1 - 2 * 0.17) : 0.8, idleSpin: 0.0004, atmosphere: '#6fb6ff', atmosphereStrength: 0.6, minDistance: 1.22, radiusKm: 6371, name: 'Earth' });
   setEarthLayer(store.get('earth-layer') === 'relief' ? 'relief' : 'satellite');
   document.querySelectorAll('#layerSeg button').forEach((b) => { b.onclick = () => setEarthLayer(b.dataset.layer); });
   loadElevation();
@@ -226,13 +226,16 @@ function setBody(body, { targetId = null, siteId = null } = {}) {
   bodyGlobe.ui.home.setAttribute('aria-label', `Show the whole ${BODY[body].name}`);
   bodyGlobe.ui.home.title = `Whole ${BODY[body].name}`;
   bodyGlobe._scaleKey = null;
-  bodyGlobe.setMarkers(targets.map((t) => ({ id: t.id, lat: t.lat, lon: t.lon, label: t.nome, kind: 'target', color: '#7cb6ff',
+  bodyGlobe.setMarkers(targets.map((t) => ({ id: t.id, lat: t.lat, lon: t.lon, label: t.nome, kind: 'target', color: '#7cb6ff', showLabel: phone,
     // phone: the title already shows the coordinates, keep the pin label short
-    labelHtml: phone ? esc(t.nome) : `${esc(t.nome)}<span class="ll">${fmtLat(t.lat, 2)}, ${fmtLon(t.lon, 2)}</span>` })));
+    labelHtml: phone ? esc(t.nome.split(' ')[0]) : `${esc(t.nome)}<span class="ll">${fmtLat(t.lat, 2)}, ${fmtLon(t.lon, 2)}</span>` })));
 
   $('targetChips').innerHTML = targets.map((t) =>
     `<button class="chip" role="option" data-id="${t.id}" aria-selected="false">${esc(phone ? t.nome.split(' ')[0] : shortTarget(t))}</button>`).join('');
   $('targetChips').querySelectorAll('button').forEach((b) => { b.onclick = () => selectTarget(b.dataset.id, { focus: true }); });
+  // phone: the chips are hidden; the title opens the native picker instead
+  $('targetSelect').innerHTML = targets.map((t) => `<option value="${t.id}">${esc(t.nome)}</option>`).join('');
+  $('targetSelect').onchange = (e) => selectTarget(e.target.value, { focus: true });
 
   selectTarget(targetId || targets[0].id, { siteId });
 }
@@ -249,6 +252,7 @@ function selectTarget(id, { siteId = null, focus = false } = {}) {
   $('targetChips').querySelectorAll('button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.id === id)));
   $('bodyKicker').textContent = `${BODY[t.corpo].name} · target`;
   $('targetName').textContent = t.nome;
+  $('targetSelect').value = id;
   $('targetWhere').textContent = `${t.regiao} · ${fmtLat(t.lat, 2)}, ${fmtLon(t.lon, 2)}`;
   refreshRanking(siteId);
 }
@@ -343,7 +347,8 @@ function drawLink() {
   $('linkPath').setAttribute('d', d);
   $('linkA').setAttribute('cx', ax); $('linkA').setAttribute('cy', ay);
   $('linkB').setAttribute('cx', bx); $('linkB').setAttribute('cy', by);
-  svg.classList.toggle('off', a.facing < 0.15 || b.facing < 0.15);
+  const inside = (p, r) => p.x >= 0 && p.y >= 0 && p.x <= r.width && p.y <= r.height;
+  svg.classList.toggle('off', a.facing < 0.15 || b.facing < 0.15 || !inside(a, ra) || !inside(b, rb));
 }
 
 /* ---------------- mission profile ---------------- */
