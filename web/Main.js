@@ -19,6 +19,7 @@ const BODY = {
 const TOP_CHIPS = 3;
 const ALWAYS_SHORT = ['1 g gravity', 'Thick atmosphere', 'Radiation shield'];
 const $ = (id) => document.getElementById(id);
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const store = {
   get(k) { try { return localStorage.getItem(k); } catch { return null; } },
   set(k, v) { try { localStorage.setItem(k, v); } catch { /* private mode */ } },
@@ -45,6 +46,11 @@ async function init() {
   bodyGlobe.onPick = (id) => selectTarget(id, { focus: true });
   earthGlobe.onPick = (id) => selectSite(id, { focus: true });
   earthGlobe.onFrame = drawLink;
+  bodyGlobe.onHover = (ll) => {
+    const el = $('bodyHover');
+    el.hidden = !ll;
+    if (ll) el.textContent = `${fmtLat(ll.lat, 2)}, ${fmtLon(ll.lon, 2)}`;
+  };
   earthGlobe.onHover = (ll) => {
     const el = $('earthHover');
     el.hidden = !ll;
@@ -110,7 +116,13 @@ function initStation() {
   station.onChange = renderStation;
   $('stBroker').value = store.get('st-broker') || stCfg.mqtt.broker;
   $('stTopic').value = store.get('st-topic') || stCfg.mqtt.topico;
-  $('roverBtn').onclick = () => $('station').scrollIntoView({ behavior: 'smooth' });
+  $('roverBtn').onclick = () => $('station').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+  $('stCsv').onclick = () => {
+    const url = URL.createObjectURL(new Blob([station.csv()], { type: 'text/csv' }));
+    const a = Object.assign(document.createElement('a'), { href: url, download: `rover-${station.mode}-${new Date().toISOString().slice(0, 19).replace(/[:T]/g, '-')}.csv` });
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  };
   if (!station.supportsUsb) $('stModes').querySelector('[data-mode=usb]').title = 'USB needs Chrome or Edge on a computer';
   $('stModes').querySelectorAll('button').forEach((b) => {
     b.onclick = () => {
@@ -146,6 +158,7 @@ function renderStation() {
   $('stStatusText').textContent = text;
   $('roverDot').dataset.status = $('stStatus').dataset.status;
   $('stDetail').textContent = detail;
+  $('stCsv').hidden = !station.log.length;
 
   const t = cfg?.alvos.find((a) => a.id === state.targetId);
   const r = state.ranked.find((x) => x.site.id === state.siteId);
@@ -162,7 +175,12 @@ function renderStation() {
     const sv = r && m.local ? r.site[m.local] : null;
     const site = sv == null ? '<span class="na">–</span>'
       : `${Number(sv).toFixed(m.casas)} <span class="u">${esc(m.unidade)}</span>${m.local_nome ? ` <span class="u">(${esc(m.local_nome)})</span>` : ''}`;
-    return `<tr><th scope="row">${esc(m.nome)}</th><td class="now">${now}${spark(station.history[m.id])}</td><td class="site" data-label="${esc(siteCol)}">${site}</td><td class="ref" data-label="${esc(targetCol)}">${esc(ref[m.id] || '–')}</td></tr>`;
+    let drop = '';
+    if (m.id === 'solar' && station.solarFraction != null) {
+      const d = Math.round((1 - station.solarFraction) * 100);
+      if (d >= 10) drop = ` <span class="drop" title="Below the best reading of this session (dust on the panel)">−${d}%</span>`;
+    }
+    return `<tr><th scope="row">${esc(m.nome)}</th><td class="now">${now}${drop}${spark(station.history[m.id])}</td><td class="site" data-label="${esc(siteCol)}">${site}</td><td class="ref" data-label="${esc(targetCol)}">${esc(ref[m.id] || '–')}</td></tr>`;
   }).join('');
 }
 
@@ -287,19 +305,24 @@ function drawLink() {
   const ax = ra.left - twin.left + a.x, ay = ra.top - twin.top + a.y;
   const bx = rb.left - twin.left + b.x, by = rb.top - twin.top + b.y;
   const vertical = rb.top > ra.top + 10;
-  const k = vertical ? (by - ay) * 0.5 : (bx - ax) * 0.5;
-  const c1 = vertical ? [ax, ay + k] : [ax + k, ay - 40];
-  const c2 = vertical ? [bx, by - k] : [bx - k, by - 40];
-  $('linkPath').setAttribute('d', `M${ax},${ay} C${c1} ${c2} ${bx},${by}`);
+  const badge = $('matchBadge');
+  let d;
+  if (vertical) {
+    // stacked (phone) layout: the badge is hidden, one S-curve from top to bottom
+    const k = (by - ay) * 0.5;
+    d = `M${ax},${ay} C${ax},${ay + k} ${bx},${by - k} ${bx},${by}`;
+  } else {
+    // the badge stays still in the middle of the seam; the link runs through it
+    const mx = twin.width / 2, my = twin.height / 2;
+    const k1 = (mx - ax) * 0.55, k2 = (bx - mx) * 0.55;
+    d = `M${ax},${ay} C${ax + k1},${ay} ${mx - k1},${my} ${mx},${my} C${mx + k2},${my} ${bx - k2},${by} ${bx},${by}`;
+    badge.style.left = `${mx}px`;
+    badge.style.top = `${my}px`;
+  }
+  $('linkPath').setAttribute('d', d);
   $('linkA').setAttribute('cx', ax); $('linkA').setAttribute('cy', ay);
   $('linkB').setAttribute('cx', bx); $('linkB').setAttribute('cy', by);
   svg.classList.toggle('off', a.facing < 0.15 || b.facing < 0.15);
-  // badge sits at the curve midpoint (cubic Bézier at t = 0.5)
-  const mx = (ax + 3 * c1[0] + 3 * c2[0] + bx) / 8, my = (ay + 3 * c1[1] + 3 * c2[1] + by) / 8;
-  const badge = $('matchBadge');
-  // stacked (phone) layout: keep the badge at the right edge of the seam so it never covers the chips
-  badge.style.left = `${vertical ? twin.width - 44 : mx}px`;
-  badge.style.top = `${vertical ? rb.top - twin.top : my}px`;
 }
 
 /* ---------------- mission profile ---------------- */

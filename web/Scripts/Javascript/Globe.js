@@ -53,6 +53,7 @@ function getGlowTexture() {
 export class Globe {
   constructor(container, { zoom = 1, atmosphere = null, atmosphereStrength = 0.6, minDistance = 1.25, maxDistance = 7, idleSpin = 0, radiusKm = 6371, name = 'globe' } = {}) {
     this.radiusKm = radiusKm;
+    this.minDistanceFloor = minDistance;
     this.name = name;
     this.container = container;
     this.zoomFactor = zoom; // 1 = whole globe fits the view with a small margin
@@ -64,7 +65,8 @@ export class Globe {
     this.onFrame = null;
     this.flight = null;
     this.visible = true;
-    this.idleSpin = idleSpin;
+    this.reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.idleSpin = this.reduceMotion ? 0 : idleSpin;
     this.lastInteraction = performance.now();
 
     const w = container.clientWidth || 300, h = container.clientHeight || 300;
@@ -151,7 +153,10 @@ export class Globe {
     const fit = 1.1 / Math.sin(Math.min(vHalf, hHalf));
     const ratio = this.camera.position.length() / this.homeDistance;
     this.homeDistance = fit / this.zoomFactor;
-    this.controls.maxDistance = Math.max(this.controls.maxDistance, this.homeDistance * 1.6);
+    // Zoom limits: never farther than a little past the whole-globe view, never closer than
+    // ~1/3 of its height above the surface (closer, the texture blurs and the globe covers the text).
+    this.controls.maxDistance = this.homeDistance * 1.12;
+    this.controls.minDistance = Math.max(this.minDistanceFloor, 1 + (this.homeDistance - 1) * 0.32);
     this.camera.position.setLength(this.homeDistance * (this._fitted ? ratio : 1));
     this._fitted = true;
   }
@@ -218,7 +223,7 @@ export class Globe {
     const rise = Math.min(0.9, ang / Math.PI) * (this.homeDistance - 1) * 0.55;
     const time = ms ?? THREE.MathUtils.clamp(700 + ang * 520 + Math.abs(from.length() - dist) * 260, 700, 2200);
     this.zoomAnim = null;
-    this.flight = { from, to, t0: performance.now(), ms: time, rise };
+    this.flight = { from, to, t0: performance.now(), ms: this.reduceMotion ? 1 : time, rise: this.reduceMotion ? 0 : rise };
     this.lastInteraction = performance.now();
   }
 
@@ -274,7 +279,7 @@ export class Globe {
     ui.querySelector('[data-z=in]').onclick = () => this.zoom(0.6);
     ui.querySelector('[data-z=out]').onclick = () => this.zoom(1 / 0.6);
     ui.querySelector('[data-z=home]').onclick = () => this.home();
-    this.ui = { root: ui, bar: ui.querySelector('.zoom-scale i'), text: ui.querySelector('.zoom-scale span'), hint: ui.querySelector('.zoom-hint'), home: ui.querySelector('[data-z=home]') };
+    this.ui = { root: ui, bar: ui.querySelector('.zoom-scale i'), text: ui.querySelector('.zoom-scale span'), hint: ui.querySelector('.zoom-hint'), home: ui.querySelector('[data-z=home]'), zin: ui.querySelector('[data-z=in]'), zout: ui.querySelector('[data-z=out]') };
     const mac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
     this.ui.hint.textContent = `${mac ? '⌘' : 'Ctrl'} + scroll to zoom`;
   }
@@ -319,6 +324,10 @@ export class Globe {
       this.ui.bar.style.width = `${px.toFixed(0)}px`;
       this.ui.text.textContent = `${nice.toLocaleString('en-US')} km`;
     }
+    const c = this.controls;
+    const target = this.zoomAnim ? this.zoomAnim.dist : d;
+    this.ui.zin.disabled = target <= c.minDistance * 1.01;
+    this.ui.zout.disabled = target >= c.maxDistance * 0.99;
     const zoomed = d < this.homeDistance * 0.92;
     if (zoomed !== this._zoomed) {
       this._zoomed = zoomed;
@@ -422,8 +431,8 @@ export class Globe {
       const { pulse, glow } = m.obj.userData;
       const ph = (t * 0.9) % 1;
       if (pulse) {
-        pulse.scale.setScalar(m.obj.userData.active ? 1 + 1.4 * ph : 1);
-        pulse.material.opacity = m.obj.userData.active ? 0.9 * (1 - ph) : 0;
+        pulse.scale.setScalar(m.obj.userData.active && !this.reduceMotion ? 1 + 1.4 * ph : 1);
+        pulse.material.opacity = m.obj.userData.active && !this.reduceMotion ? 0.9 * (1 - ph) : 0;
       }
       if (glow) glow.material.opacity = m.obj.userData.active ? 0.6 : 0.3;
       if (m.obj.userData.beam) m.obj.userData.beam.forEach((o) => { o.visible = !!m.obj.userData.active; });
