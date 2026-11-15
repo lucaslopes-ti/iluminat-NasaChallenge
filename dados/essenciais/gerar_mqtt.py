@@ -22,8 +22,8 @@ NIVEIS = {
 NOMES_NIVEL = ["baixo", "medio", "alto"]
 
 SENSORES = {
-    "temp":  {"nome": "Temperatura", "unidade": "C", "campos": ["lst_dia_c", "lst_noite_c"], "comparacao": "direta",
-              "texto": "Compare com a maxima e a minima de superficie do local e do alvo."},
+    "temp":  {"nome": "Temperatura", "unidade": "C", "campos": ["temp_ar_c", "amplitude_ar_c", "lst_dia_c", "lst_noite_c"], "comparacao": "direta",
+              "texto": "O sensor mede o ar: compare com temp_ar_c (NASA POWER T2M) do local. Lua e Marte so tem temperatura de superficie (lst_dia_c/lst_noite_c); na Lua nao ha ar."},
     "tilt":  {"nome": "Inclinacao", "unidade": "graus", "campos": ["declividade_media", "frac_decliv_8"], "comparacao": "limite",
               "limite": 8, "texto": "Acima de 8 graus um modulo de pouso lunar nao pousa com seguranca (criterio Artemis)."},
     "pm25":  {"nome": "Poeira", "unidade": "ug/m3", "campos": ["aod_medio"], "comparacao": "nivel",
@@ -41,7 +41,7 @@ SENSORES = {
 }
 
 CAMPOS_PERFIL = ["declividade_media", "frac_decliv_8", "rugosidade_tri_m", "lst_dia_c", "lst_noite_c",
-                 "amplitude_termica_c", "aod_medio", "insolacao_toa_wm2", "sol_max_graus", "chuva_anual_mm", "ndvi_medio"]
+                 "amplitude_termica_c", "temp_media_c", "temp_ar_c", "amplitude_ar_c", "aod_medio", "insolacao_toa_wm2", "sol_max_graus", "chuva_anual_mm", "ndvi_medio"]
 
 
 def nivel(v, tipo):
