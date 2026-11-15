@@ -139,7 +139,7 @@ int main(int argc, char *argv[])
     }
 
     /* ---------- 1. Lua ou Marte ---------- */
-    printf("=== Illuminat Horizontes ===\n\n");
+    printf("Illuminat Horizontes\n\n");
     printf("1) Lua\n2) Marte\nEscolha: ");
     const char *corpo = (ler_opcao(1, 2) == 1) ? "moon" : "mars";
 
@@ -326,7 +326,7 @@ void modo_ao_vivo(cJSON *raiz, cJSON *local, cJSON *alvo, cJSON *sensores)
 
     limpar_tela();
     tela_local_mostrar(raiz, local, alvo, sensores, NULL);
-    printf("  Ouvindo %s em %s. Ctrl+C para sair.\n", TOPICO_CAR, broker);
+    printf("\nCtrl+C para sair\n");
     fflush(stdout);
 
     char linha[2048];
@@ -344,7 +344,7 @@ void modo_ao_vivo(cJSON *raiz, cJSON *local, cJSON *alvo, cJSON *sensores)
 
         limpar_tela();
         tela_local_mostrar(raiz, local, alvo, sensores, leitura);
-        printf("  Ultima leitura %s (%ld recebidas) de %s. Ctrl+C para sair.\n", hora, n, TOPICO_CAR);
+        printf("\nultima leitura %s (%ld)   Ctrl+C para sair\n", hora, n);
         fflush(stdout);
         cJSON_Delete(leitura);
     }
