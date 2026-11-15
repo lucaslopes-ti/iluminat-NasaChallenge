@@ -203,12 +203,12 @@ cabeus_b_peak,moon,declividade_media,10.0,graus,referencia,lro_lola,Zuber et al.
 cabeus_b_peak,moon,frac_decliv_8,0.45,fracao,referencia,lro_lola,Zuber et al. 2012 Nature 486:378 ; Mazarico et al. 2011 Icarus 211:1066,aprox.
 cabeus_b_peak,moon,frac_transitavel_15,0.7,fracao,referencia,lro_lola,Zuber et al. 2012 Nature 486:378 ; Mazarico et al. 2011 Icarus 211:1066,aprox.
 cabeus_b_peak,moon,iluminacao_frac,0.6,fracao,referencia,lro_lola,Zuber et al. 2012 Nature 486:378 ; Mazarico et al. 2011 Icarus 211:1066,aprox.
-cabeus_b_peak,moon,sol_max_graus,7.5,graus,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
+cabeus_b_peak,moon,sol_max_graus,7.9,graus,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 cabeus_b_peak,moon,frac_sol_baixo,1.0,fracao,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 cabeus_b_peak,moon,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 cabeus_b_peak,moon,frac_ano_noite_continua,0.0,fracao,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 cabeus_b_peak,moon,frac_tempo_sol,0.6,fracao,referencia,lro_lola,Zuber et al. 2012 Nature 486:378 ; Mazarico et al. 2011 Icarus 211:1066,aprox. (com relevo)
-cabeus_b_peak,moon,insolacao_toa_wm2,46,W/m2,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
+cabeus_b_peak,moon,insolacao_toa_wm2,49,W/m2,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 marius,moon,lst_dia_c,110,C,referencia,lro_diviner,Paige et al. 2010 Science 330:479,meio-dia lunar no equador
 marius,moon,lst_noite_c,-170,C,referencia,lro_diviner,Paige et al. 2010 Science 330:479,noite lunar
 marius,moon,amplitude_termica_c,280,C,referencia,lro_diviner,Paige et al. 2010 Science 330:479,a maior amplitude do sistema Terra-Lua-Marte

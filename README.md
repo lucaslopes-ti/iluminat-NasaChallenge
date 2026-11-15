@@ -79,7 +79,7 @@ Só fontes da NASA e do Copernicus; os valores de Lua e Marte vêm de missões d
 
 | Fonte | Para quê |
 |---|---|
-| NASA, regiões candidatas do Artemis III (out/2024); Gazetteer of Planetary Nomenclature (USGS/IAU); LPSC 2025 (Mahanti et al., Sánchez-Lozano et al., Samaddar et al.) | os 9 alvos lunares de pouso e as coordenadas deles |
+| NASA, regiões candidatas do Artemis III (out/2024); Gazetteer of Planetary Nomenclature (USGS/IAU); LPSC 2025 (Mahanti et al., Sánchez-Lozano et al., Samaddar et al.); mosaicos NAC da LROC | os 9 alvos lunares de pouso e as coordenadas deles |
 | LRO LAMP e LEND; LCROSS | gelo nas crateras em sombra permanente (Cabeus) |
 | LRO LROC | imagens e geologia lunar |
 | MRO CRISM | minerais hidratados em Marte (Jezero, Meridiani, Oxia) |
@@ -100,7 +100,7 @@ NASA Blue Marble (Terra), NASA SVS CGI Moon Kit (mosaico de cor do LRO LROC, com
 ### Limitações que dizemos na apresentação
 
 - A temperatura do ar, o albedo, a chuva e a poeira vêm de células de ~50 km da NASA POWER. No Mauna Kea, o ar fica uns 20 °C acima do cume.
-- As regiões do Artemis III foram conferidas com o Gazetteer de nomenclatura planetária (USGS/IAU) e com resumos do LPSC 2025. Duas usam locais de pouso publicados; as outras ficam na borda ou no planalto da feição que dá nome à região (±0,5°). Peak near Cabeus B ainda não foi conferido.
+- As regiões do Artemis III foram conferidas com o Gazetteer de nomenclatura planetária (USGS/IAU) e com resumos do LPSC 2025. Duas usam locais de pouso publicados e Peak near Cabeus B usa o mosaico da LROC feito para a região; as outras ficam na borda ou no planalto da feição que dá nome à região (±0,5°).
 - A pressão de Marte vem de uma medida só (MEDA, em Jezero), ajustada pela altitude MOLA de cada alvo, sem a variação das estações (~25%).
 - O NDVI da Dry Valleys é provisório (0), porque o MOD13C2 não cobre a Antártida.
 - Os valores de Lua e Marte são números publicados e aproximados, não recortes processados por nós.
