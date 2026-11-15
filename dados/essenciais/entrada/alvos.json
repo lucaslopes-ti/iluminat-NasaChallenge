@@ -68,6 +68,7 @@
   {
    "id": "shackleton", "nome": "Borda da cratera Shackleton", "nome_en": "Shackleton crater rim", "padrao": "lua_polo_sul",
    "regiao": "Polo sul lunar", "lat": -89.67, "lon": 129.78, "coord_aprox": false,
+   "coord_fonte": "centro da cratera Shackleton (Gazetteer of Planetary Nomenclature (USGS/IAU): -89,67, 129,78)",
    "papel": "base_permanente",
    "missao": "Região histórica das propostas de base do Artemis (crista de ligação Shackleton–de Gerlache)",
    "resumo": "Borda com sol quase contínuo e fundo em sombra permanente que guarda gelo de água. Local clássico para uma base permanente.",
@@ -85,6 +86,7 @@
   {
    "id": "haworth", "nome": "Haworth", "nome_en": "Haworth", "padrao": "lua_polo_sul",
    "regiao": "Polo sul lunar", "lat": -87.4, "lon": -5.0, "coord_aprox": true,
+   "coord_fonte": "perto do centro da cratera Haworth (Gazetteer of Planetary Nomenclature (USGS/IAU): -87,45, -5,17; 51 km); a região de pouso fica na borda",
    "papel": "artemis_iii",
    "missao": "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024)",
    "resumo": "Grande cratera com fundo em sombra permanente, uma das melhores armadilhas frias de gelo perto do polo.",
@@ -100,7 +102,8 @@
   },
   {
    "id": "malapert", "nome": "Maciço de Malapert", "nome_en": "Malapert Massif", "padrao": "lua_polo_sul",
-   "regiao": "Polo sul lunar", "lat": -86.0, "lon": 2.9, "coord_aprox": true,
+   "regiao": "Polo sul lunar", "lat": -85.98, "lon": -1.67, "coord_aprox": true,
+   "coord_fonte": "centro do Mons Malapert (Gazetteer of Planetary Nomenclature (USGS/IAU): -85,98, -1,67; 67 km); antes estava em -86,0, 2,9",
    "papel": "artemis_iii",
    "missao": "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024)",
    "resumo": "Maciço de ~5 km de altura com longos períodos de sol e visada direta para a Terra (comunicação).",
@@ -117,6 +120,7 @@
   {
    "id": "mons_mouton_plateau", "nome": "Platô de Mons Mouton", "nome_en": "Mons Mouton Plateau", "padrao": "lua_polo_sul",
    "regiao": "Polo sul lunar", "lat": -84.5, "lon": 33.0, "coord_aprox": true,
+   "coord_fonte": "no planalto do Mons Mouton (Gazetteer of Planetary Nomenclature (USGS/IAU): centro -84,60, 31,00; 130 km)",
    "papel": "artemis_iii",
    "missao": "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024)",
    "resumo": "Platô alto e relativamente plano no topo de Mons Mouton, com boa iluminação.",
@@ -132,7 +136,8 @@
   },
   {
    "id": "mons_mouton", "nome": "Mons Mouton", "nome_en": "Mons Mouton", "padrao": "lua_polo_sul",
-   "regiao": "Polo sul lunar", "lat": -84.8, "lon": 29.2, "coord_aprox": true,
+   "regiao": "Polo sul lunar", "lat": -84.528, "lon": 30.719, "coord_aprox": false,
+   "coord_fonte": "local de pouso de exemplo dentro da região (Mahanti et al. 2025, LPSC 56, resumo 2742)",
    "papel": "artemis_iii",
    "missao": "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024); pouso do IM-2 (2025)",
    "resumo": "Montanha de topo plano entre Malapert e Nobile, alvo de pouso robótico comercial.",
@@ -149,6 +154,7 @@
   {
    "id": "nobile_rim_1", "nome": "Borda de Nobile 1", "nome_en": "Nobile Rim 1", "padrao": "lua_polo_sul",
    "regiao": "Polo sul lunar", "lat": -85.4, "lon": 37.0, "coord_aprox": true,
+   "coord_fonte": "borda oeste da cratera Nobile (Gazetteer of Planetary Nomenclature (USGS/IAU): centro -85,28, 53,27; 79 km)",
    "papel": "artemis_iii",
    "missao": "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024)",
    "resumo": "Borda da cratera Nobile, junto a regiões em sombra permanente estudadas para gelo.",
@@ -164,7 +170,8 @@
   },
   {
    "id": "nobile_rim_2", "nome": "Borda de Nobile 2", "nome_en": "Nobile Rim 2", "padrao": "lua_polo_sul",
-   "regiao": "Polo sul lunar", "lat": -84.6, "lon": 62.0, "coord_aprox": true,
+   "regiao": "Polo sul lunar", "lat": -84.2016, "lon": 60.6999, "coord_aprox": false,
+   "coord_fonte": "melhor local de pouso da região (Sánchez-Lozano et al. 2025, LPSC 56, resumo 1149, Tabela 1)",
    "papel": "artemis_iii",
    "missao": "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024)",
    "resumo": "Outro trecho da borda de Nobile, com acesso a crateras frias.",
@@ -181,6 +188,7 @@
   {
    "id": "de_gerlache_rim_2", "nome": "Borda de de Gerlache 2", "nome_en": "de Gerlache Rim 2", "padrao": "lua_polo_sul",
    "regiao": "Polo sul lunar", "lat": -88.6, "lon": -70.0, "coord_aprox": true,
+   "coord_fonte": "borda da cratera de Gerlache (Gazetteer of Planetary Nomenclature (USGS/IAU): centro -88,48, -88,34; 33 km)",
    "papel": "artemis_iii",
    "missao": "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024)",
    "resumo": "Borda da cratera de Gerlache, vizinha de Shackleton, com alta iluminação.",
@@ -196,7 +204,8 @@
   },
   {
    "id": "slater_plain", "nome": "Planície de Slater", "nome_en": "Slater Plain", "padrao": "lua_polo_sul",
-   "regiao": "Polo sul lunar", "lat": -87.8, "lon": -115.0, "coord_aprox": true,
+   "regiao": "Polo sul lunar", "lat": -87.4, "lon": 111.3, "coord_aprox": true,
+   "coord_fonte": "ao norte da cratera Slater (Gazetteer of Planetary Nomenclature (USGS/IAU): -88,08, 111,29; Samaddar et al. 2025, LPSC 56, resumo 2401); antes estava com longitude -115 (sinal trocado)",
    "papel": "artemis_iii",
    "missao": "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024)",
    "resumo": "Área relativamente plana perto da cratera Slater, boa para pouso seguro.",
@@ -213,6 +222,7 @@
   {
    "id": "cabeus_b_peak", "nome": "Pico perto de Cabeus B", "nome_en": "Peak near Cabeus B", "padrao": "lua_polo_sul",
    "regiao": "Polo sul lunar", "lat": -84.0, "lon": -50.0, "coord_aprox": true,
+   "coord_fonte": "não conferido: Cabeus B não aparece na lista de crateras do Gazetteer; falta o mapa oficial da NASA",
    "papel": "artemis_iii",
    "missao": "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024); perto de onde o LCROSS achou gelo (Cabeus, 2009)",
    "resumo": "Pico iluminado perto de Cabeus, cratera onde o impacto do LCROSS confirmou água.",
@@ -270,6 +280,7 @@
   {
    "id": "gale", "nome": "Cratera Gale (Monte Sharp)", "nome_en": "Gale crater (Mt. Sharp)", "padrao": "marte",
    "regiao": "Aeolis Mons", "lat": -5.4, "lon": 137.8, "coord_aprox": false,
+   "ponto_pressao": [-4.59, 137.44], "ponto_pressao_nota": "pouso do Curiosity (Bradbury Landing, NASA/JPL), no fundo da cratera; a coordenada do alvo cai no Monte Sharp",
    "papel": "ciencia_robotica",
    "missao": "Curiosity (NASA, desde 2012)",
    "resumo": "Montanha sedimentar em camadas com argila, sulfato e hematita, e dunas ativas.",

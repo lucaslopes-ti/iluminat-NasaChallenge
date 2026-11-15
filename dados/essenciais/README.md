@@ -44,7 +44,9 @@ Hoje, de 450 valores da Terra, só 1 continua provisório: o NDVI da McMurdo Dry
 
 **Marte.** **Jezero** (Perseverance), **Gale** (Curiosity), **Meridiani** (Opportunity, hematita e jarosita), **Arcadia Planitia** (gelo raso, candidata a pouso humano pelo mapa SWIM) e **Oxia Planum** (rover Rosalind Franklin, da ESA).
 
-As coordenadas das regiões do Artemis III são **aproximadas** (±1°, campo `coord_aprox`) e precisam ser conferidas no mapa oficial da NASA antes de ir para o site.
+As coordenadas das regiões do Artemis III foram conferidas com o Gazetteer of Planetary Nomenclature (USGS/IAU) e com resumos do LPSC 2025; o campo `coord_fonte` diz de onde veio cada uma. Mons Mouton e Nobile Rim 2 usam locais de pouso publicados. As outras ficam com `coord_aprox` (na borda ou no planalto da feição), e Peak near Cabeus B ainda não foi conferido.
+
+**Pressão de Marte.** Jezero usa o meio da faixa do MEDA (625–761 Pa); os outros alvos ajustam esse valor pela altitude do MOLA (`dados/mola/`), com escala de altura de 11,1 km. Em Gale, a altitude é a do pouso do Curiosity (`ponto_pressao`), porque a coordenada do alvo cai no Monte Sharp.
 
 ## Como as bases são escolhidas
 
