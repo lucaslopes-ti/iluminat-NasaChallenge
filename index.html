@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
-  <link rel="stylesheet" href="Scripts/css/principal.css?v=1794767890">
+  <link rel="stylesheet" href="Scripts/css/principal.css">
   <script type="importmap">
     {
       "imports": {
@@ -24,7 +24,7 @@
       }
     }
   </script>
-  <script type="module" src="Main.js?v=1794767890"></script>
+  <script type="module" src="Main.js"></script>
 </head>
 <body>
   <div class="space" aria-hidden="true"></div>
@@ -107,11 +107,11 @@
     <span class="sample" id="sampleChip" title="Scores are sample values until the NASA data notebooks deliver data/locais.json">Sample data</span>
   </main>
 
-  <!-- field rover (Arduino + ESP32) -->
+  <!-- field rover (Arduino on USB) -->
   <section class="station" id="station" aria-labelledby="stTitle">
     <div class="st-head">
       <div>
-        <span class="kicker">Field rover · Arduino + ESP32</span>
+        <span class="kicker">Field rover · Arduino</span>
         <h2 id="stTitle">Our rover vs. <span id="stTarget">–</span></h2>
         <p class="st-sub">Live readings from the rover in our regolith box, next to the Earth twin and the target.</p>
       </div>
@@ -142,7 +142,7 @@
         <tbody id="stBody"></tbody>
       </table>
     </div>
-    <p class="fine">The rover sends one JSON line per reading, for example <code>{"temp":24.1,"pm25":14,"solar":410,"tilt":3.4}</code>, by Wi-Fi (MQTT) from the ESP32 or by USB from the Arduino. Example code is in the <code>firmware/</code> folder of the repository.</p>
+    <p class="fine">The rover sends one JSON line per second, for example <code>{"temp":26.3,"umid":53.2,"dist":85,"luz":334}</code>, over the USB cable. The computer it is plugged into relays each line by MQTT (Wi-Fi button), or you can plug the cable into this computer (USB button). Code is in the <code>firmware/</code> folder of the repository.</p>
   </section>
 
   <!-- details drawer -->
