@@ -79,6 +79,34 @@ static void valor_fmt(cJSON *valores, const char *chave, char *saida, int tam)
         snprintf(saida, tam, "%g %s", x, un);
 }
 
+/* Acrescenta baixo/medio/alto ao texto, pelos limites de sensores.json (niveis). */
+static void nivel(char *saida, int tam, cJSON *v, cJSON *faixa, cJSON *nomes)
+{
+    cJSON *lim = obj(faixa, "limites");
+    if (!cJSON_IsNumber(v) || cJSON_GetArraySize(lim) < 2 || strcmp(saida, SEM_DADO) == 0
+        || strcmp(saida, "nao ha") == 0)
+        return;
+    int i = v->valuedouble < cJSON_GetArrayItem(lim, 0)->valuedouble ? 0
+          : v->valuedouble < cJSON_GetArrayItem(lim, 1)->valuedouble ? 1 : 2;
+    cJSON *n = cJSON_GetArrayItem(nomes, i);
+    if (cJSON_IsString(n)) {
+        size_t usado = strlen(saida);
+        snprintf(saida + usado, tam - usado, " %s", n->valuestring);
+    }
+}
+
+/* Acrescenta "ok" ou ">limite" ao texto. */
+static void acima(char *saida, int tam, cJSON *v, double limite)
+{
+    if (!cJSON_IsNumber(v) || strcmp(saida, SEM_DADO) == 0)
+        return;
+    size_t usado = strlen(saida);
+    if (v->valuedouble > limite)
+        snprintf(saida + usado, tam - usado, " >%g", limite);
+    else
+        snprintf(saida + usado, tam - usado, " ok");
+}
+
 void tela_local_mostrar(cJSON *raiz, cJSON *local, cJSON *alvo,
                         cJSON *sensores, cJSON *leitura)
 {
@@ -135,12 +163,18 @@ void tela_local_mostrar(cJSON *raiz, cJSON *local, cJSON *alvo,
     if (sensores == NULL) return;
 
     secao("CARRINHO AO VIVO");
-    col("", 18); col("Agora", 14); col("Local", 18); printf("Alvo\n");
+    col("", 16); col("Agora", 18); col("Local", 16); col("Alvo", 12); printf("Comparar\n");
 
+    cJSON *niveis = obj(sensores, "niveis");
+    cJSON *nomes  = obj(sensores, "nomes_nivel");
     cJSON *s = NULL;
     cJSON_ArrayForEach(s, obj(sensores, "sensores")) {
-        cJSON *lido = leitura ? obj(leitura, s->string) : NULL;
-        char agora[64] = SEM_DADO, loc[64] = SEM_DADO, alv[64] = SEM_DADO;
+        const char *chave = s->string;                 /* temp, tilt, pm25... */
+        const char *modo  = txt(s, "comparacao");      /* direta, limite, nivel... */
+        cJSON *lim = obj(s, "limite");
+        cJSON *lido = leitura ? obj(leitura, chave) : NULL;
+        char agora[64] = SEM_DADO, loc[64] = SEM_DADO, alv[64] = SEM_DADO, comp[32];
+        const char *campo = NULL;
         int tem_t = 0, tem_a = 0;
         cJSON *c = NULL;
 
@@ -153,17 +187,48 @@ void tela_local_mostrar(cJSON *raiz, cJSON *local, cJSON *alvo,
             if (!tem_t && cJSON_IsNumber(obj(obj(val_t, c->valuestring), "valor"))) {
                 valor_fmt(val_t, c->valuestring, loc, sizeof loc);
                 tem_t = 1;
+                if (campo == NULL) campo = c->valuestring;
             }
             if (!tem_a && cJSON_IsNumber(obj(obj(val_a, c->valuestring), "valor"))) {
                 valor_fmt(val_a, c->valuestring, alv, sizeof alv);
                 tem_a = 1;
             }
         }
-        col(txt(s, "nome"), 18);
-        col(agora, 14);
-        col(loc, 18);
-        printf("%s\n", alv);
+
+        if (strcmp(modo, "nivel") == 0) {
+            /* unidades diferentes (PM2.5 x AOD): mostra baixo/medio/alto de cada lado */
+            nivel(agora, sizeof agora, lido, obj(niveis, chave), nomes);
+            if (campo) {
+                char k[16];
+                snprintf(k, sizeof k, "%.*s", (int)strcspn(campo, "_"), campo);   /* aod_medio -> aod */
+                nivel(loc, sizeof loc, obj(obj(val_t, campo), "valor"), obj(niveis, k), nomes);
+                nivel(alv, sizeof alv, obj(obj(val_a, campo), "valor"), obj(niveis, k), nomes);
+            }
+            snprintf(comp, sizeof comp, "por nivel");
+        } else if (strcmp(modo, "limite") == 0 && cJSON_IsNumber(lim)) {
+            /* limite de pouso (8 graus): ok ou acima */
+            acima(agora, sizeof agora, lido, lim->valuedouble);
+            if (campo) {
+                acima(loc, sizeof loc, obj(obj(val_t, campo), "valor"), lim->valuedouble);
+                acima(alv, sizeof alv, obj(obj(val_a, campo), "valor"), lim->valuedouble);
+            }
+            snprintf(comp, sizeof comp, "limite %g", lim->valuedouble);
+        } else if (strcmp(modo, "direta") == 0) {
+            snprintf(comp, sizeof comp, "direto");
+        } else if (strcmp(modo, "relativa") == 0) {
+            snprintf(comp, sizeof comp, "tendencia");
+        } else {
+            snprintf(comp, sizeof comp, "qualitativo");
+        }
+
+        col(txt(s, "nome"), 16);
+        col(agora, 18);
+        col(loc, 16);
+        col(alv, 12);
+        printf("%s\n", comp);
     }
+    printf("\nnivel: PM2.5 (EPA) e AOD tem unidades diferentes; compare baixo/medio/alto.\n");
+    printf("tendencia/qualitativo: unidades diferentes, compare so se sobe ou desce.\n");
     if (leitura == NULL)
         printf("\naguardando o carrinho...\n");
 }
