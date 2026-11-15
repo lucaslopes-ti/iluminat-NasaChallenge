@@ -4,14 +4,14 @@
  * 1. O usuario escolhe Lua ou Marte.
  * 2. Escolhe o alvo (cratera, regiao).
  * 3. Ve os 3 locais da Terra mais parecidos e escolhe um.
- *    Aparece a tela do local (tela_local.c): nota, 9 dimensoes, Terra x alvo,
- *    onde funciona, onde quebra, o que testar e os sensores do carrinho.
+ *    Aparece a tela do local (tela_local.c): Terra x alvo, 9 dimensoes
+ *    e carrinho ao vivo.
  * 4. A escolha vai por MQTT (retida) em illuminat-horizontes/selecao.
  * 5. Abre a ponte (firmware/ponte_serial_mqtt.py) na porta Bluetooth do
  *    carrinho (HC-05), com --local <id>: ela publica o perfil do local e
  *    passa a mandar as leituras do carrinho para o MQTT.
  * 6. Modo ao vivo: assina illuminat-horizontes/carrinho (mosquitto_sub) e
- *    redesenha a tela do local a cada leitura, na coluna "Ao vivo".
+ *    redesenha a tela do local a cada leitura, na coluna "Agora".
  *    Ctrl+C sai (e, no Mac, desliga a ponte junto).
  *
  * Funciona no Windows e no Mac. Os arquivos sao procurados a partir da

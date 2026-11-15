@@ -84,7 +84,7 @@ Sensores → Arduino Uno/Nano (sem Wi-Fi) → Bluetooth HC-05 (ou USB), 1 linha 
 ```
 
 - **Decisão:** a comunicação com o carrinho é por **Bluetooth** (HC-05/HC-06 na Serial de hardware, D0/D1, 115200). No computador o módulo vira uma porta serial, então a ponte é a mesma do USB, só com `--porta`.
-- **Tela em C** (`Projeto_C/NasaSpace`, um programa só): Lua/Marte → alvo → top 3 análogos (`ranking_por_alvo` e `locais[].comparacoes.<alvo>.iap.geral`) → tela do local (`tela_local.c`: IAP e perfis, 9 dimensões para aquele alvo, Terra x alvo, funciona/quebra/testes, sempre quebra, sensores do carrinho via `mqtt/sensores.json`) → publica em `illuminat-horizontes/selecao` com `mosquitto_pub` → abre a ponte com `--porta <BT> --local <id>`. Lê só o `analogos_completo.json` (direto de `dados/essenciais/`, sem cópia em `bin/Debug`). Acha os arquivos pela pasta do executável (Mac e Windows); a porta BT vai como argumento (`NasaSpace COM7`).
+- **Tela em C** (`Projeto_C/NasaSpace`, um programa só): Lua/Marte → alvo → top 3 análogos (`ranking_por_alvo` e `locais[].comparacoes.<alvo>.iap.geral`) → tela do local (`tela_local.c`, enxuta de propósito: Terra x alvo, 9 dimensões para aquele alvo e carrinho ao vivo, com os sensores de `mqtt/sensores.json`) → publica em `illuminat-horizontes/selecao` com `mosquitto_pub` → abre a ponte com `--porta <BT> --local <id>`. Lê só o `analogos_completo.json` (direto de `dados/essenciais/`, sem cópia em `bin/Debug`). Acha os arquivos pela pasta do executável (Mac e Windows); a porta BT vai como argumento (`NasaSpace COM7`).
 - **Decisão:** os sensores ficam no **Arduino**. O ESP32 não serviu para os sensores; ele é **opcional, só como ponte Wi-Fi** (`firmware/esp32_ponte_mqtt`, buffer 2048). Não propor ler sensores no ESP32.
 - **Mensagem:** `{"temp":24.1,"uv":6.2,"pm25":14,"solar":410,"soil":22,"tilt":3.4,"vib":0.08,"slip":5}`. Manter estas chaves. Chaves ausentes aparecem como "–".
 - O sensor `temp` mede o **ar** e é comparado com `temp_ar_c` (NASA POWER T2M).
@@ -96,7 +96,7 @@ Sensores → Arduino Uno/Nano (sem Wi-Fi) → Bluetooth HC-05 (ou USB), 1 linha 
 
 1. Conferir as coordenadas das 9 regiões do Artemis III no mapa oficial da NASA e tirar o `coord_aprox`.
 2. Quando a task do AppEEARS terminar, rodar `--appeears`, depois `gerar_mqtt.py` e `web/tools/gerar_dados_site.py`.
-3. Tela em C (`Projeto_C/NasaSpace`): testar no Windows (Code::Blocks + Mosquitto no PATH) e com o HC-05 pareado. O modo ao vivo (`mosquitto_sub` em `illuminat-horizontes/carrinho`, coluna "Ao vivo") já funciona; `MQTT_BROKER=localhost` testa com um Mosquitto local.
+3. Tela em C (`Projeto_C/NasaSpace`): testar no Windows (Code::Blocks + Mosquitto no PATH) e com o HC-05 pareado. O modo ao vivo (`mosquitto_sub` em `illuminat-horizontes/carrinho`, coluna "Agora") já funciona; `MQTT_BROKER=localhost` testa com um Mosquitto local.
 4. Montar o carrinho com os sensores escolhidos no topo de `arduino_carrinho.ino` e testar o fluxo completo até o site.
 5. Atualizar o `README.md` com o nome Illuminat Horizontes e o fluxo com Arduino.
 6. Preparar a apresentação e o vídeo seguindo a história em 3 atos do plano (`docs/`).
