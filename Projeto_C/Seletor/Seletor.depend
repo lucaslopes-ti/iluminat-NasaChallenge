@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1794748516 source:c:\users\eup9nl402.azuread\documents\iluminat-nasachallenge\projeto_c\nasaspace\cjson.c
+	<string.h>
+	<stdio.h>
+	<math.h>
+	<stdlib.h>
+	<limits.h>
+	<ctype.h>
+	<float.h>
+	<locale.h>
+	"Bibliotecas/cJSON.h"
+
+1794748516 c:\users\eup9nl402.azuread\documents\iluminat-nasachallenge\projeto_c\nasaspace\bibliotecas\cjson.h
+	<stddef.h>
+
+1794755984 source:c:\users\eup9nl402.azuread\documents\iluminat-nasachallenge\projeto_c\seletor\seletor.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"../NasaSpace/Bibliotecas/cJSON.h"
+	<windows.h>
+	<unistd.h>
+	<mach-o/dyld.h>
+

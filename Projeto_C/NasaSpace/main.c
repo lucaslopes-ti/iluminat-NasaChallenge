@@ -20,15 +20,27 @@ int main() {
     setlocale(LC_ALL, "");
     setlocale(LC_NUMERIC, "C");
 
-
-char campos[][100] = {
-    "alvos",
+    char nomes[][100] = {
+    {"locais"},
+    {"id"},
+    {"posicao"},
+    {"nome"},
+    {"regiao"},
+    {"pais"},
+    {"papel"},
+    {"lat"},
+    {"lon"},
+    {"feicao"},
+    {"dados_completos"},
+    {"alvo"},
+    {"alvo_nome"},
+    {"corpo"},
+    {"nota_pct"},
+    {
+        "notas_perfil_pct"
+    }
 
 };
-    struct vetoresJson vetor[10];
-    strcpy(vetor[0].campo,"alvos");
-    vetor[0].tamnho = 7;
-
     float dados[100];
     UpdateCampos(dados,nomes);
 
@@ -64,18 +76,17 @@ void UpdateCampos( float dados[],char nomes[][100])
         return;
     }
 
-for(int i = 0; i< sizeof(nomes); i++)
-{
-    cJSON *tag = cJSON_GetObjectItemCaseSensitive(json_root, nomes[0]);
 
-        if (cJSON_IsArray(tag)) {
-            cJSON *tag = NULL;
-            int j = 0;
+    cJSON *perfis = cJSON_GetObjectItemCaseSensitive(json_root, nomes[0]);
 
-            // 2. Percorre cada objeto dentro de "perfis"
-            cJSON_ArrayForEach(perfil, perfis) {
-                // 3. Extrai "id" e "rotulo" de dentro do objeto atual
-                cJSON *valor = cJSON_GetObjectItemCaseSensitive(perfil, nomes[j]);
+    if (cJSON_IsArray(perfis)) {
+        cJSON *perfil = NULL;
+        int j = 1;
+        // 2. Percorre cada objeto dentro de "perfis"
+        cJSON_ArrayForEach(perfil, perfis) {
+            // 3. Extrai "id" e "rotulo" de dentro do objeto atual
+            cJSON *valor = cJSON_GetObjectItemCaseSensitive(perfil, nomes[j]);
+
                 if(valor->valuestring)
                 {
                      printf("%s: %s\n", nomes[j], valor->valuestring);
@@ -88,7 +99,7 @@ for(int i = 0; i< sizeof(nomes); i++)
                 j++;
             }
         }
-}
+
 
     /*
 
