@@ -1,0 +1,22 @@
+alvo_id,variavel,valor,unidade,status,fonte_id,doi_ou_referencia,nota
+shackleton,elev_relativa_m,-4200,m,referencia,lro_lola,Zuber et al. 2012 Nature 486:378 ; Mazarico et al. 2011 Icarus 211:1066,profundidade da cratera (fundo em relacao a borda); diametro ~21 km
+shackleton,declividade_media,10.0,graus,referencia,lro_lola,Zuber et al. 2012 Nature 486:378 ; Mazarico et al. 2011 Icarus 211:1066,borda/crista de ligacao: maior parte abaixo de 15 graus; paredes internas ~30 graus
+shackleton,lst_dia_c,-50,C,referencia,lro_diviner,Paige et al. 2010 Science 330:479,maxima tipica na borda iluminada (sol rasante)
+shackleton,lst_noite_c,-230,C,referencia,lro_diviner,Paige et al. 2010 Science 330:479,fundo em sombra permanente (~40-50 K)
+shackleton,amplitude_termica_c,120,C,referencia,lro_diviner,Paige et al. 2010 Science 330:479,variacao tipica na borda ao longo do dia lunar (aprox.)
+shackleton,iluminacao_frac,0.85,fracao,referencia,lro_lola,Zuber et al. 2012 Nature 486:378 ; Mazarico et al. 2011 Icarus 211:1066,pontos da borda com sol ate ~80-90% do ano
+shackleton,ndvi_medio,0.0,indice,referencia,sem_atmosfera,definicao: NDVI 0 / AOD 0 / chuva 0 (exosfera lunar ~1e-15 bar),sem vegetacao
+shackleton,albedo_medio,0.15,fracao,referencia,lro_lola,Zuber et al. 2012 Nature 486:378 ; Mazarico et al. 2011 Icarus 211:1066,terras altas lunares (aprox.; comparar com MODIS e aproximacao)
+shackleton,aod_medio,0.0,adimensional,referencia,sem_atmosfera,definicao: NDVI 0 / AOD 0 / chuva 0 (exosfera lunar ~1e-15 bar),sem atmosfera; poeira levitada eletrostaticamente nao entra no AOD
+shackleton,chuva_anual_mm,0,mm,referencia,sem_atmosfera,definicao: NDVI 0 / AOD 0 / chuva 0 (exosfera lunar ~1e-15 bar),sem chuva
+shackleton,pressao_kpa,0.0,kPa,referencia,sem_atmosfera,definicao: NDVI 0 / AOD 0 / chuva 0 (exosfera lunar ~1e-15 bar),exosfera ~1e-15 bar
+jezero,elev_relativa_m,-2600,m,referencia,mgs_mola,Smith et al. 2001 JGR 106(E10):23689,fundo da cratera em relacao ao areoide MOLA; diametro ~45 km
+jezero,declividade_media,5.0,graus,referencia,mgs_mola,Smith et al. 2001 JGR 106(E10):23689,piso suave na elipse de pouso; frente do delta mais ingreme
+jezero,lst_dia_c,-10,C,referencia,m2020_meda,Rodriguez-Manfredi et al. 2023 Nature Geoscience 16:19,maxima tipica de tarde
+jezero,lst_noite_c,-90,C,referencia,m2020_meda,Rodriguez-Manfredi et al. 2023 Nature Geoscience 16:19,minima tipica antes do amanhecer
+jezero,amplitude_termica_c,80,C,referencia,m2020_meda,Rodriguez-Manfredi et al. 2023 Nature Geoscience 16:19,amplitude diaria tipica
+jezero,ndvi_medio,0.0,indice,referencia,fisico_marte,definicao: NDVI 0 / chuva 0 (pressao ~0.6 kPa nao permite agua liquida estavel),sem vegetacao
+jezero,albedo_medio,0.18,fracao,referencia,mgs_tes,Christensen et al. 2001 JGR 106(E10):23823,albedo bolometrico regional (aprox.)
+jezero,aod_medio,0.6,adimensional,referencia,m2020_tau,Lemmon et al. 2022 Geophysical Research Letters 49,opacidade tipica fora de tempestades (0.3 a >1 sazonal)
+jezero,chuva_anual_mm,0,mm,referencia,fisico_marte,definicao: NDVI 0 / chuva 0 (pressao ~0.6 kPa nao permite agua liquida estavel),sem chuva liquida hoje
+jezero,pressao_kpa,0.65,kPa,referencia,m2020_meda,Rodriguez-Manfredi et al. 2023 Nature Geoscience 16:19,~0.6-0.75 kPa de CO2 ao longo do ano

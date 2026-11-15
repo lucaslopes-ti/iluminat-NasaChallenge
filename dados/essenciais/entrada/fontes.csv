@@ -1,0 +1,15 @@
+fonte_id,produto,short_name_versao,missao_instrumento,resolucao,doi_ou_referencia,link,acesso
+srtmgl30,NASA Shuttle Radar Topography Mission Global 30 arc second,SRTMGL30 v002,SRTM (NASA/JPL),30 arcsec (~1 km),doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,https://lpdaac.usgs.gov/products/srtmgl30v002/,2026-11-14 (27 blocos em dados/srtm30)
+mod11a1,MODIS Land Surface Temperature/Emissivity Daily L3 Global 1km,MOD11A1 v061 + MYD11A1 v061,Terra/Aqua MODIS,1 km diario,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,https://appeears.earthdatacloud.nasa.gov/,pendente (notebook 01)
+mod13a2,MODIS Vegetation Indices 16-Day L3 Global 1km,MOD13A2 v061,Terra MODIS,1 km 16 dias,doi:10.5067/MODIS/MOD13A2.061,https://appeears.earthdatacloud.nasa.gov/,pendente (notebook 01)
+mcd43a3,MODIS BRDF/Albedo Daily L3 Global 500m,MCD43A3 v061 (Albedo_WSA_shortwave),Terra+Aqua MODIS,500 m diario,doi:10.5067/MODIS/MCD43A3.061,https://appeears.earthdatacloud.nasa.gov/,pendente (notebook 01)
+mcd19a2,MODIS MAIAC Aerosol Optical Depth Daily L2G 1km,MCD19A2 v061 (Optical_Depth_055),Terra+Aqua MODIS,1 km diario,doi:10.5067/MODIS/MCD19A2.061,https://appeears.earthdatacloud.nasa.gov/,pendente (notebook 01)
+gpm_imergm,GPM IMERG Final Precipitation L3 Monthly 0.1 deg,GPM_3IMERGM v07,GPM (NASA/JAXA),0.1 grau mensal,doi:10.5067/GPM/IMERG/3B-MONTH/07,https://disc.gsfc.nasa.gov/,pendente (notebook 01)
+lro_lola,LRO Lunar Orbiter Laser Altimeter (topografia e iluminacao),LOLA GDR/RDR,LRO LOLA,polar 20-240 m,Zuber et al. 2012 Nature 486:378 ; Mazarico et al. 2011 Icarus 211:1066,https://pds-geosciences.wustl.edu/missions/lro/lola.htm,valores publicados
+lro_diviner,LRO Diviner Lunar Radiometer (temperatura de superficie),Diviner L3/L4 polar,LRO Diviner,polar ~240 m,Paige et al. 2010 Science 330:479,https://pds-geosciences.wustl.edu/missions/lro/diviner.htm,valores publicados
+mgs_mola,MGS Mars Orbiter Laser Altimeter MEGDR,MOLA MEGDR,MGS MOLA,463 m,Smith et al. 2001 JGR 106(E10):23689,https://pds-geosciences.wustl.edu/missions/mgs/mola.html,valores publicados
+mgs_tes,MGS Thermal Emission Spectrometer albedo bolometrico,TES albedo,MGS TES,~3 km,Christensen et al. 2001 JGR 106(E10):23823,https://pds-geosciences.wustl.edu/missions/mgs/tes.html,valores publicados
+m2020_meda,Mars 2020 MEDA (temperatura e pressao em Jezero),MEDA,Perseverance MEDA,local (rover),Rodriguez-Manfredi et al. 2023 Nature Geoscience 16:19,https://pds-atmospheres.nmsu.edu/data_and_services/atmospheres_data/PERSEVERANCE/meda.html,valores publicados
+m2020_tau,Mars 2020 opacidade da poeira em Jezero (Mastcam-Z / MEDA),optical depth,Perseverance Mastcam-Z/MEDA,local (rover),Lemmon et al. 2022 Geophysical Research Letters 49,https://pds-imaging.jpl.nasa.gov/,valores publicados
+sem_atmosfera,Lua sem atmosfera nem vegetacao (valor fisico),-,-,-,definicao: NDVI 0 / AOD 0 / chuva 0 (exosfera lunar ~1e-15 bar),-,-
+fisico_marte,Marte sem vegetacao nem chuva liquida (valor fisico),-,-,-,definicao: NDVI 0 / chuva 0 (pressao ~0.6 kPa nao permite agua liquida estavel),-,-

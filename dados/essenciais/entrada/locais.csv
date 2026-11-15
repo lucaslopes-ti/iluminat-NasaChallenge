@@ -1,0 +1,14 @@
+local_id,nome,nome_en,regiao,cidade,papel,tipo_en,lat,lon,lat_min,lat_max,lon_min,lon_max
+vargeao,Domo de Vargeão,Vargeão Dome,"SC, BR",Vargeão,candidato,12 km impact crater in basalt,-26.82,-52.17,-26.9,-26.74,-52.25,-52.09
+vista_alegre,Cratera de Vista Alegre,Vista Alegre crater,"PR, BR",Coronel Vivida,candidato,9.5 km impact crater in basalt,-25.95,-52.69,-26.01,-25.89,-52.75,-52.63
+cangalha,Serra da Cangalha,Serra da Cangalha crater,"TO, BR",Campos Lindos,candidato,13 km impact crater in sedimentary rock,-8.08,-46.86,-8.2,-7.96,-46.98,-46.74
+araguainha,Domo de Araguainha,Araguainha Dome,"MT/GO, BR",Araguainha,candidato,"40 km impact structure, largest in South America",-16.78,-52.98,-16.98,-16.58,-53.18,-52.78
+carajas,Serra Norte de Carajás (cavernas),Carajás iron caves,"PA, BR",Parauapebas,candidato,"Iron-rich duricrust (canga) with over 1,000 caves",-6.05,-50.15,-6.15,-5.95,-50.25,-50.05
+lencois,Lençóis Maranhenses,Lençóis Maranhenses,"MA, BR",Barreirinhas,candidato,Coastal dune field with seasonal lagoons,-2.53,-43.12,-2.68,-2.38,-43.27,-42.97
+raso_catarina,Raso da Catarina,Raso da Catarina,"BA, BR",Paulo Afonso,candidato,Semi-arid sandstone plateau with bare soils,-9.65,-38.45,-9.8,-9.5,-38.6,-38.3
+atacama,"Atacama, Yungay",Atacama Desert (Yungay),Chile,Antofagasta,referência,"Hyper-arid desert, driest non-polar place on Earth",-24.08,-69.93,-24.18,-23.98,-70.03,-69.83
+dry_valleys,McMurdo Dry Valleys,McMurdo Dry Valleys,Antarctica,McMurdo Station,referência,Polar desert valleys free of ice,-77.5,162.0,-77.8,-77.2,161.7,162.3
+haughton,Cratera de Haughton,Haughton crater,"Nunavut, Canada",Devon Island,referência,23 km impact crater in polar desert,75.37,-89.68,75.22,75.52,-89.83,-89.53
+mauna_kea,Mauna Kea,Mauna Kea,"Hawaiʻi, USA",Hilo,referência,Basaltic volcano with ash and cinder slopes,19.82,-155.47,19.72,19.92,-155.57,-155.37
+rio_tinto,Río Tinto,Río Tinto,Spain,Minas de Riotinto,referência,"Acidic, iron- and sulfate-rich river",37.72,-6.55,37.62,37.82,-6.65,-6.45
+lonar,Cratera de Lonar,Lonar crater,"Maharashtra, India",Lonar,candidato,1.8 km young impact crater in Deccan basalt,19.98,76.51,19.93,20.03,76.46,76.56

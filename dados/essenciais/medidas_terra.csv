@@ -1,0 +1,157 @@
+local_id,variavel,valor,unidade,status,fonte_id,short_name_versao,doi_ou_referencia,nota
+vargeao,elev_media_m,893,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 361 pixels de ~1 km na caixa do local
+vargeao,elev_relativa_m,-294,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 361 pixels de ~1 km na caixa do local
+vargeao,declividade_media,2.7,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 361 pixels de ~1 km na caixa do local
+vargeao,rugosidade_tri_m,123.1,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 361 pixels de ~1 km na caixa do local
+vargeao,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 361 pixels de ~1 km na caixa do local
+vargeao,lst_dia_c,27,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+vargeao,lst_noite_c,12,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+vargeao,amplitude_termica_c,15,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+vargeao,ndvi_medio,0.68,indice,provisorio,mod13a2,MOD13A2 v061,doi:10.5067/MODIS/MOD13A2.061,estimativa; substituir pela saida do notebook 01
+vargeao,albedo_medio,0.15,fracao,provisorio,mcd43a3,MCD43A3 v061 (Albedo_WSA_shortwave),doi:10.5067/MODIS/MCD43A3.061,estimativa; substituir pela saida do notebook 01
+vargeao,aod_medio,0.12,adimensional,provisorio,mcd19a2,MCD19A2 v061 (Optical_Depth_055),doi:10.5067/MODIS/MCD19A2.061,estimativa; substituir pela saida do notebook 01
+vargeao,chuva_anual_mm,1890,mm,provisorio,gpm_imergm,GPM_3IMERGM v07,doi:10.5067/GPM/IMERG/3B-MONTH/07,estimativa; substituir pela saida do notebook 01
+vista_alegre,elev_media_m,561,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 196 pixels de ~1 km na caixa do local
+vista_alegre,elev_relativa_m,-324,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 196 pixels de ~1 km na caixa do local
+vista_alegre,declividade_media,2.4,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 196 pixels de ~1 km na caixa do local
+vista_alegre,rugosidade_tri_m,108.5,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 196 pixels de ~1 km na caixa do local
+vista_alegre,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 196 pixels de ~1 km na caixa do local
+vista_alegre,lst_dia_c,28,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+vista_alegre,lst_noite_c,13,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+vista_alegre,amplitude_termica_c,15,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+vista_alegre,ndvi_medio,0.71,indice,provisorio,mod13a2,MOD13A2 v061,doi:10.5067/MODIS/MOD13A2.061,estimativa; substituir pela saida do notebook 01
+vista_alegre,albedo_medio,0.15,fracao,provisorio,mcd43a3,MCD43A3 v061 (Albedo_WSA_shortwave),doi:10.5067/MODIS/MCD43A3.061,estimativa; substituir pela saida do notebook 01
+vista_alegre,aod_medio,0.12,adimensional,provisorio,mcd19a2,MCD19A2 v061 (Optical_Depth_055),doi:10.5067/MODIS/MCD19A2.061,estimativa; substituir pela saida do notebook 01
+vista_alegre,chuva_anual_mm,1980,mm,provisorio,gpm_imergm,GPM_3IMERGM v07,doi:10.5067/GPM/IMERG/3B-MONTH/07,estimativa; substituir pela saida do notebook 01
+cangalha,elev_media_m,341,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 841 pixels de ~1 km na caixa do local
+cangalha,elev_relativa_m,-226,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 841 pixels de ~1 km na caixa do local
+cangalha,declividade_media,1.6,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 841 pixels de ~1 km na caixa do local
+cangalha,rugosidade_tri_m,76.5,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 841 pixels de ~1 km na caixa do local
+cangalha,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 841 pixels de ~1 km na caixa do local
+cangalha,lst_dia_c,36,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+cangalha,lst_noite_c,18,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+cangalha,amplitude_termica_c,18,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+cangalha,ndvi_medio,0.44,indice,provisorio,mod13a2,MOD13A2 v061,doi:10.5067/MODIS/MOD13A2.061,estimativa; substituir pela saida do notebook 01
+cangalha,albedo_medio,0.16,fracao,provisorio,mcd43a3,MCD43A3 v061 (Albedo_WSA_shortwave),doi:10.5067/MODIS/MCD43A3.061,estimativa; substituir pela saida do notebook 01
+cangalha,aod_medio,0.2,adimensional,provisorio,mcd19a2,MCD19A2 v061 (Optical_Depth_055),doi:10.5067/MODIS/MCD19A2.061,estimativa; substituir pela saida do notebook 01
+cangalha,chuva_anual_mm,1350,mm,provisorio,gpm_imergm,GPM_3IMERGM v07,doi:10.5067/GPM/IMERG/3B-MONTH/07,estimativa; substituir pela saida do notebook 01
+araguainha,elev_media_m,542,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 2304 pixels de ~1 km na caixa do local
+araguainha,elev_relativa_m,-447,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 2304 pixels de ~1 km na caixa do local
+araguainha,declividade_media,1.6,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 2304 pixels de ~1 km na caixa do local
+araguainha,rugosidade_tri_m,77.9,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 2304 pixels de ~1 km na caixa do local
+araguainha,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 2304 pixels de ~1 km na caixa do local
+araguainha,lst_dia_c,35,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+araguainha,lst_noite_c,17,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+araguainha,amplitude_termica_c,18,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+araguainha,ndvi_medio,0.52,indice,provisorio,mod13a2,MOD13A2 v061,doi:10.5067/MODIS/MOD13A2.061,estimativa; substituir pela saida do notebook 01
+araguainha,albedo_medio,0.16,fracao,provisorio,mcd43a3,MCD43A3 v061 (Albedo_WSA_shortwave),doi:10.5067/MODIS/MCD43A3.061,estimativa; substituir pela saida do notebook 01
+araguainha,aod_medio,0.18,adimensional,provisorio,mcd19a2,MCD19A2 v061 (Optical_Depth_055),doi:10.5067/MODIS/MCD19A2.061,estimativa; substituir pela saida do notebook 01
+araguainha,chuva_anual_mm,1550,mm,provisorio,gpm_imergm,GPM_3IMERGM v07,doi:10.5067/GPM/IMERG/3B-MONTH/07,estimativa; substituir pela saida do notebook 01
+carajas,elev_media_m,429,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 576 pixels de ~1 km na caixa do local
+carajas,elev_relativa_m,-565,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 576 pixels de ~1 km na caixa do local
+carajas,declividade_media,4.2,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 576 pixels de ~1 km na caixa do local
+carajas,rugosidade_tri_m,207.6,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 576 pixels de ~1 km na caixa do local
+carajas,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 576 pixels de ~1 km na caixa do local
+carajas,lst_dia_c,32,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+carajas,lst_noite_c,20,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+carajas,amplitude_termica_c,12,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+carajas,ndvi_medio,0.35,indice,provisorio,mod13a2,MOD13A2 v061,doi:10.5067/MODIS/MOD13A2.061,estimativa; substituir pela saida do notebook 01
+carajas,albedo_medio,0.12,fracao,provisorio,mcd43a3,MCD43A3 v061 (Albedo_WSA_shortwave),doi:10.5067/MODIS/MCD43A3.061,estimativa; substituir pela saida do notebook 01
+carajas,aod_medio,0.2,adimensional,provisorio,mcd19a2,MCD19A2 v061 (Optical_Depth_055),doi:10.5067/MODIS/MCD19A2.061,estimativa; substituir pela saida do notebook 01
+carajas,chuva_anual_mm,2050,mm,provisorio,gpm_imergm,GPM_3IMERGM v07,doi:10.5067/GPM/IMERG/3B-MONTH/07,estimativa; substituir pela saida do notebook 01
+lencois,elev_media_m,16,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 1133 pixels de ~1 km na caixa do local
+lencois,elev_relativa_m,-42,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 1133 pixels de ~1 km na caixa do local
+lencois,declividade_media,0.1,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 1133 pixels de ~1 km na caixa do local
+lencois,rugosidade_tri_m,7.0,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 1133 pixels de ~1 km na caixa do local
+lencois,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 1133 pixels de ~1 km na caixa do local
+lencois,lst_dia_c,33,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+lencois,lst_noite_c,24,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+lencois,amplitude_termica_c,9,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+lencois,ndvi_medio,0.1,indice,provisorio,mod13a2,MOD13A2 v061,doi:10.5067/MODIS/MOD13A2.061,estimativa; substituir pela saida do notebook 01
+lencois,albedo_medio,0.4,fracao,provisorio,mcd43a3,MCD43A3 v061 (Albedo_WSA_shortwave),doi:10.5067/MODIS/MCD43A3.061,estimativa; substituir pela saida do notebook 01
+lencois,aod_medio,0.15,adimensional,provisorio,mcd19a2,MCD19A2 v061 (Optical_Depth_055),doi:10.5067/MODIS/MCD19A2.061,estimativa; substituir pela saida do notebook 01
+lencois,chuva_anual_mm,1600,mm,provisorio,gpm_imergm,GPM_3IMERGM v07,doi:10.5067/GPM/IMERG/3B-MONTH/07,estimativa; substituir pela saida do notebook 01
+raso_catarina,elev_media_m,516,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 1296 pixels de ~1 km na caixa do local
+raso_catarina,elev_relativa_m,-405,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 1296 pixels de ~1 km na caixa do local
+raso_catarina,declividade_media,1.1,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 1296 pixels de ~1 km na caixa do local
+raso_catarina,rugosidade_tri_m,48.5,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 1296 pixels de ~1 km na caixa do local
+raso_catarina,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 1296 pixels de ~1 km na caixa do local
+raso_catarina,lst_dia_c,40,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+raso_catarina,lst_noite_c,20,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+raso_catarina,amplitude_termica_c,20,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+raso_catarina,ndvi_medio,0.28,indice,provisorio,mod13a2,MOD13A2 v061,doi:10.5067/MODIS/MOD13A2.061,estimativa; substituir pela saida do notebook 01
+raso_catarina,albedo_medio,0.2,fracao,provisorio,mcd43a3,MCD43A3 v061 (Albedo_WSA_shortwave),doi:10.5067/MODIS/MCD43A3.061,estimativa; substituir pela saida do notebook 01
+raso_catarina,aod_medio,0.12,adimensional,provisorio,mcd19a2,MCD19A2 v061 (Optical_Depth_055),doi:10.5067/MODIS/MCD19A2.061,estimativa; substituir pela saida do notebook 01
+raso_catarina,chuva_anual_mm,460,mm,provisorio,gpm_imergm,GPM_3IMERGM v07,doi:10.5067/GPM/IMERG/3B-MONTH/07,estimativa; substituir pela saida do notebook 01
+atacama,elev_media_m,1124,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 576 pixels de ~1 km na caixa do local
+atacama,elev_relativa_m,-751,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 576 pixels de ~1 km na caixa do local
+atacama,declividade_media,3.2,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 576 pixels de ~1 km na caixa do local
+atacama,rugosidade_tri_m,136.7,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 576 pixels de ~1 km na caixa do local
+atacama,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 576 pixels de ~1 km na caixa do local
+atacama,lst_dia_c,45,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+atacama,lst_noite_c,5,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+atacama,amplitude_termica_c,40,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+atacama,ndvi_medio,0.03,indice,provisorio,mod13a2,MOD13A2 v061,doi:10.5067/MODIS/MOD13A2.061,estimativa; substituir pela saida do notebook 01
+atacama,albedo_medio,0.3,fracao,provisorio,mcd43a3,MCD43A3 v061 (Albedo_WSA_shortwave),doi:10.5067/MODIS/MCD43A3.061,estimativa; substituir pela saida do notebook 01
+atacama,aod_medio,0.06,adimensional,provisorio,mcd19a2,MCD19A2 v061 (Optical_Depth_055),doi:10.5067/MODIS/MCD19A2.061,estimativa; substituir pela saida do notebook 01
+atacama,chuva_anual_mm,2,mm,provisorio,gpm_imergm,GPM_3IMERGM v07,doi:10.5067/GPM/IMERG/3B-MONTH/07,estimativa; substituir pela saida do notebook 01
+dry_valleys,elev_media_m,,m,sem_dado,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,fora da cobertura do SRTM30 (90N-60S); usar Copernicus DEM GLO-30
+dry_valleys,elev_relativa_m,,m,sem_dado,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,fora da cobertura do SRTM30 (90N-60S); usar Copernicus DEM GLO-30
+dry_valleys,declividade_media,,graus,sem_dado,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,fora da cobertura do SRTM30 (90N-60S); usar Copernicus DEM GLO-30
+dry_valleys,rugosidade_tri_m,,m,sem_dado,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,fora da cobertura do SRTM30 (90N-60S); usar Copernicus DEM GLO-30
+dry_valleys,frac_transitavel_15,,fracao,sem_dado,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,fora da cobertura do SRTM30 (90N-60S); usar Copernicus DEM GLO-30
+dry_valleys,lst_dia_c,-15,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+dry_valleys,lst_noite_c,-30,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+dry_valleys,amplitude_termica_c,15,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+dry_valleys,ndvi_medio,0.0,indice,provisorio,mod13a2,MOD13A2 v061,doi:10.5067/MODIS/MOD13A2.061,estimativa; substituir pela saida do notebook 01
+dry_valleys,albedo_medio,0.25,fracao,provisorio,mcd43a3,MCD43A3 v061 (Albedo_WSA_shortwave),doi:10.5067/MODIS/MCD43A3.061,estimativa; substituir pela saida do notebook 01
+dry_valleys,aod_medio,0.02,adimensional,provisorio,mcd19a2,MCD19A2 v061 (Optical_Depth_055),doi:10.5067/MODIS/MCD19A2.061,estimativa; substituir pela saida do notebook 01
+dry_valleys,chuva_anual_mm,50,mm,provisorio,gpm_imergm,GPM_3IMERGM v07,doi:10.5067/GPM/IMERG/3B-MONTH/07,estimativa; substituir pela saida do notebook 01
+haughton,elev_media_m,251,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 1296 pixels de ~1 km na caixa do local
+haughton,elev_relativa_m,-215,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 1296 pixels de ~1 km na caixa do local
+haughton,declividade_media,1.6,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 1296 pixels de ~1 km na caixa do local
+haughton,rugosidade_tri_m,36.2,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 1296 pixels de ~1 km na caixa do local
+haughton,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 1296 pixels de ~1 km na caixa do local
+haughton,lst_dia_c,-10,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+haughton,lst_noite_c,-20,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+haughton,amplitude_termica_c,10,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+haughton,ndvi_medio,0.05,indice,provisorio,mod13a2,MOD13A2 v061,doi:10.5067/MODIS/MOD13A2.061,estimativa; substituir pela saida do notebook 01
+haughton,albedo_medio,0.45,fracao,provisorio,mcd43a3,MCD43A3 v061 (Albedo_WSA_shortwave),doi:10.5067/MODIS/MCD43A3.061,estimativa; substituir pela saida do notebook 01
+haughton,aod_medio,0.05,adimensional,provisorio,mcd19a2,MCD19A2 v061 (Optical_Depth_055),doi:10.5067/MODIS/MCD19A2.061,estimativa; substituir pela saida do notebook 01
+haughton,chuva_anual_mm,150,mm,provisorio,gpm_imergm,GPM_3IMERGM v07,doi:10.5067/GPM/IMERG/3B-MONTH/07,estimativa; substituir pela saida do notebook 01
+mauna_kea,elev_media_m,2722,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 576 pixels de ~1 km na caixa do local
+mauna_kea,elev_relativa_m,-2639,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 576 pixels de ~1 km na caixa do local
+mauna_kea,declividade_media,10.5,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 576 pixels de ~1 km na caixa do local
+mauna_kea,rugosidade_tri_m,408.8,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 576 pixels de ~1 km na caixa do local
+mauna_kea,frac_transitavel_15,0.85,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 576 pixels de ~1 km na caixa do local
+mauna_kea,lst_dia_c,20,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+mauna_kea,lst_noite_c,-2,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+mauna_kea,amplitude_termica_c,22,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+mauna_kea,ndvi_medio,0.05,indice,provisorio,mod13a2,MOD13A2 v061,doi:10.5067/MODIS/MOD13A2.061,estimativa; substituir pela saida do notebook 01
+mauna_kea,albedo_medio,0.12,fracao,provisorio,mcd43a3,MCD43A3 v061 (Albedo_WSA_shortwave),doi:10.5067/MODIS/MCD43A3.061,estimativa; substituir pela saida do notebook 01
+mauna_kea,aod_medio,0.03,adimensional,provisorio,mcd19a2,MCD19A2 v061 (Optical_Depth_055),doi:10.5067/MODIS/MCD19A2.061,estimativa; substituir pela saida do notebook 01
+mauna_kea,chuva_anual_mm,300,mm,provisorio,gpm_imergm,GPM_3IMERGM v07,doi:10.5067/GPM/IMERG/3B-MONTH/07,estimativa; substituir pela saida do notebook 01
+rio_tinto,elev_media_m,379,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 576 pixels de ~1 km na caixa do local
+rio_tinto,elev_relativa_m,-414,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 576 pixels de ~1 km na caixa do local
+rio_tinto,declividade_media,2.7,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 576 pixels de ~1 km na caixa do local
+rio_tinto,rugosidade_tri_m,122.4,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 576 pixels de ~1 km na caixa do local
+rio_tinto,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 576 pixels de ~1 km na caixa do local
+rio_tinto,lst_dia_c,32,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+rio_tinto,lst_noite_c,12,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+rio_tinto,amplitude_termica_c,20,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+rio_tinto,ndvi_medio,0.3,indice,provisorio,mod13a2,MOD13A2 v061,doi:10.5067/MODIS/MOD13A2.061,estimativa; substituir pela saida do notebook 01
+rio_tinto,albedo_medio,0.17,fracao,provisorio,mcd43a3,MCD43A3 v061 (Albedo_WSA_shortwave),doi:10.5067/MODIS/MCD43A3.061,estimativa; substituir pela saida do notebook 01
+rio_tinto,aod_medio,0.12,adimensional,provisorio,mcd19a2,MCD19A2 v061 (Optical_Depth_055),doi:10.5067/MODIS/MCD19A2.061,estimativa; substituir pela saida do notebook 01
+rio_tinto,chuva_anual_mm,600,mm,provisorio,gpm_imergm,GPM_3IMERGM v07,doi:10.5067/GPM/IMERG/3B-MONTH/07,estimativa; substituir pela saida do notebook 01
+lonar,elev_media_m,565,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 144 pixels de ~1 km na caixa do local
+lonar,elev_relativa_m,-98,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 144 pixels de ~1 km na caixa do local
+lonar,declividade_media,0.6,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 144 pixels de ~1 km na caixa do local
+lonar,rugosidade_tri_m,30.4,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 144 pixels de ~1 km na caixa do local
+lonar,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,calculado de 144 pixels de ~1 km na caixa do local
+lonar,lst_dia_c,38,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+lonar,lst_noite_c,20,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+lonar,amplitude_termica_c,18,C,provisorio,mod11a1,MOD11A1 v061 + MYD11A1 v061,doi:10.5067/MODIS/MOD11A1.061 ; doi:10.5067/MODIS/MYD11A1.061,estimativa; substituir pela saida do notebook 01
+lonar,ndvi_medio,0.4,indice,provisorio,mod13a2,MOD13A2 v061,doi:10.5067/MODIS/MOD13A2.061,estimativa; substituir pela saida do notebook 01
+lonar,albedo_medio,0.17,fracao,provisorio,mcd43a3,MCD43A3 v061 (Albedo_WSA_shortwave),doi:10.5067/MODIS/MCD43A3.061,estimativa; substituir pela saida do notebook 01
+lonar,aod_medio,0.35,adimensional,provisorio,mcd19a2,MCD19A2 v061 (Optical_Depth_055),doi:10.5067/MODIS/MCD19A2.061,estimativa; substituir pela saida do notebook 01
+lonar,chuva_anual_mm,780,mm,provisorio,gpm_imergm,GPM_3IMERGM v07,doi:10.5067/GPM/IMERG/3B-MONTH/07,estimativa; substituir pela saida do notebook 01
