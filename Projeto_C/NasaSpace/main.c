@@ -2,14 +2,33 @@
 #include <stdlib.h>
 #include "Bibliotecas/cJSON.h"
 #include "Bibliotecas/funcoesJSON.h"
+#include <locale.h>
 
 char* ler_arquivo_para_string(const char *filename);
 
 void UpdateCampos( float dados[],char nomes[][100]);
 
-int main() {
 
-    char nomes[][100] = {{"nome"},{"idade"},{"ativo"}};
+struct vetoresJson{
+    char campo[45];
+    int tamanho;
+    char nomes[][100];
+
+};
+
+int main() {
+    setlocale(LC_ALL, "");
+    setlocale(LC_NUMERIC, "C");
+
+
+char campos[][100] = {
+    "alvos",
+
+};
+    struct vetoresJson vetor[10];
+    strcpy(vetor[0].campo,"alvos");
+    vetor[0].tamnho = 7;
+
     float dados[100];
     UpdateCampos(dados,nomes);
 
@@ -17,6 +36,7 @@ int main() {
 
     return 0;
 }
+
 
 void UpdateCampos( float dados[],char nomes[][100])
 {
@@ -44,20 +64,31 @@ void UpdateCampos( float dados[],char nomes[][100])
         return;
     }
 
-    // 1. Pega o vetor "perfis"
-    cJSON *perfis = cJSON_GetObjectItemCaseSensitive(json_root, "alvos");
+for(int i = 0; i< sizeof(nomes); i++)
+{
+    cJSON *tag = cJSON_GetObjectItemCaseSensitive(json_root, nomes[0]);
 
-    if (cJSON_IsArray(perfis)) {
-        cJSON *perfil = NULL;
+        if (cJSON_IsArray(tag)) {
+            cJSON *tag = NULL;
+            int j = 0;
 
-        // 2. Percorre cada objeto dentro de "perfis"
-        cJSON_ArrayForEach(perfil, perfis) {
-            // 3. Extrai "id" e "rotulo" de dentro do objeto atual
-            cJSON *id = cJSON_GetObjectItemCaseSensitive(perfil, "id");
-            cJSON *rotulo = cJSON_GetObjectItemCaseSensitive(perfil, "nome");
-            printf("ID: %s | Rotulo: %s\n", id->valuestring, rotulo->valuestring);
+            // 2. Percorre cada objeto dentro de "perfis"
+            cJSON_ArrayForEach(perfil, perfis) {
+                // 3. Extrai "id" e "rotulo" de dentro do objeto atual
+                cJSON *valor = cJSON_GetObjectItemCaseSensitive(perfil, nomes[j]);
+                if(valor->valuestring)
+                {
+                     printf("%s: %s\n", nomes[j], valor->valuestring);
+                }
+                if(valor->valuedouble)
+                {
+                     printf("%s: %f\n", nomes[j], valor->valuedouble);
+                }
+
+                j++;
+            }
         }
-    }
+}
 
     /*
 
