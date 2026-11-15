@@ -32,11 +32,12 @@
 1794748516 c:\users\eup9nl402.azuread\documents\iluminat-nasachallenge\projeto_c\nasaspace\bibliotecas\cjson.h
 	<stddef.h>
 
-1794752461 source:c:\users\eup9nl402.azuread\documents\iluminat-nasachallenge\projeto_c\nasaspace\main.c
+1794757274 source:c:\users\eup9nl402.azuread\documents\iluminat-nasachallenge\projeto_c\nasaspace\main.c
 	<stdio.h>
 	<stdlib.h>
 	"Bibliotecas/cJSON.h"
 	"Bibliotecas/funcoesJSON.h"
+	<locale.h>
 
 1794749592 c:\users\eup9nl402.azuread\documents\iluminat-nasachallenge\projeto_c\nasaspace\bibliotecas\funcoesjson.h
 	<stdio.h>
