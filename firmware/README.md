@@ -29,7 +29,16 @@ Luminosidade (LDR): 548
 
 Cada ciclo vira `{"umid":52.3,"temp":28.4,"dist":23,"luz":548}` (umidade do ar em %, distância do obstáculo em cm, LDR de 0 a 1023). Rode com `--baud 9600`.
 
-O ESP32 não é usado no projeto.
+O ESP32 e o Bluetooth não são usados no projeto: o carrinho fala com o computador **só pelo cabo USB**.
+
+## Carrinho com motores (`carrinho_motores/`)
+
+O sketch principal agora é `carrinho_motores/carrinho_motores.ino` (Arduino Uno): ponte H com dois motores andando juntos e os sensores (DHT no D6, HC-SR04 TRIG D4/ECHO D5, LDR no A0). As ligações estão no topo do arquivo.
+
+- **Comandos** (uma letra pelo cabo): `F` frente, `T` trás, `P` parar, `0`–`9` velocidade, `?` estado, `L`/`R` testam um motor de cada vez. Sem comando por 1,5 s, os motores param.
+- **Sensores:** uma linha por segundo, `{"temp":27.2,"umid":52.9,"dist":33,"luz":354}`, que a ponte MQTT e a tela em C entendem.
+- **`controle_carrinho.py`:** manda as teclas para o Arduino e repete o comando enquanto o carrinho anda; a tela em C (opção 1 do menu) usa ele e mostra os sensores ao vivo. Ele também publica as linhas de sensores no MQTT (`illuminat-horizontes/carrinho`, com `--local <id>` o perfil retido), para o site mostrar o mesmo; `--sem-mqtt` desliga.
+- **Gravar:** nada ligado no D0. `arduino-cli upload -p /dev/cu.usbserial-21130 --fqbn arduino:avr:uno firmware/carrinho_motores`.
 
 **Instalar no Mac (Python do Homebrew):** `pip3 install` dá erro `externally-managed-environment`. Use
 `python3 -m pip install --user --break-system-packages pyserial paho-mqtt` (instala só para o seu usuário, sem mexer no Homebrew).
