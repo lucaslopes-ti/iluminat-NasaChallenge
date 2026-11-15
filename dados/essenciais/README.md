@@ -1,106 +1,127 @@
-# Dados essenciais do Illuminat Horizontes
+# Dados de analogia do Illuminat Horizontes
 
-Esta pasta reúne, num só lugar, os dados centrais do projeto: os locais da Terra que estudamos, os dois alvos de exploração (**Shackleton**, no polo sul da Lua, e **Jezero**, em Marte) e uma nota de similaridade entre eles. Tudo está pronto para a tela do carrinho ESP32 ler quando o servidor web for ligado, e também serve para o site.
+Esta pasta guarda os dados do projeto já prontos para uso. Ela compara **18 locais da Terra** com **16 alvos na Lua e em Marte** em **9 dimensões de analogia**, seguindo os critérios que a NASA usa para escolher onde pousar e onde montar uma base. Para cada local, diz o que funciona, onde a analogia quebra e o que dá para testar ali.
 
-Cada número tem **status** e **fonte**. Assim dá para saber o que já foi medido com dados da NASA e o que ainda é provisório.
+Os dados servem para três coisas:
 
-## Arquivos
+- **Tela do carrinho ESP32:** a tela lê `tela_carrinho.json` quando o servidor web liga.
+- **Site:** usa `analogos_completo.json`.
+- **Relatório e apresentação:** os CSVs.
 
-| Arquivo | O que tem | Para quem |
+Todo valor vem com **status** e **fonte**, ou seja, short name, versão, DOI ou referência, resolução e data de acesso. Assim os jurados conseguem rastrear de onde saiu cada número.
+
+## O que já é dado real
+
+| Dimensão | Terra | Lua / Marte |
 |---|---|---|
-| `tela_carrinho.json` | Tudo junto: alvos, locais em ordem de nota, destaque, fontes. Cada variável traz `valor`, `unidade`, `status`, `fonte` e, quando dá para comparar, `valor_alvo` e `similaridade` | Programa em C (cJSON) e servidor web do ESP32 |
-| `resumo_locais.csv` | Uma linha por local, com a posição no ranking, a nota e as variáveis principais | Planilha, apresentação |
-| `medidas_terra.csv` | Formato longo: um valor por linha, com status, short name, versão e DOI | Conferência das fontes |
-| `medidas_alvos.csv` | Mesmo formato, para Shackleton e Jezero | Conferência das fontes |
-| `entrada/` | Os dados de partida (locais, valores dos alvos, valores provisórios, catálogo de fontes) | Quem for atualizar |
-| `gerar_dados.py` | Gera os quatro arquivos acima a partir de `entrada/` e dos blocos SRTM30 | Quem for atualizar |
+| Relevo (elevação, desnível, declividade, rugosidade, áreas < 8° e < 15°) | **medido**: NASA SRTMGL30 v002, 27 blocos em `dados/srtm30/` | **referência**: LRO LOLA, MGS MOLA |
+| Temperatura da superfície (máx., mín., ΔT) | **medido**: NASA POWER (MERRA-2), médias de 2001–2025 | **referência**: LRO Diviner, Perseverance MEDA, Curiosity REMS |
+| Albedo | **medido**: NASA POWER (CERES SYN1deg) | **referência**: LOLA, MGS TES |
+| Poeira (AOD 550 nm) e vento | **medido**: NASA POWER (MERRA-2) | **referência**: Perseverance (opacidade da poeira) |
+| Chuva | **medido**: NASA POWER (PRECTOTCORR) | 0 (valor físico) |
+| Iluminação (altura do Sol, sol 24 h, noite polar) | **calculado**: geometria solar pela latitude | **calculado** com a obliquidade da Lua e de Marte; iluminação com relevo vem do LOLA |
+| Vegetação (NDVI) | **provisório**: falta o MOD13A2 da task do AppEEARS | 0 |
+| Geologia, água/gelo, subsolo, vida | **tags** com referência bibliográfica (Earth Impact Database, artigos de campo) | **tags** a partir de CRISM, SWIM, LAMP/LEND, missões de superfície |
 
-## Status de cada valor
+As respostas da NASA POWER estão salvas em `entrada/nasa_power/`, uma por local, com cabeçalho, versão da API e período. Quem quiser pode conferir ou baixar de novo.
+
+Hoje, de 414 valores da Terra, só 18 continuam provisórios (o NDVI). A McMurdo Dry Valleys fica sem relevo, porque o SRTM30 não cobre a Antártida.
+
+## Status
 
 | Status | Significado |
 |---|---|
-| `medido` | Calculado neste repositório a partir de dados da NASA |
-| `referencia` | Valor publicado por missão da NASA (aproximado, com a referência citada) |
-| `provisorio` | Estimativa temporária, para a tela já funcionar. Será trocada pela saída do notebook 01 (AppEEARS e GPM) |
+| `medido` | Dado de satélite ou modelo da NASA, processado neste repositório |
+| `calculado` | Física: geometria solar, pressão pela altitude |
+| `referencia` | Valor publicado por missão da NASA, ESA ou JAXA (aproximado, com a referência) |
+| `provisorio` | Estimativa temporária, a ser trocada pelo AppEEARS |
 | `sem_dado` | O produto usado não cobre o local |
 
-**Hoje:** o relevo da Terra está `medido` (SRTMGL30). Os valores de Shackleton e Jezero são `referencia`. Temperatura de superfície, NDVI, albedo, poeira e chuva da Terra ainda são `provisorio`. A McMurdo Dry Valleys fica sem relevo porque o SRTM30 não cobre a Antártida.
+## Alvos (Lua e Marte)
 
-## Variáveis essenciais
+**Lua.** As **9 regiões candidatas ao pouso do Artemis III** divulgadas pela NASA em outubro de 2024: Peak near Cabeus B, Haworth, Malapert Massif, Mons Mouton Plateau, Mons Mouton, Nobile Rim 1, Nobile Rim 2, de Gerlache Rim 2 e Slater Plain. Também entram a borda de **Shackleton** (a região histórica das propostas de base) e o fosso das **Colinas de Marius**, um provável tubo de lava que serviria de abrigo.
 
-Escolhemos poucas dimensões, as que mais pesam para uma base ou um campo de testes:
+**Marte.** **Jezero** (Perseverance), **Gale** (Curiosity), **Meridiani** (Opportunity, hematita e jarosita), **Arcadia Planitia** (gelo raso, candidata a pouso humano pelo mapa SWIM) e **Oxia Planum** (rover Rosalind Franklin, da ESA).
 
-| Dimensão | Variável | Terra (fonte) | Lua: Shackleton | Marte: Jezero |
-|---|---|---|---|---|
-| Relevo | `elev_media_m`, `elev_relativa_m` (desnível na caixa) | SRTMGL30 v002 | LRO LOLA | MGS MOLA |
-| Mobilidade | `declividade_media`, `rugosidade_tri_m`, `frac_transitavel_15` | SRTMGL30 v002 | LRO LOLA | MGS MOLA |
-| Temperatura | `lst_dia_c`, `lst_noite_c`, `amplitude_termica_c` (ΔT) | MOD11A1 / MYD11A1 v061 | LRO Diviner | Perseverance MEDA |
-| Vegetação | `ndvi_medio` | MOD13A2 v061 | 0 (sem vida) | 0 (sem vida) |
-| Superfície | `albedo_medio` | MCD43A3 v061 | LRO LOLA (aprox.) | MGS TES |
-| Poeira | `aod_medio` (550 nm) | MCD19A2 v061 (MAIAC) | 0 (sem atmosfera) | Perseverance (opacidade) |
-| Água | `chuva_anual_mm` | GPM_3IMERGM v07 | 0 | 0 |
-| Só nos alvos | `iluminacao_frac`, `pressao_kpa` | – | LRO LOLA | Perseverance MEDA |
+As coordenadas das regiões do Artemis III são **aproximadas** (±1°, campo `coord_aprox`) e precisam ser conferidas no mapa oficial da NASA antes de ir para o site.
 
-O catálogo completo, com DOI, resolução, link e data de acesso, está em `entrada/fontes.csv` e também vai dentro do JSON, em `fontes`.
+## Como as bases são escolhidas
 
-### Como o relevo foi calculado
+O arquivo `entrada/criterios_base.json` resume os critérios e diz como testar cada um na Terra. O `criterios_terra.csv` mostra quais locais permitem testar cada critério.
 
-`gerar_dados.py` lê os 27 blocos de `dados/srtm30/` (NASA SRTMGL30, doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002) e recorta a caixa de cada local (`lat_min…lon_max` de `entrada/locais.csv`, a mesma do site). As definições são as do notebook 01, célula 5: declividade com o pixel convertido para metros na latitude do local, rugosidade TRI de Riley (1999) nos 8 vizinhos e fração da área com declividade abaixo de 15°.
+- **Lua (Artemis):** até 6° do polo sul, sol para energia por vários dias seguidos, declividade abaixo de 8° no pouso, visada para a Terra (comunicação), gelo perto, nas crateras em sombra permanente, e frio extremo.
+- **Marte (pouso humano, NASA 2015):** latitude entre ~50°S e ~50°N, altitude baixa para a descida, terreno de pouso seguro, água acessível (gelo raso ou minerais hidratados) até ~100 km, ciência de alto valor perto e cuidado com a poeira.
 
-O SRTM30 tem pixel de cerca de 1 km. Por isso a declividade sai bem menor do que a real, que só aparece no NASADEM de 30 m (notebook 01). Os números servem para comparar os locais entre si, não para planejar a rota do carrinho.
+## Dimensões e nota
 
-## Nota de similaridade
+São 9 dimensões, as 7 do plano mais **iluminação** e **subsolo**:
 
-Para cada variável comparável:
+terreno · materiais · temperatura · iluminação · água e gelo · poeira e vento · vida · subsolo · pouso e mobilidade
+
+- **Indicador numérico:** `S = exp(−(Terra − alvo)² / (2σ²))`. Os σ estão em `entrada/dimensoes.json`.
+- **Indicador de tags** (geologia, gelo, cavernas e assim por diante): Jaccard, que é a razão entre as tags em comum e o total de tags.
+- **Nota da dimensão:** média dos indicadores disponíveis.
+- **IAP (Índice de Analogia Planetária, 0–100):** média ponderada das dimensões pelo **perfil de missão**. São seis perfis: geral, rover, astrobiologia, gelo/ISRU, base e construção, e energia solar.
+
+**Validação.** Os análogos clássicos (Atacama, Haughton, Mauna Kea, Río Tinto) aparecem perto do topo, o que indica que o método está calibrado. Os novos locais que surgem ao lado deles ganham credibilidade. As posições ficam em `validacao_referencias`.
+
+**O que sempre quebra:** gravidade, atmosfera, radiação e duração do dia (`sempre_quebra`).
+
+## Arquivos
+
+| Arquivo | Conteúdo |
+|---|---|
+| `tela_carrinho.json` (~70 KB) | Versão para a tela: destaques, ranking, nota por dimensão e por perfil, 14 valores principais com o valor do alvo, uma linha de "funciona", "quebra" e "teste" |
+| `analogos_completo.json` | Tudo: alvos com valores e fontes, locais com valores, tags, processos, referências, critérios de base e a comparação com cada um dos 16 alvos |
+| `ranking.csv` | Uma linha por local: melhor alvo, IAP de cada perfil e nota de cada dimensão |
+| `notas_dimensoes.csv` | Local × alvo × dimensão, com os indicadores |
+| `criterios_terra.csv` | Que critérios de base cada local permite testar |
+| `medidas_terra.csv` / `medidas_alvos.csv` | Um valor por linha, com status, fonte e DOI |
+| `entrada/` | Os dados de partida, que dá para editar |
+| `gerar_dados.py` | Gera tudo de novo (só precisa do numpy) |
+
+Destaques na tela: `destaque` (melhor candidato brasileiro), `destaque_geral`, `destaque_descoberta`, `destaque_lua`, `destaque_marte`, `destaque_por_perfil` e `melhor_analogo_por_alvo`.
+
+## Atualizar
 
 ```
-similaridade = max(0, 1 − |Terra − alvo| / escala)
+python3 dados/essenciais/gerar_dados.py                    # refaz tudo com o que está em entrada/
+python3 dados/essenciais/gerar_dados.py --baixar-power     # baixa de novo a NASA POWER
+python3 dados/essenciais/gerar_dados.py --appeears PASTA   # usa os CSVs de Point Sample do AppEEARS
+python3 dados/essenciais/gerar_dados.py --notebook terra_locais.parquet
 ```
 
-A nota do local é a média dessas similaridades, de 0 a 100 %. As escalas estão no JSON (`escalas`): 15° para declividade, 120 °C para ΔT, 1,0 para AOD, e assim por diante. É um método simples e transparente. Ele não tenta dizer que a Terra "é" a Lua: a temperatura noturna, por exemplo, nunca chega perto de Shackleton, e isso aparece como similaridade baixa. O que sempre quebra (gravidade, atmosfera, radiação) está em `sempre_quebra`.
+Ordem de prioridade dos valores da Terra: **AppEEARS/notebook > NASA POWER > provisório**. O MODIS do AppEEARS tem 1 km, enquanto a POWER tem de 0,5° a 1°. Quando o AppEEARS chegar, ele substitui também a temperatura e o albedo.
 
-O JSON traz três destaques:
+Para trocar um alvo, um critério ou uma tag, edite o arquivo em `entrada/` e rode o script de novo.
 
-- `destaque`: o local com maior nota geral;
-- `destaque_candidato`: o melhor entre os candidatos novos (não as referências clássicas, como Atacama). É o local que o carrinho pode apresentar como "base possível";
-- `destaque_por_alvo`: o melhor para Shackleton e o melhor para Jezero.
-
-Locais com alguma variável faltando (`dados_completos: false`) ficam no fim do ranking.
-
-## Como atualizar com os dados reais do AppEEARS
-
-1. Rode o notebook 01 no Colab. Ele gera `terra_locais.parquet`, com as colunas `lst_dia_c`, `lst_noite_c`, `amplitude_termica_c`, `ndvi_mediano` (ou `ndvi_medio`), `albedo_medio`, `aod_medio` e `chuva_anual_mm`.
-2. Na raiz do repositório:
-
-   ```
-   pip install numpy pandas pyarrow
-   python3 dados/essenciais/gerar_dados.py --notebook caminho/para/terra_locais.parquet
-   ```
-
-3. Os valores do notebook substituem os provisórios e passam a `medido`. O ranking e as notas são recalculados.
-
-Para corrigir um valor à mão, edite `entrada/terra_provisorio.csv` ou `entrada/alvos_referencia.csv` e rode o script de novo (sem `--notebook`, só precisa do numpy).
-
-## Lendo no C
-
-O `tela_carrinho.json` funciona direto com o cJSON do `Projeto_C`:
+## Lendo no C (cJSON)
 
 ```c
 cJSON *raiz = cJSON_Parse(texto);
-const char *id = cJSON_GetObjectItem(raiz, "destaque_candidato")->valuestring;
+const char *id = cJSON_GetObjectItem(raiz, "destaque")->valuestring;
 cJSON *local;
 cJSON_ArrayForEach(local, cJSON_GetObjectItem(raiz, "locais")) {
     if (strcmp(cJSON_GetObjectItem(local, "id")->valuestring, id) != 0) continue;
-    cJSON *dados = cJSON_GetObjectItem(local, "dados");
-    cJSON *decl  = cJSON_GetObjectItem(dados, "declividade_media");
-    printf("%s: %.1f %s [%s]\n",
-           cJSON_GetObjectItem(decl, "rotulo")->valuestring,
-           cJSON_GetObjectItem(decl, "valor")->valuedouble,
-           cJSON_GetObjectItem(decl, "unidade")->valuestring,
-           cJSON_GetObjectItem(decl, "status")->valuestring);
+    printf("%s -> %s: %d%%\n", cJSON_GetObjectItem(local, "nome")->valuestring,
+           cJSON_GetObjectItem(local, "alvo_nome")->valuestring,
+           cJSON_GetObjectItem(local, "nota_pct")->valueint);
+    cJSON *v;
+    cJSON_ArrayForEach(v, cJSON_GetObjectItem(local, "dados")) {
+        cJSON *val = cJSON_GetObjectItem(v, "valor");
+        if (!cJSON_IsNumber(val)) continue;               /* null = sem dado */
+        printf("  %-32s %8.2f %s [%s]\n", cJSON_GetObjectItem(v, "rotulo")->valuestring,
+               val->valuedouble, cJSON_GetObjectItem(v, "unidade")->valuestring,
+               cJSON_GetObjectItem(v, "status")->valuestring);
+    }
 }
 ```
 
-Os rótulos e unidades estão sem acento para não quebrar no terminal do Windows. Os nomes dos locais têm acento (UTF-8): no Windows, chame `SetConsoleOutputCP(65001);` (de `windows.h`) no começo do `main`. Um valor `null` significa sem dado; teste com `cJSON_IsNumber` antes de ler.
+Rótulos e unidades não têm acento, para não quebrar no terminal do Windows. Os nomes dos locais têm acento (UTF-8): no Windows, chame `SetConsoleOutputCP(65001);` no começo do `main`.
 
-O arquivo tem cerca de 47 KB, então cabe no LittleFS do ESP32.
+## Limites conhecidos
+
+- O relevo vem de pixels de ~1 km, então a declividade real é maior. O NASADEM de 30 m (notebook 01) resolve isso.
+- A POWER tem resolução grossa (0,5°–1°) e mistura o local com o entorno. Locais pequenos, como Lonar e Dallol, ficam com valores regionais.
+- Iluminação calculada com horizonte plano. Na Lua, o relevo muda tudo: os valores com relevo (`iluminacao_frac`) vêm do LOLA.
+- Valores de Lua e Marte são números publicados e aproximados, não recortes processados aqui. O próximo passo é calcular a partir dos mapas LOLA, Diviner, MOLA e THEMIS.

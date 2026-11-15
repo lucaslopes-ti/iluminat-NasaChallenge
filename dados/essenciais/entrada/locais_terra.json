@@ -1,0 +1,275 @@
+{
+ "_sobre": "Locais da Terra. papel: candidato (novo, pouco estudado como análogo), descoberta (internacional pouco explorado), referencia (análogo clássico, usado para validar o método). As caixas (lat/lon min/max) são as mesmas do site. coord_aprox=true: posição aproximada, conferir.",
+ "locais": [
+  {
+   "id": "vargeao", "nome": "Domo de Vargeão", "nome_en": "Vargeão Dome", "regiao": "SC", "pais": "Brasil", "cidade": "Vargeão",
+   "papel": "candidato", "lat": -26.82, "lon": -52.17, "caixa": [-26.9, -26.74, -52.25, -52.09],
+   "feicao": "Cratera de impacto complexa de ~12 km em basalto", "diametro_km": 12,
+   "tags": {
+    "terreno": ["cratera_impacto", "borda_cratera"],
+    "materiais": ["basalto", "brecha_impacto", "arenito", "choque"],
+    "agua": [], "poeira": [], "biologia": [], "subsolo": ["fraturas_impacto"]
+   },
+   "processos": ["impacto em rocha vulcânica", "alteração hidrotermal pós-impacto"],
+   "funciona": ["Impacto em basalto, a rocha dos mares lunares e da crosta marciana", "Feições de choque e brechas em rocha vulcânica, raras no mundo"],
+   "quebra": ["Clima úmido e vegetação cobrem a rocha", "Erosão intensa apagou parte da borda"],
+   "testes": ["Treinar geólogos e IA para reconhecer crateras em basalto", "Calibrar detecção automática de crateras com DEM", "Testar amostragem de brechas por rover com estrada de acesso"],
+   "referencias": ["Earth Impact Database (PASSC)", "Crósta et al., estudos da estrutura de Vargeão"]
+  },
+  {
+   "id": "vista_alegre", "nome": "Cratera de Vista Alegre", "nome_en": "Vista Alegre crater", "regiao": "PR", "pais": "Brasil", "cidade": "Coronel Vivida",
+   "papel": "candidato", "lat": -25.95, "lon": -52.69, "caixa": [-26.01, -25.89, -52.75, -52.63],
+   "feicao": "Cratera de impacto de ~9,5 km em basalto", "diametro_km": 9.5,
+   "tags": {
+    "terreno": ["cratera_impacto"],
+    "materiais": ["basalto", "brecha_impacto", "choque"],
+    "agua": [], "poeira": [], "biologia": [], "subsolo": ["fraturas_impacto"]
+   },
+   "processos": ["impacto em rocha vulcânica"],
+   "funciona": ["Segundo impacto em basalto na mesma província: permite comparar duas crateras", "Brechas de impacto em basalto acessíveis"],
+   "quebra": ["Cidade e lavouras dentro da cratera", "Clima úmido subtropical"],
+   "testes": ["Estudo comparativo com Vargeão", "Mapeamento por drone de borda erodida"],
+   "referencias": ["Earth Impact Database (PASSC)"]
+  },
+  {
+   "id": "cangalha", "nome": "Serra da Cangalha", "nome_en": "Serra da Cangalha crater", "regiao": "TO", "pais": "Brasil", "cidade": "Campos Lindos",
+   "papel": "candidato", "lat": -8.08, "lon": -46.86, "caixa": [-8.2, -7.96, -46.98, -46.74],
+   "feicao": "Cratera complexa de ~13 km com anel central, em rocha sedimentar", "diametro_km": 13,
+   "tags": {
+    "terreno": ["cratera_impacto", "pico_central", "borda_cratera"],
+    "materiais": ["arenito", "brecha_impacto", "choque"],
+    "agua": [], "poeira": ["poeira_fina"], "biologia": [], "subsolo": ["fraturas_impacto"]
+   },
+   "processos": ["impacto em bacia sedimentar", "erosão sazonal"],
+   "funciona": ["Anel central e borda muito bem expostos, como em crateras complexas de Marte", "Cerrado seco no inverno deixa a rocha à vista"],
+   "quebra": ["Rocha sedimentar, não basalto", "Estação chuvosa forte"],
+   "testes": ["Navegação de rover em terreno de cratera complexa", "Comparar perfil do anel central com crateras da Lua e de Marte"],
+   "referencias": ["Earth Impact Database (PASSC)", "Kenkmann et al., estudos de Serra da Cangalha"]
+  },
+  {
+   "id": "araguainha", "nome": "Domo de Araguainha", "nome_en": "Araguainha Dome", "regiao": "MT/GO", "pais": "Brasil", "cidade": "Araguainha",
+   "papel": "candidato", "lat": -16.78, "lon": -52.98, "caixa": [-16.98, -16.58, -53.18, -52.78],
+   "feicao": "Maior estrutura de impacto da América do Sul (~40 km), com núcleo de granito soerguido", "diametro_km": 40,
+   "tags": {
+    "terreno": ["cratera_impacto", "pico_central", "borda_cratera"],
+    "materiais": ["granito", "arenito", "brecha_impacto", "choque"],
+    "agua": [], "poeira": ["poeira_fina"], "biologia": [], "subsolo": ["fraturas_impacto"]
+   },
+   "processos": ["impacto grande com soerguimento central", "erosão"],
+   "funciona": ["Escala de cratera grande, comparável a crateras de pouso em Marte", "Núcleo soerguido mostra rocha profunda trazida à superfície, como picos centrais lunares"],
+   "quebra": ["Muito erodida (~250 milhões de anos)", "Vegetação de cerrado e pastagem"],
+   "testes": ["Travessias longas de rover entre anéis", "Amostragem de rocha profunda exposta pelo impacto"],
+   "referencias": ["Earth Impact Database (PASSC)", "Lana et al.; Tohver et al. 2012 (idade)"]
+  },
+  {
+   "id": "carajas", "nome": "Serra Norte de Carajás (cavernas)", "nome_en": "Carajás iron caves", "regiao": "PA", "pais": "Brasil", "cidade": "Parauapebas",
+   "papel": "candidato", "lat": -6.05, "lon": -50.15, "caixa": [-6.15, -5.95, -50.25, -50.05],
+   "feicao": "Platôs de canga (crosta de ferro) com mais de 1.000 cavernas", "diametro_km": null,
+   "tags": {
+    "terreno": ["planalto"],
+    "materiais": ["oxido_ferro", "canga", "hematita"],
+    "agua": [], "poeira": [], "biologia": ["biologia_em_ferro"], "subsolo": ["caverna"]
+   },
+   "processos": ["intemperismo de formação ferrífera", "formação de cavernas em canga"],
+   "funciona": ["Hematita e goethita, os óxidos que dão a cor de Marte e que o Opportunity achou em Meridiani", "Cavernas para treinar exploração subterrânea, como fossos e tubos de lava"],
+   "quebra": ["Floresta úmida em volta", "Cavernas em ferro, não tubos de lava"],
+   "testes": ["Mapeamento LiDAR e navegação de rover/drone em caverna", "Espectroscopia de óxidos de ferro (comparar com CRISM)", "Busca de bioassinaturas em rocha de ferro"],
+   "referencias": ["Auler et al., cavernas em formação ferrífera de Carajás"]
+  },
+  {
+   "id": "lencois", "nome": "Lençóis Maranhenses", "nome_en": "Lençóis Maranhenses", "regiao": "MA", "pais": "Brasil", "cidade": "Barreirinhas",
+   "papel": "candidato", "lat": -2.53, "lon": -43.12, "caixa": [-2.68, -2.38, -43.27, -42.97],
+   "feicao": "Campo de dunas costeiras com lagoas temporárias", "diametro_km": null,
+   "tags": {
+    "terreno": ["dunas", "planicie"],
+    "materiais": ["areia_quartzo"],
+    "agua": ["agua_efemera"], "poeira": ["dunas"], "biologia": [], "subsolo": []
+   },
+   "processos": ["migração de dunas pelo vento", "lagoas que enchem e secam todo ano"],
+   "funciona": ["Dunas ativas e água efêmera entre elas, como se supõe no passado de Marte", "Areia solta para testar rodas (o Spirit ficou preso em areia)"],
+   "quebra": ["Chuva alta (~1.600 mm/ano)", "Areia de quartzo, não basáltica"],
+   "testes": ["Mobilidade de rover em areia solta", "Séries de imagens para medir migração de dunas, como no HiRISE"],
+   "referencias": []
+  },
+  {
+   "id": "raso_catarina", "nome": "Raso da Catarina", "nome_en": "Raso da Catarina", "regiao": "BA", "pais": "Brasil", "cidade": "Paulo Afonso",
+   "papel": "candidato", "lat": -9.65, "lon": -38.45, "caixa": [-9.8, -9.5, -38.6, -38.3],
+   "feicao": "Platô de arenito semiárido com solo exposto", "diametro_km": null,
+   "tags": {
+    "terreno": ["planalto", "ravinas"],
+    "materiais": ["arenito", "solo_exposto"],
+    "agua": ["semiarido"], "poeira": ["poeira_fina"], "biologia": [], "subsolo": []
+   },
+   "processos": ["erosão de arenito", "poeira sobre painéis solares"],
+   "funciona": ["Poeira e sujeira em painéis solares, como nos rovers de Marte", "Solo exposto e sol forte"],
+   "quebra": ["Ainda chove ~450 mm por ano", "Caatinga cobre parte do solo"],
+   "testes": ["Perda de energia solar com poeira (estação ESP32)", "Limpeza de painéis e filtros", "Navegação em ravinas"],
+   "referencias": []
+  },
+  {
+   "id": "gilbues", "nome": "Núcleo de desertificação de Gilbués", "nome_en": "Gilbués badlands", "regiao": "PI", "pais": "Brasil", "cidade": "Gilbués",
+   "papel": "candidato", "lat": -9.83, "lon": -45.34, "caixa": [-9.95, -9.71, -45.46, -45.22], "coord_aprox": true,
+   "feicao": "Voçorocas e solo nu: o maior núcleo de desertificação do Brasil", "diametro_km": null,
+   "tags": {
+    "terreno": ["ravinas", "planalto"],
+    "materiais": ["arenito", "argila", "solo_exposto", "oxido_ferro"],
+    "agua": ["semiarido"], "poeira": ["poeira_fina"], "biologia": [], "subsolo": []
+   },
+   "processos": ["erosão em voçorocas", "desertificação"],
+   "funciona": ["Solo nu avermelhado e ravinas, parecidos com terrenos erodidos de Marte", "Erosão rápida que pode ser medida com satélite"],
+   "quebra": ["Clima com estação chuvosa forte", "A erosão aqui é por água corrente, que em Marte só existiu no passado"],
+   "testes": ["Mobilidade em ravinas e solo frágil", "Monitorar erosão com séries Landsat/Sentinel-2"],
+   "referencias": []
+  },
+  {
+   "id": "lonar", "nome": "Cratera de Lonar", "nome_en": "Lonar crater", "regiao": "Maharashtra", "pais": "Índia", "cidade": "Lonar",
+   "papel": "descoberta", "lat": 19.98, "lon": 76.51, "caixa": [19.93, 20.03, 76.46, 76.56],
+   "feicao": "Cratera jovem (~1,8 km) em basalto do Deccan, com lago salino alcalino", "diametro_km": 1.8,
+   "tags": {
+    "terreno": ["cratera_impacto", "borda_cratera"],
+    "materiais": ["basalto", "brecha_impacto", "choque", "vidro_impacto"],
+    "agua": ["salmoura", "lago_antigo"], "poeira": [], "biologia": ["extremofilos"], "subsolo": ["fraturas_impacto"]
+   },
+   "processos": ["impacto em basalto", "lago salino em cratera"],
+   "funciona": ["Uma das poucas crateras em basalto bem preservadas, como as da Lua e de Marte", "Lago salino na cratera lembra os lagos antigos de Jezero e Gale"],
+   "quebra": ["Monções e vegetação densa na borda", "Cratera pequena"],
+   "testes": ["Comparar ejecta em basalto com crateras lunares", "Astrobiologia em lago salino alcalino"],
+   "referencias": ["Earth Impact Database (PASSC)", "Maloof et al. 2010, GSA Bulletin"]
+  },
+  {
+   "id": "lut", "nome": "Deserto de Lut (yardangs)", "nome_en": "Lut Desert yardangs", "regiao": "Kerman", "pais": "Irã", "cidade": "Shahdad",
+   "papel": "descoberta", "lat": 30.5, "lon": 58.0, "caixa": [30.3, 30.7, 57.8, 58.2], "coord_aprox": true,
+   "feicao": "Yardangs gigantes esculpidos pelo vento e algumas das maiores temperaturas de superfície já medidas pelo MODIS", "diametro_km": null,
+   "tags": {
+    "terreno": ["yardangs", "dunas", "planicie"],
+    "materiais": ["siltito", "sal_evaporito", "solo_exposto"],
+    "agua": ["hiperarido"], "poeira": ["poeira_fina", "tempestade_poeira", "dunas", "yardangs"], "biologia": ["esteril"], "subsolo": []
+   },
+   "processos": ["erosão eólica (yardangs)", "aquecimento extremo da superfície"],
+   "funciona": ["Yardangs como os de Medusae Fossae em Marte", "Quase sem vida e sem vegetação"],
+   "quebra": ["Calor extremo, o oposto de Marte", "Acesso remoto"],
+   "testes": ["Estudar erosão eólica para datar superfícies de Marte", "Eletrônica e baterias em calor extremo"],
+   "referencias": ["Mildrexler et al. 2011 (temperaturas MODIS)"]
+  },
+  {
+   "id": "dallol", "nome": "Dallol (Depressão de Danakil)", "nome_en": "Dallol, Danakil Depression", "regiao": "Afar", "pais": "Etiópia", "cidade": "Hamedela",
+   "papel": "descoberta", "lat": 14.24, "lon": 40.30, "caixa": [14.19, 14.29, 40.25, 40.35],
+   "feicao": "Fontes hidrotermais hiperácidas e salinas abaixo do nível do mar", "diametro_km": null,
+   "tags": {
+    "terreno": ["planicie", "hidrotermal"],
+    "materiais": ["sal_evaporito", "sulfato", "oxido_ferro", "jarosita"],
+    "agua": ["salmoura", "hiperarido"], "poeira": ["poeira_fina"], "biologia": ["esteril", "extremofilos"], "subsolo": ["hidrotermal"]
+   },
+   "processos": ["hidrotermalismo ácido", "evaporação de salmouras"],
+   "funciona": ["Salmouras ácidas com ferro e sulfatos, como o ambiente antigo de Meridiani", "Mostra o limite da vida: algumas poças são estéreis"],
+   "quebra": ["Calor de ~35 °C de média", "Atividade vulcânica atual"],
+   "testes": ["Testar detectores de vida em ambientes no limite da habitabilidade", "Espectroscopia de sulfatos e sais"],
+   "referencias": ["Belilla et al. 2019, Nature Ecology & Evolution", "Kotopoulou et al. 2019, ACS Earth Space Chem."]
+  },
+  {
+   "id": "qaidam", "nome": "Bacia de Qaidam (yardangs de Lenghu)", "nome_en": "Qaidam Basin", "regiao": "Qinghai", "pais": "China", "cidade": "Lenghu",
+   "papel": "descoberta", "lat": 38.6, "lon": 93.0, "caixa": [38.4, 38.8, 92.8, 93.2], "coord_aprox": true,
+   "feicao": "Bacia alta (~2.800 m), fria e seca, com sais e yardangs", "diametro_km": null,
+   "tags": {
+    "terreno": ["yardangs", "planicie"],
+    "materiais": ["sal_evaporito", "sulfato", "argila", "siltito"],
+    "agua": ["hiperarido", "salmoura", "lago_antigo"], "poeira": ["poeira_fina", "yardangs", "tempestade_poeira"], "biologia": ["esteril"], "subsolo": []
+   },
+   "processos": ["evaporação de lagos antigos", "erosão eólica"],
+   "funciona": ["Lago antigo que secou e deixou sais e sulfatos, como em Gale", "Frio, seco, alto e com muita radiação UV"],
+   "quebra": ["Pressão do ar ~70 kPa, muito acima de Marte", "Pouca cratera de impacto"],
+   "testes": ["Mapear sais e sulfatos com espectrômetro (EMIT/ASTER)", "Testar rover em yardangs"],
+   "referencias": ["Xiao et al. 2017, Earth-Science Reviews (Qaidam como análogo de Marte)"]
+  },
+  {
+   "id": "svalbard", "nome": "Bockfjorden, Svalbard", "nome_en": "Bockfjorden, Svalbard", "regiao": "Svalbard", "pais": "Noruega", "cidade": "Ny-Ålesund",
+   "papel": "descoberta", "lat": 79.43, "lon": 13.33, "caixa": [79.38, 79.48, 13.1, 13.56],
+   "feicao": "Vulcões com glóbulos de carbonato em basalto, dentro de permafrost ártico", "diametro_km": null,
+   "tags": {
+    "terreno": ["vulcao", "vale_glacial"],
+    "materiais": ["basalto", "carbonato", "olivina"],
+    "agua": ["gelo", "gelo_raso", "frio_extremo"], "poeira": [], "biologia": ["extremofilos"], "subsolo": ["gelo_raso"]
+   },
+   "processos": ["vulcanismo sob gelo", "carbonatos formados por água em basalto"],
+   "funciona": ["Carbonatos em basalto como os do meteorito marciano ALH84001 e os de Jezero", "Sol de meia-noite e noite polar: luz rasante como no polo sul lunar"],
+   "quebra": ["Gelo, neve e mar em volta", "Acesso só por barco"],
+   "testes": ["Instrumentos do Curiosity e Perseverance já testados aqui (AMASE)", "Painéis solares e operação com sol rasante e noite polar"],
+   "referencias": ["AMASE (Arctic Mars Analog Svalbard Expedition)", "Steele et al., carbonatos de Bockfjorden"]
+  },
+  {
+   "id": "atacama", "nome": "Atacama (Yungay)", "nome_en": "Atacama Desert (Yungay)", "regiao": "Antofagasta", "pais": "Chile", "cidade": "Antofagasta",
+   "papel": "referencia", "lat": -24.08, "lon": -69.93, "caixa": [-24.18, -23.98, -70.03, -69.83],
+   "feicao": "Núcleo hiperárido, o lugar não polar mais seco da Terra", "diametro_km": null,
+   "tags": {
+    "terreno": ["planicie"],
+    "materiais": ["sal_evaporito", "sulfato", "perclorato", "regolito_fino"],
+    "agua": ["hiperarido"], "poeira": ["poeira_fina"], "biologia": ["esteril", "extremofilos"], "subsolo": []
+   },
+   "processos": ["aridez extrema por milhões de anos", "acúmulo de percloratos e nitratos"],
+   "funciona": ["Solo quase estéril com percloratos, como os achados pela Phoenix em Marte", "Seco e com UV muito forte"],
+   "quebra": ["Temperatura média alta", "Neblina costeira traz umidade"],
+   "testes": ["Perfuração e detecção de vida (ARADS, NASA)", "Testes de rovers autônomos"],
+   "referencias": ["Navarro-González et al. 2003, Science", "ARADS (NASA Ames)"]
+  },
+  {
+   "id": "dry_valleys", "nome": "Vales Secos de McMurdo", "nome_en": "McMurdo Dry Valleys", "regiao": "Terra de Vitória", "pais": "Antártida", "cidade": "Estação McMurdo",
+   "papel": "referencia", "lat": -77.5, "lon": 162.0, "caixa": [-77.8, -77.2, 161.7, 162.3],
+   "feicao": "Deserto polar sem gelo, com permafrost e lagos salgados", "diametro_km": null,
+   "tags": {
+    "terreno": ["vale_glacial"],
+    "materiais": ["arenito", "dolerito", "regolito_fino", "sal_evaporito"],
+    "agua": ["gelo", "gelo_raso", "salmoura", "frio_extremo", "hiperarido"], "poeira": ["poeira_fina"], "biologia": ["esteril", "extremofilos"], "subsolo": ["gelo_raso"]
+   },
+   "processos": ["ventos catabáticos", "permafrost seco"],
+   "funciona": ["O lugar mais frio e seco da Terra: gelo enterrado como em Arcadia", "Noite polar e sol rasante, como no polo sul lunar"],
+   "quebra": ["Ainda está a -20 °C em média, longe de -200 °C", "Acesso só por avião"],
+   "testes": ["Perfuração de permafrost e extração de água", "Sobrevivência de equipamentos no frio"],
+   "referencias": ["Doran et al.; programa LTER dos Vales Secos"]
+  },
+  {
+   "id": "haughton", "nome": "Cratera de Haughton", "nome_en": "Haughton crater", "regiao": "Nunavut", "pais": "Canadá", "cidade": "Ilha Devon",
+   "papel": "referencia", "lat": 75.37, "lon": -89.68, "caixa": [75.22, 75.52, -89.83, -89.53],
+   "feicao": "Cratera de impacto de ~23 km em deserto polar", "diametro_km": 23,
+   "tags": {
+    "terreno": ["cratera_impacto", "borda_cratera"],
+    "materiais": ["carbonato", "sulfato", "brecha_impacto", "choque"],
+    "agua": ["gelo", "gelo_raso", "frio_extremo"], "poeira": ["poeira_fina"], "biologia": ["extremofilos"], "subsolo": ["gelo_raso", "fraturas_impacto"]
+   },
+   "processos": ["impacto em carbonato", "permafrost e gelo enterrado"],
+   "funciona": ["Cratera em deserto polar com permafrost", "Sol rasante e dia polar"],
+   "quebra": ["Rocha de carbonato, não basalto", "Verão com degelo"],
+   "testes": ["Simulações de missão humana (Haughton-Mars Project, NASA)", "EVA, rovers pressurizados e comunicação"],
+   "referencias": ["Haughton-Mars Project (NASA / Mars Institute)", "Osinski et al."]
+  },
+  {
+   "id": "mauna_kea", "nome": "Mauna Kea", "nome_en": "Mauna Kea", "regiao": "Havaí", "pais": "EUA", "cidade": "Hilo",
+   "papel": "referencia", "lat": 19.82, "lon": -155.47, "caixa": [19.72, 19.92, -155.57, -155.37],
+   "feicao": "Vulcão basáltico com cones de escória e cinza", "diametro_km": null,
+   "tags": {
+    "terreno": ["vulcao", "macico"],
+    "materiais": ["basalto", "cinza_vulcanica", "vidro_vulcanico", "palagonita", "regolito_fino"],
+    "agua": [], "poeira": ["poeira_fina"], "biologia": ["esteril"], "subsolo": ["tubo_lava"]
+   },
+   "processos": ["vulcanismo basáltico", "alteração de cinza em palagonita"],
+   "funciona": ["A cinza do Pu'u Nene deu origem ao simulante de solo marciano JSC Mars-1", "Testes de ISRU (extração de oxigênio) da NASA com regolito vulcânico"],
+   "quebra": ["Ar mais denso e úmido", "Gelo e neve no inverno"],
+   "testes": ["Extração de oxigênio do regolito (ISRU)", "Rovers em cinza fina e cones de escória"],
+   "referencias": ["PISCES / NASA ISRU field tests 2008–2012", "Allen et al. 1998 (JSC Mars-1)"]
+  },
+  {
+   "id": "rio_tinto", "nome": "Río Tinto", "nome_en": "Río Tinto", "regiao": "Andaluzia", "pais": "Espanha", "cidade": "Minas de Riotinto",
+   "papel": "referencia", "lat": 37.72, "lon": -6.55, "caixa": [37.62, 37.82, -6.65, -6.45],
+   "feicao": "Rio ácido rico em ferro e sulfatos", "diametro_km": null,
+   "tags": {
+    "terreno": ["vale_fluvial"],
+    "materiais": ["sulfato", "jarosita", "oxido_ferro", "hematita"],
+    "agua": ["salmoura", "agua_acida"], "poeira": [], "biologia": ["extremofilos", "bioassinaturas_preservadas"], "subsolo": ["aquifero_profundo"]
+   },
+   "processos": ["oxidação de sulfetos", "precipitação de jarosita e hematita"],
+   "funciona": ["Jarosita e hematita, os minerais de Meridiani", "Vida em água ácida e no subsolo (projeto MARTE)"],
+   "quebra": ["Mineração e cidade em volta", "Clima mediterrâneo"],
+   "testes": ["Perfuração robótica em busca de vida no subsolo (MARTE, NASA)", "Espectroscopia de sulfatos"],
+   "referencias": ["Fernández-Remolar et al. 2005, EPSL", "Stoker et al. 2008, Astrobiology (MARTE)"]
+  }
+ ]
+}

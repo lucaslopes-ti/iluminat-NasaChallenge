@@ -1,0 +1,151 @@
+{
+ "_sobre": "Como a NASA escolhe onde pousar e onde montar uma base, e como cada critério pode ser testado na Terra. 'regra' é avaliada pelo gerar_dados.py sobre os dados de cada local da Terra.",
+ "lua": {
+  "titulo": "Base permanente no polo sul lunar (Artemis)",
+  "fonte": "artemis_regioes",
+  "criterios": [
+   {
+    "id": "latitude_polar",
+    "nome": "Até 6° do polo sul",
+    "limite": "latitude < -84°",
+    "por_que": "Perto do polo o Sol fica sempre no horizonte: cristas recebem luz quase contínua e crateras guardam sombra permanente com gelo.",
+    "na_terra": "Latitudes acima de ~66° têm sol rasante, dia polar e noite polar.",
+    "regra": {
+     "variavel": "sol_max_graus",
+     "op": "<=",
+     "valor": 45
+    }
+   },
+   {
+    "id": "iluminacao",
+    "nome": "Luz para energia solar",
+    "limite": "períodos contínuos de sol para uma estadia de ~6,5 dias",
+    "por_que": "Painéis solares são a fonte de energia da base; a noite lunar dura 14 dias.",
+    "na_terra": "Dia polar (sol 24 h por pelo menos ~1 mês) testa painéis verticais e rastreamento de sol baixo.",
+    "regra": {
+     "variavel": "frac_ano_sol_continuo",
+     "op": ">=",
+     "valor": 0.08
+    }
+   },
+   {
+    "id": "declividade_pouso",
+    "nome": "Terreno de pouso",
+    "limite": "declividade < 8° na área de pouso",
+    "por_que": "O módulo de pouso tomba ou fica inclinado demais acima disso.",
+    "na_terra": "Áreas com declividade baixa e blocos de rocha testam navegação e pouso autônomos.",
+    "regra": {
+     "variavel": "frac_decliv_8",
+     "op": ">=",
+     "valor": 0.7
+    }
+   },
+   {
+    "id": "comunicacao",
+    "nome": "Visada para a Terra",
+    "limite": "linha direta para a Terra na maior parte do tempo",
+    "por_que": "Comunicação direta sem satélite retransmissor.",
+    "na_terra": "Locais remotos testam enlaces de rádio limitados e operação com atraso.",
+    "regra": null
+   },
+   {
+    "id": "gelo_proximo",
+    "nome": "Gelo perto (ISRU)",
+    "limite": "regiões em sombra permanente (PSRs) a poucos km",
+    "por_que": "Água para beber, oxigênio e combustível (hidrogênio e oxigênio).",
+    "na_terra": "Permafrost e gelo enterrado testam brocas, aquecimento e extração de água.",
+    "regra": {
+     "tag": "gelo"
+    }
+   },
+   {
+    "id": "frio_extremo",
+    "nome": "Frio extremo",
+    "limite": "PSRs abaixo de -230 °C",
+    "por_que": "Equipamentos precisam sobreviver ao frio das crateras em sombra.",
+    "na_terra": "Só os desertos polares chegam perto (-50 a -60 °C no inverno).",
+    "regra": {
+     "variavel": "lst_noite_c",
+     "op": "<=",
+     "valor": -10
+    }
+   }
+  ]
+ },
+ "marte": {
+  "titulo": "Pouso humano e zonas de exploração em Marte",
+  "fonte": "nasa_hls_workshop",
+  "criterios": [
+   {
+    "id": "latitude",
+    "nome": "Faixa de latitude",
+    "limite": "entre ~50°S e ~50°N",
+    "por_que": "Mais perto do equador há mais sol e menos frio; mais longe há mais gelo raso. É um compromisso.",
+    "na_terra": "Qualquer latitude média; o compromisso aparece entre locais secos e locais com gelo.",
+    "regra": null
+   },
+   {
+    "id": "altitude_baixa",
+    "nome": "Altitude baixa",
+    "limite": "abaixo de ~+2 km do areoide MOLA",
+    "por_que": "Mais ar acima do local ajuda o paraquedas e a frenagem na descida.",
+    "na_terra": "Não se reproduz: o ar da Terra é ~150× mais denso.",
+    "regra": null
+   },
+   {
+    "id": "declividade_pouso",
+    "nome": "Terreno de pouso",
+    "limite": "declividade baixa e poucas rochas grandes",
+    "por_que": "Pouso seguro de cargas de dezenas de toneladas.",
+    "na_terra": "Planícies e planaltos lisos testam navegação de pouso por visão.",
+    "regra": {
+     "variavel": "frac_decliv_8",
+     "op": ">=",
+     "valor": 0.7
+    }
+   },
+   {
+    "id": "agua_isru",
+    "nome": "Água acessível (ISRU)",
+    "limite": "gelo raso ou minerais hidratados a até ~100 km (zona de exploração)",
+    "por_que": "Água para a tripulação e para produzir combustível de volta.",
+    "na_terra": "Permafrost, gelo enterrado, salmouras e minerais hidratados (sulfatos, argilas).",
+    "regra": {
+     "tags_qualquer": [
+      "gelo_raso",
+      "salmoura",
+      "argila",
+      "sulfato"
+     ]
+    }
+   },
+   {
+    "id": "ciencia",
+    "nome": "Ciência de alto valor",
+    "limite": "regiões de interesse a até ~100 km",
+    "por_que": "Antigos lagos, deltas e depósitos minerais que podem guardar sinais de vida passada.",
+    "na_terra": "Ambientes extremos com vida microbiana ou bioassinaturas preservadas.",
+    "regra": {
+     "tags_qualquer": [
+      "extremofilos",
+      "bioassinaturas_preservadas"
+     ]
+    }
+   },
+   {
+    "id": "poeira",
+    "nome": "Poeira e vento",
+    "limite": "evitar armadilhas de poeira fina (baixa inércia térmica)",
+    "por_que": "Poeira cobre painéis solares, entra em juntas e trajes, e tempestades globais escurecem o céu por semanas.",
+    "na_terra": "Desertos com poeira e dunas testam filtros, limpeza de painéis e mobilidade em areia.",
+    "regra": {
+     "tags_qualquer": [
+      "poeira_fina",
+      "dunas",
+      "tempestade_poeira"
+     ]
+    }
+   }
+  ]
+ }
+}
