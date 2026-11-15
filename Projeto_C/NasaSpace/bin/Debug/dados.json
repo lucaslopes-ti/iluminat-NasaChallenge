@@ -2,4 +2,30 @@
   "nome": "Maria",
   "idade": 28,
   "ativo": true
+  "perfis": [
+  {
+   "id": "geral",
+   "rotulo": "Geral (pesos iguais)"
+  },
+  {
+   "id": "rover",
+   "rotulo": "Rover e mobilidade"
+  },
+  {
+   "id": "astrobio",
+   "rotulo": "Astrobiologia"
+  },
+  {
+   "id": "isru",
+   "rotulo": "Gelo e recursos (ISRU)"
+  },
+  {
+   "id": "habitat",
+   "rotulo": "Base e construcao"
+  },
+  {
+   "id": "energia",
+   "rotulo": "Energia solar da base"
+  }
+ ],
 }
