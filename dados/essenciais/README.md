@@ -143,20 +143,29 @@ O sensor `temp` do carrinho mede o **ar**, então compare com `temp_ar_c`. A com
 
 ## MQTT (carrinho)
 
-Para o ESP32 não precisar carregar o JSON inteiro, `gerar_mqtt.py` cria mensagens pequenas em `mqtt/`:
+O carrinho usa um **Arduino** (Uno ou Nano) para ler os sensores. Como o Arduino não tem Wi-Fi, as medições chegam ao MQTT por uma ponte. O caminho principal é o computador:
 
-| Arquivo | Tópico sugerido | Conteúdo |
+```
+sensores -> Arduino --USB (1 linha JSON/s)--> computador: ponte_serial_mqtt.py --> broker --> site / tela em C
+```
+
+O `gerar_mqtt.py` cria em `mqtt/` mensagens pequenas com os dados de analogia:
+
+| Arquivo | Tópico | Conteúdo |
 |---|---|---|
 | `mqtt/locais/<id>.json` (até ~1,8 KB) | `illuminat-horizontes/local` (mensagem **retida**) | Perfil do local escolhido: alvo, nota, notas por dimensão, funciona/quebra/teste e os valores do local × alvo, com status e fonte |
 | `mqtt/indice.json` | – | Lista curta dos locais (id, nome, alvo, nota) para um menu |
 | `mqtt/sensores.json` | – | Cada sensor do carrinho → campo dos dados e como comparar (direta, limite de 8°, nível baixo/médio/alto para PM2.5 × AOD) |
 
-As medições continuam no tópico que já existe, `illuminat-horizontes/carrinho`, uma linha JSON por leitura (veja `firmware/README.md`).
+As medições vão para `illuminat-horizontes/carrinho`, uma linha JSON por leitura, como `{"temp":24.1,"uv":6.2,"pm25":14,"solar":410,"soil":22,"tilt":3.4,"vib":0.08,"slip":5}` (veja `firmware/README.md`).
 
-Fluxo sugerido:
+Para rodar:
 
-1. O computador publica o perfil do local escolhido, retido: `mosquitto_pub -h broker.hivemq.com -t illuminat-horizontes/local -r -f dados/essenciais/mqtt/locais/lencois.json`
-2. O ESP32 assina `illuminat-horizontes/local` e recebe o perfil assim que conecta. Com PubSubClient, aumente o buffer para `mqtt.setBufferSize(2048);`. O `firmware/esp32_ponte_mqtt` usa 512 bytes hoje, menos que o perfil.
-3. O carrinho mede e publica em `illuminat-horizontes/carrinho`. A tela (programa em C ou site) junta as medições com o perfil e mostra "aqui agora × local análogo × alvo".
+1. Grave `firmware/arduino_carrinho` no Arduino e ligue-o na USB do computador.
+2. No computador: `pip install pyserial paho-mqtt`.
+3. Na raiz do repositório: `python3 firmware/ponte_serial_mqtt.py --local lencois`. A ponte acha a porta sozinha, publica o perfil de Lençóis retido em `illuminat-horizontes/local` e repassa cada leitura para `illuminat-horizontes/carrinho`.
+4. A tela (site ou programa em C) assina os dois tópicos e mostra "aqui agora × local análogo × alvo".
+
+**Sem computador no carrinho:** ligue o TX do Arduino num ESP32 que só faz a ponte Wi-Fi → MQTT (`firmware/esp32_ponte_mqtt`, buffer de 2048 bytes). Os sensores continuam no Arduino.
 
 Rode `python3 dados/essenciais/gerar_mqtt.py` depois do `gerar_dados.py` sempre que os dados mudarem.
