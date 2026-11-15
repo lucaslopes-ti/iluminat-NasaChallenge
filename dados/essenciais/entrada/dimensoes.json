@@ -8,7 +8,7 @@
   {"id": "termico",    "rotulo": "Temperatura extrema",   "rotulo_en": "Thermal extremes",
    "indicadores": [["lst_dia_c", 40], ["lst_noite_c", 40], ["amplitude_termica_c", 40]]},
   {"id": "luz",        "rotulo": "Iluminacao",            "rotulo_en": "Illumination",
-   "indicadores": [["sol_max_graus", 20], ["frac_sol_baixo", 0.3], ["frac_ano_sol_continuo", 0.25]]},
+   "indicadores": [["sol_max_graus", 20], ["frac_sol_baixo", 0.3], ["frac_tempo_sol", 0.25]]},
   {"id": "agua",       "rotulo": "Agua e gelo",           "rotulo_en": "Water & ice",
    "indicadores": [["chuva_anual_mm", 400], ["tags", null]]},
   {"id": "poeira",     "rotulo": "Poeira e vento",        "rotulo_en": "Dust & wind",

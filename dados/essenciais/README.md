@@ -63,7 +63,17 @@ terreno · materiais · temperatura · iluminação · água e gelo · poeira e 
 - **Nota da dimensão:** média dos indicadores disponíveis.
 - **IAP (Índice de Analogia Planetária, 0–100):** média ponderada das dimensões pelo **perfil de missão**. São seis perfis: geral, rover, astrobiologia, gelo/ISRU, base e construção, e energia solar.
 
-**Validação.** Os análogos clássicos (Atacama, Haughton, Mauna Kea, Río Tinto) aparecem perto do topo, o que indica que o método está calibrado. Os novos locais que surgem ao lado deles ganham credibilidade. As posições ficam em `validacao_referencias`.
+**Validação.** Cada análogo clássico tem, em `entrada/locais_terra.json`, o alvo que a literatura associa a ele (`alvos_literatura`, com a referência em `porque_literatura`). O teste é a posição dele, entre os 18 locais, no ranking desse alvo. Hoje os cinco ficam entre os 6 primeiros:
+
+| Referência | Alvo da literatura | Melhor alvo | Posição |
+|---|---|---|---|
+| Atacama | Marte | Oxia Planum | 3º |
+| Haughton | Marte e Lua | Planície de Slater | 2º |
+| Mauna Kea | Lua e Marte | Pico perto de Cabeus B | 4º |
+| Río Tinto | Meridiani | Meridiani Planum | 6º |
+| Dry Valleys | Marte | Arcadia Planitia | 6º |
+
+Os novos locais que aparecem ao lado deles ganham credibilidade. Os resultados ficam em `validacao_referencias.alvo_da_literatura`; a posição no ranking geral, que mistura todos os alvos, continua em `validacao_referencias.ranking_geral`.
 
 **O que sempre quebra:** gravidade, atmosfera, radiação e duração do dia (`sempre_quebra`).
 

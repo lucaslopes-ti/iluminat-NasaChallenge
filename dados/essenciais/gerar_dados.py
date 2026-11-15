@@ -137,7 +137,11 @@ def _grade(lat_min, lat_max, lon_min, lon_max):
 
 def terreno(lat, caixa):
     """Definições do notebook 01 (célula 5) aplicadas ao SRTMGL30 (~1 km)."""
-    z = _grade(*caixa)
+    return metricas_relevo(_grade(*caixa), lat)
+
+
+def metricas_relevo(z, lat):
+    """Relevo de uma grade de 30" (~1 km). Usada pelo SRTM30 e pelo Copernicus DEM (relevo_copernicus.py)."""
     ok = ~np.isnan(z)
     if ok.sum() < 9:
         return None
@@ -405,15 +409,25 @@ def main():
                     "valor": float(r["ndvi_medio"]), "status": "medido", "fonte": "mod13c2",
                     "nota": f"media de {r['n_meses']} meses ({r.get('periodo', '2024')}) na caixa do local (CMG 0,05 grau)"}}
 
+    # relevo fora do SRTM30 (Antartida): Copernicus DEM GLO-90, feito por relevo_copernicus.py
+    relevo_cop = {}
+    if os.path.exists(os.path.join(ENTRADA, "relevo_copernicus.csv")):
+        relevo_cop = {r["local_id"]: r for r in ler_csv("relevo_copernicus.csv")}
+
     terra = []
     for l in locais:
         vals = {}
-        t = terreno(l["lat"], l["caixa"])
+        t, fonte_relevo = terreno(l["lat"], l["caixa"]), "srtmgl30"
+        if t is None and l["id"] in relevo_cop:
+            r = relevo_cop[l["id"]]
+            t = {k: float(v) for k, v in r.items() if k not in ("local_id", "blocos", "acesso")}
+            t["_pixels"], fonte_relevo = int(t["_pixels"]), "copernicus_glo90"
         for k in ("elev_media_m", "elev_relativa_m", "declividade_media", "rugosidade_tri_m", "frac_decliv_8", "frac_transitavel_15"):
-            vals[k] = ({"valor": t[k], "status": "medido", "fonte": "srtmgl30",
-                        "nota": f"{t['_pixels']} pixels de ~1 km na caixa do local"} if t else
+            vals[k] = ({"valor": t[k], "status": "medido", "fonte": fonte_relevo,
+                        "nota": f"{t['_pixels']} celulas de ~1 km na caixa do local"
+                                + (" (media dos pixels de 90 m)" if fonte_relevo != "srtmgl30" else "")} if t else
                        {"valor": None, "status": "sem_dado", "fonte": "srtmgl30",
-                        "nota": "fora da cobertura do SRTM30 (90N-60S); usar Copernicus DEM GLO-30"})
+                        "nota": "fora da cobertura do SRTM30 (90N-60S); rodar relevo_copernicus.py"})
         for k, v in luz(l["lat"], "earth").items():
             vals[k] = {"valor": v, "status": "calculado", "fonte": "calculo_solar", "nota": "horizonte plano"}
         vals.update(prov.get(l["id"], {}))
@@ -456,10 +470,22 @@ def main():
             for t in terra:
                 crit_terra[t["id"]][f"{corpo}.{c['id']}"] = avaliar_regra(c["regra"], t)
 
-    validacao = {}
+    # Validacao: cada analogo classico deve ficar bem colocado no alvo que a literatura associa a ele
+    # (alvos_literatura: ids de alvos ou corpos "moon"/"mars"). Vale a melhor posicao entre esses alvos.
+    validacao = {"alvo_da_literatura": {}, "ranking_geral": {}}
+    for t in terra:
+        lit = t.get("alvos_literatura")
+        if t["papel"] != "referencia" or not lit:
+            continue
+        cand = [a["id"] for a in alvos if a["id"] in lit or a["corpo"] in lit]
+        pos = {a: por_alvo[a].index(t["id"]) + 1 for a in cand}
+        melhor = min(cand, key=lambda a: (pos[a], -(resultados[t["id"]][a]["iap"]["geral"] or 0)))
+        validacao["alvo_da_literatura"][t["id"]] = {
+            "alvos_literatura": lit, "porque": t.get("porque_literatura", ""), "melhor_alvo": melhor,
+            "posicao": pos[melhor], "de": len(terra), "iap": resultados[t["id"]][melhor]["iap"]["geral"]}
     for p in perfis:
         ids = [t["id"] for t in rank[p["id"]]]
-        validacao[p["id"]] = {t["id"]: ids.index(t["id"]) + 1 for t in terra if t["papel"] == "referencia"}
+        validacao["ranking_geral"][p["id"]] = {t["id"]: ids.index(t["id"]) + 1 for t in terra if t["papel"] == "referencia"}
 
     gerar_saidas(terra, alvos, dims, perfis, cfg, criterios, fontes, resultados, rank, por_alvo,
                  completo, crit_terra, validacao, melhor_alvo)
@@ -636,7 +662,9 @@ def gerar_saidas(terra, alvos, dims, perfis, cfg, criterios, fontes, resultados,
     for a in alvos:
         print(f"   {a['id']:20s} melhor analogo: {por_alvo[a['id']][0]:14s} IAP {resultados[por_alvo[a['id']][0]][a['id']]['iap']['geral']}")
     print("Destaques por perfil:", {p: rank[p][0]["id"] for p in rank})
-    print("Validacao (posicao das referencias, perfil geral):", validacao["geral"])
+    print("Validacao (posicao de cada referencia no alvo da literatura):")
+    for rid, v in validacao["alvo_da_literatura"].items():
+        print(f"   {rid:12} {v['melhor_alvo']:20} {v['posicao']:2}o de {v['de']}  (IAP {v['iap']})")
 
 
 if __name__ == "__main__":

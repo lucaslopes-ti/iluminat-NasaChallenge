@@ -21,9 +21,9 @@
   "energia": "lencois"
  },
  "destaque_lua": {
-  "local": "atacama",
-  "alvo": "marius",
-  "iap": 56
+  "local": "dry_valleys",
+  "alvo": "cabeus_b_peak",
+  "iap": 64
  },
  "destaque_marte": {
   "local": "qaidam",
@@ -31,16 +31,16 @@
   "iap": 69
  },
  "melhor_analogo_por_alvo": {
-  "shackleton": "svalbard",
-  "haworth": "svalbard",
-  "malapert": "svalbard",
-  "mons_mouton_plateau": "haughton",
-  "mons_mouton": "haughton",
-  "nobile_rim_1": "svalbard",
-  "nobile_rim_2": "svalbard",
-  "de_gerlache_rim_2": "svalbard",
-  "slater_plain": "haughton",
-  "cabeus_b_peak": "svalbard",
+  "shackleton": "dry_valleys",
+  "haworth": "dry_valleys",
+  "malapert": "dry_valleys",
+  "mons_mouton_plateau": "dry_valleys",
+  "mons_mouton": "dry_valleys",
+  "nobile_rim_1": "dry_valleys",
+  "nobile_rim_2": "dry_valleys",
+  "de_gerlache_rim_2": "dry_valleys",
+  "slater_plain": "dry_valleys",
+  "cabeus_b_peak": "dry_valleys",
   "marius": "atacama",
   "jezero": "qaidam",
   "gale": "lut",
@@ -752,8 +752,179 @@
    }
   },
   {
-   "id": "dallol",
+   "id": "dry_valleys",
    "posicao": 4,
+   "nome": "Vales Secos de McMurdo",
+   "regiao": "Terra de Vitória",
+   "pais": "Antártida",
+   "papel": "referencia",
+   "lat": -77.5,
+   "lon": 162.0,
+   "feicao": "Deserto polar sem gelo, com permafrost e lagos salgados",
+   "dados_completos": true,
+   "alvo": "cabeus_b_peak",
+   "alvo_nome": "Pico perto de Cabeus B",
+   "corpo": "moon",
+   "nota_pct": 64,
+   "notas_perfil_pct": {
+    "geral": 64,
+    "rover": 69,
+    "astrobio": 55,
+    "isru": 59,
+    "habitat": 60,
+    "energia": 56
+   },
+   "dimensoes_pct": {
+    "terreno": 73,
+    "materiais": 7,
+    "termico": 22,
+    "luz": 45,
+    "agua": 79,
+    "poeira": 75,
+    "biologia": 75,
+    "subsolo": 100,
+    "operacoes": 98
+   },
+   "funciona": "O lugar mais frio e seco da Terra: gelo enterrado como em Arcadia",
+   "quebra": "Ainda está a -20 °C em média, longe de -200 °C",
+   "teste": "Perfuração de permafrost e extração de água",
+   "dados": {
+    "elev_media_m": {
+     "rotulo": "Elevacao media",
+     "valor": 1021,
+     "unidade": "m",
+     "status": "medido",
+     "fonte": "copernicus_glo90"
+    },
+    "declividade_media": {
+     "rotulo": "Declividade media",
+     "valor": 11.4,
+     "unidade": "graus",
+     "status": "medido",
+     "fonte": "copernicus_glo90",
+     "valor_alvo": 10.0
+    },
+    "frac_decliv_8": {
+     "rotulo": "Area com declividade < 8 graus",
+     "valor": 0.39,
+     "unidade": "fracao",
+     "status": "medido",
+     "fonte": "copernicus_glo90",
+     "valor_alvo": 0.45
+    },
+    "sol_max_graus": {
+     "rotulo": "Altura maxima do Sol",
+     "valor": 35.9,
+     "unidade": "graus",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "valor_alvo": 7.5
+    },
+    "frac_ano_sol_continuo": {
+     "rotulo": "Ano com Sol 24 h",
+     "valor": 0.32,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "valor_alvo": 0.0
+    },
+    "lst_dia_c": {
+     "rotulo": "Temp. superficie maxima",
+     "valor": -13,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "valor_alvo": -50
+    },
+    "lst_noite_c": {
+     "rotulo": "Temp. superficie minima",
+     "valor": -46,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "valor_alvo": -200
+    },
+    "amplitude_termica_c": {
+     "rotulo": "Amplitude termica (dT)",
+     "valor": 32,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "valor_alvo": 150
+    },
+    "temp_media_c": {
+     "rotulo": "Temp. superficie media",
+     "valor": -30,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": -27,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 6,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "ndvi_medio": {
+     "rotulo": "Vegetacao (NDVI)",
+     "valor": 0.0,
+     "unidade": "indice",
+     "status": "provisorio",
+     "fonte": "mod13c2",
+     "valor_alvo": 0.0
+    },
+    "albedo_medio": {
+     "rotulo": "Albedo",
+     "valor": 0.56,
+     "unidade": "fracao",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "valor_alvo": 0.15
+    },
+    "aod_medio": {
+     "rotulo": "Poeira/aerossol (AOD)",
+     "valor": 0.0,
+     "unidade": "adimensional",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "valor_alvo": 0.0
+    },
+    "vento_10m_ms": {
+     "rotulo": "Vento a 10 m",
+     "valor": 7.0,
+     "unidade": "m/s",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "chuva_anual_mm": {
+     "rotulo": "Chuva anual",
+     "valor": 80,
+     "unidade": "mm",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "valor_alvo": 0
+    },
+    "pressao_kpa": {
+     "rotulo": "Pressao do ar",
+     "valor": 89.7,
+     "unidade": "kPa",
+     "status": "calculado",
+     "fonte": "fisica",
+     "valor_alvo": 0.0
+    }
+   }
+  },
+  {
+   "id": "dallol",
+   "posicao": 5,
    "nome": "Dallol (Depressão de Danakil)",
    "regiao": "Afar",
    "pais": "Etiópia",
@@ -923,8 +1094,179 @@
    }
   },
   {
+   "id": "haughton",
+   "posicao": 6,
+   "nome": "Cratera de Haughton",
+   "regiao": "Nunavut",
+   "pais": "Canadá",
+   "papel": "referencia",
+   "lat": 75.37,
+   "lon": -89.68,
+   "feicao": "Cratera de impacto de ~23 km em deserto polar",
+   "dados_completos": true,
+   "alvo": "arcadia",
+   "alvo_nome": "Arcadia Planitia",
+   "corpo": "mars",
+   "nota_pct": 57,
+   "notas_perfil_pct": {
+    "geral": 57,
+    "rover": 64,
+    "astrobio": 46,
+    "isru": 58,
+    "habitat": 58,
+    "energia": 61
+   },
+   "dimensoes_pct": {
+    "terreno": 75,
+    "materiais": 1,
+    "termico": 47,
+    "luz": 70,
+    "agua": 87,
+    "poeira": 35,
+    "biologia": 47,
+    "subsolo": 50,
+    "operacoes": 100
+   },
+   "funciona": "Cratera em deserto polar com permafrost",
+   "quebra": "Rocha de carbonato, não basalto",
+   "teste": "Simulações de missão humana (Haughton-Mars Project, NASA)",
+   "dados": {
+    "elev_media_m": {
+     "rotulo": "Elevacao media",
+     "valor": 251,
+     "unidade": "m",
+     "status": "medido",
+     "fonte": "srtmgl30"
+    },
+    "declividade_media": {
+     "rotulo": "Declividade media",
+     "valor": 1.6,
+     "unidade": "graus",
+     "status": "medido",
+     "fonte": "srtmgl30",
+     "valor_alvo": 1.0
+    },
+    "frac_decliv_8": {
+     "rotulo": "Area com declividade < 8 graus",
+     "valor": 0.99,
+     "unidade": "fracao",
+     "status": "medido",
+     "fonte": "srtmgl30",
+     "valor_alvo": 0.98
+    },
+    "sol_max_graus": {
+     "rotulo": "Altura maxima do Sol",
+     "valor": 38.1,
+     "unidade": "graus",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "valor_alvo": 70.2
+    },
+    "frac_ano_sol_continuo": {
+     "rotulo": "Ano com Sol 24 h",
+     "valor": 0.28,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "valor_alvo": 0.0
+    },
+    "lst_dia_c": {
+     "rotulo": "Temp. superficie maxima",
+     "valor": 1,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "valor_alvo": -20
+    },
+    "lst_noite_c": {
+     "rotulo": "Temp. superficie minima",
+     "valor": -34,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "valor_alvo": -110
+    },
+    "amplitude_termica_c": {
+     "rotulo": "Amplitude termica (dT)",
+     "valor": 35,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "valor_alvo": 90
+    },
+    "temp_media_c": {
+     "rotulo": "Temp. superficie media",
+     "valor": -15,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": -14,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 5,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "ndvi_medio": {
+     "rotulo": "Vegetacao (NDVI)",
+     "valor": 0.05,
+     "unidade": "indice",
+     "status": "medido",
+     "fonte": "mod13c2",
+     "valor_alvo": 0.0
+    },
+    "albedo_medio": {
+     "rotulo": "Albedo",
+     "valor": 0.46,
+     "unidade": "fracao",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "valor_alvo": 0.2
+    },
+    "aod_medio": {
+     "rotulo": "Poeira/aerossol (AOD)",
+     "valor": 0.07,
+     "unidade": "adimensional",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "valor_alvo": 0.6
+    },
+    "vento_10m_ms": {
+     "rotulo": "Vento a 10 m",
+     "valor": 4.1,
+     "unidade": "m/s",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "chuva_anual_mm": {
+     "rotulo": "Chuva anual",
+     "valor": 310,
+     "unidade": "mm",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "valor_alvo": 0
+    },
+    "pressao_kpa": {
+     "rotulo": "Pressao do ar",
+     "valor": 98.32,
+     "unidade": "kPa",
+     "status": "calculado",
+     "fonte": "fisica",
+     "valor_alvo": 0.65
+    }
+   }
+  },
+  {
    "id": "lencois",
-   "posicao": 5,
+   "posicao": 7,
    "nome": "Lençóis Maranhenses",
    "regiao": "MA",
    "pais": "Brasil",
@@ -1094,77 +1436,77 @@
    }
   },
   {
-   "id": "haughton",
-   "posicao": 6,
-   "nome": "Cratera de Haughton",
-   "regiao": "Nunavut",
-   "pais": "Canadá",
-   "papel": "referencia",
-   "lat": 75.37,
-   "lon": -89.68,
-   "feicao": "Cratera de impacto de ~23 km em deserto polar",
+   "id": "svalbard",
+   "posicao": 8,
+   "nome": "Bockfjorden, Svalbard",
+   "regiao": "Svalbard",
+   "pais": "Noruega",
+   "papel": "descoberta",
+   "lat": 79.43,
+   "lon": 13.33,
+   "feicao": "Vulcões com glóbulos de carbonato em basalto, dentro de permafrost ártico",
    "dados_completos": true,
-   "alvo": "arcadia",
-   "alvo_nome": "Arcadia Planitia",
-   "corpo": "mars",
-   "nota_pct": 55,
+   "alvo": "cabeus_b_peak",
+   "alvo_nome": "Pico perto de Cabeus B",
+   "corpo": "moon",
+   "nota_pct": 52,
    "notas_perfil_pct": {
-    "geral": 55,
-    "rover": 64,
-    "astrobio": 46,
-    "isru": 57,
-    "habitat": 56,
-    "energia": 56
+    "geral": 52,
+    "rover": 55,
+    "astrobio": 41,
+    "isru": 51,
+    "habitat": 52,
+    "energia": 46
    },
    "dimensoes_pct": {
-    "terreno": 75,
-    "materiais": 1,
-    "termico": 47,
-    "luz": 55,
-    "agua": 87,
-    "poeira": 35,
-    "biologia": 47,
-    "subsolo": 50,
-    "operacoes": 100
+    "terreno": 57,
+    "materiais": 0,
+    "termico": 15,
+    "luz": 47,
+    "agua": 62,
+    "poeira": 49,
+    "biologia": 50,
+    "subsolo": 100,
+    "operacoes": 89
    },
-   "funciona": "Cratera em deserto polar com permafrost",
-   "quebra": "Rocha de carbonato, não basalto",
-   "teste": "Simulações de missão humana (Haughton-Mars Project, NASA)",
+   "funciona": "Carbonatos em basalto como os do meteorito marciano ALH84001 e os de Jezero",
+   "quebra": "Gelo, neve e mar em volta",
+   "teste": "Instrumentos do Curiosity e Perseverance já testados aqui (AMASE)",
    "dados": {
     "elev_media_m": {
      "rotulo": "Elevacao media",
-     "valor": 251,
+     "valor": 318,
      "unidade": "m",
      "status": "medido",
      "fonte": "srtmgl30"
     },
     "declividade_media": {
      "rotulo": "Declividade media",
-     "valor": 1.6,
+     "valor": 13.8,
      "unidade": "graus",
      "status": "medido",
      "fonte": "srtmgl30",
-     "valor_alvo": 1.0
+     "valor_alvo": 10.0
     },
     "frac_decliv_8": {
      "rotulo": "Area com declividade < 8 graus",
-     "valor": 0.99,
+     "valor": 0.3,
      "unidade": "fracao",
      "status": "medido",
      "fonte": "srtmgl30",
-     "valor_alvo": 0.98
+     "valor_alvo": 0.45
     },
     "sol_max_graus": {
      "rotulo": "Altura maxima do Sol",
-     "valor": 38.1,
+     "valor": 34.0,
      "unidade": "graus",
      "status": "calculado",
      "fonte": "calculo_solar",
-     "valor_alvo": 70.2
+     "valor_alvo": 7.5
     },
     "frac_ano_sol_continuo": {
      "rotulo": "Ano com Sol 24 h",
-     "valor": 0.28,
+     "valor": 0.35,
      "unidade": "fracao",
      "status": "calculado",
      "fonte": "calculo_solar",
@@ -1176,48 +1518,48 @@
      "unidade": "C",
      "status": "medido",
      "fonte": "nasa_power",
-     "valor_alvo": -20
+     "valor_alvo": -50
     },
     "lst_noite_c": {
      "rotulo": "Temp. superficie minima",
-     "valor": -34,
+     "valor": -27,
      "unidade": "C",
      "status": "medido",
      "fonte": "nasa_power",
-     "valor_alvo": -110
+     "valor_alvo": -200
     },
     "amplitude_termica_c": {
      "rotulo": "Amplitude termica (dT)",
-     "valor": 35,
+     "valor": 28,
      "unidade": "C",
      "status": "medido",
      "fonte": "nasa_power",
-     "valor_alvo": 90
+     "valor_alvo": 150
     },
     "temp_media_c": {
      "rotulo": "Temp. superficie media",
-     "valor": -15,
+     "valor": -8,
      "unidade": "C",
      "status": "medido",
      "fonte": "nasa_power"
     },
     "temp_ar_c": {
      "rotulo": "Temp. do ar a 2 m",
-     "valor": -14,
+     "valor": -8,
      "unidade": "C",
      "status": "medido",
      "fonte": "nasa_power"
     },
     "amplitude_ar_c": {
      "rotulo": "Variacao diaria do ar",
-     "valor": 5,
+     "valor": 4,
      "unidade": "C",
      "status": "medido",
      "fonte": "nasa_power"
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.05,
+     "valor": -0.0,
      "unidade": "indice",
      "status": "medido",
      "fonte": "mod13c2",
@@ -1225,30 +1567,30 @@
     },
     "albedo_medio": {
      "rotulo": "Albedo",
-     "valor": 0.46,
+     "valor": 0.54,
      "unidade": "fracao",
      "status": "medido",
      "fonte": "nasa_power",
-     "valor_alvo": 0.2
+     "valor_alvo": 0.15
     },
     "aod_medio": {
      "rotulo": "Poeira/aerossol (AOD)",
-     "valor": 0.07,
+     "valor": 0.05,
      "unidade": "adimensional",
      "status": "medido",
      "fonte": "nasa_power",
-     "valor_alvo": 0.6
+     "valor_alvo": 0.0
     },
     "vento_10m_ms": {
      "rotulo": "Vento a 10 m",
-     "valor": 4.1,
+     "valor": 4.4,
      "unidade": "m/s",
      "status": "medido",
      "fonte": "nasa_power"
     },
     "chuva_anual_mm": {
      "rotulo": "Chuva anual",
-     "valor": 310,
+     "valor": 665,
      "unidade": "mm",
      "status": "medido",
      "fonte": "nasa_power",
@@ -1256,17 +1598,17 @@
     },
     "pressao_kpa": {
      "rotulo": "Pressao do ar",
-     "valor": 98.32,
+     "valor": 97.54,
      "unidade": "kPa",
      "status": "calculado",
      "fonte": "fisica",
-     "valor_alvo": 0.65
+     "valor_alvo": 0.0
     }
    }
   },
   {
    "id": "raso_catarina",
-   "posicao": 7,
+   "posicao": 9,
    "nome": "Raso da Catarina",
    "regiao": "BA",
    "pais": "Brasil",
@@ -1437,7 +1779,7 @@
   },
   {
    "id": "gilbues",
-   "posicao": 8,
+   "posicao": 10,
    "nome": "Núcleo de desertificação de Gilbués",
    "regiao": "PI",
    "pais": "Brasil",
@@ -1607,179 +1949,8 @@
    }
   },
   {
-   "id": "svalbard",
-   "posicao": 9,
-   "nome": "Bockfjorden, Svalbard",
-   "regiao": "Svalbard",
-   "pais": "Noruega",
-   "papel": "descoberta",
-   "lat": 79.43,
-   "lon": 13.33,
-   "feicao": "Vulcões com glóbulos de carbonato em basalto, dentro de permafrost ártico",
-   "dados_completos": true,
-   "alvo": "malapert",
-   "alvo_nome": "Maciço de Malapert",
-   "corpo": "moon",
-   "nota_pct": 50,
-   "notas_perfil_pct": {
-    "geral": 50,
-    "rover": 55,
-    "astrobio": 41,
-    "isru": 49,
-    "habitat": 49,
-    "energia": 39
-   },
-   "dimensoes_pct": {
-    "terreno": 49,
-    "materiais": 0,
-    "termico": 15,
-    "luz": 27,
-    "agua": 62,
-    "poeira": 49,
-    "biologia": 50,
-    "subsolo": 100,
-    "operacoes": 96
-   },
-   "funciona": "Carbonatos em basalto como os do meteorito marciano ALH84001 e os de Jezero",
-   "quebra": "Gelo, neve e mar em volta",
-   "teste": "Instrumentos do Curiosity e Perseverance já testados aqui (AMASE)",
-   "dados": {
-    "elev_media_m": {
-     "rotulo": "Elevacao media",
-     "valor": 318,
-     "unidade": "m",
-     "status": "medido",
-     "fonte": "srtmgl30"
-    },
-    "declividade_media": {
-     "rotulo": "Declividade media",
-     "valor": 13.8,
-     "unidade": "graus",
-     "status": "medido",
-     "fonte": "srtmgl30",
-     "valor_alvo": 12.0
-    },
-    "frac_decliv_8": {
-     "rotulo": "Area com declividade < 8 graus",
-     "valor": 0.3,
-     "unidade": "fracao",
-     "status": "medido",
-     "fonte": "srtmgl30",
-     "valor_alvo": 0.4
-    },
-    "sol_max_graus": {
-     "rotulo": "Altura maxima do Sol",
-     "valor": 34.0,
-     "unidade": "graus",
-     "status": "calculado",
-     "fonte": "calculo_solar",
-     "valor_alvo": 5.5
-    },
-    "frac_ano_sol_continuo": {
-     "rotulo": "Ano com Sol 24 h",
-     "valor": 0.35,
-     "unidade": "fracao",
-     "status": "calculado",
-     "fonte": "calculo_solar",
-     "valor_alvo": 0.0
-    },
-    "lst_dia_c": {
-     "rotulo": "Temp. superficie maxima",
-     "valor": 1,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": -50
-    },
-    "lst_noite_c": {
-     "rotulo": "Temp. superficie minima",
-     "valor": -27,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": -200
-    },
-    "amplitude_termica_c": {
-     "rotulo": "Amplitude termica (dT)",
-     "valor": 28,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": 150
-    },
-    "temp_media_c": {
-     "rotulo": "Temp. superficie media",
-     "valor": -8,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power"
-    },
-    "temp_ar_c": {
-     "rotulo": "Temp. do ar a 2 m",
-     "valor": -8,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power"
-    },
-    "amplitude_ar_c": {
-     "rotulo": "Variacao diaria do ar",
-     "valor": 4,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power"
-    },
-    "ndvi_medio": {
-     "rotulo": "Vegetacao (NDVI)",
-     "valor": -0.0,
-     "unidade": "indice",
-     "status": "medido",
-     "fonte": "mod13c2",
-     "valor_alvo": 0.0
-    },
-    "albedo_medio": {
-     "rotulo": "Albedo",
-     "valor": 0.54,
-     "unidade": "fracao",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": 0.15
-    },
-    "aod_medio": {
-     "rotulo": "Poeira/aerossol (AOD)",
-     "valor": 0.05,
-     "unidade": "adimensional",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": 0.0
-    },
-    "vento_10m_ms": {
-     "rotulo": "Vento a 10 m",
-     "valor": 4.4,
-     "unidade": "m/s",
-     "status": "medido",
-     "fonte": "nasa_power"
-    },
-    "chuva_anual_mm": {
-     "rotulo": "Chuva anual",
-     "valor": 665,
-     "unidade": "mm",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": 0
-    },
-    "pressao_kpa": {
-     "rotulo": "Pressao do ar",
-     "valor": 97.54,
-     "unidade": "kPa",
-     "status": "calculado",
-     "fonte": "fisica",
-     "valor_alvo": 0.0
-    }
-   }
-  },
-  {
    "id": "rio_tinto",
-   "posicao": 10,
+   "posicao": 11,
    "nome": "Río Tinto",
    "regiao": "Andaluzia",
    "pais": "Espanha",
@@ -1950,7 +2121,7 @@
   },
   {
    "id": "mauna_kea",
-   "posicao": 11,
+   "posicao": 12,
    "nome": "Mauna Kea",
    "regiao": "Havaí",
    "pais": "EUA",
@@ -2121,7 +2292,7 @@
   },
   {
    "id": "lonar",
-   "posicao": 12,
+   "posicao": 13,
    "nome": "Cratera de Lonar",
    "regiao": "Maharashtra",
    "pais": "Índia",
@@ -2292,7 +2463,7 @@
   },
   {
    "id": "cangalha",
-   "posicao": 13,
+   "posicao": 14,
    "nome": "Serra da Cangalha",
    "regiao": "TO",
    "pais": "Brasil",
@@ -2463,7 +2634,7 @@
   },
   {
    "id": "araguainha",
-   "posicao": 14,
+   "posicao": 15,
    "nome": "Domo de Araguainha",
    "regiao": "MT/GO",
    "pais": "Brasil",
@@ -2634,7 +2805,7 @@
   },
   {
    "id": "vargeao",
-   "posicao": 15,
+   "posicao": 16,
    "nome": "Domo de Vargeão",
    "regiao": "SC",
    "pais": "Brasil",
@@ -2805,7 +2976,7 @@
   },
   {
    "id": "vista_alegre",
-   "posicao": 16,
+   "posicao": 17,
    "nome": "Cratera de Vista Alegre",
    "regiao": "PR",
    "pais": "Brasil",
@@ -2976,7 +3147,7 @@
   },
   {
    "id": "carajas",
-   "posicao": 17,
+   "posicao": 18,
    "nome": "Serra Norte de Carajás (cavernas)",
    "regiao": "PA",
    "pais": "Brasil",
@@ -3140,177 +3311,6 @@
      "valor": 96.25,
      "unidade": "kPa",
      "status": "calculado",
-     "fonte": "fisica",
-     "valor_alvo": 0.0
-    }
-   }
-  },
-  {
-   "id": "dry_valleys",
-   "posicao": 18,
-   "nome": "Vales Secos de McMurdo",
-   "regiao": "Terra de Vitória",
-   "pais": "Antártida",
-   "papel": "referencia",
-   "lat": -77.5,
-   "lon": 162.0,
-   "feicao": "Deserto polar sem gelo, com permafrost e lagos salgados",
-   "dados_completos": false,
-   "alvo": "shackleton",
-   "alvo_nome": "Borda da cratera Shackleton",
-   "corpo": "moon",
-   "nota_pct": 50,
-   "notas_perfil_pct": {
-    "geral": 50,
-    "rover": 26,
-    "astrobio": 55,
-    "isru": 49,
-    "habitat": 41,
-    "energia": 40
-   },
-   "dimensoes_pct": {
-    "terreno": 0,
-    "materiais": 7,
-    "termico": 22,
-    "luz": 41,
-    "agua": 79,
-    "poeira": 75,
-    "biologia": 75,
-    "subsolo": 100,
-    "operacoes": null
-   },
-   "funciona": "O lugar mais frio e seco da Terra: gelo enterrado como em Arcadia",
-   "quebra": "Ainda está a -20 °C em média, longe de -200 °C",
-   "teste": "Perfuração de permafrost e extração de água",
-   "dados": {
-    "elev_media_m": {
-     "rotulo": "Elevacao media",
-     "valor": null,
-     "unidade": "m",
-     "status": "sem_dado",
-     "fonte": "srtmgl30"
-    },
-    "declividade_media": {
-     "rotulo": "Declividade media",
-     "valor": null,
-     "unidade": "graus",
-     "status": "sem_dado",
-     "fonte": "srtmgl30",
-     "valor_alvo": 10.0
-    },
-    "frac_decliv_8": {
-     "rotulo": "Area com declividade < 8 graus",
-     "valor": null,
-     "unidade": "fracao",
-     "status": "sem_dado",
-     "fonte": "srtmgl30",
-     "valor_alvo": 0.45
-    },
-    "sol_max_graus": {
-     "rotulo": "Altura maxima do Sol",
-     "valor": 35.9,
-     "unidade": "graus",
-     "status": "calculado",
-     "fonte": "calculo_solar",
-     "valor_alvo": 1.9
-    },
-    "frac_ano_sol_continuo": {
-     "rotulo": "Ano com Sol 24 h",
-     "valor": 0.32,
-     "unidade": "fracao",
-     "status": "calculado",
-     "fonte": "calculo_solar",
-     "valor_alvo": 0.43
-    },
-    "lst_dia_c": {
-     "rotulo": "Temp. superficie maxima",
-     "valor": -13,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": -50
-    },
-    "lst_noite_c": {
-     "rotulo": "Temp. superficie minima",
-     "valor": -46,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": -200
-    },
-    "amplitude_termica_c": {
-     "rotulo": "Amplitude termica (dT)",
-     "valor": 32,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": 150
-    },
-    "temp_media_c": {
-     "rotulo": "Temp. superficie media",
-     "valor": -30,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power"
-    },
-    "temp_ar_c": {
-     "rotulo": "Temp. do ar a 2 m",
-     "valor": -27,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power"
-    },
-    "amplitude_ar_c": {
-     "rotulo": "Variacao diaria do ar",
-     "valor": 6,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power"
-    },
-    "ndvi_medio": {
-     "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.0,
-     "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13c2",
-     "valor_alvo": 0.0
-    },
-    "albedo_medio": {
-     "rotulo": "Albedo",
-     "valor": 0.56,
-     "unidade": "fracao",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": 0.15
-    },
-    "aod_medio": {
-     "rotulo": "Poeira/aerossol (AOD)",
-     "valor": 0.0,
-     "unidade": "adimensional",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": 0.0
-    },
-    "vento_10m_ms": {
-     "rotulo": "Vento a 10 m",
-     "valor": 7.0,
-     "unidade": "m/s",
-     "status": "medido",
-     "fonte": "nasa_power"
-    },
-    "chuva_anual_mm": {
-     "rotulo": "Chuva anual",
-     "valor": 80,
-     "unidade": "mm",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": 0
-    },
-    "pressao_kpa": {
-     "rotulo": "Pressao do ar",
-     "valor": null,
-     "unidade": "kPa",
-     "status": "sem_dado",
      "fonte": "fisica",
      "valor_alvo": 0.0
     }

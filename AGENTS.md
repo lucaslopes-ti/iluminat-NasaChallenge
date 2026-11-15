@@ -33,6 +33,7 @@ Este arquivo é lido pelo agente do Antigravity (AGENTS.md) e pelo Claude Code (
 | `dados/essenciais/` | Dados de analogia prontos. `tela_carrinho.json` (~70 KB, para a tela em C; o centro são as listas `alvos` e `locais`), `analogos_completo.json` (tudo), CSVs (`ranking.csv`, `notas_dimensoes.csv`, `criterios_terra.csv`, `medidas_*.csv`), `entrada/` (dados de partida editáveis), `gerar_dados.py`, `gerar_mqtt.py`, `ndvi_mod13c2.py`. Ver `dados/essenciais/README.md`. |
 | `dados/essenciais/mqtt/` | Mensagens pequenas por local (`locais/<id>.json`), `indice.json` e `sensores.json` (qual sensor do carrinho se compara com qual dado). |
 | `dados/srtm30/` | 27 blocos NASA SRTMGL30 v002 (`.zip`) e `altitude.py`. |
+| `dados/copernicus_dem/` | Blocos do Copernicus DEM GLO-90 para a Antártida (Dry Valleys), baixados por `dados/essenciais/relevo_copernicus.py`. |
 | `firmware/` | `arduino_carrinho/` (sketch dos sensores), `ponte_serial_mqtt.py` (ponte USB → MQTT no computador), `esp32_ponte_mqtt/` (ESP32 opcional, só como ponte Wi-Fi). Ver `firmware/README.md`. |
 | `Projeto_C/NasaSpace/` | Tela em C (Code::Blocks): `main.c` (seletor Lua/Marte → alvo → top 3 → MQTT → ponte Bluetooth) e `tela_local.c` (tela do local escolhido). Lê um JSON só, `dados/essenciais/analogos_completo.json`, com cJSON (`Bibliotecas/cJSON.h`). |
 | Notebooks | `01_dados_terra.ipynb` fica fora do git (Colab/Drive). |
@@ -47,7 +48,7 @@ Cada item de `locais`: `id`, `posicao`, `nome`, `regiao`, `pais`, `papel`, `lat`
 
 | Dado | Fonte | Situação |
 |---|---|---|
-| Relevo (elevação, desnível, declividade, rugosidade, áreas < 8° e < 15°) | NASA SRTMGL30 v002 | **medido** (não cobre a Antártida) |
+| Relevo (elevação, desnível, declividade, rugosidade, áreas < 8° e < 15°) | NASA SRTMGL30 v002; na Antártida, Copernicus DEM GLO-90 agregado para 30" (`relevo_copernicus.py` → `entrada/relevo_copernicus.csv`) | **medido** |
 | Temperatura da superfície (TS, TS_MAX, TS_MIN) e do ar a 2 m (T2M, T2M_RANGE), albedo, poeira (AOD 550 nm), vento, chuva | NASA POWER (MERRA-2, CERES), médias 2001–2025 | **medido**; respostas salvas em `entrada/nasa_power/` |
 | Vegetação (NDVI) | NASA MOD13C2 v061, 0,05°, 72 meses (2020–2025), LP DAAC | **medido** |
 | Iluminação | geometria solar pela latitude | **calculado** |
@@ -56,19 +57,22 @@ Cada item de `locais`: `id`, `posicao`, `nome`, `regiao`, `pais`, `papel`, `lat`
 
 Pontos em aberto, que precisam ser ditos com honestidade na apresentação:
 
-- **Único valor provisório:** o NDVI da McMurdo Dry Valleys (o MOD13C2 não cobre a Antártida; ficou 0, deserto polar). A Dry Valleys também fica sem relevo e, por isso, sem pressão do ar (`sem_dado`).
+- **Único valor provisório:** o NDVI da McMurdo Dry Valleys (o MOD13C2 não cobre a Antártida; ficou 0, deserto polar). O relevo da Dry Valleys vem do Copernicus DEM GLO-90 (o SRTM30 não cobre a Antártida).
 - **AppEEARS:** a task `a92258f5…` (MOD13A2 e MODIS de 1 km) ainda está pendente. Quando chegar, rodar `python3 dados/essenciais/gerar_dados.py --appeears PASTA`; ela substitui NDVI, temperatura e albedo (prioridade: AppEEARS/notebook > NASA POWER e MOD13C2 > provisório).
 - **Coordenadas do Artemis III:** as 9 regiões candidatas (NASA, out/2024) estão **aproximadas** (±1°, campo `coord_aprox`) e precisam ser conferidas no mapa oficial.
 - **Albedo regional:** a célula da POWER mistura o local com o entorno (Lençóis 0,10 por causa do mar; Mauna Kea 0,08; Dry Valleys 0,56 por causa do gelo). Melhora com o AppEEARS (MCD43A3, 1 km).
 - **Pressão em Marte:** os 5 alvos usam 0,65 kPa (MEDA, Jezero). Gale, Arcadia e Oxia variam entre ~0,6 e 0,9 kPa pela altitude; falta uma fonte por local.
-- **Luz na Lua:** "Tempo com Sol" (`frac_tempo_sol`) usa a `iluminacao_frac` do LOLA (com relevo); "Ano com Sol 24 h" (`frac_ano_sol_continuo`) é de horizonte plano e ainda entra na nota da dimensão luz.
+- **Luz na Lua:** a dimensão luz usa `sol_max_graus`, `frac_sol_baixo` e `frac_tempo_sol` ("Tempo com Sol": geometria solar na Terra; `iluminacao_frac` do LOLA, com relevo, na Lua). O `frac_ano_sol_continuo` ("Ano com Sol 24 h") saiu da nota, porque com horizonte plano dava 0% nas bordas lunares reais.
+- **Validação:** cada análogo clássico tem `alvos_literatura` em `entrada/locais_terra.json`; o teste é a posição dele no ranking desse alvo (`validacao_referencias.alvo_da_literatura`). Hoje os cinco ficam entre os 6 primeiros de 18.
 - **Shackleton:** a mínima é a da borda (−200 °C); o fundo em sombra permanente (−230 °C) fica só na nota. A amplitude é sempre a máxima menos a mínima.
 - **Mauna Kea:** a célula da POWER mistura o cume com as encostas e o mar, então a temperatura do ar (~21 °C) fica muito acima da do cume (~0 °C). Locais pequenos (Lonar, Dallol) também ficam com valores regionais.
 
 Regenerar tudo:
 
 ```
+pip3 install numpy                                         # o gerar_dados.py precisa do numpy
 python3 dados/essenciais/gerar_dados.py                    # refaz com o que está em entrada/ (só numpy)
+python3 dados/essenciais/relevo_copernicus.py              # relevo da Antártida (pip3 install tifffile imagecodecs)
 python3 dados/essenciais/gerar_dados.py --baixar-power     # baixa de novo a NASA POWER
 python3 dados/essenciais/gerar_dados.py --appeears PASTA   # CSVs de Point Sample do AppEEARS
 EARTHDATA_TOKEN_FILE=token.txt python3 dados/essenciais/ndvi_mod13c2.py 2020 2025

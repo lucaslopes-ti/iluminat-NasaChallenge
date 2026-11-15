@@ -1,10 +1,10 @@
 local_id,variavel,valor,unidade,status,fonte_id,short_name_versao,doi_ou_referencia,nota
-vargeao,elev_media_m,893,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,361 pixels de ~1 km na caixa do local
-vargeao,elev_relativa_m,-294,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,361 pixels de ~1 km na caixa do local
-vargeao,declividade_media,2.7,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,361 pixels de ~1 km na caixa do local
-vargeao,rugosidade_tri_m,123.1,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,361 pixels de ~1 km na caixa do local
-vargeao,frac_decliv_8,0.99,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,361 pixels de ~1 km na caixa do local
-vargeao,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,361 pixels de ~1 km na caixa do local
+vargeao,elev_media_m,893,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,361 celulas de ~1 km na caixa do local
+vargeao,elev_relativa_m,-294,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,361 celulas de ~1 km na caixa do local
+vargeao,declividade_media,2.7,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,361 celulas de ~1 km na caixa do local
+vargeao,rugosidade_tri_m,123.1,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,361 celulas de ~1 km na caixa do local
+vargeao,frac_decliv_8,0.99,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,361 celulas de ~1 km na caixa do local
+vargeao,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,361 celulas de ~1 km na caixa do local
 vargeao,sol_max_graus,86.6,graus,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 vargeao,frac_sol_baixo,0.13,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 vargeao,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
@@ -25,12 +25,12 @@ vargeao,vento_10m_ms,2.1,m/s,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PREC
 vargeao,pressao_kpa,91.08,kPa,calculado,fisica,-,NASA Planetary Fact Sheets,atmosfera padrao pela altitude
 vargeao,gravidade_g,1.0,g,referencia,fisica,-,NASA Planetary Fact Sheets,
 vargeao,dia_local_h,24.0,h,referencia,fisica,-,NASA Planetary Fact Sheets,
-vista_alegre,elev_media_m,561,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,196 pixels de ~1 km na caixa do local
-vista_alegre,elev_relativa_m,-324,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,196 pixels de ~1 km na caixa do local
-vista_alegre,declividade_media,2.4,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,196 pixels de ~1 km na caixa do local
-vista_alegre,rugosidade_tri_m,108.5,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,196 pixels de ~1 km na caixa do local
-vista_alegre,frac_decliv_8,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,196 pixels de ~1 km na caixa do local
-vista_alegre,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,196 pixels de ~1 km na caixa do local
+vista_alegre,elev_media_m,561,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,196 celulas de ~1 km na caixa do local
+vista_alegre,elev_relativa_m,-324,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,196 celulas de ~1 km na caixa do local
+vista_alegre,declividade_media,2.4,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,196 celulas de ~1 km na caixa do local
+vista_alegre,rugosidade_tri_m,108.5,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,196 celulas de ~1 km na caixa do local
+vista_alegre,frac_decliv_8,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,196 celulas de ~1 km na caixa do local
+vista_alegre,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,196 celulas de ~1 km na caixa do local
 vista_alegre,sol_max_graus,87.5,graus,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 vista_alegre,frac_sol_baixo,0.13,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 vista_alegre,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
@@ -51,12 +51,12 @@ vista_alegre,vento_10m_ms,1.3,m/s,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M /
 vista_alegre,pressao_kpa,94.75,kPa,calculado,fisica,-,NASA Planetary Fact Sheets,atmosfera padrao pela altitude
 vista_alegre,gravidade_g,1.0,g,referencia,fisica,-,NASA Planetary Fact Sheets,
 vista_alegre,dia_local_h,24.0,h,referencia,fisica,-,NASA Planetary Fact Sheets,
-cangalha,elev_media_m,341,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,841 pixels de ~1 km na caixa do local
-cangalha,elev_relativa_m,-226,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,841 pixels de ~1 km na caixa do local
-cangalha,declividade_media,1.6,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,841 pixels de ~1 km na caixa do local
-cangalha,rugosidade_tri_m,76.5,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,841 pixels de ~1 km na caixa do local
-cangalha,frac_decliv_8,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,841 pixels de ~1 km na caixa do local
-cangalha,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,841 pixels de ~1 km na caixa do local
+cangalha,elev_media_m,341,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,841 celulas de ~1 km na caixa do local
+cangalha,elev_relativa_m,-226,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,841 celulas de ~1 km na caixa do local
+cangalha,declividade_media,1.6,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,841 celulas de ~1 km na caixa do local
+cangalha,rugosidade_tri_m,76.5,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,841 celulas de ~1 km na caixa do local
+cangalha,frac_decliv_8,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,841 celulas de ~1 km na caixa do local
+cangalha,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,841 celulas de ~1 km na caixa do local
 cangalha,sol_max_graus,89.9,graus,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 cangalha,frac_sol_baixo,0.12,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 cangalha,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
@@ -77,12 +77,12 @@ cangalha,vento_10m_ms,3.0,m/s,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRE
 cangalha,pressao_kpa,97.27,kPa,calculado,fisica,-,NASA Planetary Fact Sheets,atmosfera padrao pela altitude
 cangalha,gravidade_g,1.0,g,referencia,fisica,-,NASA Planetary Fact Sheets,
 cangalha,dia_local_h,24.0,h,referencia,fisica,-,NASA Planetary Fact Sheets,
-araguainha,elev_media_m,542,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 pixels de ~1 km na caixa do local
-araguainha,elev_relativa_m,-447,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 pixels de ~1 km na caixa do local
-araguainha,declividade_media,1.6,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 pixels de ~1 km na caixa do local
-araguainha,rugosidade_tri_m,77.9,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 pixels de ~1 km na caixa do local
-araguainha,frac_decliv_8,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 pixels de ~1 km na caixa do local
-araguainha,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 pixels de ~1 km na caixa do local
+araguainha,elev_media_m,542,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 celulas de ~1 km na caixa do local
+araguainha,elev_relativa_m,-447,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 celulas de ~1 km na caixa do local
+araguainha,declividade_media,1.6,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 celulas de ~1 km na caixa do local
+araguainha,rugosidade_tri_m,77.9,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 celulas de ~1 km na caixa do local
+araguainha,frac_decliv_8,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 celulas de ~1 km na caixa do local
+araguainha,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 celulas de ~1 km na caixa do local
 araguainha,sol_max_graus,89.9,graus,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 araguainha,frac_sol_baixo,0.12,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 araguainha,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
@@ -103,12 +103,12 @@ araguainha,vento_10m_ms,2.8,m/s,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / P
 araguainha,pressao_kpa,94.97,kPa,calculado,fisica,-,NASA Planetary Fact Sheets,atmosfera padrao pela altitude
 araguainha,gravidade_g,1.0,g,referencia,fisica,-,NASA Planetary Fact Sheets,
 araguainha,dia_local_h,24.0,h,referencia,fisica,-,NASA Planetary Fact Sheets,
-carajas,elev_media_m,429,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 pixels de ~1 km na caixa do local
-carajas,elev_relativa_m,-565,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 pixels de ~1 km na caixa do local
-carajas,declividade_media,4.2,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 pixels de ~1 km na caixa do local
-carajas,rugosidade_tri_m,207.6,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 pixels de ~1 km na caixa do local
-carajas,frac_decliv_8,0.85,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 pixels de ~1 km na caixa do local
-carajas,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 pixels de ~1 km na caixa do local
+carajas,elev_media_m,429,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 celulas de ~1 km na caixa do local
+carajas,elev_relativa_m,-565,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 celulas de ~1 km na caixa do local
+carajas,declividade_media,4.2,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 celulas de ~1 km na caixa do local
+carajas,rugosidade_tri_m,207.6,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 celulas de ~1 km na caixa do local
+carajas,frac_decliv_8,0.85,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 celulas de ~1 km na caixa do local
+carajas,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 celulas de ~1 km na caixa do local
 carajas,sol_max_graus,89.9,graus,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 carajas,frac_sol_baixo,0.12,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 carajas,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
@@ -129,12 +129,12 @@ carajas,vento_10m_ms,2.3,m/s,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PREC
 carajas,pressao_kpa,96.25,kPa,calculado,fisica,-,NASA Planetary Fact Sheets,atmosfera padrao pela altitude
 carajas,gravidade_g,1.0,g,referencia,fisica,-,NASA Planetary Fact Sheets,
 carajas,dia_local_h,24.0,h,referencia,fisica,-,NASA Planetary Fact Sheets,
-lencois,elev_media_m,16,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1133 pixels de ~1 km na caixa do local
-lencois,elev_relativa_m,-42,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1133 pixels de ~1 km na caixa do local
-lencois,declividade_media,0.1,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1133 pixels de ~1 km na caixa do local
-lencois,rugosidade_tri_m,7.0,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1133 pixels de ~1 km na caixa do local
-lencois,frac_decliv_8,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1133 pixels de ~1 km na caixa do local
-lencois,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1133 pixels de ~1 km na caixa do local
+lencois,elev_media_m,16,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1133 celulas de ~1 km na caixa do local
+lencois,elev_relativa_m,-42,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1133 celulas de ~1 km na caixa do local
+lencois,declividade_media,0.1,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1133 celulas de ~1 km na caixa do local
+lencois,rugosidade_tri_m,7.0,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1133 celulas de ~1 km na caixa do local
+lencois,frac_decliv_8,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1133 celulas de ~1 km na caixa do local
+lencois,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1133 celulas de ~1 km na caixa do local
 lencois,sol_max_graus,89.9,graus,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 lencois,frac_sol_baixo,0.11,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 lencois,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
@@ -155,12 +155,12 @@ lencois,vento_10m_ms,4.1,m/s,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PREC
 lencois,pressao_kpa,101.1,kPa,calculado,fisica,-,NASA Planetary Fact Sheets,atmosfera padrao pela altitude
 lencois,gravidade_g,1.0,g,referencia,fisica,-,NASA Planetary Fact Sheets,
 lencois,dia_local_h,24.0,h,referencia,fisica,-,NASA Planetary Fact Sheets,
-raso_catarina,elev_media_m,516,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1296 pixels de ~1 km na caixa do local
-raso_catarina,elev_relativa_m,-405,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1296 pixels de ~1 km na caixa do local
-raso_catarina,declividade_media,1.1,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1296 pixels de ~1 km na caixa do local
-raso_catarina,rugosidade_tri_m,48.5,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1296 pixels de ~1 km na caixa do local
-raso_catarina,frac_decliv_8,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1296 pixels de ~1 km na caixa do local
-raso_catarina,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1296 pixels de ~1 km na caixa do local
+raso_catarina,elev_media_m,516,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1296 celulas de ~1 km na caixa do local
+raso_catarina,elev_relativa_m,-405,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1296 celulas de ~1 km na caixa do local
+raso_catarina,declividade_media,1.1,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1296 celulas de ~1 km na caixa do local
+raso_catarina,rugosidade_tri_m,48.5,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1296 celulas de ~1 km na caixa do local
+raso_catarina,frac_decliv_8,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1296 celulas de ~1 km na caixa do local
+raso_catarina,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1296 celulas de ~1 km na caixa do local
 raso_catarina,sol_max_graus,90.0,graus,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 raso_catarina,frac_sol_baixo,0.12,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 raso_catarina,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
@@ -181,12 +181,12 @@ raso_catarina,vento_10m_ms,5.5,m/s,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M 
 raso_catarina,pressao_kpa,95.26,kPa,calculado,fisica,-,NASA Planetary Fact Sheets,atmosfera padrao pela altitude
 raso_catarina,gravidade_g,1.0,g,referencia,fisica,-,NASA Planetary Fact Sheets,
 raso_catarina,dia_local_h,24.0,h,referencia,fisica,-,NASA Planetary Fact Sheets,
-gilbues,elev_media_m,438,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,841 pixels de ~1 km na caixa do local
-gilbues,elev_relativa_m,-232,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,841 pixels de ~1 km na caixa do local
-gilbues,declividade_media,1.0,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,841 pixels de ~1 km na caixa do local
-gilbues,rugosidade_tri_m,49.9,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,841 pixels de ~1 km na caixa do local
-gilbues,frac_decliv_8,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,841 pixels de ~1 km na caixa do local
-gilbues,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,841 pixels de ~1 km na caixa do local
+gilbues,elev_media_m,438,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,841 celulas de ~1 km na caixa do local
+gilbues,elev_relativa_m,-232,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,841 celulas de ~1 km na caixa do local
+gilbues,declividade_media,1.0,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,841 celulas de ~1 km na caixa do local
+gilbues,rugosidade_tri_m,49.9,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,841 celulas de ~1 km na caixa do local
+gilbues,frac_decliv_8,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,841 celulas de ~1 km na caixa do local
+gilbues,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,841 celulas de ~1 km na caixa do local
 gilbues,sol_max_graus,89.8,graus,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 gilbues,frac_sol_baixo,0.12,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 gilbues,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
@@ -207,12 +207,12 @@ gilbues,vento_10m_ms,3.5,m/s,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PREC
 gilbues,pressao_kpa,96.15,kPa,calculado,fisica,-,NASA Planetary Fact Sheets,atmosfera padrao pela altitude
 gilbues,gravidade_g,1.0,g,referencia,fisica,-,NASA Planetary Fact Sheets,
 gilbues,dia_local_h,24.0,h,referencia,fisica,-,NASA Planetary Fact Sheets,
-lonar,elev_media_m,565,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,144 pixels de ~1 km na caixa do local
-lonar,elev_relativa_m,-98,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,144 pixels de ~1 km na caixa do local
-lonar,declividade_media,0.6,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,144 pixels de ~1 km na caixa do local
-lonar,rugosidade_tri_m,30.4,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,144 pixels de ~1 km na caixa do local
-lonar,frac_decliv_8,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,144 pixels de ~1 km na caixa do local
-lonar,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,144 pixels de ~1 km na caixa do local
+lonar,elev_media_m,565,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,144 celulas de ~1 km na caixa do local
+lonar,elev_relativa_m,-98,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,144 celulas de ~1 km na caixa do local
+lonar,declividade_media,0.6,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,144 celulas de ~1 km na caixa do local
+lonar,rugosidade_tri_m,30.4,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,144 celulas de ~1 km na caixa do local
+lonar,frac_decliv_8,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,144 celulas de ~1 km na caixa do local
+lonar,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,144 celulas de ~1 km na caixa do local
 lonar,sol_max_graus,90.0,graus,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 lonar,frac_sol_baixo,0.12,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 lonar,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
@@ -233,12 +233,12 @@ lonar,vento_10m_ms,3.7,m/s,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTO
 lonar,pressao_kpa,94.71,kPa,calculado,fisica,-,NASA Planetary Fact Sheets,atmosfera padrao pela altitude
 lonar,gravidade_g,1.0,g,referencia,fisica,-,NASA Planetary Fact Sheets,
 lonar,dia_local_h,24.0,h,referencia,fisica,-,NASA Planetary Fact Sheets,
-lut,elev_media_m,310,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 pixels de ~1 km na caixa do local
-lut,elev_relativa_m,-254,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 pixels de ~1 km na caixa do local
-lut,declividade_media,0.6,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 pixels de ~1 km na caixa do local
-lut,rugosidade_tri_m,29.0,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 pixels de ~1 km na caixa do local
-lut,frac_decliv_8,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 pixels de ~1 km na caixa do local
-lut,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 pixels de ~1 km na caixa do local
+lut,elev_media_m,310,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 celulas de ~1 km na caixa do local
+lut,elev_relativa_m,-254,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 celulas de ~1 km na caixa do local
+lut,declividade_media,0.6,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 celulas de ~1 km na caixa do local
+lut,rugosidade_tri_m,29.0,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 celulas de ~1 km na caixa do local
+lut,frac_decliv_8,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 celulas de ~1 km na caixa do local
+lut,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 celulas de ~1 km na caixa do local
 lut,sol_max_graus,82.9,graus,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 lut,frac_sol_baixo,0.14,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 lut,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
@@ -259,12 +259,12 @@ lut,vento_10m_ms,3.8,m/s,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTC
 lut,pressao_kpa,97.63,kPa,calculado,fisica,-,NASA Planetary Fact Sheets,atmosfera padrao pela altitude
 lut,gravidade_g,1.0,g,referencia,fisica,-,NASA Planetary Fact Sheets,
 lut,dia_local_h,24.0,h,referencia,fisica,-,NASA Planetary Fact Sheets,
-dallol,elev_media_m,-119,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,144 pixels de ~1 km na caixa do local
-dallol,elev_relativa_m,-37,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,144 pixels de ~1 km na caixa do local
-dallol,declividade_media,0.1,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,144 pixels de ~1 km na caixa do local
-dallol,rugosidade_tri_m,7.4,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,144 pixels de ~1 km na caixa do local
-dallol,frac_decliv_8,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,144 pixels de ~1 km na caixa do local
-dallol,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,144 pixels de ~1 km na caixa do local
+dallol,elev_media_m,-119,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,144 celulas de ~1 km na caixa do local
+dallol,elev_relativa_m,-37,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,144 celulas de ~1 km na caixa do local
+dallol,declividade_media,0.1,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,144 celulas de ~1 km na caixa do local
+dallol,rugosidade_tri_m,7.4,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,144 celulas de ~1 km na caixa do local
+dallol,frac_decliv_8,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,144 celulas de ~1 km na caixa do local
+dallol,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,144 celulas de ~1 km na caixa do local
 dallol,sol_max_graus,89.9,graus,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 dallol,frac_sol_baixo,0.12,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 dallol,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
@@ -285,12 +285,12 @@ dallol,vento_10m_ms,3.5,m/s,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECT
 dallol,pressao_kpa,102.75,kPa,calculado,fisica,-,NASA Planetary Fact Sheets,atmosfera padrao pela altitude
 dallol,gravidade_g,1.0,g,referencia,fisica,-,NASA Planetary Fact Sheets,
 dallol,dia_local_h,24.0,h,referencia,fisica,-,NASA Planetary Fact Sheets,
-qaidam,elev_media_m,2752,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 pixels de ~1 km na caixa do local
-qaidam,elev_relativa_m,-203,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 pixels de ~1 km na caixa do local
-qaidam,declividade_media,0.3,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 pixels de ~1 km na caixa do local
-qaidam,rugosidade_tri_m,13.4,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 pixels de ~1 km na caixa do local
-qaidam,frac_decliv_8,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 pixels de ~1 km na caixa do local
-qaidam,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 pixels de ~1 km na caixa do local
+qaidam,elev_media_m,2752,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 celulas de ~1 km na caixa do local
+qaidam,elev_relativa_m,-203,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 celulas de ~1 km na caixa do local
+qaidam,declividade_media,0.3,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 celulas de ~1 km na caixa do local
+qaidam,rugosidade_tri_m,13.4,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 celulas de ~1 km na caixa do local
+qaidam,frac_decliv_8,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 celulas de ~1 km na caixa do local
+qaidam,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 celulas de ~1 km na caixa do local
 qaidam,sol_max_graus,74.8,graus,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 qaidam,frac_sol_baixo,0.15,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 qaidam,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
@@ -311,12 +311,12 @@ qaidam,vento_10m_ms,4.0,m/s,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECT
 qaidam,pressao_kpa,73.0,kPa,calculado,fisica,-,NASA Planetary Fact Sheets,atmosfera padrao pela altitude
 qaidam,gravidade_g,1.0,g,referencia,fisica,-,NASA Planetary Fact Sheets,
 qaidam,dia_local_h,24.0,h,referencia,fisica,-,NASA Planetary Fact Sheets,
-svalbard,elev_media_m,318,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,566 pixels de ~1 km na caixa do local
-svalbard,elev_relativa_m,-999,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,566 pixels de ~1 km na caixa do local
-svalbard,declividade_media,13.8,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,566 pixels de ~1 km na caixa do local
-svalbard,rugosidade_tri_m,334.8,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,566 pixels de ~1 km na caixa do local
-svalbard,frac_decliv_8,0.3,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,566 pixels de ~1 km na caixa do local
-svalbard,frac_transitavel_15,0.62,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,566 pixels de ~1 km na caixa do local
+svalbard,elev_media_m,318,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,566 celulas de ~1 km na caixa do local
+svalbard,elev_relativa_m,-999,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,566 celulas de ~1 km na caixa do local
+svalbard,declividade_media,13.8,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,566 celulas de ~1 km na caixa do local
+svalbard,rugosidade_tri_m,334.8,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,566 celulas de ~1 km na caixa do local
+svalbard,frac_decliv_8,0.3,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,566 celulas de ~1 km na caixa do local
+svalbard,frac_transitavel_15,0.62,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,566 celulas de ~1 km na caixa do local
 svalbard,sol_max_graus,34.0,graus,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 svalbard,frac_sol_baixo,0.31,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 svalbard,frac_ano_sol_continuo,0.35,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
@@ -337,12 +337,12 @@ svalbard,vento_10m_ms,4.4,m/s,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRE
 svalbard,pressao_kpa,97.54,kPa,calculado,fisica,-,NASA Planetary Fact Sheets,atmosfera padrao pela altitude
 svalbard,gravidade_g,1.0,g,referencia,fisica,-,NASA Planetary Fact Sheets,
 svalbard,dia_local_h,24.0,h,referencia,fisica,-,NASA Planetary Fact Sheets,
-atacama,elev_media_m,1124,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 pixels de ~1 km na caixa do local
-atacama,elev_relativa_m,-751,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 pixels de ~1 km na caixa do local
-atacama,declividade_media,3.2,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 pixels de ~1 km na caixa do local
-atacama,rugosidade_tri_m,136.7,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 pixels de ~1 km na caixa do local
-atacama,frac_decliv_8,0.94,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 pixels de ~1 km na caixa do local
-atacama,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 pixels de ~1 km na caixa do local
+atacama,elev_media_m,1124,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 celulas de ~1 km na caixa do local
+atacama,elev_relativa_m,-751,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 celulas de ~1 km na caixa do local
+atacama,declividade_media,3.2,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 celulas de ~1 km na caixa do local
+atacama,rugosidade_tri_m,136.7,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 celulas de ~1 km na caixa do local
+atacama,frac_decliv_8,0.94,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 celulas de ~1 km na caixa do local
+atacama,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 celulas de ~1 km na caixa do local
 atacama,sol_max_graus,89.4,graus,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 atacama,frac_sol_baixo,0.13,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 atacama,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
@@ -363,12 +363,12 @@ atacama,vento_10m_ms,3.0,m/s,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PREC
 atacama,pressao_kpa,88.61,kPa,calculado,fisica,-,NASA Planetary Fact Sheets,atmosfera padrao pela altitude
 atacama,gravidade_g,1.0,g,referencia,fisica,-,NASA Planetary Fact Sheets,
 atacama,dia_local_h,24.0,h,referencia,fisica,-,NASA Planetary Fact Sheets,
-dry_valleys,elev_media_m,,m,sem_dado,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,fora da cobertura do SRTM30 (90N-60S); usar Copernicus DEM GLO-30
-dry_valleys,elev_relativa_m,,m,sem_dado,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,fora da cobertura do SRTM30 (90N-60S); usar Copernicus DEM GLO-30
-dry_valleys,declividade_media,,graus,sem_dado,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,fora da cobertura do SRTM30 (90N-60S); usar Copernicus DEM GLO-30
-dry_valleys,rugosidade_tri_m,,m,sem_dado,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,fora da cobertura do SRTM30 (90N-60S); usar Copernicus DEM GLO-30
-dry_valleys,frac_decliv_8,,fracao,sem_dado,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,fora da cobertura do SRTM30 (90N-60S); usar Copernicus DEM GLO-30
-dry_valleys,frac_transitavel_15,,fracao,sem_dado,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,fora da cobertura do SRTM30 (90N-60S); usar Copernicus DEM GLO-30
+dry_valleys,elev_media_m,1021,m,medido,copernicus_glo90,COP-DEM GLO-90 (DGED),doi:10.5270/ESA-c5d3d65,5184 celulas de ~1 km na caixa do local (media dos pixels de 90 m)
+dry_valleys,elev_relativa_m,-2026,m,medido,copernicus_glo90,COP-DEM GLO-90 (DGED),doi:10.5270/ESA-c5d3d65,5184 celulas de ~1 km na caixa do local (media dos pixels de 90 m)
+dry_valleys,declividade_media,11.4,graus,medido,copernicus_glo90,COP-DEM GLO-90 (DGED),doi:10.5270/ESA-c5d3d65,5184 celulas de ~1 km na caixa do local (media dos pixels de 90 m)
+dry_valleys,rugosidade_tri_m,376.6,m,medido,copernicus_glo90,COP-DEM GLO-90 (DGED),doi:10.5270/ESA-c5d3d65,5184 celulas de ~1 km na caixa do local (media dos pixels de 90 m)
+dry_valleys,frac_decliv_8,0.39,fracao,medido,copernicus_glo90,COP-DEM GLO-90 (DGED),doi:10.5270/ESA-c5d3d65,5184 celulas de ~1 km na caixa do local (media dos pixels de 90 m)
+dry_valleys,frac_transitavel_15,0.72,fracao,medido,copernicus_glo90,COP-DEM GLO-90 (DGED),doi:10.5270/ESA-c5d3d65,5184 celulas de ~1 km na caixa do local (media dos pixels de 90 m)
 dry_valleys,sol_max_graus,35.9,graus,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 dry_valleys,frac_sol_baixo,0.33,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 dry_valleys,frac_ano_sol_continuo,0.32,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
@@ -386,15 +386,15 @@ dry_valleys,albedo_medio,0.56,fracao,medido,nasa_power,TS / TS_MAX / TS_MIN / T2
 dry_valleys,aod_medio,0.0,adimensional,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,AOD_55: profundidade optica de aerossol em 550 nm (MERRA-2)
 dry_valleys,chuva_anual_mm,80,mm,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,"PRECTOTCORR: chuva corrigida, media anual (MERRA-2/GPM)"
 dry_valleys,vento_10m_ms,7.0,m/s,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,"WS10M: vento a 10 m, media anual (MERRA-2)"
-dry_valleys,pressao_kpa,,kPa,sem_dado,fisica,-,NASA Planetary Fact Sheets,"sem altitude (fora do SRTM30), entao sem pressao calculada"
+dry_valleys,pressao_kpa,89.7,kPa,calculado,fisica,-,NASA Planetary Fact Sheets,atmosfera padrao pela altitude
 dry_valleys,gravidade_g,1.0,g,referencia,fisica,-,NASA Planetary Fact Sheets,
 dry_valleys,dia_local_h,24.0,h,referencia,fisica,-,NASA Planetary Fact Sheets,
-haughton,elev_media_m,251,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1296 pixels de ~1 km na caixa do local
-haughton,elev_relativa_m,-215,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1296 pixels de ~1 km na caixa do local
-haughton,declividade_media,1.6,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1296 pixels de ~1 km na caixa do local
-haughton,rugosidade_tri_m,36.2,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1296 pixels de ~1 km na caixa do local
-haughton,frac_decliv_8,0.99,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1296 pixels de ~1 km na caixa do local
-haughton,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1296 pixels de ~1 km na caixa do local
+haughton,elev_media_m,251,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1296 celulas de ~1 km na caixa do local
+haughton,elev_relativa_m,-215,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1296 celulas de ~1 km na caixa do local
+haughton,declividade_media,1.6,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1296 celulas de ~1 km na caixa do local
+haughton,rugosidade_tri_m,36.2,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1296 celulas de ~1 km na caixa do local
+haughton,frac_decliv_8,0.99,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1296 celulas de ~1 km na caixa do local
+haughton,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1296 celulas de ~1 km na caixa do local
 haughton,sol_max_graus,38.1,graus,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 haughton,frac_sol_baixo,0.36,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 haughton,frac_ano_sol_continuo,0.28,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
@@ -415,12 +415,12 @@ haughton,vento_10m_ms,4.1,m/s,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRE
 haughton,pressao_kpa,98.32,kPa,calculado,fisica,-,NASA Planetary Fact Sheets,atmosfera padrao pela altitude
 haughton,gravidade_g,1.0,g,referencia,fisica,-,NASA Planetary Fact Sheets,
 haughton,dia_local_h,24.0,h,referencia,fisica,-,NASA Planetary Fact Sheets,
-mauna_kea,elev_media_m,2722,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 pixels de ~1 km na caixa do local
-mauna_kea,elev_relativa_m,-2639,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 pixels de ~1 km na caixa do local
-mauna_kea,declividade_media,10.5,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 pixels de ~1 km na caixa do local
-mauna_kea,rugosidade_tri_m,408.8,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 pixels de ~1 km na caixa do local
-mauna_kea,frac_decliv_8,0.26,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 pixels de ~1 km na caixa do local
-mauna_kea,frac_transitavel_15,0.85,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 pixels de ~1 km na caixa do local
+mauna_kea,elev_media_m,2722,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 celulas de ~1 km na caixa do local
+mauna_kea,elev_relativa_m,-2639,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 celulas de ~1 km na caixa do local
+mauna_kea,declividade_media,10.5,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 celulas de ~1 km na caixa do local
+mauna_kea,rugosidade_tri_m,408.8,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 celulas de ~1 km na caixa do local
+mauna_kea,frac_decliv_8,0.26,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 celulas de ~1 km na caixa do local
+mauna_kea,frac_transitavel_15,0.85,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 celulas de ~1 km na caixa do local
 mauna_kea,sol_max_graus,89.9,graus,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 mauna_kea,frac_sol_baixo,0.12,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 mauna_kea,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
@@ -441,12 +441,12 @@ mauna_kea,vento_10m_ms,4.8,m/s,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PR
 mauna_kea,pressao_kpa,73.26,kPa,calculado,fisica,-,NASA Planetary Fact Sheets,atmosfera padrao pela altitude
 mauna_kea,gravidade_g,1.0,g,referencia,fisica,-,NASA Planetary Fact Sheets,
 mauna_kea,dia_local_h,24.0,h,referencia,fisica,-,NASA Planetary Fact Sheets,
-rio_tinto,elev_media_m,379,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 pixels de ~1 km na caixa do local
-rio_tinto,elev_relativa_m,-414,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 pixels de ~1 km na caixa do local
-rio_tinto,declividade_media,2.7,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 pixels de ~1 km na caixa do local
-rio_tinto,rugosidade_tri_m,122.4,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 pixels de ~1 km na caixa do local
-rio_tinto,frac_decliv_8,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 pixels de ~1 km na caixa do local
-rio_tinto,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 pixels de ~1 km na caixa do local
+rio_tinto,elev_media_m,379,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 celulas de ~1 km na caixa do local
+rio_tinto,elev_relativa_m,-414,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 celulas de ~1 km na caixa do local
+rio_tinto,declividade_media,2.7,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 celulas de ~1 km na caixa do local
+rio_tinto,rugosidade_tri_m,122.4,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 celulas de ~1 km na caixa do local
+rio_tinto,frac_decliv_8,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 celulas de ~1 km na caixa do local
+rio_tinto,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,576 celulas de ~1 km na caixa do local
 rio_tinto,sol_max_graus,75.7,graus,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 rio_tinto,frac_sol_baixo,0.15,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 rio_tinto,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano

@@ -199,6 +199,7 @@
   {
    "id": "atacama", "nome": "Atacama (Yungay)", "nome_en": "Atacama Desert (Yungay)", "regiao": "Antofagasta", "pais": "Chile", "cidade": "Antofagasta",
    "papel": "referencia", "lat": -24.08, "lon": -69.93, "caixa": [-24.18, -23.98, -70.03, -69.83],
+   "alvos_literatura": ["mars"], "porque_literatura": "solo de Marte: percloratos e aridez (Navarro-González et al. 2003); perfuração ARADS",
    "feicao": "Núcleo hiperárido, o lugar não polar mais seco da Terra", "diametro_km": null,
    "tags": {
     "terreno": ["planicie"],
@@ -214,6 +215,7 @@
   {
    "id": "dry_valleys", "nome": "Vales Secos de McMurdo", "nome_en": "McMurdo Dry Valleys", "regiao": "Terra de Vitória", "pais": "Antártida", "cidade": "Estação McMurdo",
    "papel": "referencia", "lat": -77.5, "lon": 162.0, "caixa": [-77.8, -77.2, 161.7, 162.3],
+   "alvos_literatura": ["mars"], "porque_literatura": "deserto frio e seco com permafrost, como Marte (Doran et al.; LTER)",
    "feicao": "Deserto polar sem gelo, com permafrost e lagos salgados", "diametro_km": null,
    "tags": {
     "terreno": ["vale_glacial"],
@@ -229,6 +231,7 @@
   {
    "id": "haughton", "nome": "Cratera de Haughton", "nome_en": "Haughton crater", "regiao": "Nunavut", "pais": "Canadá", "cidade": "Ilha Devon",
    "papel": "referencia", "lat": 75.37, "lon": -89.68, "caixa": [75.22, 75.52, -89.83, -89.53],
+   "alvos_literatura": ["mars", "moon"], "porque_literatura": "Haughton-Mars Project; cratera de impacto em ambiente polar (Osinski et al.)",
    "feicao": "Cratera de impacto de ~23 km em deserto polar", "diametro_km": 23,
    "tags": {
     "terreno": ["cratera_impacto", "borda_cratera"],
@@ -244,6 +247,7 @@
   {
    "id": "mauna_kea", "nome": "Mauna Kea", "nome_en": "Mauna Kea", "regiao": "Havaí", "pais": "EUA", "cidade": "Hilo",
    "papel": "referencia", "lat": 19.82, "lon": -155.47, "caixa": [19.72, 19.92, -155.57, -155.37],
+   "alvos_literatura": ["moon", "mars"], "porque_literatura": "testes de ISRU lunar PISCES/NASA 2008–2012; simulante JSC Mars-1 (Allen et al. 1998)",
    "feicao": "Vulcão basáltico com cones de escória e cinza", "diametro_km": null,
    "tags": {
     "terreno": ["vulcao", "macico"],
@@ -259,6 +263,7 @@
   {
    "id": "rio_tinto", "nome": "Río Tinto", "nome_en": "Río Tinto", "regiao": "Andaluzia", "pais": "Espanha", "cidade": "Minas de Riotinto",
    "papel": "referencia", "lat": 37.72, "lon": -6.55, "caixa": [37.62, 37.82, -6.65, -6.45],
+   "alvos_literatura": ["meridiani"], "porque_literatura": "jarosita e hematita como em Meridiani Planum (Fernández-Remolar et al. 2005)",
    "feicao": "Rio ácido rico em ferro e sulfatos", "diametro_km": null,
    "tags": {
     "terreno": ["vale_fluvial"],
