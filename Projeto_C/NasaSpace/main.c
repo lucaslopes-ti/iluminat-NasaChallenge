@@ -258,7 +258,8 @@ int main(int argc, char *argv[])
     /* ---------- 5. Liga a ponte na porta Bluetooth do carrinho ---------- */
     long pid_ponte = 0;
     cor(COR_AMARELO);
-    printf("\nIniciar o carrinho via Bluetooth (%s)? (1 = sim, 2 = nao): ", porta);
+    printf("\nLigar o carrinho agora (%s, %s)? (1 = sim, 2 = nao): ", porta,
+           (strstr(porta, "usb") || strstr(porta, "USB")) ? "cabo USB" : "Bluetooth");
     cor(COR_VERMELHO);
     if (ler_opcao(1, 2) == 1) {
         if (!achar_arquivo(ARQ_PONTE, PASTAS_PONTE, caminho_ponte))

@@ -31,6 +31,9 @@ Cada ciclo vira `{"umid":52.3,"temp":28.4,"dist":23,"luz":548}` (umidade do ar e
 
 O ESP32 não é usado no projeto.
 
+**Instalar no Mac (Python do Homebrew):** `pip3 install` dá erro `externally-managed-environment`. Use
+`python3 -m pip install --user --break-system-packages pyserial paho-mqtt` (instala só para o seu usuário, sem mexer no Homebrew).
+
 O carrinho usa um **Arduino** (Uno/Nano) para os sensores, e o Arduino manda uma linha por segundo pela USB. No começo do `arduino_carrinho.ino`, escolha os sensores que você ligou (`TEMP_SENSOR` LM35/DHT22/DS18B20, `USAR_PMS5003`, `USAR_PATINAGEM` etc.). Os desligados não entram na linha.
 
 1. **MQTT pelo computador (principal):** grave `arduino_carrinho` no Arduino, ligue na USB e rode `python3 firmware/ponte_serial_mqtt.py --local lencois` (antes, `pip install pyserial paho-mqtt`). A ponte publica cada linha em `illuminat-horizontes/carrinho` e o perfil do local, retido, em `illuminat-horizontes/local`. Clique em **Wi-Fi** no site e em **Connect**. Feche o Monitor Serial da IDE antes, porque só um programa abre a porta.
