@@ -221,8 +221,8 @@
   },
   {
    "id": "cabeus_b_peak", "nome": "Pico perto de Cabeus B", "nome_en": "Peak near Cabeus B", "padrao": "lua_polo_sul",
-   "regiao": "Polo sul lunar", "lat": -84.0, "lon": -50.0, "coord_aprox": true,
-   "coord_fonte": "não conferido: Cabeus B não aparece na lista de crateras do Gazetteer; falta o mapa oficial da NASA",
+   "regiao": "Polo sul lunar", "lat": -83.64, "lon": -68.64, "coord_aprox": false,
+   "coord_fonte": "centro do mosaico NAC da LROC feito para a região (NAC_ROI_CABEUSPKLOB: lat -84,06 a -83,21, lon -72,47 a -64,80), num maciço ~35 km a sudoeste da cratera Cabeus B; antes estava em -84,0, -50,0",
    "papel": "artemis_iii",
    "missao": "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024); perto de onde o LCROSS achou gelo (Cabeus, 2009)",
    "resumo": "Pico iluminado perto de Cabeus, cratera onde o impacto do LCROSS confirmou água.",

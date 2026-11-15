@@ -178,8 +178,8 @@
    "nome": "Pico perto de Cabeus B",
    "corpo": "moon",
    "papel": "artemis_iii",
-   "lat": -84.0,
-   "lon": -50.0,
+   "lat": -83.64,
+   "lon": -68.64,
    "resumo": "Pico iluminado perto de Cabeus, cratera onde o impacto do LCROSS confirmou água."
   },
   {
@@ -771,14 +771,14 @@
     "rover": 70,
     "astrobio": 56,
     "isru": 61,
-    "habitat": 61,
-    "energia": 57
+    "habitat": 62,
+    "energia": 58
    },
    "dimensoes_pct": {
     "terreno": 73,
     "materiais": 7,
     "termico": 30,
-    "luz": 45,
+    "luz": 46,
     "agua": 79,
     "poeira": 75,
     "biologia": 75,
@@ -818,7 +818,7 @@
      "unidade": "graus",
      "status": "calculado",
      "fonte": "calculo_solar",
-     "valor_alvo": 7.5
+     "valor_alvo": 7.9
     },
     "frac_ano_sol_continuo": {
      "rotulo": "Ano com Sol 24 h",
@@ -1502,7 +1502,7 @@
      "unidade": "graus",
      "status": "calculado",
      "fonte": "calculo_solar",
-     "valor_alvo": 7.5
+     "valor_alvo": 7.9
     },
     "frac_ano_sol_continuo": {
      "rotulo": "Ano com Sol 24 h",
