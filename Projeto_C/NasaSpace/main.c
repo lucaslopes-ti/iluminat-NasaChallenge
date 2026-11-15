@@ -10,6 +10,9 @@
  * 5. Abre a ponte (firmware/ponte_serial_mqtt.py) na porta Bluetooth do
  *    carrinho (HC-05), com --local <id>: ela publica o perfil do local e
  *    passa a mandar as leituras do carrinho para o MQTT.
+ * 6. Modo ao vivo: assina illuminat-horizontes/carrinho (mosquitto_sub) e
+ *    redesenha a tela do local a cada leitura, na coluna "Ao vivo".
+ *    Ctrl+C sai (e, no Mac, desliga a ponte junto).
  *
  * Funciona no Windows e no Mac. Os arquivos sao procurados a partir da
  * pasta do executavel e da pasta atual, entao nao ha caminho fixo.
@@ -21,12 +24,17 @@
  *       NasaSpace COM7       (Windows: a porta "Saida" do HC-05)
  *       ./NasaSpace /dev/cu.HC-05
  *
- * Precisa do mosquitto_pub no PATH (Mosquitto) e, para a ponte,
- * de Python com: pip install pyserial paho-mqtt
+ * Broker: broker.hivemq.com, ou o da variavel MQTT_BROKER
+ * (ex.: MQTT_BROKER=localhost para testar com um mosquitto local).
+ *
+ * Precisa do mosquitto_pub e do mosquitto_sub no PATH (Mosquitto) e,
+ * para a ponte, de Python com: pip install pyserial paho-mqtt
  */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <signal.h>
+#include <time.h>
 #include "Bibliotecas/cJSON.h"
 #include "tela_local.h"
 
@@ -34,6 +42,8 @@
   #include <windows.h>
   #define PYTHON   "python"
   #define PORTA_BT "COM5"             /* troque pela porta "Saida" do HC-05 */
+  #define popen    _popen
+  #define pclose   _pclose
 #else
   #include <unistd.h>
   #ifdef __APPLE__
@@ -49,6 +59,7 @@
 
 #define BROKER      "broker.hivemq.com"
 #define TOPICO_SEL  "illuminat-horizontes/selecao"
+#define TOPICO_CAR  "illuminat-horizontes/carrinho"
 
 #define ARQ_DADOS   "analogos_completo.json"
 #define ARQ_SENS    "mqtt/sensores.json"
@@ -59,6 +70,8 @@
 #define TOP_N       3
 
 char        pasta_exe[MAX_CAMINHO];
+const char *broker = BROKER;
+volatile sig_atomic_t sair = 0;
 
 void        descobrir_pasta_exe(const char *argv0);
 int         achar_arquivo(const char *nome, const char *subpastas[], char *saida);
@@ -68,6 +81,11 @@ const char *texto(cJSON *obj, const char *chave);
 cJSON      *achar_por_id(cJSON *lista, const char *id);
 int         nota_no_alvo(cJSON *local, const char *alvo_id);
 int         enviar_mqtt(const char *topico, const char *mensagem);
+long        iniciar_ponte(const char *caminho_ponte, const char *porta, const char *local_id);
+void        parar_ponte(long pid);
+void        modo_ao_vivo(cJSON *raiz, cJSON *local, cJSON *alvo, cJSON *sensores);
+void        limpar_tela(void);
+void        ao_ctrl_c(int sinal);
 
 /* Onde procurar, relativo a pasta do executavel (bin/Debug) e a pasta atual.
    O primeiro que existir vale; copiar o JSON para bin/Debug tambem funciona. */
@@ -90,6 +108,8 @@ int main(int argc, char *argv[])
     SetConsoleOutputCP(CP_UTF8);   /* os nomes no JSON tem acento (UTF-8) */
 #endif
     const char *porta = (argc > 1) ? argv[1] : PORTA_BT;
+    if (getenv("MQTT_BROKER") && getenv("MQTT_BROKER")[0])
+        broker = getenv("MQTT_BROKER");
     char caminho_dados[MAX_CAMINHO], caminho_ponte[MAX_CAMINHO];
 
     descobrir_pasta_exe(argc > 0 ? argv[0] : "");
@@ -181,7 +201,6 @@ int main(int argc, char *argv[])
         }
     }
     tela_local_mostrar(raiz, escolhido, alvo, sensores, NULL);
-    cJSON_Delete(sensores);
 
     /* ---------- 4. Monta a mensagem e envia por MQTT ---------- */
     cJSON *msg = cJSON_CreateObject();
@@ -210,22 +229,128 @@ int main(int argc, char *argv[])
     cJSON_Delete(msg);
 
     /* ---------- 5. Liga a ponte na porta Bluetooth do carrinho ---------- */
+    long pid_ponte = 0;
     printf("\nIniciar o carrinho via Bluetooth (%s)? (1 = sim, 2 = nao): ", porta);
     if (ler_opcao(1, 2) == 1) {
-        if (!achar_arquivo(ARQ_PONTE, PASTAS_PONTE, caminho_ponte)) {
+        if (!achar_arquivo(ARQ_PONTE, PASTAS_PONTE, caminho_ponte))
             printf("Erro: nao achei firmware/%s\n", ARQ_PONTE);
-        } else {
-            char cmd[MAX_CAMINHO * 2];
-            snprintf(cmd, sizeof cmd, PYTHON " \"%s\" --porta %s --baud %d --local %s",
-                     caminho_ponte, porta, BAUD_BT, local_id);
-            printf("%s\n", cmd);
-            fflush(stdout);
-            system(cmd);   /* fica rodando ate Ctrl+C */
-        }
+        else
+            pid_ponte = iniciar_ponte(caminho_ponte, porta, local_id);
     }
 
+    /* ---------- 6. Coluna "Ao vivo" com o MQTT do carrinho ---------- */
+    printf("\nAcompanhar o carrinho ao vivo? (1 = sim, 2 = nao): ");
+    if (ler_opcao(1, 2) == 1)
+        modo_ao_vivo(raiz, escolhido, alvo, sensores);
+
+    parar_ponte(pid_ponte);
+    cJSON_Delete(sensores);
     cJSON_Delete(raiz);
     return 0;
+}
+
+/* Liga a ponte em segundo plano, para a tela ficar livre.
+   Mac: roda com & e guarda o PID; a saida vai para ponte.log ao lado do programa.
+   Windows: abre numa janela minimizada propria ("Ponte do carrinho"). */
+long iniciar_ponte(const char *caminho_ponte, const char *porta, const char *local_id)
+{
+    char cmd[MAX_CAMINHO * 3];
+#ifdef _WIN32
+    snprintf(cmd, sizeof cmd,
+             "start \"Ponte do carrinho\" /MIN " PYTHON " \"%s\" --porta %s --baud %d --broker %s --local %s",
+             caminho_ponte, porta, BAUD_BT, broker, local_id);
+    printf("%s\n", cmd);
+    system(cmd);
+    printf("A ponte abriu em outra janela. Feche essa janela para desligar o carrinho.\n");
+    return 0;
+#else
+    snprintf(cmd, sizeof cmd,
+             PYTHON " \"%s\" --porta %s --baud %d --broker %s --local %s > \"%sponte.log\" 2>&1 & echo $!",
+             caminho_ponte, porta, BAUD_BT, broker, local_id, pasta_exe);
+    printf("%s\n", cmd);
+    long pid = 0;
+    FILE *p = popen(cmd, "r");
+    if (p) {
+        if (fscanf(p, "%ld", &pid) != 1) pid = 0;
+        pclose(p);
+    }
+    printf("Ponte ligada (PID %ld). Mensagens em %sponte.log\n", pid, pasta_exe);
+    return pid;
+#endif
+}
+
+void parar_ponte(long pid)
+{
+#ifndef _WIN32
+    if (pid > 0) {
+        char cmd[64];
+        snprintf(cmd, sizeof cmd, "kill %ld 2>/dev/null", pid);
+        system(cmd);
+        printf("Ponte desligada.\n");
+    }
+#else
+    (void)pid;
+#endif
+}
+
+void ao_ctrl_c(int sinal)
+{
+    (void)sinal;
+    sair = 1;   /* o mosquitto_sub tambem recebe o Ctrl+C e fecha; ai o laco termina */
+}
+
+void limpar_tela(void)
+{
+    printf("\033[2J\033[H");   /* ANSI: funciona no Terminal do Mac e no Windows 10+ */
+    fflush(stdout);
+}
+
+/* Assina o topico do carrinho e redesenha a tela do local a cada leitura. */
+void modo_ao_vivo(cJSON *raiz, cJSON *local, cJSON *alvo, cJSON *sensores)
+{
+#ifdef _WIN32
+    HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+    DWORD modo = 0;
+    if (GetConsoleMode(h, &modo))
+        SetConsoleMode(h, modo | 0x0004);   /* ENABLE_VIRTUAL_TERMINAL_PROCESSING */
+#endif
+    char cmd[512];
+    snprintf(cmd, sizeof cmd, "mosquitto_sub -h %s -t %s -q 0", broker, TOPICO_CAR);
+
+    FILE *sub = popen(cmd, "r");
+    if (sub == NULL) {
+        printf("Nao consegui rodar o mosquitto_sub (esta no PATH?)\n");
+        return;
+    }
+    signal(SIGINT, ao_ctrl_c);
+
+    limpar_tela();
+    tela_local_mostrar(raiz, local, alvo, sensores, NULL);
+    printf("  Ouvindo %s em %s. Ctrl+C para sair.\n", TOPICO_CAR, broker);
+    fflush(stdout);
+
+    char linha[2048];
+    long n = 0;
+    while (!sair && fgets(linha, sizeof linha, sub) != NULL) {
+        cJSON *leitura = cJSON_Parse(linha);
+        if (!cJSON_IsObject(leitura)) {       /* ignora o que nao for JSON */
+            cJSON_Delete(leitura);
+            continue;
+        }
+        n++;
+        char hora[16];
+        time_t t = time(NULL);
+        strftime(hora, sizeof hora, "%H:%M:%S", localtime(&t));
+
+        limpar_tela();
+        tela_local_mostrar(raiz, local, alvo, sensores, leitura);
+        printf("  Ultima leitura %s (%ld recebidas) de %s. Ctrl+C para sair.\n", hora, n, TOPICO_CAR);
+        fflush(stdout);
+        cJSON_Delete(leitura);
+    }
+    pclose(sub);
+    signal(SIGINT, SIG_DFL);
+    printf("\nModo ao vivo encerrado.\n");
 }
 
 /* Guarda em pasta_exe a pasta do executavel, terminando em '/' (ou vazia). */
@@ -344,9 +469,9 @@ int enviar_mqtt(const char *topico, const char *mensagem)
     esc[j] = '\0';
 
 #ifdef _WIN32
-    snprintf(cmd, sizeof cmd, "mosquitto_pub -h %s -t %s -r -q 1 -m \"%s\"", BROKER, topico, esc);
+    snprintf(cmd, sizeof cmd, "mosquitto_pub -h %s -t %s -r -q 1 -m \"%s\"", broker, topico, esc);
 #else
-    snprintf(cmd, sizeof cmd, "mosquitto_pub -h %s -t %s -r -q 1 -m '%s'", BROKER, topico, esc);
+    snprintf(cmd, sizeof cmd, "mosquitto_pub -h %s -t %s -r -q 1 -m '%s'", broker, topico, esc);
 #endif
     return system(cmd);
 }

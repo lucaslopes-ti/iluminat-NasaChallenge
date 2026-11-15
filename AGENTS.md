@@ -96,7 +96,7 @@ Sensores → Arduino Uno/Nano (sem Wi-Fi) → Bluetooth HC-05 (ou USB), 1 linha 
 
 1. Conferir as coordenadas das 9 regiões do Artemis III no mapa oficial da NASA e tirar o `coord_aprox`.
 2. Quando a task do AppEEARS terminar, rodar `--appeears`, depois `gerar_mqtt.py` e `web/tools/gerar_dados_site.py`.
-3. Tela em C (`Projeto_C/NasaSpace`): testar no Windows (Code::Blocks + Mosquitto no PATH) e com o HC-05 pareado; depois assinar `illuminat-horizontes/carrinho` e passar a leitura para `tela_local_mostrar(..., leitura)`, que já tem a coluna "Ao vivo".
+3. Tela em C (`Projeto_C/NasaSpace`): testar no Windows (Code::Blocks + Mosquitto no PATH) e com o HC-05 pareado. O modo ao vivo (`mosquitto_sub` em `illuminat-horizontes/carrinho`, coluna "Ao vivo") já funciona; `MQTT_BROKER=localhost` testa com um Mosquitto local.
 4. Montar o carrinho com os sensores escolhidos no topo de `arduino_carrinho.ino` e testar o fluxo completo até o site.
 5. Atualizar o `README.md` com o nome Illuminat Horizontes e o fluxo com Arduino.
 6. Preparar a apresentação e o vídeo seguindo a história em 3 atos do plano (`docs/`).
