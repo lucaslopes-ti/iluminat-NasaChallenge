@@ -1,10 +1,15 @@
-import { Globe, escapeHtml as esc } from './Scripts/Javascript/Globe.js?v=1794692805';
-import { rankSites, scoreColor, pct } from './Scripts/Javascript/Scoring.js?v=1794692805';
-import { Station } from './Scripts/Javascript/Station.js?v=1794692805';
+import { Globe, escapeHtml as esc } from './Scripts/Javascript/Globe.js?v=1794736173';
+import { rankSites, scoreColor, pct } from './Scripts/Javascript/Scoring.js?v=1794736173';
+import { Station } from './Scripts/Javascript/Station.js?v=1794736173';
 
+// Moon: NASA SVS CGI Moon Kit (LRO LROC colour mosaic) with relief from LRO LOLA (LDEM 16 ppd).
+// Mars: NASA 3D Resources Mars colour map (Viking/MGS) with its normal map.
+const BIG_TEX = !matchMedia('(max-width: 820px)').matches;
 const TEXTURES = {
-  moon: 'Assets/Textures/moon.jpg',
-  mars: 'Assets/Textures/mars.jpg',
+  moon: BIG_TEX ? 'Assets/Textures/moon_8k.jpg' : 'Assets/Textures/moon_4k.jpg',
+  moonBump: 'Assets/Textures/moon_bump.jpg',
+  mars: 'Assets/Textures/mars_4k.jpg',
+  marsNormal: 'Assets/Textures/mars_normal_4k.jpg',
   earth: 'Assets/Textures/earth.jpg',
   earthRelief: 'Assets/Textures/earth_srtm30.jpg',
   earthReliefBump: 'Assets/Textures/earth_bump_srtm30.jpg',
@@ -13,8 +18,8 @@ const TEXTURES = {
 const ELEV = { url: 'data/elevacao_srtm30_025.bin', res: 0.25, w: 1440, h: 720, ocean: -9999, nodata: -32768 };
 let elevGrid = null;
 const BODY = {
-  moon: { name: 'Moon', bump: 0.02, radiusKm: 1737.4 },
-  mars: { name: 'Mars', bump: 0.015, radiusKm: 3389.5 },
+  moon: { name: 'Moon', radiusKm: 1737.4, tex: { bump: 0.012, bumpUrl: 'moonBump' } },
+  mars: { name: 'Mars', radiusKm: 3389.5, tex: { normalUrl: 'marsNormal', normalScale: 0.9 } },
 };
 const TOP_CHIPS = matchMedia('(max-width: 820px)').matches ? 2 : 3;
 const ALWAYS_SHORT = ['1 g gravity', 'Thick atmosphere', 'Radiation shield'];
@@ -39,6 +44,7 @@ async function init() {
   $('sampleChip').hidden = !sites.some((s) => s.exemplo || s.modo_teste);
 
   bodyGlobe = new Globe($('bodyGlobe'), { zoom: phone ? 0.68 : 0.86, idleSpin: 0.0006, minDistance: 1.2, radiusKm: 1737.4, name: 'Moon' });
+  if (bodyGlobe.renderer.capabilities.maxTextureSize < 8192) TEXTURES.moon = 'Assets/Textures/moon_4k.jpg';
   earthGlobe = new Globe($('earthGlobe'), { offsetX: phone ? 0.17 : 0, zoom: phone ? 0.9 * 0.66 / (1 - 2 * 0.17) : 0.8, idleSpin: 0.0004, atmosphere: '#6fb6ff', atmosphereStrength: 0.6, minDistance: 1.22, radiusKm: 6371, name: 'Earth' });
   setEarthLayer(store.get('earth-layer') === 'relief' ? 'relief' : 'satellite');
   document.querySelectorAll('#layerSeg button').forEach((b) => { b.onclick = () => setEarthLayer(b.dataset.layer); });
@@ -222,7 +228,8 @@ function setBody(body, { targetId = null, siteId = null } = {}) {
   state.body = body;
   document.querySelectorAll('.topbar .seg button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.body === body)));
   const targets = cfg.alvos.filter((a) => a.corpo === body);
-  bodyGlobe.setTexture(TEXTURES[body], { bump: BODY[body].bump });
+  const bt = BODY[body].tex;
+  bodyGlobe.setTexture(TEXTURES[body], { ...bt, bumpUrl: bt.bumpUrl && TEXTURES[bt.bumpUrl], normalUrl: bt.normalUrl && TEXTURES[bt.normalUrl] });
   bodyGlobe.radiusKm = BODY[body].radiusKm;
   bodyGlobe.ui.home.setAttribute('aria-label', `Show the whole ${BODY[body].name}`);
   bodyGlobe.ui.home.title = `Whole ${BODY[body].name}`;
@@ -231,14 +238,47 @@ function setBody(body, { targetId = null, siteId = null } = {}) {
     // phone: the title already shows the coordinates, keep the pin label short
     labelHtml: phone ? esc(t.nome.split(' ')[0]) : `${esc(t.nome)}<span class="ll">${fmtLat(t.lat, 2)}, ${fmtLon(t.lon, 2)}</span>` })));
 
-  $('targetChips').innerHTML = targets.map((t) =>
-    `<button class="chip" role="option" data-id="${t.id}" aria-selected="false">${esc(phone ? t.nome.split(' ')[0] : shortTarget(t))}</button>`).join('');
-  $('targetChips').querySelectorAll('button').forEach((b) => { b.onclick = () => selectTarget(b.dataset.id, { focus: true }); });
+  renderTargetChips(targets, targetId || targets[0].id);
   // phone: the chips are hidden; the title opens the native picker instead
   $('targetSelect').innerHTML = targets.map((t) => `<option value="${t.id}">${esc(t.nome)}</option>`).join('');
   $('targetSelect').onchange = (e) => selectTarget(e.target.value, { focus: true });
 
   selectTarget(targetId || targets[0].id, { siteId });
+}
+
+// a few chips under the globe; the ▾ on the title lists every target
+function renderTargetChips(targets, activeId) {
+  const shown = targets.slice(0, 3);
+  const active = targets.find((t) => t.id === activeId);
+  if (active && !shown.includes(active)) shown[2] = active;
+  const more = targets.length - shown.length;
+  $('targetChips').innerHTML = shown.map((t) =>
+    `<button class="chip" role="option" data-id="${t.id}" aria-selected="${t.id === activeId}">${esc(shortTarget(t))}</button>`).join('')
+    + (more > 0 ? `<button class="chip more" type="button" data-more>+${more} more</button>` : '');
+  $('targetChips').querySelectorAll('button[data-id]').forEach((b) => { b.onclick = () => selectTarget(b.dataset.id, { focus: true }); });
+  const mb = $('targetChips').querySelector('[data-more]');
+  if (mb) mb.onclick = () => { const sel = $('targetSelect'); try { sel.showPicker(); } catch { sel.focus(); } };
+  fitChips($('targetChips'), targets.length);
+}
+
+// drop chips from the end (never the selected one) until the row fits; the "+N" chip counts them
+function fitChips(row, total) {
+  const moreBtn = row.querySelector('[data-more], [data-all]');
+  if (!moreBtn) return;
+  const items = () => [...row.querySelectorAll('button[data-id]')];
+  const label = () => {
+    const n = total - items().length;
+    moreBtn.hidden = n <= 0;
+    moreBtn.textContent = `+${n}${phone ? '' : ' more'}`;
+    moreBtn.setAttribute('aria-label', `${n} more`);
+  };
+  label();
+  while (row.scrollWidth > row.clientWidth + 1 && items().length > 1) {
+    const list = items();
+    const drop = [...list].reverse().find((b) => b.getAttribute('aria-selected') !== 'true') || list[list.length - 1];
+    drop.remove();
+    label();
+  }
 }
 
 function shortTarget(t) { return t.nome.replace(/ (crater rim|crater|skylight|Massif)$/i, (m) => (/massif/i.test(m) ? m : '')); }
@@ -250,11 +290,12 @@ function selectTarget(id, { siteId = null, focus = false } = {}) {
   bodyGlobe.setActive(id);
   if (focus) bodyGlobe.focus(t.lat, t.lon);
   else bodyGlobe.flyTo(t.lat, t.lon);
-  $('targetChips').querySelectorAll('button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.id === id)));
+  if (!$('targetChips').querySelector(`[data-id="${id}"]`)) renderTargetChips(cfg.alvos.filter((a) => a.corpo === t.corpo), id);
+  $('targetChips').querySelectorAll('button[data-id]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.id === id)));
   $('bodyKicker').textContent = `${BODY[t.corpo].name} · target`;
   $('targetName').textContent = t.nome;
   $('targetSelect').value = id;
-  $('targetWhere').textContent = `${t.regiao} · ${fmtLat(t.lat, 2)}, ${fmtLon(t.lon, 2)}`;
+  $('targetWhere').textContent = `${t.regiao} · ${t.coord_aprox ? '≈ ' : ''}${fmtLat(t.lat, 2)}, ${fmtLon(t.lon, 2)}`;
   refreshRanking(siteId);
 }
 
@@ -277,6 +318,7 @@ function refreshRanking(keepSite = state.siteId) {
   $('rankChips').querySelectorAll('button').forEach((b) => {
     b.onclick = () => (b.dataset.all ? openDrawer('list') : selectSite(b.dataset.id, { focus: true }));
   });
+  fitChips($('rankChips'), ranked.length);
 
   const keep = keepSite && ranked.some((r) => r.site.id === keepSite);
   selectSite(keep ? keepSite : ranked[0]?.site.id);
@@ -294,9 +336,9 @@ function selectSite(id, { focus = false } = {}) {
 
   $('siteName').textContent = siteName(r.site);
   $('siteCity').textContent = [r.site.cidade, r.site.regiao].filter(Boolean).join(', ');
-  $('siteTemp').textContent = Number.isFinite(r.site.t2m_c) ? `${r.site.t2m_c.toFixed(1)} °C` : '–';
+  $('siteTemp').textContent = Number.isFinite(r.site.temp_media_c) ? `${r.site.temp_media_c.toFixed(0)} °C` : '–';
   const dp = phone ? 1 : 2;
-  $('siteCoords').textContent = `${fmtLat(r.site.lat, dp)}, ${fmtLon(r.site.lon, dp)}${elevText(r.site.lat, r.site.lon, ' · ').replace(/ m$/, '\u00a0m')}`;
+  $('siteCoords').textContent = `${r.site.coord_aprox ? '≈ ' : ''}${fmtLat(r.site.lat, dp)}, ${fmtLon(r.site.lon, dp)}${elevText(r.site.lat, r.site.lon, ' · ').replace(/ m$/, '\u00a0m')}`;
   $('matchScore').textContent = pct(r.score);
   $('matchScore').style.color = scoreColor(r.score);
   $('mScore').innerHTML = `<b style="color:${scoreColor(r.score)}">${pct(r.score)}</b> match`;
@@ -491,20 +533,22 @@ function analogHtml() {
   const t = target();
   const r = state.ranked.find((x) => x.site.id === state.siteId);
   const s = r.site;
-  const a = s.analogia?.[t.id] || s.analogia?.[t.corpo] || {};
+  const a = s.analogia?.[t.id] || s.analogia?.[t.corpo] || dimNotes(s.notas?.[t.id]);
   const li = (arr) => arr.slice(0, 3).map((x) => `<li>${esc(x)}</li>`).join('');
 
+  const est = (k) => (s.fontes_valores?.[k] ? ' (est.)' : '');
   const facts = [
     ['Type', s.tipo_en || s.tipo],
-    ['Coordinates', `${fmtLat(s.lat, 3)}, ${fmtLon(s.lon, 3)}`],
+    ['Coordinates', `${s.coord_aprox ? '≈ ' : ''}${fmtLat(s.lat, 3)}, ${fmtLon(s.lon, 3)}`],
     ['Elevation', num(s.elev_media_m, ' m')],
-    ['SRTM30 (0.25° cell)', elevText(s.lat, s.lon) || null],
     ['Mean slope', num(s.declividade_media, '°', 1)],
     ['Drivable (<15°)', s.frac_transitavel_15 != null ? pct(s.frac_transitavel_15) : null],
-    ['Air temperature', num(s.t2m_c, ' °C', 1)],
-    ['Rain', num(s.chuva_anual_mm, ' mm/yr')],
-    ['Vegetation (NDVI)', num(s.ndvi_medio, '', 2)],
-    ['Mineral (EMIT)', s.emit_mineral_dominante],
+    ['Surface temp.', s.lst_noite_c != null && s.lst_dia_c != null ? `${num(s.lst_noite_c)} to ${num(s.lst_dia_c)} °C${est('lst_dia_c')}` : null],
+    ['Mean surface temp.', s.temp_media_c != null ? `${num(s.temp_media_c)} °C${est('temp_media_c')}` : null],
+    ['Rain', s.chuva_anual_mm != null ? `${num(s.chuva_anual_mm, ' mm/yr')}${est('chuva_anual_mm')}` : null],
+    ['Dust (AOD)', s.aod_medio != null ? `${num(s.aod_medio, '', 2)}${est('aod_medio')}` : null],
+    ['Albedo', s.albedo_medio != null ? `${num(s.albedo_medio, '', 2)}${est('albedo_medio')}` : null],
+    ['Vegetation (NDVI)', s.ndvi_medio != null ? `${num(s.ndvi_medio, '', 2)}${est('ndvi_medio')}` : null],
   ].filter(([, v]) => v != null && v !== '').map(([k, v]) => `<div><span>${esc(k)}</span>${esc(v)}</div>`).join('');
   const tfacts = Object.entries(t.indicadores || {}).map(([k, v]) => `<div><span>${esc(k)}</span>${esc(v)}</div>`).join('');
 
@@ -533,6 +577,16 @@ function analogHtml() {
       <a class="ghost small" href="https://www.google.com/maps/@${s.lat},${s.lon},11z/data=!3m1!1e3" target="_blank" rel="noopener">See it on a map ↗</a>
       <button class="ghost small" type="button" id="shareBtn">Share link</button>
     </div>`;
+}
+
+// no written notes for this world: name the strongest and weakest dimensions instead
+function dimNotes(dims = {}) {
+  const list = cfg.dimensoes.filter((d) => typeof dims[d.id] === 'number').map((d) => ({ label: d.label, v: dims[d.id] }));
+  list.sort((x, y) => y.v - x.v);
+  return {
+    works: list.slice(0, 2).filter((x) => x.v >= 0.5).map((x) => `${x.label}: ${pct(x.v)} similar`),
+    breaks: list.slice(-2).reverse().filter((x) => x.v < 0.5).map((x) => `${x.label}: only ${pct(x.v)} similar`),
+  };
 }
 
 function radarSvg(dims) {

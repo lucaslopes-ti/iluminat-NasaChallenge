@@ -5,7 +5,7 @@
   },
   "serial_baud": 115200,
   "medidas": [
-    { "id": "temp",  "nome": "Air temperature", "unidade": "°C",     "casas": 1, "local": "t2m_c" },
+    { "id": "temp",  "nome": "Air temperature", "unidade": "°C",     "casas": 1, "local": "temp_media_c", "local_nome": "surface mean" },
     { "id": "uv",    "nome": "UV index",        "unidade": "",       "casas": 1 },
     { "id": "pm25",  "nome": "Dust (PM2.5)",    "unidade": "µg/m³",  "casas": 0 },
     { "id": "solar", "nome": "Solar power",     "unidade": "mW",     "casas": 0 },
