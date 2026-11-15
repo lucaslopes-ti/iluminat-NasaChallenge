@@ -339,6 +339,27 @@
      "fonte": "nasa_power",
      "valor_alvo": 85
     },
+    "temp_media_c": {
+     "rotulo": "Temp. superficie media",
+     "valor": 5,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": 4,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 13,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
      "valor": 0.05,
@@ -488,6 +509,27 @@
      "status": "medido",
      "fonte": "nasa_power",
      "valor_alvo": 85
+    },
+    "temp_media_c": {
+     "rotulo": "Temp. superficie media",
+     "valor": 27,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": 26,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 15,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
@@ -639,6 +681,27 @@
      "fonte": "nasa_power",
      "valor_alvo": 85
     },
+    "temp_media_c": {
+     "rotulo": "Temp. superficie media",
+     "valor": 19,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": 17,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 15,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
      "valor": 0.09,
@@ -788,6 +851,27 @@
      "status": "medido",
      "fonte": "nasa_power",
      "valor_alvo": 90
+    },
+    "temp_media_c": {
+     "rotulo": "Temp. superficie media",
+     "valor": 28,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": 26,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 12,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
@@ -939,6 +1023,27 @@
      "fonte": "nasa_power",
      "valor_alvo": 90
     },
+    "temp_media_c": {
+     "rotulo": "Temp. superficie media",
+     "valor": 28,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": 27,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 5,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
      "valor": 0.31,
@@ -1088,6 +1193,27 @@
      "status": "medido",
      "fonte": "nasa_power",
      "valor_alvo": 90
+    },
+    "temp_media_c": {
+     "rotulo": "Temp. superficie media",
+     "valor": -15,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": -14,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 5,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
@@ -1239,6 +1365,27 @@
      "fonte": "nasa_power",
      "valor_alvo": 85
     },
+    "temp_media_c": {
+     "rotulo": "Temp. superficie media",
+     "valor": 27,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": 26,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 13,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
      "valor": 0.59,
@@ -1388,6 +1535,27 @@
      "status": "medido",
      "fonte": "nasa_power",
      "valor_alvo": 85
+    },
+    "temp_media_c": {
+     "rotulo": "Temp. superficie media",
+     "valor": 27,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": 26,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 11,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
@@ -1539,6 +1707,27 @@
      "fonte": "nasa_power",
      "valor_alvo": 150
     },
+    "temp_media_c": {
+     "rotulo": "Temp. superficie media",
+     "valor": -8,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": -8,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 4,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
      "valor": -0.0,
@@ -1688,6 +1877,27 @@
      "status": "medido",
      "fonte": "nasa_power",
      "valor_alvo": 90
+    },
+    "temp_media_c": {
+     "rotulo": "Temp. superficie media",
+     "valor": 19,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": 18,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 13,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
@@ -1839,6 +2049,27 @@
      "fonte": "nasa_power",
      "valor_alvo": 280
     },
+    "temp_media_c": {
+     "rotulo": "Temp. superficie media",
+     "valor": 22,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": 21,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 5,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
      "valor": 0.33,
@@ -1988,6 +2219,27 @@
      "status": "medido",
      "fonte": "nasa_power",
      "valor_alvo": 90
+    },
+    "temp_media_c": {
+     "rotulo": "Temp. superficie media",
+     "valor": 27,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": 26,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 13,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
@@ -2139,6 +2391,27 @@
      "fonte": "nasa_power",
      "valor_alvo": 85
     },
+    "temp_media_c": {
+     "rotulo": "Temp. superficie media",
+     "valor": 28,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": 27,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 10,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
      "valor": 0.63,
@@ -2288,6 +2561,27 @@
      "status": "medido",
      "fonte": "nasa_power",
      "valor_alvo": 85
+    },
+    "temp_media_c": {
+     "rotulo": "Temp. superficie media",
+     "valor": 24,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": 24,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 11,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
@@ -2439,6 +2733,27 @@
      "fonte": "nasa_power",
      "valor_alvo": 90
     },
+    "temp_media_c": {
+     "rotulo": "Temp. superficie media",
+     "valor": 18,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": 18,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 10,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
      "valor": 0.72,
@@ -2588,6 +2903,27 @@
      "status": "medido",
      "fonte": "nasa_power",
      "valor_alvo": 90
+    },
+    "temp_media_c": {
+     "rotulo": "Temp. superficie media",
+     "valor": 19,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": 19,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 11,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
@@ -2739,6 +3075,27 @@
      "fonte": "nasa_power",
      "valor_alvo": 280
     },
+    "temp_media_c": {
+     "rotulo": "Temp. superficie media",
+     "valor": 27,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": 26,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 9,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
      "valor": 0.78,
@@ -2888,6 +3245,27 @@
      "status": "medido",
      "fonte": "nasa_power",
      "valor_alvo": 150
+    },
+    "temp_media_c": {
+     "rotulo": "Temp. superficie media",
+     "valor": -30,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": -27,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 6,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power"
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",

@@ -1,4 +1,5 @@
 // Illuminat Horizontes - ponte ESP32 -> Wi-Fi/MQTT
+// Use quando não houver computador perto do carrinho: o Arduino lê os sensores e o ESP32 só leva ao MQTT.
 // Recebe as linhas JSON do Arduino pela Serial2 e publica cada uma no broker MQTT.
 // O site assina o mesmo tópico pelo WebSocket (botão "Wi-Fi").
 // Também dá para ligar sensores direto no ESP32 e montar a linha aqui (ex.: BME280, PMS5003).
@@ -39,7 +40,7 @@ void setup() {
   Serial.begin(115200);                       // depuração (USB)
   Serial2.begin(115200, SERIAL_8N1, 16, 17);  // RX2 = 16, TX2 = 17
   mqtt.setServer(BROKER, PORTA);
-  mqtt.setBufferSize(512);
+  mqtt.setBufferSize(2048);                  // cabe o perfil do local (illuminat-horizontes/local)
   conectar();
 }
 
