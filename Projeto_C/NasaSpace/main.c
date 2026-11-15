@@ -42,12 +42,14 @@
 
 #ifdef _WIN32
   #include <windows.h>
+  #include <conio.h>
   #define PYTHON   "python"
   #define PORTA_BT "COM5"             /* troque pela porta "Saida" do HC-05 */
   #define popen    _popen
   #define pclose   _pclose
 #else
   #include <unistd.h>
+  #include <termios.h>
   #ifdef __APPLE__
     #include <mach-o/dyld.h>
   #endif
@@ -66,6 +68,7 @@
 #define ARQ_DADOS   "analogos_completo.json"
 #define ARQ_SENS    "mqtt/sensores.json"
 #define ARQ_PONTE   "ponte_serial_mqtt.py"
+#define ARQ_CONTROLE "controle_carrinho.py"
 
 #define MAX_CAMINHO 1024
 #define MAX_ALVOS   32
@@ -88,6 +91,8 @@ void        parar_ponte(long pid);
 void        modo_ao_vivo(cJSON *raiz, cJSON *local, cJSON *alvo, cJSON *sensores);
 void        limpar_tela(void);
 void        ao_ctrl_c(int sinal);
+void        controlar_motores(const char *caminho, const char *porta, int baud,
+                              cJSON *raiz, cJSON *local, cJSON *alvo, cJSON *sensores);
 
 /* Onde procurar, relativo a pasta do executavel (bin/Debug) e a pasta atual.
    O primeiro que existir vale; copiar o JSON para bin/Debug tambem funciona. */
@@ -255,30 +260,203 @@ int main(int argc, char *argv[])
     free(json);
     cJSON_Delete(msg);
 
-    /* ---------- 5. Liga a ponte na porta Bluetooth do carrinho ---------- */
+    /* ---------- 5. O que fazer com o carrinho (pelo cabo USB) ---------- */
     long pid_ponte = 0;
     cor(COR_AMARELO);
-    printf("\nLigar o carrinho agora (%s, %s)? (1 = sim, 2 = nao): ", porta,
-           (strstr(porta, "usb") || strstr(porta, "USB")) ? "cabo USB" : "Bluetooth");
+    printf("\nCarrinho no cabo (%s):\n", porta);
+    cor(COR_VERDE);  printf("1) ");
+    cor(COR_BRANCO); printf("Dirigir o carrinho, com os sensores ao vivo (W, S, espaco, Q)\n");
+    cor(COR_VERDE);  printf("2) ");
+    cor(COR_BRANCO); printf("Ver os sensores ao vivo (ponte + MQTT)\n");
+    cor(COR_VERDE);  printf("3) ");
+    cor(COR_BRANCO); printf("Sair\n");
+    cor(COR_AMARELO); printf("Escolha: ");
     cor(COR_VERMELHO);
-    if (ler_opcao(1, 2) == 1) {
+    int acao = ler_opcao(1, 3);
+
+    if (acao == 1) {
+        char caminho_controle[MAX_CAMINHO];
+        if (!achar_arquivo(ARQ_CONTROLE, PASTAS_PONTE, caminho_controle))
+            printf("Erro: nao achei firmware/%s\n", ARQ_CONTROLE);
+        else
+            controlar_motores(caminho_controle, porta, baud, raiz, escolhido, alvo, sensores);
+    } else if (acao == 2) {
+        /* a ponte e o controle usam a mesma porta: um de cada vez */
         if (!achar_arquivo(ARQ_PONTE, PASTAS_PONTE, caminho_ponte))
             printf("Erro: nao achei firmware/%s\n", ARQ_PONTE);
         else
             pid_ponte = iniciar_ponte(caminho_ponte, porta, baud, local_id);
-    }
-
-    /* ---------- 6. Coluna "Ao vivo" com o MQTT do carrinho ---------- */
-    cor(COR_AMARELO);
-    printf("\nAcompanhar o carrinho ao vivo? (1 = sim, 2 = nao): ");
-    cor(COR_VERMELHO);
-    if (ler_opcao(1, 2) == 1)
         modo_ao_vivo(raiz, escolhido, alvo, sensores);
+    }
 
     parar_ponte(pid_ponte);
     cJSON_Delete(sensores);
     cJSON_Delete(raiz);
     return 0;
+}
+
+/* ---------- controle dos motores pelo cabo ---------- */
+#ifndef _WIN32
+static struct termios termo_antigo;
+static int termo_mudado = 0;
+static void termo_restaurar(void)
+{
+    if (termo_mudado) { tcsetattr(0, TCSANOW, &termo_antigo); termo_mudado = 0; }
+}
+#endif
+
+/* Espera ate ms milissegundos por uma tecla, sem esperar Enter.
+   Devolve a tecla, 0 se o tempo acabou, ou -1 se a entrada fechou. */
+static int tecla_ou_tempo(int ms)
+{
+#ifdef _WIN32
+    for (int t = 0; t < ms; t += 10) {
+        if (_kbhit()) return _getch();
+        Sleep(10);
+    }
+    return 0;
+#else
+    fd_set f;
+    struct timeval tv = { ms / 1000, (ms % 1000) * 1000 };
+    FD_ZERO(&f);
+    FD_SET(0, &f);
+    if (select(1, &f, NULL, NULL, &tv) <= 0) return 0;
+    unsigned char c;
+    return (read(0, &c, 1) == 1) ? c : -1;
+#endif
+}
+
+/* Junta numa leitura so os sensores que chegam em linhas JSON ({"temp":..,"dist":..}). */
+static int juntar_leitura(cJSON *leitura, const char *linha, char *estado_arduino, int tam)
+{
+    cJSON *j = cJSON_Parse(linha);
+    if (!cJSON_IsObject(j)) { cJSON_Delete(j); return 0; }
+    int mudou = 0;
+    const char *chaves[] = { "temp", "umid", "dist", "luz", "uv", "pm25", "solar", "soil", "tilt", "vib", "slip", NULL };
+    for (int i = 0; chaves[i]; i++) {
+        cJSON *v = cJSON_GetObjectItemCaseSensitive(j, chaves[i]);
+        if (cJSON_IsNumber(v)) {
+            cJSON_DeleteItemFromObjectCaseSensitive(leitura, chaves[i]);
+            cJSON_AddNumberToObject(leitura, chaves[i], v->valuedouble);
+            mudou = 1;
+        }
+    }
+    cJSON *cmd = cJSON_GetObjectItemCaseSensitive(j, "cmd");
+    cJSON *sen = cJSON_GetObjectItemCaseSensitive(j, "sentido");
+    cJSON *vel = cJSON_GetObjectItemCaseSensitive(j, "vel");
+    if (cJSON_IsString(cmd) && cJSON_IsString(sen) && cJSON_IsNumber(vel)) {
+        const char *nome = sen->valuestring[0] == 'F' ? "frente" : sen->valuestring[0] == 'T' ? "tras" : "parado";
+        snprintf(estado_arduino, tam, "%s, %d%%%s", nome, vel->valueint,
+                 strncmp(cmd->valuestring, "parou", 5) == 0 ? " (parou sozinho: sem comando)" : "");
+        mudou = 1;
+    }
+    cJSON_Delete(j);
+    return mudou;
+}
+
+/* Abre controle_carrinho.py (que fala com o Arduino pelo cabo), manda as teclas e
+   mostra a tela do local com os sensores ao vivo, lidos do controle.log. */
+void controlar_motores(const char *caminho, const char *porta, int baud,
+                       cJSON *raiz, cJSON *local, cJSON *alvo, cJSON *sensores)
+{
+    const char *py = (getenv("PONTE_PYTHON") && getenv("PONTE_PYTHON")[0]) ? getenv("PONTE_PYTHON") : PYTHON;
+    char cmd[MAX_CAMINHO * 3], caminho_log[MAX_CAMINHO];
+    snprintf(caminho_log, sizeof caminho_log, "%scontrole.log", pasta_exe);
+    remove(caminho_log);                        /* comeca do zero */
+    /* as respostas do Arduino vao para controle.log; a tela le de la */
+    snprintf(cmd, sizeof cmd, "%s -u \"%s\" --porta %s --baud %d 2> \"%s\"",
+             py, caminho, porta, baud, caminho_log);
+
+    FILE *ctl = popen(cmd, "w");
+    if (ctl == NULL) {
+        printf("Nao consegui abrir o controle (%s)\n", cmd);
+        return;
+    }
+
+#ifdef _WIN32
+    HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+    DWORD modo = 0;
+    if (GetConsoleMode(h, &modo)) SetConsoleMode(h, modo | 0x0004);   /* limpar a tela (ANSI) */
+#else
+    struct termios novo;
+    if (tcgetattr(0, &termo_antigo) == 0) {
+        novo = termo_antigo;
+        novo.c_lflag &= ~(ICANON | ECHO);       /* tecla a tecla, sem eco */
+        novo.c_cc[VMIN] = 1;
+        novo.c_cc[VTIME] = 0;
+        tcsetattr(0, TCSANOW, &novo);
+        termo_mudado = 1;
+        atexit(termo_restaurar);
+    }
+#endif
+    signal(SIGINT, ao_ctrl_c);
+
+    cJSON *leitura = cJSON_CreateObject();
+    FILE *lg = NULL;
+    char parcial[1024] = "";
+    char estado[96] = "parado, 66% (ligando o Arduino...)";
+    int vel = 6, redesenhar = 1, recebidas = 0;
+
+    while (!sair) {
+        if (redesenhar) {
+            limpar_tela();
+            tela_local_mostrar(raiz, local, alvo, sensores, recebidas ? leitura : NULL);
+            cor(COR_AMARELO);
+            printf("\nDIRIGIR O CARRINHO (cabo USB, %s)\n", porta);
+            cor(COR_BRANCO);
+            printf("  W = frente   S = tras   espaco = parar   0-9 = velocidade   Q = sair\n");
+            cor(COR_VERDE);
+            printf("  Carrinho: %s", estado);
+            cor(COR_CINZA);
+            printf("   (%d leituras)\n", recebidas);
+            cor(COR_BRANCO);
+            fflush(stdout);
+            redesenhar = 0;
+        }
+
+        int c = tecla_ou_tempo(200);
+        if (c < 0) break;
+        char envio = 0;
+        if (c == 'w' || c == 'W')              envio = 'F';
+        else if (c == 's' || c == 'S')         envio = 'T';
+        else if (c == ' ' || c == 'p' || c == 'P' || c == 'x' || c == 'X') envio = 'P';
+        else if (c >= '0' && c <= '9')         { envio = (char)c; vel = c - '0'; }
+        else if (c == 'q' || c == 'Q' || c == 27) break;
+        if (envio) {
+            fputc(envio, ctl);
+            fflush(ctl);
+            (void)vel;
+        }
+
+        /* novas linhas do Arduino no controle.log */
+        if (lg == NULL) lg = fopen(caminho_log, "r");
+        if (lg != NULL) {
+            char buf[512];
+            while (fgets(buf, sizeof buf, lg) != NULL) {
+                strncat(parcial, buf, sizeof parcial - strlen(parcial) - 1);
+                if (strchr(parcial, '\n') == NULL) continue;     /* linha ainda incompleta */
+                int tinha_sensor = strstr(parcial, "\"luz\"") || strstr(parcial, "\"temp\"");
+                if (juntar_leitura(leitura, parcial, estado, sizeof estado)) {
+                    if (tinha_sensor) recebidas++;
+                    redesenhar = 1;
+                }
+                parcial[0] = '\0';
+            }
+            clearerr(lg);                         /* continua lendo o que vier depois */
+        }
+    }
+
+    fputc('P', ctl);          /* para antes de sair */
+    fflush(ctl);
+    pclose(ctl);              /* o controle tambem manda P ao fechar */
+    if (lg) fclose(lg);
+    cJSON_Delete(leitura);
+#ifndef _WIN32
+    termo_restaurar();
+#endif
+    signal(SIGINT, SIG_DFL);
+    sair = 0;
+    printf("\n\nControle encerrado: carrinho parado.\n");
 }
 
 /* Liga a ponte em segundo plano, para a tela ficar livre.
