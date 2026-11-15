@@ -44,29 +44,27 @@ void UpdateCampos( float dados[],char nomes[][100])
         return;
     }
 
+    // 1. Pega o vetor "perfis"
+    cJSON *perfis = cJSON_GetObjectItemCaseSensitive(json_root, "alvos");
+
+    if (cJSON_IsArray(perfis)) {
+        cJSON *perfil = NULL;
+
+        // 2. Percorre cada objeto dentro de "perfis"
+        cJSON_ArrayForEach(perfil, perfis) {
+            // 3. Extrai "id" e "rotulo" de dentro do objeto atual
+            cJSON *id = cJSON_GetObjectItemCaseSensitive(perfil, "id");
+            cJSON *rotulo = cJSON_GetObjectItemCaseSensitive(perfil, "nome");
+            printf("ID: %s | Rotulo: %s\n", id->valuestring, rotulo->valuestring);
+        }
+    }
+
+    /*
 
     // 3. Extrai os dados do objeto JSON
     cJSON *nome = cJSON_GetObjectItemCaseSensitive(json_root, "nome");
     cJSON *idade = cJSON_GetObjectItemCaseSensitive(json_root, "idade");
     cJSON *ativo = cJSON_GetObjectItemCaseSensitive(json_root, "ativo");
-
-    cJSON *vetor = cJSON_GetObjectItemCaseSensitive(json_root, "perfis");
-
-    if (cJSON_IsArray(vetor))
-        {
-        cJSON *item = NULL;
-
-        cJSON_ArrayForEach(item, vetor)
-        {
-            // Extrai o campo específico de dentro de cada objeto do vetor
-            cJSON *valor = cJSON_GetObjectItemCaseSensitive(item, "id");
-
-            if (cJSON_IsNumber(valor)) {
-                printf("Valor: %f\n", valor->valuedouble);
-            }
-        }
-    }
-
     if (cJSON_IsString(nome) && (nome->valuestring != NULL)) {
         printf("Nome: %s\n", nome->valuestring);
     }
@@ -78,6 +76,7 @@ void UpdateCampos( float dados[],char nomes[][100])
     if (cJSON_IsBool(ativo)) {
         printf("Ativo: %s\n", cJSON_IsTrue(ativo) ? "Sim" : "Não");
     }
+    */
 
     // 4. Limpeza da árvore cJSON da memória para evitar vazamentos (Memory Leak)
     cJSON_Delete(json_root);
