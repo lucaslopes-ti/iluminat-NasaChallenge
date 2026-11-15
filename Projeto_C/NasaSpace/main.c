@@ -21,6 +21,7 @@
  * (mais dados/essenciais/mqtt/sensores.json para a tabela dos sensores).
  *
  * Uso:  NasaSpace            (porta Bluetooth padrao, ver PORTA_BT)
+ *       NasaSpace /dev/cu.usbserial-21130 9600   (cabo USB, sketch de texto a 9600)
  *       NasaSpace COM7       (Windows: a porta "Saida" do HC-05)
  *       ./NasaSpace /dev/cu.HC-05
  *
@@ -82,7 +83,7 @@ const char *texto(cJSON *obj, const char *chave);
 cJSON      *achar_por_id(cJSON *lista, const char *id);
 int         nota_no_alvo(cJSON *local, const char *alvo_id);
 int         enviar_mqtt(const char *topico, const char *mensagem);
-long        iniciar_ponte(const char *caminho_ponte, const char *porta, const char *local_id);
+long        iniciar_ponte(const char *caminho_ponte, const char *porta, int baud, const char *local_id);
 void        parar_ponte(long pid);
 void        modo_ao_vivo(cJSON *raiz, cJSON *local, cJSON *alvo, cJSON *sensores);
 void        limpar_tela(void);
@@ -110,6 +111,8 @@ int main(int argc, char *argv[])
 #endif
     atexit(cor_reset);             /* volta a cor normal do terminal ao sair */
     const char *porta = (argc > 1) ? argv[1] : PORTA_BT;
+    int baud = (argc > 2) ? atoi(argv[2]) : BAUD_BT;   /* 2o argumento: velocidade da porta */
+    if (baud <= 0) baud = BAUD_BT;
     if (getenv("MQTT_BROKER") && getenv("MQTT_BROKER")[0])
         broker = getenv("MQTT_BROKER");
     char caminho_dados[MAX_CAMINHO], caminho_ponte[MAX_CAMINHO];
@@ -261,7 +264,7 @@ int main(int argc, char *argv[])
         if (!achar_arquivo(ARQ_PONTE, PASTAS_PONTE, caminho_ponte))
             printf("Erro: nao achei firmware/%s\n", ARQ_PONTE);
         else
-            pid_ponte = iniciar_ponte(caminho_ponte, porta, local_id);
+            pid_ponte = iniciar_ponte(caminho_ponte, porta, baud, local_id);
     }
 
     /* ---------- 6. Coluna "Ao vivo" com o MQTT do carrinho ---------- */
@@ -280,21 +283,23 @@ int main(int argc, char *argv[])
 /* Liga a ponte em segundo plano, para a tela ficar livre.
    Mac: roda com & e guarda o PID; a saida vai para ponte.log ao lado do programa.
    Windows: abre numa janela minimizada propria ("Ponte do carrinho"). */
-long iniciar_ponte(const char *caminho_ponte, const char *porta, const char *local_id)
+long iniciar_ponte(const char *caminho_ponte, const char *porta, int baud, const char *local_id)
 {
+    /* PONTE_PYTHON escolhe o Python (ex.: um venv com pyserial e paho-mqtt) */
+    const char *py = (getenv("PONTE_PYTHON") && getenv("PONTE_PYTHON")[0]) ? getenv("PONTE_PYTHON") : PYTHON;
     char cmd[MAX_CAMINHO * 3];
 #ifdef _WIN32
     snprintf(cmd, sizeof cmd,
-             "start \"Ponte do carrinho\" /MIN " PYTHON " \"%s\" --porta %s --baud %d --broker %s --local %s",
-             caminho_ponte, porta, BAUD_BT, broker, local_id);
+             "start \"Ponte do carrinho\" /MIN %s -u \"%s\" --porta %s --baud %d --broker %s --local %s",
+             py, caminho_ponte, porta, baud, broker, local_id);
     printf("%s\n", cmd);
     system(cmd);
     printf("A ponte abriu em outra janela. Feche essa janela para desligar o carrinho.\n");
     return 0;
 #else
     snprintf(cmd, sizeof cmd,
-             PYTHON " \"%s\" --porta %s --baud %d --broker %s --local %s > \"%sponte.log\" 2>&1 & echo $!",
-             caminho_ponte, porta, BAUD_BT, broker, local_id, pasta_exe);
+             "%s -u \"%s\" --porta %s --baud %d --broker %s --local %s > \"%sponte.log\" 2>&1 & echo $!",
+             py, caminho_ponte, porta, baud, broker, local_id, pasta_exe);
     printf("%s\n", cmd);
     long pid = 0;
     FILE *p = popen(cmd, "r");

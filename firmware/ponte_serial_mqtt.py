@@ -1,4 +1,12 @@
-"""Ponte do carrinho: lê as linhas JSON do Arduino pela USB e publica cada uma no MQTT.
+"""Ponte do carrinho: lê as leituras do Arduino (USB ou Bluetooth) e publica cada uma no MQTT.
+
+Aceita dois formatos de linha:
+  - JSON do arduino_carrinho.ino: {"temp":24.1,"uv":6.2,...}
+  - texto do sketch de teste da equipe (9600 baud):
+        Umidade: 52.30%  |  Temperatura: 28.40°C
+        Distancia: 23 cm
+        Luminosidade (LDR): 548
+    que vira {"umid":52.3,"temp":28.4,"dist":23,"luz":548}, uma mensagem por ciclo.
 
 Instalar uma vez:
     pip install pyserial paho-mqtt
@@ -8,6 +16,7 @@ Usar (na raiz do repositório, com o Arduino ligado na USB):
     python3 firmware/ponte_serial_mqtt.py --porta COM4            # Windows
     python3 firmware/ponte_serial_mqtt.py --porta /dev/cu.usbmodem1101   # Mac
     python3 firmware/ponte_serial_mqtt.py --local lencois         # também publica, retido, o perfil do local análogo
+    python3 firmware/ponte_serial_mqtt.py --porta /dev/cu.usbserial-21130 --baud 9600   # sketch de texto
 
 Publica em illuminat-horizontes/carrinho (igual ao site e ao esp32_ponte_mqtt).
 Com --local, publica dados/essenciais/mqtt/locais/<id>.json retido em illuminat-horizontes/local.
@@ -16,6 +25,7 @@ Feche o Monitor Serial da IDE do Arduino antes: só um programa pode abrir a por
 import argparse
 import json
 import os
+import re
 import sys
 import time
 
@@ -25,7 +35,32 @@ from serial.tools import list_ports
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 PASTA_LOCAIS = os.path.join(AQUI, "..", "dados", "essenciais", "mqtt", "locais")
-CHAVES = {"temp", "uv", "pm25", "solar", "soil", "tilt", "vib", "slip"}
+CHAVES = {"temp", "uv", "pm25", "solar", "soil", "tilt", "vib", "slip", "umid", "dist", "luz"}
+
+# Texto do sketch de teste -> chave do carrinho. A linha do LDR sai sem quebra de linha e gruda
+# na seguinte, entao os pares "Nome: numero" sao procurados em qualquer ponto da linha.
+TEXTO = re.compile(r"(Umidade|Temperatura|Dist[aâ]ncia|Luminosidade(?:\s*\(LDR\))?)\s*:\s*(-?\d+(?:[.,]\d+)?)",
+                   re.IGNORECASE)
+NOME_TEXTO = {"umidade": "umid", "temperatura": "temp", "distancia": "dist", "distância": "dist", "luminosidade": "luz"}
+
+
+class LeitorTexto:
+    """Junta os pares de um ciclo (umidade, temperatura, distancia, luz) numa mensagem so."""
+
+    def __init__(self):
+        self.atual = {}
+
+    def pares(self, texto):
+        """Devolve as mensagens completas que esta linha fechou (normalmente 0 ou 1)."""
+        prontas = []
+        for nome, valor in TEXTO.findall(texto):
+            chave = NOME_TEXTO[nome.split("(")[0].strip().lower()]
+            if chave in self.atual:          # a mesma chave de novo: o ciclo anterior acabou
+                prontas.append(self.atual)
+                self.atual = {}
+            v = float(valor.replace(",", "."))
+            self.atual[chave] = int(v) if v.is_integer() and chave in ("dist", "luz") else v
+        return prontas
 
 
 def achar_porta():
@@ -99,17 +134,19 @@ def main():
                 print(f"Lendo {porta} a {a.baud} baud (Ctrl+C para sair)")
                 time.sleep(2)               # o Arduino reinicia ao abrir a porta
                 s.reset_input_buffer()
+                leitor = LeitorTexto()
                 while True:
                     texto = s.readline().decode("utf-8", errors="ignore").strip()
                     if not texto:
                         continue
                     d = linha_valida(texto)
-                    if d is None:
+                    lista = [d] if d is not None else leitor.pares(texto)
+                    if not lista and not TEXTO.search(texto):
                         print("  (ignorada)", texto[:80])
-                        continue
-                    msg = json.dumps(d, separators=(",", ":"))
-                    cliente.publish(a.topico, msg, qos=0)
-                    print(time.strftime("%H:%M:%S"), msg)
+                    for d in lista:
+                        msg = json.dumps(d, separators=(",", ":"))
+                        cliente.publish(a.topico, msg, qos=0)
+                        print(time.strftime("%H:%M:%S"), msg)
         except serial.SerialException as e:
             print(f"Porta {porta} indisponível ({e}); tentando de novo em 3 s")
             time.sleep(3)

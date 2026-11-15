@@ -34,7 +34,7 @@ Este arquivo é lido pelo agente do Antigravity (AGENTS.md) e pelo Claude Code (
 | `dados/essenciais/mqtt/` | Mensagens pequenas por local (`locais/<id>.json`), `indice.json` e `sensores.json` (qual sensor do carrinho se compara com qual dado). |
 | `dados/srtm30/` | 27 blocos NASA SRTMGL30 v002 (`.zip`) e `altitude.py`. |
 | `dados/copernicus_dem/` | Blocos do Copernicus DEM GLO-90 para a Antártida (Dry Valleys), baixados por `dados/essenciais/relevo_copernicus.py`. |
-| `firmware/` | `arduino_carrinho/` (sketch dos sensores), `ponte_serial_mqtt.py` (ponte USB → MQTT no computador), `esp32_ponte_mqtt/` (ESP32 opcional, só como ponte Wi-Fi). Ver `firmware/README.md`. |
+| `firmware/` | `arduino_carrinho/` (sketch dos sensores, JSON), `ponte_serial_mqtt.py` (ponte USB ou Bluetooth → MQTT no computador; aceita o JSON e o texto do sketch de teste da equipe). `esp32_ponte_mqtt/` ficou de fora: **não vamos usar o ESP32**. Ver `firmware/README.md`. |
 | `Projeto_C/NasaSpace/` | Tela em C (Code::Blocks): `main.c` (seletor Lua/Marte → alvo → top 3 → MQTT → ponte Bluetooth) e `tela_local.c` (tela do local escolhido). Lê um JSON só, `dados/essenciais/analogos_completo.json`, com cJSON (`Bibliotecas/cJSON.h`). |
 | Notebooks | `01_dados_terra.ipynb` fica fora do git (Colab/Drive). |
 
@@ -96,12 +96,15 @@ Sensores → Arduino Uno/Nano (sem Wi-Fi) → Bluetooth HC-05 (ou USB), 1 linha 
 
 - **Decisão:** a comunicação com o carrinho é por **Bluetooth** (HC-05/HC-06 na Serial de hardware, D0/D1, 115200). No computador o módulo vira uma porta serial, então a ponte é a mesma do USB, só com `--porta`.
 - **Tela em C** (`Projeto_C/NasaSpace`, um programa só): Lua/Marte → alvo → top 3 análogos (`ranking_por_alvo` e `locais[].comparacoes.<alvo>.iap.geral`) → tela do local (`tela_local.c`, enxuta de propósito: Terra x alvo, 9 dimensões para aquele alvo e carrinho ao vivo, com os sensores de `mqtt/sensores.json`) → publica em `illuminat-horizontes/selecao` com `mosquitto_pub` → abre a ponte com `--porta <BT> --local <id>`. Lê só o `analogos_completo.json` (direto de `dados/essenciais/`, sem cópia em `bin/Debug`). Acha os arquivos pela pasta do executável (Mac e Windows); a porta BT vai como argumento (`NasaSpace COM7`).
-- **Decisão:** os sensores ficam no **Arduino**. O ESP32 não serviu para os sensores; ele é **opcional, só como ponte Wi-Fi** (`firmware/esp32_ponte_mqtt`, buffer 2048). Não propor ler sensores no ESP32.
+- **Decisão:** os sensores ficam no **Arduino** e a ligação com o computador é por **Bluetooth (HC-05)**, com o **cabo USB** como reserva. **Não vamos usar o ESP32** (nem para sensores nem como ponte). Não propor ESP32.
+- **Carrinho de teste (15/11):** o Arduino roda um sketch da equipe (fora do repositório) a **9600 baud** que manda texto: `Umidade: 52.30%  |  Temperatura: 28.40°C`, `Distancia: 23 cm`, `Luminosidade (LDR): 548` (esta sem quebra de linha). A ponte converte em `{"umid":..,"temp":..,"dist":..,"luz":..}`; `umid`, `dist` e `luz` estão no `sensores.json`. Testado de ponta a ponta pelo cabo (Arduino → ponte → HiveMQ → tela em C ao vivo).
+- **HC-05 (15/11):** pareado com o Mac (98:d3:61:f5:fa:0a, PIN 1234; porta `/dev/cu.HC-05`), canal RFCOMM abre, mas **nenhum dado passa** (nem do Arduino nem no teste de eco TXD↔RXD). No macOS a porta `/dev/cu.HC-05` não abre o canal sozinha. Falta testar num Android (app Serial Bluetooth Terminal) ou no Windows para saber se é o módulo ou o macOS. Ligação certa: RXD do módulo no TX/1 (com divisor), TXD no RX/0, VCC 5V, GND.
 - **Mensagem:** `{"temp":24.1,"uv":6.2,"pm25":14,"solar":410,"soil":22,"tilt":3.4,"vib":0.08,"slip":5}`. Manter estas chaves. Chaves ausentes aparecem como "–".
 - O sensor `temp` mede o **ar** e é comparado com `temp_ar_c` (NASA POWER T2M).
 - Broker padrão: `broker.hivemq.com` (público, aberto). Para a apresentação, usar um tópico só da equipe ou HiveMQ Cloud com `--tls`, `--usuario` e `MQTT_SENHA`.
 - Outros caminhos: USB direto no site (Web Serial, Chrome/Edge, 115200 baud) e modo **Demo** (leituras simuladas, tempestade de poeira a cada minuto).
-- Rodar a ponte: `pip install pyserial paho-mqtt` e `python3 firmware/ponte_serial_mqtt.py --local lencois` (fechar o Monitor Serial antes).
+- Rodar a ponte: `pip install pyserial paho-mqtt` e `python3 firmware/ponte_serial_mqtt.py --porta /dev/cu.usbserial-21130 --baud 9600 --local lencois` (fechar o Monitor Serial antes).
+- Tela em C com o cabo: `./bin/Debug/nasaspace /dev/cu.usbserial-21130 9600` (2º argumento = baud; `PONTE_PYTHON` escolhe o Python da ponte).
 
 ## Próximos passos
 
