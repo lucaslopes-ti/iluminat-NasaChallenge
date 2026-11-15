@@ -13,7 +13,7 @@ dallol,nao,nao,sim,,nao,nao,,,sim,sim,sim,sim
 qaidam,nao,nao,sim,,nao,sim,,,sim,sim,nao,sim
 svalbard,sim,sim,nao,,sim,sim,,,nao,sim,sim,nao
 atacama,nao,nao,sim,,nao,nao,,,sim,sim,sim,sim
-dry_valleys,sim,sim,,,sim,sim,,,,sim,sim,sim
+dry_valleys,sim,sim,nao,,sim,sim,,,nao,sim,sim,sim
 haughton,sim,sim,sim,,sim,sim,,,sim,sim,sim,sim
 mauna_kea,nao,nao,nao,,nao,nao,,,nao,nao,nao,sim
 rio_tinto,nao,nao,sim,,nao,nao,,,sim,sim,sim,nao
