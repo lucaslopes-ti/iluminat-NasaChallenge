@@ -873,7 +873,7 @@
     "operacoes": 100
    },
    "funciona": "Dunas ativas e água efêmera entre elas, como se supõe no passado de Marte",
-   "quebra": "Chuva alta (~1.600 mm/ano)",
+   "quebra": "Chuva alta (~1.400 mm/ano, NASA POWER)",
    "teste": "Mobilidade de rover em areia solta",
    "dados": {
     "elev_media_m": {
@@ -1173,7 +1173,7 @@
     "operacoes": 99
    },
    "funciona": "Poeira e sujeira em painéis solares, como nos rovers de Marte",
-   "quebra": "Ainda chove ~450 mm por ano",
+   "quebra": "Ainda chove ~500 mm por ano (NASA POWER)",
    "teste": "Perda de energia solar com poeira (estação ESP32)",
    "dados": {
     "elev_media_m": {

@@ -87,7 +87,7 @@
    },
    "processos": ["migração de dunas pelo vento", "lagoas que enchem e secam todo ano"],
    "funciona": ["Dunas ativas e água efêmera entre elas, como se supõe no passado de Marte", "Areia solta para testar rodas (o Spirit ficou preso em areia)"],
-   "quebra": ["Chuva alta (~1.600 mm/ano)", "Areia de quartzo, não basáltica"],
+   "quebra": ["Chuva alta (~1.400 mm/ano, NASA POWER)", "Areia de quartzo, não basáltica"],
    "testes": ["Mobilidade de rover em areia solta", "Séries de imagens para medir migração de dunas, como no HiRISE"],
    "referencias": []
   },
@@ -102,7 +102,7 @@
    },
    "processos": ["erosão de arenito", "poeira sobre painéis solares"],
    "funciona": ["Poeira e sujeira em painéis solares, como nos rovers de Marte", "Solo exposto e sol forte"],
-   "quebra": ["Ainda chove ~450 mm por ano", "Caatinga cobre parte do solo"],
+   "quebra": ["Ainda chove ~500 mm por ano (NASA POWER)", "Caatinga cobre parte do solo"],
    "testes": ["Perda de energia solar com poeira (estação ESP32)", "Limpeza de painéis e filtros", "Navegação em ravinas"],
    "referencias": []
   },

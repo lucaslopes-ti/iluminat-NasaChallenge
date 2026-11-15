@@ -126,3 +126,23 @@ Rótulos e unidades não têm acento, para não quebrar no terminal do Windows. 
 - A POWER (0,5°–1°) e o MOD13C2 (0,05° ≈ 5 km) têm resolução grossa e misturam o local com o entorno. Locais pequenos, como Lonar e Dallol, ficam com valores regionais.
 - Iluminação calculada com horizonte plano. Na Lua, o relevo muda tudo: os valores com relevo (`iluminacao_frac`) vêm do LOLA.
 - Valores de Lua e Marte são números publicados e aproximados, não recortes processados aqui. O próximo passo é calcular a partir dos mapas LOLA, Diviner, MOLA e THEMIS.
+
+## MQTT (carrinho)
+
+Para o ESP32 não precisar carregar o JSON inteiro, `gerar_mqtt.py` cria mensagens pequenas em `mqtt/`:
+
+| Arquivo | Tópico sugerido | Conteúdo |
+|---|---|---|
+| `mqtt/locais/<id>.json` (até ~1,5 KB) | `illuminat-horizontes/local` (mensagem **retida**) | Perfil do local escolhido: alvo, nota, notas por dimensão, funciona/quebra/teste e os valores do local × alvo, com status e fonte |
+| `mqtt/indice.json` | – | Lista curta dos locais (id, nome, alvo, nota) para um menu |
+| `mqtt/sensores.json` | – | Cada sensor do carrinho → campo dos dados e como comparar (direta, limite de 8°, nível baixo/médio/alto para PM2.5 × AOD) |
+
+As medições continuam no tópico que já existe, `illuminat-horizontes/carrinho`, uma linha JSON por leitura (veja `firmware/README.md`).
+
+Fluxo sugerido:
+
+1. O computador publica o perfil do local escolhido, retido: `mosquitto_pub -h broker.hivemq.com -t illuminat-horizontes/local -r -f dados/essenciais/mqtt/locais/lencois.json`
+2. O ESP32 assina `illuminat-horizontes/local` e recebe o perfil assim que conecta. Com PubSubClient, aumente o buffer para `mqtt.setBufferSize(2048);`. O `firmware/esp32_ponte_mqtt` usa 512 bytes hoje, menos que o perfil.
+3. O carrinho mede e publica em `illuminat-horizontes/carrinho`. A tela (programa em C ou site) junta as medições com o perfil e mostra "aqui agora × local análogo × alvo".
+
+Rode `python3 dados/essenciais/gerar_mqtt.py` depois do `gerar_dados.py` sempre que os dados mudarem.
