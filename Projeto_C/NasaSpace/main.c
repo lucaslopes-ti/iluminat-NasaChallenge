@@ -1,114 +1,375 @@
+/*
+ * Illuminat Horizontes - tela do carrinho
+ *
+ * 1. O usuario escolhe Lua ou Marte.
+ * 2. Escolhe o alvo (cratera, regiao).
+ * 3. Ve os 3 locais da Terra mais parecidos e escolhe um.
+ *    Aparece a tela do local (tela_local.c): nota, 9 dimensoes, Terra x alvo,
+ *    onde funciona, onde quebra, o que testar e os sensores do carrinho.
+ * 4. A escolha vai por MQTT (retida) em illuminat-horizontes/selecao.
+ * 5. Abre a ponte (firmware/ponte_serial_mqtt.py) na porta Bluetooth do
+ *    carrinho (HC-05), com --local <id>: ela publica o perfil do local e
+ *    passa a mandar as leituras do carrinho para o MQTT.
+ *
+ * Funciona no Windows e no Mac. Os arquivos sao procurados a partir da
+ * pasta do executavel e da pasta atual, entao nao ha caminho fixo.
+ *
+ * Le um JSON so: dados/essenciais/analogos_completo.json
+ * (mais dados/essenciais/mqtt/sensores.json para a tabela dos sensores).
+ *
+ * Uso:  NasaSpace            (porta Bluetooth padrao, ver PORTA_BT)
+ *       NasaSpace COM7       (Windows: a porta "Saida" do HC-05)
+ *       ./NasaSpace /dev/cu.HC-05
+ *
+ * Precisa do mosquitto_pub no PATH (Mosquitto) e, para a ponte,
+ * de Python com: pip install pyserial paho-mqtt
+ */
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "Bibliotecas/cJSON.h"
-#include "Bibliotecas/funcoesJSON.h"
+#include "tela_local.h"
 
-char* ler_arquivo_para_string(const char *filename);
+#ifdef _WIN32
+  #include <windows.h>
+  #define PYTHON   "python"
+  #define PORTA_BT "COM5"             /* troque pela porta "Saida" do HC-05 */
+#else
+  #include <unistd.h>
+  #ifdef __APPLE__
+    #include <mach-o/dyld.h>
+  #endif
+  #define PYTHON   "python3"
+  #define PORTA_BT "/dev/cu.HC-05"
+#endif
 
-void UpdateCampos( float dados[],char nomes[][100]);
+/* Mesma velocidade do Serial.begin() do arduino_carrinho.ino.
+   O HC-05 vem em 9600: mude o modulo para 115200 com AT+UART=115200,0,0. */
+#define BAUD_BT     115200
 
-int main() {
+#define BROKER      "broker.hivemq.com"
+#define TOPICO_SEL  "illuminat-horizontes/selecao"
 
-    char nomes[][100] = {{"nome"},{"idade"},{"ativo"}};
-    float dados[100];
-    UpdateCampos(dados,nomes);
+#define ARQ_DADOS   "analogos_completo.json"
+#define ARQ_SENS    "mqtt/sensores.json"
+#define ARQ_PONTE   "ponte_serial_mqtt.py"
 
+#define MAX_CAMINHO 1024
+#define MAX_ALVOS   32
+#define TOP_N       3
 
+char        pasta_exe[MAX_CAMINHO];
 
+void        descobrir_pasta_exe(const char *argv0);
+int         achar_arquivo(const char *nome, const char *subpastas[], char *saida);
+char       *ler_arquivo_para_string(const char *filename);
+int         ler_opcao(int min, int max);
+const char *texto(cJSON *obj, const char *chave);
+cJSON      *achar_por_id(cJSON *lista, const char *id);
+int         nota_no_alvo(cJSON *local, const char *alvo_id);
+int         enviar_mqtt(const char *topico, const char *mensagem);
+
+/* Onde procurar, relativo a pasta do executavel (bin/Debug) e a pasta atual.
+   O primeiro que existir vale; copiar o JSON para bin/Debug tambem funciona. */
+const char *PASTAS_DADOS[] = {
+    "",                                   /* ao lado do executavel           */
+    "../../../../dados/essenciais/",      /* bin/Debug -> raiz do repositorio */
+    "../../dados/essenciais/",            /* rodando da pasta do projeto      */
+    NULL
+};
+const char *PASTAS_PONTE[] = {
+    "../../../../firmware/",
+    "../../firmware/",
+    "",
+    NULL
+};
+
+int main(int argc, char *argv[])
+{
+#ifdef _WIN32
+    SetConsoleOutputCP(CP_UTF8);   /* os nomes no JSON tem acento (UTF-8) */
+#endif
+    const char *porta = (argc > 1) ? argv[1] : PORTA_BT;
+    char caminho_dados[MAX_CAMINHO], caminho_ponte[MAX_CAMINHO];
+
+    descobrir_pasta_exe(argc > 0 ? argv[0] : "");
+
+    if (!achar_arquivo(ARQ_DADOS, PASTAS_DADOS, caminho_dados)) {
+        printf("Erro: nao achei %s (procurei em dados/essenciais e ao lado do programa)\n", ARQ_DADOS);
+        return 1;
+    }
+
+    char *conteudo = ler_arquivo_para_string(caminho_dados);
+    if (conteudo == NULL) return 1;
+
+    cJSON *raiz = cJSON_Parse(conteudo);
+    free(conteudo);
+    if (raiz == NULL) {
+        fprintf(stderr, "Erro de sintaxe no JSON perto de: %s\n", cJSON_GetErrorPtr());
+        return 1;
+    }
+
+    cJSON *alvos   = cJSON_GetObjectItemCaseSensitive(raiz, "alvos");
+    cJSON *locais  = cJSON_GetObjectItemCaseSensitive(raiz, "locais");
+    cJSON *ranking = cJSON_GetObjectItemCaseSensitive(raiz, "ranking_por_alvo");
+    if (!cJSON_IsArray(alvos) || !cJSON_IsArray(locais) || !cJSON_IsObject(ranking)) {
+        fprintf(stderr, "JSON sem alvos/locais/ranking_por_alvo\n");
+        cJSON_Delete(raiz);
+        return 1;
+    }
+
+    /* ---------- 1. Lua ou Marte ---------- */
+    printf("=== Illuminat Horizontes ===\n\n");
+    printf("1) Lua\n2) Marte\nEscolha: ");
+    const char *corpo = (ler_opcao(1, 2) == 1) ? "moon" : "mars";
+
+    /* ---------- 2. Lista os alvos desse corpo ---------- */
+    cJSON *opcoes[MAX_ALVOS];
+    int n = 0;
+    cJSON *alvo = NULL;
+
+    printf("\nAlvos em %s:\n", strcmp(corpo, "moon") == 0 ? "Lua" : "Marte");
+    cJSON_ArrayForEach(alvo, alvos) {
+        if (strcmp(texto(alvo, "corpo"), corpo) == 0 && n < MAX_ALVOS) {
+            opcoes[n++] = alvo;
+            printf("%2d) %s\n", n, texto(alvo, "nome"));
+        }
+    }
+    if (n == 0) {
+        printf("Nenhum alvo encontrado.\n");
+        cJSON_Delete(raiz);
+        return 1;
+    }
+    printf("Escolha: ");
+    alvo = opcoes[ler_opcao(1, n) - 1];
+    const char *alvo_id = texto(alvo, "id");
+
+    /* ---------- 3. Top 3 analogos na Terra ---------- */
+    cJSON *ordem = cJSON_GetObjectItemCaseSensitive(ranking, alvo_id);
+    cJSON *top[TOP_N];
+    int nt = 0;
+    cJSON *item = NULL;
+
+    printf("\nMelhores analogos na Terra para %s:\n", texto(alvo, "nome"));
+    cJSON_ArrayForEach(item, ordem) {
+        if (nt == TOP_N) break;
+        if (!cJSON_IsString(item)) continue;
+        cJSON *loc = achar_por_id(locais, item->valuestring);
+        if (loc == NULL) continue;
+        top[nt++] = loc;
+        printf("%d) %-40s %-12s IAP %d\n", nt, texto(loc, "nome"),
+               texto(loc, "pais"), nota_no_alvo(loc, alvo_id));
+    }
+    if (nt == 0) {
+        printf("Nenhum local para esse alvo.\n");
+        cJSON_Delete(raiz);
+        return 1;
+    }
+
+    printf("\nQual local o carrinho vai simular? ");
+    cJSON *escolhido = top[ler_opcao(1, nt) - 1];
+    const char *local_id = texto(escolhido, "id");
+
+    /* ---------- Tela do local escolhido ---------- */
+    cJSON *sensores = NULL;
+    char caminho_sens[MAX_CAMINHO];
+    if (achar_arquivo(ARQ_SENS, PASTAS_DADOS, caminho_sens)) {
+        char *s = ler_arquivo_para_string(caminho_sens);
+        if (s) {
+            sensores = cJSON_Parse(s);
+            free(s);
+        }
+    }
+    tela_local_mostrar(raiz, escolhido, alvo, sensores, NULL);
+    cJSON_Delete(sensores);
+
+    /* ---------- 4. Monta a mensagem e envia por MQTT ---------- */
+    cJSON *msg = cJSON_CreateObject();
+    cJSON_AddStringToObject(msg, "corpo", corpo);
+    cJSON_AddStringToObject(msg, "alvo", alvo_id);
+    cJSON_AddStringToObject(msg, "alvo_nome", texto(alvo, "nome"));
+    cJSON_AddStringToObject(msg, "local", local_id);
+    cJSON_AddStringToObject(msg, "local_nome", texto(escolhido, "nome"));
+    cJSON_AddNumberToObject(msg, "nota_pct", nota_no_alvo(escolhido, alvo_id));
+
+    cJSON *lista = cJSON_AddArrayToObject(msg, "top3");
+    for (int i = 0; i < nt; i++) {
+        cJSON *t = cJSON_CreateObject();
+        cJSON_AddStringToObject(t, "id", texto(top[i], "id"));
+        cJSON_AddStringToObject(t, "nome", texto(top[i], "nome"));
+        cJSON_AddNumberToObject(t, "nota_pct", nota_no_alvo(top[i], alvo_id));
+        cJSON_AddItemToArray(lista, t);
+    }
+
+    char *json = cJSON_PrintUnformatted(msg);
+    printf("\nEnviando para %s:\n%s\n", TOPICO_SEL, json);
+    fflush(stdout);
+    if (enviar_mqtt(TOPICO_SEL, json) != 0)
+        printf("Falhou o envio (o mosquitto_pub esta instalado e no PATH?)\n");
+    free(json);
+    cJSON_Delete(msg);
+
+    /* ---------- 5. Liga a ponte na porta Bluetooth do carrinho ---------- */
+    printf("\nIniciar o carrinho via Bluetooth (%s)? (1 = sim, 2 = nao): ", porta);
+    if (ler_opcao(1, 2) == 1) {
+        if (!achar_arquivo(ARQ_PONTE, PASTAS_PONTE, caminho_ponte)) {
+            printf("Erro: nao achei firmware/%s\n", ARQ_PONTE);
+        } else {
+            char cmd[MAX_CAMINHO * 2];
+            snprintf(cmd, sizeof cmd, PYTHON " \"%s\" --porta %s --baud %d --local %s",
+                     caminho_ponte, porta, BAUD_BT, local_id);
+            printf("%s\n", cmd);
+            fflush(stdout);
+            system(cmd);   /* fica rodando ate Ctrl+C */
+        }
+    }
+
+    cJSON_Delete(raiz);
     return 0;
 }
 
-void UpdateCampos( float dados[],char nomes[][100])
+/* Guarda em pasta_exe a pasta do executavel, terminando em '/' (ou vazia). */
+void descobrir_pasta_exe(const char *argv0)
 {
-
-    const char *filename = "C:/Users/EUP9NL402.AzureAD/Documents/iluminat-NasaChallenge/Projeto_C/NasaSpace/bin/Debug/tela_carrinho.json";
-
-    // 1. Lê o arquivo externo para a memória
-    char *json_string = ler_arquivo_para_string(filename);
-    if (json_string == NULL) {
-        return;
+    char buf[MAX_CAMINHO] = "";
+#if defined(_WIN32)
+    GetModuleFileNameA(NULL, buf, sizeof buf);
+#elif defined(__APPLE__)
+    uint32_t tam = sizeof buf;
+    if (_NSGetExecutablePath(buf, &tam) != 0) buf[0] = '\0';
+#else
+    ssize_t k = readlink("/proc/self/exe", buf, sizeof buf - 1);
+    buf[k > 0 ? k : 0] = '\0';
+#endif
+    if (buf[0] == '\0') {
+        strncpy(buf, argv0, sizeof buf - 1);
+        buf[sizeof buf - 1] = '\0';
     }
 
-    // 2. Faz o parse da string JSON usando o cJSON
-    cJSON *json_root = cJSON_Parse(json_string);
+    /* corta o nome do programa: tudo depois da ultima barra */
+    char *barra = NULL;
+    for (char *p = buf; *p; p++)
+        if (*p == '/' || *p == '\\') barra = p;
+    if (barra) barra[1] = '\0';
+    else buf[0] = '\0';
 
-    // A string do arquivo já pode ser liberada da memória
-    free(json_string);
+    /* o Windows aceita '/' no fopen, entao padroniza */
+    for (char *p = buf; *p; p++)
+        if (*p == '\\') *p = '/';
 
-    if (json_root == NULL) {
-        const char *error_ptr = cJSON_GetErrorPtr();
-        if (error_ptr != NULL) {
-            fprintf(stderr, "Erro de sintaxe no JSON antes de: %s\n", error_ptr);
-        }
-        cJSON_Delete(json_root);
-        return;
-    }
-
-    // 1. Pega o vetor "perfis"
-    cJSON *perfis = cJSON_GetObjectItemCaseSensitive(json_root, "alvos");
-
-    if (cJSON_IsArray(perfis)) {
-        cJSON *perfil = NULL;
-
-        // 2. Percorre cada objeto dentro de "perfis"
-        cJSON_ArrayForEach(perfil, perfis) {
-            // 3. Extrai "id" e "rotulo" de dentro do objeto atual
-            cJSON *id = cJSON_GetObjectItemCaseSensitive(perfil, "id");
-            cJSON *rotulo = cJSON_GetObjectItemCaseSensitive(perfil, "nome");
-            printf("ID: %s | Rotulo: %s\n", id->valuestring, rotulo->valuestring);
-        }
-    }
-
-    /*
-
-    // 3. Extrai os dados do objeto JSON
-    cJSON *nome = cJSON_GetObjectItemCaseSensitive(json_root, "nome");
-    cJSON *idade = cJSON_GetObjectItemCaseSensitive(json_root, "idade");
-    cJSON *ativo = cJSON_GetObjectItemCaseSensitive(json_root, "ativo");
-    if (cJSON_IsString(nome) && (nome->valuestring != NULL)) {
-        printf("Nome: %s\n", nome->valuestring);
-    }
-
-    if (cJSON_IsNumber(idade)) {
-        printf("Idade: %d\n", idade->valueint);
-    }
-
-    if (cJSON_IsBool(ativo)) {
-        printf("Ativo: %s\n", cJSON_IsTrue(ativo) ? "Sim" : "Não");
-    }
-    */
-
-    // 4. Limpeza da árvore cJSON da memória para evitar vazamentos (Memory Leak)
-    cJSON_Delete(json_root);
-
+    strcpy(pasta_exe, buf);
 }
 
-// Função auxiliar para carregar o arquivo inteiro para uma string
-char* ler_arquivo_para_string(const char *filename) {
+/* Procura "nome" nas subpastas, primeiro a partir do executavel e depois
+   da pasta atual. Devolve 1 e o caminho em "saida" se achar. */
+int achar_arquivo(const char *nome, const char *subpastas[], char *saida)
+{
+    const char *bases[] = { pasta_exe, "" };
+    for (int b = 0; b < 2; b++) {
+        for (int i = 0; subpastas[i] != NULL; i++) {
+            snprintf(saida, MAX_CAMINHO, "%s%s%s", bases[b], subpastas[i], nome);
+            FILE *f = fopen(saida, "rb");
+            if (f) {
+                fclose(f);
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
+
+/* Le um numero entre min e max, repetindo ate ser valido */
+int ler_opcao(int min, int max)
+{
+    char linha[32];
+    int v;
+    fflush(stdout);
+    while (fgets(linha, sizeof linha, stdin) != NULL) {
+        if (sscanf(linha, "%d", &v) == 1 && v >= min && v <= max)
+            return v;
+        printf("Digite um numero de %d a %d: ", min, max);
+        fflush(stdout);
+    }
+    exit(0);   /* fim da entrada */
+}
+
+/* Devolve o texto de uma chave, ou "" se nao existir */
+const char *texto(cJSON *obj, const char *chave)
+{
+    cJSON *v = cJSON_GetObjectItemCaseSensitive(obj, chave);
+    return (cJSON_IsString(v) && v->valuestring) ? v->valuestring : "";
+}
+
+cJSON *achar_por_id(cJSON *lista, const char *id)
+{
+    cJSON *x = NULL;
+    cJSON_ArrayForEach(x, lista) {
+        if (strcmp(texto(x, "id"), id) == 0) return x;
+    }
+    return NULL;
+}
+
+/* locais[].comparacoes.<alvo>.iap.geral */
+int nota_no_alvo(cJSON *local, const char *alvo_id)
+{
+    cJSON *c = cJSON_GetObjectItemCaseSensitive(local, "comparacoes");
+    c = cJSON_GetObjectItemCaseSensitive(c, alvo_id);
+    c = cJSON_GetObjectItemCaseSensitive(c, "iap");
+    c = cJSON_GetObjectItemCaseSensitive(c, "geral");
+    return cJSON_IsNumber(c) ? c->valueint : -1;
+}
+
+/* Publica (retido, QoS 1) com o mosquitto_pub.
+   Windows (cmd): a mensagem vai entre aspas duplas, com \" por dentro.
+   Mac (sh): vai entre aspas simples; um ' no texto vira '\''. */
+int enviar_mqtt(const char *topico, const char *mensagem)
+{
+    char esc[3500];
+    char cmd[4096];
+    int j = 0;
+
+    for (int i = 0; mensagem[i] && j < (int)sizeof esc - 5; i++) {
+#ifdef _WIN32
+        if (mensagem[i] == '"') esc[j++] = '\\';
+        esc[j++] = mensagem[i];
+#else
+        if (mensagem[i] == '\'') {
+            memcpy(esc + j, "'\\''", 4);
+            j += 4;
+        } else {
+            esc[j++] = mensagem[i];
+        }
+#endif
+    }
+    esc[j] = '\0';
+
+#ifdef _WIN32
+    snprintf(cmd, sizeof cmd, "mosquitto_pub -h %s -t %s -r -q 1 -m \"%s\"", BROKER, topico, esc);
+#else
+    snprintf(cmd, sizeof cmd, "mosquitto_pub -h %s -t %s -r -q 1 -m '%s'", BROKER, topico, esc);
+#endif
+    return system(cmd);
+}
+
+char *ler_arquivo_para_string(const char *filename)
+{
     FILE *file = fopen(filename, "rb");
     if (file == NULL) {
-        printf("Erro: Não foi possível abrir o arquivo %s\n", filename);
+        printf("Erro: nao foi possivel abrir %s\n", filename);
         return NULL;
     }
-
-    // Descobre o tamanho do arquivo
     fseek(file, 0, SEEK_END);
     long length = ftell(file);
     fseek(file, 0, SEEK_SET);
 
-    // Aloca memória para o conteúdo + o caractere nulo '\0'
-    char *buffer = (char*)malloc(length + 1);
+    char *buffer = (char *)malloc(length + 1);
     if (buffer == NULL) {
-        printf("Erro de alocação de memória.\n");
+        printf("Erro de alocacao de memoria.\n");
         fclose(file);
         return NULL;
     }
-
-    // Lê o conteúdo do arquivo para o buffer
-    size_t read_bytes = fread(buffer, 1, length, file);
-    buffer[read_bytes] = '\0'; // Garante o término da string
-
+    size_t lidos = fread(buffer, 1, length, file);
+    buffer[lidos] = '\0';
     fclose(file);
     return buffer;
 }
-

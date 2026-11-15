@@ -34,8 +34,7 @@ Este arquivo é lido pelo agente do Antigravity (AGENTS.md) e pelo Claude Code (
 | `dados/essenciais/mqtt/` | Mensagens pequenas por local (`locais/<id>.json`), `indice.json` e `sensores.json` (qual sensor do carrinho se compara com qual dado). |
 | `dados/srtm30/` | 27 blocos NASA SRTMGL30 v002 (`.zip`) e `altitude.py`. |
 | `firmware/` | `arduino_carrinho/` (sketch dos sensores), `ponte_serial_mqtt.py` (ponte USB → MQTT no computador), `esp32_ponte_mqtt/` (ESP32 opcional, só como ponte Wi-Fi). Ver `firmware/README.md`. |
-| `Projeto_C/Seletor/` | Seletor em C (Lua/Marte → alvo → top 3 → MQTT → ponte Bluetooth). Lê `analogos_completo.json`. |
-| `Projeto_C/NasaSpace/` | Tela em C (Code::Blocks) que lê `tela_carrinho.json` com cJSON (`Bibliotecas/cJSON.h`, `funcoesJSON.h`). |
+| `Projeto_C/NasaSpace/` | Tela em C (Code::Blocks): `main.c` (seletor Lua/Marte → alvo → top 3 → MQTT → ponte Bluetooth) e `tela_local.c` (tela do local escolhido). Lê um JSON só, `dados/essenciais/analogos_completo.json`, com cJSON (`Bibliotecas/cJSON.h`). |
 | Notebooks | `01_dados_terra.ipynb` fica fora do git (Colab/Drive). |
 
 ### `tela_carrinho.json`, em resumo
@@ -85,7 +84,7 @@ Sensores → Arduino Uno/Nano (sem Wi-Fi) → Bluetooth HC-05 (ou USB), 1 linha 
 ```
 
 - **Decisão:** a comunicação com o carrinho é por **Bluetooth** (HC-05/HC-06 na Serial de hardware, D0/D1, 115200). No computador o módulo vira uma porta serial, então a ponte é a mesma do USB, só com `--porta`.
-- **Seletor em C** (`Projeto_C/Seletor/seletor.c`, projeto Code::Blocks próprio, separado da tela em `Projeto_C/NasaSpace`, que é de outro colega e lê o `tela_carrinho.json`): Lua/Marte → alvo → top 3 análogos (`analogos_completo.json`: `ranking_por_alvo` e `locais[].comparacoes.<alvo>.iap.geral`) → publica em `illuminat-horizontes/selecao` com `mosquitto_pub` → abre a ponte com `--porta <BT> --local <id>`. Acha os arquivos pela pasta do executável (Mac e Windows); a porta BT vai como argumento (`Seletor COM7`). Usa a cJSON de `Projeto_C/NasaSpace`.
+- **Tela em C** (`Projeto_C/NasaSpace`, um programa só): Lua/Marte → alvo → top 3 análogos (`ranking_por_alvo` e `locais[].comparacoes.<alvo>.iap.geral`) → tela do local (`tela_local.c`: IAP e perfis, 9 dimensões para aquele alvo, Terra x alvo, funciona/quebra/testes, sempre quebra, sensores do carrinho via `mqtt/sensores.json`) → publica em `illuminat-horizontes/selecao` com `mosquitto_pub` → abre a ponte com `--porta <BT> --local <id>`. Lê só o `analogos_completo.json` (direto de `dados/essenciais/`, sem cópia em `bin/Debug`). Acha os arquivos pela pasta do executável (Mac e Windows); a porta BT vai como argumento (`NasaSpace COM7`).
 - **Decisão:** os sensores ficam no **Arduino**. O ESP32 não serviu para os sensores; ele é **opcional, só como ponte Wi-Fi** (`firmware/esp32_ponte_mqtt`, buffer 2048). Não propor ler sensores no ESP32.
 - **Mensagem:** `{"temp":24.1,"uv":6.2,"pm25":14,"solar":410,"soil":22,"tilt":3.4,"vib":0.08,"slip":5}`. Manter estas chaves. Chaves ausentes aparecem como "–".
 - O sensor `temp` mede o **ar** e é comparado com `temp_ar_c` (NASA POWER T2M).
@@ -97,7 +96,7 @@ Sensores → Arduino Uno/Nano (sem Wi-Fi) → Bluetooth HC-05 (ou USB), 1 linha 
 
 1. Conferir as coordenadas das 9 regiões do Artemis III no mapa oficial da NASA e tirar o `coord_aprox`.
 2. Quando a task do AppEEARS terminar, rodar `--appeears`, depois `gerar_mqtt.py` e `web/tools/gerar_dados_site.py`.
-3. Seletor em C (`Projeto_C/Seletor`): testar no Windows (Code::Blocks + Mosquitto no PATH) e com o HC-05 pareado; depois, se preciso, mandar a seleção de volta ao Arduino pelo Bluetooth e assinar o MQTT para mostrar o carrinho ao vivo.
+3. Tela em C (`Projeto_C/NasaSpace`): testar no Windows (Code::Blocks + Mosquitto no PATH) e com o HC-05 pareado; depois assinar `illuminat-horizontes/carrinho` e passar a leitura para `tela_local_mostrar(..., leitura)`, que já tem a coluna "Ao vivo".
 4. Montar o carrinho com os sensores escolhidos no topo de `arduino_carrinho.ino` e testar o fluxo completo até o site.
 5. Atualizar o `README.md` com o nome Illuminat Horizontes e o fluxo com Arduino.
 6. Preparar a apresentação e o vídeo seguindo a história em 3 atos do plano (`docs/`).
