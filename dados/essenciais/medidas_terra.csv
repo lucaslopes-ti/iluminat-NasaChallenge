@@ -9,6 +9,7 @@ vargeao,sol_max_graus,86.6,graus,calculado,calculo_solar,-,formulas de declinaca
 vargeao,frac_sol_baixo,0.13,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 vargeao,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 vargeao,frac_ano_noite_continua,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
+vargeao,frac_tempo_sol,0.5,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 vargeao,insolacao_toa_wm2,375,W/m2,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 vargeao,ndvi_medio,0.72,indice,medido,mod13c2,MOD13C2 v061 (CMG 0.05 Deg Monthly NDVI),doi:10.5067/MODIS/MOD13C2.061,"media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
 vargeao,lst_dia_c,33,C,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,"TS_MAX: maxima da temperatura da superficie, media dos 12 meses (MERRA-2)"
@@ -34,6 +35,7 @@ vista_alegre,sol_max_graus,87.5,graus,calculado,calculo_solar,-,formulas de decl
 vista_alegre,frac_sol_baixo,0.13,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 vista_alegre,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 vista_alegre,frac_ano_noite_continua,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
+vista_alegre,frac_tempo_sol,0.5,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 vista_alegre,insolacao_toa_wm2,378,W/m2,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 vista_alegre,ndvi_medio,0.67,indice,medido,mod13c2,MOD13C2 v061 (CMG 0.05 Deg Monthly NDVI),doi:10.5067/MODIS/MOD13C2.061,"media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
 vista_alegre,lst_dia_c,33,C,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,"TS_MAX: maxima da temperatura da superficie, media dos 12 meses (MERRA-2)"
@@ -59,6 +61,7 @@ cangalha,sol_max_graus,89.9,graus,calculado,calculo_solar,-,formulas de declinac
 cangalha,frac_sol_baixo,0.12,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 cangalha,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 cangalha,frac_ano_noite_continua,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
+cangalha,frac_tempo_sol,0.5,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 cangalha,insolacao_toa_wm2,412,W/m2,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 cangalha,ndvi_medio,0.63,indice,medido,mod13c2,MOD13C2 v061 (CMG 0.05 Deg Monthly NDVI),doi:10.5067/MODIS/MOD13C2.061,"media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
 cangalha,lst_dia_c,45,C,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,"TS_MAX: maxima da temperatura da superficie, media dos 12 meses (MERRA-2)"
@@ -84,6 +87,7 @@ araguainha,sol_max_graus,89.9,graus,calculado,calculo_solar,-,formulas de declin
 araguainha,frac_sol_baixo,0.12,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 araguainha,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 araguainha,frac_ano_noite_continua,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
+araguainha,frac_tempo_sol,0.5,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 araguainha,insolacao_toa_wm2,399,W/m2,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 araguainha,ndvi_medio,0.61,indice,medido,mod13c2,MOD13C2 v061 (CMG 0.05 Deg Monthly NDVI),doi:10.5067/MODIS/MOD13C2.061,"media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
 araguainha,lst_dia_c,40,C,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,"TS_MAX: maxima da temperatura da superficie, media dos 12 meses (MERRA-2)"
@@ -109,6 +113,7 @@ carajas,sol_max_graus,89.9,graus,calculado,calculo_solar,-,formulas de declinaca
 carajas,frac_sol_baixo,0.12,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 carajas,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 carajas,frac_ano_noite_continua,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
+carajas,frac_tempo_sol,0.5,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 carajas,insolacao_toa_wm2,413,W/m2,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 carajas,ndvi_medio,0.78,indice,medido,mod13c2,MOD13C2 v061 (CMG 0.05 Deg Monthly NDVI),doi:10.5067/MODIS/MOD13C2.061,"media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
 carajas,lst_dia_c,42,C,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,"TS_MAX: maxima da temperatura da superficie, media dos 12 meses (MERRA-2)"
@@ -134,6 +139,7 @@ lencois,sol_max_graus,89.9,graus,calculado,calculo_solar,-,formulas de declinaca
 lencois,frac_sol_baixo,0.11,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 lencois,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 lencois,frac_ano_noite_continua,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
+lencois,frac_tempo_sol,0.5,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 lencois,insolacao_toa_wm2,415,W/m2,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 lencois,ndvi_medio,0.31,indice,medido,mod13c2,MOD13C2 v061 (CMG 0.05 Deg Monthly NDVI),doi:10.5067/MODIS/MOD13C2.061,"media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
 lencois,lst_dia_c,35,C,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,"TS_MAX: maxima da temperatura da superficie, media dos 12 meses (MERRA-2)"
@@ -159,6 +165,7 @@ raso_catarina,sol_max_graus,90.0,graus,calculado,calculo_solar,-,formulas de dec
 raso_catarina,frac_sol_baixo,0.12,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 raso_catarina,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 raso_catarina,frac_ano_noite_continua,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
+raso_catarina,frac_tempo_sol,0.5,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 raso_catarina,insolacao_toa_wm2,410,W/m2,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 raso_catarina,ndvi_medio,0.59,indice,medido,mod13c2,MOD13C2 v061 (CMG 0.05 Deg Monthly NDVI),doi:10.5067/MODIS/MOD13C2.061,"media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
 raso_catarina,lst_dia_c,47,C,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,"TS_MAX: maxima da temperatura da superficie, media dos 12 meses (MERRA-2)"
@@ -184,6 +191,7 @@ gilbues,sol_max_graus,89.8,graus,calculado,calculo_solar,-,formulas de declinaca
 gilbues,frac_sol_baixo,0.12,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 gilbues,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 gilbues,frac_ano_noite_continua,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
+gilbues,frac_tempo_sol,0.5,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 gilbues,insolacao_toa_wm2,410,W/m2,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 gilbues,ndvi_medio,0.49,indice,medido,mod13c2,MOD13C2 v061 (CMG 0.05 Deg Monthly NDVI),doi:10.5067/MODIS/MOD13C2.061,"media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
 gilbues,lst_dia_c,46,C,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,"TS_MAX: maxima da temperatura da superficie, media dos 12 meses (MERRA-2)"
@@ -209,6 +217,7 @@ lonar,sol_max_graus,90.0,graus,calculado,calculo_solar,-,formulas de declinacao 
 lonar,frac_sol_baixo,0.12,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 lonar,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 lonar,frac_ano_noite_continua,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
+lonar,frac_tempo_sol,0.5,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 lonar,insolacao_toa_wm2,393,W/m2,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 lonar,ndvi_medio,0.49,indice,medido,mod13c2,MOD13C2 v061 (CMG 0.05 Deg Monthly NDVI),doi:10.5067/MODIS/MOD13C2.061,"media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
 lonar,lst_dia_c,48,C,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,"TS_MAX: maxima da temperatura da superficie, media dos 12 meses (MERRA-2)"
@@ -234,6 +243,7 @@ lut,sol_max_graus,82.9,graus,calculado,calculo_solar,-,formulas de declinacao so
 lut,frac_sol_baixo,0.14,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 lut,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 lut,frac_ano_noite_continua,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
+lut,frac_tempo_sol,0.5,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 lut,insolacao_toa_wm2,364,W/m2,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 lut,ndvi_medio,0.08,indice,medido,mod13c2,MOD13C2 v061 (CMG 0.05 Deg Monthly NDVI),doi:10.5067/MODIS/MOD13C2.061,"media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
 lut,lst_dia_c,53,C,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,"TS_MAX: maxima da temperatura da superficie, media dos 12 meses (MERRA-2)"
@@ -259,6 +269,7 @@ dallol,sol_max_graus,89.9,graus,calculado,calculo_solar,-,formulas de declinacao
 dallol,frac_sol_baixo,0.12,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 dallol,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 dallol,frac_ano_noite_continua,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
+dallol,frac_tempo_sol,0.5,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 dallol,insolacao_toa_wm2,404,W/m2,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 dallol,ndvi_medio,0.07,indice,medido,mod13c2,MOD13C2 v061 (CMG 0.05 Deg Monthly NDVI),doi:10.5067/MODIS/MOD13C2.061,"media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
 dallol,lst_dia_c,48,C,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,"TS_MAX: maxima da temperatura da superficie, media dos 12 meses (MERRA-2)"
@@ -284,6 +295,7 @@ qaidam,sol_max_graus,74.8,graus,calculado,calculo_solar,-,formulas de declinacao
 qaidam,frac_sol_baixo,0.15,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 qaidam,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 qaidam,frac_ano_noite_continua,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
+qaidam,frac_tempo_sol,0.5,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 qaidam,insolacao_toa_wm2,334,W/m2,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 qaidam,ndvi_medio,0.05,indice,medido,mod13c2,MOD13C2 v061 (CMG 0.05 Deg Monthly NDVI),doi:10.5067/MODIS/MOD13C2.061,"media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
 qaidam,lst_dia_c,31,C,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,"TS_MAX: maxima da temperatura da superficie, media dos 12 meses (MERRA-2)"
@@ -309,6 +321,7 @@ svalbard,sol_max_graus,34.0,graus,calculado,calculo_solar,-,formulas de declinac
 svalbard,frac_sol_baixo,0.31,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 svalbard,frac_ano_sol_continuo,0.35,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 svalbard,frac_ano_noite_continua,0.35,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
+svalbard,frac_tempo_sol,0.5,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 svalbard,insolacao_toa_wm2,179,W/m2,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 svalbard,ndvi_medio,-0.0,indice,medido,mod13c2,MOD13C2 v061 (CMG 0.05 Deg Monthly NDVI),doi:10.5067/MODIS/MOD13C2.061,"media de 48 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
 svalbard,lst_dia_c,1,C,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,"TS_MAX: maxima da temperatura da superficie, media dos 12 meses (MERRA-2)"
@@ -334,6 +347,7 @@ atacama,sol_max_graus,89.4,graus,calculado,calculo_solar,-,formulas de declinaca
 atacama,frac_sol_baixo,0.13,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 atacama,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 atacama,frac_ano_noite_continua,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
+atacama,frac_tempo_sol,0.5,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 atacama,insolacao_toa_wm2,383,W/m2,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 atacama,ndvi_medio,0.09,indice,medido,mod13c2,MOD13C2 v061 (CMG 0.05 Deg Monthly NDVI),doi:10.5067/MODIS/MOD13C2.061,"media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
 atacama,lst_dia_c,42,C,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,"TS_MAX: maxima da temperatura da superficie, media dos 12 meses (MERRA-2)"
@@ -359,6 +373,7 @@ dry_valleys,sol_max_graus,35.9,graus,calculado,calculo_solar,-,formulas de decli
 dry_valleys,frac_sol_baixo,0.33,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 dry_valleys,frac_ano_sol_continuo,0.32,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 dry_valleys,frac_ano_noite_continua,0.32,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
+dry_valleys,frac_tempo_sol,0.5,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 dry_valleys,insolacao_toa_wm2,181,W/m2,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 dry_valleys,ndvi_medio,0.0,indice,provisorio,mod13c2,MOD13C2 v061 (CMG 0.05 Deg Monthly NDVI),doi:10.5067/MODIS/MOD13C2.061,MOD13C2 nao cobre a Antartida; 0 = deserto polar sem vegetacao (Copernicus Sentinel-2 pode confirmar)
 dry_valleys,lst_dia_c,-13,C,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,"TS_MAX: maxima da temperatura da superficie, media dos 12 meses (MERRA-2)"
@@ -371,7 +386,7 @@ dry_valleys,albedo_medio,0.56,fracao,medido,nasa_power,TS / TS_MAX / TS_MIN / T2
 dry_valleys,aod_medio,0.0,adimensional,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,AOD_55: profundidade optica de aerossol em 550 nm (MERRA-2)
 dry_valleys,chuva_anual_mm,80,mm,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,"PRECTOTCORR: chuva corrigida, media anual (MERRA-2/GPM)"
 dry_valleys,vento_10m_ms,7.0,m/s,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,"WS10M: vento a 10 m, media anual (MERRA-2)"
-dry_valleys,pressao_kpa,101.3,kPa,calculado,fisica,-,NASA Planetary Fact Sheets,atmosfera padrao pela altitude
+dry_valleys,pressao_kpa,,kPa,sem_dado,fisica,-,NASA Planetary Fact Sheets,"sem altitude (fora do SRTM30), entao sem pressao calculada"
 dry_valleys,gravidade_g,1.0,g,referencia,fisica,-,NASA Planetary Fact Sheets,
 dry_valleys,dia_local_h,24.0,h,referencia,fisica,-,NASA Planetary Fact Sheets,
 haughton,elev_media_m,251,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,1296 pixels de ~1 km na caixa do local
@@ -384,6 +399,7 @@ haughton,sol_max_graus,38.1,graus,calculado,calculo_solar,-,formulas de declinac
 haughton,frac_sol_baixo,0.36,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 haughton,frac_ano_sol_continuo,0.28,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 haughton,frac_ano_noite_continua,0.28,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
+haughton,frac_tempo_sol,0.5,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 haughton,insolacao_toa_wm2,185,W/m2,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 haughton,ndvi_medio,0.05,indice,medido,mod13c2,MOD13C2 v061 (CMG 0.05 Deg Monthly NDVI),doi:10.5067/MODIS/MOD13C2.061,"media de 54 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
 haughton,lst_dia_c,1,C,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,"TS_MAX: maxima da temperatura da superficie, media dos 12 meses (MERRA-2)"
@@ -409,6 +425,7 @@ mauna_kea,sol_max_graus,89.9,graus,calculado,calculo_solar,-,formulas de declina
 mauna_kea,frac_sol_baixo,0.12,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 mauna_kea,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 mauna_kea,frac_ano_noite_continua,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
+mauna_kea,frac_tempo_sol,0.5,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 mauna_kea,insolacao_toa_wm2,393,W/m2,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 mauna_kea,ndvi_medio,0.33,indice,medido,mod13c2,MOD13C2 v061 (CMG 0.05 Deg Monthly NDVI),doi:10.5067/MODIS/MOD13C2.061,"media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
 mauna_kea,lst_dia_c,31,C,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,"TS_MAX: maxima da temperatura da superficie, media dos 12 meses (MERRA-2)"
@@ -434,6 +451,7 @@ rio_tinto,sol_max_graus,75.7,graus,calculado,calculo_solar,-,formulas de declina
 rio_tinto,frac_sol_baixo,0.15,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 rio_tinto,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 rio_tinto,frac_ano_noite_continua,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
+rio_tinto,frac_tempo_sol,0.5,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 rio_tinto,insolacao_toa_wm2,337,W/m2,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 rio_tinto,ndvi_medio,0.49,indice,medido,mod13c2,MOD13C2 v061 (CMG 0.05 Deg Monthly NDVI),doi:10.5067/MODIS/MOD13C2.061,"media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
 rio_tinto,lst_dia_c,41,C,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,"TS_MAX: maxima da temperatura da superficie, media dos 12 meses (MERRA-2)"

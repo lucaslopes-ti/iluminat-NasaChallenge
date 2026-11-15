@@ -48,11 +48,14 @@ static void barra(int pct, int tam)
     for (int i = 0; i < tam; i++) putchar(i < cheio ? '#' : '.');
 }
 
-/* valores[chave] com unidade; "fracao" vira % */
+/* valores[chave] com unidade; "fracao" vira %.
+   Zero que quer dizer "nao existe" (Lua sem ar, Marte sem chuva) vira "nao ha". */
 static void valor_fmt(cJSON *valores, const char *chave, char *saida, int tam)
 {
-    cJSON *v = obj(obj(valores, chave), "valor");
-    const char *un = txt(obj(valores, chave), "unidade");
+    cJSON *item = obj(valores, chave);
+    cJSON *v = obj(item, "valor");
+    const char *un = txt(item, "unidade");
+    const char *fonte = txt(item, "fonte");
 
     if (!cJSON_IsNumber(v)) {
         snprintf(saida, tam, "%s", SEM_DADO);
@@ -60,6 +63,13 @@ static void valor_fmt(cJSON *valores, const char *chave, char *saida, int tam)
     }
     double x = v->valuedouble;
     if (x > -0.005 && x < 0.005) x = 0.0;      /* evita "-0" */
+
+    if (x == 0.0 && (strcmp(fonte, "sem_atmosfera") == 0 || strcmp(fonte, "fisico_marte") == 0)) {
+        snprintf(saida, tam, "nao ha");
+        return;
+    }
+    if (strcmp(chave, "elev_relativa_m") == 0 && x < 0)
+        x = -x;                                 /* desnivel: o tamanho, sem sinal */
 
     if (strcmp(un, "fracao") == 0)
         snprintf(saida, tam, "%.0f %%", x * 100);
@@ -92,7 +102,7 @@ void tela_local_mostrar(cJSON *raiz, cJSON *local, cJSON *alvo,
     const char *medidas[] = {
         "declividade_media", "frac_transitavel_15", "elev_relativa_m",
         "lst_dia_c", "lst_noite_c", "amplitude_termica_c",
-        "insolacao_toa_wm2", "sol_max_graus", "frac_ano_sol_continuo",
+        "insolacao_toa_wm2", "sol_max_graus", "frac_tempo_sol",
         "albedo_medio", "aod_medio", "chuva_anual_mm", "ndvi_medio",
         "pressao_kpa", "gravidade_g", "dia_local_h", NULL
     };

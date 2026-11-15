@@ -54,6 +54,7 @@ VARIAVEIS = {
     "frac_sol_baixo":          ("Luz com Sol abaixo de 10 graus", "fracao", 2),
     "frac_ano_sol_continuo":   ("Ano com Sol 24 h", "fracao", 2),
     "frac_ano_noite_continua": ("Ano com noite 24 h", "fracao", 2),
+    "frac_tempo_sol":          ("Tempo com Sol", "fracao", 2),
     "insolacao_toa_wm2":       ("Sol no topo da atmosfera", "W/m2", 0),
     "iluminacao_frac":         ("Iluminacao (com relevo)", "fracao", 2),
     "lst_dia_c":               ("Temp. superficie maxima", "C", 0),
@@ -179,6 +180,7 @@ def luz(lat, corpo):
         "frac_sol_baixo": float((dia & (el < 10)).sum() / max(dia.sum(), 1)),
         "frac_ano_sol_continuo": float(np.mean(el.min(axis=1) > 0)),
         "frac_ano_noite_continua": float(np.mean(el.max(axis=1) <= 0)),
+        "frac_tempo_sol": float(dia.mean()),
         "insolacao_toa_wm2": float(s0 * np.clip(sen, 0, None).mean()),
     }
 
@@ -371,6 +373,13 @@ def main():
                 vals[k] = {"valor": v, "status": "referencia", "fonte": f, "nota": nota}
         for k, v in luz(a["lat"], pad["corpo"]).items():
             vals[k] = {"valor": v, "status": "calculado", "fonte": "calculo_solar", "nota": "horizonte plano"}
+        if "iluminacao_frac" in vals:        # com relevo (LOLA) vale mais que o horizonte plano
+            vals["frac_tempo_sol"] = {**vals["iluminacao_frac"], "nota": vals["iluminacao_frac"]["nota"] + " (com relevo)"}
+        dia, noite = vals.get("lst_dia_c", {}).get("valor"), vals.get("lst_noite_c", {}).get("valor")
+        amp = vals.get("amplitude_termica_c", {}).get("valor")
+        if dia is not None and noite is not None and amp != dia - noite:   # amplitude coerente com max e min
+            vals["amplitude_termica_c"] = {"valor": dia - noite, "status": "referencia",
+                                           "fonte": vals["lst_dia_c"]["fonte"], "nota": "lst_dia_c - lst_noite_c"}
         tags = dict(pad["tags"])
         tags.update(a.get("tags", {}))
         alvos.append({**{k: v for k, v in a.items() if k not in ("valores", "tags", "padrao")},
@@ -412,8 +421,11 @@ def main():
         vals.update(ndvi_mod13c2.get(l["id"], {}))
         for k, v in externos.get(l["id"], {}).items():
             vals[k] = {"valor": v, "status": "medido", "fonte": fonte_ext[k], "nota": origem}
-        vals["pressao_kpa"] = {"valor": 101.3 * math.exp(-(vals["elev_media_m"]["valor"] or 0) / 8400),
-                               "status": "calculado", "fonte": "fisica", "nota": "atmosfera padrao pela altitude"}
+        elev = vals["elev_media_m"]["valor"]
+        vals["pressao_kpa"] = ({"valor": 101.3 * math.exp(-elev / 8400), "status": "calculado", "fonte": "fisica",
+                                "nota": "atmosfera padrao pela altitude"} if elev is not None else
+                               {"valor": None, "status": "sem_dado", "fonte": "fisica",
+                                "nota": "sem altitude (fora do SRTM30), entao sem pressao calculada"})
         vals["gravidade_g"] = {"valor": 1.0, "status": "referencia", "fonte": "fisica", "nota": ""}
         vals["dia_local_h"] = {"valor": 24.0, "status": "referencia", "fonte": "fisica", "nota": ""}
         terra.append({**{k: v for k, v in l.items() if k != "tags"}, "valores": vals, "tags": l["tags"]})

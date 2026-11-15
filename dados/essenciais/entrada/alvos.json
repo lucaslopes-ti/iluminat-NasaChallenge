@@ -77,7 +77,7 @@
     "frac_decliv_8": [0.45, "lro_lola", "estimativa a partir dos mapas de declividade LOLA"],
     "frac_transitavel_15": [0.75, "lro_lola", "estimativa a partir dos mapas de declividade LOLA"],
     "iluminacao_frac": [0.85, "lro_lola", "pontos da borda com sol até ~80–90% do ano (Mazarico et al. 2011)"],
-    "lst_noite_c": [-230, "lro_diviner", "fundo em sombra permanente (~40–50 K)"]
+    "lst_noite_c": [-200, "lro_diviner", "borda na noite polar (~70–90 K); o fundo em sombra permanente chega a ~40–50 K (-230 °C)"]
    },
    "tags": {"terreno": ["cratera_impacto", "borda_cratera"]},
    "fontes": ["lro_lola", "lro_diviner", "lro_lamp_lend"]
