@@ -41,6 +41,13 @@ RAIZ = os.path.dirname(os.path.dirname(AQUI))
 ENTRADA = os.path.join(AQUI, "entrada")
 PASTA_POWER = os.path.join(ENTRADA, "nasa_power")
 SRTM = os.path.join(RAIZ, "dados", "srtm30")
+MOLA = os.path.join(RAIZ, "dados", "mola", "megt90n000cb.img")   # MGS MOLA MEGDR, 4 pixels/grau
+
+# Pressao de Marte por local: a media do MEDA em Jezero ajustada pela altitude MOLA de cada alvo.
+# MEDA (Perseverance): media diaria de 625 a 761 Pa nos sois 15-460 (Sanchez-Lavega et al. 2023,
+# JGR Planets, doi:10.1029/2022JE007480); usamos o meio da faixa. Escala de altura de Marte: 11,1 km (NASA Mars Fact Sheet).
+P_JEZERO_KPA = 0.693
+ESCALA_ALTURA_MARTE_M = 11100.0
 
 # variável -> (rótulo sem acento, para o terminal; unidade; casas decimais)
 VARIAVEIS = {
@@ -54,6 +61,7 @@ VARIAVEIS = {
     "frac_sol_baixo":          ("Luz com Sol abaixo de 10 graus", "fracao", 2),
     "frac_ano_sol_continuo":   ("Ano com Sol 24 h", "fracao", 2),
     "frac_ano_noite_continua": ("Ano com noite 24 h", "fracao", 2),
+    "frac_tempo_sol":          ("Tempo com Sol", "fracao", 2),
     "insolacao_toa_wm2":       ("Sol no topo da atmosfera", "W/m2", 0),
     "iluminacao_frac":         ("Iluminacao (com relevo)", "fracao", 2),
     "lst_dia_c":               ("Temp. superficie maxima", "C", 0),
@@ -136,7 +144,11 @@ def _grade(lat_min, lat_max, lon_min, lon_max):
 
 def terreno(lat, caixa):
     """Definições do notebook 01 (célula 5) aplicadas ao SRTMGL30 (~1 km)."""
-    z = _grade(*caixa)
+    return metricas_relevo(_grade(*caixa), lat)
+
+
+def metricas_relevo(z, lat):
+    """Relevo de uma grade de 30" (~1 km). Usada pelo SRTM30 e pelo Copernicus DEM (relevo_copernicus.py)."""
     ok = ~np.isnan(z)
     if ok.sum() < 9:
         return None
@@ -164,6 +176,19 @@ def terreno(lat, caixa):
 
 
 # ---------------------------------------------------------------- luz (geometria solar)
+_mola = None
+
+
+def altitude_mola(lat, lon):
+    """Altitude MOLA (m, sobre o areoide) no pixel de 1/4 de grau que contem lat/lon (lon leste)."""
+    global _mola
+    if _mola is None:
+        _mola = np.fromfile(MOLA, ">i2").reshape(720, 1440) if os.path.exists(MOLA) else False
+    if _mola is False:
+        return None
+    return float(_mola[min(719, int((90 - lat) * 4)), int((lon % 360) * 4) % 1440])
+
+
 def luz(lat, corpo):
     """Horizonte plano e órbita circular: 360 'dias' x 360 ângulos horários."""
     obl, s0 = CORPOS[corpo]
@@ -179,6 +204,7 @@ def luz(lat, corpo):
         "frac_sol_baixo": float((dia & (el < 10)).sum() / max(dia.sum(), 1)),
         "frac_ano_sol_continuo": float(np.mean(el.min(axis=1) > 0)),
         "frac_ano_noite_continua": float(np.mean(el.max(axis=1) <= 0)),
+        "frac_tempo_sol": float(dia.mean()),
         "insolacao_toa_wm2": float(s0 * np.clip(sen, 0, None).mean()),
     }
 
@@ -371,6 +397,29 @@ def main():
                 vals[k] = {"valor": v, "status": "referencia", "fonte": f, "nota": nota}
         for k, v in luz(a["lat"], pad["corpo"]).items():
             vals[k] = {"valor": v, "status": "calculado", "fonte": "calculo_solar", "nota": "horizonte plano"}
+        if "iluminacao_frac" in vals:        # com relevo (LOLA) vale mais que o horizonte plano
+            vals["frac_tempo_sol"] = {**vals["iluminacao_frac"], "nota": vals["iluminacao_frac"]["nota"] + " (com relevo)"}
+        dia, noite = vals.get("lst_dia_c", {}).get("valor"), vals.get("lst_noite_c", {}).get("valor")
+        amp = vals.get("amplitude_termica_c", {}).get("valor")
+        if dia is not None and noite is not None and amp != dia - noite:   # amplitude coerente com max e min
+            vals["amplitude_termica_c"] = {"valor": dia - noite, "status": "referencia",
+                                           "fonte": vals["lst_dia_c"]["fonte"], "nota": "lst_dia_c - lst_noite_c"}
+        if pad["corpo"] == "mars":                  # pressao pela altitude de cada alvo
+            jz = next(x for x in cfg_alvos["alvos"] if x["id"] == "jezero")
+            h_ref = altitude_mola(jz["lat"], jz["lon"])
+            lat_p, lon_p = a.get("ponto_pressao", [a["lat"], a["lon"]])
+            h = altitude_mola(lat_p, lon_p)
+            if h is not None and h_ref is not None:
+                onde = a.get("ponto_pressao_nota", "na coordenada do alvo")
+                if a["id"] == "jezero":
+                    vals["pressao_kpa"] = {"valor": P_JEZERO_KPA, "status": "referencia", "fonte": "m2020_meda",
+                                           "nota": "meio da faixa de 625 a 761 Pa (media diaria, sois 15-460; "
+                                                   f"Sanchez-Lavega et al. 2023, JGR Planets, doi:10.1029/2022JE007480); MOLA {h:.0f} m"}
+                else:
+                    vals["pressao_kpa"] = {"valor": P_JEZERO_KPA * math.exp(-(h - h_ref) / ESCALA_ALTURA_MARTE_M),
+                                           "status": "calculado", "fonte": "mgs_mola",
+                                           "nota": f"Jezero (MEDA, {P_JEZERO_KPA} kPa a {h_ref:.0f} m) ajustado pela altitude "
+                                                   f"MOLA {h:.0f} m ({onde}), escala de altura 11,1 km"}
         tags = dict(pad["tags"])
         tags.update(a.get("tags", {}))
         alvos.append({**{k: v for k, v in a.items() if k not in ("valores", "tags", "padrao")},
@@ -396,24 +445,53 @@ def main():
                     "valor": float(r["ndvi_medio"]), "status": "medido", "fonte": "mod13c2",
                     "nota": f"media de {r['n_meses']} meses ({r.get('periodo', '2024')}) na caixa do local (CMG 0,05 grau)"}}
 
+    # relevo fora do SRTM30 (Antartida): Copernicus DEM GLO-90, feito por relevo_copernicus.py
+    relevo_cop = {}
+    if os.path.exists(os.path.join(ENTRADA, "relevo_copernicus.csv")):
+        relevo_cop = {r["local_id"]: r for r in ler_csv("relevo_copernicus.csv")}
+
+    # temperatura da superficie a 1 km (MODIS via ORNL DAAC), feita por modis_ornl.py.
+    # Prioridade: AppEEARS/notebook > ORNL > NASA POWER.
+    modis_ornl = {}
+    if os.path.exists(os.path.join(ENTRADA, "modis_ornl.csv")):
+        modis_ornl = {r["local_id"]: r for r in ler_csv("modis_ornl.csv")}
+
     terra = []
     for l in locais:
         vals = {}
-        t = terreno(l["lat"], l["caixa"])
+        t, fonte_relevo = terreno(l["lat"], l["caixa"]), "srtmgl30"
+        if t is None and l["id"] in relevo_cop:
+            r = relevo_cop[l["id"]]
+            t = {k: float(v) for k, v in r.items() if k not in ("local_id", "blocos", "acesso")}
+            t["_pixels"], fonte_relevo = int(t["_pixels"]), "copernicus_glo90"
         for k in ("elev_media_m", "elev_relativa_m", "declividade_media", "rugosidade_tri_m", "frac_decliv_8", "frac_transitavel_15"):
-            vals[k] = ({"valor": t[k], "status": "medido", "fonte": "srtmgl30",
-                        "nota": f"{t['_pixels']} pixels de ~1 km na caixa do local"} if t else
+            vals[k] = ({"valor": t[k], "status": "medido", "fonte": fonte_relevo,
+                        "nota": f"{t['_pixels']} celulas de ~1 km na caixa do local"
+                                + (" (media dos pixels de 90 m)" if fonte_relevo != "srtmgl30" else "")} if t else
                        {"valor": None, "status": "sem_dado", "fonte": "srtmgl30",
-                        "nota": "fora da cobertura do SRTM30 (90N-60S); usar Copernicus DEM GLO-30"})
+                        "nota": "fora da cobertura do SRTM30 (90N-60S); rodar relevo_copernicus.py"})
         for k, v in luz(l["lat"], "earth").items():
             vals[k] = {"valor": v, "status": "calculado", "fonte": "calculo_solar", "nota": "horizonte plano"}
         vals.update(prov.get(l["id"], {}))
         vals.update(carregar_power(l["id"]))
         vals.update(ndvi_mod13c2.get(l["id"], {}))
+        r = modis_ornl.get(l["id"])
+        if r:
+            for k, fonte, n, desc in (("lst_dia_c", "myd11a2", "n_datas_lst_dia", "LST de dia (Aqua ~13:30)"),
+                                      ("lst_noite_c", "myd11a2", "n_datas_lst_noite", "LST de noite (Aqua ~01:30)")):
+                if r[k] != "":
+                    vals[k] = {"valor": float(r[k]), "status": "medido", "fonte": fonte,
+                               "nota": f"{desc}, media de {r[n]} datas de {r['periodo']}, pixels de terra na caixa (ORNL DAAC)"}
+            if r["lst_dia_c"] != "" and r["lst_noite_c"] != "":
+                vals["amplitude_termica_c"] = {"valor": float(r["lst_dia_c"]) - float(r["lst_noite_c"]), "status": "medido",
+                                               "fonte": "myd11a2", "nota": "LST dia - LST noite (MYD11A2, ORNL DAAC)"}
         for k, v in externos.get(l["id"], {}).items():
             vals[k] = {"valor": v, "status": "medido", "fonte": fonte_ext[k], "nota": origem}
-        vals["pressao_kpa"] = {"valor": 101.3 * math.exp(-(vals["elev_media_m"]["valor"] or 0) / 8400),
-                               "status": "calculado", "fonte": "fisica", "nota": "atmosfera padrao pela altitude"}
+        elev = vals["elev_media_m"]["valor"]
+        vals["pressao_kpa"] = ({"valor": 101.3 * math.exp(-elev / 8400), "status": "calculado", "fonte": "fisica",
+                                "nota": "atmosfera padrao pela altitude"} if elev is not None else
+                               {"valor": None, "status": "sem_dado", "fonte": "fisica",
+                                "nota": "sem altitude (fora do SRTM30), entao sem pressao calculada"})
         vals["gravidade_g"] = {"valor": 1.0, "status": "referencia", "fonte": "fisica", "nota": ""}
         vals["dia_local_h"] = {"valor": 24.0, "status": "referencia", "fonte": "fisica", "nota": ""}
         terra.append({**{k: v for k, v in l.items() if k != "tags"}, "valores": vals, "tags": l["tags"]})
@@ -444,10 +522,22 @@ def main():
             for t in terra:
                 crit_terra[t["id"]][f"{corpo}.{c['id']}"] = avaliar_regra(c["regra"], t)
 
-    validacao = {}
+    # Validacao: cada analogo classico deve ficar bem colocado no alvo que a literatura associa a ele
+    # (alvos_literatura: ids de alvos ou corpos "moon"/"mars"). Vale a melhor posicao entre esses alvos.
+    validacao = {"alvo_da_literatura": {}, "ranking_geral": {}}
+    for t in terra:
+        lit = t.get("alvos_literatura")
+        if t["papel"] != "referencia" or not lit:
+            continue
+        cand = [a["id"] for a in alvos if a["id"] in lit or a["corpo"] in lit]
+        pos = {a: por_alvo[a].index(t["id"]) + 1 for a in cand}
+        melhor = min(cand, key=lambda a: (pos[a], -(resultados[t["id"]][a]["iap"]["geral"] or 0)))
+        validacao["alvo_da_literatura"][t["id"]] = {
+            "alvos_literatura": lit, "porque": t.get("porque_literatura", ""), "melhor_alvo": melhor,
+            "posicao": pos[melhor], "de": len(terra), "iap": resultados[t["id"]][melhor]["iap"]["geral"]}
     for p in perfis:
         ids = [t["id"] for t in rank[p["id"]]]
-        validacao[p["id"]] = {t["id"]: ids.index(t["id"]) + 1 for t in terra if t["papel"] == "referencia"}
+        validacao["ranking_geral"][p["id"]] = {t["id"]: ids.index(t["id"]) + 1 for t in terra if t["papel"] == "referencia"}
 
     gerar_saidas(terra, alvos, dims, perfis, cfg, criterios, fontes, resultados, rank, por_alvo,
                  completo, crit_terra, validacao, melhor_alvo)
@@ -624,7 +714,9 @@ def gerar_saidas(terra, alvos, dims, perfis, cfg, criterios, fontes, resultados,
     for a in alvos:
         print(f"   {a['id']:20s} melhor analogo: {por_alvo[a['id']][0]:14s} IAP {resultados[por_alvo[a['id']][0]][a['id']]['iap']['geral']}")
     print("Destaques por perfil:", {p: rank[p][0]["id"] for p in rank})
-    print("Validacao (posicao das referencias, perfil geral):", validacao["geral"])
+    print("Validacao (posicao de cada referencia no alvo da literatura):")
+    for rid, v in validacao["alvo_da_literatura"].items():
+        print(f"   {rid:12} {v['melhor_alvo']:20} {v['posicao']:2}o de {v['de']}  (IAP {v['iap']})")
 
 
 if __name__ == "__main__":

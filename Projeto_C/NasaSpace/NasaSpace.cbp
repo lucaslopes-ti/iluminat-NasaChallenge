@@ -33,6 +33,7 @@
 		</Compiler>
 		<Unit filename="Bibliotecas/cJSON.h" />
 		<Unit filename="Bibliotecas/funcoesJSON.h" />
+		<Unit filename="cores.h" />
 		<Unit filename="cJSON.c">
 			<Option compilerVar="CC" />
 		</Unit>

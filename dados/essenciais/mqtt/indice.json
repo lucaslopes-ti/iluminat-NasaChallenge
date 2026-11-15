@@ -5,14 +5,14 @@
    "id": "qaidam",
    "nome": "Bacia de Qaidam (yardangs de Lenghu)",
    "alvo": "oxia",
-   "nota_pct": 69,
+   "nota_pct": 68,
    "papel": "descoberta"
   },
   {
    "id": "lut",
    "nome": "Deserto de Lut (yardangs)",
    "alvo": "oxia",
-   "nota_pct": 67,
+   "nota_pct": 66,
    "papel": "descoberta"
   },
   {
@@ -23,11 +23,25 @@
    "papel": "referencia"
   },
   {
+   "id": "dry_valleys",
+   "nome": "Vales Secos de McMurdo",
+   "alvo": "cabeus_b_peak",
+   "nota_pct": 65,
+   "papel": "referencia"
+  },
+  {
    "id": "dallol",
    "nome": "Dallol (Depressão de Danakil)",
    "alvo": "meridiani",
    "nota_pct": 59,
    "papel": "descoberta"
+  },
+  {
+   "id": "haughton",
+   "nome": "Cratera de Haughton",
+   "alvo": "arcadia",
+   "nota_pct": 56,
+   "papel": "referencia"
   },
   {
    "id": "lencois",
@@ -37,11 +51,11 @@
    "papel": "candidato"
   },
   {
-   "id": "haughton",
-   "nome": "Cratera de Haughton",
-   "alvo": "arcadia",
-   "nota_pct": 55,
-   "papel": "referencia"
+   "id": "svalbard",
+   "nome": "Bockfjorden, Svalbard",
+   "alvo": "cabeus_b_peak",
+   "nota_pct": 53,
+   "papel": "descoberta"
   },
   {
    "id": "raso_catarina",
@@ -56,13 +70,6 @@
    "alvo": "oxia",
    "nota_pct": 50,
    "papel": "candidato"
-  },
-  {
-   "id": "svalbard",
-   "nome": "Bockfjorden, Svalbard",
-   "alvo": "malapert",
-   "nota_pct": 50,
-   "papel": "descoberta"
   },
   {
    "id": "rio_tinto",
@@ -119,13 +126,6 @@
    "alvo": "marius",
    "nota_pct": 43,
    "papel": "candidato"
-  },
-  {
-   "id": "dry_valleys",
-   "nome": "Vales Secos de McMurdo",
-   "alvo": "shackleton",
-   "nota_pct": 50,
-   "papel": "referencia"
   }
  ]
 }

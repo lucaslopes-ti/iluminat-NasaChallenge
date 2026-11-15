@@ -14,8 +14,9 @@ Todo valor vem com **status** e **fonte**, ou seja, short name, versão, DOI ou 
 
 | Dimensão | Terra | Lua / Marte |
 |---|---|---|
-| Relevo (elevação, desnível, declividade, rugosidade, áreas < 8° e < 15°) | **medido**: NASA SRTMGL30 v002, 27 blocos em `dados/srtm30/` | **referência**: LRO LOLA, MGS MOLA |
-| Temperatura da superfície (máx., mín., ΔT, média) e do ar a 2 m (média e variação diária) | **medido**: NASA POWER (MERRA-2: TS, TS_MAX, TS_MIN, T2M, T2M_RANGE), médias de 2001–2025 | **referência**: LRO Diviner, Perseverance MEDA, Curiosity REMS |
+| Relevo (elevação, desnível, declividade, rugosidade, áreas < 8° e < 15°) | **medido**: NASA SRTMGL30 v002, 27 blocos em `dados/srtm30/`; na Antártida, Copernicus DEM GLO-90 agregado para 30" (`dados/copernicus_dem/`) | **referência**: LRO LOLA, MGS MOLA |
+| Temperatura da superfície de dia e de noite, e ΔT | **medido**: NASA MYD11A2 v061 (Aqua, 1 km, ~13:30 e ~01:30), 46 compostos de 2024, pixels de terra na caixa, pelo ORNL DAAC | **referência**: LRO Diviner, Perseverance MEDA, Curiosity REMS |
+| Temperatura média da superfície e do ar a 2 m (média e variação diária) | **medido**: NASA POWER (MERRA-2: TS, T2M, T2M_RANGE), médias de 2001–2025 | a Lua não tem ar |
 | Albedo | **medido**: NASA POWER (CERES SYN1deg) | **referência**: LOLA, MGS TES |
 | Poeira (AOD 550 nm) e vento | **medido**: NASA POWER (MERRA-2) | **referência**: Perseverance (opacidade da poeira) |
 | Chuva | **medido**: NASA POWER (PRECTOTCORR) | 0 (valor físico) |
@@ -25,7 +26,7 @@ Todo valor vem com **status** e **fonte**, ou seja, short name, versão, DOI ou 
 
 As respostas da NASA POWER estão salvas em `entrada/nasa_power/`, uma por local, com cabeçalho, versão da API e período. Quem quiser pode conferir ou baixar de novo.
 
-Hoje, de 450 valores da Terra, só 1 continua provisório: o NDVI da McMurdo Dry Valleys, porque o MOD13C2 não cobre a Antártida (ficou 0, deserto polar sem vegetação). Ela também fica sem relevo, porque o SRTM30 não cobre a Antártida. O NDVI de cada ano (2020 a 2025) está em `entrada/ndvi_mod13c2.csv`, o que permite ver se algum ano foi anômalo.
+Hoje, de 450 valores da Terra, só 1 continua provisório: o NDVI da McMurdo Dry Valleys, porque o MOD13C2 não cobre a Antártida (ficou 0, deserto polar sem vegetação). O relevo dela vem do Copernicus DEM GLO-90, porque o SRTM30 não cobre a Antártida. O NDVI de cada ano (2020 a 2025) está em `entrada/ndvi_mod13c2.csv`, o que permite ver se algum ano foi anômalo.
 
 ## Status
 
@@ -43,7 +44,9 @@ Hoje, de 450 valores da Terra, só 1 continua provisório: o NDVI da McMurdo Dry
 
 **Marte.** **Jezero** (Perseverance), **Gale** (Curiosity), **Meridiani** (Opportunity, hematita e jarosita), **Arcadia Planitia** (gelo raso, candidata a pouso humano pelo mapa SWIM) e **Oxia Planum** (rover Rosalind Franklin, da ESA).
 
-As coordenadas das regiões do Artemis III são **aproximadas** (±1°, campo `coord_aprox`) e precisam ser conferidas no mapa oficial da NASA antes de ir para o site.
+As coordenadas das regiões do Artemis III foram conferidas com o Gazetteer of Planetary Nomenclature (USGS/IAU) e com resumos do LPSC 2025; o campo `coord_fonte` diz de onde veio cada uma. Mons Mouton e Nobile Rim 2 usam locais de pouso publicados, e Peak near Cabeus B usa o centro do mosaico NAC da LROC feito para a região. As outras ficam com `coord_aprox` (na borda ou no planalto da feição).
+
+**Pressão de Marte.** Jezero usa o meio da faixa do MEDA (625–761 Pa); os outros alvos ajustam esse valor pela altitude do MOLA (`dados/mola/`), com escala de altura de 11,1 km. Em Gale, a altitude é a do pouso do Curiosity (`ponto_pressao`), porque a coordenada do alvo cai no Monte Sharp.
 
 ## Como as bases são escolhidas
 
@@ -63,7 +66,17 @@ terreno · materiais · temperatura · iluminação · água e gelo · poeira e 
 - **Nota da dimensão:** média dos indicadores disponíveis.
 - **IAP (Índice de Analogia Planetária, 0–100):** média ponderada das dimensões pelo **perfil de missão**. São seis perfis: geral, rover, astrobiologia, gelo/ISRU, base e construção, e energia solar.
 
-**Validação.** Os análogos clássicos (Atacama, Haughton, Mauna Kea, Río Tinto) aparecem perto do topo, o que indica que o método está calibrado. Os novos locais que surgem ao lado deles ganham credibilidade. As posições ficam em `validacao_referencias`.
+**Validação.** Cada análogo clássico tem, em `entrada/locais_terra.json`, o alvo que a literatura associa a ele (`alvos_literatura`, com a referência em `porque_literatura`). O teste é a posição dele, entre os 18 locais, no ranking desse alvo. Hoje os cinco ficam entre os 6 primeiros:
+
+| Referência | Alvo da literatura | Melhor alvo | Posição |
+|---|---|---|---|
+| Atacama | Marte | Oxia Planum | 3º |
+| Haughton | Marte e Lua | Planície de Slater | 2º |
+| Mauna Kea | Lua e Marte | Pico perto de Cabeus B | 4º |
+| Río Tinto | Meridiani | Meridiani Planum | 6º |
+| Dry Valleys | Marte | Arcadia Planitia | 6º |
+
+Os novos locais que aparecem ao lado deles ganham credibilidade. Os resultados ficam em `validacao_referencias.alvo_da_literatura`; a posição no ranking geral, que mistura todos os alvos, continua em `validacao_referencias.ranking_geral`.
 
 **O que sempre quebra:** gravidade, atmosfera, radiação e duração do dia (`sempre_quebra`).
 
@@ -89,10 +102,12 @@ python3 dados/essenciais/gerar_dados.py                    # refaz tudo com o qu
 python3 dados/essenciais/gerar_dados.py --baixar-power     # baixa de novo a NASA POWER
 python3 dados/essenciais/gerar_dados.py --appeears PASTA   # usa os CSVs de Point Sample do AppEEARS
 EARTHDATA_TOKEN_FILE=token.txt python3 dados/essenciais/ndvi_mod13c2.py 2020 2025   # NDVI do LP DAAC (pip install pyhdf)
+python3 dados/essenciais/relevo_copernicus.py              # relevo da Antártida (pip install numpy tifffile imagecodecs)
+python3 dados/essenciais/modis_ornl.py                     # temperatura MYD11A2 1 km pelo ORNL DAAC (sem login, ~20 min, com cache)
 python3 dados/essenciais/gerar_dados.py --notebook terra_locais.parquet
 ```
 
-Ordem de prioridade dos valores da Terra: **AppEEARS/notebook > NASA POWER e MOD13C2 > provisório**. O MODIS do AppEEARS tem 1 km, enquanto a POWER tem de 0,5° a 1°. Quando o AppEEARS chegar, ele substitui também a temperatura e o albedo.
+Ordem de prioridade dos valores da Terra: **AppEEARS/notebook > MODIS pelo ORNL DAAC > NASA POWER e MOD13C2 > provisório**. O MODIS tem 1 km, enquanto a POWER tem de 0,5° a 1°. Quando o AppEEARS chegar, ele substitui o NDVI, a temperatura e o albedo.
 
 Para trocar um alvo, um critério ou uma tag, edite o arquivo em `entrada/` e rode o script de novo.
 
@@ -122,23 +137,23 @@ Rótulos e unidades não têm acento, para não quebrar no terminal do Windows. 
 
 ## Temperatura na tela
 
-Cada local tem, em `dados`, cinco temperaturas (°C, status `medido`, fonte `nasa_power`):
+Cada local tem, em `dados`, cinco temperaturas (°C, status `medido`):
 
-| Campo | O que é | Tem valor do alvo? |
-|---|---|---|
-| `lst_dia_c` | Máxima da superfície (TS_MAX, média dos 12 meses) | sim (Diviner, MEDA, REMS) |
-| `lst_noite_c` | Mínima da superfície (TS_MIN) | sim |
-| `amplitude_termica_c` | Máxima − mínima da superfície | sim |
-| `temp_media_c` | Média anual da superfície (TS) | não |
-| `temp_ar_c` / `amplitude_ar_c` | Ar a 2 m (T2M) e variação diária do ar (T2M_RANGE) | não: a Lua não tem ar |
+| Campo | O que é | Fonte | Tem valor do alvo? |
+|---|---|---|---|
+| `lst_dia_c` | Superfície de dia (~13:30), média do ano, céu limpo | MYD11A2 | sim (Diviner, MEDA, REMS) |
+| `lst_noite_c` | Superfície de noite (~01:30) | MYD11A2 | sim |
+| `amplitude_termica_c` | Dia − noite da superfície | MYD11A2 | sim |
+| `temp_media_c` | Média anual da superfície (TS) | NASA POWER | não |
+| `temp_ar_c` / `amplitude_ar_c` | Ar a 2 m (T2M) e variação diária do ar (T2M_RANGE) | NASA POWER | não: a Lua não tem ar |
 
-O sensor `temp` do carrinho mede o **ar**, então compare com `temp_ar_c`. A comparação com a Lua e Marte é sempre pela **superfície** (`lst_dia_c`, `lst_noite_c`). TS_MAX e TS_MIN são extremos mensais, por isso a amplitude da superfície fica maior que a de um dia comum; a variação diária típica é `amplitude_ar_c`.
+O sensor `temp` do carrinho mede o **ar**, então compare com `temp_ar_c`. A comparação com a Lua e Marte é sempre pela **superfície** (`lst_dia_c`, `lst_noite_c`): um dia e uma noite típicos, como a máxima e a mínima de um dia lunar ou marciano. Nos locais polares a amplitude fica em 2–3 °C, porque na noite polar não há dia. Antes a superfície vinha da POWER (TS_MAX e TS_MIN, extremos de cada mês); a troca mudou as notas em no máximo 1 ponto.
 
 ## Limites conhecidos
 
 - O relevo vem de pixels de ~1 km, então a declividade real é maior. O NASADEM de 30 m (notebook 01) resolve isso.
-- A POWER (0,5°–1°) e o MOD13C2 (0,05° ≈ 5 km) têm resolução grossa e misturam o local com o entorno. Locais pequenos, como Lonar e Dallol, ficam com valores regionais. No Mauna Kea, a célula da POWER mistura o cume com as encostas e o mar, então a temperatura (~21 °C no ar) fica muito acima da do cume (~0 °C).
-- Iluminação calculada com horizonte plano. Na Lua, o relevo muda tudo: os valores com relevo (`iluminacao_frac`) vêm do LOLA.
+- A POWER (0,5°–1°) e o MOD13C2 (0,05° ≈ 5 km) têm resolução grossa e misturam o local com o entorno. Isso ainda afeta o ar, o albedo, a chuva e a poeira. No Mauna Kea, a célula da POWER mistura o cume com as encostas e o mar, então o ar (~21 °C) fica muito acima do cume (~0 °C). A temperatura da superfície já é do MODIS, só com pixels de terra.
+- Iluminação calculada com horizonte plano. Na Lua, o relevo muda tudo: o "Tempo com Sol" (`frac_tempo_sol`), que entra na nota da luz, usa a iluminação com relevo do LOLA (`iluminacao_frac`).
 - Valores de Lua e Marte são números publicados e aproximados, não recortes processados aqui. O próximo passo é calcular a partir dos mapas LOLA, Diviner, MOLA e THEMIS.
 
 ## MQTT (carrinho)
@@ -146,7 +161,7 @@ O sensor `temp` do carrinho mede o **ar**, então compare com `temp_ar_c`. A com
 O carrinho usa um **Arduino** (Uno ou Nano) para ler os sensores. Como o Arduino não tem Wi-Fi, as medições chegam ao MQTT por uma ponte. O caminho principal é o computador:
 
 ```
-sensores -> Arduino --USB (1 linha JSON/s)--> computador: ponte_serial_mqtt.py --> broker --> site / tela em C
+sensores -> Arduino --USB ou Bluetooth HC-05 (1 linha JSON/s)--> computador: ponte_serial_mqtt.py --> broker --> site / tela em C
 ```
 
 O `gerar_mqtt.py` cria em `mqtt/` mensagens pequenas com os dados de analogia:

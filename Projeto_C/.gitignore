@@ -1,0 +1,8 @@
+# Arquivos gerados pelo Code::Blocks e pelo compilador, em qualquer projeto desta pasta.
+# Cada um compila o seu; no git eles so dao conflito.
+bin/
+obj/
+*.exe
+*.o
+*.depend
+*.layout

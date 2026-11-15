@@ -1,15 +1,14 @@
 /*
  * Tela do local escolhido: Terra x alvo, 9 dimensoes e carrinho ao vivo.
- * So usa printf, entao roda igual no Windows e no Mac.
+ * Cores pelo cores.h (Windows: SetConsoleTextAttribute; Mac: ANSI).
  */
 #include <stdio.h>
 #include <string.h>
 #include "tela_local.h"
-#include <windows.h>
+#include "cores.h"
 
 #define LARGURA  74
 #define SEM_DADO "-"
-
 
 static cJSON *obj(cJSON *o, const char *chave)
 {
@@ -26,8 +25,6 @@ static const char *txt(cJSON *o, const char *chave)
    para os acentos nao desalinharem as colunas. */
 static void col(const char *s, int w)
 {
-    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-
     int n = 0;
     while (*s) {
         if (((unsigned char)*s & 0xC0) != 0x80) {
@@ -36,44 +33,35 @@ static void col(const char *s, int w)
         }
         putchar(*s++);
     }
-
     for (; n < w; n++) putchar(' ');
 }
 
 static void secao(const char *nome)
 {
-    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-    SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+    cor(COR_AMARELO);
     printf("\n%s\n", nome);
-    SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
+    cor(COR_BRANCO);
     for (int i = 0; i < LARGURA; i++) putchar('-');
     putchar('\n');
 }
 
 static void barra(int pct, int tam)
 {
-    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     int cheio = (pct * tam + 50) / 100;
-
-    for (int i = 0; i < tam; i++)
-    {
-        if(i < cheio){
-            SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
-            putchar('#');
-        }else{
-            SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
-            putchar('.');
-        }
-
-    }
-    SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
+    cor(COR_MAGENTA);
+    for (int i = 0; i < cheio && i < tam; i++) putchar('#');
+    cor(COR_BRANCO);
+    for (int i = cheio; i < tam; i++) putchar('.');
 }
 
-/* valores[chave] com unidade; "fracao" vira % */
+/* valores[chave] com unidade; "fracao" vira %.
+   Zero que quer dizer "nao existe" (Lua sem ar, Marte sem chuva) vira "nao ha". */
 static void valor_fmt(cJSON *valores, const char *chave, char *saida, int tam)
 {
-    cJSON *v = obj(obj(valores, chave), "valor");
-    const char *un = txt(obj(valores, chave), "unidade");
+    cJSON *item = obj(valores, chave);
+    cJSON *v = obj(item, "valor");
+    const char *un = txt(item, "unidade");
+    const char *fonte = txt(item, "fonte");
 
     if (!cJSON_IsNumber(v)) {
         snprintf(saida, tam, "%s", SEM_DADO);
@@ -81,6 +69,13 @@ static void valor_fmt(cJSON *valores, const char *chave, char *saida, int tam)
     }
     double x = v->valuedouble;
     if (x > -0.005 && x < 0.005) x = 0.0;      /* evita "-0" */
+
+    if (x == 0.0 && (strcmp(fonte, "sem_atmosfera") == 0 || strcmp(fonte, "fisico_marte") == 0)) {
+        snprintf(saida, tam, "nao ha");
+        return;
+    }
+    if (strcmp(chave, "elev_relativa_m") == 0 && x < 0)
+        x = -x;                                 /* desnivel: o tamanho, sem sinal */
 
     if (strcmp(un, "fracao") == 0)
         snprintf(saida, tam, "%.0f %%", x * 100);
@@ -90,10 +85,37 @@ static void valor_fmt(cJSON *valores, const char *chave, char *saida, int tam)
         snprintf(saida, tam, "%g %s", x, un);
 }
 
+/* Acrescenta baixo/medio/alto ao texto, pelos limites de sensores.json (niveis). */
+static void nivel(char *saida, int tam, cJSON *v, cJSON *faixa, cJSON *nomes)
+{
+    cJSON *lim = obj(faixa, "limites");
+    if (!cJSON_IsNumber(v) || cJSON_GetArraySize(lim) < 2 || strcmp(saida, SEM_DADO) == 0
+        || strcmp(saida, "nao ha") == 0)
+        return;
+    int i = v->valuedouble < cJSON_GetArrayItem(lim, 0)->valuedouble ? 0
+          : v->valuedouble < cJSON_GetArrayItem(lim, 1)->valuedouble ? 1 : 2;
+    cJSON *n = cJSON_GetArrayItem(nomes, i);
+    if (cJSON_IsString(n)) {
+        size_t usado = strlen(saida);
+        snprintf(saida + usado, tam - usado, " %s", n->valuestring);
+    }
+}
+
+/* Acrescenta "ok" ou ">limite" ao texto. */
+static void acima(char *saida, int tam, cJSON *v, double limite)
+{
+    if (!cJSON_IsNumber(v) || strcmp(saida, SEM_DADO) == 0)
+        return;
+    size_t usado = strlen(saida);
+    if (v->valuedouble > limite)
+        snprintf(saida + usado, tam - usado, " >%g", limite);
+    else
+        snprintf(saida + usado, tam - usado, " ok");
+}
+
 void tela_local_mostrar(cJSON *raiz, cJSON *local, cJSON *alvo,
                         cJSON *sensores, cJSON *leitura)
 {
-    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     const char *alvo_id = txt(alvo, "id");
     cJSON *comp  = obj(obj(local, "comparacoes"), alvo_id);
     cJSON *dims  = obj(comp, "dimensoes_pct");
@@ -102,35 +124,29 @@ void tela_local_mostrar(cJSON *raiz, cJSON *local, cJSON *alvo,
     cJSON *val_a = obj(alvo, "valores");
     char a[64], b[64];
 
-    SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY);
     /* uma linha so: quem e comparado com quem */
-    printf("\n%s(", txt(local, "nome"));
-    SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+    cor(COR_AMARELO);
+    printf("\n%s (", txt(local, "nome"));
+    cor(COR_VERDE);
     printf("%s", txt(local, "pais"));
-    SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY);
-    printf(")%s",  txt(alvo, "nome"));
-    if (cJSON_IsNumber(geral)){
-            SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
-            printf("   IAP %d", geral->valueint);
+    cor(COR_AMARELO);
+    printf(")  x  %s", txt(alvo, "nome"));
+    if (cJSON_IsNumber(geral)) {
+        cor(COR_VERDE);
+        printf("   IAP %d", geral->valueint);
     }
+    cor(COR_BRANCO);
     putchar('\n');
 
     /* ---------- Terra x alvo ---------- */
     secao("TERRA x ALVO");
-    SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
-    col("", 32);
-    SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY);
-    col("Terra", 14);
-    SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY);
-    col("Alvo", 14);
-    SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY);
-    printf("Status\n");
-    SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
+    cor(COR_AMARELO);
+    col("", 32); col("Terra", 14); col("Alvo", 14); printf("Status\n");
 
     const char *medidas[] = {
         "declividade_media", "frac_transitavel_15", "elev_relativa_m",
         "lst_dia_c", "lst_noite_c", "amplitude_termica_c",
-        "insolacao_toa_wm2", "sol_max_graus", "frac_ano_sol_continuo",
+        "insolacao_toa_wm2", "sol_max_graus", "frac_tempo_sol",
         "albedo_medio", "aod_medio", "chuva_anual_mm", "ndvi_medio",
         "pressao_kpa", "gravidade_g", "dia_local_h", NULL
     };
@@ -139,14 +155,10 @@ void tela_local_mostrar(cJSON *raiz, cJSON *local, cJSON *alvo,
         if (m == NULL) continue;
         valor_fmt(val_t, medidas[i], a, sizeof a);
         valor_fmt(val_a, medidas[i], b, sizeof b);
-        SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
-        col(txt(m, "rotulo"), 32);
-        SetConsoleTextAttribute(hConsole, FOREGROUND_BLUE | FOREGROUND_INTENSITY);
-        col(a, 14);
-        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
-        col(b, 14);
-        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
-        printf("%s\n", txt(m, "status"));
+        cor(COR_VERDE);   col(txt(m, "rotulo"), 32);
+        cor(COR_AZUL);    col(a, 14);
+        cor(COR_BRANCO);  col(b, 14);
+        cor(COR_CINZA);   printf("%s\n", txt(m, "status"));
     }
 
     /* ---------- 9 dimensoes ---------- */
@@ -154,21 +166,14 @@ void tela_local_mostrar(cJSON *raiz, cJSON *local, cJSON *alvo,
     cJSON *d = NULL;
     cJSON_ArrayForEach(d, obj(obj(raiz, "metodo"), "dimensoes")) {
         cJSON *v = obj(dims, txt(d, "id"));
-        SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+        cor(COR_VERDE);
         col(txt(d, "rotulo"), 26);
         if (cJSON_IsNumber(v)) {
             barra(v->valueint, 30);
-            if(v->valueint >50)
-            {
-                SetConsoleTextAttribute(hConsole, FOREGROUND_BLUE | FOREGROUND_INTENSITY);
-                printf("  %3d\n", v->valueint);
-
-            }else{
-                SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_INTENSITY);
-                printf("  %3d\n", v->valueint);
-            }
-
+            cor(v->valueint > 50 ? COR_AZUL : COR_VERMELHO_F);   /* acima de 50: analogia forte */
+            printf("  %3d\n", v->valueint);
         } else {
+            cor(COR_CINZA);
             printf("sem dado\n");
         }
     }
@@ -177,27 +182,24 @@ void tela_local_mostrar(cJSON *raiz, cJSON *local, cJSON *alvo,
     if (sensores == NULL) return;
 
     secao("CARRINHO AO VIVO");
-    SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
-    col("", 18);
-    SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY);
-    col("Agora", 14);
-    SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY);
-    col("Local", 18);
-    SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY);
-    printf("Alvo\n");
-    SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
+    cor(COR_AMARELO);
+    col("", 16); col("Agora", 18); col("Local", 16); col("Alvo", 12); printf("Comparar\n");
 
+    cJSON *niveis = obj(sensores, "niveis");
+    cJSON *nomes  = obj(sensores, "nomes_nivel");
     cJSON *s = NULL;
     cJSON_ArrayForEach(s, obj(sensores, "sensores")) {
-        cJSON *lido = leitura ? obj(leitura, s->string) : NULL;
-        char agora[64] = SEM_DADO, loc[64] = SEM_DADO, alv[64] = SEM_DADO;
+        const char *chave = s->string;                 /* temp, tilt, pm25... */
+        const char *modo  = txt(s, "comparacao");      /* direta, limite, nivel... */
+        cJSON *lim = obj(s, "limite");
+        cJSON *lido = leitura ? obj(leitura, chave) : NULL;
+        char agora[64] = SEM_DADO, loc[64] = SEM_DADO, alv[64] = SEM_DADO, comp[32];
+        const char *campo = NULL;
         int tem_t = 0, tem_a = 0;
         cJSON *c = NULL;
 
         if (cJSON_IsNumber(lido))
-        {
             snprintf(agora, sizeof agora, "%g %s", lido->valuedouble, txt(s, "unidade"));
-        }
 
         /* primeiro campo de comparacao que existir no local e no alvo */
         cJSON_ArrayForEach(c, obj(s, "campos")) {
@@ -205,6 +207,7 @@ void tela_local_mostrar(cJSON *raiz, cJSON *local, cJSON *alvo,
             if (!tem_t && cJSON_IsNumber(obj(obj(val_t, c->valuestring), "valor"))) {
                 valor_fmt(val_t, c->valuestring, loc, sizeof loc);
                 tem_t = 1;
+                if (campo == NULL) campo = c->valuestring;
             }
             if (!tem_a && cJSON_IsNumber(obj(obj(val_a, c->valuestring), "valor"))) {
                 valor_fmt(val_a, c->valuestring, alv, sizeof alv);
@@ -212,19 +215,44 @@ void tela_local_mostrar(cJSON *raiz, cJSON *local, cJSON *alvo,
             }
         }
 
-        SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
-        col(txt(s, "nome"), 18);
-        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
-        col(agora, 14);
-        SetConsoleTextAttribute(hConsole, FOREGROUND_BLUE | FOREGROUND_INTENSITY);
-        col(loc, 18);
-        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
-        printf("%s\n", alv);
+        if (strcmp(modo, "nivel") == 0) {
+            /* unidades diferentes (PM2.5 x AOD): mostra baixo/medio/alto de cada lado */
+            nivel(agora, sizeof agora, lido, obj(niveis, chave), nomes);
+            if (campo) {
+                char k[16];
+                snprintf(k, sizeof k, "%.*s", (int)strcspn(campo, "_"), campo);   /* aod_medio -> aod */
+                nivel(loc, sizeof loc, obj(obj(val_t, campo), "valor"), obj(niveis, k), nomes);
+                nivel(alv, sizeof alv, obj(obj(val_a, campo), "valor"), obj(niveis, k), nomes);
+            }
+            snprintf(comp, sizeof comp, "por nivel");
+        } else if (strcmp(modo, "limite") == 0 && cJSON_IsNumber(lim)) {
+            /* limite de pouso (8 graus): ok ou acima */
+            acima(agora, sizeof agora, lido, lim->valuedouble);
+            if (campo) {
+                acima(loc, sizeof loc, obj(obj(val_t, campo), "valor"), lim->valuedouble);
+                acima(alv, sizeof alv, obj(obj(val_a, campo), "valor"), lim->valuedouble);
+            }
+            snprintf(comp, sizeof comp, "limite %g", lim->valuedouble);
+        } else if (strcmp(modo, "direta") == 0) {
+            snprintf(comp, sizeof comp, "direto");
+        } else if (strcmp(modo, "relativa") == 0) {
+            snprintf(comp, sizeof comp, "tendencia");
+        } else {
+            snprintf(comp, sizeof comp, "qualitativo");
+        }
+
+        cor(COR_VERDE);    col(txt(s, "nome"), 16);
+        cor(COR_MAGENTA);  col(agora, 18);
+        cor(COR_AZUL);     col(loc, 16);
+        cor(COR_BRANCO);   col(alv, 12);
+        cor(COR_CINZA);    printf("%s\n", comp);
     }
-    if (leitura == NULL)
-    {
-        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+    cor(COR_CINZA);
+    printf("\nnivel: PM2.5 (EPA) e AOD tem unidades diferentes; compare baixo/medio/alto.\n");
+    printf("tendencia/qualitativo: unidades diferentes, compare so se sobe ou desce.\n");
+    if (leitura == NULL) {
+        cor(COR_AMARELO);
         printf("\naguardando o carrinho...\n");
     }
-
+    cor(COR_BRANCO);
 }
