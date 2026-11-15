@@ -1,10 +1,11 @@
 /*
  * Tela do local escolhido: Terra x alvo, 9 dimensoes e carrinho ao vivo.
- * So usa printf, entao roda igual no Windows e no Mac.
+ * Cores pelo cores.h (Windows: SetConsoleTextAttribute; Mac: ANSI).
  */
 #include <stdio.h>
 #include <string.h>
 #include "tela_local.h"
+#include "cores.h"
 
 #define LARGURA  74
 #define SEM_DADO "-"
@@ -37,7 +38,9 @@ static void col(const char *s, int w)
 
 static void secao(const char *nome)
 {
+    cor(COR_AMARELO);
     printf("\n%s\n", nome);
+    cor(COR_BRANCO);
     for (int i = 0; i < LARGURA; i++) putchar('-');
     putchar('\n');
 }
@@ -45,7 +48,10 @@ static void secao(const char *nome)
 static void barra(int pct, int tam)
 {
     int cheio = (pct * tam + 50) / 100;
-    for (int i = 0; i < tam; i++) putchar(i < cheio ? '#' : '.');
+    cor(COR_MAGENTA);
+    for (int i = 0; i < cheio && i < tam; i++) putchar('#');
+    cor(COR_BRANCO);
+    for (int i = cheio; i < tam; i++) putchar('.');
 }
 
 /* valores[chave] com unidade; "fracao" vira %.
@@ -119,12 +125,22 @@ void tela_local_mostrar(cJSON *raiz, cJSON *local, cJSON *alvo,
     char a[64], b[64];
 
     /* uma linha so: quem e comparado com quem */
-    printf("\n%s (%s)  x  %s", txt(local, "nome"), txt(local, "pais"), txt(alvo, "nome"));
-    if (cJSON_IsNumber(geral)) printf("   IAP %d", geral->valueint);
+    cor(COR_AMARELO);
+    printf("\n%s (", txt(local, "nome"));
+    cor(COR_VERDE);
+    printf("%s", txt(local, "pais"));
+    cor(COR_AMARELO);
+    printf(")  x  %s", txt(alvo, "nome"));
+    if (cJSON_IsNumber(geral)) {
+        cor(COR_VERDE);
+        printf("   IAP %d", geral->valueint);
+    }
+    cor(COR_BRANCO);
     putchar('\n');
 
     /* ---------- Terra x alvo ---------- */
     secao("TERRA x ALVO");
+    cor(COR_AMARELO);
     col("", 32); col("Terra", 14); col("Alvo", 14); printf("Status\n");
 
     const char *medidas[] = {
@@ -139,10 +155,10 @@ void tela_local_mostrar(cJSON *raiz, cJSON *local, cJSON *alvo,
         if (m == NULL) continue;
         valor_fmt(val_t, medidas[i], a, sizeof a);
         valor_fmt(val_a, medidas[i], b, sizeof b);
-        col(txt(m, "rotulo"), 32);
-        col(a, 14);
-        col(b, 14);
-        printf("%s\n", txt(m, "status"));
+        cor(COR_VERDE);   col(txt(m, "rotulo"), 32);
+        cor(COR_AZUL);    col(a, 14);
+        cor(COR_BRANCO);  col(b, 14);
+        cor(COR_CINZA);   printf("%s\n", txt(m, "status"));
     }
 
     /* ---------- 9 dimensoes ---------- */
@@ -150,11 +166,14 @@ void tela_local_mostrar(cJSON *raiz, cJSON *local, cJSON *alvo,
     cJSON *d = NULL;
     cJSON_ArrayForEach(d, obj(obj(raiz, "metodo"), "dimensoes")) {
         cJSON *v = obj(dims, txt(d, "id"));
+        cor(COR_VERDE);
         col(txt(d, "rotulo"), 26);
         if (cJSON_IsNumber(v)) {
             barra(v->valueint, 30);
+            cor(v->valueint > 50 ? COR_AZUL : COR_VERMELHO_F);   /* acima de 50: analogia forte */
             printf("  %3d\n", v->valueint);
         } else {
+            cor(COR_CINZA);
             printf("sem dado\n");
         }
     }
@@ -163,6 +182,7 @@ void tela_local_mostrar(cJSON *raiz, cJSON *local, cJSON *alvo,
     if (sensores == NULL) return;
 
     secao("CARRINHO AO VIVO");
+    cor(COR_AMARELO);
     col("", 16); col("Agora", 18); col("Local", 16); col("Alvo", 12); printf("Comparar\n");
 
     cJSON *niveis = obj(sensores, "niveis");
@@ -221,14 +241,18 @@ void tela_local_mostrar(cJSON *raiz, cJSON *local, cJSON *alvo,
             snprintf(comp, sizeof comp, "qualitativo");
         }
 
-        col(txt(s, "nome"), 16);
-        col(agora, 18);
-        col(loc, 16);
-        col(alv, 12);
-        printf("%s\n", comp);
+        cor(COR_VERDE);    col(txt(s, "nome"), 16);
+        cor(COR_MAGENTA);  col(agora, 18);
+        cor(COR_AZUL);     col(loc, 16);
+        cor(COR_BRANCO);   col(alv, 12);
+        cor(COR_CINZA);    printf("%s\n", comp);
     }
+    cor(COR_CINZA);
     printf("\nnivel: PM2.5 (EPA) e AOD tem unidades diferentes; compare baixo/medio/alto.\n");
     printf("tendencia/qualitativo: unidades diferentes, compare so se sobe ou desce.\n");
-    if (leitura == NULL)
+    if (leitura == NULL) {
+        cor(COR_AMARELO);
         printf("\naguardando o carrinho...\n");
+    }
+    cor(COR_BRANCO);
 }
