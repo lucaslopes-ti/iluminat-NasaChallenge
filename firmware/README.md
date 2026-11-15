@@ -37,7 +37,7 @@ O sketch principal agora é `carrinho_motores/carrinho_motores.ino` (Arduino Uno
 
 - **Comandos** (uma letra pelo cabo): `F` frente, `T` trás, `P` parar, `0`–`9` velocidade, `?` estado, `L`/`R` testam um motor de cada vez. Sem comando por 1,5 s, os motores param.
 - **Sensores:** uma linha por segundo, `{"temp":27.2,"umid":52.9,"dist":33,"luz":354}`, que a ponte MQTT e a tela em C entendem.
-- **`controle_carrinho.py`:** manda as teclas para o Arduino e repete o comando enquanto o carrinho anda; a tela em C (opção 1 do menu) usa ele e mostra os sensores ao vivo.
+- **`controle_carrinho.py`:** manda as teclas para o Arduino e repete o comando enquanto o carrinho anda; a tela em C (opção 1 do menu) usa ele e mostra os sensores ao vivo. Ele também publica as linhas de sensores no MQTT (`illuminat-horizontes/carrinho`, com `--local <id>` o perfil retido), para o site mostrar o mesmo; `--sem-mqtt` desliga.
 - **Gravar:** nada ligado no D0. `arduino-cli upload -p /dev/cu.usbserial-21130 --fqbn arduino:avr:uno firmware/carrinho_motores`.
 
 **Instalar no Mac (Python do Homebrew):** `pip3 install` dá erro `externally-managed-environment`. Use

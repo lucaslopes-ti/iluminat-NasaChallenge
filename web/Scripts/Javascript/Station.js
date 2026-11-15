@@ -1,8 +1,10 @@
-// Live link to the field rover (Arduino + ESP32).
+// Live link to the field rover (Arduino Uno on the USB cable).
 // Every source delivers the same message: one JSON object such as
+//   {"temp":26.3,"umid":53.2,"dist":85,"luz":334}        (firmware/carrinho_motores)
 //   {"temp":24.1,"uv":6.2,"pm25":14,"solar":410,"soil":22,"tilt":3.4,"vib":0.08,"slip":5}
-// Missing keys are fine. Sources: MQTT over WebSocket (ESP32 on Wi-Fi), USB serial
-// (Arduino or ESP32 plugged into this computer, Chrome/Edge) and a built-in demo.
+// Missing keys are fine. Sources: MQTT over WebSocket (published by the computer the
+// Arduino is plugged into: firmware/controle_carrinho.py or ponte_serial_mqtt.py),
+// USB serial straight into this page (Chrome/Edge) and a built-in demo.
 
 const HISTORY = 60;          // points kept per measure (sparklines)
 const STALE_MS = 10000;      // no message for this long -> "waiting"
@@ -35,6 +37,9 @@ export class Station {
       const n = (a) => (Math.random() - 0.5) * a;
       this.ingest({
         temp: 27 + 2 * Math.sin(t / 40) + n(0.4),
+        umid: 48 - 6 * storm + n(1),
+        dist: Math.max(4, 120 + 90 * Math.sin(t / 9) + n(6)),
+        luz: Math.max(0, 700 * (1 - 0.7 * storm) + n(12)),
         uv: Math.max(0, 7.5 * (1 - 0.8 * storm) + n(0.3)),
         pm25: 12 + 260 * storm * storm + n(4),
         solar: Math.max(0, 520 * (1 - 0.75 * storm) + n(15)),

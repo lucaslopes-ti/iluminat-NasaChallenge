@@ -3,9 +3,12 @@
     "broker": "wss://broker.hivemq.com:8884/mqtt",
     "topico": "illuminat-horizontes/carrinho"
   },
-  "serial_baud": 115200,
+  "serial_baud": 9600,
   "medidas": [
-    { "id": "temp",  "nome": "Air temperature", "unidade": "°C",     "casas": 1, "local": "temp_media_c", "local_nome": "surface mean" },
+    { "id": "temp",  "nome": "Air temperature", "unidade": "°C",     "casas": 1, "local": "temp_media_c", "local_nome": "surface mean", "carrinho": true },
+    { "id": "umid",  "nome": "Air humidity",    "unidade": "%",      "casas": 0, "local": "chuva_anual_mm", "local_nome": "rain per year", "local_unidade": "mm", "local_casas": 0, "carrinho": true },
+    { "id": "dist",  "nome": "Nearest obstacle", "unidade": "cm",    "casas": 0, "carrinho": true },
+    { "id": "luz",   "nome": "Light (LDR)",     "unidade": "/1023",  "casas": 0, "carrinho": true },
     { "id": "uv",    "nome": "UV index",        "unidade": "",       "casas": 1 },
     { "id": "pm25",  "nome": "Dust (PM2.5)",    "unidade": "µg/m³",  "casas": 0 },
     { "id": "solar", "nome": "Solar power",     "unidade": "mW",     "casas": 0 },
@@ -17,6 +20,9 @@
   "referencias": {
     "moon": {
       "temp": "−170 to +120 °C",
+      "umid": "No air",
+      "dist": "Boulders and crater rims",
+      "luz": "Harsh light, black shadows",
       "uv": "Full solar UV (no air)",
       "pm25": "No air; charged dust",
       "solar": "14-day day, 14-day night",
@@ -27,6 +33,9 @@
     },
     "mars": {
       "temp": "−80 to −20 °C",
+      "umid": "Near 0% (thin, dry air)",
+      "dist": "Rocks, dunes and ridges",
+      "luz": "~43% of Earth's sunlight",
       "uv": "No ozone; UV-C reaches ground",
       "pm25": "Global dust storms",
       "solar": "~43% of Earth's sunlight",

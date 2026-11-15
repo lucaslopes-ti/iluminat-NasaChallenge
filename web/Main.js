@@ -191,13 +191,15 @@ function renderStation() {
   $('stColSite').textContent = siteCol;
   const ref = { ...(stCfg.referencias[t?.corpo] || {}), ...(stCfg.referencias[t?.id] || {}) };
 
-  $('stBody').innerHTML = stCfg.medidas.map((m) => {
+  // Rows: the sensors our rover has (carrinho) plus any measure that has received data.
+  const rows = stCfg.medidas.filter((m) => m.carrinho || station.history[m.id]?.length);
+  $('stBody').innerHTML = rows.map((m) => {
     const v = station.latest[m.id];
     const now = v == null ? '<span class="na">–</span>'
       : `<b>${v.toFixed(m.casas)}</b> <span class="u">${esc(m.unidade)}</span>`;
     const sv = r && m.local ? r.site[m.local] : null;
     const site = sv == null ? '<span class="na">–</span>'
-      : `${Number(sv).toFixed(m.casas)} <span class="u">${esc(m.unidade)}</span>${m.local_nome ? ` <span class="u">(${esc(m.local_nome)})</span>` : ''}`;
+      : `${Number(sv).toFixed(m.local_casas ?? m.casas)} <span class="u">${esc(m.local_unidade ?? m.unidade)}</span>${m.local_nome ? ` <span class="u">(${esc(m.local_nome)})</span>` : ''}`;
     let drop = '';
     if (m.id === 'solar' && station.solarFraction != null) {
       const d = Math.round((1 - station.solarFraction) * 100);

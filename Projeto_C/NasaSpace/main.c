@@ -91,7 +91,7 @@ void        parar_ponte(long pid);
 void        modo_ao_vivo(cJSON *raiz, cJSON *local, cJSON *alvo, cJSON *sensores);
 void        limpar_tela(void);
 void        ao_ctrl_c(int sinal);
-void        controlar_motores(const char *caminho, const char *porta, int baud,
+void        controlar_motores(const char *caminho, const char *porta, int baud, const char *local_id,
                               cJSON *raiz, cJSON *local, cJSON *alvo, cJSON *sensores);
 
 /* Onde procurar, relativo a pasta do executavel (bin/Debug) e a pasta atual.
@@ -279,7 +279,7 @@ int main(int argc, char *argv[])
         if (!achar_arquivo(ARQ_CONTROLE, PASTAS_PONTE, caminho_controle))
             printf("Erro: nao achei firmware/%s\n", ARQ_CONTROLE);
         else
-            controlar_motores(caminho_controle, porta, baud, raiz, escolhido, alvo, sensores);
+            controlar_motores(caminho_controle, porta, baud, local_id, raiz, escolhido, alvo, sensores);
     } else if (acao == 2) {
         /* a ponte e o controle usam a mesma porta: um de cada vez */
         if (!achar_arquivo(ARQ_PONTE, PASTAS_PONTE, caminho_ponte))
@@ -356,16 +356,17 @@ static int juntar_leitura(cJSON *leitura, const char *linha, char *estado_arduin
 
 /* Abre controle_carrinho.py (que fala com o Arduino pelo cabo), manda as teclas e
    mostra a tela do local com os sensores ao vivo, lidos do controle.log. */
-void controlar_motores(const char *caminho, const char *porta, int baud,
+void controlar_motores(const char *caminho, const char *porta, int baud, const char *local_id,
                        cJSON *raiz, cJSON *local, cJSON *alvo, cJSON *sensores)
 {
     const char *py = (getenv("PONTE_PYTHON") && getenv("PONTE_PYTHON")[0]) ? getenv("PONTE_PYTHON") : PYTHON;
     char cmd[MAX_CAMINHO * 3], caminho_log[MAX_CAMINHO];
     snprintf(caminho_log, sizeof caminho_log, "%scontrole.log", pasta_exe);
     remove(caminho_log);                        /* comeca do zero */
-    /* as respostas do Arduino vao para controle.log; a tela le de la */
-    snprintf(cmd, sizeof cmd, "%s -u \"%s\" --porta %s --baud %d 2> \"%s\"",
-             py, caminho, porta, baud, caminho_log);
+    /* as respostas do Arduino vao para controle.log; a tela le de la.
+       O controle tambem publica as leituras no MQTT, para o site mostrar o mesmo. */
+    snprintf(cmd, sizeof cmd, "%s -u \"%s\" --porta %s --baud %d --broker %s --local %s 2> \"%s\"",
+             py, caminho, porta, baud, broker, local_id, caminho_log);
 
     FILE *ctl = popen(cmd, "w");
     if (ctl == NULL) {
