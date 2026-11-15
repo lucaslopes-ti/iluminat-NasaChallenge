@@ -37,6 +37,7 @@
 #include <time.h>
 #include "Bibliotecas/cJSON.h"
 #include "tela_local.h"
+#include <windows.h>
 
 #ifdef _WIN32
   #include <windows.h>
@@ -107,6 +108,7 @@ int main(int argc, char *argv[])
 #ifdef _WIN32
     SetConsoleOutputCP(CP_UTF8);   /* os nomes no JSON tem acento (UTF-8) */
 #endif
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     const char *porta = (argc > 1) ? argv[1] : PORTA_BT;
     if (getenv("MQTT_BROKER") && getenv("MQTT_BROKER")[0])
         broker = getenv("MQTT_BROKER");
@@ -140,19 +142,32 @@ int main(int argc, char *argv[])
 
     /* ---------- 1. Lua ou Marte ---------- */
     printf("Illuminat Horizontes\n\n");
-    printf("1) Lua\n2) Marte\nEscolha: ");
+    SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+    printf("1)");
+    SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
+    printf("Lua\n");
+    SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+    printf("2) ");
+    SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
+    printf("Marte\n ");
+    SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+    printf("Escolha: ");
+    SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
     const char *corpo = (ler_opcao(1, 2) == 1) ? "moon" : "mars";
 
     /* ---------- 2. Lista os alvos desse corpo ---------- */
     cJSON *opcoes[MAX_ALVOS];
     int n = 0;
     cJSON *alvo = NULL;
-
+    SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY);
     printf("\nAlvos em %s:\n", strcmp(corpo, "moon") == 0 ? "Lua" : "Marte");
     cJSON_ArrayForEach(alvo, alvos) {
         if (strcmp(texto(alvo, "corpo"), corpo) == 0 && n < MAX_ALVOS) {
             opcoes[n++] = alvo;
-            printf("%2d) %s\n", n, texto(alvo, "nome"));
+            SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+            printf("%2d)", n);
+            SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
+            printf(" %s\n", texto(alvo, "nome"));
         }
     }
     if (n == 0) {
@@ -160,7 +175,9 @@ int main(int argc, char *argv[])
         cJSON_Delete(raiz);
         return 1;
     }
+    SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY);
     printf("Escolha: ");
+    SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
     alvo = opcoes[ler_opcao(1, n) - 1];
     const char *alvo_id = texto(alvo, "id");
 
@@ -170,6 +187,7 @@ int main(int argc, char *argv[])
     int nt = 0;
     cJSON *item = NULL;
 
+    SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY);
     printf("\nMelhores analogos na Terra para %s:\n", texto(alvo, "nome"));
     cJSON_ArrayForEach(item, ordem) {
         if (nt == TOP_N) break;
@@ -177,8 +195,11 @@ int main(int argc, char *argv[])
         cJSON *loc = achar_por_id(locais, item->valuestring);
         if (loc == NULL) continue;
         top[nt++] = loc;
-        printf("%d) %-40s %-12s IAP %d\n", nt, texto(loc, "nome"),
-               texto(loc, "pais"), nota_no_alvo(loc, alvo_id));
+        SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+        printf("%d) ", nt);
+        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
+        printf("%-40s %-12s IAP %d\n", texto(loc, "nome"),
+       texto(loc, "pais"), nota_no_alvo(loc, alvo_id));
     }
     if (nt == 0) {
         printf("Nenhum local para esse alvo.\n");
@@ -186,7 +207,9 @@ int main(int argc, char *argv[])
         return 1;
     }
 
+    SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY);
     printf("\nQual local o carrinho vai simular? ");
+    SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
     cJSON *escolhido = top[ler_opcao(1, nt) - 1];
     const char *local_id = texto(escolhido, "id");
 
@@ -219,7 +242,7 @@ int main(int argc, char *argv[])
         cJSON_AddNumberToObject(t, "nota_pct", nota_no_alvo(top[i], alvo_id));
         cJSON_AddItemToArray(lista, t);
     }
-
+    SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
     char *json = cJSON_PrintUnformatted(msg);
     printf("\nEnviando para %s:\n%s\n", TOPICO_SEL, json);
     fflush(stdout);
@@ -248,6 +271,7 @@ int main(int argc, char *argv[])
     cJSON_Delete(raiz);
     return 0;
 }
+
 
 /* Liga a ponte em segundo plano, para a tela ficar livre.
    Mac: roda com & e guarda o PID; a saida vai para ponte.log ao lado do programa.
