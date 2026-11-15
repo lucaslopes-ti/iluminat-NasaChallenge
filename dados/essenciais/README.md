@@ -20,12 +20,12 @@ Todo valor vem com **status** e **fonte**, ou seja, short name, versão, DOI ou 
 | Poeira (AOD 550 nm) e vento | **medido**: NASA POWER (MERRA-2) | **referência**: Perseverance (opacidade da poeira) |
 | Chuva | **medido**: NASA POWER (PRECTOTCORR) | 0 (valor físico) |
 | Iluminação (altura do Sol, sol 24 h, noite polar) | **calculado**: geometria solar pela latitude | **calculado** com a obliquidade da Lua e de Marte; iluminação com relevo vem do LOLA |
-| Vegetação (NDVI) | **provisório**: falta o MOD13A2 da task do AppEEARS | 0 |
+| Vegetação (NDVI) | **medido**: NASA MOD13C2 v061 (NDVI mensal, 0,05°), média de 72 meses, 2020–2025, baixado do LP DAAC | 0 |
 | Geologia, água/gelo, subsolo, vida | **tags** com referência bibliográfica (Earth Impact Database, artigos de campo) | **tags** a partir de CRISM, SWIM, LAMP/LEND, missões de superfície |
 
 As respostas da NASA POWER estão salvas em `entrada/nasa_power/`, uma por local, com cabeçalho, versão da API e período. Quem quiser pode conferir ou baixar de novo.
 
-Hoje, de 414 valores da Terra, só 18 continuam provisórios (o NDVI). A McMurdo Dry Valleys fica sem relevo, porque o SRTM30 não cobre a Antártida.
+Hoje, de 414 valores da Terra, só 1 continua provisório: o NDVI da McMurdo Dry Valleys, porque o MOD13C2 não cobre a Antártida (ficou 0, deserto polar sem vegetação). Ela também fica sem relevo, porque o SRTM30 não cobre a Antártida. O NDVI de cada ano (2020 a 2025) está em `entrada/ndvi_mod13c2.csv`, o que permite ver se algum ano foi anômalo.
 
 ## Status
 
@@ -34,7 +34,7 @@ Hoje, de 414 valores da Terra, só 18 continuam provisórios (o NDVI). A McMurdo
 | `medido` | Dado de satélite ou modelo da NASA, processado neste repositório |
 | `calculado` | Física: geometria solar, pressão pela altitude |
 | `referencia` | Valor publicado por missão da NASA, ESA ou JAXA (aproximado, com a referência) |
-| `provisorio` | Estimativa temporária, a ser trocada pelo AppEEARS |
+| `provisorio` | Estimativa temporária, sem produto da NASA que cubra o local |
 | `sem_dado` | O produto usado não cobre o local |
 
 ## Alvos (Lua e Marte)
@@ -88,10 +88,11 @@ Destaques na tela: `destaque` (melhor candidato brasileiro), `destaque_geral`, `
 python3 dados/essenciais/gerar_dados.py                    # refaz tudo com o que está em entrada/
 python3 dados/essenciais/gerar_dados.py --baixar-power     # baixa de novo a NASA POWER
 python3 dados/essenciais/gerar_dados.py --appeears PASTA   # usa os CSVs de Point Sample do AppEEARS
+EARTHDATA_TOKEN_FILE=token.txt python3 dados/essenciais/ndvi_mod13c2.py 2020 2025   # NDVI do LP DAAC (pip install pyhdf)
 python3 dados/essenciais/gerar_dados.py --notebook terra_locais.parquet
 ```
 
-Ordem de prioridade dos valores da Terra: **AppEEARS/notebook > NASA POWER > provisório**. O MODIS do AppEEARS tem 1 km, enquanto a POWER tem de 0,5° a 1°. Quando o AppEEARS chegar, ele substitui também a temperatura e o albedo.
+Ordem de prioridade dos valores da Terra: **AppEEARS/notebook > NASA POWER e MOD13C2 > provisório**. O MODIS do AppEEARS tem 1 km, enquanto a POWER tem de 0,5° a 1°. Quando o AppEEARS chegar, ele substitui também a temperatura e o albedo.
 
 Para trocar um alvo, um critério ou uma tag, edite o arquivo em `entrada/` e rode o script de novo.
 
@@ -122,6 +123,6 @@ Rótulos e unidades não têm acento, para não quebrar no terminal do Windows. 
 ## Limites conhecidos
 
 - O relevo vem de pixels de ~1 km, então a declividade real é maior. O NASADEM de 30 m (notebook 01) resolve isso.
-- A POWER tem resolução grossa (0,5°–1°) e mistura o local com o entorno. Locais pequenos, como Lonar e Dallol, ficam com valores regionais.
+- A POWER (0,5°–1°) e o MOD13C2 (0,05° ≈ 5 km) têm resolução grossa e misturam o local com o entorno. Locais pequenos, como Lonar e Dallol, ficam com valores regionais.
 - Iluminação calculada com horizonte plano. Na Lua, o relevo muda tudo: os valores com relevo (`iluminacao_frac`) vêm do LOLA.
 - Valores de Lua e Marte são números publicados e aproximados, não recortes processados aqui. O próximo passo é calcular a partir dos mapas LOLA, Diviner, MOLA e THEMIS.

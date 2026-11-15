@@ -7,7 +7,7 @@ carajas,ndvi_medio,0.35,indice,provisorio,mod13a2,estimativa; substituir pelo MO
 lencois,ndvi_medio,0.1,indice,provisorio,mod13a2,estimativa; substituir pelo MOD13A2 do AppEEARS (task a92258f5)
 raso_catarina,ndvi_medio,0.28,indice,provisorio,mod13a2,estimativa; substituir pelo MOD13A2 do AppEEARS (task a92258f5)
 atacama,ndvi_medio,0.03,indice,provisorio,mod13a2,estimativa; substituir pelo MOD13A2 do AppEEARS (task a92258f5)
-dry_valleys,ndvi_medio,0.0,indice,provisorio,mod13a2,estimativa; substituir pelo MOD13A2 do AppEEARS (task a92258f5)
+dry_valleys,ndvi_medio,0.0,indice,provisorio,mod13c2,MOD13C2 nao cobre a Antartida; 0 = deserto polar sem vegetacao (Copernicus Sentinel-2 pode confirmar)
 haughton,ndvi_medio,0.05,indice,provisorio,mod13a2,estimativa; substituir pelo MOD13A2 do AppEEARS (task a92258f5)
 mauna_kea,ndvi_medio,0.05,indice,provisorio,mod13a2,estimativa; substituir pelo MOD13A2 do AppEEARS (task a92258f5)
 rio_tinto,ndvi_medio,0.3,indice,provisorio,mod13a2,estimativa; substituir pelo MOD13A2 do AppEEARS (task a92258f5)

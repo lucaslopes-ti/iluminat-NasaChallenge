@@ -12,7 +12,8 @@ Entradas (pasta entrada/):
     criterios_base.json   como a NASA escolhe base/pouso e a regra para testar cada critério na Terra
     dimensoes.json        9 dimensões, indicadores, sigmas e pesos por perfil de missão
     nasa_power/*.json     respostas da NASA POWER (temperatura de superfície, albedo, poeira, chuva, vento)
-    terra_provisorio.csv  o que ainda não tem dado real (hoje só o NDVI)
+    ndvi_mod13c2.csv      NDVI MOD13C2 2020-2025 (gerado por ndvi_mod13c2.py)
+    terra_provisorio.csv  o que ainda não tem dado real
     fontes.csv            catálogo de fontes (short name, versão, DOI, resolução, acesso)
 
 Calculado aqui:
@@ -382,6 +383,15 @@ def main():
         prov.setdefault(r["local_id"], {})[r["variavel"]] = {
             "valor": float(r["valor"]), "status": "provisorio", "fonte": r["fonte_id"], "nota": r["nota"]}
 
+    ndvi_mod13c2 = {}
+    caminho_ndvi = os.path.join(ENTRADA, "ndvi_mod13c2.csv")
+    if os.path.exists(caminho_ndvi):
+        for r in ler_csv("ndvi_mod13c2.csv"):
+            if r["ndvi_medio"]:
+                ndvi_mod13c2[r["local_id"]] = {"ndvi_medio": {
+                    "valor": float(r["ndvi_medio"]), "status": "medido", "fonte": "mod13c2",
+                    "nota": f"media de {r['n_meses']} meses ({r.get('periodo', '2024')}) na caixa do local (CMG 0,05 grau)"}}
+
     terra = []
     for l in locais:
         vals = {}
@@ -395,6 +405,7 @@ def main():
             vals[k] = {"valor": v, "status": "calculado", "fonte": "calculo_solar", "nota": "horizonte plano"}
         vals.update(prov.get(l["id"], {}))
         vals.update(carregar_power(l["id"]))
+        vals.update(ndvi_mod13c2.get(l["id"], {}))
         for k, v in externos.get(l["id"], {}).items():
             vals[k] = {"valor": v, "status": "medido", "fonte": fonte_ext[k], "nota": origem}
         vals["pressao_kpa"] = {"valor": 101.3 * math.exp(-(vals["elev_media_m"]["valor"] or 0) / 8400),
@@ -464,7 +475,7 @@ def gerar_saidas(terra, alvos, dims, perfis, cfg, criterios, fontes, resultados,
         "medido": "medido por satelite/modelo da NASA e processado neste repositorio",
         "calculado": "calculado por fisica (geometria solar, pressao pela altitude)",
         "referencia": "valor publicado por missao NASA/ESA/JAXA (aproximado)",
-        "provisorio": "estimativa temporaria; sera trocada pelo dado do AppEEARS",
+        "provisorio": "estimativa temporaria; nenhum produto NASA usado cobre o local",
         "sem_dado": "sem cobertura no produto usado",
     }
     geral = rank["geral"]

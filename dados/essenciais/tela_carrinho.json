@@ -6,7 +6,7 @@
   "medido": "medido por satelite/modelo da NASA e processado neste repositorio",
   "calculado": "calculado por fisica (geometria solar, pressao pela altitude)",
   "referencia": "valor publicado por missao NASA/ESA/JAXA (aproximado)",
-  "provisorio": "estimativa temporaria; sera trocada pelo dado do AppEEARS",
+  "provisorio": "estimativa temporaria; nenhum produto NASA usado cobre o local",
   "sem_dado": "sem cobertura no produto usado"
  },
  "destaque": "lencois",
@@ -256,7 +256,7 @@
    "notas_perfil_pct": {
     "geral": 69,
     "rover": 76,
-    "astrobio": 56,
+    "astrobio": 55,
     "isru": 61,
     "habitat": 71,
     "energia": 74
@@ -268,7 +268,7 @@
     "luz": 91,
     "agua": 50,
     "poeira": 57,
-    "biologia": 74,
+    "biologia": 72,
     "subsolo": null,
     "operacoes": 99
    },
@@ -341,10 +341,10 @@
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.03,
+     "valor": 0.05,
      "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
+     "status": "medido",
+     "fonte": "mod13c2",
      "valor_alvo": 0.0
     },
     "albedo_medio": {
@@ -402,11 +402,11 @@
    "alvo": "oxia",
    "alvo_nome": "Oxia Planum",
    "corpo": "mars",
-   "nota_pct": 68,
+   "nota_pct": 67,
    "notas_perfil_pct": {
-    "geral": 68,
+    "geral": 67,
     "rover": 74,
-    "astrobio": 55,
+    "astrobio": 54,
     "isru": 59,
     "habitat": 69,
     "energia": 73
@@ -418,7 +418,7 @@
     "luz": 98,
     "agua": 49,
     "poeira": 55,
-    "biologia": 74,
+    "biologia": 68,
     "subsolo": null,
     "operacoes": 99
    },
@@ -491,10 +491,10 @@
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.02,
+     "valor": 0.08,
      "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
+     "status": "medido",
+     "fonte": "mod13c2",
      "valor_alvo": 0.0
     },
     "albedo_medio": {
@@ -552,11 +552,11 @@
    "alvo": "oxia",
    "alvo_nome": "Oxia Planum",
    "corpo": "mars",
-   "nota_pct": 68,
+   "nota_pct": 66,
    "notas_perfil_pct": {
-    "geral": 68,
+    "geral": 66,
     "rover": 75,
-    "astrobio": 55,
+    "astrobio": 53,
     "isru": 63,
     "habitat": 72,
     "energia": 71
@@ -568,7 +568,7 @@
     "luz": 100,
     "agua": 50,
     "poeira": 34,
-    "biologia": 66,
+    "biologia": 58,
     "subsolo": null,
     "operacoes": 100
    },
@@ -641,10 +641,10 @@
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.03,
+     "valor": 0.09,
      "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
+     "status": "medido",
+     "fonte": "mod13c2",
      "valor_alvo": 0.0
     },
     "albedo_medio": {
@@ -702,11 +702,11 @@
    "alvo": "meridiani",
    "alvo_nome": "Meridiani Planum",
    "corpo": "mars",
-   "nota_pct": 60,
+   "nota_pct": 59,
    "notas_perfil_pct": {
-    "geral": 60,
+    "geral": 59,
     "rover": 74,
-    "astrobio": 53,
+    "astrobio": 51,
     "isru": 52,
     "habitat": 62,
     "energia": 70
@@ -718,7 +718,7 @@
     "luz": 100,
     "agua": 43,
     "poeira": 40,
-    "biologia": 67,
+    "biologia": 61,
     "subsolo": 0,
     "operacoes": 100
    },
@@ -791,10 +791,10 @@
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.0,
+     "valor": 0.07,
      "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
+     "status": "medido",
+     "fonte": "mod13c2",
      "valor_alvo": 0.0
     },
     "albedo_medio": {
@@ -852,11 +852,11 @@
    "alvo": "meridiani",
    "alvo_nome": "Meridiani Planum",
    "corpo": "mars",
-   "nota_pct": 59,
+   "nota_pct": 55,
    "notas_perfil_pct": {
-    "geral": 59,
+    "geral": 55,
     "rover": 77,
-    "astrobio": 29,
+    "astrobio": 18,
     "isru": 43,
     "habitat": 66,
     "energia": 76
@@ -868,7 +868,7 @@
     "luz": 100,
     "agua": 0,
     "poeira": 69,
-    "biologia": 40,
+    "biologia": 6,
     "subsolo": null,
     "operacoes": 100
    },
@@ -941,10 +941,10 @@
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.1,
+     "valor": 0.31,
      "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
+     "status": "medido",
+     "fonte": "mod13c2",
      "valor_alvo": 0.0
     },
     "albedo_medio": {
@@ -1093,8 +1093,8 @@
      "rotulo": "Vegetacao (NDVI)",
      "valor": 0.05,
      "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
+     "status": "medido",
+     "fonte": "mod13c2",
      "valor_alvo": 0.0
     },
     "albedo_medio": {
@@ -1139,158 +1139,8 @@
    }
   },
   {
-   "id": "mauna_kea",
-   "posicao": 7,
-   "nome": "Mauna Kea",
-   "regiao": "Havaí",
-   "pais": "EUA",
-   "papel": "referencia",
-   "lat": 19.82,
-   "lon": -155.47,
-   "feicao": "Vulcão basáltico com cones de escória e cinza",
-   "dados_completos": true,
-   "alvo": "marius",
-   "alvo_nome": "Fosso das Colinas de Marius",
-   "corpo": "moon",
-   "nota_pct": 54,
-   "notas_perfil_pct": {
-    "geral": 54,
-    "rover": 49,
-    "astrobio": 53,
-    "isru": 38,
-    "habitat": 50,
-    "energia": 58
-   },
-   "dimensoes_pct": {
-    "terreno": 43,
-    "materiais": 80,
-    "termico": 5,
-    "luz": 94,
-    "agua": 0,
-    "poeira": 72,
-    "biologia": 97,
-    "subsolo": 50,
-    "operacoes": 44
-   },
-   "funciona": "A cinza do Pu'u Nene deu origem ao simulante de solo marciano JSC Mars-1",
-   "quebra": "Ar mais denso e úmido",
-   "teste": "Extração de oxigênio do regolito (ISRU)",
-   "dados": {
-    "elev_media_m": {
-     "rotulo": "Elevacao media",
-     "valor": 2722,
-     "unidade": "m",
-     "status": "medido",
-     "fonte": "srtmgl30"
-    },
-    "declividade_media": {
-     "rotulo": "Declividade media",
-     "valor": 10.5,
-     "unidade": "graus",
-     "status": "medido",
-     "fonte": "srtmgl30",
-     "valor_alvo": 3.0
-    },
-    "frac_decliv_8": {
-     "rotulo": "Area com declividade < 8 graus",
-     "valor": 0.26,
-     "unidade": "fracao",
-     "status": "medido",
-     "fonte": "srtmgl30",
-     "valor_alvo": 0.9
-    },
-    "sol_max_graus": {
-     "rotulo": "Altura maxima do Sol",
-     "valor": 89.9,
-     "unidade": "graus",
-     "status": "calculado",
-     "fonte": "calculo_solar",
-     "valor_alvo": 77.4
-    },
-    "frac_ano_sol_continuo": {
-     "rotulo": "Ano com Sol 24 h",
-     "valor": 0.0,
-     "unidade": "fracao",
-     "status": "calculado",
-     "fonte": "calculo_solar",
-     "valor_alvo": 0.0
-    },
-    "lst_dia_c": {
-     "rotulo": "Temp. superficie maxima",
-     "valor": 31,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": 110
-    },
-    "lst_noite_c": {
-     "rotulo": "Temp. superficie minima",
-     "valor": 17,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": -170
-    },
-    "amplitude_termica_c": {
-     "rotulo": "Amplitude termica (dT)",
-     "valor": 14,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": 280
-    },
-    "ndvi_medio": {
-     "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.05,
-     "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
-     "valor_alvo": 0.0
-    },
-    "albedo_medio": {
-     "rotulo": "Albedo",
-     "valor": 0.08,
-     "unidade": "fracao",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": 0.07
-    },
-    "aod_medio": {
-     "rotulo": "Poeira/aerossol (AOD)",
-     "valor": 0.1,
-     "unidade": "adimensional",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": 0.0
-    },
-    "vento_10m_ms": {
-     "rotulo": "Vento a 10 m",
-     "valor": 4.8,
-     "unidade": "m/s",
-     "status": "medido",
-     "fonte": "nasa_power"
-    },
-    "chuva_anual_mm": {
-     "rotulo": "Chuva anual",
-     "valor": 1611,
-     "unidade": "mm",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": 0
-    },
-    "pressao_kpa": {
-     "rotulo": "Pressao do ar",
-     "valor": 73.26,
-     "unidade": "kPa",
-     "status": "calculado",
-     "fonte": "fisica",
-     "valor_alvo": 0.0
-    }
-   }
-  },
-  {
    "id": "raso_catarina",
-   "posicao": 8,
+   "posicao": 7,
    "nome": "Raso da Catarina",
    "regiao": "BA",
    "pais": "Brasil",
@@ -1302,11 +1152,11 @@
    "alvo": "oxia",
    "alvo_nome": "Oxia Planum",
    "corpo": "mars",
-   "nota_pct": 52,
+   "nota_pct": 51,
    "notas_perfil_pct": {
-    "geral": 52,
+    "geral": 51,
     "rover": 67,
-    "astrobio": 26,
+    "astrobio": 23,
     "isru": 49,
     "habitat": 63,
     "energia": 68
@@ -1318,7 +1168,7 @@
     "luz": 100,
     "agua": 21,
     "poeira": 40,
-    "biologia": 9,
+    "biologia": 0,
     "subsolo": null,
     "operacoes": 99
    },
@@ -1391,10 +1241,10 @@
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.28,
+     "valor": 0.59,
      "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
+     "status": "medido",
+     "fonte": "mod13c2",
      "valor_alvo": 0.0
     },
     "albedo_medio": {
@@ -1440,7 +1290,7 @@
   },
   {
    "id": "gilbues",
-   "posicao": 9,
+   "posicao": 8,
    "nome": "Núcleo de desertificação de Gilbués",
    "regiao": "PI",
    "pais": "Brasil",
@@ -1452,11 +1302,11 @@
    "alvo": "oxia",
    "alvo_nome": "Oxia Planum",
    "corpo": "mars",
-   "nota_pct": 51,
+   "nota_pct": 50,
    "notas_perfil_pct": {
-    "geral": 51,
+    "geral": 50,
     "rover": 69,
-    "astrobio": 22,
+    "astrobio": 20,
     "isru": 44,
     "habitat": 63,
     "energia": 69
@@ -1468,7 +1318,7 @@
     "luz": 100,
     "agua": 2,
     "poeira": 43,
-    "biologia": 7,
+    "biologia": 1,
     "subsolo": null,
     "operacoes": 99
    },
@@ -1541,10 +1391,10 @@
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.3,
+     "valor": 0.49,
      "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
+     "status": "medido",
+     "fonte": "mod13c2",
      "valor_alvo": 0.0
     },
     "albedo_medio": {
@@ -1589,158 +1439,8 @@
    }
   },
   {
-   "id": "rio_tinto",
-   "posicao": 10,
-   "nome": "Río Tinto",
-   "regiao": "Andaluzia",
-   "pais": "Espanha",
-   "papel": "referencia",
-   "lat": 37.72,
-   "lon": -6.55,
-   "feicao": "Rio ácido rico em ferro e sulfatos",
-   "dados_completos": true,
-   "alvo": "meridiani",
-   "alvo_nome": "Meridiani Planum",
-   "corpo": "mars",
-   "nota_pct": 51,
-   "notas_perfil_pct": {
-    "geral": 51,
-    "rover": 66,
-    "astrobio": 42,
-    "isru": 51,
-    "habitat": 58,
-    "energia": 62
-   },
-   "dimensoes_pct": {
-    "terreno": 73,
-    "materiais": 75,
-    "termico": 36,
-    "luz": 92,
-    "agua": 42,
-    "poeira": 17,
-    "biologia": 24,
-    "subsolo": 0,
-    "operacoes": 100
-   },
-   "funciona": "Jarosita e hematita, os minerais de Meridiani",
-   "quebra": "Mineração e cidade em volta",
-   "teste": "Perfuração robótica em busca de vida no subsolo (MARTE, NASA)",
-   "dados": {
-    "elev_media_m": {
-     "rotulo": "Elevacao media",
-     "valor": 379,
-     "unidade": "m",
-     "status": "medido",
-     "fonte": "srtmgl30"
-    },
-    "declividade_media": {
-     "rotulo": "Declividade media",
-     "valor": 2.7,
-     "unidade": "graus",
-     "status": "medido",
-     "fonte": "srtmgl30",
-     "valor_alvo": 1.0
-    },
-    "frac_decliv_8": {
-     "rotulo": "Area com declividade < 8 graus",
-     "valor": 1.0,
-     "unidade": "fracao",
-     "status": "medido",
-     "fonte": "srtmgl30",
-     "valor_alvo": 0.98
-    },
-    "sol_max_graus": {
-     "rotulo": "Altura maxima do Sol",
-     "valor": 75.7,
-     "unidade": "graus",
-     "status": "calculado",
-     "fonte": "calculo_solar",
-     "valor_alvo": 89.8
-    },
-    "frac_ano_sol_continuo": {
-     "rotulo": "Ano com Sol 24 h",
-     "valor": 0.0,
-     "unidade": "fracao",
-     "status": "calculado",
-     "fonte": "calculo_solar",
-     "valor_alvo": 0.0
-    },
-    "lst_dia_c": {
-     "rotulo": "Temp. superficie maxima",
-     "valor": 41,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": 0
-    },
-    "lst_noite_c": {
-     "rotulo": "Temp. superficie minima",
-     "valor": 3,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": -90
-    },
-    "amplitude_termica_c": {
-     "rotulo": "Amplitude termica (dT)",
-     "valor": 38,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": 90
-    },
-    "ndvi_medio": {
-     "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.3,
-     "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
-     "valor_alvo": 0.0
-    },
-    "albedo_medio": {
-     "rotulo": "Albedo",
-     "valor": 0.14,
-     "unidade": "fracao",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": 0.14
-    },
-    "aod_medio": {
-     "rotulo": "Poeira/aerossol (AOD)",
-     "valor": 0.16,
-     "unidade": "adimensional",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": 0.6
-    },
-    "vento_10m_ms": {
-     "rotulo": "Vento a 10 m",
-     "valor": 3.6,
-     "unidade": "m/s",
-     "status": "medido",
-     "fonte": "nasa_power"
-    },
-    "chuva_anual_mm": {
-     "rotulo": "Chuva anual",
-     "valor": 468,
-     "unidade": "mm",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": 0
-    },
-    "pressao_kpa": {
-     "rotulo": "Pressao do ar",
-     "valor": 96.84,
-     "unidade": "kPa",
-     "status": "calculado",
-     "fonte": "fisica",
-     "valor_alvo": 0.65
-    }
-   }
-  },
-  {
    "id": "svalbard",
-   "posicao": 11,
+   "posicao": 9,
    "nome": "Bockfjorden, Svalbard",
    "regiao": "Svalbard",
    "pais": "Noruega",
@@ -1752,11 +1452,11 @@
    "alvo": "malapert",
    "alvo_nome": "Maciço de Malapert",
    "corpo": "moon",
-   "nota_pct": 49,
+   "nota_pct": 50,
    "notas_perfil_pct": {
-    "geral": 49,
+    "geral": 50,
     "rover": 55,
-    "astrobio": 38,
+    "astrobio": 41,
     "isru": 49,
     "habitat": 49,
     "energia": 39
@@ -1768,7 +1468,7 @@
     "luz": 27,
     "agua": 62,
     "poeira": 49,
-    "biologia": 40,
+    "biologia": 50,
     "subsolo": 100,
     "operacoes": 96
    },
@@ -1841,10 +1541,10 @@
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.1,
+     "valor": -0.0,
      "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
+     "status": "medido",
+     "fonte": "mod13c2",
      "valor_alvo": 0.0
     },
     "albedo_medio": {
@@ -1889,6 +1589,306 @@
    }
   },
   {
+   "id": "rio_tinto",
+   "posicao": 10,
+   "nome": "Río Tinto",
+   "regiao": "Andaluzia",
+   "pais": "Espanha",
+   "papel": "referencia",
+   "lat": 37.72,
+   "lon": -6.55,
+   "feicao": "Rio ácido rico em ferro e sulfatos",
+   "dados_completos": true,
+   "alvo": "meridiani",
+   "alvo_nome": "Meridiani Planum",
+   "corpo": "mars",
+   "nota_pct": 50,
+   "notas_perfil_pct": {
+    "geral": 50,
+    "rover": 66,
+    "astrobio": 40,
+    "isru": 51,
+    "habitat": 58,
+    "energia": 62
+   },
+   "dimensoes_pct": {
+    "terreno": 73,
+    "materiais": 75,
+    "termico": 36,
+    "luz": 92,
+    "agua": 42,
+    "poeira": 17,
+    "biologia": 17,
+    "subsolo": 0,
+    "operacoes": 100
+   },
+   "funciona": "Jarosita e hematita, os minerais de Meridiani",
+   "quebra": "Mineração e cidade em volta",
+   "teste": "Perfuração robótica em busca de vida no subsolo (MARTE, NASA)",
+   "dados": {
+    "elev_media_m": {
+     "rotulo": "Elevacao media",
+     "valor": 379,
+     "unidade": "m",
+     "status": "medido",
+     "fonte": "srtmgl30"
+    },
+    "declividade_media": {
+     "rotulo": "Declividade media",
+     "valor": 2.7,
+     "unidade": "graus",
+     "status": "medido",
+     "fonte": "srtmgl30",
+     "valor_alvo": 1.0
+    },
+    "frac_decliv_8": {
+     "rotulo": "Area com declividade < 8 graus",
+     "valor": 1.0,
+     "unidade": "fracao",
+     "status": "medido",
+     "fonte": "srtmgl30",
+     "valor_alvo": 0.98
+    },
+    "sol_max_graus": {
+     "rotulo": "Altura maxima do Sol",
+     "valor": 75.7,
+     "unidade": "graus",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "valor_alvo": 89.8
+    },
+    "frac_ano_sol_continuo": {
+     "rotulo": "Ano com Sol 24 h",
+     "valor": 0.0,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "valor_alvo": 0.0
+    },
+    "lst_dia_c": {
+     "rotulo": "Temp. superficie maxima",
+     "valor": 41,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "valor_alvo": 0
+    },
+    "lst_noite_c": {
+     "rotulo": "Temp. superficie minima",
+     "valor": 3,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "valor_alvo": -90
+    },
+    "amplitude_termica_c": {
+     "rotulo": "Amplitude termica (dT)",
+     "valor": 38,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "valor_alvo": 90
+    },
+    "ndvi_medio": {
+     "rotulo": "Vegetacao (NDVI)",
+     "valor": 0.49,
+     "unidade": "indice",
+     "status": "medido",
+     "fonte": "mod13c2",
+     "valor_alvo": 0.0
+    },
+    "albedo_medio": {
+     "rotulo": "Albedo",
+     "valor": 0.14,
+     "unidade": "fracao",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "valor_alvo": 0.14
+    },
+    "aod_medio": {
+     "rotulo": "Poeira/aerossol (AOD)",
+     "valor": 0.16,
+     "unidade": "adimensional",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "valor_alvo": 0.6
+    },
+    "vento_10m_ms": {
+     "rotulo": "Vento a 10 m",
+     "valor": 3.6,
+     "unidade": "m/s",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "chuva_anual_mm": {
+     "rotulo": "Chuva anual",
+     "valor": 468,
+     "unidade": "mm",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "valor_alvo": 0
+    },
+    "pressao_kpa": {
+     "rotulo": "Pressao do ar",
+     "valor": 96.84,
+     "unidade": "kPa",
+     "status": "calculado",
+     "fonte": "fisica",
+     "valor_alvo": 0.65
+    }
+   }
+  },
+  {
+   "id": "mauna_kea",
+   "posicao": 11,
+   "nome": "Mauna Kea",
+   "regiao": "Havaí",
+   "pais": "EUA",
+   "papel": "referencia",
+   "lat": 19.82,
+   "lon": -155.47,
+   "feicao": "Vulcão basáltico com cones de escória e cinza",
+   "dados_completos": true,
+   "alvo": "marius",
+   "alvo_nome": "Fosso das Colinas de Marius",
+   "corpo": "moon",
+   "nota_pct": 49,
+   "notas_perfil_pct": {
+    "geral": 49,
+    "rover": 49,
+    "astrobio": 42,
+    "isru": 38,
+    "habitat": 50,
+    "energia": 58
+   },
+   "dimensoes_pct": {
+    "terreno": 43,
+    "materiais": 80,
+    "termico": 5,
+    "luz": 94,
+    "agua": 0,
+    "poeira": 72,
+    "biologia": 55,
+    "subsolo": 50,
+    "operacoes": 44
+   },
+   "funciona": "A cinza do Pu'u Nene deu origem ao simulante de solo marciano JSC Mars-1",
+   "quebra": "Ar mais denso e úmido",
+   "teste": "Extração de oxigênio do regolito (ISRU)",
+   "dados": {
+    "elev_media_m": {
+     "rotulo": "Elevacao media",
+     "valor": 2722,
+     "unidade": "m",
+     "status": "medido",
+     "fonte": "srtmgl30"
+    },
+    "declividade_media": {
+     "rotulo": "Declividade media",
+     "valor": 10.5,
+     "unidade": "graus",
+     "status": "medido",
+     "fonte": "srtmgl30",
+     "valor_alvo": 3.0
+    },
+    "frac_decliv_8": {
+     "rotulo": "Area com declividade < 8 graus",
+     "valor": 0.26,
+     "unidade": "fracao",
+     "status": "medido",
+     "fonte": "srtmgl30",
+     "valor_alvo": 0.9
+    },
+    "sol_max_graus": {
+     "rotulo": "Altura maxima do Sol",
+     "valor": 89.9,
+     "unidade": "graus",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "valor_alvo": 77.4
+    },
+    "frac_ano_sol_continuo": {
+     "rotulo": "Ano com Sol 24 h",
+     "valor": 0.0,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "valor_alvo": 0.0
+    },
+    "lst_dia_c": {
+     "rotulo": "Temp. superficie maxima",
+     "valor": 31,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "valor_alvo": 110
+    },
+    "lst_noite_c": {
+     "rotulo": "Temp. superficie minima",
+     "valor": 17,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "valor_alvo": -170
+    },
+    "amplitude_termica_c": {
+     "rotulo": "Amplitude termica (dT)",
+     "valor": 14,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "valor_alvo": 280
+    },
+    "ndvi_medio": {
+     "rotulo": "Vegetacao (NDVI)",
+     "valor": 0.33,
+     "unidade": "indice",
+     "status": "medido",
+     "fonte": "mod13c2",
+     "valor_alvo": 0.0
+    },
+    "albedo_medio": {
+     "rotulo": "Albedo",
+     "valor": 0.08,
+     "unidade": "fracao",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "valor_alvo": 0.07
+    },
+    "aod_medio": {
+     "rotulo": "Poeira/aerossol (AOD)",
+     "valor": 0.1,
+     "unidade": "adimensional",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "valor_alvo": 0.0
+    },
+    "vento_10m_ms": {
+     "rotulo": "Vento a 10 m",
+     "valor": 4.8,
+     "unidade": "m/s",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "chuva_anual_mm": {
+     "rotulo": "Chuva anual",
+     "valor": 1611,
+     "unidade": "mm",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "valor_alvo": 0
+    },
+    "pressao_kpa": {
+     "rotulo": "Pressao do ar",
+     "valor": 73.26,
+     "unidade": "kPa",
+     "status": "calculado",
+     "fonte": "fisica",
+     "valor_alvo": 0.0
+    }
+   }
+  },
+  {
    "id": "lonar",
    "posicao": 12,
    "nome": "Cratera de Lonar",
@@ -1918,7 +1918,7 @@
     "luz": 100,
     "agua": 22,
     "poeira": 48,
-    "biologia": 1,
+    "biologia": 0,
     "subsolo": 0,
     "operacoes": 100
    },
@@ -1991,10 +1991,10 @@
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.4,
+     "valor": 0.49,
      "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
+     "status": "medido",
+     "fonte": "mod13c2",
      "valor_alvo": 0.0
     },
     "albedo_medio": {
@@ -2068,7 +2068,7 @@
     "luz": 100,
     "agua": 0,
     "poeira": 45,
-    "biologia": 1,
+    "biologia": 0,
     "subsolo": 0,
     "operacoes": 99
    },
@@ -2141,10 +2141,10 @@
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.44,
+     "valor": 0.63,
      "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
+     "status": "medido",
+     "fonte": "mod13c2",
      "valor_alvo": 0.0
     },
     "albedo_medio": {
@@ -2291,10 +2291,10 @@
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.52,
+     "valor": 0.61,
      "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
+     "status": "medido",
+     "fonte": "mod13c2",
      "valor_alvo": 0.0
     },
     "albedo_medio": {
@@ -2339,158 +2339,8 @@
    }
   },
   {
-   "id": "carajas",
-   "posicao": 15,
-   "nome": "Serra Norte de Carajás (cavernas)",
-   "regiao": "PA",
-   "pais": "Brasil",
-   "papel": "candidato",
-   "lat": -6.05,
-   "lon": -50.15,
-   "feicao": "Platôs de canga (crosta de ferro) com mais de 1.000 cavernas",
-   "dados_completos": true,
-   "alvo": "marius",
-   "alvo_nome": "Fosso das Colinas de Marius",
-   "corpo": "moon",
-   "nota_pct": 44,
-   "notas_perfil_pct": {
-    "geral": 44,
-    "rover": 62,
-    "astrobio": 16,
-    "isru": 38,
-    "habitat": 53,
-    "energia": 59
-   },
-   "dimensoes_pct": {
-    "terreno": 72,
-    "materiais": 36,
-    "termico": 8,
-    "luz": 94,
-    "agua": 0,
-    "poeira": 32,
-    "biologia": 4,
-    "subsolo": 50,
-    "operacoes": 98
-   },
-   "funciona": "Hematita e goethita, os óxidos que dão a cor de Marte e que o Opportunity achou em Meridiani",
-   "quebra": "Floresta úmida em volta",
-   "teste": "Mapeamento LiDAR e navegação de rover/drone em caverna",
-   "dados": {
-    "elev_media_m": {
-     "rotulo": "Elevacao media",
-     "valor": 429,
-     "unidade": "m",
-     "status": "medido",
-     "fonte": "srtmgl30"
-    },
-    "declividade_media": {
-     "rotulo": "Declividade media",
-     "valor": 4.2,
-     "unidade": "graus",
-     "status": "medido",
-     "fonte": "srtmgl30",
-     "valor_alvo": 3.0
-    },
-    "frac_decliv_8": {
-     "rotulo": "Area com declividade < 8 graus",
-     "valor": 0.85,
-     "unidade": "fracao",
-     "status": "medido",
-     "fonte": "srtmgl30",
-     "valor_alvo": 0.9
-    },
-    "sol_max_graus": {
-     "rotulo": "Altura maxima do Sol",
-     "valor": 89.9,
-     "unidade": "graus",
-     "status": "calculado",
-     "fonte": "calculo_solar",
-     "valor_alvo": 77.4
-    },
-    "frac_ano_sol_continuo": {
-     "rotulo": "Ano com Sol 24 h",
-     "valor": 0.0,
-     "unidade": "fracao",
-     "status": "calculado",
-     "fonte": "calculo_solar",
-     "valor_alvo": 0.0
-    },
-    "lst_dia_c": {
-     "rotulo": "Temp. superficie maxima",
-     "valor": 42,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": 110
-    },
-    "lst_noite_c": {
-     "rotulo": "Temp. superficie minima",
-     "valor": 17,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": -170
-    },
-    "amplitude_termica_c": {
-     "rotulo": "Amplitude termica (dT)",
-     "valor": 25,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": 280
-    },
-    "ndvi_medio": {
-     "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.35,
-     "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
-     "valor_alvo": 0.0
-    },
-    "albedo_medio": {
-     "rotulo": "Albedo",
-     "valor": 0.15,
-     "unidade": "fracao",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": 0.07
-    },
-    "aod_medio": {
-     "rotulo": "Poeira/aerossol (AOD)",
-     "valor": 0.29,
-     "unidade": "adimensional",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": 0.0
-    },
-    "vento_10m_ms": {
-     "rotulo": "Vento a 10 m",
-     "valor": 2.3,
-     "unidade": "m/s",
-     "status": "medido",
-     "fonte": "nasa_power"
-    },
-    "chuva_anual_mm": {
-     "rotulo": "Chuva anual",
-     "valor": 1530,
-     "unidade": "mm",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": 0
-    },
-    "pressao_kpa": {
-     "rotulo": "Pressao do ar",
-     "valor": 96.25,
-     "unidade": "kPa",
-     "status": "calculado",
-     "fonte": "fisica",
-     "valor_alvo": 0.0
-    }
-   }
-  },
-  {
    "id": "vargeao",
-   "posicao": 16,
+   "posicao": 15,
    "nome": "Domo de Vargeão",
    "regiao": "SC",
    "pais": "Brasil",
@@ -2591,10 +2441,10 @@
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.68,
+     "valor": 0.72,
      "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
+     "status": "medido",
+     "fonte": "mod13c2",
      "valor_alvo": 0.0
     },
     "albedo_medio": {
@@ -2640,7 +2490,7 @@
   },
   {
    "id": "vista_alegre",
-   "posicao": 17,
+   "posicao": 16,
    "nome": "Cratera de Vista Alegre",
    "regiao": "PR",
    "pais": "Brasil",
@@ -2741,10 +2591,10 @@
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.71,
+     "valor": 0.67,
      "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
+     "status": "medido",
+     "fonte": "mod13c2",
      "valor_alvo": 0.0
     },
     "albedo_medio": {
@@ -2785,6 +2635,156 @@
      "status": "calculado",
      "fonte": "fisica",
      "valor_alvo": 0.65
+    }
+   }
+  },
+  {
+   "id": "carajas",
+   "posicao": 17,
+   "nome": "Serra Norte de Carajás (cavernas)",
+   "regiao": "PA",
+   "pais": "Brasil",
+   "papel": "candidato",
+   "lat": -6.05,
+   "lon": -50.15,
+   "feicao": "Platôs de canga (crosta de ferro) com mais de 1.000 cavernas",
+   "dados_completos": true,
+   "alvo": "marius",
+   "alvo_nome": "Fosso das Colinas de Marius",
+   "corpo": "moon",
+   "nota_pct": 43,
+   "notas_perfil_pct": {
+    "geral": 43,
+    "rover": 62,
+    "astrobio": 15,
+    "isru": 38,
+    "habitat": 53,
+    "energia": 59
+   },
+   "dimensoes_pct": {
+    "terreno": 72,
+    "materiais": 36,
+    "termico": 8,
+    "luz": 94,
+    "agua": 0,
+    "poeira": 32,
+    "biologia": 0,
+    "subsolo": 50,
+    "operacoes": 98
+   },
+   "funciona": "Hematita e goethita, os óxidos que dão a cor de Marte e que o Opportunity achou em Meridiani",
+   "quebra": "Floresta úmida em volta",
+   "teste": "Mapeamento LiDAR e navegação de rover/drone em caverna",
+   "dados": {
+    "elev_media_m": {
+     "rotulo": "Elevacao media",
+     "valor": 429,
+     "unidade": "m",
+     "status": "medido",
+     "fonte": "srtmgl30"
+    },
+    "declividade_media": {
+     "rotulo": "Declividade media",
+     "valor": 4.2,
+     "unidade": "graus",
+     "status": "medido",
+     "fonte": "srtmgl30",
+     "valor_alvo": 3.0
+    },
+    "frac_decliv_8": {
+     "rotulo": "Area com declividade < 8 graus",
+     "valor": 0.85,
+     "unidade": "fracao",
+     "status": "medido",
+     "fonte": "srtmgl30",
+     "valor_alvo": 0.9
+    },
+    "sol_max_graus": {
+     "rotulo": "Altura maxima do Sol",
+     "valor": 89.9,
+     "unidade": "graus",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "valor_alvo": 77.4
+    },
+    "frac_ano_sol_continuo": {
+     "rotulo": "Ano com Sol 24 h",
+     "valor": 0.0,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "valor_alvo": 0.0
+    },
+    "lst_dia_c": {
+     "rotulo": "Temp. superficie maxima",
+     "valor": 42,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "valor_alvo": 110
+    },
+    "lst_noite_c": {
+     "rotulo": "Temp. superficie minima",
+     "valor": 17,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "valor_alvo": -170
+    },
+    "amplitude_termica_c": {
+     "rotulo": "Amplitude termica (dT)",
+     "valor": 25,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "valor_alvo": 280
+    },
+    "ndvi_medio": {
+     "rotulo": "Vegetacao (NDVI)",
+     "valor": 0.78,
+     "unidade": "indice",
+     "status": "medido",
+     "fonte": "mod13c2",
+     "valor_alvo": 0.0
+    },
+    "albedo_medio": {
+     "rotulo": "Albedo",
+     "valor": 0.15,
+     "unidade": "fracao",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "valor_alvo": 0.07
+    },
+    "aod_medio": {
+     "rotulo": "Poeira/aerossol (AOD)",
+     "valor": 0.29,
+     "unidade": "adimensional",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "valor_alvo": 0.0
+    },
+    "vento_10m_ms": {
+     "rotulo": "Vento a 10 m",
+     "valor": 2.3,
+     "unidade": "m/s",
+     "status": "medido",
+     "fonte": "nasa_power"
+    },
+    "chuva_anual_mm": {
+     "rotulo": "Chuva anual",
+     "valor": 1530,
+     "unidade": "mm",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "valor_alvo": 0
+    },
+    "pressao_kpa": {
+     "rotulo": "Pressao do ar",
+     "valor": 96.25,
+     "unidade": "kPa",
+     "status": "calculado",
+     "fonte": "fisica",
+     "valor_alvo": 0.0
     }
    }
   },
@@ -2894,7 +2894,7 @@
      "valor": 0.0,
      "unidade": "indice",
      "status": "provisorio",
-     "fonte": "mod13a2",
+     "fonte": "mod13c2",
      "valor_alvo": 0.0
     },
     "albedo_medio": {

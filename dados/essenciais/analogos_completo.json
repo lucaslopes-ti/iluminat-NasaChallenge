@@ -6,7 +6,7 @@
   "medido": "medido por satelite/modelo da NASA e processado neste repositorio",
   "calculado": "calculado por fisica (geometria solar, pressao pela altitude)",
   "referencia": "valor publicado por missao NASA/ESA/JAXA (aproximado)",
-  "provisorio": "estimativa temporaria; sera trocada pelo dado do AppEEARS",
+  "provisorio": "estimativa temporaria; nenhum produto NASA usado cobre o local",
   "sem_dado": "sem cobertura no produto usado"
  },
  "metodo": {
@@ -474,17 +474,17 @@
    "dallol",
    "lencois",
    "haughton",
-   "mauna_kea",
    "raso_catarina",
    "gilbues",
-   "rio_tinto",
    "svalbard",
+   "rio_tinto",
+   "mauna_kea",
    "lonar",
    "cangalha",
    "araguainha",
-   "carajas",
    "vargeao",
    "vista_alegre",
+   "carajas",
    "dry_valleys"
   ],
   "rover": [
@@ -509,20 +509,20 @@
   ],
   "astrobio": [
    "qaidam",
-   "atacama",
    "lut",
+   "atacama",
    "dallol",
-   "mauna_kea",
-   "haughton",
    "svalbard",
+   "haughton",
+   "mauna_kea",
    "rio_tinto",
-   "lencois",
    "raso_catarina",
-   "gilbues",
    "lonar",
+   "gilbues",
    "vargeao",
    "vista_alegre",
    "carajas",
+   "lencois",
    "cangalha",
    "araguainha",
    "dry_valleys"
@@ -597,22 +597,22 @@
    "lut",
    "qaidam",
    "dallol",
-   "raso_catarina",
    "cangalha",
    "araguainha",
-   "rio_tinto",
+   "raso_catarina",
    "vargeao",
-   "lencois",
    "gilbues",
+   "rio_tinto",
    "vista_alegre",
-   "carajas",
    "lonar",
+   "carajas",
+   "lencois",
    "dry_valleys"
   ],
   "haworth": [
    "svalbard",
-   "mauna_kea",
    "haughton",
+   "mauna_kea",
    "atacama",
    "lut",
    "qaidam",
@@ -621,31 +621,31 @@
    "cangalha",
    "araguainha",
    "vargeao",
-   "gilbues",
    "rio_tinto",
-   "lencois",
+   "gilbues",
    "vista_alegre",
    "carajas",
    "lonar",
+   "lencois",
    "dry_valleys"
   ],
   "malapert": [
    "svalbard",
-   "mauna_kea",
    "haughton",
+   "mauna_kea",
    "atacama",
    "lut",
    "qaidam",
    "dallol",
    "raso_catarina",
    "gilbues",
-   "rio_tinto",
    "cangalha",
    "araguainha",
-   "lencois",
-   "carajas",
+   "rio_tinto",
    "vargeao",
    "vista_alegre",
+   "carajas",
+   "lencois",
    "lonar",
    "dry_valleys"
   ],
@@ -654,79 +654,79 @@
    "atacama",
    "lut",
    "qaidam",
-   "mauna_kea",
    "svalbard",
    "dallol",
+   "mauna_kea",
    "raso_catarina",
-   "gilbues",
-   "rio_tinto",
    "cangalha",
    "araguainha",
    "carajas",
-   "lencois",
+   "gilbues",
+   "rio_tinto",
    "vista_alegre",
    "vargeao",
+   "lencois",
    "lonar",
    "dry_valleys"
   ],
   "mons_mouton": [
    "haughton",
-   "mauna_kea",
    "svalbard",
    "atacama",
+   "mauna_kea",
    "lut",
    "qaidam",
    "dallol",
    "raso_catarina",
-   "gilbues",
    "cangalha",
-   "carajas",
+   "gilbues",
    "rio_tinto",
    "araguainha",
-   "lencois",
+   "carajas",
    "vargeao",
    "vista_alegre",
+   "lencois",
    "lonar",
    "dry_valleys"
   ],
   "nobile_rim_1": [
    "svalbard",
-   "mauna_kea",
    "haughton",
+   "mauna_kea",
    "atacama",
    "lut",
    "qaidam",
    "dallol",
-   "raso_catarina",
    "cangalha",
+   "raso_catarina",
    "araguainha",
-   "rio_tinto",
    "vargeao",
-   "lencois",
-   "gilbues",
+   "rio_tinto",
    "vista_alegre",
+   "gilbues",
    "carajas",
    "lonar",
+   "lencois",
    "dry_valleys"
   ],
   "nobile_rim_2": [
    "svalbard",
-   "mauna_kea",
    "haughton",
+   "mauna_kea",
    "atacama",
    "lut",
    "qaidam",
    "dallol",
-   "raso_catarina",
    "cangalha",
+   "raso_catarina",
    "araguainha",
-   "rio_tinto",
    "vargeao",
-   "lencois",
-   "gilbues",
+   "rio_tinto",
    "vista_alegre",
+   "gilbues",
    "carajas",
    "lonar",
+   "lencois",
    "dry_valleys"
   ],
   "de_gerlache_rim_2": [
@@ -737,16 +737,16 @@
    "lut",
    "qaidam",
    "dallol",
-   "raso_catarina",
    "cangalha",
    "araguainha",
+   "raso_catarina",
    "vargeao",
-   "rio_tinto",
-   "lencois",
    "gilbues",
+   "rio_tinto",
    "vista_alegre",
    "carajas",
    "lonar",
+   "lencois",
    "dry_valleys"
   ],
   "slater_plain": [
@@ -754,25 +754,25 @@
    "atacama",
    "lut",
    "qaidam",
-   "dallol",
    "svalbard",
-   "mauna_kea",
+   "dallol",
    "raso_catarina",
+   "mauna_kea",
    "cangalha",
    "araguainha",
-   "lencois",
-   "gilbues",
    "rio_tinto",
    "vista_alegre",
+   "gilbues",
    "vargeao",
    "carajas",
+   "lencois",
    "lonar",
    "dry_valleys"
   ],
   "cabeus_b_peak": [
    "svalbard",
-   "mauna_kea",
    "haughton",
+   "mauna_kea",
    "atacama",
    "lut",
    "qaidam",
@@ -780,12 +780,12 @@
    "raso_catarina",
    "cangalha",
    "araguainha",
-   "gilbues",
    "rio_tinto",
-   "lencois",
+   "gilbues",
    "vargeao",
    "vista_alegre",
    "carajas",
+   "lencois",
    "lonar",
    "dry_valleys"
   ],
@@ -793,15 +793,15 @@
    "atacama",
    "lut",
    "qaidam",
-   "mauna_kea",
    "dallol",
-   "lencois",
+   "mauna_kea",
    "raso_catarina",
    "carajas",
    "rio_tinto",
    "gilbues",
    "cangalha",
    "araguainha",
+   "lencois",
    "haughton",
    "vargeao",
    "vista_alegre",
@@ -816,16 +816,16 @@
    "dallol",
    "raso_catarina",
    "gilbues",
-   "lencois",
    "lonar",
    "rio_tinto",
    "araguainha",
    "haughton",
-   "mauna_kea",
    "vista_alegre",
    "cangalha",
    "carajas",
    "vargeao",
+   "lencois",
+   "mauna_kea",
    "svalbard",
    "dry_valleys"
   ],
@@ -833,19 +833,19 @@
    "lut",
    "qaidam",
    "atacama",
-   "lencois",
    "dallol",
+   "lencois",
    "raso_catarina",
    "gilbues",
    "rio_tinto",
    "carajas",
    "lonar",
-   "mauna_kea",
    "vargeao",
    "vista_alegre",
    "araguainha",
    "haughton",
    "cangalha",
+   "mauna_kea",
    "svalbard",
    "dry_valleys"
   ],
@@ -861,10 +861,10 @@
    "lonar",
    "vargeao",
    "vista_alegre",
-   "cangalha",
    "araguainha",
    "carajas",
    "haughton",
+   "cangalha",
    "mauna_kea",
    "svalbard",
    "dry_valleys"
@@ -877,15 +877,15 @@
    "haughton",
    "raso_catarina",
    "rio_tinto",
-   "gilbues",
    "araguainha",
-   "lencois",
+   "gilbues",
    "lonar",
    "cangalha",
    "vargeao",
    "vista_alegre",
-   "carajas",
    "svalbard",
+   "carajas",
+   "lencois",
    "mauna_kea",
    "dry_valleys"
   ],
@@ -897,8 +897,8 @@
    "raso_catarina",
    "gilbues",
    "lencois",
-   "rio_tinto",
    "lonar",
+   "rio_tinto",
    "cangalha",
    "araguainha",
    "haughton",
@@ -915,7 +915,7 @@
    "atacama": 3,
    "dry_valleys": 18,
    "haughton": 6,
-   "mauna_kea": 7,
+   "mauna_kea": 11,
    "rio_tinto": 10
   },
   "rover": {
@@ -926,10 +926,10 @@
    "rio_tinto": 13
   },
   "astrobio": {
-   "atacama": 2,
+   "atacama": 3,
    "dry_valleys": 18,
    "haughton": 6,
-   "mauna_kea": 5,
+   "mauna_kea": 7,
    "rio_tinto": 8
   },
   "isru": {
@@ -4251,7 +4251,7 @@
    "notas_perfil_pct": {
     "geral": 69,
     "rover": 76,
-    "astrobio": 56,
+    "astrobio": 55,
     "isru": 61,
     "habitat": 71,
     "energia": 74
@@ -4265,7 +4265,7 @@
     "luz": 91,
     "agua": 50,
     "poeira": 57,
-    "biologia": 74,
+    "biologia": 72,
     "subsolo": null,
     "operacoes": 99
    },
@@ -4413,11 +4413,11 @@
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.03,
+     "valor": 0.05,
      "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
-     "nota": "estimativa; substituir pelo MOD13A2 do AppEEARS (task a92258f5)"
+     "status": "medido",
+     "fonte": "mod13c2",
+     "nota": "media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
@@ -4525,7 +4525,7 @@
      "iap": {
       "geral": 31,
       "rover": 26,
-      "astrobio": 47,
+      "astrobio": 46,
       "isru": 21,
       "habitat": 18,
       "energia": 20
@@ -4537,7 +4537,7 @@
       "luz": 8,
       "agua": 50,
       "poeira": 50,
-      "biologia": 99,
+      "biologia": 97,
       "subsolo": 0,
       "operacoes": 28
      }
@@ -4546,7 +4546,7 @@
      "iap": {
       "geral": 34,
       "rover": 27,
-      "astrobio": 47,
+      "astrobio": 46,
       "isru": 24,
       "habitat": 23,
       "energia": 29
@@ -4558,7 +4558,7 @@
       "luz": 34,
       "agua": 50,
       "poeira": 50,
-      "biologia": 99,
+      "biologia": 97,
       "subsolo": 0,
       "operacoes": 30
      }
@@ -4567,7 +4567,7 @@
      "iap": {
       "geral": 31,
       "rover": 19,
-      "astrobio": 47,
+      "astrobio": 46,
       "isru": 21,
       "habitat": 19,
       "energia": 26
@@ -4579,16 +4579,16 @@
       "luz": 34,
       "agua": 50,
       "poeira": 50,
-      "biologia": 99,
+      "biologia": 97,
       "subsolo": 0,
       "operacoes": 14
      }
     },
     "mons_mouton_plateau": {
      "iap": {
-      "geral": 43,
+      "geral": 42,
       "rover": 50,
-      "astrobio": 47,
+      "astrobio": 46,
       "isru": 30,
       "habitat": 33,
       "energia": 37
@@ -4600,7 +4600,7 @@
       "luz": 34,
       "agua": 50,
       "poeira": 50,
-      "biologia": 99,
+      "biologia": 97,
       "subsolo": 0,
       "operacoes": 69
      }
@@ -4609,7 +4609,7 @@
      "iap": {
       "geral": 39,
       "rover": 41,
-      "astrobio": 47,
+      "astrobio": 46,
       "isru": 27,
       "habitat": 29,
       "energia": 34
@@ -4621,7 +4621,7 @@
       "luz": 34,
       "agua": 50,
       "poeira": 50,
-      "biologia": 99,
+      "biologia": 97,
       "subsolo": 0,
       "operacoes": 52
      }
@@ -4630,7 +4630,7 @@
      "iap": {
       "geral": 34,
       "rover": 28,
-      "astrobio": 47,
+      "astrobio": 46,
       "isru": 24,
       "habitat": 23,
       "energia": 29
@@ -4642,7 +4642,7 @@
       "luz": 34,
       "agua": 50,
       "poeira": 50,
-      "biologia": 99,
+      "biologia": 97,
       "subsolo": 0,
       "operacoes": 30
      }
@@ -4651,7 +4651,7 @@
      "iap": {
       "geral": 34,
       "rover": 28,
-      "astrobio": 47,
+      "astrobio": 46,
       "isru": 24,
       "habitat": 23,
       "energia": 29
@@ -4663,7 +4663,7 @@
       "luz": 34,
       "agua": 50,
       "poeira": 50,
-      "biologia": 99,
+      "biologia": 97,
       "subsolo": 0,
       "operacoes": 30
      }
@@ -4672,7 +4672,7 @@
      "iap": {
       "geral": 34,
       "rover": 28,
-      "astrobio": 47,
+      "astrobio": 46,
       "isru": 24,
       "habitat": 22,
       "energia": 28
@@ -4684,7 +4684,7 @@
       "luz": 29,
       "agua": 50,
       "poeira": 50,
-      "biologia": 99,
+      "biologia": 97,
       "subsolo": 0,
       "operacoes": 30
      }
@@ -4693,7 +4693,7 @@
      "iap": {
       "geral": 44,
       "rover": 54,
-      "astrobio": 47,
+      "astrobio": 46,
       "isru": 31,
       "habitat": 36,
       "energia": 39
@@ -4705,7 +4705,7 @@
       "luz": 34,
       "agua": 50,
       "poeira": 50,
-      "biologia": 99,
+      "biologia": 97,
       "subsolo": 0,
       "operacoes": 69
      }
@@ -4714,7 +4714,7 @@
      "iap": {
       "geral": 33,
       "rover": 25,
-      "astrobio": 47,
+      "astrobio": 46,
       "isru": 23,
       "habitat": 22,
       "energia": 28
@@ -4726,7 +4726,7 @@
       "luz": 34,
       "agua": 50,
       "poeira": 50,
-      "biologia": 99,
+      "biologia": 97,
       "subsolo": 0,
       "operacoes": 21
      }
@@ -4735,7 +4735,7 @@
      "iap": {
       "geral": 54,
       "rover": 64,
-      "astrobio": 43,
+      "astrobio": 42,
       "isru": 37,
       "habitat": 48,
       "energia": 65
@@ -4747,7 +4747,7 @@
       "luz": 99,
       "agua": 50,
       "poeira": 50,
-      "biologia": 99,
+      "biologia": 97,
       "subsolo": 0,
       "operacoes": 96
      }
@@ -4768,7 +4768,7 @@
       "luz": 91,
       "agua": 62,
       "poeira": 57,
-      "biologia": 74,
+      "biologia": 72,
       "subsolo": null,
       "operacoes": 91
      }
@@ -4789,7 +4789,7 @@
       "luz": 91,
       "agua": 62,
       "poeira": 34,
-      "biologia": 74,
+      "biologia": 72,
       "subsolo": null,
       "operacoes": 74
      }
@@ -4798,7 +4798,7 @@
      "iap": {
       "geral": 64,
       "rover": 68,
-      "astrobio": 53,
+      "astrobio": 52,
       "isru": 61,
       "habitat": 66,
       "energia": 67
@@ -4810,16 +4810,16 @@
       "luz": 92,
       "agua": 62,
       "poeira": 23,
-      "biologia": 74,
+      "biologia": 72,
       "subsolo": null,
       "operacoes": 100
      }
     },
     "arcadia": {
      "iap": {
-      "geral": 63,
+      "geral": 62,
       "rover": 75,
-      "astrobio": 54,
+      "astrobio": 53,
       "isru": 48,
       "habitat": 59,
       "energia": 74
@@ -4831,7 +4831,7 @@
       "luz": 99,
       "agua": 50,
       "poeira": 57,
-      "biologia": 99,
+      "biologia": 97,
       "subsolo": 0,
       "operacoes": 100
      }
@@ -4840,7 +4840,7 @@
      "iap": {
       "geral": 69,
       "rover": 76,
-      "astrobio": 56,
+      "astrobio": 55,
       "isru": 61,
       "habitat": 71,
       "energia": 74
@@ -4852,7 +4852,7 @@
       "luz": 91,
       "agua": 50,
       "poeira": 57,
-      "biologia": 74,
+      "biologia": 72,
       "subsolo": null,
       "operacoes": 99
      }
@@ -4875,11 +4875,11 @@
    "alvo": "oxia",
    "alvo_nome": "Oxia Planum",
    "corpo": "mars",
-   "nota_pct": 68,
+   "nota_pct": 67,
    "notas_perfil_pct": {
-    "geral": 68,
+    "geral": 67,
     "rover": 74,
-    "astrobio": 55,
+    "astrobio": 54,
     "isru": 59,
     "habitat": 69,
     "energia": 73
@@ -4893,7 +4893,7 @@
     "luz": 98,
     "agua": 49,
     "poeira": 55,
-    "biologia": 74,
+    "biologia": 68,
     "subsolo": null,
     "operacoes": 99
    },
@@ -5040,11 +5040,11 @@
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.02,
+     "valor": 0.08,
      "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
-     "nota": "estimativa; substituir pelo MOD13A2 do AppEEARS (task a92258f5)"
+     "status": "medido",
+     "fonte": "mod13c2",
+     "nota": "media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
@@ -5150,9 +5150,9 @@
    "comparacoes": {
     "shackleton": {
      "iap": {
-      "geral": 32,
+      "geral": 31,
       "rover": 26,
-      "astrobio": 52,
+      "astrobio": 50,
       "isru": 24,
       "habitat": 20,
       "energia": 17
@@ -5164,7 +5164,7 @@
       "luz": 8,
       "agua": 49,
       "poeira": 41,
-      "biologia": 99,
+      "biologia": 93,
       "subsolo": 0,
       "operacoes": 28
      }
@@ -5173,7 +5173,7 @@
      "iap": {
       "geral": 35,
       "rover": 28,
-      "astrobio": 52,
+      "astrobio": 50,
       "isru": 27,
       "habitat": 25,
       "energia": 26
@@ -5185,16 +5185,16 @@
       "luz": 34,
       "agua": 49,
       "poeira": 41,
-      "biologia": 99,
+      "biologia": 93,
       "subsolo": 0,
       "operacoes": 30
      }
     },
     "malapert": {
      "iap": {
-      "geral": 32,
+      "geral": 31,
       "rover": 19,
-      "astrobio": 52,
+      "astrobio": 50,
       "isru": 24,
       "habitat": 21,
       "energia": 23
@@ -5206,16 +5206,16 @@
       "luz": 34,
       "agua": 49,
       "poeira": 41,
-      "biologia": 99,
+      "biologia": 93,
       "subsolo": 0,
       "operacoes": 14
      }
     },
     "mons_mouton_plateau": {
      "iap": {
-      "geral": 44,
+      "geral": 43,
       "rover": 50,
-      "astrobio": 52,
+      "astrobio": 50,
       "isru": 33,
       "habitat": 36,
       "energia": 35
@@ -5227,16 +5227,16 @@
       "luz": 34,
       "agua": 49,
       "poeira": 41,
-      "biologia": 99,
+      "biologia": 93,
       "subsolo": 0,
       "operacoes": 69
      }
     },
     "mons_mouton": {
      "iap": {
-      "geral": 40,
+      "geral": 39,
       "rover": 41,
-      "astrobio": 52,
+      "astrobio": 50,
       "isru": 30,
       "habitat": 31,
       "energia": 31
@@ -5248,7 +5248,7 @@
       "luz": 34,
       "agua": 49,
       "poeira": 41,
-      "biologia": 99,
+      "biologia": 93,
       "subsolo": 0,
       "operacoes": 52
      }
@@ -5257,7 +5257,7 @@
      "iap": {
       "geral": 35,
       "rover": 28,
-      "astrobio": 52,
+      "astrobio": 50,
       "isru": 27,
       "habitat": 25,
       "energia": 27
@@ -5269,7 +5269,7 @@
       "luz": 34,
       "agua": 49,
       "poeira": 41,
-      "biologia": 99,
+      "biologia": 93,
       "subsolo": 0,
       "operacoes": 30
      }
@@ -5278,7 +5278,7 @@
      "iap": {
       "geral": 35,
       "rover": 28,
-      "astrobio": 52,
+      "astrobio": 50,
       "isru": 27,
       "habitat": 25,
       "energia": 27
@@ -5290,16 +5290,16 @@
       "luz": 34,
       "agua": 49,
       "poeira": 41,
-      "biologia": 99,
+      "biologia": 93,
       "subsolo": 0,
       "operacoes": 30
      }
     },
     "de_gerlache_rim_2": {
      "iap": {
-      "geral": 35,
+      "geral": 34,
       "rover": 28,
-      "astrobio": 52,
+      "astrobio": 50,
       "isru": 26,
       "habitat": 24,
       "energia": 25
@@ -5311,16 +5311,16 @@
       "luz": 29,
       "agua": 49,
       "poeira": 41,
-      "biologia": 99,
+      "biologia": 93,
       "subsolo": 0,
       "operacoes": 30
      }
     },
     "slater_plain": {
      "iap": {
-      "geral": 45,
+      "geral": 44,
       "rover": 54,
-      "astrobio": 52,
+      "astrobio": 50,
       "isru": 34,
       "habitat": 37,
       "energia": 36
@@ -5332,7 +5332,7 @@
       "luz": 34,
       "agua": 49,
       "poeira": 41,
-      "biologia": 99,
+      "biologia": 93,
       "subsolo": 0,
       "operacoes": 69
      }
@@ -5341,7 +5341,7 @@
      "iap": {
       "geral": 34,
       "rover": 25,
-      "astrobio": 52,
+      "astrobio": 50,
       "isru": 26,
       "habitat": 24,
       "energia": 26
@@ -5353,16 +5353,16 @@
       "luz": 34,
       "agua": 49,
       "poeira": 41,
-      "biologia": 99,
+      "biologia": 93,
       "subsolo": 0,
       "operacoes": 21
      }
     },
     "marius": {
      "iap": {
-      "geral": 55,
+      "geral": 54,
       "rover": 64,
-      "astrobio": 47,
+      "astrobio": 45,
       "isru": 40,
       "habitat": 50,
       "energia": 64
@@ -5374,7 +5374,7 @@
       "luz": 99,
       "agua": 49,
       "poeira": 41,
-      "biologia": 99,
+      "biologia": 93,
       "subsolo": 0,
       "operacoes": 96
      }
@@ -5383,7 +5383,7 @@
      "iap": {
       "geral": 62,
       "rover": 61,
-      "astrobio": 55,
+      "astrobio": 53,
       "isru": 55,
       "habitat": 62,
       "energia": 68
@@ -5395,16 +5395,16 @@
       "luz": 98,
       "agua": 49,
       "poeira": 55,
-      "biologia": 74,
+      "biologia": 68,
       "subsolo": null,
       "operacoes": 91
      }
     },
     "gale": {
      "iap": {
-      "geral": 60,
+      "geral": 59,
       "rover": 54,
-      "astrobio": 56,
+      "astrobio": 54,
       "isru": 53,
       "habitat": 58,
       "energia": 65
@@ -5416,16 +5416,16 @@
       "luz": 98,
       "agua": 49,
       "poeira": 53,
-      "biologia": 74,
+      "biologia": 68,
       "subsolo": null,
       "operacoes": 74
      }
     },
     "meridiani": {
      "iap": {
-      "geral": 65,
+      "geral": 64,
       "rover": 71,
-      "astrobio": 52,
+      "astrobio": 50,
       "isru": 57,
       "habitat": 67,
       "energia": 70
@@ -5437,16 +5437,16 @@
       "luz": 98,
       "agua": 49,
       "poeira": 43,
-      "biologia": 74,
+      "biologia": 68,
       "subsolo": null,
       "operacoes": 100
      }
     },
     "arcadia": {
      "iap": {
-      "geral": 62,
+      "geral": 61,
       "rover": 73,
-      "astrobio": 56,
+      "astrobio": 55,
       "isru": 48,
       "habitat": 58,
       "energia": 69
@@ -5458,16 +5458,16 @@
       "luz": 94,
       "agua": 49,
       "poeira": 55,
-      "biologia": 99,
+      "biologia": 93,
       "subsolo": 0,
       "operacoes": 100
      }
     },
     "oxia": {
      "iap": {
-      "geral": 68,
+      "geral": 67,
       "rover": 74,
-      "astrobio": 55,
+      "astrobio": 54,
       "isru": 59,
       "habitat": 69,
       "energia": 73
@@ -5479,7 +5479,7 @@
       "luz": 98,
       "agua": 49,
       "poeira": 55,
-      "biologia": 74,
+      "biologia": 68,
       "subsolo": null,
       "operacoes": 99
      }
@@ -5502,11 +5502,11 @@
    "alvo": "oxia",
    "alvo_nome": "Oxia Planum",
    "corpo": "mars",
-   "nota_pct": 68,
+   "nota_pct": 66,
    "notas_perfil_pct": {
-    "geral": 68,
+    "geral": 66,
     "rover": 75,
-    "astrobio": 55,
+    "astrobio": 53,
     "isru": 63,
     "habitat": 72,
     "energia": 71
@@ -5520,7 +5520,7 @@
     "luz": 100,
     "agua": 50,
     "poeira": 34,
-    "biologia": 66,
+    "biologia": 58,
     "subsolo": null,
     "operacoes": 100
    },
@@ -5665,11 +5665,11 @@
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.03,
+     "valor": 0.09,
      "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
-     "nota": "estimativa; substituir pelo MOD13A2 do AppEEARS (task a92258f5)"
+     "status": "medido",
+     "fonte": "mod13c2",
+     "nota": "media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
@@ -5775,9 +5775,9 @@
    "comparacoes": {
     "shackleton": {
      "iap": {
-      "geral": 34,
+      "geral": 33,
       "rover": 35,
-      "astrobio": 46,
+      "astrobio": 44,
       "isru": 25,
       "habitat": 24,
       "energia": 26
@@ -5789,16 +5789,16 @@
       "luz": 8,
       "agua": 50,
       "poeira": 74,
-      "biologia": 74,
+      "biologia": 67,
       "subsolo": 0,
       "operacoes": 30
      }
     },
     "haworth": {
      "iap": {
-      "geral": 38,
+      "geral": 37,
       "rover": 38,
-      "astrobio": 46,
+      "astrobio": 44,
       "isru": 28,
       "habitat": 29,
       "energia": 35
@@ -5810,16 +5810,16 @@
       "luz": 34,
       "agua": 50,
       "poeira": 74,
-      "biologia": 74,
+      "biologia": 67,
       "subsolo": 0,
       "operacoes": 34
      }
     },
     "malapert": {
      "iap": {
-      "geral": 34,
+      "geral": 33,
       "rover": 27,
-      "astrobio": 46,
+      "astrobio": 44,
       "isru": 25,
       "habitat": 24,
       "energia": 31
@@ -5831,16 +5831,16 @@
       "luz": 34,
       "agua": 50,
       "poeira": 74,
-      "biologia": 74,
+      "biologia": 67,
       "subsolo": 0,
       "operacoes": 15
      }
     },
     "mons_mouton_plateau": {
      "iap": {
-      "geral": 47,
+      "geral": 46,
       "rover": 62,
-      "astrobio": 46,
+      "astrobio": 44,
       "isru": 35,
       "habitat": 41,
       "energia": 44
@@ -5852,7 +5852,7 @@
       "luz": 34,
       "agua": 50,
       "poeira": 74,
-      "biologia": 74,
+      "biologia": 67,
       "subsolo": 0,
       "operacoes": 75
      }
@@ -5861,7 +5861,7 @@
      "iap": {
       "geral": 43,
       "rover": 53,
-      "astrobio": 46,
+      "astrobio": 44,
       "isru": 32,
       "habitat": 36,
       "energia": 41
@@ -5873,16 +5873,16 @@
       "luz": 34,
       "agua": 50,
       "poeira": 74,
-      "biologia": 74,
+      "biologia": 67,
       "subsolo": 0,
       "operacoes": 57
      }
     },
     "nobile_rim_1": {
      "iap": {
-      "geral": 38,
+      "geral": 37,
       "rover": 39,
-      "astrobio": 46,
+      "astrobio": 44,
       "isru": 28,
       "habitat": 30,
       "energia": 36
@@ -5894,16 +5894,16 @@
       "luz": 34,
       "agua": 50,
       "poeira": 74,
-      "biologia": 74,
+      "biologia": 67,
       "subsolo": 0,
       "operacoes": 34
      }
     },
     "nobile_rim_2": {
      "iap": {
-      "geral": 38,
+      "geral": 37,
       "rover": 39,
-      "astrobio": 46,
+      "astrobio": 44,
       "isru": 28,
       "habitat": 30,
       "energia": 36
@@ -5915,16 +5915,16 @@
       "luz": 34,
       "agua": 50,
       "poeira": 74,
-      "biologia": 74,
+      "biologia": 67,
       "subsolo": 0,
       "operacoes": 34
      }
     },
     "de_gerlache_rim_2": {
      "iap": {
-      "geral": 38,
+      "geral": 37,
       "rover": 39,
-      "astrobio": 46,
+      "astrobio": 44,
       "isru": 28,
       "habitat": 29,
       "energia": 34
@@ -5936,7 +5936,7 @@
       "luz": 29,
       "agua": 50,
       "poeira": 74,
-      "biologia": 74,
+      "biologia": 67,
       "subsolo": 0,
       "operacoes": 34
      }
@@ -5945,7 +5945,7 @@
      "iap": {
       "geral": 48,
       "rover": 67,
-      "astrobio": 46,
+      "astrobio": 44,
       "isru": 36,
       "habitat": 43,
       "energia": 46
@@ -5957,16 +5957,16 @@
       "luz": 34,
       "agua": 50,
       "poeira": 74,
-      "biologia": 74,
+      "biologia": 67,
       "subsolo": 0,
       "operacoes": 75
      }
     },
     "cabeus_b_peak": {
      "iap": {
-      "geral": 37,
+      "geral": 36,
       "rover": 35,
-      "astrobio": 46,
+      "astrobio": 44,
       "isru": 27,
       "habitat": 28,
       "energia": 34
@@ -5978,7 +5978,7 @@
       "luz": 34,
       "agua": 50,
       "poeira": 74,
-      "biologia": 74,
+      "biologia": 67,
       "subsolo": 0,
       "operacoes": 23
      }
@@ -5987,7 +5987,7 @@
      "iap": {
       "geral": 56,
       "rover": 73,
-      "astrobio": 41,
+      "astrobio": 39,
       "isru": 41,
       "habitat": 53,
       "energia": 70
@@ -5999,16 +5999,16 @@
       "luz": 95,
       "agua": 50,
       "poeira": 74,
-      "biologia": 74,
+      "biologia": 67,
       "subsolo": 0,
       "operacoes": 98
      }
     },
     "jezero": {
      "iap": {
-      "geral": 61,
+      "geral": 60,
       "rover": 62,
-      "astrobio": 53,
+      "astrobio": 51,
       "isru": 58,
       "habitat": 64,
       "energia": 66
@@ -6020,16 +6020,16 @@
       "luz": 100,
       "agua": 50,
       "poeira": 34,
-      "biologia": 66,
+      "biologia": 58,
       "subsolo": null,
       "operacoes": 95
      }
     },
     "gale": {
      "iap": {
-      "geral": 57,
+      "geral": 56,
       "rover": 51,
-      "astrobio": 57,
+      "astrobio": 55,
       "isru": 58,
       "habitat": 60,
       "energia": 59
@@ -6041,16 +6041,16 @@
       "luz": 100,
       "agua": 50,
       "poeira": 15,
-      "biologia": 66,
+      "biologia": 58,
       "subsolo": null,
       "operacoes": 81
      }
     },
     "meridiani": {
      "iap": {
-      "geral": 63,
+      "geral": 62,
       "rover": 69,
-      "astrobio": 53,
+      "astrobio": 50,
       "isru": 62,
       "habitat": 68,
       "energia": 65
@@ -6062,16 +6062,16 @@
       "luz": 100,
       "agua": 50,
       "poeira": 9,
-      "biologia": 66,
+      "biologia": 58,
       "subsolo": null,
       "operacoes": 99
      }
     },
     "arcadia": {
      "iap": {
-      "geral": 59,
+      "geral": 58,
       "rover": 74,
-      "astrobio": 54,
+      "astrobio": 52,
       "isru": 51,
       "habitat": 59,
       "energia": 64
@@ -6083,16 +6083,16 @@
       "luz": 87,
       "agua": 50,
       "poeira": 34,
-      "biologia": 74,
+      "biologia": 67,
       "subsolo": 0,
       "operacoes": 99
      }
     },
     "oxia": {
      "iap": {
-      "geral": 68,
+      "geral": 66,
       "rover": 75,
-      "astrobio": 55,
+      "astrobio": 53,
       "isru": 63,
       "habitat": 72,
       "energia": 71
@@ -6104,7 +6104,7 @@
       "luz": 100,
       "agua": 50,
       "poeira": 34,
-      "biologia": 66,
+      "biologia": 58,
       "subsolo": null,
       "operacoes": 100
      }
@@ -6127,11 +6127,11 @@
    "alvo": "meridiani",
    "alvo_nome": "Meridiani Planum",
    "corpo": "mars",
-   "nota_pct": 60,
+   "nota_pct": 59,
    "notas_perfil_pct": {
-    "geral": 60,
+    "geral": 59,
     "rover": 74,
-    "astrobio": 53,
+    "astrobio": 51,
     "isru": 52,
     "habitat": 62,
     "energia": 70
@@ -6145,7 +6145,7 @@
     "luz": 100,
     "agua": 43,
     "poeira": 40,
-    "biologia": 67,
+    "biologia": 61,
     "subsolo": 0,
     "operacoes": 100
    },
@@ -6294,11 +6294,11 @@
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.0,
+     "valor": 0.07,
      "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
-     "nota": "estimativa; substituir pelo MOD13A2 do AppEEARS (task a92258f5)"
+     "status": "medido",
+     "fonte": "mod13c2",
+     "nota": "media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
@@ -6404,9 +6404,9 @@
    "comparacoes": {
     "shackleton": {
      "iap": {
-      "geral": 28,
+      "geral": 27,
       "rover": 27,
-      "astrobio": 42,
+      "astrobio": 40,
       "isru": 20,
       "habitat": 20,
       "energia": 18
@@ -6418,7 +6418,7 @@
       "luz": 8,
       "agua": 27,
       "poeira": 45,
-      "biologia": 75,
+      "biologia": 70,
       "subsolo": 0,
       "operacoes": 28
      }
@@ -6427,7 +6427,7 @@
      "iap": {
       "geral": 31,
       "rover": 29,
-      "astrobio": 42,
+      "astrobio": 40,
       "isru": 22,
       "habitat": 24,
       "energia": 27
@@ -6439,7 +6439,7 @@
       "luz": 34,
       "agua": 27,
       "poeira": 45,
-      "biologia": 75,
+      "biologia": 70,
       "subsolo": 0,
       "operacoes": 30
      }
@@ -6448,7 +6448,7 @@
      "iap": {
       "geral": 28,
       "rover": 20,
-      "astrobio": 42,
+      "astrobio": 40,
       "isru": 20,
       "habitat": 20,
       "energia": 24
@@ -6460,7 +6460,7 @@
       "luz": 34,
       "agua": 27,
       "poeira": 45,
-      "biologia": 75,
+      "biologia": 70,
       "subsolo": 0,
       "operacoes": 14
      }
@@ -6469,7 +6469,7 @@
      "iap": {
       "geral": 39,
       "rover": 51,
-      "astrobio": 42,
+      "astrobio": 40,
       "isru": 28,
       "habitat": 35,
       "energia": 35
@@ -6481,16 +6481,16 @@
       "luz": 34,
       "agua": 27,
       "poeira": 45,
-      "biologia": 75,
+      "biologia": 70,
       "subsolo": 0,
       "operacoes": 69
      }
     },
     "mons_mouton": {
      "iap": {
-      "geral": 36,
+      "geral": 35,
       "rover": 42,
-      "astrobio": 42,
+      "astrobio": 40,
       "isru": 26,
       "habitat": 30,
       "energia": 32
@@ -6502,7 +6502,7 @@
       "luz": 34,
       "agua": 27,
       "poeira": 45,
-      "biologia": 75,
+      "biologia": 70,
       "subsolo": 0,
       "operacoes": 52
      }
@@ -6511,7 +6511,7 @@
      "iap": {
       "geral": 31,
       "rover": 29,
-      "astrobio": 42,
+      "astrobio": 40,
       "isru": 22,
       "habitat": 25,
       "energia": 27
@@ -6523,7 +6523,7 @@
       "luz": 34,
       "agua": 27,
       "poeira": 45,
-      "biologia": 75,
+      "biologia": 70,
       "subsolo": 0,
       "operacoes": 30
      }
@@ -6532,7 +6532,7 @@
      "iap": {
       "geral": 31,
       "rover": 29,
-      "astrobio": 42,
+      "astrobio": 40,
       "isru": 22,
       "habitat": 25,
       "energia": 27
@@ -6544,16 +6544,16 @@
       "luz": 34,
       "agua": 27,
       "poeira": 45,
-      "biologia": 75,
+      "biologia": 70,
       "subsolo": 0,
       "operacoes": 30
      }
     },
     "de_gerlache_rim_2": {
      "iap": {
-      "geral": 31,
+      "geral": 30,
       "rover": 29,
-      "astrobio": 42,
+      "astrobio": 40,
       "isru": 22,
       "habitat": 24,
       "energia": 26
@@ -6565,7 +6565,7 @@
       "luz": 29,
       "agua": 27,
       "poeira": 45,
-      "biologia": 75,
+      "biologia": 70,
       "subsolo": 0,
       "operacoes": 30
      }
@@ -6574,7 +6574,7 @@
      "iap": {
       "geral": 41,
       "rover": 55,
-      "astrobio": 42,
+      "astrobio": 40,
       "isru": 30,
       "habitat": 37,
       "energia": 37
@@ -6586,7 +6586,7 @@
       "luz": 34,
       "agua": 27,
       "poeira": 45,
-      "biologia": 75,
+      "biologia": 70,
       "subsolo": 0,
       "operacoes": 69
      }
@@ -6595,7 +6595,7 @@
      "iap": {
       "geral": 30,
       "rover": 26,
-      "astrobio": 42,
+      "astrobio": 40,
       "isru": 22,
       "habitat": 23,
       "energia": 26
@@ -6607,7 +6607,7 @@
       "luz": 34,
       "agua": 27,
       "poeira": 45,
-      "biologia": 75,
+      "biologia": 70,
       "subsolo": 0,
       "operacoes": 21
      }
@@ -6616,7 +6616,7 @@
      "iap": {
       "geral": 51,
       "rover": 66,
-      "astrobio": 38,
+      "astrobio": 37,
       "isru": 37,
       "habitat": 50,
       "energia": 63
@@ -6628,16 +6628,16 @@
       "luz": 94,
       "agua": 27,
       "poeira": 45,
-      "biologia": 75,
+      "biologia": 70,
       "subsolo": 0,
       "operacoes": 96
      }
     },
     "jezero": {
      "iap": {
-      "geral": 54,
+      "geral": 53,
       "rover": 63,
-      "astrobio": 43,
+      "astrobio": 42,
       "isru": 41,
       "habitat": 53,
       "energia": 70
@@ -6649,16 +6649,16 @@
       "luz": 100,
       "agua": 27,
       "poeira": 65,
-      "biologia": 67,
+      "biologia": 61,
       "subsolo": 0,
       "operacoes": 91
      }
     },
     "gale": {
      "iap": {
-      "geral": 49,
+      "geral": 48,
       "rover": 51,
-      "astrobio": 45,
+      "astrobio": 43,
       "isru": 40,
       "habitat": 48,
       "energia": 63
@@ -6670,16 +6670,16 @@
       "luz": 100,
       "agua": 27,
       "poeira": 47,
-      "biologia": 67,
+      "biologia": 61,
       "subsolo": 0,
       "operacoes": 74
      }
     },
     "meridiani": {
      "iap": {
-      "geral": 60,
+      "geral": 59,
       "rover": 74,
-      "astrobio": 53,
+      "astrobio": 51,
       "isru": 52,
       "habitat": 62,
       "energia": 70
@@ -6691,7 +6691,7 @@
       "luz": 100,
       "agua": 43,
       "poeira": 40,
-      "biologia": 67,
+      "biologia": 61,
       "subsolo": 0,
       "operacoes": 100
      }
@@ -6700,7 +6700,7 @@
      "iap": {
       "geral": 57,
       "rover": 76,
-      "astrobio": 44,
+      "astrobio": 43,
       "isru": 42,
       "habitat": 56,
       "energia": 69
@@ -6712,16 +6712,16 @@
       "luz": 86,
       "agua": 27,
       "poeira": 65,
-      "biologia": 75,
+      "biologia": 70,
       "subsolo": 0,
       "operacoes": 100
      }
     },
     "oxia": {
      "iap": {
-      "geral": 58,
+      "geral": 57,
       "rover": 76,
-      "astrobio": 41,
+      "astrobio": 39,
       "isru": 43,
       "habitat": 58,
       "energia": 75
@@ -6733,7 +6733,7 @@
       "luz": 100,
       "agua": 27,
       "poeira": 65,
-      "biologia": 67,
+      "biologia": 61,
       "subsolo": 0,
       "operacoes": 99
      }
@@ -6756,11 +6756,11 @@
    "alvo": "meridiani",
    "alvo_nome": "Meridiani Planum",
    "corpo": "mars",
-   "nota_pct": 59,
+   "nota_pct": 55,
    "notas_perfil_pct": {
-    "geral": 59,
+    "geral": 55,
     "rover": 77,
-    "astrobio": 29,
+    "astrobio": 18,
     "isru": 43,
     "habitat": 66,
     "energia": 76
@@ -6774,7 +6774,7 @@
     "luz": 100,
     "agua": 0,
     "poeira": 69,
-    "biologia": 40,
+    "biologia": 6,
     "subsolo": null,
     "operacoes": 100
    },
@@ -6911,11 +6911,11 @@
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.1,
+     "valor": 0.31,
      "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
-     "nota": "estimativa; substituir pelo MOD13A2 do AppEEARS (task a92258f5)"
+     "status": "medido",
+     "fonte": "mod13c2",
+     "nota": "media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
@@ -7021,9 +7021,9 @@
    "comparacoes": {
     "shackleton": {
      "iap": {
-      "geral": 20,
+      "geral": 16,
       "rover": 26,
-      "astrobio": 23,
+      "astrobio": 14,
       "isru": 12,
       "habitat": 17,
       "energia": 17
@@ -7035,16 +7035,16 @@
       "luz": 8,
       "agua": 0,
       "poeira": 42,
-      "biologia": 40,
+      "biologia": 6,
       "subsolo": 0,
       "operacoes": 28
      }
     },
     "haworth": {
      "iap": {
-      "geral": 23,
+      "geral": 20,
       "rover": 28,
-      "astrobio": 23,
+      "astrobio": 14,
       "isru": 15,
       "habitat": 21,
       "energia": 27
@@ -7056,16 +7056,16 @@
       "luz": 34,
       "agua": 0,
       "poeira": 42,
-      "biologia": 40,
+      "biologia": 6,
       "subsolo": 0,
       "operacoes": 30
      }
     },
     "malapert": {
      "iap": {
-      "geral": 20,
+      "geral": 17,
       "rover": 19,
-      "astrobio": 23,
+      "astrobio": 14,
       "isru": 12,
       "habitat": 18,
       "energia": 24
@@ -7077,16 +7077,16 @@
       "luz": 34,
       "agua": 0,
       "poeira": 42,
-      "biologia": 40,
+      "biologia": 6,
       "subsolo": 0,
       "operacoes": 14
      }
     },
     "mons_mouton_plateau": {
      "iap": {
-      "geral": 32,
+      "geral": 28,
       "rover": 50,
-      "astrobio": 23,
+      "astrobio": 14,
       "isru": 21,
       "habitat": 32,
       "energia": 35
@@ -7098,16 +7098,16 @@
       "luz": 34,
       "agua": 0,
       "poeira": 42,
-      "biologia": 40,
+      "biologia": 6,
       "subsolo": 0,
       "operacoes": 69
      }
     },
     "mons_mouton": {
      "iap": {
-      "geral": 28,
+      "geral": 24,
       "rover": 40,
-      "astrobio": 23,
+      "astrobio": 14,
       "isru": 18,
       "habitat": 28,
       "energia": 31
@@ -7119,16 +7119,16 @@
       "luz": 34,
       "agua": 0,
       "poeira": 42,
-      "biologia": 40,
+      "biologia": 6,
       "subsolo": 0,
       "operacoes": 52
      }
     },
     "nobile_rim_1": {
      "iap": {
-      "geral": 24,
+      "geral": 20,
       "rover": 28,
-      "astrobio": 23,
+      "astrobio": 14,
       "isru": 15,
       "habitat": 22,
       "energia": 27
@@ -7140,16 +7140,16 @@
       "luz": 34,
       "agua": 0,
       "poeira": 42,
-      "biologia": 40,
+      "biologia": 6,
       "subsolo": 0,
       "operacoes": 30
      }
     },
     "nobile_rim_2": {
      "iap": {
-      "geral": 24,
+      "geral": 20,
       "rover": 28,
-      "astrobio": 23,
+      "astrobio": 14,
       "isru": 15,
       "habitat": 22,
       "energia": 27
@@ -7161,16 +7161,16 @@
       "luz": 34,
       "agua": 0,
       "poeira": 42,
-      "biologia": 40,
+      "biologia": 6,
       "subsolo": 0,
       "operacoes": 30
      }
     },
     "de_gerlache_rim_2": {
      "iap": {
-      "geral": 23,
+      "geral": 19,
       "rover": 28,
-      "astrobio": 23,
+      "astrobio": 14,
       "isru": 14,
       "habitat": 21,
       "energia": 25
@@ -7182,16 +7182,16 @@
       "luz": 29,
       "agua": 0,
       "poeira": 42,
-      "biologia": 40,
+      "biologia": 6,
       "subsolo": 0,
       "operacoes": 30
      }
     },
     "slater_plain": {
      "iap": {
-      "geral": 33,
+      "geral": 30,
       "rover": 54,
-      "astrobio": 23,
+      "astrobio": 14,
       "isru": 22,
       "habitat": 34,
       "energia": 37
@@ -7203,16 +7203,16 @@
       "luz": 34,
       "agua": 0,
       "poeira": 42,
-      "biologia": 40,
+      "biologia": 6,
       "subsolo": 0,
       "operacoes": 69
      }
     },
     "cabeus_b_peak": {
      "iap": {
-      "geral": 22,
+      "geral": 19,
       "rover": 25,
-      "astrobio": 23,
+      "astrobio": 14,
       "isru": 14,
       "habitat": 20,
       "energia": 26
@@ -7224,16 +7224,16 @@
       "luz": 34,
       "agua": 0,
       "poeira": 42,
-      "biologia": 40,
+      "biologia": 6,
       "subsolo": 0,
       "operacoes": 21
      }
     },
     "marius": {
      "iap": {
-      "geral": 45,
+      "geral": 41,
       "rover": 66,
-      "astrobio": 25,
+      "astrobio": 15,
       "isru": 31,
       "habitat": 49,
       "energia": 61
@@ -7245,16 +7245,16 @@
       "luz": 94,
       "agua": 0,
       "poeira": 42,
-      "biologia": 40,
+      "biologia": 6,
       "subsolo": 0,
       "operacoes": 96
      }
     },
     "jezero": {
      "iap": {
-      "geral": 45,
+      "geral": 40,
       "rover": 51,
-      "astrobio": 25,
+      "astrobio": 15,
       "isru": 36,
       "habitat": 51,
       "energia": 59
@@ -7266,16 +7266,16 @@
       "luz": 100,
       "agua": 0,
       "poeira": 19,
-      "biologia": 40,
+      "biologia": 6,
       "subsolo": null,
       "operacoes": 91
      }
     },
     "gale": {
      "iap": {
-      "geral": 49,
+      "geral": 45,
       "rover": 56,
-      "astrobio": 24,
+      "astrobio": 14,
       "isru": 33,
       "habitat": 52,
       "energia": 70
@@ -7287,16 +7287,16 @@
       "luz": 100,
       "agua": 0,
       "poeira": 78,
-      "biologia": 40,
+      "biologia": 6,
       "subsolo": null,
       "operacoes": 74
      }
     },
     "meridiani": {
      "iap": {
-      "geral": 59,
+      "geral": 55,
       "rover": 77,
-      "astrobio": 29,
+      "astrobio": 18,
       "isru": 43,
       "habitat": 66,
       "energia": 76
@@ -7308,16 +7308,16 @@
       "luz": 100,
       "agua": 0,
       "poeira": 69,
-      "biologia": 40,
+      "biologia": 6,
       "subsolo": null,
       "operacoes": 100
      }
     },
     "arcadia": {
      "iap": {
-      "geral": 42,
+      "geral": 39,
       "rover": 65,
-      "astrobio": 21,
+      "astrobio": 11,
       "isru": 31,
       "habitat": 47,
       "energia": 58
@@ -7329,16 +7329,16 @@
       "luz": 87,
       "agua": 0,
       "poeira": 19,
-      "biologia": 40,
+      "biologia": 6,
       "subsolo": 0,
       "operacoes": 100
      }
     },
     "oxia": {
      "iap": {
-      "geral": 50,
+      "geral": 46,
       "rover": 65,
-      "astrobio": 24,
+      "astrobio": 14,
       "isru": 40,
       "habitat": 59,
       "energia": 64
@@ -7350,7 +7350,7 @@
       "luz": 100,
       "agua": 0,
       "poeira": 19,
-      "biologia": 40,
+      "biologia": 6,
       "subsolo": null,
       "operacoes": 99
      }
@@ -7543,9 +7543,9 @@
      "rotulo": "Vegetacao (NDVI)",
      "valor": 0.05,
      "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
-     "nota": "estimativa; substituir pelo MOD13A2 do AppEEARS (task a92258f5)"
+     "status": "medido",
+     "fonte": "mod13c2",
+     "nota": "media de 54 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
@@ -7988,634 +7988,8 @@
    }
   },
   {
-   "id": "mauna_kea",
-   "posicao": 7,
-   "nome": "Mauna Kea",
-   "nome_en": "Mauna Kea",
-   "regiao": "Havaí",
-   "pais": "EUA",
-   "cidade": "Hilo",
-   "papel": "referencia",
-   "lat": 19.82,
-   "lon": -155.47,
-   "feicao": "Vulcão basáltico com cones de escória e cinza",
-   "dados_completos": true,
-   "alvo": "marius",
-   "alvo_nome": "Fosso das Colinas de Marius",
-   "corpo": "moon",
-   "nota_pct": 54,
-   "notas_perfil_pct": {
-    "geral": 54,
-    "rover": 49,
-    "astrobio": 53,
-    "isru": 38,
-    "habitat": 50,
-    "energia": 58
-   },
-   "dimensao_mais_forte": "Vida e habitabilidade",
-   "dimensao_mais_fraca": "Agua e gelo",
-   "dimensoes_pct": {
-    "terreno": 43,
-    "materiais": 80,
-    "termico": 5,
-    "luz": 94,
-    "agua": 0,
-    "poeira": 72,
-    "biologia": 97,
-    "subsolo": 50,
-    "operacoes": 44
-   },
-   "funciona": [
-    "A cinza do Pu'u Nene deu origem ao simulante de solo marciano JSC Mars-1",
-    "Testes de ISRU (extração de oxigênio) da NASA com regolito vulcânico"
-   ],
-   "quebra": [
-    "Ar mais denso e úmido",
-    "Gelo e neve no inverno"
-   ],
-   "testes": [
-    "Extração de oxigênio do regolito (ISRU)",
-    "Rovers em cinza fina e cones de escória"
-   ],
-   "caixa": [
-    19.72,
-    19.92,
-    -155.57,
-    -155.37
-   ],
-   "diametro_km": null,
-   "processos": [
-    "vulcanismo basáltico",
-    "alteração de cinza em palagonita"
-   ],
-   "referencias": [
-    "PISCES / NASA ISRU field tests 2008–2012",
-    "Allen et al. 1998 (JSC Mars-1)"
-   ],
-   "coord_aprox": false,
-   "tags": {
-    "terreno": [
-     "vulcao",
-     "macico"
-    ],
-    "materiais": [
-     "basalto",
-     "cinza_vulcanica",
-     "vidro_vulcanico",
-     "palagonita",
-     "regolito_fino"
-    ],
-    "agua": [],
-    "poeira": [
-     "poeira_fina"
-    ],
-    "biologia": [
-     "esteril"
-    ],
-    "subsolo": [
-     "tubo_lava"
-    ]
-   },
-   "valores": {
-    "elev_media_m": {
-     "rotulo": "Elevacao media",
-     "valor": 2722,
-     "unidade": "m",
-     "status": "medido",
-     "fonte": "srtmgl30",
-     "nota": "576 pixels de ~1 km na caixa do local"
-    },
-    "elev_relativa_m": {
-     "rotulo": "Desnivel no local",
-     "valor": -2639,
-     "unidade": "m",
-     "status": "medido",
-     "fonte": "srtmgl30",
-     "nota": "576 pixels de ~1 km na caixa do local"
-    },
-    "declividade_media": {
-     "rotulo": "Declividade media",
-     "valor": 10.5,
-     "unidade": "graus",
-     "status": "medido",
-     "fonte": "srtmgl30",
-     "nota": "576 pixels de ~1 km na caixa do local"
-    },
-    "rugosidade_tri_m": {
-     "rotulo": "Rugosidade TRI",
-     "valor": 408.8,
-     "unidade": "m",
-     "status": "medido",
-     "fonte": "srtmgl30",
-     "nota": "576 pixels de ~1 km na caixa do local"
-    },
-    "frac_decliv_8": {
-     "rotulo": "Area com declividade < 8 graus",
-     "valor": 0.26,
-     "unidade": "fracao",
-     "status": "medido",
-     "fonte": "srtmgl30",
-     "nota": "576 pixels de ~1 km na caixa do local"
-    },
-    "frac_transitavel_15": {
-     "rotulo": "Area com declividade < 15 graus",
-     "valor": 0.85,
-     "unidade": "fracao",
-     "status": "medido",
-     "fonte": "srtmgl30",
-     "nota": "576 pixels de ~1 km na caixa do local"
-    },
-    "sol_max_graus": {
-     "rotulo": "Altura maxima do Sol",
-     "valor": 89.9,
-     "unidade": "graus",
-     "status": "calculado",
-     "fonte": "calculo_solar",
-     "nota": "horizonte plano"
-    },
-    "frac_sol_baixo": {
-     "rotulo": "Luz com Sol abaixo de 10 graus",
-     "valor": 0.12,
-     "unidade": "fracao",
-     "status": "calculado",
-     "fonte": "calculo_solar",
-     "nota": "horizonte plano"
-    },
-    "frac_ano_sol_continuo": {
-     "rotulo": "Ano com Sol 24 h",
-     "valor": 0.0,
-     "unidade": "fracao",
-     "status": "calculado",
-     "fonte": "calculo_solar",
-     "nota": "horizonte plano"
-    },
-    "frac_ano_noite_continua": {
-     "rotulo": "Ano com noite 24 h",
-     "valor": 0.0,
-     "unidade": "fracao",
-     "status": "calculado",
-     "fonte": "calculo_solar",
-     "nota": "horizonte plano"
-    },
-    "insolacao_toa_wm2": {
-     "rotulo": "Sol no topo da atmosfera",
-     "valor": 393,
-     "unidade": "W/m2",
-     "status": "calculado",
-     "fonte": "calculo_solar",
-     "nota": "horizonte plano"
-    },
-    "ndvi_medio": {
-     "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.05,
-     "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
-     "nota": "estimativa; substituir pelo MOD13A2 do AppEEARS (task a92258f5)"
-    },
-    "lst_dia_c": {
-     "rotulo": "Temp. superficie maxima",
-     "valor": 31,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "nota": "TS_MAX: maxima da temperatura da superficie, media dos 12 meses (MERRA-2)"
-    },
-    "lst_noite_c": {
-     "rotulo": "Temp. superficie minima",
-     "valor": 17,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "nota": "TS_MIN: minima da temperatura da superficie, media dos 12 meses (MERRA-2)"
-    },
-    "amplitude_termica_c": {
-     "rotulo": "Amplitude termica (dT)",
-     "valor": 14,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "nota": "TS_MAX - TS_MIN"
-    },
-    "temp_media_c": {
-     "rotulo": "Temp. superficie media",
-     "valor": 22,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "nota": "TS: temperatura da superficie, media anual (MERRA-2)"
-    },
-    "albedo_medio": {
-     "rotulo": "Albedo",
-     "valor": 0.08,
-     "unidade": "fracao",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "nota": "ALLSKY_SRF_ALB: albedo da superficie, ceu real (CERES SYN1deg)"
-    },
-    "aod_medio": {
-     "rotulo": "Poeira/aerossol (AOD)",
-     "valor": 0.1,
-     "unidade": "adimensional",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "nota": "AOD_55: profundidade optica de aerossol em 550 nm (MERRA-2)"
-    },
-    "chuva_anual_mm": {
-     "rotulo": "Chuva anual",
-     "valor": 1611,
-     "unidade": "mm",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "nota": "PRECTOTCORR: chuva corrigida, media anual (MERRA-2/GPM)"
-    },
-    "vento_10m_ms": {
-     "rotulo": "Vento a 10 m",
-     "valor": 4.8,
-     "unidade": "m/s",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "nota": "WS10M: vento a 10 m, media anual (MERRA-2)"
-    },
-    "pressao_kpa": {
-     "rotulo": "Pressao do ar",
-     "valor": 73.26,
-     "unidade": "kPa",
-     "status": "calculado",
-     "fonte": "fisica",
-     "nota": "atmosfera padrao pela altitude"
-    },
-    "gravidade_g": {
-     "rotulo": "Gravidade",
-     "valor": 1.0,
-     "unidade": "g",
-     "status": "referencia",
-     "fonte": "fisica"
-    },
-    "dia_local_h": {
-     "rotulo": "Duracao do dia",
-     "valor": 24.0,
-     "unidade": "h",
-     "status": "referencia",
-     "fonte": "fisica"
-    }
-   },
-   "criterios_base": {
-    "lua.latitude_polar": false,
-    "lua.iluminacao": false,
-    "lua.declividade_pouso": false,
-    "lua.comunicacao": null,
-    "lua.gelo_proximo": false,
-    "lua.frio_extremo": false,
-    "marte.latitude": null,
-    "marte.altitude_baixa": null,
-    "marte.declividade_pouso": false,
-    "marte.agua_isru": false,
-    "marte.ciencia": false,
-    "marte.poeira": true
-   },
-   "comparacoes": {
-    "shackleton": {
-     "iap": {
-      "geral": 41,
-      "rover": 62,
-      "astrobio": 39,
-      "isru": 21,
-      "habitat": 34,
-      "energia": 35
-     },
-     "dimensoes_pct": {
-      "terreno": 61,
-      "materiais": 45,
-      "termico": 4,
-      "luz": 8,
-      "agua": 0,
-      "poeira": 72,
-      "biologia": 97,
-      "subsolo": 0,
-      "operacoes": 81
-     }
-    },
-    "haworth": {
-     "iap": {
-      "geral": 44,
-      "rover": 62,
-      "astrobio": 39,
-      "isru": 23,
-      "habitat": 37,
-      "energia": 44
-     },
-     "dimensoes_pct": {
-      "terreno": 67,
-      "materiais": 45,
-      "termico": 4,
-      "luz": 34,
-      "agua": 0,
-      "poeira": 72,
-      "biologia": 97,
-      "subsolo": 0,
-      "operacoes": 76
-     }
-    },
-    "malapert": {
-     "iap": {
-      "geral": 42,
-      "rover": 57,
-      "astrobio": 39,
-      "isru": 22,
-      "habitat": 35,
-      "energia": 42
-     },
-     "dimensoes_pct": {
-      "terreno": 54,
-      "materiais": 45,
-      "termico": 4,
-      "luz": 34,
-      "agua": 0,
-      "poeira": 72,
-      "biologia": 97,
-      "subsolo": 0,
-      "operacoes": 73
-     }
-    },
-    "mons_mouton_plateau": {
-     "iap": {
-      "geral": 42,
-      "rover": 56,
-      "astrobio": 39,
-      "isru": 21,
-      "habitat": 35,
-      "energia": 42
-     },
-     "dimensoes_pct": {
-      "terreno": 65,
-      "materiais": 45,
-      "termico": 4,
-      "luz": 34,
-      "agua": 0,
-      "poeira": 72,
-      "biologia": 97,
-      "subsolo": 0,
-      "operacoes": 59
-     }
-    },
-    "mons_mouton": {
-     "iap": {
-      "geral": 44,
-      "rover": 63,
-      "astrobio": 39,
-      "isru": 23,
-      "habitat": 38,
-      "energia": 44
-     },
-     "dimensoes_pct": {
-      "terreno": 76,
-      "materiais": 45,
-      "termico": 4,
-      "luz": 34,
-      "agua": 0,
-      "poeira": 72,
-      "biologia": 97,
-      "subsolo": 0,
-      "operacoes": 70
-     }
-    },
-    "nobile_rim_1": {
-     "iap": {
-      "geral": 44,
-      "rover": 63,
-      "astrobio": 39,
-      "isru": 23,
-      "habitat": 38,
-      "energia": 44
-     },
-     "dimensoes_pct": {
-      "terreno": 70,
-      "materiais": 45,
-      "termico": 4,
-      "luz": 34,
-      "agua": 0,
-      "poeira": 72,
-      "biologia": 97,
-      "subsolo": 0,
-      "operacoes": 76
-     }
-    },
-    "nobile_rim_2": {
-     "iap": {
-      "geral": 44,
-      "rover": 63,
-      "astrobio": 39,
-      "isru": 23,
-      "habitat": 38,
-      "energia": 44
-     },
-     "dimensoes_pct": {
-      "terreno": 70,
-      "materiais": 45,
-      "termico": 4,
-      "luz": 34,
-      "agua": 0,
-      "poeira": 72,
-      "biologia": 97,
-      "subsolo": 0,
-      "operacoes": 76
-     }
-    },
-    "de_gerlache_rim_2": {
-     "iap": {
-      "geral": 44,
-      "rover": 63,
-      "astrobio": 39,
-      "isru": 23,
-      "habitat": 37,
-      "energia": 43
-     },
-     "dimensoes_pct": {
-      "terreno": 70,
-      "materiais": 45,
-      "termico": 4,
-      "luz": 29,
-      "agua": 0,
-      "poeira": 72,
-      "biologia": 97,
-      "subsolo": 0,
-      "operacoes": 76
-     }
-    },
-    "slater_plain": {
-     "iap": {
-      "geral": 40,
-      "rover": 52,
-      "astrobio": 39,
-      "isru": 20,
-      "habitat": 33,
-      "energia": 40
-     },
-     "dimensoes_pct": {
-      "terreno": 50,
-      "materiais": 45,
-      "termico": 4,
-      "luz": 34,
-      "agua": 0,
-      "poeira": 72,
-      "biologia": 97,
-      "subsolo": 0,
-      "operacoes": 59
-     }
-    },
-    "cabeus_b_peak": {
-     "iap": {
-      "geral": 45,
-      "rover": 65,
-      "astrobio": 39,
-      "isru": 24,
-      "habitat": 39,
-      "energia": 45
-     },
-     "dimensoes_pct": {
-      "terreno": 77,
-      "materiais": 45,
-      "termico": 4,
-      "luz": 34,
-      "agua": 0,
-      "poeira": 72,
-      "biologia": 97,
-      "subsolo": 0,
-      "operacoes": 75
-     }
-    },
-    "marius": {
-     "iap": {
-      "geral": 54,
-      "rover": 49,
-      "astrobio": 53,
-      "isru": 38,
-      "habitat": 50,
-      "energia": 58
-     },
-     "dimensoes_pct": {
-      "terreno": 43,
-      "materiais": 80,
-      "termico": 5,
-      "luz": 94,
-      "agua": 0,
-      "poeira": 72,
-      "biologia": 97,
-      "subsolo": 50,
-      "operacoes": 44
-     }
-    },
-    "jezero": {
-     "iap": {
-      "geral": 42,
-      "rover": 46,
-      "astrobio": 32,
-      "isru": 28,
-      "habitat": 42,
-      "energia": 60
-     },
-     "dimensoes_pct": {
-      "terreno": 61,
-      "materiais": 35,
-      "termico": 29,
-      "luz": 100,
-      "agua": 0,
-      "poeira": 38,
-      "biologia": 72,
-      "subsolo": 0,
-      "operacoes": 47
-     }
-    },
-    "gale": {
-     "iap": {
-      "geral": 40,
-      "rover": 42,
-      "astrobio": 31,
-      "isru": 28,
-      "habitat": 40,
-      "energia": 57
-     },
-     "dimensoes_pct": {
-      "terreno": 48,
-      "materiais": 30,
-      "termico": 33,
-      "luz": 100,
-      "agua": 0,
-      "poeira": 20,
-      "biologia": 72,
-      "subsolo": 0,
-      "operacoes": 56
-     }
-    },
-    "meridiani": {
-     "iap": {
-      "geral": 37,
-      "rover": 31,
-      "astrobio": 35,
-      "isru": 27,
-      "habitat": 36,
-      "energia": 51
-     },
-     "dimensoes_pct": {
-      "terreno": 30,
-      "materiais": 47,
-      "termico": 31,
-      "luz": 100,
-      "agua": 0,
-      "poeira": 12,
-      "biologia": 72,
-      "subsolo": 0,
-      "operacoes": 40
-     }
-    },
-    "arcadia": {
-     "iap": {
-      "geral": 39,
-      "rover": 35,
-      "astrobio": 39,
-      "isru": 23,
-      "habitat": 34,
-      "energia": 50
-     },
-     "dimensoes_pct": {
-      "terreno": 30,
-      "materiais": 39,
-      "termico": 21,
-      "luz": 87,
-      "agua": 0,
-      "poeira": 38,
-      "biologia": 97,
-      "subsolo": 0,
-      "operacoes": 40
-     }
-    },
-    "oxia": {
-     "iap": {
-      "geral": 38,
-      "rover": 35,
-      "astrobio": 31,
-      "isru": 25,
-      "habitat": 36,
-      "energia": 56
-     },
-     "dimensoes_pct": {
-      "terreno": 32,
-      "materiais": 32,
-      "termico": 30,
-      "luz": 100,
-      "agua": 0,
-      "poeira": 38,
-      "biologia": 72,
-      "subsolo": 0,
-      "operacoes": 40
-     }
-    }
-   }
-  },
-  {
    "id": "raso_catarina",
-   "posicao": 8,
+   "posicao": 7,
    "nome": "Raso da Catarina",
    "nome_en": "Raso da Catarina",
    "regiao": "BA",
@@ -8629,11 +8003,11 @@
    "alvo": "oxia",
    "alvo_nome": "Oxia Planum",
    "corpo": "mars",
-   "nota_pct": 52,
+   "nota_pct": 51,
    "notas_perfil_pct": {
-    "geral": 52,
+    "geral": 51,
     "rover": 67,
-    "astrobio": 26,
+    "astrobio": 23,
     "isru": 49,
     "habitat": 63,
     "energia": 68
@@ -8647,7 +8021,7 @@
     "luz": 100,
     "agua": 21,
     "poeira": 40,
-    "biologia": 9,
+    "biologia": 0,
     "subsolo": null,
     "operacoes": 99
    },
@@ -8786,11 +8160,11 @@
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.28,
+     "valor": 0.59,
      "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
-     "nota": "estimativa; substituir pelo MOD13A2 do AppEEARS (task a92258f5)"
+     "status": "medido",
+     "fonte": "mod13c2",
+     "nota": "media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
@@ -8896,9 +8270,9 @@
    "comparacoes": {
     "shackleton": {
      "iap": {
-      "geral": 23,
+      "geral": 22,
       "rover": 33,
-      "astrobio": 22,
+      "astrobio": 20,
       "isru": 18,
       "habitat": 22,
       "energia": 24
@@ -8910,16 +8284,16 @@
       "luz": 8,
       "agua": 21,
       "poeira": 71,
-      "biologia": 9,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 28
      }
     },
     "haworth": {
      "iap": {
-      "geral": 27,
+      "geral": 26,
       "rover": 35,
-      "astrobio": 22,
+      "astrobio": 20,
       "isru": 21,
       "habitat": 26,
       "energia": 33
@@ -8931,16 +8305,16 @@
       "luz": 34,
       "agua": 21,
       "poeira": 71,
-      "biologia": 9,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 30
      }
     },
     "malapert": {
      "iap": {
-      "geral": 24,
+      "geral": 23,
       "rover": 28,
-      "astrobio": 22,
+      "astrobio": 20,
       "isru": 19,
       "habitat": 23,
       "energia": 31
@@ -8952,16 +8326,16 @@
       "luz": 34,
       "agua": 21,
       "poeira": 71,
-      "biologia": 9,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 14
      }
     },
     "mons_mouton_plateau": {
      "iap": {
-      "geral": 36,
+      "geral": 35,
       "rover": 60,
-      "astrobio": 22,
+      "astrobio": 20,
       "isru": 28,
       "habitat": 38,
       "energia": 43
@@ -8973,16 +8347,16 @@
       "luz": 34,
       "agua": 21,
       "poeira": 71,
-      "biologia": 9,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 69
      }
     },
     "mons_mouton": {
      "iap": {
-      "geral": 33,
+      "geral": 32,
       "rover": 51,
-      "astrobio": 22,
+      "astrobio": 20,
       "isru": 26,
       "habitat": 34,
       "energia": 39
@@ -8994,16 +8368,16 @@
       "luz": 34,
       "agua": 21,
       "poeira": 71,
-      "biologia": 9,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 52
      }
     },
     "nobile_rim_1": {
      "iap": {
-      "geral": 27,
+      "geral": 26,
       "rover": 36,
-      "astrobio": 22,
+      "astrobio": 20,
       "isru": 21,
       "habitat": 27,
       "energia": 34
@@ -9015,16 +8389,16 @@
       "luz": 34,
       "agua": 21,
       "poeira": 71,
-      "biologia": 9,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 30
      }
     },
     "nobile_rim_2": {
      "iap": {
-      "geral": 27,
+      "geral": 26,
       "rover": 36,
-      "astrobio": 22,
+      "astrobio": 20,
       "isru": 21,
       "habitat": 27,
       "energia": 34
@@ -9036,16 +8410,16 @@
       "luz": 34,
       "agua": 21,
       "poeira": 71,
-      "biologia": 9,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 30
      }
     },
     "de_gerlache_rim_2": {
      "iap": {
-      "geral": 26,
+      "geral": 25,
       "rover": 36,
-      "astrobio": 22,
+      "astrobio": 20,
       "isru": 21,
       "habitat": 26,
       "energia": 32
@@ -9057,16 +8431,16 @@
       "luz": 29,
       "agua": 21,
       "poeira": 71,
-      "biologia": 9,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 30
      }
     },
     "slater_plain": {
      "iap": {
-      "geral": 36,
+      "geral": 35,
       "rover": 60,
-      "astrobio": 22,
+      "astrobio": 20,
       "isru": 28,
       "habitat": 38,
       "energia": 42
@@ -9078,16 +8452,16 @@
       "luz": 34,
       "agua": 21,
       "poeira": 71,
-      "biologia": 9,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 69
      }
     },
     "cabeus_b_peak": {
      "iap": {
-      "geral": 26,
+      "geral": 25,
       "rover": 33,
-      "astrobio": 22,
+      "astrobio": 20,
       "isru": 20,
       "habitat": 25,
       "energia": 32
@@ -9099,16 +8473,16 @@
       "luz": 34,
       "agua": 21,
       "poeira": 71,
-      "biologia": 9,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 21
      }
     },
     "marius": {
      "iap": {
-      "geral": 45,
+      "geral": 44,
       "rover": 69,
-      "astrobio": 18,
+      "astrobio": 16,
       "isru": 34,
       "habitat": 50,
       "energia": 68
@@ -9120,16 +8494,16 @@
       "luz": 94,
       "agua": 21,
       "poeira": 71,
-      "biologia": 9,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 96
      }
     },
     "jezero": {
      "iap": {
-      "geral": 49,
+      "geral": 48,
       "rover": 58,
-      "astrobio": 27,
+      "astrobio": 24,
       "isru": 46,
       "habitat": 58,
       "energia": 64
@@ -9141,16 +8515,16 @@
       "luz": 100,
       "agua": 21,
       "poeira": 40,
-      "biologia": 9,
+      "biologia": 0,
       "subsolo": null,
       "operacoes": 91
      }
     },
     "gale": {
      "iap": {
-      "geral": 43,
+      "geral": 42,
       "rover": 46,
-      "astrobio": 26,
+      "astrobio": 23,
       "isru": 43,
       "habitat": 52,
       "energia": 58
@@ -9162,16 +8536,16 @@
       "luz": 100,
       "agua": 21,
       "poeira": 23,
-      "biologia": 9,
+      "biologia": 0,
       "subsolo": null,
       "operacoes": 74
      }
     },
     "meridiani": {
      "iap": {
-      "geral": 50,
+      "geral": 48,
       "rover": 63,
-      "astrobio": 27,
+      "astrobio": 24,
       "isru": 49,
       "habitat": 62,
       "energia": 62
@@ -9183,16 +8557,16 @@
       "luz": 100,
       "agua": 21,
       "poeira": 14,
-      "biologia": 9,
+      "biologia": 0,
       "subsolo": null,
       "operacoes": 100
      }
     },
     "arcadia": {
      "iap": {
-      "geral": 44,
+      "geral": 43,
       "rover": 67,
-      "astrobio": 23,
+      "astrobio": 20,
       "isru": 38,
       "habitat": 51,
       "energia": 61
@@ -9204,16 +8578,16 @@
       "luz": 86,
       "agua": 21,
       "poeira": 40,
-      "biologia": 9,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 100
      }
     },
     "oxia": {
      "iap": {
-      "geral": 52,
+      "geral": 51,
       "rover": 67,
-      "astrobio": 26,
+      "astrobio": 23,
       "isru": 49,
       "habitat": 63,
       "energia": 68
@@ -9225,7 +8599,7 @@
       "luz": 100,
       "agua": 21,
       "poeira": 40,
-      "biologia": 9,
+      "biologia": 0,
       "subsolo": null,
       "operacoes": 99
      }
@@ -9234,7 +8608,7 @@
   },
   {
    "id": "gilbues",
-   "posicao": 9,
+   "posicao": 8,
    "nome": "Núcleo de desertificação de Gilbués",
    "nome_en": "Gilbués badlands",
    "regiao": "PI",
@@ -9248,17 +8622,17 @@
    "alvo": "oxia",
    "alvo_nome": "Oxia Planum",
    "corpo": "mars",
-   "nota_pct": 51,
+   "nota_pct": 50,
    "notas_perfil_pct": {
-    "geral": 51,
+    "geral": 50,
     "rover": 69,
-    "astrobio": 22,
+    "astrobio": 20,
     "isru": 44,
     "habitat": 63,
     "energia": 69
    },
    "dimensao_mais_forte": "Iluminacao",
-   "dimensao_mais_fraca": "Agua e gelo",
+   "dimensao_mais_fraca": "Vida e habitabilidade",
    "dimensoes_pct": {
     "terreno": 74,
     "materiais": 53,
@@ -9266,7 +8640,7 @@
     "luz": 100,
     "agua": 2,
     "poeira": 43,
-    "biologia": 7,
+    "biologia": 1,
     "subsolo": null,
     "operacoes": 99
    },
@@ -9406,11 +8780,11 @@
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.3,
+     "valor": 0.49,
      "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
-     "nota": "estimativa; substituir pelo MOD13A2 do AppEEARS (task a92258f5)"
+     "status": "medido",
+     "fonte": "mod13c2",
+     "nota": "media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
@@ -9518,7 +8892,7 @@
      "iap": {
       "geral": 20,
       "rover": 32,
-      "astrobio": 16,
+      "astrobio": 15,
       "isru": 14,
       "habitat": 20,
       "energia": 23
@@ -9530,16 +8904,16 @@
       "luz": 8,
       "agua": 2,
       "poeira": 68,
-      "biologia": 7,
+      "biologia": 1,
       "subsolo": 0,
       "operacoes": 28
      }
     },
     "haworth": {
      "iap": {
-      "geral": 24,
+      "geral": 23,
       "rover": 34,
-      "astrobio": 16,
+      "astrobio": 15,
       "isru": 16,
       "habitat": 25,
       "energia": 33
@@ -9551,7 +8925,7 @@
       "luz": 34,
       "agua": 2,
       "poeira": 68,
-      "biologia": 7,
+      "biologia": 1,
       "subsolo": 0,
       "operacoes": 30
      }
@@ -9560,7 +8934,7 @@
      "iap": {
       "geral": 21,
       "rover": 28,
-      "astrobio": 16,
+      "astrobio": 15,
       "isru": 15,
       "habitat": 22,
       "energia": 30
@@ -9572,16 +8946,16 @@
       "luz": 34,
       "agua": 2,
       "poeira": 68,
-      "biologia": 7,
+      "biologia": 1,
       "subsolo": 0,
       "operacoes": 14
      }
     },
     "mons_mouton_plateau": {
      "iap": {
-      "geral": 33,
+      "geral": 32,
       "rover": 59,
-      "astrobio": 16,
+      "astrobio": 15,
       "isru": 23,
       "habitat": 37,
       "energia": 42
@@ -9593,16 +8967,16 @@
       "luz": 34,
       "agua": 2,
       "poeira": 68,
-      "biologia": 7,
+      "biologia": 1,
       "subsolo": 0,
       "operacoes": 69
      }
     },
     "mons_mouton": {
      "iap": {
-      "geral": 30,
+      "geral": 29,
       "rover": 50,
-      "astrobio": 16,
+      "astrobio": 15,
       "isru": 21,
       "habitat": 32,
       "energia": 38
@@ -9614,16 +8988,16 @@
       "luz": 34,
       "agua": 2,
       "poeira": 68,
-      "biologia": 7,
+      "biologia": 1,
       "subsolo": 0,
       "operacoes": 52
      }
     },
     "nobile_rim_1": {
      "iap": {
-      "geral": 24,
+      "geral": 23,
       "rover": 35,
-      "astrobio": 16,
+      "astrobio": 15,
       "isru": 16,
       "habitat": 25,
       "energia": 33
@@ -9635,16 +9009,16 @@
       "luz": 34,
       "agua": 2,
       "poeira": 68,
-      "biologia": 7,
+      "biologia": 1,
       "subsolo": 0,
       "operacoes": 30
      }
     },
     "nobile_rim_2": {
      "iap": {
-      "geral": 24,
+      "geral": 23,
       "rover": 35,
-      "astrobio": 16,
+      "astrobio": 15,
       "isru": 16,
       "habitat": 25,
       "energia": 33
@@ -9656,7 +9030,7 @@
       "luz": 34,
       "agua": 2,
       "poeira": 68,
-      "biologia": 7,
+      "biologia": 1,
       "subsolo": 0,
       "operacoes": 30
      }
@@ -9665,7 +9039,7 @@
      "iap": {
       "geral": 23,
       "rover": 35,
-      "astrobio": 16,
+      "astrobio": 15,
       "isru": 16,
       "habitat": 24,
       "energia": 31
@@ -9677,16 +9051,16 @@
       "luz": 29,
       "agua": 2,
       "poeira": 68,
-      "biologia": 7,
+      "biologia": 1,
       "subsolo": 0,
       "operacoes": 30
      }
     },
     "slater_plain": {
      "iap": {
-      "geral": 33,
+      "geral": 32,
       "rover": 59,
-      "astrobio": 16,
+      "astrobio": 15,
       "isru": 23,
       "habitat": 36,
       "energia": 42
@@ -9698,16 +9072,16 @@
       "luz": 34,
       "agua": 2,
       "poeira": 68,
-      "biologia": 7,
+      "biologia": 1,
       "subsolo": 0,
       "operacoes": 69
      }
     },
     "cabeus_b_peak": {
      "iap": {
-      "geral": 23,
+      "geral": 22,
       "rover": 31,
-      "astrobio": 16,
+      "astrobio": 15,
       "isru": 16,
       "habitat": 23,
       "energia": 32
@@ -9719,16 +9093,16 @@
       "luz": 34,
       "agua": 2,
       "poeira": 68,
-      "biologia": 7,
+      "biologia": 1,
       "subsolo": 0,
       "operacoes": 21
      }
     },
     "marius": {
      "iap": {
-      "geral": 43,
+      "geral": 42,
       "rover": 69,
-      "astrobio": 13,
+      "astrobio": 11,
       "isru": 30,
       "habitat": 49,
       "energia": 67
@@ -9740,16 +9114,16 @@
       "luz": 94,
       "agua": 2,
       "poeira": 68,
-      "biologia": 7,
+      "biologia": 1,
       "subsolo": 0,
       "operacoes": 96
      }
     },
     "jezero": {
      "iap": {
-      "geral": 48,
+      "geral": 47,
       "rover": 60,
-      "astrobio": 24,
+      "astrobio": 22,
       "isru": 42,
       "habitat": 59,
       "energia": 65
@@ -9761,7 +9135,7 @@
       "luz": 100,
       "agua": 2,
       "poeira": 43,
-      "biologia": 7,
+      "biologia": 1,
       "subsolo": null,
       "operacoes": 91
      }
@@ -9770,7 +9144,7 @@
      "iap": {
       "geral": 42,
       "rover": 48,
-      "astrobio": 23,
+      "astrobio": 21,
       "isru": 40,
       "habitat": 53,
       "energia": 59
@@ -9782,7 +9156,7 @@
       "luz": 100,
       "agua": 2,
       "poeira": 28,
-      "biologia": 7,
+      "biologia": 1,
       "subsolo": null,
       "operacoes": 74
      }
@@ -9791,7 +9165,7 @@
      "iap": {
       "geral": 48,
       "rover": 65,
-      "astrobio": 22,
+      "astrobio": 21,
       "isru": 45,
       "habitat": 62,
       "energia": 63
@@ -9803,16 +9177,16 @@
       "luz": 100,
       "agua": 2,
       "poeira": 18,
-      "biologia": 7,
+      "biologia": 1,
       "subsolo": null,
       "operacoes": 100
      }
     },
     "arcadia": {
      "iap": {
-      "geral": 43,
+      "geral": 42,
       "rover": 68,
-      "astrobio": 18,
+      "astrobio": 17,
       "isru": 34,
       "habitat": 51,
       "energia": 62
@@ -9824,16 +9198,16 @@
       "luz": 87,
       "agua": 2,
       "poeira": 43,
-      "biologia": 7,
+      "biologia": 1,
       "subsolo": 0,
       "operacoes": 100
      }
     },
     "oxia": {
      "iap": {
-      "geral": 51,
+      "geral": 50,
       "rover": 69,
-      "astrobio": 22,
+      "astrobio": 20,
       "isru": 44,
       "habitat": 63,
       "energia": 69
@@ -9845,7 +9219,7 @@
       "luz": 100,
       "agua": 2,
       "poeira": 43,
-      "biologia": 7,
+      "biologia": 1,
       "subsolo": null,
       "operacoes": 99
      }
@@ -9853,634 +9227,8 @@
    }
   },
   {
-   "id": "rio_tinto",
-   "posicao": 10,
-   "nome": "Río Tinto",
-   "nome_en": "Río Tinto",
-   "regiao": "Andaluzia",
-   "pais": "Espanha",
-   "cidade": "Minas de Riotinto",
-   "papel": "referencia",
-   "lat": 37.72,
-   "lon": -6.55,
-   "feicao": "Rio ácido rico em ferro e sulfatos",
-   "dados_completos": true,
-   "alvo": "meridiani",
-   "alvo_nome": "Meridiani Planum",
-   "corpo": "mars",
-   "nota_pct": 51,
-   "notas_perfil_pct": {
-    "geral": 51,
-    "rover": 66,
-    "astrobio": 42,
-    "isru": 51,
-    "habitat": 58,
-    "energia": 62
-   },
-   "dimensao_mais_forte": "Pouso e mobilidade",
-   "dimensao_mais_fraca": "Subsolo e cavernas",
-   "dimensoes_pct": {
-    "terreno": 73,
-    "materiais": 75,
-    "termico": 36,
-    "luz": 92,
-    "agua": 42,
-    "poeira": 17,
-    "biologia": 24,
-    "subsolo": 0,
-    "operacoes": 100
-   },
-   "funciona": [
-    "Jarosita e hematita, os minerais de Meridiani",
-    "Vida em água ácida e no subsolo (projeto MARTE)"
-   ],
-   "quebra": [
-    "Mineração e cidade em volta",
-    "Clima mediterrâneo"
-   ],
-   "testes": [
-    "Perfuração robótica em busca de vida no subsolo (MARTE, NASA)",
-    "Espectroscopia de sulfatos"
-   ],
-   "caixa": [
-    37.62,
-    37.82,
-    -6.65,
-    -6.45
-   ],
-   "diametro_km": null,
-   "processos": [
-    "oxidação de sulfetos",
-    "precipitação de jarosita e hematita"
-   ],
-   "referencias": [
-    "Fernández-Remolar et al. 2005, EPSL",
-    "Stoker et al. 2008, Astrobiology (MARTE)"
-   ],
-   "coord_aprox": false,
-   "tags": {
-    "terreno": [
-     "vale_fluvial"
-    ],
-    "materiais": [
-     "sulfato",
-     "jarosita",
-     "oxido_ferro",
-     "hematita"
-    ],
-    "agua": [
-     "salmoura",
-     "agua_acida"
-    ],
-    "poeira": [],
-    "biologia": [
-     "extremofilos",
-     "bioassinaturas_preservadas"
-    ],
-    "subsolo": [
-     "aquifero_profundo"
-    ]
-   },
-   "valores": {
-    "elev_media_m": {
-     "rotulo": "Elevacao media",
-     "valor": 379,
-     "unidade": "m",
-     "status": "medido",
-     "fonte": "srtmgl30",
-     "nota": "576 pixels de ~1 km na caixa do local"
-    },
-    "elev_relativa_m": {
-     "rotulo": "Desnivel no local",
-     "valor": -414,
-     "unidade": "m",
-     "status": "medido",
-     "fonte": "srtmgl30",
-     "nota": "576 pixels de ~1 km na caixa do local"
-    },
-    "declividade_media": {
-     "rotulo": "Declividade media",
-     "valor": 2.7,
-     "unidade": "graus",
-     "status": "medido",
-     "fonte": "srtmgl30",
-     "nota": "576 pixels de ~1 km na caixa do local"
-    },
-    "rugosidade_tri_m": {
-     "rotulo": "Rugosidade TRI",
-     "valor": 122.4,
-     "unidade": "m",
-     "status": "medido",
-     "fonte": "srtmgl30",
-     "nota": "576 pixels de ~1 km na caixa do local"
-    },
-    "frac_decliv_8": {
-     "rotulo": "Area com declividade < 8 graus",
-     "valor": 1.0,
-     "unidade": "fracao",
-     "status": "medido",
-     "fonte": "srtmgl30",
-     "nota": "576 pixels de ~1 km na caixa do local"
-    },
-    "frac_transitavel_15": {
-     "rotulo": "Area com declividade < 15 graus",
-     "valor": 1.0,
-     "unidade": "fracao",
-     "status": "medido",
-     "fonte": "srtmgl30",
-     "nota": "576 pixels de ~1 km na caixa do local"
-    },
-    "sol_max_graus": {
-     "rotulo": "Altura maxima do Sol",
-     "valor": 75.7,
-     "unidade": "graus",
-     "status": "calculado",
-     "fonte": "calculo_solar",
-     "nota": "horizonte plano"
-    },
-    "frac_sol_baixo": {
-     "rotulo": "Luz com Sol abaixo de 10 graus",
-     "valor": 0.15,
-     "unidade": "fracao",
-     "status": "calculado",
-     "fonte": "calculo_solar",
-     "nota": "horizonte plano"
-    },
-    "frac_ano_sol_continuo": {
-     "rotulo": "Ano com Sol 24 h",
-     "valor": 0.0,
-     "unidade": "fracao",
-     "status": "calculado",
-     "fonte": "calculo_solar",
-     "nota": "horizonte plano"
-    },
-    "frac_ano_noite_continua": {
-     "rotulo": "Ano com noite 24 h",
-     "valor": 0.0,
-     "unidade": "fracao",
-     "status": "calculado",
-     "fonte": "calculo_solar",
-     "nota": "horizonte plano"
-    },
-    "insolacao_toa_wm2": {
-     "rotulo": "Sol no topo da atmosfera",
-     "valor": 337,
-     "unidade": "W/m2",
-     "status": "calculado",
-     "fonte": "calculo_solar",
-     "nota": "horizonte plano"
-    },
-    "ndvi_medio": {
-     "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.3,
-     "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
-     "nota": "estimativa; substituir pelo MOD13A2 do AppEEARS (task a92258f5)"
-    },
-    "lst_dia_c": {
-     "rotulo": "Temp. superficie maxima",
-     "valor": 41,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "nota": "TS_MAX: maxima da temperatura da superficie, media dos 12 meses (MERRA-2)"
-    },
-    "lst_noite_c": {
-     "rotulo": "Temp. superficie minima",
-     "valor": 3,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "nota": "TS_MIN: minima da temperatura da superficie, media dos 12 meses (MERRA-2)"
-    },
-    "amplitude_termica_c": {
-     "rotulo": "Amplitude termica (dT)",
-     "valor": 38,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "nota": "TS_MAX - TS_MIN"
-    },
-    "temp_media_c": {
-     "rotulo": "Temp. superficie media",
-     "valor": 19,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "nota": "TS: temperatura da superficie, media anual (MERRA-2)"
-    },
-    "albedo_medio": {
-     "rotulo": "Albedo",
-     "valor": 0.14,
-     "unidade": "fracao",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "nota": "ALLSKY_SRF_ALB: albedo da superficie, ceu real (CERES SYN1deg)"
-    },
-    "aod_medio": {
-     "rotulo": "Poeira/aerossol (AOD)",
-     "valor": 0.16,
-     "unidade": "adimensional",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "nota": "AOD_55: profundidade optica de aerossol em 550 nm (MERRA-2)"
-    },
-    "chuva_anual_mm": {
-     "rotulo": "Chuva anual",
-     "valor": 468,
-     "unidade": "mm",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "nota": "PRECTOTCORR: chuva corrigida, media anual (MERRA-2/GPM)"
-    },
-    "vento_10m_ms": {
-     "rotulo": "Vento a 10 m",
-     "valor": 3.6,
-     "unidade": "m/s",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "nota": "WS10M: vento a 10 m, media anual (MERRA-2)"
-    },
-    "pressao_kpa": {
-     "rotulo": "Pressao do ar",
-     "valor": 96.84,
-     "unidade": "kPa",
-     "status": "calculado",
-     "fonte": "fisica",
-     "nota": "atmosfera padrao pela altitude"
-    },
-    "gravidade_g": {
-     "rotulo": "Gravidade",
-     "valor": 1.0,
-     "unidade": "g",
-     "status": "referencia",
-     "fonte": "fisica"
-    },
-    "dia_local_h": {
-     "rotulo": "Duracao do dia",
-     "valor": 24.0,
-     "unidade": "h",
-     "status": "referencia",
-     "fonte": "fisica"
-    }
-   },
-   "criterios_base": {
-    "lua.latitude_polar": false,
-    "lua.iluminacao": false,
-    "lua.declividade_pouso": true,
-    "lua.comunicacao": null,
-    "lua.gelo_proximo": false,
-    "lua.frio_extremo": false,
-    "marte.latitude": null,
-    "marte.altitude_baixa": null,
-    "marte.declividade_pouso": true,
-    "marte.agua_isru": true,
-    "marte.ciencia": true,
-    "marte.poeira": false
-   },
-   "comparacoes": {
-    "shackleton": {
-     "iap": {
-      "geral": 21,
-      "rover": 29,
-      "astrobio": 23,
-      "isru": 20,
-      "habitat": 21,
-      "energia": 18
-     },
-     "dimensoes_pct": {
-      "terreno": 21,
-      "materiais": 50,
-      "termico": 3,
-      "luz": 8,
-      "agua": 26,
-      "poeira": 43,
-      "biologia": 7,
-      "subsolo": 0,
-      "operacoes": 28
-     }
-    },
-    "haworth": {
-     "iap": {
-      "geral": 24,
-      "rover": 31,
-      "astrobio": 23,
-      "isru": 23,
-      "habitat": 25,
-      "energia": 28
-     },
-     "dimensoes_pct": {
-      "terreno": 26,
-      "materiais": 50,
-      "termico": 3,
-      "luz": 34,
-      "agua": 26,
-      "poeira": 43,
-      "biologia": 7,
-      "subsolo": 0,
-      "operacoes": 30
-     }
-    },
-    "malapert": {
-     "iap": {
-      "geral": 21,
-      "rover": 21,
-      "astrobio": 23,
-      "isru": 20,
-      "habitat": 21,
-      "energia": 24
-     },
-     "dimensoes_pct": {
-      "terreno": 10,
-      "materiais": 50,
-      "termico": 3,
-      "luz": 34,
-      "agua": 26,
-      "poeira": 43,
-      "biologia": 7,
-      "subsolo": 0,
-      "operacoes": 14
-     }
-    },
-    "mons_mouton_plateau": {
-     "iap": {
-      "geral": 33,
-      "rover": 54,
-      "astrobio": 23,
-      "isru": 29,
-      "habitat": 36,
-      "energia": 36
-     },
-     "dimensoes_pct": {
-      "terreno": 64,
-      "materiais": 50,
-      "termico": 3,
-      "luz": 34,
-      "agua": 26,
-      "poeira": 43,
-      "biologia": 7,
-      "subsolo": 0,
-      "operacoes": 69
-     }
-    },
-    "mons_mouton": {
-     "iap": {
-      "geral": 29,
-      "rover": 44,
-      "astrobio": 23,
-      "isru": 27,
-      "habitat": 32,
-      "energia": 33
-     },
-     "dimensoes_pct": {
-      "terreno": 50,
-      "materiais": 50,
-      "termico": 3,
-      "luz": 34,
-      "agua": 26,
-      "poeira": 43,
-      "biologia": 7,
-      "subsolo": 0,
-      "operacoes": 52
-     }
-    },
-    "nobile_rim_1": {
-     "iap": {
-      "geral": 25,
-      "rover": 32,
-      "astrobio": 23,
-      "isru": 23,
-      "habitat": 26,
-      "energia": 28
-     },
-     "dimensoes_pct": {
-      "terreno": 29,
-      "materiais": 50,
-      "termico": 3,
-      "luz": 34,
-      "agua": 26,
-      "poeira": 43,
-      "biologia": 7,
-      "subsolo": 0,
-      "operacoes": 30
-     }
-    },
-    "nobile_rim_2": {
-     "iap": {
-      "geral": 25,
-      "rover": 32,
-      "astrobio": 23,
-      "isru": 23,
-      "habitat": 26,
-      "energia": 28
-     },
-     "dimensoes_pct": {
-      "terreno": 29,
-      "materiais": 50,
-      "termico": 3,
-      "luz": 34,
-      "agua": 26,
-      "poeira": 43,
-      "biologia": 7,
-      "subsolo": 0,
-      "operacoes": 30
-     }
-    },
-    "de_gerlache_rim_2": {
-     "iap": {
-      "geral": 24,
-      "rover": 32,
-      "astrobio": 23,
-      "isru": 23,
-      "habitat": 25,
-      "energia": 26
-     },
-     "dimensoes_pct": {
-      "terreno": 29,
-      "materiais": 50,
-      "termico": 3,
-      "luz": 29,
-      "agua": 26,
-      "poeira": 43,
-      "biologia": 7,
-      "subsolo": 0,
-      "operacoes": 30
-     }
-    },
-    "slater_plain": {
-     "iap": {
-      "geral": 33,
-      "rover": 55,
-      "astrobio": 23,
-      "isru": 30,
-      "habitat": 37,
-      "energia": 37
-     },
-     "dimensoes_pct": {
-      "terreno": 69,
-      "materiais": 50,
-      "termico": 3,
-      "luz": 34,
-      "agua": 26,
-      "poeira": 43,
-      "biologia": 7,
-      "subsolo": 0,
-      "operacoes": 69
-     }
-    },
-    "cabeus_b_peak": {
-     "iap": {
-      "geral": 23,
-      "rover": 28,
-      "astrobio": 23,
-      "isru": 22,
-      "habitat": 24,
-      "energia": 27
-     },
-     "dimensoes_pct": {
-      "terreno": 26,
-      "materiais": 50,
-      "termico": 3,
-      "luz": 34,
-      "agua": 26,
-      "poeira": 43,
-      "biologia": 7,
-      "subsolo": 0,
-      "operacoes": 21
-     }
-    },
-    "marius": {
-     "iap": {
-      "geral": 44,
-      "rover": 64,
-      "astrobio": 20,
-      "isru": 37,
-      "habitat": 50,
-      "energia": 63
-     },
-     "dimensoes_pct": {
-      "terreno": 74,
-      "materiais": 39,
-      "termico": 7,
-      "luz": 100,
-      "agua": 26,
-      "poeira": 43,
-      "biologia": 7,
-      "subsolo": 0,
-      "operacoes": 96
-     }
-    },
-    "jezero": {
-     "iap": {
-      "geral": 44,
-      "rover": 56,
-      "astrobio": 31,
-      "isru": 41,
-      "habitat": 50,
-      "energia": 59
-     },
-     "dimensoes_pct": {
-      "terreno": 55,
-      "materiais": 52,
-      "termico": 36,
-      "luz": 93,
-      "agua": 26,
-      "poeira": 17,
-      "biologia": 24,
-      "subsolo": 0,
-      "operacoes": 91
-     }
-    },
-    "gale": {
-     "iap": {
-      "geral": 42,
-      "rover": 50,
-      "astrobio": 32,
-      "isru": 40,
-      "habitat": 47,
-      "energia": 58
-     },
-     "dimensoes_pct": {
-      "terreno": 42,
-      "materiais": 56,
-      "termico": 39,
-      "luz": 92,
-      "agua": 26,
-      "poeira": 27,
-      "biologia": 24,
-      "subsolo": 0,
-      "operacoes": 74
-     }
-    },
-    "meridiani": {
-     "iap": {
-      "geral": 51,
-      "rover": 66,
-      "astrobio": 42,
-      "isru": 51,
-      "habitat": 58,
-      "energia": 62
-     },
-     "dimensoes_pct": {
-      "terreno": 73,
-      "materiais": 75,
-      "termico": 36,
-      "luz": 92,
-      "agua": 42,
-      "poeira": 17,
-      "biologia": 24,
-      "subsolo": 0,
-      "operacoes": 100
-     }
-    },
-    "arcadia": {
-     "iap": {
-      "geral": 44,
-      "rover": 63,
-      "astrobio": 25,
-      "isru": 42,
-      "habitat": 52,
-      "energia": 62
-     },
-     "dimensoes_pct": {
-      "terreno": 73,
-      "materiais": 49,
-      "termico": 25,
-      "luz": 99,
-      "agua": 26,
-      "poeira": 17,
-      "biologia": 7,
-      "subsolo": 0,
-      "operacoes": 100
-     }
-    },
-    "oxia": {
-     "iap": {
-      "geral": 46,
-      "rover": 63,
-      "astrobio": 28,
-      "isru": 42,
-      "habitat": 52,
-      "energia": 62
-     },
-     "dimensoes_pct": {
-      "terreno": 74,
-      "materiais": 42,
-      "termico": 36,
-      "luz": 93,
-      "agua": 26,
-      "poeira": 17,
-      "biologia": 24,
-      "subsolo": 0,
-      "operacoes": 99
-     }
-    }
-   }
-  },
-  {
    "id": "svalbard",
-   "posicao": 11,
+   "posicao": 9,
    "nome": "Bockfjorden, Svalbard",
    "nome_en": "Bockfjorden, Svalbard",
    "regiao": "Svalbard",
@@ -10494,11 +9242,11 @@
    "alvo": "malapert",
    "alvo_nome": "Maciço de Malapert",
    "corpo": "moon",
-   "nota_pct": 49,
+   "nota_pct": 50,
    "notas_perfil_pct": {
-    "geral": 49,
+    "geral": 50,
     "rover": 55,
-    "astrobio": 38,
+    "astrobio": 41,
     "isru": 49,
     "habitat": 49,
     "energia": 39
@@ -10512,7 +9260,7 @@
     "luz": 27,
     "agua": 62,
     "poeira": 49,
-    "biologia": 40,
+    "biologia": 50,
     "subsolo": 100,
     "operacoes": 96
    },
@@ -10658,11 +9406,11 @@
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.1,
+     "valor": -0.0,
      "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
-     "nota": "estimativa; substituir pelo MOD13A2 do AppEEARS (task a92258f5)"
+     "status": "medido",
+     "fonte": "mod13c2",
+     "nota": "media de 48 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
@@ -10768,9 +9516,9 @@
    "comparacoes": {
     "shackleton": {
      "iap": {
-      "geral": 48,
+      "geral": 49,
       "rover": 48,
-      "astrobio": 38,
+      "astrobio": 41,
       "isru": 49,
       "habitat": 48,
       "energia": 42
@@ -10782,16 +9530,16 @@
       "luz": 43,
       "agua": 62,
       "poeira": 49,
-      "biologia": 40,
+      "biologia": 50,
       "subsolo": 100,
       "operacoes": 82
      }
     },
     "haworth": {
      "iap": {
-      "geral": 46,
+      "geral": 47,
       "rover": 47,
-      "astrobio": 38,
+      "astrobio": 41,
       "isru": 47,
       "habitat": 45,
       "energia": 36
@@ -10803,16 +9551,16 @@
       "luz": 26,
       "agua": 62,
       "poeira": 49,
-      "biologia": 40,
+      "biologia": 50,
       "subsolo": 100,
       "operacoes": 77
      }
     },
     "malapert": {
      "iap": {
-      "geral": 49,
+      "geral": 50,
       "rover": 55,
-      "astrobio": 38,
+      "astrobio": 41,
       "isru": 49,
       "habitat": 49,
       "energia": 39
@@ -10824,16 +9572,16 @@
       "luz": 27,
       "agua": 62,
       "poeira": 49,
-      "biologia": 40,
+      "biologia": 50,
       "subsolo": 100,
       "operacoes": 96
      }
     },
     "mons_mouton_plateau": {
      "iap": {
-      "geral": 41,
+      "geral": 42,
       "rover": 33,
-      "astrobio": 38,
+      "astrobio": 41,
       "isru": 43,
       "habitat": 39,
       "energia": 32
@@ -10845,16 +9593,16 @@
       "luz": 28,
       "agua": 62,
       "poeira": 49,
-      "biologia": 40,
+      "biologia": 50,
       "subsolo": 100,
       "operacoes": 33
      }
     },
     "mons_mouton": {
      "iap": {
-      "geral": 43,
+      "geral": 44,
       "rover": 40,
-      "astrobio": 38,
+      "astrobio": 41,
       "isru": 45,
       "habitat": 42,
       "energia": 34
@@ -10866,16 +9614,16 @@
       "luz": 28,
       "agua": 62,
       "poeira": 49,
-      "biologia": 40,
+      "biologia": 50,
       "subsolo": 100,
       "operacoes": 51
      }
     },
     "nobile_rim_1": {
      "iap": {
-      "geral": 46,
+      "geral": 48,
       "rover": 48,
-      "astrobio": 38,
+      "astrobio": 41,
       "isru": 47,
       "habitat": 46,
       "energia": 37
@@ -10887,16 +9635,16 @@
       "luz": 28,
       "agua": 62,
       "poeira": 49,
-      "biologia": 40,
+      "biologia": 50,
       "subsolo": 100,
       "operacoes": 77
      }
     },
     "nobile_rim_2": {
      "iap": {
-      "geral": 46,
+      "geral": 48,
       "rover": 48,
-      "astrobio": 38,
+      "astrobio": 41,
       "isru": 47,
       "habitat": 46,
       "energia": 37
@@ -10908,16 +9656,16 @@
       "luz": 28,
       "agua": 62,
       "poeira": 49,
-      "biologia": 40,
+      "biologia": 50,
       "subsolo": 100,
       "operacoes": 77
      }
     },
     "de_gerlache_rim_2": {
      "iap": {
-      "geral": 47,
+      "geral": 48,
       "rover": 48,
-      "astrobio": 38,
+      "astrobio": 41,
       "isru": 48,
       "habitat": 47,
       "energia": 40
@@ -10929,16 +9677,16 @@
       "luz": 36,
       "agua": 62,
       "poeira": 49,
-      "biologia": 40,
+      "biologia": 50,
       "subsolo": 100,
       "operacoes": 77
      }
     },
     "slater_plain": {
      "iap": {
-      "geral": 41,
+      "geral": 42,
       "rover": 33,
-      "astrobio": 38,
+      "astrobio": 41,
       "isru": 43,
       "habitat": 38,
       "energia": 31
@@ -10950,16 +9698,16 @@
       "luz": 26,
       "agua": 62,
       "poeira": 49,
-      "biologia": 40,
+      "biologia": 50,
       "subsolo": 100,
       "operacoes": 33
      }
     },
     "cabeus_b_peak": {
      "iap": {
-      "geral": 49,
+      "geral": 50,
       "rover": 55,
-      "astrobio": 38,
+      "astrobio": 41,
       "isru": 49,
       "habitat": 49,
       "energia": 40
@@ -10971,16 +9719,16 @@
       "luz": 29,
       "agua": 62,
       "poeira": 49,
-      "biologia": 40,
+      "biologia": 50,
       "subsolo": 100,
       "operacoes": 89
      }
     },
     "marius": {
      "iap": {
-      "geral": 23,
+      "geral": 24,
       "rover": 26,
-      "astrobio": 17,
+      "astrobio": 20,
       "isru": 13,
       "habitat": 19,
       "energia": 31
@@ -10992,16 +9740,16 @@
       "luz": 42,
       "agua": 12,
       "poeira": 49,
-      "biologia": 40,
+      "biologia": 50,
       "subsolo": 0,
       "operacoes": 14
      }
     },
     "jezero": {
      "iap": {
-      "geral": 25,
+      "geral": 26,
       "rover": 23,
-      "astrobio": 26,
+      "astrobio": 29,
       "isru": 24,
       "habitat": 25,
       "energia": 33
@@ -11013,16 +9761,16 @@
       "luz": 41,
       "agua": 12,
       "poeira": 10,
-      "biologia": 40,
+      "biologia": 50,
       "subsolo": 0,
       "operacoes": 17
      }
     },
     "gale": {
      "iap": {
-      "geral": 24,
+      "geral": 25,
       "rover": 24,
-      "astrobio": 21,
+      "astrobio": 24,
       "isru": 21,
       "habitat": 24,
       "energia": 35
@@ -11034,16 +9782,16 @@
       "luz": 40,
       "agua": 12,
       "poeira": 16,
-      "biologia": 40,
+      "biologia": 50,
       "subsolo": 0,
       "operacoes": 29
      }
     },
     "meridiani": {
      "iap": {
-      "geral": 22,
+      "geral": 23,
       "rover": 19,
-      "astrobio": 21,
+      "astrobio": 24,
       "isru": 19,
       "habitat": 21,
       "energia": 31
@@ -11055,16 +9803,16 @@
       "luz": 40,
       "agua": 12,
       "poeira": 10,
-      "biologia": 40,
+      "biologia": 50,
       "subsolo": 0,
       "operacoes": 10
      }
     },
     "arcadia": {
      "iap": {
-      "geral": 39,
+      "geral": 40,
       "rover": 18,
-      "astrobio": 43,
+      "astrobio": 46,
       "isru": 48,
       "habitat": 39,
       "energia": 32
@@ -11076,16 +9824,16 @@
       "luz": 49,
       "agua": 62,
       "poeira": 10,
-      "biologia": 40,
+      "biologia": 50,
       "subsolo": 100,
       "operacoes": 10
      }
     },
     "oxia": {
      "iap": {
-      "geral": 23,
+      "geral": 24,
       "rover": 20,
-      "astrobio": 22,
+      "astrobio": 25,
       "isru": 20,
       "habitat": 22,
       "energia": 32
@@ -11097,9 +9845,1261 @@
       "luz": 41,
       "agua": 12,
       "poeira": 10,
-      "biologia": 40,
+      "biologia": 50,
       "subsolo": 0,
       "operacoes": 10
+     }
+    }
+   }
+  },
+  {
+   "id": "rio_tinto",
+   "posicao": 10,
+   "nome": "Río Tinto",
+   "nome_en": "Río Tinto",
+   "regiao": "Andaluzia",
+   "pais": "Espanha",
+   "cidade": "Minas de Riotinto",
+   "papel": "referencia",
+   "lat": 37.72,
+   "lon": -6.55,
+   "feicao": "Rio ácido rico em ferro e sulfatos",
+   "dados_completos": true,
+   "alvo": "meridiani",
+   "alvo_nome": "Meridiani Planum",
+   "corpo": "mars",
+   "nota_pct": 50,
+   "notas_perfil_pct": {
+    "geral": 50,
+    "rover": 66,
+    "astrobio": 40,
+    "isru": 51,
+    "habitat": 58,
+    "energia": 62
+   },
+   "dimensao_mais_forte": "Pouso e mobilidade",
+   "dimensao_mais_fraca": "Subsolo e cavernas",
+   "dimensoes_pct": {
+    "terreno": 73,
+    "materiais": 75,
+    "termico": 36,
+    "luz": 92,
+    "agua": 42,
+    "poeira": 17,
+    "biologia": 17,
+    "subsolo": 0,
+    "operacoes": 100
+   },
+   "funciona": [
+    "Jarosita e hematita, os minerais de Meridiani",
+    "Vida em água ácida e no subsolo (projeto MARTE)"
+   ],
+   "quebra": [
+    "Mineração e cidade em volta",
+    "Clima mediterrâneo"
+   ],
+   "testes": [
+    "Perfuração robótica em busca de vida no subsolo (MARTE, NASA)",
+    "Espectroscopia de sulfatos"
+   ],
+   "caixa": [
+    37.62,
+    37.82,
+    -6.65,
+    -6.45
+   ],
+   "diametro_km": null,
+   "processos": [
+    "oxidação de sulfetos",
+    "precipitação de jarosita e hematita"
+   ],
+   "referencias": [
+    "Fernández-Remolar et al. 2005, EPSL",
+    "Stoker et al. 2008, Astrobiology (MARTE)"
+   ],
+   "coord_aprox": false,
+   "tags": {
+    "terreno": [
+     "vale_fluvial"
+    ],
+    "materiais": [
+     "sulfato",
+     "jarosita",
+     "oxido_ferro",
+     "hematita"
+    ],
+    "agua": [
+     "salmoura",
+     "agua_acida"
+    ],
+    "poeira": [],
+    "biologia": [
+     "extremofilos",
+     "bioassinaturas_preservadas"
+    ],
+    "subsolo": [
+     "aquifero_profundo"
+    ]
+   },
+   "valores": {
+    "elev_media_m": {
+     "rotulo": "Elevacao media",
+     "valor": 379,
+     "unidade": "m",
+     "status": "medido",
+     "fonte": "srtmgl30",
+     "nota": "576 pixels de ~1 km na caixa do local"
+    },
+    "elev_relativa_m": {
+     "rotulo": "Desnivel no local",
+     "valor": -414,
+     "unidade": "m",
+     "status": "medido",
+     "fonte": "srtmgl30",
+     "nota": "576 pixels de ~1 km na caixa do local"
+    },
+    "declividade_media": {
+     "rotulo": "Declividade media",
+     "valor": 2.7,
+     "unidade": "graus",
+     "status": "medido",
+     "fonte": "srtmgl30",
+     "nota": "576 pixels de ~1 km na caixa do local"
+    },
+    "rugosidade_tri_m": {
+     "rotulo": "Rugosidade TRI",
+     "valor": 122.4,
+     "unidade": "m",
+     "status": "medido",
+     "fonte": "srtmgl30",
+     "nota": "576 pixels de ~1 km na caixa do local"
+    },
+    "frac_decliv_8": {
+     "rotulo": "Area com declividade < 8 graus",
+     "valor": 1.0,
+     "unidade": "fracao",
+     "status": "medido",
+     "fonte": "srtmgl30",
+     "nota": "576 pixels de ~1 km na caixa do local"
+    },
+    "frac_transitavel_15": {
+     "rotulo": "Area com declividade < 15 graus",
+     "valor": 1.0,
+     "unidade": "fracao",
+     "status": "medido",
+     "fonte": "srtmgl30",
+     "nota": "576 pixels de ~1 km na caixa do local"
+    },
+    "sol_max_graus": {
+     "rotulo": "Altura maxima do Sol",
+     "valor": 75.7,
+     "unidade": "graus",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
+    "frac_sol_baixo": {
+     "rotulo": "Luz com Sol abaixo de 10 graus",
+     "valor": 0.15,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
+    "frac_ano_sol_continuo": {
+     "rotulo": "Ano com Sol 24 h",
+     "valor": 0.0,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
+    "frac_ano_noite_continua": {
+     "rotulo": "Ano com noite 24 h",
+     "valor": 0.0,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
+    "insolacao_toa_wm2": {
+     "rotulo": "Sol no topo da atmosfera",
+     "valor": 337,
+     "unidade": "W/m2",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
+    "ndvi_medio": {
+     "rotulo": "Vegetacao (NDVI)",
+     "valor": 0.49,
+     "unidade": "indice",
+     "status": "medido",
+     "fonte": "mod13c2",
+     "nota": "media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
+    },
+    "lst_dia_c": {
+     "rotulo": "Temp. superficie maxima",
+     "valor": 41,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "TS_MAX: maxima da temperatura da superficie, media dos 12 meses (MERRA-2)"
+    },
+    "lst_noite_c": {
+     "rotulo": "Temp. superficie minima",
+     "valor": 3,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "TS_MIN: minima da temperatura da superficie, media dos 12 meses (MERRA-2)"
+    },
+    "amplitude_termica_c": {
+     "rotulo": "Amplitude termica (dT)",
+     "valor": 38,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "TS_MAX - TS_MIN"
+    },
+    "temp_media_c": {
+     "rotulo": "Temp. superficie media",
+     "valor": 19,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "TS: temperatura da superficie, media anual (MERRA-2)"
+    },
+    "albedo_medio": {
+     "rotulo": "Albedo",
+     "valor": 0.14,
+     "unidade": "fracao",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "ALLSKY_SRF_ALB: albedo da superficie, ceu real (CERES SYN1deg)"
+    },
+    "aod_medio": {
+     "rotulo": "Poeira/aerossol (AOD)",
+     "valor": 0.16,
+     "unidade": "adimensional",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "AOD_55: profundidade optica de aerossol em 550 nm (MERRA-2)"
+    },
+    "chuva_anual_mm": {
+     "rotulo": "Chuva anual",
+     "valor": 468,
+     "unidade": "mm",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "PRECTOTCORR: chuva corrigida, media anual (MERRA-2/GPM)"
+    },
+    "vento_10m_ms": {
+     "rotulo": "Vento a 10 m",
+     "valor": 3.6,
+     "unidade": "m/s",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "WS10M: vento a 10 m, media anual (MERRA-2)"
+    },
+    "pressao_kpa": {
+     "rotulo": "Pressao do ar",
+     "valor": 96.84,
+     "unidade": "kPa",
+     "status": "calculado",
+     "fonte": "fisica",
+     "nota": "atmosfera padrao pela altitude"
+    },
+    "gravidade_g": {
+     "rotulo": "Gravidade",
+     "valor": 1.0,
+     "unidade": "g",
+     "status": "referencia",
+     "fonte": "fisica"
+    },
+    "dia_local_h": {
+     "rotulo": "Duracao do dia",
+     "valor": 24.0,
+     "unidade": "h",
+     "status": "referencia",
+     "fonte": "fisica"
+    }
+   },
+   "criterios_base": {
+    "lua.latitude_polar": false,
+    "lua.iluminacao": false,
+    "lua.declividade_pouso": true,
+    "lua.comunicacao": null,
+    "lua.gelo_proximo": false,
+    "lua.frio_extremo": false,
+    "marte.latitude": null,
+    "marte.altitude_baixa": null,
+    "marte.declividade_pouso": true,
+    "marte.agua_isru": true,
+    "marte.ciencia": true,
+    "marte.poeira": false
+   },
+   "comparacoes": {
+    "shackleton": {
+     "iap": {
+      "geral": 20,
+      "rover": 29,
+      "astrobio": 21,
+      "isru": 20,
+      "habitat": 21,
+      "energia": 18
+     },
+     "dimensoes_pct": {
+      "terreno": 21,
+      "materiais": 50,
+      "termico": 3,
+      "luz": 8,
+      "agua": 26,
+      "poeira": 43,
+      "biologia": 0,
+      "subsolo": 0,
+      "operacoes": 28
+     }
+    },
+    "haworth": {
+     "iap": {
+      "geral": 24,
+      "rover": 31,
+      "astrobio": 21,
+      "isru": 23,
+      "habitat": 25,
+      "energia": 28
+     },
+     "dimensoes_pct": {
+      "terreno": 26,
+      "materiais": 50,
+      "termico": 3,
+      "luz": 34,
+      "agua": 26,
+      "poeira": 43,
+      "biologia": 0,
+      "subsolo": 0,
+      "operacoes": 30
+     }
+    },
+    "malapert": {
+     "iap": {
+      "geral": 20,
+      "rover": 21,
+      "astrobio": 21,
+      "isru": 20,
+      "habitat": 21,
+      "energia": 24
+     },
+     "dimensoes_pct": {
+      "terreno": 10,
+      "materiais": 50,
+      "termico": 3,
+      "luz": 34,
+      "agua": 26,
+      "poeira": 43,
+      "biologia": 0,
+      "subsolo": 0,
+      "operacoes": 14
+     }
+    },
+    "mons_mouton_plateau": {
+     "iap": {
+      "geral": 32,
+      "rover": 54,
+      "astrobio": 21,
+      "isru": 29,
+      "habitat": 36,
+      "energia": 36
+     },
+     "dimensoes_pct": {
+      "terreno": 64,
+      "materiais": 50,
+      "termico": 3,
+      "luz": 34,
+      "agua": 26,
+      "poeira": 43,
+      "biologia": 0,
+      "subsolo": 0,
+      "operacoes": 69
+     }
+    },
+    "mons_mouton": {
+     "iap": {
+      "geral": 29,
+      "rover": 44,
+      "astrobio": 21,
+      "isru": 27,
+      "habitat": 32,
+      "energia": 33
+     },
+     "dimensoes_pct": {
+      "terreno": 50,
+      "materiais": 50,
+      "termico": 3,
+      "luz": 34,
+      "agua": 26,
+      "poeira": 43,
+      "biologia": 0,
+      "subsolo": 0,
+      "operacoes": 52
+     }
+    },
+    "nobile_rim_1": {
+     "iap": {
+      "geral": 24,
+      "rover": 32,
+      "astrobio": 21,
+      "isru": 23,
+      "habitat": 26,
+      "energia": 28
+     },
+     "dimensoes_pct": {
+      "terreno": 29,
+      "materiais": 50,
+      "termico": 3,
+      "luz": 34,
+      "agua": 26,
+      "poeira": 43,
+      "biologia": 0,
+      "subsolo": 0,
+      "operacoes": 30
+     }
+    },
+    "nobile_rim_2": {
+     "iap": {
+      "geral": 24,
+      "rover": 32,
+      "astrobio": 21,
+      "isru": 23,
+      "habitat": 26,
+      "energia": 28
+     },
+     "dimensoes_pct": {
+      "terreno": 29,
+      "materiais": 50,
+      "termico": 3,
+      "luz": 34,
+      "agua": 26,
+      "poeira": 43,
+      "biologia": 0,
+      "subsolo": 0,
+      "operacoes": 30
+     }
+    },
+    "de_gerlache_rim_2": {
+     "iap": {
+      "geral": 23,
+      "rover": 32,
+      "astrobio": 21,
+      "isru": 23,
+      "habitat": 25,
+      "energia": 26
+     },
+     "dimensoes_pct": {
+      "terreno": 29,
+      "materiais": 50,
+      "termico": 3,
+      "luz": 29,
+      "agua": 26,
+      "poeira": 43,
+      "biologia": 0,
+      "subsolo": 0,
+      "operacoes": 30
+     }
+    },
+    "slater_plain": {
+     "iap": {
+      "geral": 33,
+      "rover": 55,
+      "astrobio": 21,
+      "isru": 30,
+      "habitat": 37,
+      "energia": 37
+     },
+     "dimensoes_pct": {
+      "terreno": 69,
+      "materiais": 50,
+      "termico": 3,
+      "luz": 34,
+      "agua": 26,
+      "poeira": 43,
+      "biologia": 0,
+      "subsolo": 0,
+      "operacoes": 69
+     }
+    },
+    "cabeus_b_peak": {
+     "iap": {
+      "geral": 23,
+      "rover": 28,
+      "astrobio": 21,
+      "isru": 22,
+      "habitat": 24,
+      "energia": 27
+     },
+     "dimensoes_pct": {
+      "terreno": 26,
+      "materiais": 50,
+      "termico": 3,
+      "luz": 34,
+      "agua": 26,
+      "poeira": 43,
+      "biologia": 0,
+      "subsolo": 0,
+      "operacoes": 21
+     }
+    },
+    "marius": {
+     "iap": {
+      "geral": 43,
+      "rover": 64,
+      "astrobio": 18,
+      "isru": 37,
+      "habitat": 50,
+      "energia": 63
+     },
+     "dimensoes_pct": {
+      "terreno": 74,
+      "materiais": 39,
+      "termico": 7,
+      "luz": 100,
+      "agua": 26,
+      "poeira": 43,
+      "biologia": 0,
+      "subsolo": 0,
+      "operacoes": 96
+     }
+    },
+    "jezero": {
+     "iap": {
+      "geral": 43,
+      "rover": 56,
+      "astrobio": 29,
+      "isru": 41,
+      "habitat": 50,
+      "energia": 59
+     },
+     "dimensoes_pct": {
+      "terreno": 55,
+      "materiais": 52,
+      "termico": 36,
+      "luz": 93,
+      "agua": 26,
+      "poeira": 17,
+      "biologia": 17,
+      "subsolo": 0,
+      "operacoes": 91
+     }
+    },
+    "gale": {
+     "iap": {
+      "geral": 41,
+      "rover": 50,
+      "astrobio": 31,
+      "isru": 40,
+      "habitat": 47,
+      "energia": 58
+     },
+     "dimensoes_pct": {
+      "terreno": 42,
+      "materiais": 56,
+      "termico": 39,
+      "luz": 92,
+      "agua": 26,
+      "poeira": 27,
+      "biologia": 17,
+      "subsolo": 0,
+      "operacoes": 74
+     }
+    },
+    "meridiani": {
+     "iap": {
+      "geral": 50,
+      "rover": 66,
+      "astrobio": 40,
+      "isru": 51,
+      "habitat": 58,
+      "energia": 62
+     },
+     "dimensoes_pct": {
+      "terreno": 73,
+      "materiais": 75,
+      "termico": 36,
+      "luz": 92,
+      "agua": 42,
+      "poeira": 17,
+      "biologia": 17,
+      "subsolo": 0,
+      "operacoes": 100
+     }
+    },
+    "arcadia": {
+     "iap": {
+      "geral": 43,
+      "rover": 63,
+      "astrobio": 23,
+      "isru": 42,
+      "habitat": 52,
+      "energia": 62
+     },
+     "dimensoes_pct": {
+      "terreno": 73,
+      "materiais": 49,
+      "termico": 25,
+      "luz": 99,
+      "agua": 26,
+      "poeira": 17,
+      "biologia": 0,
+      "subsolo": 0,
+      "operacoes": 100
+     }
+    },
+    "oxia": {
+     "iap": {
+      "geral": 45,
+      "rover": 63,
+      "astrobio": 26,
+      "isru": 42,
+      "habitat": 52,
+      "energia": 62
+     },
+     "dimensoes_pct": {
+      "terreno": 74,
+      "materiais": 42,
+      "termico": 36,
+      "luz": 93,
+      "agua": 26,
+      "poeira": 17,
+      "biologia": 17,
+      "subsolo": 0,
+      "operacoes": 99
+     }
+    }
+   }
+  },
+  {
+   "id": "mauna_kea",
+   "posicao": 11,
+   "nome": "Mauna Kea",
+   "nome_en": "Mauna Kea",
+   "regiao": "Havaí",
+   "pais": "EUA",
+   "cidade": "Hilo",
+   "papel": "referencia",
+   "lat": 19.82,
+   "lon": -155.47,
+   "feicao": "Vulcão basáltico com cones de escória e cinza",
+   "dados_completos": true,
+   "alvo": "marius",
+   "alvo_nome": "Fosso das Colinas de Marius",
+   "corpo": "moon",
+   "nota_pct": 49,
+   "notas_perfil_pct": {
+    "geral": 49,
+    "rover": 49,
+    "astrobio": 42,
+    "isru": 38,
+    "habitat": 50,
+    "energia": 58
+   },
+   "dimensao_mais_forte": "Iluminacao",
+   "dimensao_mais_fraca": "Agua e gelo",
+   "dimensoes_pct": {
+    "terreno": 43,
+    "materiais": 80,
+    "termico": 5,
+    "luz": 94,
+    "agua": 0,
+    "poeira": 72,
+    "biologia": 55,
+    "subsolo": 50,
+    "operacoes": 44
+   },
+   "funciona": [
+    "A cinza do Pu'u Nene deu origem ao simulante de solo marciano JSC Mars-1",
+    "Testes de ISRU (extração de oxigênio) da NASA com regolito vulcânico"
+   ],
+   "quebra": [
+    "Ar mais denso e úmido",
+    "Gelo e neve no inverno"
+   ],
+   "testes": [
+    "Extração de oxigênio do regolito (ISRU)",
+    "Rovers em cinza fina e cones de escória"
+   ],
+   "caixa": [
+    19.72,
+    19.92,
+    -155.57,
+    -155.37
+   ],
+   "diametro_km": null,
+   "processos": [
+    "vulcanismo basáltico",
+    "alteração de cinza em palagonita"
+   ],
+   "referencias": [
+    "PISCES / NASA ISRU field tests 2008–2012",
+    "Allen et al. 1998 (JSC Mars-1)"
+   ],
+   "coord_aprox": false,
+   "tags": {
+    "terreno": [
+     "vulcao",
+     "macico"
+    ],
+    "materiais": [
+     "basalto",
+     "cinza_vulcanica",
+     "vidro_vulcanico",
+     "palagonita",
+     "regolito_fino"
+    ],
+    "agua": [],
+    "poeira": [
+     "poeira_fina"
+    ],
+    "biologia": [
+     "esteril"
+    ],
+    "subsolo": [
+     "tubo_lava"
+    ]
+   },
+   "valores": {
+    "elev_media_m": {
+     "rotulo": "Elevacao media",
+     "valor": 2722,
+     "unidade": "m",
+     "status": "medido",
+     "fonte": "srtmgl30",
+     "nota": "576 pixels de ~1 km na caixa do local"
+    },
+    "elev_relativa_m": {
+     "rotulo": "Desnivel no local",
+     "valor": -2639,
+     "unidade": "m",
+     "status": "medido",
+     "fonte": "srtmgl30",
+     "nota": "576 pixels de ~1 km na caixa do local"
+    },
+    "declividade_media": {
+     "rotulo": "Declividade media",
+     "valor": 10.5,
+     "unidade": "graus",
+     "status": "medido",
+     "fonte": "srtmgl30",
+     "nota": "576 pixels de ~1 km na caixa do local"
+    },
+    "rugosidade_tri_m": {
+     "rotulo": "Rugosidade TRI",
+     "valor": 408.8,
+     "unidade": "m",
+     "status": "medido",
+     "fonte": "srtmgl30",
+     "nota": "576 pixels de ~1 km na caixa do local"
+    },
+    "frac_decliv_8": {
+     "rotulo": "Area com declividade < 8 graus",
+     "valor": 0.26,
+     "unidade": "fracao",
+     "status": "medido",
+     "fonte": "srtmgl30",
+     "nota": "576 pixels de ~1 km na caixa do local"
+    },
+    "frac_transitavel_15": {
+     "rotulo": "Area com declividade < 15 graus",
+     "valor": 0.85,
+     "unidade": "fracao",
+     "status": "medido",
+     "fonte": "srtmgl30",
+     "nota": "576 pixels de ~1 km na caixa do local"
+    },
+    "sol_max_graus": {
+     "rotulo": "Altura maxima do Sol",
+     "valor": 89.9,
+     "unidade": "graus",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
+    "frac_sol_baixo": {
+     "rotulo": "Luz com Sol abaixo de 10 graus",
+     "valor": 0.12,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
+    "frac_ano_sol_continuo": {
+     "rotulo": "Ano com Sol 24 h",
+     "valor": 0.0,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
+    "frac_ano_noite_continua": {
+     "rotulo": "Ano com noite 24 h",
+     "valor": 0.0,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
+    "insolacao_toa_wm2": {
+     "rotulo": "Sol no topo da atmosfera",
+     "valor": 393,
+     "unidade": "W/m2",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
+    "ndvi_medio": {
+     "rotulo": "Vegetacao (NDVI)",
+     "valor": 0.33,
+     "unidade": "indice",
+     "status": "medido",
+     "fonte": "mod13c2",
+     "nota": "media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
+    },
+    "lst_dia_c": {
+     "rotulo": "Temp. superficie maxima",
+     "valor": 31,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "TS_MAX: maxima da temperatura da superficie, media dos 12 meses (MERRA-2)"
+    },
+    "lst_noite_c": {
+     "rotulo": "Temp. superficie minima",
+     "valor": 17,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "TS_MIN: minima da temperatura da superficie, media dos 12 meses (MERRA-2)"
+    },
+    "amplitude_termica_c": {
+     "rotulo": "Amplitude termica (dT)",
+     "valor": 14,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "TS_MAX - TS_MIN"
+    },
+    "temp_media_c": {
+     "rotulo": "Temp. superficie media",
+     "valor": 22,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "TS: temperatura da superficie, media anual (MERRA-2)"
+    },
+    "albedo_medio": {
+     "rotulo": "Albedo",
+     "valor": 0.08,
+     "unidade": "fracao",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "ALLSKY_SRF_ALB: albedo da superficie, ceu real (CERES SYN1deg)"
+    },
+    "aod_medio": {
+     "rotulo": "Poeira/aerossol (AOD)",
+     "valor": 0.1,
+     "unidade": "adimensional",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "AOD_55: profundidade optica de aerossol em 550 nm (MERRA-2)"
+    },
+    "chuva_anual_mm": {
+     "rotulo": "Chuva anual",
+     "valor": 1611,
+     "unidade": "mm",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "PRECTOTCORR: chuva corrigida, media anual (MERRA-2/GPM)"
+    },
+    "vento_10m_ms": {
+     "rotulo": "Vento a 10 m",
+     "valor": 4.8,
+     "unidade": "m/s",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "WS10M: vento a 10 m, media anual (MERRA-2)"
+    },
+    "pressao_kpa": {
+     "rotulo": "Pressao do ar",
+     "valor": 73.26,
+     "unidade": "kPa",
+     "status": "calculado",
+     "fonte": "fisica",
+     "nota": "atmosfera padrao pela altitude"
+    },
+    "gravidade_g": {
+     "rotulo": "Gravidade",
+     "valor": 1.0,
+     "unidade": "g",
+     "status": "referencia",
+     "fonte": "fisica"
+    },
+    "dia_local_h": {
+     "rotulo": "Duracao do dia",
+     "valor": 24.0,
+     "unidade": "h",
+     "status": "referencia",
+     "fonte": "fisica"
+    }
+   },
+   "criterios_base": {
+    "lua.latitude_polar": false,
+    "lua.iluminacao": false,
+    "lua.declividade_pouso": false,
+    "lua.comunicacao": null,
+    "lua.gelo_proximo": false,
+    "lua.frio_extremo": false,
+    "marte.latitude": null,
+    "marte.altitude_baixa": null,
+    "marte.declividade_pouso": false,
+    "marte.agua_isru": false,
+    "marte.ciencia": false,
+    "marte.poeira": true
+   },
+   "comparacoes": {
+    "shackleton": {
+     "iap": {
+      "geral": 36,
+      "rover": 62,
+      "astrobio": 28,
+      "isru": 21,
+      "habitat": 34,
+      "energia": 35
+     },
+     "dimensoes_pct": {
+      "terreno": 61,
+      "materiais": 45,
+      "termico": 4,
+      "luz": 8,
+      "agua": 0,
+      "poeira": 72,
+      "biologia": 55,
+      "subsolo": 0,
+      "operacoes": 81
+     }
+    },
+    "haworth": {
+     "iap": {
+      "geral": 39,
+      "rover": 62,
+      "astrobio": 28,
+      "isru": 23,
+      "habitat": 37,
+      "energia": 44
+     },
+     "dimensoes_pct": {
+      "terreno": 67,
+      "materiais": 45,
+      "termico": 4,
+      "luz": 34,
+      "agua": 0,
+      "poeira": 72,
+      "biologia": 55,
+      "subsolo": 0,
+      "operacoes": 76
+     }
+    },
+    "malapert": {
+     "iap": {
+      "geral": 37,
+      "rover": 57,
+      "astrobio": 28,
+      "isru": 22,
+      "habitat": 35,
+      "energia": 42
+     },
+     "dimensoes_pct": {
+      "terreno": 54,
+      "materiais": 45,
+      "termico": 4,
+      "luz": 34,
+      "agua": 0,
+      "poeira": 72,
+      "biologia": 55,
+      "subsolo": 0,
+      "operacoes": 73
+     }
+    },
+    "mons_mouton_plateau": {
+     "iap": {
+      "geral": 37,
+      "rover": 56,
+      "astrobio": 28,
+      "isru": 21,
+      "habitat": 35,
+      "energia": 42
+     },
+     "dimensoes_pct": {
+      "terreno": 65,
+      "materiais": 45,
+      "termico": 4,
+      "luz": 34,
+      "agua": 0,
+      "poeira": 72,
+      "biologia": 55,
+      "subsolo": 0,
+      "operacoes": 59
+     }
+    },
+    "mons_mouton": {
+     "iap": {
+      "geral": 40,
+      "rover": 63,
+      "astrobio": 28,
+      "isru": 23,
+      "habitat": 38,
+      "energia": 44
+     },
+     "dimensoes_pct": {
+      "terreno": 76,
+      "materiais": 45,
+      "termico": 4,
+      "luz": 34,
+      "agua": 0,
+      "poeira": 72,
+      "biologia": 55,
+      "subsolo": 0,
+      "operacoes": 70
+     }
+    },
+    "nobile_rim_1": {
+     "iap": {
+      "geral": 40,
+      "rover": 63,
+      "astrobio": 28,
+      "isru": 23,
+      "habitat": 38,
+      "energia": 44
+     },
+     "dimensoes_pct": {
+      "terreno": 70,
+      "materiais": 45,
+      "termico": 4,
+      "luz": 34,
+      "agua": 0,
+      "poeira": 72,
+      "biologia": 55,
+      "subsolo": 0,
+      "operacoes": 76
+     }
+    },
+    "nobile_rim_2": {
+     "iap": {
+      "geral": 40,
+      "rover": 63,
+      "astrobio": 28,
+      "isru": 23,
+      "habitat": 38,
+      "energia": 44
+     },
+     "dimensoes_pct": {
+      "terreno": 70,
+      "materiais": 45,
+      "termico": 4,
+      "luz": 34,
+      "agua": 0,
+      "poeira": 72,
+      "biologia": 55,
+      "subsolo": 0,
+      "operacoes": 76
+     }
+    },
+    "de_gerlache_rim_2": {
+     "iap": {
+      "geral": 39,
+      "rover": 63,
+      "astrobio": 28,
+      "isru": 23,
+      "habitat": 37,
+      "energia": 43
+     },
+     "dimensoes_pct": {
+      "terreno": 70,
+      "materiais": 45,
+      "termico": 4,
+      "luz": 29,
+      "agua": 0,
+      "poeira": 72,
+      "biologia": 55,
+      "subsolo": 0,
+      "operacoes": 76
+     }
+    },
+    "slater_plain": {
+     "iap": {
+      "geral": 35,
+      "rover": 52,
+      "astrobio": 28,
+      "isru": 20,
+      "habitat": 33,
+      "energia": 40
+     },
+     "dimensoes_pct": {
+      "terreno": 50,
+      "materiais": 45,
+      "termico": 4,
+      "luz": 34,
+      "agua": 0,
+      "poeira": 72,
+      "biologia": 55,
+      "subsolo": 0,
+      "operacoes": 59
+     }
+    },
+    "cabeus_b_peak": {
+     "iap": {
+      "geral": 40,
+      "rover": 65,
+      "astrobio": 28,
+      "isru": 24,
+      "habitat": 39,
+      "energia": 45
+     },
+     "dimensoes_pct": {
+      "terreno": 77,
+      "materiais": 45,
+      "termico": 4,
+      "luz": 34,
+      "agua": 0,
+      "poeira": 72,
+      "biologia": 55,
+      "subsolo": 0,
+      "operacoes": 75
+     }
+    },
+    "marius": {
+     "iap": {
+      "geral": 49,
+      "rover": 49,
+      "astrobio": 42,
+      "isru": 38,
+      "habitat": 50,
+      "energia": 58
+     },
+     "dimensoes_pct": {
+      "terreno": 43,
+      "materiais": 80,
+      "termico": 5,
+      "luz": 94,
+      "agua": 0,
+      "poeira": 72,
+      "biologia": 55,
+      "subsolo": 50,
+      "operacoes": 44
+     }
+    },
+    "jezero": {
+     "iap": {
+      "geral": 38,
+      "rover": 46,
+      "astrobio": 20,
+      "isru": 28,
+      "habitat": 42,
+      "energia": 60
+     },
+     "dimensoes_pct": {
+      "terreno": 61,
+      "materiais": 35,
+      "termico": 29,
+      "luz": 100,
+      "agua": 0,
+      "poeira": 38,
+      "biologia": 29,
+      "subsolo": 0,
+      "operacoes": 47
+     }
+    },
+    "gale": {
+     "iap": {
+      "geral": 35,
+      "rover": 42,
+      "astrobio": 19,
+      "isru": 28,
+      "habitat": 40,
+      "energia": 57
+     },
+     "dimensoes_pct": {
+      "terreno": 48,
+      "materiais": 30,
+      "termico": 33,
+      "luz": 100,
+      "agua": 0,
+      "poeira": 20,
+      "biologia": 29,
+      "subsolo": 0,
+      "operacoes": 56
+     }
+    },
+    "meridiani": {
+     "iap": {
+      "geral": 32,
+      "rover": 31,
+      "astrobio": 24,
+      "isru": 27,
+      "habitat": 36,
+      "energia": 51
+     },
+     "dimensoes_pct": {
+      "terreno": 30,
+      "materiais": 47,
+      "termico": 31,
+      "luz": 100,
+      "agua": 0,
+      "poeira": 12,
+      "biologia": 29,
+      "subsolo": 0,
+      "operacoes": 40
+     }
+    },
+    "arcadia": {
+     "iap": {
+      "geral": 34,
+      "rover": 35,
+      "astrobio": 28,
+      "isru": 23,
+      "habitat": 34,
+      "energia": 50
+     },
+     "dimensoes_pct": {
+      "terreno": 30,
+      "materiais": 39,
+      "termico": 21,
+      "luz": 87,
+      "agua": 0,
+      "poeira": 38,
+      "biologia": 55,
+      "subsolo": 0,
+      "operacoes": 40
+     }
+    },
+    "oxia": {
+     "iap": {
+      "geral": 33,
+      "rover": 35,
+      "astrobio": 19,
+      "isru": 25,
+      "habitat": 36,
+      "energia": 56
+     },
+     "dimensoes_pct": {
+      "terreno": 32,
+      "materiais": 32,
+      "termico": 30,
+      "luz": 100,
+      "agua": 0,
+      "poeira": 38,
+      "biologia": 29,
+      "subsolo": 0,
+      "operacoes": 40
      }
     }
    }
@@ -11138,7 +11138,7 @@
     "luz": 100,
     "agua": 22,
     "poeira": 48,
-    "biologia": 1,
+    "biologia": 0,
     "subsolo": 0,
     "operacoes": 100
    },
@@ -11284,11 +11284,11 @@
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.4,
+     "valor": 0.49,
      "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
-     "nota": "estimativa; substituir pelo MOD13A2 do AppEEARS (task a92258f5)"
+     "status": "medido",
+     "fonte": "mod13c2",
+     "nota": "media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
@@ -11408,14 +11408,14 @@
       "luz": 8,
       "agua": 6,
       "poeira": 11,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 28
      }
     },
     "haworth": {
      "iap": {
-      "geral": 22,
+      "geral": 21,
       "rover": 31,
       "astrobio": 20,
       "isru": 22,
@@ -11429,14 +11429,14 @@
       "luz": 34,
       "agua": 6,
       "poeira": 11,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 30
      }
     },
     "malapert": {
      "iap": {
-      "geral": 16,
+      "geral": 15,
       "rover": 15,
       "astrobio": 20,
       "isru": 17,
@@ -11450,7 +11450,7 @@
       "luz": 34,
       "agua": 6,
       "poeira": 11,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 14
      }
@@ -11471,14 +11471,14 @@
       "luz": 34,
       "agua": 6,
       "poeira": 11,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 69
      }
     },
     "mons_mouton": {
      "iap": {
-      "geral": 24,
+      "geral": 23,
       "rover": 37,
       "astrobio": 20,
       "isru": 23,
@@ -11492,7 +11492,7 @@
       "luz": 34,
       "agua": 6,
       "poeira": 11,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 52
      }
@@ -11513,7 +11513,7 @@
       "luz": 34,
       "agua": 6,
       "poeira": 11,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 30
      }
@@ -11534,7 +11534,7 @@
       "luz": 34,
       "agua": 6,
       "poeira": 11,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 30
      }
@@ -11555,7 +11555,7 @@
       "luz": 29,
       "agua": 6,
       "poeira": 11,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 30
      }
@@ -11576,7 +11576,7 @@
       "luz": 34,
       "agua": 6,
       "poeira": 11,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 69
      }
@@ -11597,7 +11597,7 @@
       "luz": 34,
       "agua": 6,
       "poeira": 11,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 21
      }
@@ -11618,7 +11618,7 @@
       "luz": 94,
       "agua": 6,
       "poeira": 11,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 96
      }
@@ -11639,7 +11639,7 @@
       "luz": 100,
       "agua": 22,
       "poeira": 48,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 91
      }
@@ -11648,7 +11648,7 @@
      "iap": {
       "geral": 40,
       "rover": 52,
-      "astrobio": 21,
+      "astrobio": 20,
       "isru": 36,
       "habitat": 47,
       "energia": 65
@@ -11660,7 +11660,7 @@
       "luz": 100,
       "agua": 22,
       "poeira": 50,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 74
      }
@@ -11681,7 +11681,7 @@
       "luz": 100,
       "agua": 22,
       "poeira": 48,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 100
      }
@@ -11690,7 +11690,7 @@
      "iap": {
       "geral": 42,
       "rover": 68,
-      "astrobio": 16,
+      "astrobio": 15,
       "isru": 34,
       "habitat": 50,
       "energia": 63
@@ -11702,7 +11702,7 @@
       "luz": 86,
       "agua": 6,
       "poeira": 48,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 100
      }
@@ -11723,7 +11723,7 @@
       "luz": 100,
       "agua": 6,
       "poeira": 48,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 99
      }
@@ -11764,7 +11764,7 @@
     "luz": 100,
     "agua": 0,
     "poeira": 45,
-    "biologia": 1,
+    "biologia": 0,
     "subsolo": 0,
     "operacoes": 99
    },
@@ -11907,11 +11907,11 @@
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.44,
+     "valor": 0.63,
      "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
-     "nota": "estimativa; substituir pelo MOD13A2 do AppEEARS (task a92258f5)"
+     "status": "medido",
+     "fonte": "mod13c2",
+     "nota": "media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
@@ -12031,14 +12031,14 @@
       "luz": 8,
       "agua": 0,
       "poeira": 66,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 28
      }
     },
     "haworth": {
      "iap": {
-      "geral": 26,
+      "geral": 25,
       "rover": 40,
       "astrobio": 16,
       "isru": 19,
@@ -12052,7 +12052,7 @@
       "luz": 34,
       "agua": 0,
       "poeira": 66,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 30
      }
@@ -12073,7 +12073,7 @@
       "luz": 34,
       "agua": 0,
       "poeira": 66,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 14
      }
@@ -12094,7 +12094,7 @@
       "luz": 34,
       "agua": 0,
       "poeira": 66,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 69
      }
@@ -12115,7 +12115,7 @@
       "luz": 34,
       "agua": 0,
       "poeira": 66,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 52
      }
@@ -12136,7 +12136,7 @@
       "luz": 34,
       "agua": 0,
       "poeira": 66,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 30
      }
@@ -12157,7 +12157,7 @@
       "luz": 34,
       "agua": 0,
       "poeira": 66,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 30
      }
@@ -12178,7 +12178,7 @@
       "luz": 29,
       "agua": 0,
       "poeira": 66,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 30
      }
@@ -12199,7 +12199,7 @@
       "luz": 34,
       "agua": 0,
       "poeira": 66,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 69
      }
@@ -12220,7 +12220,7 @@
       "luz": 34,
       "agua": 0,
       "poeira": 66,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 21
      }
@@ -12241,7 +12241,7 @@
       "luz": 94,
       "agua": 0,
       "poeira": 66,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 96
      }
@@ -12262,7 +12262,7 @@
       "luz": 100,
       "agua": 0,
       "poeira": 45,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 91
      }
@@ -12271,7 +12271,7 @@
      "iap": {
       "geral": 37,
       "rover": 51,
-      "astrobio": 16,
+      "astrobio": 15,
       "isru": 32,
       "habitat": 45,
       "energia": 61
@@ -12283,14 +12283,14 @@
       "luz": 100,
       "agua": 0,
       "poeira": 29,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 74
      }
     },
     "meridiani": {
      "iap": {
-      "geral": 42,
+      "geral": 41,
       "rover": 64,
       "astrobio": 16,
       "isru": 36,
@@ -12304,7 +12304,7 @@
       "luz": 100,
       "agua": 0,
       "poeira": 20,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 100
      }
@@ -12313,7 +12313,7 @@
      "iap": {
       "geral": 41,
       "rover": 68,
-      "astrobio": 15,
+      "astrobio": 14,
       "isru": 33,
       "habitat": 50,
       "energia": 63
@@ -12325,7 +12325,7 @@
       "luz": 87,
       "agua": 0,
       "poeira": 45,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 100
      }
@@ -12346,7 +12346,7 @@
       "luz": 100,
       "agua": 0,
       "poeira": 45,
-      "biologia": 1,
+      "biologia": 0,
       "subsolo": 0,
       "operacoes": 99
      }
@@ -12531,11 +12531,11 @@
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.52,
+     "valor": 0.61,
      "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
-     "nota": "estimativa; substituir pelo MOD13A2 do AppEEARS (task a92258f5)"
+     "status": "medido",
+     "fonte": "mod13c2",
+     "nota": "media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
@@ -12978,629 +12978,8 @@
    }
   },
   {
-   "id": "carajas",
-   "posicao": 15,
-   "nome": "Serra Norte de Carajás (cavernas)",
-   "nome_en": "Carajás iron caves",
-   "regiao": "PA",
-   "pais": "Brasil",
-   "cidade": "Parauapebas",
-   "papel": "candidato",
-   "lat": -6.05,
-   "lon": -50.15,
-   "feicao": "Platôs de canga (crosta de ferro) com mais de 1.000 cavernas",
-   "dados_completos": true,
-   "alvo": "marius",
-   "alvo_nome": "Fosso das Colinas de Marius",
-   "corpo": "moon",
-   "nota_pct": 44,
-   "notas_perfil_pct": {
-    "geral": 44,
-    "rover": 62,
-    "astrobio": 16,
-    "isru": 38,
-    "habitat": 53,
-    "energia": 59
-   },
-   "dimensao_mais_forte": "Pouso e mobilidade",
-   "dimensao_mais_fraca": "Agua e gelo",
-   "dimensoes_pct": {
-    "terreno": 72,
-    "materiais": 36,
-    "termico": 8,
-    "luz": 94,
-    "agua": 0,
-    "poeira": 32,
-    "biologia": 4,
-    "subsolo": 50,
-    "operacoes": 98
-   },
-   "funciona": [
-    "Hematita e goethita, os óxidos que dão a cor de Marte e que o Opportunity achou em Meridiani",
-    "Cavernas para treinar exploração subterrânea, como fossos e tubos de lava"
-   ],
-   "quebra": [
-    "Floresta úmida em volta",
-    "Cavernas em ferro, não tubos de lava"
-   ],
-   "testes": [
-    "Mapeamento LiDAR e navegação de rover/drone em caverna",
-    "Espectroscopia de óxidos de ferro (comparar com CRISM)",
-    "Busca de bioassinaturas em rocha de ferro"
-   ],
-   "caixa": [
-    -6.15,
-    -5.95,
-    -50.25,
-    -50.05
-   ],
-   "diametro_km": null,
-   "processos": [
-    "intemperismo de formação ferrífera",
-    "formação de cavernas em canga"
-   ],
-   "referencias": [
-    "Auler et al., cavernas em formação ferrífera de Carajás"
-   ],
-   "coord_aprox": false,
-   "tags": {
-    "terreno": [
-     "planalto"
-    ],
-    "materiais": [
-     "oxido_ferro",
-     "canga",
-     "hematita"
-    ],
-    "agua": [],
-    "poeira": [],
-    "biologia": [
-     "biologia_em_ferro"
-    ],
-    "subsolo": [
-     "caverna"
-    ]
-   },
-   "valores": {
-    "elev_media_m": {
-     "rotulo": "Elevacao media",
-     "valor": 429,
-     "unidade": "m",
-     "status": "medido",
-     "fonte": "srtmgl30",
-     "nota": "576 pixels de ~1 km na caixa do local"
-    },
-    "elev_relativa_m": {
-     "rotulo": "Desnivel no local",
-     "valor": -565,
-     "unidade": "m",
-     "status": "medido",
-     "fonte": "srtmgl30",
-     "nota": "576 pixels de ~1 km na caixa do local"
-    },
-    "declividade_media": {
-     "rotulo": "Declividade media",
-     "valor": 4.2,
-     "unidade": "graus",
-     "status": "medido",
-     "fonte": "srtmgl30",
-     "nota": "576 pixels de ~1 km na caixa do local"
-    },
-    "rugosidade_tri_m": {
-     "rotulo": "Rugosidade TRI",
-     "valor": 207.6,
-     "unidade": "m",
-     "status": "medido",
-     "fonte": "srtmgl30",
-     "nota": "576 pixels de ~1 km na caixa do local"
-    },
-    "frac_decliv_8": {
-     "rotulo": "Area com declividade < 8 graus",
-     "valor": 0.85,
-     "unidade": "fracao",
-     "status": "medido",
-     "fonte": "srtmgl30",
-     "nota": "576 pixels de ~1 km na caixa do local"
-    },
-    "frac_transitavel_15": {
-     "rotulo": "Area com declividade < 15 graus",
-     "valor": 1.0,
-     "unidade": "fracao",
-     "status": "medido",
-     "fonte": "srtmgl30",
-     "nota": "576 pixels de ~1 km na caixa do local"
-    },
-    "sol_max_graus": {
-     "rotulo": "Altura maxima do Sol",
-     "valor": 89.9,
-     "unidade": "graus",
-     "status": "calculado",
-     "fonte": "calculo_solar",
-     "nota": "horizonte plano"
-    },
-    "frac_sol_baixo": {
-     "rotulo": "Luz com Sol abaixo de 10 graus",
-     "valor": 0.12,
-     "unidade": "fracao",
-     "status": "calculado",
-     "fonte": "calculo_solar",
-     "nota": "horizonte plano"
-    },
-    "frac_ano_sol_continuo": {
-     "rotulo": "Ano com Sol 24 h",
-     "valor": 0.0,
-     "unidade": "fracao",
-     "status": "calculado",
-     "fonte": "calculo_solar",
-     "nota": "horizonte plano"
-    },
-    "frac_ano_noite_continua": {
-     "rotulo": "Ano com noite 24 h",
-     "valor": 0.0,
-     "unidade": "fracao",
-     "status": "calculado",
-     "fonte": "calculo_solar",
-     "nota": "horizonte plano"
-    },
-    "insolacao_toa_wm2": {
-     "rotulo": "Sol no topo da atmosfera",
-     "valor": 413,
-     "unidade": "W/m2",
-     "status": "calculado",
-     "fonte": "calculo_solar",
-     "nota": "horizonte plano"
-    },
-    "ndvi_medio": {
-     "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.35,
-     "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
-     "nota": "estimativa; substituir pelo MOD13A2 do AppEEARS (task a92258f5)"
-    },
-    "lst_dia_c": {
-     "rotulo": "Temp. superficie maxima",
-     "valor": 42,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "nota": "TS_MAX: maxima da temperatura da superficie, media dos 12 meses (MERRA-2)"
-    },
-    "lst_noite_c": {
-     "rotulo": "Temp. superficie minima",
-     "valor": 17,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "nota": "TS_MIN: minima da temperatura da superficie, media dos 12 meses (MERRA-2)"
-    },
-    "amplitude_termica_c": {
-     "rotulo": "Amplitude termica (dT)",
-     "valor": 25,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "nota": "TS_MAX - TS_MIN"
-    },
-    "temp_media_c": {
-     "rotulo": "Temp. superficie media",
-     "valor": 27,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "nota": "TS: temperatura da superficie, media anual (MERRA-2)"
-    },
-    "albedo_medio": {
-     "rotulo": "Albedo",
-     "valor": 0.15,
-     "unidade": "fracao",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "nota": "ALLSKY_SRF_ALB: albedo da superficie, ceu real (CERES SYN1deg)"
-    },
-    "aod_medio": {
-     "rotulo": "Poeira/aerossol (AOD)",
-     "valor": 0.29,
-     "unidade": "adimensional",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "nota": "AOD_55: profundidade optica de aerossol em 550 nm (MERRA-2)"
-    },
-    "chuva_anual_mm": {
-     "rotulo": "Chuva anual",
-     "valor": 1530,
-     "unidade": "mm",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "nota": "PRECTOTCORR: chuva corrigida, media anual (MERRA-2/GPM)"
-    },
-    "vento_10m_ms": {
-     "rotulo": "Vento a 10 m",
-     "valor": 2.3,
-     "unidade": "m/s",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "nota": "WS10M: vento a 10 m, media anual (MERRA-2)"
-    },
-    "pressao_kpa": {
-     "rotulo": "Pressao do ar",
-     "valor": 96.25,
-     "unidade": "kPa",
-     "status": "calculado",
-     "fonte": "fisica",
-     "nota": "atmosfera padrao pela altitude"
-    },
-    "gravidade_g": {
-     "rotulo": "Gravidade",
-     "valor": 1.0,
-     "unidade": "g",
-     "status": "referencia",
-     "fonte": "fisica"
-    },
-    "dia_local_h": {
-     "rotulo": "Duracao do dia",
-     "valor": 24.0,
-     "unidade": "h",
-     "status": "referencia",
-     "fonte": "fisica"
-    }
-   },
-   "criterios_base": {
-    "lua.latitude_polar": false,
-    "lua.iluminacao": false,
-    "lua.declividade_pouso": true,
-    "lua.comunicacao": null,
-    "lua.gelo_proximo": false,
-    "lua.frio_extremo": false,
-    "marte.latitude": null,
-    "marte.altitude_baixa": null,
-    "marte.declividade_pouso": true,
-    "marte.agua_isru": false,
-    "marte.ciencia": false,
-    "marte.poeira": false
-   },
-   "comparacoes": {
-    "shackleton": {
-     "iap": {
-      "geral": 18,
-      "rover": 30,
-      "astrobio": 15,
-      "isru": 15,
-      "habitat": 20,
-      "energia": 17
-     },
-     "dimensoes_pct": {
-      "terreno": 26,
-      "materiais": 50,
-      "termico": 3,
-      "luz": 8,
-      "agua": 0,
-      "poeira": 32,
-      "biologia": 4,
-      "subsolo": 0,
-      "operacoes": 36
-     }
-    },
-    "haworth": {
-     "iap": {
-      "geral": 22,
-      "rover": 34,
-      "astrobio": 15,
-      "isru": 18,
-      "habitat": 25,
-      "energia": 27
-     },
-     "dimensoes_pct": {
-      "terreno": 31,
-      "materiais": 50,
-      "termico": 3,
-      "luz": 34,
-      "agua": 0,
-      "poeira": 32,
-      "biologia": 4,
-      "subsolo": 0,
-      "operacoes": 42
-     }
-    },
-    "malapert": {
-     "iap": {
-      "geral": 19,
-      "rover": 26,
-      "astrobio": 15,
-      "isru": 16,
-      "habitat": 21,
-      "energia": 24
-     },
-     "dimensoes_pct": {
-      "terreno": 26,
-      "materiais": 50,
-      "termico": 3,
-      "luz": 34,
-      "agua": 0,
-      "poeira": 32,
-      "biologia": 4,
-      "subsolo": 0,
-      "operacoes": 21
-     }
-    },
-    "mons_mouton_plateau": {
-     "iap": {
-      "geral": 32,
-      "rover": 61,
-      "astrobio": 15,
-      "isru": 25,
-      "habitat": 38,
-      "energia": 37
-     },
-     "dimensoes_pct": {
-      "terreno": 80,
-      "materiais": 50,
-      "termico": 3,
-      "luz": 34,
-      "agua": 0,
-      "poeira": 32,
-      "biologia": 4,
-      "subsolo": 0,
-      "operacoes": 85
-     }
-    },
-    "mons_mouton": {
-     "iap": {
-      "geral": 29,
-      "rover": 53,
-      "astrobio": 15,
-      "isru": 23,
-      "habitat": 34,
-      "energia": 34
-     },
-     "dimensoes_pct": {
-      "terreno": 69,
-      "materiais": 50,
-      "termico": 3,
-      "luz": 34,
-      "agua": 0,
-      "poeira": 32,
-      "biologia": 4,
-      "subsolo": 0,
-      "operacoes": 68
-     }
-    },
-    "nobile_rim_1": {
-     "iap": {
-      "geral": 22,
-      "rover": 34,
-      "astrobio": 15,
-      "isru": 18,
-      "habitat": 26,
-      "energia": 28
-     },
-     "dimensoes_pct": {
-      "terreno": 34,
-      "materiais": 50,
-      "termico": 3,
-      "luz": 34,
-      "agua": 0,
-      "poeira": 32,
-      "biologia": 4,
-      "subsolo": 0,
-      "operacoes": 42
-     }
-    },
-    "nobile_rim_2": {
-     "iap": {
-      "geral": 22,
-      "rover": 34,
-      "astrobio": 15,
-      "isru": 18,
-      "habitat": 26,
-      "energia": 28
-     },
-     "dimensoes_pct": {
-      "terreno": 34,
-      "materiais": 50,
-      "termico": 3,
-      "luz": 34,
-      "agua": 0,
-      "poeira": 32,
-      "biologia": 4,
-      "subsolo": 0,
-      "operacoes": 42
-     }
-    },
-    "de_gerlache_rim_2": {
-     "iap": {
-      "geral": 22,
-      "rover": 34,
-      "astrobio": 15,
-      "isru": 18,
-      "habitat": 25,
-      "energia": 26
-     },
-     "dimensoes_pct": {
-      "terreno": 34,
-      "materiais": 50,
-      "termico": 3,
-      "luz": 29,
-      "agua": 0,
-      "poeira": 32,
-      "biologia": 4,
-      "subsolo": 0,
-      "operacoes": 42
-     }
-    },
-    "slater_plain": {
-     "iap": {
-      "geral": 31,
-      "rover": 58,
-      "astrobio": 15,
-      "isru": 25,
-      "habitat": 37,
-      "energia": 36
-     },
-     "dimensoes_pct": {
-      "terreno": 71,
-      "materiais": 50,
-      "termico": 3,
-      "luz": 34,
-      "agua": 0,
-      "poeira": 32,
-      "biologia": 4,
-      "subsolo": 0,
-      "operacoes": 85
-     }
-    },
-    "cabeus_b_peak": {
-     "iap": {
-      "geral": 21,
-      "rover": 30,
-      "astrobio": 15,
-      "isru": 17,
-      "habitat": 24,
-      "energia": 26
-     },
-     "dimensoes_pct": {
-      "terreno": 32,
-      "materiais": 50,
-      "termico": 3,
-      "luz": 34,
-      "agua": 0,
-      "poeira": 32,
-      "biologia": 4,
-      "subsolo": 0,
-      "operacoes": 30
-     }
-    },
-    "marius": {
-     "iap": {
-      "geral": 44,
-      "rover": 62,
-      "astrobio": 16,
-      "isru": 38,
-      "habitat": 53,
-      "energia": 59
-     },
-     "dimensoes_pct": {
-      "terreno": 72,
-      "materiais": 36,
-      "termico": 8,
-      "luz": 94,
-      "agua": 0,
-      "poeira": 32,
-      "biologia": 4,
-      "subsolo": 50,
-      "operacoes": 98
-     }
-    },
-    "jezero": {
-     "iap": {
-      "geral": 41,
-      "rover": 61,
-      "astrobio": 18,
-      "isru": 35,
-      "habitat": 50,
-      "energia": 63
-     },
-     "dimensoes_pct": {
-      "terreno": 59,
-      "materiais": 54,
-      "termico": 28,
-      "luz": 100,
-      "agua": 0,
-      "poeira": 29,
-      "biologia": 4,
-      "subsolo": 0,
-      "operacoes": 98
-     }
-    },
-    "gale": {
-     "iap": {
-      "geral": 40,
-      "rover": 57,
-      "astrobio": 18,
-      "isru": 33,
-      "habitat": 48,
-      "energia": 64
-     },
-     "dimensoes_pct": {
-      "terreno": 46,
-      "materiais": 51,
-      "termico": 31,
-      "luz": 100,
-      "agua": 0,
-      "poeira": 39,
-      "biologia": 4,
-      "subsolo": 0,
-      "operacoes": 90
-     }
-    },
-    "meridiani": {
-     "iap": {
-      "geral": 42,
-      "rover": 63,
-      "astrobio": 19,
-      "isru": 36,
-      "habitat": 52,
-      "energia": 64
-     },
-     "dimensoes_pct": {
-      "terreno": 69,
-      "materiais": 57,
-      "termico": 29,
-      "luz": 100,
-      "agua": 0,
-      "poeira": 29,
-      "biologia": 4,
-      "subsolo": 0,
-      "operacoes": 94
-     }
-    },
-    "arcadia": {
-     "iap": {
-      "geral": 40,
-      "rover": 62,
-      "astrobio": 17,
-      "isru": 33,
-      "habitat": 48,
-      "energia": 58
-     },
-     "dimensoes_pct": {
-      "terreno": 70,
-      "materiais": 53,
-      "termico": 19,
-      "luz": 87,
-      "agua": 0,
-      "poeira": 29,
-      "biologia": 4,
-      "subsolo": 0,
-      "operacoes": 94
-     }
-    },
-    "oxia": {
-     "iap": {
-      "geral": 42,
-      "rover": 64,
-      "astrobio": 16,
-      "isru": 34,
-      "habitat": 51,
-      "energia": 65
-     },
-     "dimensoes_pct": {
-      "terreno": 72,
-      "materiais": 44,
-      "termico": 28,
-      "luz": 100,
-      "agua": 0,
-      "poeira": 29,
-      "biologia": 4,
-      "subsolo": 0,
-      "operacoes": 97
-     }
-    }
-   }
-  },
-  {
    "id": "vargeao",
-   "posicao": 16,
+   "posicao": 15,
    "nome": "Domo de Vargeão",
    "nome_en": "Vargeão Dome",
    "regiao": "SC",
@@ -13774,11 +13153,11 @@
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.68,
+     "valor": 0.72,
      "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
-     "nota": "estimativa; substituir pelo MOD13A2 do AppEEARS (task a92258f5)"
+     "status": "medido",
+     "fonte": "mod13c2",
+     "nota": "media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
@@ -14222,7 +13601,7 @@
   },
   {
    "id": "vista_alegre",
-   "posicao": 17,
+   "posicao": 16,
    "nome": "Cratera de Vista Alegre",
    "nome_en": "Vista Alegre crater",
    "regiao": "PR",
@@ -14391,11 +13770,11 @@
     },
     "ndvi_medio": {
      "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.71,
+     "valor": 0.67,
      "unidade": "indice",
-     "status": "provisorio",
-     "fonte": "mod13a2",
-     "nota": "estimativa; substituir pelo MOD13A2 do AppEEARS (task a92258f5)"
+     "status": "medido",
+     "fonte": "mod13c2",
+     "nota": "media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
@@ -14838,6 +14217,627 @@
    }
   },
   {
+   "id": "carajas",
+   "posicao": 17,
+   "nome": "Serra Norte de Carajás (cavernas)",
+   "nome_en": "Carajás iron caves",
+   "regiao": "PA",
+   "pais": "Brasil",
+   "cidade": "Parauapebas",
+   "papel": "candidato",
+   "lat": -6.05,
+   "lon": -50.15,
+   "feicao": "Platôs de canga (crosta de ferro) com mais de 1.000 cavernas",
+   "dados_completos": true,
+   "alvo": "marius",
+   "alvo_nome": "Fosso das Colinas de Marius",
+   "corpo": "moon",
+   "nota_pct": 43,
+   "notas_perfil_pct": {
+    "geral": 43,
+    "rover": 62,
+    "astrobio": 15,
+    "isru": 38,
+    "habitat": 53,
+    "energia": 59
+   },
+   "dimensao_mais_forte": "Pouso e mobilidade",
+   "dimensao_mais_fraca": "Vida e habitabilidade",
+   "dimensoes_pct": {
+    "terreno": 72,
+    "materiais": 36,
+    "termico": 8,
+    "luz": 94,
+    "agua": 0,
+    "poeira": 32,
+    "biologia": 0,
+    "subsolo": 50,
+    "operacoes": 98
+   },
+   "funciona": [
+    "Hematita e goethita, os óxidos que dão a cor de Marte e que o Opportunity achou em Meridiani",
+    "Cavernas para treinar exploração subterrânea, como fossos e tubos de lava"
+   ],
+   "quebra": [
+    "Floresta úmida em volta",
+    "Cavernas em ferro, não tubos de lava"
+   ],
+   "testes": [
+    "Mapeamento LiDAR e navegação de rover/drone em caverna",
+    "Espectroscopia de óxidos de ferro (comparar com CRISM)",
+    "Busca de bioassinaturas em rocha de ferro"
+   ],
+   "caixa": [
+    -6.15,
+    -5.95,
+    -50.25,
+    -50.05
+   ],
+   "diametro_km": null,
+   "processos": [
+    "intemperismo de formação ferrífera",
+    "formação de cavernas em canga"
+   ],
+   "referencias": [
+    "Auler et al., cavernas em formação ferrífera de Carajás"
+   ],
+   "coord_aprox": false,
+   "tags": {
+    "terreno": [
+     "planalto"
+    ],
+    "materiais": [
+     "oxido_ferro",
+     "canga",
+     "hematita"
+    ],
+    "agua": [],
+    "poeira": [],
+    "biologia": [
+     "biologia_em_ferro"
+    ],
+    "subsolo": [
+     "caverna"
+    ]
+   },
+   "valores": {
+    "elev_media_m": {
+     "rotulo": "Elevacao media",
+     "valor": 429,
+     "unidade": "m",
+     "status": "medido",
+     "fonte": "srtmgl30",
+     "nota": "576 pixels de ~1 km na caixa do local"
+    },
+    "elev_relativa_m": {
+     "rotulo": "Desnivel no local",
+     "valor": -565,
+     "unidade": "m",
+     "status": "medido",
+     "fonte": "srtmgl30",
+     "nota": "576 pixels de ~1 km na caixa do local"
+    },
+    "declividade_media": {
+     "rotulo": "Declividade media",
+     "valor": 4.2,
+     "unidade": "graus",
+     "status": "medido",
+     "fonte": "srtmgl30",
+     "nota": "576 pixels de ~1 km na caixa do local"
+    },
+    "rugosidade_tri_m": {
+     "rotulo": "Rugosidade TRI",
+     "valor": 207.6,
+     "unidade": "m",
+     "status": "medido",
+     "fonte": "srtmgl30",
+     "nota": "576 pixels de ~1 km na caixa do local"
+    },
+    "frac_decliv_8": {
+     "rotulo": "Area com declividade < 8 graus",
+     "valor": 0.85,
+     "unidade": "fracao",
+     "status": "medido",
+     "fonte": "srtmgl30",
+     "nota": "576 pixels de ~1 km na caixa do local"
+    },
+    "frac_transitavel_15": {
+     "rotulo": "Area com declividade < 15 graus",
+     "valor": 1.0,
+     "unidade": "fracao",
+     "status": "medido",
+     "fonte": "srtmgl30",
+     "nota": "576 pixels de ~1 km na caixa do local"
+    },
+    "sol_max_graus": {
+     "rotulo": "Altura maxima do Sol",
+     "valor": 89.9,
+     "unidade": "graus",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
+    "frac_sol_baixo": {
+     "rotulo": "Luz com Sol abaixo de 10 graus",
+     "valor": 0.12,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
+    "frac_ano_sol_continuo": {
+     "rotulo": "Ano com Sol 24 h",
+     "valor": 0.0,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
+    "frac_ano_noite_continua": {
+     "rotulo": "Ano com noite 24 h",
+     "valor": 0.0,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
+    "insolacao_toa_wm2": {
+     "rotulo": "Sol no topo da atmosfera",
+     "valor": 413,
+     "unidade": "W/m2",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
+    "ndvi_medio": {
+     "rotulo": "Vegetacao (NDVI)",
+     "valor": 0.78,
+     "unidade": "indice",
+     "status": "medido",
+     "fonte": "mod13c2",
+     "nota": "media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
+    },
+    "lst_dia_c": {
+     "rotulo": "Temp. superficie maxima",
+     "valor": 42,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "TS_MAX: maxima da temperatura da superficie, media dos 12 meses (MERRA-2)"
+    },
+    "lst_noite_c": {
+     "rotulo": "Temp. superficie minima",
+     "valor": 17,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "TS_MIN: minima da temperatura da superficie, media dos 12 meses (MERRA-2)"
+    },
+    "amplitude_termica_c": {
+     "rotulo": "Amplitude termica (dT)",
+     "valor": 25,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "TS_MAX - TS_MIN"
+    },
+    "temp_media_c": {
+     "rotulo": "Temp. superficie media",
+     "valor": 27,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "TS: temperatura da superficie, media anual (MERRA-2)"
+    },
+    "albedo_medio": {
+     "rotulo": "Albedo",
+     "valor": 0.15,
+     "unidade": "fracao",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "ALLSKY_SRF_ALB: albedo da superficie, ceu real (CERES SYN1deg)"
+    },
+    "aod_medio": {
+     "rotulo": "Poeira/aerossol (AOD)",
+     "valor": 0.29,
+     "unidade": "adimensional",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "AOD_55: profundidade optica de aerossol em 550 nm (MERRA-2)"
+    },
+    "chuva_anual_mm": {
+     "rotulo": "Chuva anual",
+     "valor": 1530,
+     "unidade": "mm",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "PRECTOTCORR: chuva corrigida, media anual (MERRA-2/GPM)"
+    },
+    "vento_10m_ms": {
+     "rotulo": "Vento a 10 m",
+     "valor": 2.3,
+     "unidade": "m/s",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "WS10M: vento a 10 m, media anual (MERRA-2)"
+    },
+    "pressao_kpa": {
+     "rotulo": "Pressao do ar",
+     "valor": 96.25,
+     "unidade": "kPa",
+     "status": "calculado",
+     "fonte": "fisica",
+     "nota": "atmosfera padrao pela altitude"
+    },
+    "gravidade_g": {
+     "rotulo": "Gravidade",
+     "valor": 1.0,
+     "unidade": "g",
+     "status": "referencia",
+     "fonte": "fisica"
+    },
+    "dia_local_h": {
+     "rotulo": "Duracao do dia",
+     "valor": 24.0,
+     "unidade": "h",
+     "status": "referencia",
+     "fonte": "fisica"
+    }
+   },
+   "criterios_base": {
+    "lua.latitude_polar": false,
+    "lua.iluminacao": false,
+    "lua.declividade_pouso": true,
+    "lua.comunicacao": null,
+    "lua.gelo_proximo": false,
+    "lua.frio_extremo": false,
+    "marte.latitude": null,
+    "marte.altitude_baixa": null,
+    "marte.declividade_pouso": true,
+    "marte.agua_isru": false,
+    "marte.ciencia": false,
+    "marte.poeira": false
+   },
+   "comparacoes": {
+    "shackleton": {
+     "iap": {
+      "geral": 17,
+      "rover": 30,
+      "astrobio": 14,
+      "isru": 15,
+      "habitat": 20,
+      "energia": 17
+     },
+     "dimensoes_pct": {
+      "terreno": 26,
+      "materiais": 50,
+      "termico": 3,
+      "luz": 8,
+      "agua": 0,
+      "poeira": 32,
+      "biologia": 0,
+      "subsolo": 0,
+      "operacoes": 36
+     }
+    },
+    "haworth": {
+     "iap": {
+      "geral": 21,
+      "rover": 34,
+      "astrobio": 14,
+      "isru": 18,
+      "habitat": 25,
+      "energia": 27
+     },
+     "dimensoes_pct": {
+      "terreno": 31,
+      "materiais": 50,
+      "termico": 3,
+      "luz": 34,
+      "agua": 0,
+      "poeira": 32,
+      "biologia": 0,
+      "subsolo": 0,
+      "operacoes": 42
+     }
+    },
+    "malapert": {
+     "iap": {
+      "geral": 18,
+      "rover": 26,
+      "astrobio": 14,
+      "isru": 16,
+      "habitat": 21,
+      "energia": 24
+     },
+     "dimensoes_pct": {
+      "terreno": 26,
+      "materiais": 50,
+      "termico": 3,
+      "luz": 34,
+      "agua": 0,
+      "poeira": 32,
+      "biologia": 0,
+      "subsolo": 0,
+      "operacoes": 21
+     }
+    },
+    "mons_mouton_plateau": {
+     "iap": {
+      "geral": 32,
+      "rover": 61,
+      "astrobio": 14,
+      "isru": 25,
+      "habitat": 38,
+      "energia": 37
+     },
+     "dimensoes_pct": {
+      "terreno": 80,
+      "materiais": 50,
+      "termico": 3,
+      "luz": 34,
+      "agua": 0,
+      "poeira": 32,
+      "biologia": 0,
+      "subsolo": 0,
+      "operacoes": 85
+     }
+    },
+    "mons_mouton": {
+     "iap": {
+      "geral": 28,
+      "rover": 53,
+      "astrobio": 14,
+      "isru": 23,
+      "habitat": 34,
+      "energia": 34
+     },
+     "dimensoes_pct": {
+      "terreno": 69,
+      "materiais": 50,
+      "termico": 3,
+      "luz": 34,
+      "agua": 0,
+      "poeira": 32,
+      "biologia": 0,
+      "subsolo": 0,
+      "operacoes": 68
+     }
+    },
+    "nobile_rim_1": {
+     "iap": {
+      "geral": 22,
+      "rover": 34,
+      "astrobio": 14,
+      "isru": 18,
+      "habitat": 26,
+      "energia": 28
+     },
+     "dimensoes_pct": {
+      "terreno": 34,
+      "materiais": 50,
+      "termico": 3,
+      "luz": 34,
+      "agua": 0,
+      "poeira": 32,
+      "biologia": 0,
+      "subsolo": 0,
+      "operacoes": 42
+     }
+    },
+    "nobile_rim_2": {
+     "iap": {
+      "geral": 22,
+      "rover": 34,
+      "astrobio": 14,
+      "isru": 18,
+      "habitat": 26,
+      "energia": 28
+     },
+     "dimensoes_pct": {
+      "terreno": 34,
+      "materiais": 50,
+      "termico": 3,
+      "luz": 34,
+      "agua": 0,
+      "poeira": 32,
+      "biologia": 0,
+      "subsolo": 0,
+      "operacoes": 42
+     }
+    },
+    "de_gerlache_rim_2": {
+     "iap": {
+      "geral": 21,
+      "rover": 34,
+      "astrobio": 14,
+      "isru": 18,
+      "habitat": 25,
+      "energia": 26
+     },
+     "dimensoes_pct": {
+      "terreno": 34,
+      "materiais": 50,
+      "termico": 3,
+      "luz": 29,
+      "agua": 0,
+      "poeira": 32,
+      "biologia": 0,
+      "subsolo": 0,
+      "operacoes": 42
+     }
+    },
+    "slater_plain": {
+     "iap": {
+      "geral": 31,
+      "rover": 58,
+      "astrobio": 14,
+      "isru": 25,
+      "habitat": 37,
+      "energia": 36
+     },
+     "dimensoes_pct": {
+      "terreno": 71,
+      "materiais": 50,
+      "termico": 3,
+      "luz": 34,
+      "agua": 0,
+      "poeira": 32,
+      "biologia": 0,
+      "subsolo": 0,
+      "operacoes": 85
+     }
+    },
+    "cabeus_b_peak": {
+     "iap": {
+      "geral": 20,
+      "rover": 30,
+      "astrobio": 14,
+      "isru": 17,
+      "habitat": 24,
+      "energia": 26
+     },
+     "dimensoes_pct": {
+      "terreno": 32,
+      "materiais": 50,
+      "termico": 3,
+      "luz": 34,
+      "agua": 0,
+      "poeira": 32,
+      "biologia": 0,
+      "subsolo": 0,
+      "operacoes": 30
+     }
+    },
+    "marius": {
+     "iap": {
+      "geral": 43,
+      "rover": 62,
+      "astrobio": 15,
+      "isru": 38,
+      "habitat": 53,
+      "energia": 59
+     },
+     "dimensoes_pct": {
+      "terreno": 72,
+      "materiais": 36,
+      "termico": 8,
+      "luz": 94,
+      "agua": 0,
+      "poeira": 32,
+      "biologia": 0,
+      "subsolo": 50,
+      "operacoes": 98
+     }
+    },
+    "jezero": {
+     "iap": {
+      "geral": 41,
+      "rover": 61,
+      "astrobio": 17,
+      "isru": 35,
+      "habitat": 50,
+      "energia": 63
+     },
+     "dimensoes_pct": {
+      "terreno": 59,
+      "materiais": 54,
+      "termico": 28,
+      "luz": 100,
+      "agua": 0,
+      "poeira": 29,
+      "biologia": 0,
+      "subsolo": 0,
+      "operacoes": 98
+     }
+    },
+    "gale": {
+     "iap": {
+      "geral": 40,
+      "rover": 57,
+      "astrobio": 17,
+      "isru": 33,
+      "habitat": 48,
+      "energia": 64
+     },
+     "dimensoes_pct": {
+      "terreno": 46,
+      "materiais": 51,
+      "termico": 31,
+      "luz": 100,
+      "agua": 0,
+      "poeira": 39,
+      "biologia": 0,
+      "subsolo": 0,
+      "operacoes": 90
+     }
+    },
+    "meridiani": {
+     "iap": {
+      "geral": 42,
+      "rover": 63,
+      "astrobio": 18,
+      "isru": 36,
+      "habitat": 52,
+      "energia": 64
+     },
+     "dimensoes_pct": {
+      "terreno": 69,
+      "materiais": 57,
+      "termico": 29,
+      "luz": 100,
+      "agua": 0,
+      "poeira": 29,
+      "biologia": 0,
+      "subsolo": 0,
+      "operacoes": 94
+     }
+    },
+    "arcadia": {
+     "iap": {
+      "geral": 39,
+      "rover": 62,
+      "astrobio": 16,
+      "isru": 33,
+      "habitat": 48,
+      "energia": 58
+     },
+     "dimensoes_pct": {
+      "terreno": 70,
+      "materiais": 53,
+      "termico": 19,
+      "luz": 87,
+      "agua": 0,
+      "poeira": 29,
+      "biologia": 0,
+      "subsolo": 0,
+      "operacoes": 94
+     }
+    },
+    "oxia": {
+     "iap": {
+      "geral": 41,
+      "rover": 64,
+      "astrobio": 15,
+      "isru": 34,
+      "habitat": 51,
+      "energia": 65
+     },
+     "dimensoes_pct": {
+      "terreno": 72,
+      "materiais": 44,
+      "termico": 28,
+      "luz": 100,
+      "agua": 0,
+      "poeira": 29,
+      "biologia": 0,
+      "subsolo": 0,
+      "operacoes": 97
+     }
+    }
+   }
+  },
+  {
    "id": "dry_valleys",
    "posicao": 18,
    "nome": "Vales Secos de McMurdo",
@@ -15024,8 +15024,8 @@
      "valor": 0.0,
      "unidade": "indice",
      "status": "provisorio",
-     "fonte": "mod13a2",
-     "nota": "estimativa; substituir pelo MOD13A2 do AppEEARS (task a92258f5)"
+     "fonte": "mod13c2",
+     "nota": "MOD13C2 nao cobre a Antartida; 0 = deserto polar sem vegetacao (Copernicus Sentinel-2 pode confirmar)"
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
@@ -15747,6 +15747,15 @@
    "referencia": "NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1",
    "link": "https://power.larc.nasa.gov/api/temporal/climatology/point",
    "acesso": "2026-11-15 (respostas salvas em entrada/nasa_power/)"
+  },
+  "mod13c2": {
+   "produto": "MODIS/Terra Vegetation Indices Monthly L3 Global 0.05Deg CMG",
+   "versao": "MOD13C2 v061 (CMG 0.05 Deg Monthly NDVI)",
+   "missao": "Terra MODIS",
+   "resolucao": "0.05 grau mensal",
+   "referencia": "doi:10.5067/MODIS/MOD13C2.061",
+   "link": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/MOD13C2.061/",
+   "acesso": "2026-11-15 (12 meses de 2024; ndvi_mod13c2.py)"
   }
  }
 }
