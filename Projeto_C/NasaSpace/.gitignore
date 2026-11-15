@@ -1,3 +1,11 @@
-# binario do Mac e log da ponte (cada um compila o seu)
-bin/Debug/nasaspace
-bin/Debug/ponte.log
+# Arquivos gerados: cada um compila o seu (Code::Blocks no Windows, cc no Mac).
+# Ficam fora do git para nao dar conflito toda vez que alguem compila.
+bin/
+obj/
+*.exe
+*.o
+# arquivos do Code::Blocks de cada usuario (posicao das janelas, dependencias)
+*.depend
+*.layout
+# o programa le os dados direto de dados/essenciais/, sem copia aqui
+bin/Debug/*.json
