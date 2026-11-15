@@ -115,8 +115,8 @@
    "nome": "Maciço de Malapert",
    "corpo": "moon",
    "papel": "artemis_iii",
-   "lat": -86.0,
-   "lon": 2.9,
+   "lat": -85.98,
+   "lon": -1.67,
    "resumo": "Maciço de ~5 km de altura com longos períodos de sol e visada direta para a Terra (comunicação)."
   },
   {
@@ -133,8 +133,8 @@
    "nome": "Mons Mouton",
    "corpo": "moon",
    "papel": "artemis_iii",
-   "lat": -84.8,
-   "lon": 29.2,
+   "lat": -84.528,
+   "lon": 30.719,
    "resumo": "Montanha de topo plano entre Malapert e Nobile, alvo de pouso robótico comercial."
   },
   {
@@ -151,8 +151,8 @@
    "nome": "Borda de Nobile 2",
    "corpo": "moon",
    "papel": "artemis_iii",
-   "lat": -84.6,
-   "lon": 62.0,
+   "lat": -84.2016,
+   "lon": 60.6999,
    "resumo": "Outro trecho da borda de Nobile, com acesso a crateras frias."
   },
   {
@@ -169,8 +169,8 @@
    "nome": "Planície de Slater",
    "corpo": "moon",
    "papel": "artemis_iii",
-   "lat": -87.8,
-   "lon": -115.0,
+   "lat": -87.4,
+   "lon": 111.3,
    "resumo": "Área relativamente plana perto da cratera Slater, boa para pouso seguro."
   },
   {
@@ -405,7 +405,7 @@
      "unidade": "kPa",
      "status": "calculado",
      "fonte": "fisica",
-     "valor_alvo": 0.65
+     "valor_alvo": 0.72
     }
    }
   },
@@ -576,7 +576,7 @@
      "unidade": "kPa",
      "status": "calculado",
      "fonte": "fisica",
-     "valor_alvo": 0.65
+     "valor_alvo": 0.72
     }
    }
   },
@@ -747,7 +747,7 @@
      "unidade": "kPa",
      "status": "calculado",
      "fonte": "fisica",
-     "valor_alvo": 0.65
+     "valor_alvo": 0.72
     }
    }
   },
@@ -1089,7 +1089,7 @@
      "unidade": "kPa",
      "status": "calculado",
      "fonte": "fisica",
-     "valor_alvo": 0.65
+     "valor_alvo": 0.62
     }
    }
   },
@@ -1260,7 +1260,7 @@
      "unidade": "kPa",
      "status": "calculado",
      "fonte": "fisica",
-     "valor_alvo": 0.65
+     "valor_alvo": 0.78
     }
    }
   },
@@ -1431,7 +1431,7 @@
      "unidade": "kPa",
      "status": "calculado",
      "fonte": "fisica",
-     "valor_alvo": 0.65
+     "valor_alvo": 0.62
     }
    }
   },
@@ -1773,7 +1773,7 @@
      "unidade": "kPa",
      "status": "calculado",
      "fonte": "fisica",
-     "valor_alvo": 0.65
+     "valor_alvo": 0.72
     }
    }
   },
@@ -1944,7 +1944,7 @@
      "unidade": "kPa",
      "status": "calculado",
      "fonte": "fisica",
-     "valor_alvo": 0.65
+     "valor_alvo": 0.72
     }
    }
   },
@@ -2115,7 +2115,7 @@
      "unidade": "kPa",
      "status": "calculado",
      "fonte": "fisica",
-     "valor_alvo": 0.65
+     "valor_alvo": 0.62
     }
    }
   },
@@ -2457,7 +2457,7 @@
      "unidade": "kPa",
      "status": "calculado",
      "fonte": "fisica",
-     "valor_alvo": 0.65
+     "valor_alvo": 0.62
     }
    }
   },
@@ -2628,7 +2628,7 @@
      "unidade": "kPa",
      "status": "calculado",
      "fonte": "fisica",
-     "valor_alvo": 0.65
+     "valor_alvo": 0.72
     }
    }
   },
@@ -2799,7 +2799,7 @@
      "unidade": "kPa",
      "status": "calculado",
      "fonte": "fisica",
-     "valor_alvo": 0.65
+     "valor_alvo": 0.72
     }
    }
   },
@@ -2970,7 +2970,7 @@
      "unidade": "kPa",
      "status": "calculado",
      "fonte": "fisica",
-     "valor_alvo": 0.65
+     "valor_alvo": 0.62
     }
    }
   },
@@ -3141,7 +3141,7 @@
      "unidade": "kPa",
      "status": "calculado",
      "fonte": "fisica",
-     "valor_alvo": 0.65
+     "valor_alvo": 0.62
     }
    }
   },

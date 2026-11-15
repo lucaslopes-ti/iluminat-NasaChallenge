@@ -41,6 +41,13 @@ RAIZ = os.path.dirname(os.path.dirname(AQUI))
 ENTRADA = os.path.join(AQUI, "entrada")
 PASTA_POWER = os.path.join(ENTRADA, "nasa_power")
 SRTM = os.path.join(RAIZ, "dados", "srtm30")
+MOLA = os.path.join(RAIZ, "dados", "mola", "megt90n000cb.img")   # MGS MOLA MEGDR, 4 pixels/grau
+
+# Pressao de Marte por local: a media do MEDA em Jezero ajustada pela altitude MOLA de cada alvo.
+# MEDA (Perseverance): media diaria de 625 a 761 Pa nos sois 15-460 (Sanchez-Lavega et al. 2023,
+# JGR Planets, doi:10.1029/2022JE007480); usamos o meio da faixa. Escala de altura de Marte: 11,1 km (NASA Mars Fact Sheet).
+P_JEZERO_KPA = 0.693
+ESCALA_ALTURA_MARTE_M = 11100.0
 
 # variável -> (rótulo sem acento, para o terminal; unidade; casas decimais)
 VARIAVEIS = {
@@ -169,6 +176,19 @@ def metricas_relevo(z, lat):
 
 
 # ---------------------------------------------------------------- luz (geometria solar)
+_mola = None
+
+
+def altitude_mola(lat, lon):
+    """Altitude MOLA (m, sobre o areoide) no pixel de 1/4 de grau que contem lat/lon (lon leste)."""
+    global _mola
+    if _mola is None:
+        _mola = np.fromfile(MOLA, ">i2").reshape(720, 1440) if os.path.exists(MOLA) else False
+    if _mola is False:
+        return None
+    return float(_mola[min(719, int((90 - lat) * 4)), int((lon % 360) * 4) % 1440])
+
+
 def luz(lat, corpo):
     """Horizonte plano e órbita circular: 360 'dias' x 360 ângulos horários."""
     obl, s0 = CORPOS[corpo]
@@ -384,6 +404,22 @@ def main():
         if dia is not None and noite is not None and amp != dia - noite:   # amplitude coerente com max e min
             vals["amplitude_termica_c"] = {"valor": dia - noite, "status": "referencia",
                                            "fonte": vals["lst_dia_c"]["fonte"], "nota": "lst_dia_c - lst_noite_c"}
+        if pad["corpo"] == "mars":                  # pressao pela altitude de cada alvo
+            jz = next(x for x in cfg_alvos["alvos"] if x["id"] == "jezero")
+            h_ref = altitude_mola(jz["lat"], jz["lon"])
+            lat_p, lon_p = a.get("ponto_pressao", [a["lat"], a["lon"]])
+            h = altitude_mola(lat_p, lon_p)
+            if h is not None and h_ref is not None:
+                onde = a.get("ponto_pressao_nota", "na coordenada do alvo")
+                if a["id"] == "jezero":
+                    vals["pressao_kpa"] = {"valor": P_JEZERO_KPA, "status": "referencia", "fonte": "m2020_meda",
+                                           "nota": "meio da faixa de 625 a 761 Pa (media diaria, sois 15-460; "
+                                                   f"Sanchez-Lavega et al. 2023, JGR Planets, doi:10.1029/2022JE007480); MOLA {h:.0f} m"}
+                else:
+                    vals["pressao_kpa"] = {"valor": P_JEZERO_KPA * math.exp(-(h - h_ref) / ESCALA_ALTURA_MARTE_M),
+                                           "status": "calculado", "fonte": "mgs_mola",
+                                           "nota": f"Jezero (MEDA, {P_JEZERO_KPA} kPa a {h_ref:.0f} m) ajustado pela altitude "
+                                                   f"MOLA {h:.0f} m ({onde}), escala de altura 11,1 km"}
         tags = dict(pad["tags"])
         tags.update(a.get("tags", {}))
         alvos.append({**{k: v for k, v in a.items() if k not in ("valores", "tags", "padrao")},

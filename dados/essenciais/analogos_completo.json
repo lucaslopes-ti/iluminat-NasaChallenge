@@ -1019,6 +1019,7 @@
    "lat": -89.67,
    "lon": 129.78,
    "coord_aprox": false,
+   "coord_fonte": "centro da cratera Shackleton (Gazetteer of Planetary Nomenclature (USGS/IAU): -89,67, 129,78)",
    "papel": "base_permanente",
    "missao": "Região histórica das propostas de base do Artemis (crista de ligação Shackleton–de Gerlache)",
    "resumo": "Borda com sol quase contínuo e fundo em sombra permanente que guarda gelo de água. Local clássico para uma base permanente.",
@@ -1234,6 +1235,7 @@
    "lat": -87.4,
    "lon": -5.0,
    "coord_aprox": true,
+   "coord_fonte": "perto do centro da cratera Haworth (Gazetteer of Planetary Nomenclature (USGS/IAU): -87,45, -5,17; 51 km); a região de pouso fica na borda",
    "papel": "artemis_iii",
    "missao": "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024)",
    "resumo": "Grande cratera com fundo em sombra permanente, uma das melhores armadilhas frias de gelo perto do polo.",
@@ -1446,9 +1448,10 @@
    "nome": "Maciço de Malapert",
    "nome_en": "Malapert Massif",
    "regiao": "Polo sul lunar",
-   "lat": -86.0,
-   "lon": 2.9,
+   "lat": -85.98,
+   "lon": -1.67,
    "coord_aprox": true,
+   "coord_fonte": "centro do Mons Malapert (Gazetteer of Planetary Nomenclature (USGS/IAU): -85,98, -1,67; 67 km); antes estava em -86,0, 2,9",
    "papel": "artemis_iii",
    "missao": "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024)",
    "resumo": "Maciço de ~5 km de altura com longos períodos de sol e visada direta para a Terra (comunicação).",
@@ -1608,7 +1611,7 @@
     },
     "sol_max_graus": {
      "rotulo": "Altura maxima do Sol",
-     "valor": 5.5,
+     "valor": 5.6,
      "unidade": "graus",
      "status": "calculado",
      "fonte": "calculo_solar",
@@ -1664,6 +1667,7 @@
    "lat": -84.5,
    "lon": 33.0,
    "coord_aprox": true,
+   "coord_fonte": "no planalto do Mons Mouton (Gazetteer of Planetary Nomenclature (USGS/IAU): centro -84,60, 31,00; 130 km)",
    "papel": "artemis_iii",
    "missao": "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024)",
    "resumo": "Platô alto e relativamente plano no topo de Mons Mouton, com boa iluminação.",
@@ -1876,9 +1880,10 @@
    "nome": "Mons Mouton",
    "nome_en": "Mons Mouton",
    "regiao": "Polo sul lunar",
-   "lat": -84.8,
-   "lon": 29.2,
-   "coord_aprox": true,
+   "lat": -84.528,
+   "lon": 30.719,
+   "coord_aprox": false,
+   "coord_fonte": "local de pouso de exemplo dentro da região (Mahanti et al. 2025, LPSC 56, resumo 2742)",
    "papel": "artemis_iii",
    "missao": "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024); pouso do IM-2 (2025)",
    "resumo": "Montanha de topo plano entre Malapert e Nobile, alvo de pouso robótico comercial.",
@@ -2038,7 +2043,7 @@
     },
     "sol_max_graus": {
      "rotulo": "Altura maxima do Sol",
-     "valor": 6.7,
+     "valor": 7.0,
      "unidade": "graus",
      "status": "calculado",
      "fonte": "calculo_solar",
@@ -2078,7 +2083,7 @@
     },
     "insolacao_toa_wm2": {
      "rotulo": "Sol no topo da atmosfera",
-     "valor": 40,
+     "valor": 42,
      "unidade": "W/m2",
      "status": "calculado",
      "fonte": "calculo_solar",
@@ -2094,6 +2099,7 @@
    "lat": -85.4,
    "lon": 37.0,
    "coord_aprox": true,
+   "coord_fonte": "borda oeste da cratera Nobile (Gazetteer of Planetary Nomenclature (USGS/IAU): centro -85,28, 53,27; 79 km)",
    "papel": "artemis_iii",
    "missao": "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024)",
    "resumo": "Borda da cratera Nobile, junto a regiões em sombra permanente estudadas para gelo.",
@@ -2306,9 +2312,10 @@
    "nome": "Borda de Nobile 2",
    "nome_en": "Nobile Rim 2",
    "regiao": "Polo sul lunar",
-   "lat": -84.6,
-   "lon": 62.0,
-   "coord_aprox": true,
+   "lat": -84.2016,
+   "lon": 60.6999,
+   "coord_aprox": false,
+   "coord_fonte": "melhor local de pouso da região (Sánchez-Lozano et al. 2025, LPSC 56, resumo 1149, Tabela 1)",
    "papel": "artemis_iii",
    "missao": "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024)",
    "resumo": "Outro trecho da borda de Nobile, com acesso a crateras frias.",
@@ -2468,7 +2475,7 @@
     },
     "sol_max_graus": {
      "rotulo": "Altura maxima do Sol",
-     "valor": 6.9,
+     "valor": 7.3,
      "unidade": "graus",
      "status": "calculado",
      "fonte": "calculo_solar",
@@ -2508,7 +2515,7 @@
     },
     "insolacao_toa_wm2": {
      "rotulo": "Sol no topo da atmosfera",
-     "valor": 42,
+     "valor": 45,
      "unidade": "W/m2",
      "status": "calculado",
      "fonte": "calculo_solar",
@@ -2524,6 +2531,7 @@
    "lat": -88.6,
    "lon": -70.0,
    "coord_aprox": true,
+   "coord_fonte": "borda da cratera de Gerlache (Gazetteer of Planetary Nomenclature (USGS/IAU): centro -88,48, -88,34; 33 km)",
    "papel": "artemis_iii",
    "missao": "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024)",
    "resumo": "Borda da cratera de Gerlache, vizinha de Shackleton, com alta iluminação.",
@@ -2736,9 +2744,10 @@
    "nome": "Planície de Slater",
    "nome_en": "Slater Plain",
    "regiao": "Polo sul lunar",
-   "lat": -87.8,
-   "lon": -115.0,
+   "lat": -87.4,
+   "lon": 111.3,
    "coord_aprox": true,
+   "coord_fonte": "ao norte da cratera Slater (Gazetteer of Planetary Nomenclature (USGS/IAU): -88,08, 111,29; Samaddar et al. 2025, LPSC 56, resumo 2401); antes estava com longitude -115 (sinal trocado)",
    "papel": "artemis_iii",
    "missao": "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024)",
    "resumo": "Área relativamente plana perto da cratera Slater, boa para pouso seguro.",
@@ -2898,7 +2907,7 @@
     },
     "sol_max_graus": {
      "rotulo": "Altura maxima do Sol",
-     "valor": 3.7,
+     "valor": 4.1,
      "unidade": "graus",
      "status": "calculado",
      "fonte": "calculo_solar",
@@ -2938,7 +2947,7 @@
     },
     "insolacao_toa_wm2": {
      "rotulo": "Sol no topo da atmosfera",
-     "valor": 19,
+     "valor": 21,
      "unidade": "W/m2",
      "status": "calculado",
      "fonte": "calculo_solar",
@@ -2954,6 +2963,7 @@
    "lat": -84.0,
    "lon": -50.0,
    "coord_aprox": true,
+   "coord_fonte": "não conferido: Cabeus B não aparece na lista de crateras do Gazetteer; falta o mapa oficial da NASA",
    "papel": "artemis_iii",
    "missao": "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024); perto de onde o LCROSS achou gelo (Cabeus, 2009)",
    "resumo": "Pico iluminado perto de Cabeus, cratera onde o impacto do LCROSS confirmou água.",
@@ -3456,11 +3466,11 @@
     },
     "pressao_kpa": {
      "rotulo": "Pressao do ar",
-     "valor": 0.65,
+     "valor": 0.69,
      "unidade": "kPa",
      "status": "referencia",
      "fonte": "m2020_meda",
-     "nota": "~0,6–0,75 kPa de CO2"
+     "nota": "meio da faixa de 625 a 761 Pa (media diaria, sois 15-460; Sanchez-Lavega et al. 2023, JGR Planets, doi:10.1029/2022JE007480); MOLA -2651 m"
     },
     "gravidade_g": {
      "rotulo": "Gravidade",
@@ -3600,6 +3610,11 @@
    "lat": -5.4,
    "lon": 137.8,
    "coord_aprox": false,
+   "ponto_pressao": [
+    -4.59,
+    137.44
+   ],
+   "ponto_pressao_nota": "pouso do Curiosity (Bradbury Landing, NASA/JPL), no fundo da cratera; a coordenada do alvo cai no Monte Sharp",
    "papel": "ciencia_robotica",
    "missao": "Curiosity (NASA, desde 2012)",
    "resumo": "Montanha sedimentar em camadas com argila, sulfato e hematita, e dunas ativas.",
@@ -3663,11 +3678,11 @@
     },
     "pressao_kpa": {
      "rotulo": "Pressao do ar",
-     "valor": 0.65,
+     "valor": 0.82,
      "unidade": "kPa",
-     "status": "referencia",
-     "fonte": "m2020_meda",
-     "nota": "~0,6–0,75 kPa de CO2"
+     "status": "calculado",
+     "fonte": "mgs_mola",
+     "nota": "Jezero (MEDA, 0.693 kPa a -2651 m) ajustado pela altitude MOLA -4458 m (pouso do Curiosity (Bradbury Landing, NASA/JPL), no fundo da cratera; a coordenada do alvo cai no Monte Sharp), escala de altura 11,1 km"
     },
     "gravidade_g": {
      "rotulo": "Gravidade",
@@ -3867,11 +3882,11 @@
     },
     "pressao_kpa": {
      "rotulo": "Pressao do ar",
-     "valor": 0.65,
+     "valor": 0.62,
      "unidade": "kPa",
-     "status": "referencia",
-     "fonte": "m2020_meda",
-     "nota": "~0,6–0,75 kPa de CO2"
+     "status": "calculado",
+     "fonte": "mgs_mola",
+     "nota": "Jezero (MEDA, 0.693 kPa a -2651 m) ajustado pela altitude MOLA -1389 m (na coordenada do alvo), escala de altura 11,1 km"
     },
     "gravidade_g": {
      "rotulo": "Gravidade",
@@ -4074,11 +4089,11 @@
     },
     "pressao_kpa": {
      "rotulo": "Pressao do ar",
-     "valor": 0.65,
+     "valor": 0.78,
      "unidade": "kPa",
-     "status": "referencia",
-     "fonte": "m2020_meda",
-     "nota": "~0,6–0,75 kPa de CO2"
+     "status": "calculado",
+     "fonte": "mgs_mola",
+     "nota": "Jezero (MEDA, 0.693 kPa a -2651 m) ajustado pela altitude MOLA -4029 m (na coordenada do alvo), escala de altura 11,1 km"
     },
     "gravidade_g": {
      "rotulo": "Gravidade",
@@ -4277,11 +4292,11 @@
     },
     "pressao_kpa": {
      "rotulo": "Pressao do ar",
-     "valor": 0.65,
+     "valor": 0.72,
      "unidade": "kPa",
-     "status": "referencia",
-     "fonte": "m2020_meda",
-     "nota": "~0,6–0,75 kPa de CO2"
+     "status": "calculado",
+     "fonte": "mgs_mola",
+     "nota": "Jezero (MEDA, 0.693 kPa a -2651 m) ajustado pela altitude MOLA -3105 m (na coordenada do alvo), escala de altura 11,1 km"
     },
     "gravidade_g": {
      "rotulo": "Gravidade",
@@ -6732,13 +6747,13 @@
       "astrobio": 56,
       "isru": 58,
       "habitat": 57,
-      "energia": 52
+      "energia": 53
      },
      "dimensoes_pct": {
       "terreno": 52,
       "materiais": 7,
       "termico": 30,
-      "luz": 37,
+      "luz": 38,
       "agua": 79,
       "poeira": 75,
       "biologia": 75,
@@ -6857,14 +6872,14 @@
       "rover": 49,
       "astrobio": 56,
       "isru": 55,
-      "habitat": 51,
-      "energia": 49
+      "habitat": 52,
+      "energia": 50
      },
      "dimensoes_pct": {
       "terreno": 46,
       "materiais": 7,
       "termico": 30,
-      "luz": 44,
+      "luz": 45,
       "agua": 79,
       "poeira": 75,
       "biologia": 75,
@@ -9420,7 +9435,7 @@
       "terreno": 47,
       "materiais": 0,
       "termico": 20,
-      "luz": 48,
+      "luz": 49,
       "agua": 62,
       "poeira": 49,
       "biologia": 50,

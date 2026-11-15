@@ -67,9 +67,9 @@ Só fontes da NASA e do Copernicus; os valores de Lua e Marte vêm de missões d
 |---|---|---|
 | LRO LOLA (laser altímetro) | relevo, declividade e **iluminação com relevo** dos alvos polares | Zuber et al. 2012, *Nature*; Mazarico et al. 2011, *Icarus* |
 | LRO Diviner (radiômetro) | temperatura da superfície da Lua | Paige et al. 2010, *Science* |
-| MGS MOLA (laser altímetro) | relevo e declividade de Marte | Smith et al. 2001, *JGR* |
+| MGS MOLA (laser altímetro) | relevo e declividade de Marte; altitude de cada alvo para a pressão (MEGDR, 4 pixels/grau) | Smith et al. 2001, *JGR* |
 | MGS TES | albedo de Marte | Christensen et al. 2001, *JGR* |
-| Mars 2020 MEDA e câmeras | temperatura em Jezero; pressão (0,65 kPa) e opacidade da poeira usadas nos alvos de Marte | Rodríguez-Manfredi et al. 2023, *Nat. Geosci.*; Lemmon et al. 2022, *GRL* |
+| Mars 2020 MEDA e câmeras | temperatura em Jezero; pressão de 625 a 761 Pa (média diária) em Jezero, base da pressão dos alvos de Marte; opacidade da poeira | Rodríguez-Manfredi et al. 2023, *Nat. Geosci.*; Sánchez-Lavega et al. 2023, *JGR Planets*; Lemmon et al. 2022, *GRL* |
 | MSL REMS | temperatura e poeira em Gale | Gómez-Elvira et al. 2012, *Space Sci. Rev.* |
 | MER Mini-TES | temperatura em Meridiani | Smith et al. 2006, *JGR* |
 | MRO MCS | temperatura em Arcadia e Oxia | Kleinböhl et al. 2009, *JGR* |
@@ -79,7 +79,7 @@ Só fontes da NASA e do Copernicus; os valores de Lua e Marte vêm de missões d
 
 | Fonte | Para quê |
 |---|---|
-| NASA, regiões candidatas do Artemis III (out/2024) | os 9 alvos lunares de pouso |
+| NASA, regiões candidatas do Artemis III (out/2024); Gazetteer of Planetary Nomenclature (USGS/IAU); LPSC 2025 (Mahanti et al., Sánchez-Lozano et al., Samaddar et al.) | os 9 alvos lunares de pouso e as coordenadas deles |
 | LRO LAMP e LEND; LCROSS | gelo nas crateras em sombra permanente (Cabeus) |
 | LRO LROC | imagens e geologia lunar |
 | MRO CRISM | minerais hidratados em Marte (Jezero, Meridiani, Oxia) |
@@ -100,8 +100,8 @@ NASA Blue Marble (Terra), NASA SVS CGI Moon Kit (mosaico de cor do LRO LROC, com
 ### Limitações que dizemos na apresentação
 
 - A temperatura do ar, o albedo, a chuva e a poeira vêm de células de ~50 km da NASA POWER. No Mauna Kea, o ar fica uns 20 °C acima do cume.
-- As coordenadas das regiões do Artemis III estão aproximadas (±1°).
-- A pressão de Marte é a mesma nos cinco alvos.
+- As regiões do Artemis III foram conferidas com o Gazetteer de nomenclatura planetária (USGS/IAU) e com resumos do LPSC 2025. Duas usam locais de pouso publicados; as outras ficam na borda ou no planalto da feição que dá nome à região (±0,5°). Peak near Cabeus B ainda não foi conferido.
+- A pressão de Marte vem de uma medida só (MEDA, em Jezero), ajustada pela altitude MOLA de cada alvo, sem a variação das estações (~25%).
 - O NDVI da Dry Valleys é provisório (0), porque o MOD13C2 não cobre a Antártida.
 - Os valores de Lua e Marte são números publicados e aproximados, não recortes processados por nós.
 

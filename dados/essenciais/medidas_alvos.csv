@@ -56,7 +56,7 @@ malapert,moon,declividade_media,12.0,graus,referencia,lro_lola,Zuber et al. 2012
 malapert,moon,frac_decliv_8,0.4,fracao,referencia,lro_lola,Zuber et al. 2012 Nature 486:378 ; Mazarico et al. 2011 Icarus 211:1066,aprox.
 malapert,moon,frac_transitavel_15,0.65,fracao,referencia,lro_lola,Zuber et al. 2012 Nature 486:378 ; Mazarico et al. 2011 Icarus 211:1066,aprox.
 malapert,moon,iluminacao_frac,0.7,fracao,referencia,lro_lola,Zuber et al. 2012 Nature 486:378 ; Mazarico et al. 2011 Icarus 211:1066,aprox.
-malapert,moon,sol_max_graus,5.5,graus,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
+malapert,moon,sol_max_graus,5.6,graus,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 malapert,moon,frac_sol_baixo,1.0,fracao,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 malapert,moon,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 malapert,moon,frac_ano_noite_continua,0.0,fracao,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
@@ -98,12 +98,12 @@ mons_mouton,moon,declividade_media,7.0,graus,referencia,lro_lola,Zuber et al. 20
 mons_mouton,moon,frac_decliv_8,0.6,fracao,referencia,lro_lola,Zuber et al. 2012 Nature 486:378 ; Mazarico et al. 2011 Icarus 211:1066,aprox.
 mons_mouton,moon,frac_transitavel_15,0.85,fracao,referencia,lro_lola,Zuber et al. 2012 Nature 486:378 ; Mazarico et al. 2011 Icarus 211:1066,aprox.
 mons_mouton,moon,iluminacao_frac,0.6,fracao,referencia,lro_lola,Zuber et al. 2012 Nature 486:378 ; Mazarico et al. 2011 Icarus 211:1066,aprox.
-mons_mouton,moon,sol_max_graus,6.7,graus,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
+mons_mouton,moon,sol_max_graus,7.0,graus,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 mons_mouton,moon,frac_sol_baixo,1.0,fracao,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 mons_mouton,moon,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 mons_mouton,moon,frac_ano_noite_continua,0.0,fracao,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 mons_mouton,moon,frac_tempo_sol,0.6,fracao,referencia,lro_lola,Zuber et al. 2012 Nature 486:378 ; Mazarico et al. 2011 Icarus 211:1066,aprox. (com relevo)
-mons_mouton,moon,insolacao_toa_wm2,40,W/m2,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
+mons_mouton,moon,insolacao_toa_wm2,42,W/m2,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 nobile_rim_1,moon,lst_dia_c,-50,C,referencia,lro_diviner,Paige et al. 2010 Science 330:479,máxima típica em cristas iluminadas (sol rasante)
 nobile_rim_1,moon,lst_noite_c,-200,C,referencia,lro_diviner,Paige et al. 2010 Science 330:479,sombra; dentro das PSRs chega a -240 °C (~35 K)
 nobile_rim_1,moon,amplitude_termica_c,150,C,referencia,lro_diviner,Paige et al. 2010 Science 330:479,variação típica ao longo do dia lunar em cristas
@@ -140,12 +140,12 @@ nobile_rim_2,moon,declividade_media,9.0,graus,referencia,lro_lola,Zuber et al. 2
 nobile_rim_2,moon,frac_decliv_8,0.5,fracao,referencia,lro_lola,Zuber et al. 2012 Nature 486:378 ; Mazarico et al. 2011 Icarus 211:1066,aprox.
 nobile_rim_2,moon,frac_transitavel_15,0.75,fracao,referencia,lro_lola,Zuber et al. 2012 Nature 486:378 ; Mazarico et al. 2011 Icarus 211:1066,aprox.
 nobile_rim_2,moon,iluminacao_frac,0.55,fracao,referencia,lro_lola,Zuber et al. 2012 Nature 486:378 ; Mazarico et al. 2011 Icarus 211:1066,aprox.
-nobile_rim_2,moon,sol_max_graus,6.9,graus,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
+nobile_rim_2,moon,sol_max_graus,7.3,graus,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 nobile_rim_2,moon,frac_sol_baixo,1.0,fracao,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 nobile_rim_2,moon,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 nobile_rim_2,moon,frac_ano_noite_continua,0.0,fracao,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 nobile_rim_2,moon,frac_tempo_sol,0.55,fracao,referencia,lro_lola,Zuber et al. 2012 Nature 486:378 ; Mazarico et al. 2011 Icarus 211:1066,aprox. (com relevo)
-nobile_rim_2,moon,insolacao_toa_wm2,42,W/m2,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
+nobile_rim_2,moon,insolacao_toa_wm2,45,W/m2,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 de_gerlache_rim_2,moon,lst_dia_c,-50,C,referencia,lro_diviner,Paige et al. 2010 Science 330:479,máxima típica em cristas iluminadas (sol rasante)
 de_gerlache_rim_2,moon,lst_noite_c,-200,C,referencia,lro_diviner,Paige et al. 2010 Science 330:479,sombra; dentro das PSRs chega a -240 °C (~35 K)
 de_gerlache_rim_2,moon,amplitude_termica_c,150,C,referencia,lro_diviner,Paige et al. 2010 Science 330:479,variação típica ao longo do dia lunar em cristas
@@ -182,12 +182,12 @@ slater_plain,moon,declividade_media,5.0,graus,referencia,lro_lola,Zuber et al. 2
 slater_plain,moon,frac_decliv_8,0.7,fracao,referencia,lro_lola,Zuber et al. 2012 Nature 486:378 ; Mazarico et al. 2011 Icarus 211:1066,aprox.
 slater_plain,moon,frac_transitavel_15,0.9,fracao,referencia,lro_lola,Zuber et al. 2012 Nature 486:378 ; Mazarico et al. 2011 Icarus 211:1066,aprox.
 slater_plain,moon,iluminacao_frac,0.55,fracao,referencia,lro_lola,Zuber et al. 2012 Nature 486:378 ; Mazarico et al. 2011 Icarus 211:1066,aprox.
-slater_plain,moon,sol_max_graus,3.7,graus,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
+slater_plain,moon,sol_max_graus,4.1,graus,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 slater_plain,moon,frac_sol_baixo,1.0,fracao,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 slater_plain,moon,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 slater_plain,moon,frac_ano_noite_continua,0.0,fracao,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 slater_plain,moon,frac_tempo_sol,0.55,fracao,referencia,lro_lola,Zuber et al. 2012 Nature 486:378 ; Mazarico et al. 2011 Icarus 211:1066,aprox. (com relevo)
-slater_plain,moon,insolacao_toa_wm2,19,W/m2,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
+slater_plain,moon,insolacao_toa_wm2,21,W/m2,calculado,calculo_solar,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
 cabeus_b_peak,moon,lst_dia_c,-50,C,referencia,lro_diviner,Paige et al. 2010 Science 330:479,máxima típica em cristas iluminadas (sol rasante)
 cabeus_b_peak,moon,lst_noite_c,-200,C,referencia,lro_diviner,Paige et al. 2010 Science 330:479,sombra; dentro das PSRs chega a -240 °C (~35 K)
 cabeus_b_peak,moon,amplitude_termica_c,150,C,referencia,lro_diviner,Paige et al. 2010 Science 330:479,variação típica ao longo do dia lunar em cristas
@@ -234,7 +234,7 @@ marius,moon,insolacao_toa_wm2,420,W/m2,calculado,calculo_solar,formulas de decli
 jezero,mars,aod_medio,0.6,adimensional,referencia,m2020_tau,Lemmon et al. 2022 Geophysical Research Letters 49,"opacidade típica fora de tempestades (0,3 a >1 sazonal)"
 jezero,mars,chuva_anual_mm,0,mm,referencia,fisico_marte,definicao: NDVI 0 / chuva 0 (pressao ~0.6 kPa nao permite agua liquida estavel),sem chuva líquida hoje
 jezero,mars,ndvi_medio,0.0,indice,referencia,fisico_marte,definicao: NDVI 0 / chuva 0 (pressao ~0.6 kPa nao permite agua liquida estavel),sem vegetação
-jezero,mars,pressao_kpa,0.65,kPa,referencia,m2020_meda,Rodriguez-Manfredi et al. 2023 Nature Geoscience 16:19,"~0,6–0,75 kPa de CO2"
+jezero,mars,pressao_kpa,0.69,kPa,referencia,m2020_meda,Rodriguez-Manfredi et al. 2023 Nature Geoscience 16:19,"meio da faixa de 625 a 761 Pa (media diaria, sois 15-460; Sanchez-Lavega et al. 2023, JGR Planets, doi:10.1029/2022JE007480); MOLA -2651 m"
 jezero,mars,gravidade_g,0.38,g,referencia,fisica,NASA Planetary Fact Sheets,38% da Terra
 jezero,mars,dia_local_h,24.7,h,referencia,fisica,NASA Planetary Fact Sheets,sol marciano = 24 h 39 min
 jezero,mars,elev_relativa_m,-2600,m,referencia,mgs_mola,Smith et al. 2001 JGR 106(E10):23689,fundo em relação ao areoide; diâmetro ~45 km
@@ -254,7 +254,7 @@ jezero,mars,insolacao_toa_wm2,170,W/m2,calculado,calculo_solar,formulas de decli
 gale,mars,aod_medio,0.5,adimensional,referencia,msl_rems,Gomez-Elvira et al. 2012 Space Sci. Rev.,opacidade típica fora de tempestades
 gale,mars,chuva_anual_mm,0,mm,referencia,fisico_marte,definicao: NDVI 0 / chuva 0 (pressao ~0.6 kPa nao permite agua liquida estavel),sem chuva líquida hoje
 gale,mars,ndvi_medio,0.0,indice,referencia,fisico_marte,definicao: NDVI 0 / chuva 0 (pressao ~0.6 kPa nao permite agua liquida estavel),sem vegetação
-gale,mars,pressao_kpa,0.65,kPa,referencia,m2020_meda,Rodriguez-Manfredi et al. 2023 Nature Geoscience 16:19,"~0,6–0,75 kPa de CO2"
+gale,mars,pressao_kpa,0.82,kPa,calculado,mgs_mola,Smith et al. 2001 JGR 106(E10):23689,"Jezero (MEDA, 0.693 kPa a -2651 m) ajustado pela altitude MOLA -4458 m (pouso do Curiosity (Bradbury Landing, NASA/JPL), no fundo da cratera; a coordenada do alvo cai no Monte Sharp), escala de altura 11,1 km"
 gale,mars,gravidade_g,0.38,g,referencia,fisica,NASA Planetary Fact Sheets,38% da Terra
 gale,mars,dia_local_h,24.7,h,referencia,fisica,NASA Planetary Fact Sheets,sol marciano = 24 h 39 min
 gale,mars,elev_relativa_m,-5000,m,referencia,mgs_mola,Smith et al. 2001 JGR 106(E10):23689,Monte Sharp tem ~5 km acima do piso
@@ -274,7 +274,7 @@ gale,mars,insolacao_toa_wm2,177,W/m2,calculado,calculo_solar,formulas de declina
 meridiani,mars,aod_medio,0.6,adimensional,referencia,m2020_tau,Lemmon et al. 2022 Geophysical Research Letters 49,"opacidade típica fora de tempestades (0,3 a >1 sazonal)"
 meridiani,mars,chuva_anual_mm,0,mm,referencia,fisico_marte,definicao: NDVI 0 / chuva 0 (pressao ~0.6 kPa nao permite agua liquida estavel),sem chuva líquida hoje
 meridiani,mars,ndvi_medio,0.0,indice,referencia,fisico_marte,definicao: NDVI 0 / chuva 0 (pressao ~0.6 kPa nao permite agua liquida estavel),sem vegetação
-meridiani,mars,pressao_kpa,0.65,kPa,referencia,m2020_meda,Rodriguez-Manfredi et al. 2023 Nature Geoscience 16:19,"~0,6–0,75 kPa de CO2"
+meridiani,mars,pressao_kpa,0.62,kPa,calculado,mgs_mola,Smith et al. 2001 JGR 106(E10):23689,"Jezero (MEDA, 0.693 kPa a -2651 m) ajustado pela altitude MOLA -1389 m (na coordenada do alvo), escala de altura 11,1 km"
 meridiani,mars,gravidade_g,0.38,g,referencia,fisica,NASA Planetary Fact Sheets,38% da Terra
 meridiani,mars,dia_local_h,24.7,h,referencia,fisica,NASA Planetary Fact Sheets,sol marciano = 24 h 39 min
 meridiani,mars,elev_relativa_m,-100,m,referencia,mgs_mola,Smith et al. 2001 JGR 106(E10):23689,planície; crateras pequenas
@@ -294,7 +294,7 @@ meridiani,mars,insolacao_toa_wm2,178,W/m2,calculado,calculo_solar,formulas de de
 arcadia,mars,aod_medio,0.6,adimensional,referencia,m2020_tau,Lemmon et al. 2022 Geophysical Research Letters 49,"opacidade típica fora de tempestades (0,3 a >1 sazonal)"
 arcadia,mars,chuva_anual_mm,0,mm,referencia,fisico_marte,definicao: NDVI 0 / chuva 0 (pressao ~0.6 kPa nao permite agua liquida estavel),sem chuva líquida hoje
 arcadia,mars,ndvi_medio,0.0,indice,referencia,fisico_marte,definicao: NDVI 0 / chuva 0 (pressao ~0.6 kPa nao permite agua liquida estavel),sem vegetação
-arcadia,mars,pressao_kpa,0.65,kPa,referencia,m2020_meda,Rodriguez-Manfredi et al. 2023 Nature Geoscience 16:19,"~0,6–0,75 kPa de CO2"
+arcadia,mars,pressao_kpa,0.78,kPa,calculado,mgs_mola,Smith et al. 2001 JGR 106(E10):23689,"Jezero (MEDA, 0.693 kPa a -2651 m) ajustado pela altitude MOLA -4029 m (na coordenada do alvo), escala de altura 11,1 km"
 arcadia,mars,gravidade_g,0.38,g,referencia,fisica,NASA Planetary Fact Sheets,38% da Terra
 arcadia,mars,dia_local_h,24.7,h,referencia,fisica,NASA Planetary Fact Sheets,sol marciano = 24 h 39 min
 arcadia,mars,elev_relativa_m,-200,m,referencia,mgs_mola,Smith et al. 2001 JGR 106(E10):23689,planície muito suave
@@ -314,7 +314,7 @@ arcadia,mars,insolacao_toa_wm2,132,W/m2,calculado,calculo_solar,formulas de decl
 oxia,mars,aod_medio,0.6,adimensional,referencia,m2020_tau,Lemmon et al. 2022 Geophysical Research Letters 49,"opacidade típica fora de tempestades (0,3 a >1 sazonal)"
 oxia,mars,chuva_anual_mm,0,mm,referencia,fisico_marte,definicao: NDVI 0 / chuva 0 (pressao ~0.6 kPa nao permite agua liquida estavel),sem chuva líquida hoje
 oxia,mars,ndvi_medio,0.0,indice,referencia,fisico_marte,definicao: NDVI 0 / chuva 0 (pressao ~0.6 kPa nao permite agua liquida estavel),sem vegetação
-oxia,mars,pressao_kpa,0.65,kPa,referencia,m2020_meda,Rodriguez-Manfredi et al. 2023 Nature Geoscience 16:19,"~0,6–0,75 kPa de CO2"
+oxia,mars,pressao_kpa,0.72,kPa,calculado,mgs_mola,Smith et al. 2001 JGR 106(E10):23689,"Jezero (MEDA, 0.693 kPa a -2651 m) ajustado pela altitude MOLA -3105 m (na coordenada do alvo), escala de altura 11,1 km"
 oxia,mars,gravidade_g,0.38,g,referencia,fisica,NASA Planetary Fact Sheets,38% da Terra
 oxia,mars,dia_local_h,24.7,h,referencia,fisica,NASA Planetary Fact Sheets,sol marciano = 24 h 39 min
 oxia,mars,elev_relativa_m,-150,m,referencia,mgs_mola,Smith et al. 2001 JGR 106(E10):23689,planície
