@@ -18,6 +18,11 @@
 //   Poeira PMS5003 (TX do sensor)   -> D8            (USAR_PMS5003 1; VCC 5V, sem biblioteca)
 //   Encoder da roda com motor       -> D2            (USAR_PATINAGEM 1)
 //   Encoder de uma roda livre       -> D3            (USAR_PATINAGEM 1)
+//   Bluetooth HC-05/HC-06           -> TXD do módulo em D0 (RX), RXD do módulo em D1 (TX) com
+//                                      divisor 1k/2k (o RX do módulo é 3,3 V), VCC 5V, GND.
+//                                      Na Serial de hardware, cada linha sai pelo USB e pelo
+//                                      Bluetooth ao mesmo tempo. O módulo vem em 9600: mude para
+//                                      115200 com AT+UART=115200,0,0. Desligue o fio do D0 para gravar.
 //
 // Ligue só o que tiver: os sensores desligados abaixo não entram na linha.
 
