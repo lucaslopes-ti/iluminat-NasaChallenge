@@ -45,20 +45,65 @@ dados NASA e Copernicus ──> dados/essenciais/gerar_dados.py ──> notas (I
 
 Os locais novos que aparecem ao lado deles, como Lençóis, ganham credibilidade.
 
-## Dados
+## Dados usados (para os slides)
 
-Só fontes da NASA e do Copernicus. Todo valor leva **status** (medido, calculado, referência ou provisório) e **fonte** (produto, versão, DOI, resolução e data de acesso), em `dados/essenciais/entrada/fontes.csv`.
+Só fontes da NASA e do Copernicus; os valores de Lua e Marte vêm de missões da NASA, com dois casos da ESA e da JAXA citados como referência. Todo valor leva **status** e **fonte** (produto, versão, DOI, resolução e data de acesso), em `dados/essenciais/entrada/fontes.csv`.
 
-| Dado | Fonte |
+**Em números:** 18 locais × 16 alvos = **288 comparações**. São 800 valores: 468 da Terra (305 medidos por satélite ou modelo, 126 calculados por física, 36 de referência, 1 provisório) e 332 da Lua e de Marte (247 publicados por missões, 85 calculados). Além disso, 167 tags de geologia, gelo, subsolo e vida, com 25 referências bibliográficas.
+
+### Terra: medido por satélite e modelo
+
+| Dado | Produto (versão) | Missão / fonte | Resolução | Período | DOI ou referência |
+|---|---|---|---|---|---|
+| Relevo: altitude, desnível, declividade, rugosidade, área plana | SRTMGL30 v002 | NASA SRTM (LP DAAC) | 30" (~1 km) | 2000 | doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002 |
+| Relevo da Antártida (Dry Valleys) | Copernicus DEM GLO-90 | ESA / Copernicus (TanDEM-X) | 90 m, agregado para ~1 km | 2011–2015 | doi:10.5270/ESA-c5d3d65 |
+| Temperatura da superfície de dia (~13:30) e de noite (~01:30) | MYD11A2 v061 | NASA Aqua MODIS (recorte do ORNL DAAC) | 1 km, 8 dias | 2024 (46 compostos) | doi:10.5067/MODIS/MYD11A2.061 |
+| Vegetação (NDVI) | MOD13C2 v061 | NASA Terra MODIS (LP DAAC) | 0,05° (~5 km), mensal | 2020–2025 (72 meses) | doi:10.5067/MODIS/MOD13C2.061 |
+| Temperatura do ar a 2 m, chuva, poeira (AOD 550 nm), vento, albedo, temperatura média da superfície | NASA POWER v2.10.1 (T2M, T2M_RANGE, PRECTOTCORR, AOD_55, WS10M, ALLSKY_SRF_ALB, TS) | NASA Langley (MERRA-2 e CERES) | 0,5° × 0,625° | médias 2001–2025 | power.larc.nasa.gov |
+
+### Lua e Marte: valores publicados por missões
+
+| Missão / instrumento | O que entrou | Referência |
+|---|---|---|
+| LRO LOLA (laser altímetro) | relevo, declividade e **iluminação com relevo** dos alvos polares | Zuber et al. 2012, *Nature*; Mazarico et al. 2011, *Icarus* |
+| LRO Diviner (radiômetro) | temperatura da superfície da Lua | Paige et al. 2010, *Science* |
+| MGS MOLA (laser altímetro) | relevo e declividade de Marte | Smith et al. 2001, *JGR* |
+| MGS TES | albedo de Marte | Christensen et al. 2001, *JGR* |
+| Mars 2020 MEDA e câmeras | temperatura em Jezero; pressão (0,65 kPa) e opacidade da poeira usadas nos alvos de Marte | Rodríguez-Manfredi et al. 2023, *Nat. Geosci.*; Lemmon et al. 2022, *GRL* |
+| MSL REMS | temperatura e poeira em Gale | Gómez-Elvira et al. 2012, *Space Sci. Rev.* |
+| MER Mini-TES | temperatura em Meridiani | Smith et al. 2006, *JGR* |
+| MRO MCS | temperatura em Arcadia e Oxia | Kleinböhl et al. 2009, *JGR* |
+| SELENE/Kaguya TC (JAXA) | profundidade do fosso de Marius Hills | Haruyama et al. 2009, *GRL* |
+
+### Contexto e tags (geologia, gelo, subsolo)
+
+| Fonte | Para quê |
 |---|---|
-| Relevo | NASA SRTMGL30 v002; na Antártida, Copernicus DEM GLO-90 |
-| Temperatura da superfície (dia e noite) | NASA MYD11A2 v061 (Aqua, 1 km), pelo ORNL DAAC |
-| Temperatura do ar, chuva, poeira (AOD), vento, albedo | NASA POWER (MERRA-2, CERES), 2001–2025 |
-| Vegetação (NDVI) | NASA MOD13C2 v061 |
-| Iluminação | geometria solar; na Lua, iluminação com relevo do LRO LOLA |
-| Lua e Marte | LRO LOLA e Diviner, MGS MOLA e TES, MRO CRISM, Mars 2020 MEDA, MSL REMS |
+| NASA, regiões candidatas do Artemis III (out/2024) | os 9 alvos lunares de pouso |
+| LRO LAMP e LEND; LCROSS | gelo nas crateras em sombra permanente (Cabeus) |
+| LRO LROC | imagens e geologia lunar |
+| MRO CRISM | minerais hidratados em Marte (Jezero, Meridiani, Oxia) |
+| NASA SWIM v2 e MRO SHARAD | gelo raso em Arcadia Planitia |
+| ESA ExoMars | escolha de Oxia Planum |
+| Artigos de campo dos análogos (Haughton-Mars Project, PISCES, Navarro-González et al. 2003, Fernández-Remolar et al. 2005, Doran et al.) | tags dos locais da Terra e o alvo da literatura usado na validação |
 
-Limitações que dizemos na apresentação: a temperatura do ar e o albedo vêm de células de ~50 km (o Mauna Kea fica mais quente que o cume); as coordenadas das regiões do Artemis III estão aproximadas (±1°); a pressão de Marte é a mesma nos cinco alvos.
+### Calculado por física
+
+- **Geometria solar:** altura máxima do Sol, Sol baixo, dias com Sol 24 h, noite polar, Sol no topo da atmosfera e tempo com Sol, pela latitude e pela obliquidade (Terra 23,44°, Marte 25,19°, Lua 1,54°).
+- **Pressão do ar na Terra:** pela altitude (atmosfera padrão).
+- **Gravidade e duração do dia:** NASA Planetary Fact Sheets.
+
+### Imagens do site
+
+NASA Blue Marble (Terra), NASA SVS CGI Moon Kit (mosaico de cor do LRO LROC, com relevo do LOLA), NASA 3D Resources (Marte, Viking/MGS) e relevo da Terra do SRTM30. Créditos completos em [web/README.md](web/README.md).
+
+### Limitações que dizemos na apresentação
+
+- A temperatura do ar, o albedo, a chuva e a poeira vêm de células de ~50 km da NASA POWER. No Mauna Kea, o ar fica uns 20 °C acima do cume.
+- As coordenadas das regiões do Artemis III estão aproximadas (±1°).
+- A pressão de Marte é a mesma nos cinco alvos.
+- O NDVI da Dry Valleys é provisório (0), porque o MOD13C2 não cobre a Antártida.
+- Os valores de Lua e Marte são números publicados e aproximados, não recortes processados por nós.
 
 ## Partes do projeto
 
