@@ -1,0 +1,113 @@
+{
+ "mensagem_carrinho": {
+  "topico": "illuminat-horizontes/carrinho",
+  "exemplo": {
+   "temp": 24.1,
+   "uv": 6.2,
+   "pm25": 14,
+   "solar": 410,
+   "soil": 22,
+   "tilt": 3.4,
+   "vib": 0.08,
+   "slip": 5
+  }
+ },
+ "topico_local": "illuminat-horizontes/local",
+ "niveis": {
+  "pm25": {
+   "unidade": "ug/m3",
+   "limites": [
+    12,
+    35
+   ],
+   "fonte": "faixas de qualidade do ar da EPA (PM2.5, 24 h)"
+  },
+  "aod": {
+   "unidade": "adimensional",
+   "limites": [
+    0.1,
+    0.3
+   ],
+   "fonte": "faixas usuais de AOD 550 nm (limpo / moderado / empoeirado)"
+  }
+ },
+ "nomes_nivel": [
+  "baixo",
+  "medio",
+  "alto"
+ ],
+ "sensores": {
+  "temp": {
+   "nome": "Temperatura",
+   "unidade": "C",
+   "campos": [
+    "lst_dia_c",
+    "lst_noite_c"
+   ],
+   "comparacao": "direta",
+   "texto": "Compare com a maxima e a minima de superficie do local e do alvo."
+  },
+  "tilt": {
+   "nome": "Inclinacao",
+   "unidade": "graus",
+   "campos": [
+    "declividade_media",
+    "frac_decliv_8"
+   ],
+   "comparacao": "limite",
+   "limite": 8,
+   "texto": "Acima de 8 graus um modulo de pouso lunar nao pousa com seguranca (criterio Artemis)."
+  },
+  "pm25": {
+   "nome": "Poeira",
+   "unidade": "ug/m3",
+   "campos": [
+    "aod_medio"
+   ],
+   "comparacao": "nivel",
+   "texto": "PM2.5 (chao) e AOD (satelite) tem unidades diferentes: compare o nivel baixo/medio/alto."
+  },
+  "solar": {
+   "nome": "Energia solar",
+   "unidade": "mW",
+   "campos": [
+    "insolacao_toa_wm2",
+    "sol_max_graus"
+   ],
+   "comparacao": "relativa",
+   "texto": "Marte recebe ~43% do sol da Terra; no polo sul lunar o sol fica sempre perto do horizonte."
+  },
+  "soil": {
+   "nome": "Umidade do solo",
+   "unidade": "%",
+   "campos": [
+    "chuva_anual_mm"
+   ],
+   "comparacao": "qualitativa",
+   "texto": "Lua e Marte estao secos na superficie; a agua fica como gelo (PSRs, gelo raso)."
+  },
+  "uv": {
+   "nome": "UV",
+   "unidade": "indice",
+   "campos": [],
+   "comparacao": "qualitativa",
+   "texto": "Sem ozonio, o UV-C chega ao chao em Marte; na Lua nao ha atmosfera nenhuma."
+  },
+  "vib": {
+   "nome": "Vibracao",
+   "unidade": "g",
+   "campos": [
+    "rugosidade_tri_m"
+   ],
+   "comparacao": "qualitativa",
+   "texto": "Terreno mais rugoso = mais vibracao nas rodas."
+  },
+  "slip": {
+   "nome": "Patinagem",
+   "unidade": "%",
+   "campos": [],
+   "comparacao": "qualitativa",
+   "texto": "Areia solta prende rodas (o Spirit ficou preso em Marte)."
+  }
+ }
+}

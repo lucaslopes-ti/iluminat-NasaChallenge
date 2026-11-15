@@ -1,0 +1,369 @@
+{
+ "_sobre": "Alvos na Lua e em Marte. Valores 'referencia' = publicados por missões (aproximados). coord_aprox=true: centro aproximado da região (±1°), conferir no mapa oficial da NASA antes de publicar.",
+ "padroes": {
+  "lua_polo_sul": {
+   "corpo": "moon",
+   "valores": {
+    "lst_dia_c": [-50, "lro_diviner", "máxima típica em cristas iluminadas (sol rasante)"],
+    "lst_noite_c": [-200, "lro_diviner", "sombra; dentro das PSRs chega a -240 °C (~35 K)"],
+    "amplitude_termica_c": [150, "lro_diviner", "variação típica ao longo do dia lunar em cristas"],
+    "albedo_medio": [0.15, "lro_lola", "terras altas anortosíticas (aprox.)"],
+    "aod_medio": [0, "sem_atmosfera", "sem atmosfera"],
+    "chuva_anual_mm": [0, "sem_atmosfera", "sem chuva"],
+    "ndvi_medio": [0, "sem_atmosfera", "sem vegetação"],
+    "pressao_kpa": [0, "sem_atmosfera", "exosfera ~1e-15 bar"],
+    "gravidade_g": [0.166, "fisica", "1/6 da Terra"],
+    "dia_local_h": [708.7, "fisica", "dia solar lunar = 29,5 dias terrestres"]
+   },
+   "tags": {
+    "materiais": ["anortosito", "regolito_fino", "brecha_impacto", "vidro_impacto"],
+    "agua": ["gelo", "gelo_raso", "frio_extremo"],
+    "poeira": ["poeira_fina", "poeira_eletrostatica"],
+    "biologia": ["esteril"],
+    "subsolo": ["gelo_raso"]
+   }
+  },
+  "lua_equatorial": {
+   "corpo": "moon",
+   "valores": {
+    "lst_dia_c": [110, "lro_diviner", "meio-dia lunar no equador"],
+    "lst_noite_c": [-170, "lro_diviner", "noite lunar"],
+    "amplitude_termica_c": [280, "lro_diviner", "a maior amplitude do sistema Terra-Lua-Marte"],
+    "albedo_medio": [0.07, "lro_lola", "mares basálticos escuros (aprox.)"],
+    "aod_medio": [0, "sem_atmosfera", "sem atmosfera"],
+    "chuva_anual_mm": [0, "sem_atmosfera", "sem chuva"],
+    "ndvi_medio": [0, "sem_atmosfera", "sem vegetação"],
+    "pressao_kpa": [0, "sem_atmosfera", "exosfera ~1e-15 bar"],
+    "gravidade_g": [0.166, "fisica", "1/6 da Terra"],
+    "dia_local_h": [708.7, "fisica", "dia solar lunar = 29,5 dias terrestres"]
+   },
+   "tags": {
+    "materiais": ["basalto", "regolito_fino", "vidro_vulcanico"],
+    "agua": ["seco"],
+    "poeira": ["poeira_fina", "poeira_eletrostatica"],
+    "biologia": ["esteril"],
+    "subsolo": []
+   }
+  },
+  "marte": {
+   "corpo": "mars",
+   "valores": {
+    "aod_medio": [0.6, "m2020_tau", "opacidade típica fora de tempestades (0,3 a >1 sazonal)"],
+    "chuva_anual_mm": [0, "fisico_marte", "sem chuva líquida hoje"],
+    "ndvi_medio": [0, "fisico_marte", "sem vegetação"],
+    "pressao_kpa": [0.65, "m2020_meda", "~0,6–0,75 kPa de CO2"],
+    "gravidade_g": [0.38, "fisica", "38% da Terra"],
+    "dia_local_h": [24.66, "fisica", "sol marciano = 24 h 39 min"]
+   },
+   "tags": {
+    "materiais": ["basalto", "perclorato", "regolito_fino", "oxido_ferro"],
+    "agua": [],
+    "poeira": ["poeira_fina", "tempestade_poeira"],
+    "biologia": ["esteril"],
+    "subsolo": []
+   }
+  }
+ },
+ "alvos": [
+  {
+   "id": "shackleton", "nome": "Borda da cratera Shackleton", "nome_en": "Shackleton crater rim", "padrao": "lua_polo_sul",
+   "regiao": "Polo sul lunar", "lat": -89.67, "lon": 129.78, "coord_aprox": false,
+   "papel": "base_permanente",
+   "missao": "Região histórica das propostas de base do Artemis (crista de ligação Shackleton–de Gerlache)",
+   "resumo": "Borda com sol quase contínuo e fundo em sombra permanente que guarda gelo de água. Local clássico para uma base permanente.",
+   "valores": {
+    "elev_relativa_m": [-4200, "lro_lola", "profundidade da cratera; diâmetro ~21 km"],
+    "declividade_media": [10, "lro_lola", "borda: maior parte < 15°; paredes internas ~30°"],
+    "frac_decliv_8": [0.45, "lro_lola", "estimativa a partir dos mapas de declividade LOLA"],
+    "frac_transitavel_15": [0.75, "lro_lola", "estimativa a partir dos mapas de declividade LOLA"],
+    "iluminacao_frac": [0.85, "lro_lola", "pontos da borda com sol até ~80–90% do ano (Mazarico et al. 2011)"],
+    "lst_noite_c": [-230, "lro_diviner", "fundo em sombra permanente (~40–50 K)"]
+   },
+   "tags": {"terreno": ["cratera_impacto", "borda_cratera"]},
+   "fontes": ["lro_lola", "lro_diviner", "lro_lamp_lend"]
+  },
+  {
+   "id": "haworth", "nome": "Haworth", "nome_en": "Haworth", "padrao": "lua_polo_sul",
+   "regiao": "Polo sul lunar", "lat": -87.4, "lon": -5.0, "coord_aprox": true,
+   "papel": "artemis_iii",
+   "missao": "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024)",
+   "resumo": "Grande cratera com fundo em sombra permanente, uma das melhores armadilhas frias de gelo perto do polo.",
+   "valores": {
+    "elev_relativa_m": [-3500, "lro_lola", "profundidade aproximada"],
+    "declividade_media": [9, "lro_lola", "aprox."],
+    "frac_decliv_8": [0.5, "lro_lola", "aprox."],
+    "frac_transitavel_15": [0.75, "lro_lola", "aprox."],
+    "iluminacao_frac": [0.6, "lro_lola", "nas bordas iluminadas (aprox.)"]
+   },
+   "tags": {"terreno": ["cratera_impacto", "borda_cratera"]},
+   "fontes": ["lro_lola", "lro_diviner", "artemis_regioes"]
+  },
+  {
+   "id": "malapert", "nome": "Maciço de Malapert", "nome_en": "Malapert Massif", "padrao": "lua_polo_sul",
+   "regiao": "Polo sul lunar", "lat": -86.0, "lon": 2.9, "coord_aprox": true,
+   "papel": "artemis_iii",
+   "missao": "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024)",
+   "resumo": "Maciço de ~5 km de altura com longos períodos de sol e visada direta para a Terra (comunicação).",
+   "valores": {
+    "elev_relativa_m": [-5000, "lro_lola", "altura do maciço em relação ao entorno"],
+    "declividade_media": [12, "lro_lola", "flancos íngremes, topo plano (aprox.)"],
+    "frac_decliv_8": [0.4, "lro_lola", "aprox."],
+    "frac_transitavel_15": [0.65, "lro_lola", "aprox."],
+    "iluminacao_frac": [0.7, "lro_lola", "aprox."]
+   },
+   "tags": {"terreno": ["macico", "planalto"]},
+   "fontes": ["lro_lola", "lro_diviner", "artemis_regioes"]
+  },
+  {
+   "id": "mons_mouton_plateau", "nome": "Platô de Mons Mouton", "nome_en": "Mons Mouton Plateau", "padrao": "lua_polo_sul",
+   "regiao": "Polo sul lunar", "lat": -84.5, "lon": 33.0, "coord_aprox": true,
+   "papel": "artemis_iii",
+   "missao": "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024)",
+   "resumo": "Platô alto e relativamente plano no topo de Mons Mouton, com boa iluminação.",
+   "valores": {
+    "elev_relativa_m": [-1500, "lro_lola", "aprox."],
+    "declividade_media": [5, "lro_lola", "topo plano (aprox.)"],
+    "frac_decliv_8": [0.7, "lro_lola", "aprox."],
+    "frac_transitavel_15": [0.9, "lro_lola", "aprox."],
+    "iluminacao_frac": [0.65, "lro_lola", "aprox."]
+   },
+   "tags": {"terreno": ["planalto", "macico"]},
+   "fontes": ["lro_lola", "lro_diviner", "artemis_regioes"]
+  },
+  {
+   "id": "mons_mouton", "nome": "Mons Mouton", "nome_en": "Mons Mouton", "padrao": "lua_polo_sul",
+   "regiao": "Polo sul lunar", "lat": -84.8, "lon": 29.2, "coord_aprox": true,
+   "papel": "artemis_iii",
+   "missao": "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024); pouso do IM-2 (2025)",
+   "resumo": "Montanha de topo plano entre Malapert e Nobile, alvo de pouso robótico comercial.",
+   "valores": {
+    "elev_relativa_m": [-2000, "lro_lola", "aprox."],
+    "declividade_media": [7, "lro_lola", "aprox."],
+    "frac_decliv_8": [0.6, "lro_lola", "aprox."],
+    "frac_transitavel_15": [0.85, "lro_lola", "aprox."],
+    "iluminacao_frac": [0.6, "lro_lola", "aprox."]
+   },
+   "tags": {"terreno": ["macico", "planalto"]},
+   "fontes": ["lro_lola", "lro_diviner", "artemis_regioes"]
+  },
+  {
+   "id": "nobile_rim_1", "nome": "Borda de Nobile 1", "nome_en": "Nobile Rim 1", "padrao": "lua_polo_sul",
+   "regiao": "Polo sul lunar", "lat": -85.4, "lon": 37.0, "coord_aprox": true,
+   "papel": "artemis_iii",
+   "missao": "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024)",
+   "resumo": "Borda da cratera Nobile, junto a regiões em sombra permanente estudadas para gelo.",
+   "valores": {
+    "elev_relativa_m": [-3000, "lro_lola", "aprox."],
+    "declividade_media": [9, "lro_lola", "aprox."],
+    "frac_decliv_8": [0.5, "lro_lola", "aprox."],
+    "frac_transitavel_15": [0.75, "lro_lola", "aprox."],
+    "iluminacao_frac": [0.6, "lro_lola", "aprox."]
+   },
+   "tags": {"terreno": ["cratera_impacto", "borda_cratera"]},
+   "fontes": ["lro_lola", "lro_diviner", "artemis_regioes"]
+  },
+  {
+   "id": "nobile_rim_2", "nome": "Borda de Nobile 2", "nome_en": "Nobile Rim 2", "padrao": "lua_polo_sul",
+   "regiao": "Polo sul lunar", "lat": -84.6, "lon": 62.0, "coord_aprox": true,
+   "papel": "artemis_iii",
+   "missao": "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024)",
+   "resumo": "Outro trecho da borda de Nobile, com acesso a crateras frias.",
+   "valores": {
+    "elev_relativa_m": [-3000, "lro_lola", "aprox."],
+    "declividade_media": [9, "lro_lola", "aprox."],
+    "frac_decliv_8": [0.5, "lro_lola", "aprox."],
+    "frac_transitavel_15": [0.75, "lro_lola", "aprox."],
+    "iluminacao_frac": [0.55, "lro_lola", "aprox."]
+   },
+   "tags": {"terreno": ["cratera_impacto", "borda_cratera"]},
+   "fontes": ["lro_lola", "lro_diviner", "artemis_regioes"]
+  },
+  {
+   "id": "de_gerlache_rim_2", "nome": "Borda de de Gerlache 2", "nome_en": "de Gerlache Rim 2", "padrao": "lua_polo_sul",
+   "regiao": "Polo sul lunar", "lat": -88.6, "lon": -70.0, "coord_aprox": true,
+   "papel": "artemis_iii",
+   "missao": "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024)",
+   "resumo": "Borda da cratera de Gerlache, vizinha de Shackleton, com alta iluminação.",
+   "valores": {
+    "elev_relativa_m": [-3000, "lro_lola", "aprox."],
+    "declividade_media": [9, "lro_lola", "aprox."],
+    "frac_decliv_8": [0.5, "lro_lola", "aprox."],
+    "frac_transitavel_15": [0.75, "lro_lola", "aprox."],
+    "iluminacao_frac": [0.75, "lro_lola", "aprox."]
+   },
+   "tags": {"terreno": ["cratera_impacto", "borda_cratera"]},
+   "fontes": ["lro_lola", "lro_diviner", "artemis_regioes"]
+  },
+  {
+   "id": "slater_plain", "nome": "Planície de Slater", "nome_en": "Slater Plain", "padrao": "lua_polo_sul",
+   "regiao": "Polo sul lunar", "lat": -87.8, "lon": -115.0, "coord_aprox": true,
+   "papel": "artemis_iii",
+   "missao": "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024)",
+   "resumo": "Área relativamente plana perto da cratera Slater, boa para pouso seguro.",
+   "valores": {
+    "elev_relativa_m": [-800, "lro_lola", "aprox."],
+    "declividade_media": [5, "lro_lola", "aprox."],
+    "frac_decliv_8": [0.7, "lro_lola", "aprox."],
+    "frac_transitavel_15": [0.9, "lro_lola", "aprox."],
+    "iluminacao_frac": [0.55, "lro_lola", "aprox."]
+   },
+   "tags": {"terreno": ["planicie", "cratera_impacto"]},
+   "fontes": ["lro_lola", "lro_diviner", "artemis_regioes"]
+  },
+  {
+   "id": "cabeus_b_peak", "nome": "Pico perto de Cabeus B", "nome_en": "Peak near Cabeus B", "padrao": "lua_polo_sul",
+   "regiao": "Polo sul lunar", "lat": -84.0, "lon": -50.0, "coord_aprox": true,
+   "papel": "artemis_iii",
+   "missao": "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024); perto de onde o LCROSS achou gelo (Cabeus, 2009)",
+   "resumo": "Pico iluminado perto de Cabeus, cratera onde o impacto do LCROSS confirmou água.",
+   "valores": {
+    "elev_relativa_m": [-2500, "lro_lola", "aprox."],
+    "declividade_media": [10, "lro_lola", "aprox."],
+    "frac_decliv_8": [0.45, "lro_lola", "aprox."],
+    "frac_transitavel_15": [0.7, "lro_lola", "aprox."],
+    "iluminacao_frac": [0.6, "lro_lola", "aprox."]
+   },
+   "tags": {"terreno": ["macico", "cratera_impacto"]},
+   "fontes": ["lro_lola", "lro_diviner", "lcross", "artemis_regioes"]
+  },
+  {
+   "id": "marius", "nome": "Fosso das Colinas de Marius", "nome_en": "Marius Hills skylight", "padrao": "lua_equatorial",
+   "regiao": "Oceanus Procellarum", "lat": 14.1, "lon": -56.8, "coord_aprox": false,
+   "papel": "abrigo_subsolo",
+   "missao": "Fosso descoberto pela SELENE/Kaguya (JAXA); candidato a abrigo em tubo de lava",
+   "resumo": "Abertura de ~65 m para um provável tubo de lava: abrigo natural contra radiação e variação térmica.",
+   "valores": {
+    "elev_relativa_m": [-50, "kaguya_tc", "profundidade do fosso (~50 m)"],
+    "declividade_media": [3, "lro_lola", "planícies de lava, domos suaves"],
+    "frac_decliv_8": [0.9, "lro_lola", "aprox."],
+    "frac_transitavel_15": [0.97, "lro_lola", "aprox."],
+    "iluminacao_frac": [0.5, "fisica", "14 dias de sol, 14 de noite"],
+    "temp_subsolo_c": [-20, "lro_diviner", "estável dentro de fossos (~250 K)"]
+   },
+   "tags": {"terreno": ["planicie", "vulcao"], "subsolo": ["tubo_lava", "caverna"]},
+   "fontes": ["kaguya_tc", "lro_lroc", "lro_diviner"]
+  },
+  {
+   "id": "jezero", "nome": "Cratera Jezero", "nome_en": "Jezero crater", "padrao": "marte",
+   "regiao": "Borda de Isidis Planitia", "lat": 18.38, "lon": 77.58, "coord_aprox": false,
+   "papel": "ciencia_robotica",
+   "missao": "Pouso do Perseverance (NASA, 2021); coleta de amostras para o Mars Sample Return",
+   "resumo": "Antigo lago com delta: argilas, carbonatos e sedimentos que podem guardar bioassinaturas.",
+   "valores": {
+    "elev_relativa_m": [-2600, "mgs_mola", "fundo em relação ao areoide; diâmetro ~45 km"],
+    "declividade_media": [5, "mgs_mola", "piso suave; frente do delta mais íngreme"],
+    "frac_decliv_8": [0.85, "mgs_mola", "aprox."],
+    "frac_transitavel_15": [0.95, "mgs_mola", "aprox."],
+    "lst_dia_c": [-10, "m2020_meda", "máxima típica de tarde"],
+    "lst_noite_c": [-90, "m2020_meda", "mínima antes do amanhecer"],
+    "amplitude_termica_c": [80, "m2020_meda", "amplitude diária típica"],
+    "albedo_medio": [0.18, "mgs_tes", "albedo bolométrico regional (aprox.)"]
+   },
+   "tags": {
+    "terreno": ["cratera_impacto", "delta_sedimentar"],
+    "materiais": ["basalto", "olivina", "carbonato", "argila", "perclorato", "oxido_ferro"],
+    "agua": ["agua_passada", "lago_antigo"],
+    "biologia": ["esteril", "bioassinaturas_preservadas"]
+   },
+   "fontes": ["mgs_mola", "mro_crism", "m2020_meda", "m2020_tau", "mgs_tes"]
+  },
+  {
+   "id": "gale", "nome": "Cratera Gale (Monte Sharp)", "nome_en": "Gale crater (Mt. Sharp)", "padrao": "marte",
+   "regiao": "Aeolis Mons", "lat": -5.4, "lon": 137.8, "coord_aprox": false,
+   "papel": "ciencia_robotica",
+   "missao": "Curiosity (NASA, desde 2012)",
+   "resumo": "Montanha sedimentar em camadas com argila, sulfato e hematita, e dunas ativas.",
+   "valores": {
+    "elev_relativa_m": [-5000, "mgs_mola", "Monte Sharp tem ~5 km acima do piso"],
+    "declividade_media": [6, "mgs_mola", "planícies suaves, monte íngreme"],
+    "frac_decliv_8": [0.75, "mgs_mola", "aprox."],
+    "frac_transitavel_15": [0.9, "mgs_mola", "aprox."],
+    "lst_dia_c": [0, "msl_rems", "máxima típica do solo"],
+    "lst_noite_c": [-85, "msl_rems", "mínima típica"],
+    "amplitude_termica_c": [85, "msl_rems", "amplitude diária do solo"],
+    "albedo_medio": [0.2, "mgs_tes", "aprox."],
+    "aod_medio": [0.5, "msl_rems", "opacidade típica fora de tempestades"]
+   },
+   "tags": {
+    "terreno": ["cratera_impacto", "pico_central", "dunas"],
+    "materiais": ["argila", "sulfato", "oxido_ferro", "basalto", "perclorato"],
+    "agua": ["agua_passada", "lago_antigo"],
+    "poeira": ["dunas"],
+    "biologia": ["esteril", "bioassinaturas_preservadas"]
+   },
+   "fontes": ["mgs_mola", "mro_crism", "msl_rems", "mgs_tes"]
+  },
+  {
+   "id": "meridiani", "nome": "Meridiani Planum", "nome_en": "Meridiani Planum", "padrao": "marte",
+   "regiao": "Terra Meridiani", "lat": -1.95, "lon": -5.53, "coord_aprox": false,
+   "papel": "ciencia_robotica",
+   "missao": "Opportunity (NASA, 2004–2018): hematita e jarosita, sinais de água ácida",
+   "resumo": "Planície com esférulas de hematita e jarosita: um antigo ambiente de água ácida e rica em ferro.",
+   "valores": {
+    "elev_relativa_m": [-100, "mgs_mola", "planície; crateras pequenas"],
+    "declividade_media": [1, "mgs_mola", "muito plana"],
+    "frac_decliv_8": [0.98, "mgs_mola", "aprox."],
+    "frac_transitavel_15": [0.99, "mgs_mola", "aprox."],
+    "lst_dia_c": [0, "mer_minites", "máxima típica do solo"],
+    "lst_noite_c": [-90, "mer_minites", "mínima típica"],
+    "amplitude_termica_c": [90, "mer_minites", "aprox."],
+    "albedo_medio": [0.14, "mgs_tes", "superfície escura de hematita e basalto"]
+   },
+   "tags": {
+    "terreno": ["planicie"],
+    "materiais": ["oxido_ferro", "jarosita", "sulfato", "basalto", "perclorato"],
+    "agua": ["agua_passada", "salmoura"],
+    "poeira": ["dunas"],
+    "biologia": ["esteril", "bioassinaturas_preservadas"]
+   },
+   "fontes": ["mgs_mola", "mgs_tes", "mer_minites"]
+  },
+  {
+   "id": "arcadia", "nome": "Arcadia Planitia", "nome_en": "Arcadia Planitia", "padrao": "marte",
+   "regiao": "Planícies do norte", "lat": 45.0, "lon": -170.0, "coord_aprox": true,
+   "papel": "pouso_humano",
+   "missao": "Candidata a pouso humano por ter gelo raso (mapa SWIM da NASA)",
+   "resumo": "Planície baixa com gelo de água a menos de ~1 m de profundidade: candidata a pouso humano e mineração de gelo.",
+   "valores": {
+    "elev_relativa_m": [-200, "mgs_mola", "planície muito suave"],
+    "declividade_media": [1, "mgs_mola", "muito plana"],
+    "frac_decliv_8": [0.98, "mgs_mola", "aprox."],
+    "frac_transitavel_15": [0.99, "mgs_mola", "aprox."],
+    "lst_dia_c": [-20, "mro_mcs", "aprox."],
+    "lst_noite_c": [-110, "mro_mcs", "aprox."],
+    "amplitude_termica_c": [90, "mro_mcs", "aprox."],
+    "albedo_medio": [0.2, "mgs_tes", "aprox."]
+   },
+   "tags": {
+    "terreno": ["planicie"],
+    "agua": ["gelo", "gelo_raso", "frio_extremo"],
+    "subsolo": ["gelo_raso"]
+   },
+   "fontes": ["mgs_mola", "swim", "mro_sharad", "mgs_tes"]
+  },
+  {
+   "id": "oxia", "nome": "Oxia Planum", "nome_en": "Oxia Planum", "padrao": "marte",
+   "regiao": "Borda de Chryse Planitia", "lat": 18.2, "lon": -24.6, "coord_aprox": true,
+   "papel": "ciencia_robotica",
+   "missao": "Local de pouso do rover Rosalind Franklin (ESA, ExoMars)",
+   "resumo": "Planície com argilas ricas em ferro e magnésio de quase 4 bilhões de anos, escolhida para buscar sinais de vida.",
+   "valores": {
+    "elev_relativa_m": [-150, "mgs_mola", "planície"],
+    "declividade_media": [2, "mgs_mola", "plana"],
+    "frac_decliv_8": [0.95, "mgs_mola", "aprox."],
+    "frac_transitavel_15": [0.99, "mgs_mola", "aprox."],
+    "lst_dia_c": [-5, "mro_mcs", "aprox."],
+    "lst_noite_c": [-90, "mro_mcs", "aprox."],
+    "amplitude_termica_c": [85, "mro_mcs", "aprox."],
+    "albedo_medio": [0.2, "mgs_tes", "aprox."]
+   },
+   "tags": {
+    "terreno": ["planicie"],
+    "materiais": ["argila", "basalto", "perclorato"],
+    "agua": ["agua_passada"],
+    "biologia": ["esteril", "bioassinaturas_preservadas"]
+   },
+   "fontes": ["mgs_mola", "mro_crism", "esa_exomars", "mgs_tes"]
+  }
+ ]
+}

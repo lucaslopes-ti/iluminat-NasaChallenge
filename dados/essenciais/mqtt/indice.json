@@ -1,0 +1,131 @@
+{
+ "destaque": "lencois",
+ "locais": [
+  {
+   "id": "qaidam",
+   "nome": "Bacia de Qaidam (yardangs de Lenghu)",
+   "alvo": "oxia",
+   "nota_pct": 69,
+   "papel": "descoberta"
+  },
+  {
+   "id": "lut",
+   "nome": "Deserto de Lut (yardangs)",
+   "alvo": "oxia",
+   "nota_pct": 67,
+   "papel": "descoberta"
+  },
+  {
+   "id": "atacama",
+   "nome": "Atacama (Yungay)",
+   "alvo": "oxia",
+   "nota_pct": 66,
+   "papel": "referencia"
+  },
+  {
+   "id": "dallol",
+   "nome": "Dallol (Depressão de Danakil)",
+   "alvo": "meridiani",
+   "nota_pct": 59,
+   "papel": "descoberta"
+  },
+  {
+   "id": "lencois",
+   "nome": "Lençóis Maranhenses",
+   "alvo": "meridiani",
+   "nota_pct": 55,
+   "papel": "candidato"
+  },
+  {
+   "id": "haughton",
+   "nome": "Cratera de Haughton",
+   "alvo": "arcadia",
+   "nota_pct": 55,
+   "papel": "referencia"
+  },
+  {
+   "id": "raso_catarina",
+   "nome": "Raso da Catarina",
+   "alvo": "oxia",
+   "nota_pct": 51,
+   "papel": "candidato"
+  },
+  {
+   "id": "gilbues",
+   "nome": "Núcleo de desertificação de Gilbués",
+   "alvo": "oxia",
+   "nota_pct": 50,
+   "papel": "candidato"
+  },
+  {
+   "id": "svalbard",
+   "nome": "Bockfjorden, Svalbard",
+   "alvo": "malapert",
+   "nota_pct": 50,
+   "papel": "descoberta"
+  },
+  {
+   "id": "rio_tinto",
+   "nome": "Río Tinto",
+   "alvo": "meridiani",
+   "nota_pct": 50,
+   "papel": "referencia"
+  },
+  {
+   "id": "mauna_kea",
+   "nome": "Mauna Kea",
+   "alvo": "marius",
+   "nota_pct": 49,
+   "papel": "referencia"
+  },
+  {
+   "id": "lonar",
+   "nome": "Cratera de Lonar",
+   "alvo": "meridiani",
+   "nota_pct": 48,
+   "papel": "descoberta"
+  },
+  {
+   "id": "cangalha",
+   "nome": "Serra da Cangalha",
+   "alvo": "oxia",
+   "nota_pct": 44,
+   "papel": "candidato"
+  },
+  {
+   "id": "araguainha",
+   "nome": "Domo de Araguainha",
+   "alvo": "oxia",
+   "nota_pct": 44,
+   "papel": "candidato"
+  },
+  {
+   "id": "vargeao",
+   "nome": "Domo de Vargeão",
+   "alvo": "meridiani",
+   "nota_pct": 43,
+   "papel": "candidato"
+  },
+  {
+   "id": "vista_alegre",
+   "nome": "Cratera de Vista Alegre",
+   "alvo": "meridiani",
+   "nota_pct": 43,
+   "papel": "candidato"
+  },
+  {
+   "id": "carajas",
+   "nome": "Serra Norte de Carajás (cavernas)",
+   "alvo": "marius",
+   "nota_pct": 43,
+   "papel": "candidato"
+  },
+  {
+   "id": "dry_valleys",
+   "nome": "Vales Secos de McMurdo",
+   "alvo": "shackleton",
+   "nota_pct": 50,
+   "papel": "referencia"
+  }
+ ]
+}

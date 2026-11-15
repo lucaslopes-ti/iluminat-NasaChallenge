@@ -1,0 +1,37 @@
+{
+ "_sobre": "Dimensões de analogia (plano, seção 4) e pesos por perfil de missão. Similaridade de um indicador numérico: S = exp(-(Terra - alvo)^2 / (2 sigma^2)). Indicador de tags: Jaccard (tags em comum / tags no total). Nota da dimensão = média dos indicadores disponíveis.",
+ "dimensoes": [
+  {"id": "terreno",    "rotulo": "Terreno e relevo",      "rotulo_en": "Terrain & slope",
+   "indicadores": [["declividade_media", 5], ["elev_relativa_m", 1500], ["frac_transitavel_15", 0.2], ["tags", null]]},
+  {"id": "materiais",  "rotulo": "Materiais e minerais",  "rotulo_en": "Materials & mineralogy",
+   "indicadores": [["albedo_medio", 0.1], ["tags", null]]},
+  {"id": "termico",    "rotulo": "Temperatura extrema",   "rotulo_en": "Thermal extremes",
+   "indicadores": [["lst_dia_c", 40], ["lst_noite_c", 40], ["amplitude_termica_c", 40]]},
+  {"id": "luz",        "rotulo": "Iluminacao",            "rotulo_en": "Illumination",
+   "indicadores": [["sol_max_graus", 20], ["frac_sol_baixo", 0.3], ["frac_ano_sol_continuo", 0.25]]},
+  {"id": "agua",       "rotulo": "Agua e gelo",           "rotulo_en": "Water & ice",
+   "indicadores": [["chuva_anual_mm", 400], ["tags", null]]},
+  {"id": "poeira",     "rotulo": "Poeira e vento",        "rotulo_en": "Dust & wind",
+   "indicadores": [["aod_medio", 0.3], ["tags", null]]},
+  {"id": "biologia",   "rotulo": "Vida e habitabilidade", "rotulo_en": "Habitability",
+   "indicadores": [["ndvi_medio", 0.15], ["tags", null]]},
+  {"id": "subsolo",    "rotulo": "Subsolo e cavernas",    "rotulo_en": "Subsurface & caves",
+   "indicadores": [["tags", null]]},
+  {"id": "operacoes",  "rotulo": "Pouso e mobilidade",    "rotulo_en": "Landing & mobility",
+   "indicadores": [["frac_decliv_8", 0.25], ["frac_transitavel_15", 0.2]]}
+ ],
+ "perfis": [
+  {"id": "geral",    "rotulo": "Geral (pesos iguais)",      "pesos": {"terreno": 1, "materiais": 1, "termico": 1, "luz": 1, "agua": 1, "poeira": 1, "biologia": 1, "subsolo": 1, "operacoes": 1}},
+  {"id": "rover",    "rotulo": "Rover e mobilidade",        "pesos": {"terreno": 3, "materiais": 1, "termico": 1, "luz": 0, "agua": 0, "poeira": 2, "biologia": 0, "subsolo": 0, "operacoes": 3}},
+  {"id": "astrobio", "rotulo": "Astrobiologia",             "pesos": {"terreno": 0, "materiais": 3, "termico": 1, "luz": 0, "agua": 3, "poeira": 0, "biologia": 3, "subsolo": 1, "operacoes": 0}},
+  {"id": "isru",     "rotulo": "Gelo e recursos (ISRU)",    "pesos": {"terreno": 1, "materiais": 2, "termico": 2, "luz": 1, "agua": 3, "poeira": 0, "biologia": 0, "subsolo": 2, "operacoes": 1}},
+  {"id": "habitat",  "rotulo": "Base e construcao",         "pesos": {"terreno": 2, "materiais": 2, "termico": 2, "luz": 2, "agua": 1, "poeira": 1, "biologia": 0, "subsolo": 2, "operacoes": 2}},
+  {"id": "energia",  "rotulo": "Energia solar da base",     "pesos": {"terreno": 1, "materiais": 0, "termico": 2, "luz": 3, "agua": 0, "poeira": 2, "biologia": 0, "subsolo": 0, "operacoes": 1}}
+ ],
+ "sempre_quebra": [
+  {"id": "gravidade", "texto": "Gravidade: Terra 1 g; Lua 0,17 g; Marte 0,38 g"},
+  {"id": "atmosfera", "texto": "Atmosfera: Terra 101 kPa; Lua vácuo; Marte 0,6 kPa de CO2"},
+  {"id": "radiacao",  "texto": "Radiação: o campo magnético e o ar da Terra bloqueiam raios cósmicos e UV-C"},
+  {"id": "dia_local", "texto": "Duração do dia: Lua 29,5 dias terrestres; Marte 24 h 39 min"}
+ ]
+}

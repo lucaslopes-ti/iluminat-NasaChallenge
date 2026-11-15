@@ -1,0 +1,210 @@
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+-46.86,
+-8.08,
+325.86
+]
+},
+"properties": {
+"parameter": {
+"ALLSKY_SRF_ALB": {
+"JAN": 0.18,
+"FEB": 0.17,
+"MAR": 0.16,
+"APR": 0.16,
+"MAY": 0.15,
+"JUN": 0.14,
+"JUL": 0.15,
+"AUG": 0.16,
+"SEP": 0.16,
+"OCT": 0.16,
+"NOV": 0.15,
+"DEC": 0.16,
+"ANN": 0.16
+},
+"AOD_55": {
+"JAN": 0.24,
+"FEB": 0.24,
+"MAR": 0.23,
+"APR": 0.19,
+"MAY": 0.15,
+"JUN": 0.1,
+"JUL": 0.08,
+"AUG": 0.1,
+"SEP": 0.17,
+"OCT": 0.27,
+"NOV": 0.3,
+"DEC": 0.26,
+"ANN": 0.19
+},
+"PRECTOTCORR": {
+"JAN": 7.52,
+"FEB": 7.56,
+"MAR": 6.88,
+"APR": 4.71,
+"MAY": 1.97,
+"JUN": 0.29,
+"JUL": 0.15,
+"AUG": 0.18,
+"SEP": 0.96,
+"OCT": 3.29,
+"NOV": 4.9,
+"DEC": 5.43,
+"ANN": 3.63
+},
+"T2M": {
+"JAN": 26.01,
+"FEB": 25.53,
+"MAR": 25.72,
+"APR": 25.8,
+"MAY": 26.33,
+"JUN": 26.48,
+"JUL": 27.09,
+"AUG": 28.61,
+"SEP": 30.41,
+"OCT": 29.97,
+"NOV": 28.11,
+"DEC": 27.05,
+"ANN": 27.27
+},
+"T2M_RANGE": {
+"JAN": 8.18,
+"FEB": 7.78,
+"MAR": 7.82,
+"APR": 8.23,
+"MAY": 9.33,
+"JUN": 11.2,
+"JUL": 12.38,
+"AUG": 13.26,
+"SEP": 12.94,
+"OCT": 11.02,
+"NOV": 9.61,
+"DEC": 8.87,
+"ANN": 10.06
+},
+"TS": {
+"JAN": 26.32,
+"FEB": 25.74,
+"MAR": 25.94,
+"APR": 25.88,
+"MAY": 26.35,
+"JUN": 26.58,
+"JUL": 27.52,
+"AUG": 29.5,
+"SEP": 31.6,
+"OCT": 30.89,
+"NOV": 28.7,
+"DEC": 27.49,
+"ANN": 27.72
+},
+"TS_MAX": {
+"JAN": 41.74,
+"FEB": 40.87,
+"MAR": 38.34,
+"APR": 39.32,
+"MAY": 41.95,
+"JUN": 43.54,
+"JUL": 44.2,
+"AUG": 48.33,
+"SEP": 50.81,
+"OCT": 51.05,
+"NOV": 49.8,
+"DEC": 46.5,
+"ANN": 51.05
+},
+"TS_MIN": {
+"JAN": 18.26,
+"FEB": 18.9,
+"MAR": 18.17,
+"APR": 16.16,
+"MAY": 17.09,
+"JUN": 15.27,
+"JUL": 14.66,
+"AUG": 15.47,
+"SEP": 16.28,
+"OCT": 19.11,
+"NOV": 19.29,
+"DEC": 19.22,
+"ANN": 14.66
+},
+"WS10M": {
+"JAN": 2.28,
+"FEB": 2.29,
+"MAR": 2.13,
+"APR": 2.35,
+"MAY": 2.7,
+"JUN": 3.67,
+"JUL": 4.12,
+"AUG": 4.27,
+"SEP": 4.16,
+"OCT": 3.28,
+"NOV": 2.62,
+"DEC": 2.42,
+"ANN": 3.03
+}
+}
+},
+"header": {
+"title": "NASA/POWER Source Native Resolution Climatology Climatologies",
+"api": {
+"version": "v2.10.1",
+"name": "POWER Climatology API"
+},
+"sources": [
+"SYN1DEG",
+"MERRA2",
+"POWER"
+],
+"fill_value": -999.0,
+"time_standard": "LST",
+"range": "25-year Meteorological and Solar Monthly & Annual Climatologies (January 2001 - December 2025)"
+},
+"messages": [
+"The requested parameters are retrieved from a pre-computed climatological period (January 2001 - December 2025)"
+],
+"parameters": {
+"ALLSKY_SRF_ALB": {
+"units": "dimensionless",
+"longname": "All Sky Surface Albedo"
+},
+"AOD_55": {
+"units": "dimensionless",
+"longname": "Aerosol Optical Depth 55"
+},
+"PRECTOTCORR": {
+"units": "mm/day",
+"longname": "Precipitation Corrected"
+},
+"T2M": {
+"units": "C",
+"longname": "Temperature at 2 Meters"
+},
+"T2M_RANGE": {
+"units": "C",
+"longname": "Temperature at 2 Meters Range"
+},
+"TS": {
+"units": "C",
+"longname": "Earth Skin Temperature"
+},
+"TS_MAX": {
+"units": "C",
+"longname": "Earth Skin Temperature Maximum"
+},
+"TS_MIN": {
+"units": "C",
+"longname": "Earth Skin Temperature Minimum"
+},
+"WS10M": {
+"units": "m/s",
+"longname": "Wind Speed at 10 Meters"
+}
+},
+"times": {
+"data": 0.301,
+"process": 0.04
+}
+}
