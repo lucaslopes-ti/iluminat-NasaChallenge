@@ -1010,11 +1010,11 @@
     },
     "lst_noite_c": {
      "rotulo": "Temp. superficie minima",
-     "valor": -230,
+     "valor": -200,
      "unidade": "C",
      "status": "referencia",
      "fonte": "lro_diviner",
-     "nota": "fundo em sombra permanente (~40–50 K)"
+     "nota": "borda na noite polar (~70–90 K); o fundo em sombra permanente chega a ~40–50 K (-230 °C)"
     },
     "amplitude_termica_c": {
      "rotulo": "Amplitude termica (dT)",
@@ -1151,6 +1151,14 @@
      "status": "calculado",
      "fonte": "calculo_solar",
      "nota": "horizonte plano"
+    },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.85,
+     "unidade": "fracao",
+     "status": "referencia",
+     "fonte": "lro_lola",
+     "nota": "pontos da borda com sol até ~80–90% do ano (Mazarico et al. 2011) (com relevo)"
     },
     "insolacao_toa_wm2": {
      "rotulo": "Sol no topo da atmosfera",
@@ -1359,6 +1367,14 @@
      "fonte": "calculo_solar",
      "nota": "horizonte plano"
     },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.6,
+     "unidade": "fracao",
+     "status": "referencia",
+     "fonte": "lro_lola",
+     "nota": "nas bordas iluminadas (aprox.) (com relevo)"
+    },
     "insolacao_toa_wm2": {
      "rotulo": "Sol no topo da atmosfera",
      "valor": 21,
@@ -1565,6 +1581,14 @@
      "status": "calculado",
      "fonte": "calculo_solar",
      "nota": "horizonte plano"
+    },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.7,
+     "unidade": "fracao",
+     "status": "referencia",
+     "fonte": "lro_lola",
+     "nota": "aprox. (com relevo)"
     },
     "insolacao_toa_wm2": {
      "rotulo": "Sol no topo da atmosfera",
@@ -1773,6 +1797,14 @@
      "fonte": "calculo_solar",
      "nota": "horizonte plano"
     },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.65,
+     "unidade": "fracao",
+     "status": "referencia",
+     "fonte": "lro_lola",
+     "nota": "aprox. (com relevo)"
+    },
     "insolacao_toa_wm2": {
      "rotulo": "Sol no topo da atmosfera",
      "valor": 42,
@@ -1979,6 +2011,14 @@
      "status": "calculado",
      "fonte": "calculo_solar",
      "nota": "horizonte plano"
+    },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.6,
+     "unidade": "fracao",
+     "status": "referencia",
+     "fonte": "lro_lola",
+     "nota": "aprox. (com relevo)"
     },
     "insolacao_toa_wm2": {
      "rotulo": "Sol no topo da atmosfera",
@@ -2187,6 +2227,14 @@
      "fonte": "calculo_solar",
      "nota": "horizonte plano"
     },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.6,
+     "unidade": "fracao",
+     "status": "referencia",
+     "fonte": "lro_lola",
+     "nota": "aprox. (com relevo)"
+    },
     "insolacao_toa_wm2": {
      "rotulo": "Sol no topo da atmosfera",
      "valor": 36,
@@ -2393,6 +2441,14 @@
      "status": "calculado",
      "fonte": "calculo_solar",
      "nota": "horizonte plano"
+    },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.55,
+     "unidade": "fracao",
+     "status": "referencia",
+     "fonte": "lro_lola",
+     "nota": "aprox. (com relevo)"
     },
     "insolacao_toa_wm2": {
      "rotulo": "Sol no topo da atmosfera",
@@ -2601,6 +2657,14 @@
      "fonte": "calculo_solar",
      "nota": "horizonte plano"
     },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.75,
+     "unidade": "fracao",
+     "status": "referencia",
+     "fonte": "lro_lola",
+     "nota": "aprox. (com relevo)"
+    },
     "insolacao_toa_wm2": {
      "rotulo": "Sol no topo da atmosfera",
      "valor": 14,
@@ -2807,6 +2871,14 @@
      "status": "calculado",
      "fonte": "calculo_solar",
      "nota": "horizonte plano"
+    },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.55,
+     "unidade": "fracao",
+     "status": "referencia",
+     "fonte": "lro_lola",
+     "nota": "aprox. (com relevo)"
     },
     "insolacao_toa_wm2": {
      "rotulo": "Sol no topo da atmosfera",
@@ -3015,6 +3087,14 @@
      "status": "calculado",
      "fonte": "calculo_solar",
      "nota": "horizonte plano"
+    },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.6,
+     "unidade": "fracao",
+     "status": "referencia",
+     "fonte": "lro_lola",
+     "nota": "aprox. (com relevo)"
     },
     "insolacao_toa_wm2": {
      "rotulo": "Sol no topo da atmosfera",
@@ -3229,6 +3309,14 @@
      "fonte": "calculo_solar",
      "nota": "horizonte plano"
     },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.5,
+     "unidade": "fracao",
+     "status": "referencia",
+     "fonte": "fisica",
+     "nota": "14 dias de sol, 14 de noite (com relevo)"
+    },
     "insolacao_toa_wm2": {
      "rotulo": "Sol no topo da atmosfera",
      "valor": 420,
@@ -3425,6 +3513,14 @@
     "frac_ano_noite_continua": {
      "rotulo": "Ano com noite 24 h",
      "valor": 0.0,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.5,
      "unidade": "fracao",
      "status": "calculado",
      "fonte": "calculo_solar",
@@ -3629,6 +3725,14 @@
      "fonte": "calculo_solar",
      "nota": "horizonte plano"
     },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.5,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
     "insolacao_toa_wm2": {
      "rotulo": "Sol no topo da atmosfera",
      "valor": 177,
@@ -3820,6 +3924,14 @@
     "frac_ano_noite_continua": {
      "rotulo": "Ano com noite 24 h",
      "valor": 0.0,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.5,
      "unidade": "fracao",
      "status": "calculado",
      "fonte": "calculo_solar",
@@ -4024,6 +4136,14 @@
      "fonte": "calculo_solar",
      "nota": "horizonte plano"
     },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.5,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
     "insolacao_toa_wm2": {
      "rotulo": "Sol no topo da atmosfera",
      "valor": 132,
@@ -4219,6 +4339,14 @@
      "fonte": "calculo_solar",
      "nota": "horizonte plano"
     },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.5,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
     "insolacao_toa_wm2": {
      "rotulo": "Sol no topo da atmosfera",
      "valor": 170,
@@ -4398,6 +4526,14 @@
     "frac_ano_noite_continua": {
      "rotulo": "Ano com noite 24 h",
      "valor": 0.0,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.5,
      "unidade": "fracao",
      "status": "calculado",
      "fonte": "calculo_solar",
@@ -5046,6 +5182,14 @@
      "fonte": "calculo_solar",
      "nota": "horizonte plano"
     },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.5,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
     "insolacao_toa_wm2": {
      "rotulo": "Sol no topo da atmosfera",
      "valor": 364,
@@ -5682,6 +5826,14 @@
     "frac_ano_noite_continua": {
      "rotulo": "Ano com noite 24 h",
      "valor": 0.0,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.5,
      "unidade": "fracao",
      "status": "calculado",
      "fonte": "calculo_solar",
@@ -6332,6 +6484,14 @@
      "fonte": "calculo_solar",
      "nota": "horizonte plano"
     },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.5,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
     "insolacao_toa_wm2": {
      "rotulo": "Sol no topo da atmosfera",
      "valor": 404,
@@ -6960,6 +7120,14 @@
     "frac_ano_noite_continua": {
      "rotulo": "Ano com noite 24 h",
      "valor": 0.0,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.5,
      "unidade": "fracao",
      "status": "calculado",
      "fonte": "calculo_solar",
@@ -7611,6 +7779,14 @@
      "fonte": "calculo_solar",
      "nota": "horizonte plano"
     },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.5,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
     "insolacao_toa_wm2": {
      "rotulo": "Sol no topo da atmosfera",
      "valor": 185,
@@ -8241,6 +8417,14 @@
     "frac_ano_noite_continua": {
      "rotulo": "Ano com noite 24 h",
      "valor": 0.0,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.5,
      "unidade": "fracao",
      "status": "calculado",
      "fonte": "calculo_solar",
@@ -8877,6 +9061,14 @@
     "frac_ano_noite_continua": {
      "rotulo": "Ano com noite 24 h",
      "valor": 0.0,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.5,
      "unidade": "fracao",
      "status": "calculado",
      "fonte": "calculo_solar",
@@ -9524,6 +9716,14 @@
      "fonte": "calculo_solar",
      "nota": "horizonte plano"
     },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.5,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
     "insolacao_toa_wm2": {
      "rotulo": "Sol no topo da atmosfera",
      "valor": 179,
@@ -10161,6 +10361,14 @@
     "frac_ano_noite_continua": {
      "rotulo": "Ano com noite 24 h",
      "valor": 0.0,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.5,
      "unidade": "fracao",
      "status": "calculado",
      "fonte": "calculo_solar",
@@ -10808,6 +11016,14 @@
      "fonte": "calculo_solar",
      "nota": "horizonte plano"
     },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.5,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
     "insolacao_toa_wm2": {
      "rotulo": "Sol no topo da atmosfera",
      "valor": 393,
@@ -11450,6 +11666,14 @@
      "fonte": "calculo_solar",
      "nota": "horizonte plano"
     },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.5,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
     "insolacao_toa_wm2": {
      "rotulo": "Sol no topo da atmosfera",
      "valor": 393,
@@ -12084,6 +12308,14 @@
     "frac_ano_noite_continua": {
      "rotulo": "Ano com noite 24 h",
      "valor": 0.0,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.5,
      "unidade": "fracao",
      "status": "calculado",
      "fonte": "calculo_solar",
@@ -12729,6 +12961,14 @@
      "fonte": "calculo_solar",
      "nota": "horizonte plano"
     },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.5,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
     "insolacao_toa_wm2": {
      "rotulo": "Sol no topo da atmosfera",
      "valor": 399,
@@ -13367,6 +13607,14 @@
      "fonte": "calculo_solar",
      "nota": "horizonte plano"
     },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.5,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
     "insolacao_toa_wm2": {
      "rotulo": "Sol no topo da atmosfera",
      "valor": 375,
@@ -13995,6 +14243,14 @@
     "frac_ano_noite_continua": {
      "rotulo": "Ano com noite 24 h",
      "valor": 0.0,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.5,
      "unidade": "fracao",
      "status": "calculado",
      "fonte": "calculo_solar",
@@ -14632,6 +14888,14 @@
     "frac_ano_noite_continua": {
      "rotulo": "Ano com noite 24 h",
      "valor": 0.0,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.5,
      "unidade": "fracao",
      "status": "calculado",
      "fonte": "calculo_solar",
@@ -15283,6 +15547,14 @@
      "fonte": "calculo_solar",
      "nota": "horizonte plano"
     },
+    "frac_tempo_sol": {
+     "rotulo": "Tempo com Sol",
+     "valor": 0.5,
+     "unidade": "fracao",
+     "status": "calculado",
+     "fonte": "calculo_solar",
+     "nota": "horizonte plano"
+    },
     "insolacao_toa_wm2": {
      "rotulo": "Sol no topo da atmosfera",
      "valor": 181,
@@ -15381,11 +15653,11 @@
     },
     "pressao_kpa": {
      "rotulo": "Pressao do ar",
-     "valor": 101.3,
+     "valor": null,
      "unidade": "kPa",
-     "status": "calculado",
+     "status": "sem_dado",
      "fonte": "fisica",
-     "nota": "atmosfera padrao pela altitude"
+     "nota": "sem altitude (fora do SRTM30), entao sem pressao calculada"
     },
     "gravidade_g": {
      "rotulo": "Gravidade",

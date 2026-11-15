@@ -56,9 +56,13 @@ Cada item de `locais`: `id`, `posicao`, `nome`, `regiao`, `pais`, `papel`, `lat`
 
 Pontos em aberto, que precisam ser ditos com honestidade na apresentação:
 
-- **Único valor provisório:** o NDVI da McMurdo Dry Valleys (o MOD13C2 não cobre a Antártida; ficou 0, deserto polar). A Dry Valleys também fica sem relevo.
+- **Único valor provisório:** o NDVI da McMurdo Dry Valleys (o MOD13C2 não cobre a Antártida; ficou 0, deserto polar). A Dry Valleys também fica sem relevo e, por isso, sem pressão do ar (`sem_dado`).
 - **AppEEARS:** a task `a92258f5…` (MOD13A2 e MODIS de 1 km) ainda está pendente. Quando chegar, rodar `python3 dados/essenciais/gerar_dados.py --appeears PASTA`; ela substitui NDVI, temperatura e albedo (prioridade: AppEEARS/notebook > NASA POWER e MOD13C2 > provisório).
 - **Coordenadas do Artemis III:** as 9 regiões candidatas (NASA, out/2024) estão **aproximadas** (±1°, campo `coord_aprox`) e precisam ser conferidas no mapa oficial.
+- **Albedo regional:** a célula da POWER mistura o local com o entorno (Lençóis 0,10 por causa do mar; Mauna Kea 0,08; Dry Valleys 0,56 por causa do gelo). Melhora com o AppEEARS (MCD43A3, 1 km).
+- **Pressão em Marte:** os 5 alvos usam 0,65 kPa (MEDA, Jezero). Gale, Arcadia e Oxia variam entre ~0,6 e 0,9 kPa pela altitude; falta uma fonte por local.
+- **Luz na Lua:** "Tempo com Sol" (`frac_tempo_sol`) usa a `iluminacao_frac` do LOLA (com relevo); "Ano com Sol 24 h" (`frac_ano_sol_continuo`) é de horizonte plano e ainda entra na nota da dimensão luz.
+- **Shackleton:** a mínima é a da borda (−200 °C); o fundo em sombra permanente (−230 °C) fica só na nota. A amplitude é sempre a máxima menos a mínima.
 - **Mauna Kea:** a célula da POWER mistura o cume com as encostas e o mar, então a temperatura do ar (~21 °C) fica muito acima da do cume (~0 °C). Locais pequenos (Lonar, Dallol) também ficam com valores regionais.
 
 Regenerar tudo:

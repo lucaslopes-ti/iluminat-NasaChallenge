@@ -3236,7 +3236,7 @@
      "unidade": "C",
      "status": "medido",
      "fonte": "nasa_power",
-     "valor_alvo": -230
+     "valor_alvo": -200
     },
     "amplitude_termica_c": {
      "rotulo": "Amplitude termica (dT)",
@@ -3308,9 +3308,9 @@
     },
     "pressao_kpa": {
      "rotulo": "Pressao do ar",
-     "valor": 101.3,
+     "valor": null,
      "unidade": "kPa",
-     "status": "calculado",
+     "status": "sem_dado",
      "fonte": "fisica",
      "valor_alvo": 0.0
     }
