@@ -23,12 +23,12 @@
  "destaque_lua": {
   "local": "dry_valleys",
   "alvo": "cabeus_b_peak",
-  "iap": 64
+  "iap": 65
  },
  "destaque_marte": {
   "local": "qaidam",
   "alvo": "oxia",
-  "iap": 69
+  "iap": 68
  },
  "melhor_analogo_por_alvo": {
   "shackleton": "dry_valleys",
@@ -252,19 +252,19 @@
    "alvo": "oxia",
    "alvo_nome": "Oxia Planum",
    "corpo": "mars",
-   "nota_pct": 69,
+   "nota_pct": 68,
    "notas_perfil_pct": {
-    "geral": 69,
+    "geral": 68,
     "rover": 76,
-    "astrobio": 55,
-    "isru": 61,
-    "habitat": 71,
-    "energia": 74
+    "astrobio": 54,
+    "isru": 60,
+    "habitat": 69,
+    "energia": 73
    },
    "dimensoes_pct": {
     "terreno": 86,
     "materiais": 45,
-    "termico": 49,
+    "termico": 42,
     "luz": 91,
     "agua": 50,
     "poeira": 57,
@@ -317,26 +317,26 @@
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
-     "valor": 31,
+     "valor": 26,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": -5
     },
     "lst_noite_c": {
      "rotulo": "Temp. superficie minima",
-     "valor": -15,
+     "valor": -5,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": -90
     },
     "amplitude_termica_c": {
      "rotulo": "Amplitude termica (dT)",
-     "valor": 46,
+     "valor": 31,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": 85
     },
     "temp_media_c": {
@@ -423,19 +423,19 @@
    "alvo": "oxia",
    "alvo_nome": "Oxia Planum",
    "corpo": "mars",
-   "nota_pct": 67,
+   "nota_pct": 66,
    "notas_perfil_pct": {
-    "geral": 67,
-    "rover": 74,
-    "astrobio": 54,
-    "isru": 59,
-    "habitat": 69,
-    "energia": 73
+    "geral": 66,
+    "rover": 73,
+    "astrobio": 53,
+    "isru": 58,
+    "habitat": 68,
+    "energia": 71
    },
    "dimensoes_pct": {
     "terreno": 82,
     "materiais": 50,
-    "termico": 34,
+    "termico": 28,
     "luz": 98,
     "agua": 49,
     "poeira": 55,
@@ -488,26 +488,26 @@
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
-     "valor": 53,
+     "valor": 50,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": -5
     },
     "lst_noite_c": {
      "rotulo": "Temp. superficie minima",
-     "valor": 7,
+     "valor": 17,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": -90
     },
     "amplitude_termica_c": {
      "rotulo": "Amplitude termica (dT)",
-     "valor": 46,
+     "valor": 33,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": 85
     },
     "temp_media_c": {
@@ -598,15 +598,15 @@
    "notas_perfil_pct": {
     "geral": 66,
     "rover": 75,
-    "astrobio": 53,
-    "isru": 63,
-    "habitat": 72,
-    "energia": 71
+    "astrobio": 52,
+    "isru": 62,
+    "habitat": 71,
+    "energia": 70
    },
    "dimensoes_pct": {
     "terreno": 97,
     "materiais": 56,
-    "termico": 37,
+    "termico": 33,
     "luz": 100,
     "agua": 50,
     "poeira": 34,
@@ -659,26 +659,26 @@
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
-     "valor": 42,
+     "valor": 45,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": -5
     },
     "lst_noite_c": {
      "rotulo": "Temp. superficie minima",
-     "valor": 2,
+     "valor": 8,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": -90
     },
     "amplitude_termica_c": {
      "rotulo": "Amplitude termica (dT)",
-     "valor": 40,
+     "valor": 37,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": 85
     },
     "temp_media_c": {
@@ -765,19 +765,19 @@
    "alvo": "cabeus_b_peak",
    "alvo_nome": "Pico perto de Cabeus B",
    "corpo": "moon",
-   "nota_pct": 64,
+   "nota_pct": 65,
    "notas_perfil_pct": {
-    "geral": 64,
-    "rover": 69,
-    "astrobio": 55,
-    "isru": 59,
-    "habitat": 60,
-    "energia": 56
+    "geral": 65,
+    "rover": 70,
+    "astrobio": 56,
+    "isru": 61,
+    "habitat": 61,
+    "energia": 57
    },
    "dimensoes_pct": {
     "terreno": 73,
     "materiais": 7,
-    "termico": 22,
+    "termico": 30,
     "luz": 45,
     "agua": 79,
     "poeira": 75,
@@ -830,26 +830,26 @@
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
-     "valor": -13,
+     "valor": -31,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": -50
     },
     "lst_noite_c": {
      "rotulo": "Temp. superficie minima",
-     "valor": -46,
+     "valor": -34,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": -200
     },
     "amplitude_termica_c": {
      "rotulo": "Amplitude termica (dT)",
-     "valor": 32,
+     "valor": 3,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": 150
     },
     "temp_media_c": {
@@ -941,14 +941,14 @@
     "geral": 59,
     "rover": 74,
     "astrobio": 51,
-    "isru": 52,
-    "habitat": 62,
-    "energia": 70
+    "isru": 51,
+    "habitat": 61,
+    "energia": 68
    },
    "dimensoes_pct": {
     "terreno": 87,
     "materiais": 74,
-    "termico": 30,
+    "termico": 23,
     "luz": 100,
     "agua": 43,
     "poeira": 40,
@@ -1004,23 +1004,23 @@
      "valor": 48,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": 0
     },
     "lst_noite_c": {
      "rotulo": "Temp. superficie minima",
-     "valor": 13,
+     "valor": 32,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": -90
     },
     "amplitude_termica_c": {
      "rotulo": "Amplitude termica (dT)",
-     "valor": 35,
+     "valor": 17,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": 90
     },
     "temp_media_c": {
@@ -1107,19 +1107,19 @@
    "alvo": "arcadia",
    "alvo_nome": "Arcadia Planitia",
    "corpo": "mars",
-   "nota_pct": 57,
+   "nota_pct": 56,
    "notas_perfil_pct": {
-    "geral": 57,
+    "geral": 56,
     "rover": 64,
-    "astrobio": 46,
-    "isru": 58,
-    "habitat": 58,
-    "energia": 61
+    "astrobio": 45,
+    "isru": 57,
+    "habitat": 57,
+    "energia": 59
    },
    "dimensoes_pct": {
     "terreno": 75,
     "materiais": 1,
-    "termico": 47,
+    "termico": 39,
     "luz": 70,
     "agua": 87,
     "poeira": 35,
@@ -1172,26 +1172,26 @@
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
-     "valor": 1,
+     "valor": -18,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": -20
     },
     "lst_noite_c": {
      "rotulo": "Temp. superficie minima",
-     "valor": -34,
+     "valor": -21,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": -110
     },
     "amplitude_termica_c": {
      "rotulo": "Amplitude termica (dT)",
-     "valor": 35,
+     "valor": 3,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": 90
     },
     "temp_media_c": {
@@ -1343,26 +1343,26 @@
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
-     "valor": 35,
+     "valor": 34,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": 0
     },
     "lst_noite_c": {
      "rotulo": "Temp. superficie minima",
-     "valor": 23,
+     "valor": 24,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": -90
     },
     "amplitude_termica_c": {
      "rotulo": "Amplitude termica (dT)",
-     "valor": 12,
+     "valor": 10,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": 90
     },
     "temp_media_c": {
@@ -1449,19 +1449,19 @@
    "alvo": "cabeus_b_peak",
    "alvo_nome": "Pico perto de Cabeus B",
    "corpo": "moon",
-   "nota_pct": 52,
+   "nota_pct": 53,
    "notas_perfil_pct": {
-    "geral": 52,
-    "rover": 55,
+    "geral": 53,
+    "rover": 56,
     "astrobio": 41,
-    "isru": 51,
-    "habitat": 52,
-    "energia": 46
+    "isru": 52,
+    "habitat": 53,
+    "energia": 47
    },
    "dimensoes_pct": {
     "terreno": 57,
     "materiais": 0,
-    "termico": 15,
+    "termico": 20,
     "luz": 47,
     "agua": 62,
     "poeira": 49,
@@ -1514,26 +1514,26 @@
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
-     "valor": 1,
+     "valor": -9,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": -50
     },
     "lst_noite_c": {
      "rotulo": "Temp. superficie minima",
-     "valor": -27,
+     "valor": -11,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": -200
     },
     "amplitude_termica_c": {
      "rotulo": "Amplitude termica (dT)",
-     "valor": 28,
+     "valor": 2,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": 150
     },
     "temp_media_c": {
@@ -1685,26 +1685,26 @@
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
-     "valor": 47,
+     "valor": 34,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": -5
     },
     "lst_noite_c": {
      "rotulo": "Temp. superficie minima",
-     "valor": 16,
+     "valor": 19,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": -90
     },
     "amplitude_termica_c": {
      "rotulo": "Amplitude termica (dT)",
-     "valor": 31,
+     "valor": 15,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": 85
     },
     "temp_media_c": {
@@ -1794,16 +1794,16 @@
    "nota_pct": 50,
    "notas_perfil_pct": {
     "geral": 50,
-    "rover": 69,
+    "rover": 68,
     "astrobio": 20,
     "isru": 44,
     "habitat": 63,
-    "energia": 69
+    "energia": 68
    },
    "dimensoes_pct": {
     "terreno": 74,
     "materiais": 53,
-    "termico": 29,
+    "termico": 27,
     "luz": 100,
     "agua": 2,
     "poeira": 43,
@@ -1856,26 +1856,26 @@
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
-     "valor": 46,
+     "valor": 38,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": -5
     },
     "lst_noite_c": {
      "rotulo": "Temp. superficie minima",
-     "valor": 16,
+     "valor": 22,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": -90
     },
     "amplitude_termica_c": {
      "rotulo": "Amplitude termica (dT)",
-     "valor": 30,
+     "valor": 17,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": 85
     },
     "temp_media_c": {
@@ -1969,12 +1969,12 @@
     "astrobio": 40,
     "isru": 51,
     "habitat": 58,
-    "energia": 62
+    "energia": 61
    },
    "dimensoes_pct": {
     "terreno": 73,
     "materiais": 75,
-    "termico": 36,
+    "termico": 34,
     "luz": 92,
     "agua": 42,
     "poeira": 17,
@@ -2027,26 +2027,26 @@
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
-     "valor": 41,
+     "valor": 28,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": 0
     },
     "lst_noite_c": {
      "rotulo": "Temp. superficie minima",
-     "valor": 3,
+     "valor": 11,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": -90
     },
     "amplitude_termica_c": {
      "rotulo": "Amplitude termica (dT)",
-     "valor": 38,
+     "valor": 17,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": 90
     },
     "temp_media_c": {
@@ -2198,26 +2198,26 @@
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
-     "valor": 31,
+     "valor": 32,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": 110
     },
     "lst_noite_c": {
      "rotulo": "Temp. superficie minima",
-     "valor": 17,
+     "valor": 4,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": -170
     },
     "amplitude_termica_c": {
      "rotulo": "Amplitude termica (dT)",
-     "valor": 14,
+     "valor": 28,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": 280
     },
     "temp_media_c": {
@@ -2307,16 +2307,16 @@
    "nota_pct": 48,
    "notas_perfil_pct": {
     "geral": 48,
-    "rover": 71,
+    "rover": 70,
     "astrobio": 24,
-    "isru": 43,
+    "isru": 42,
     "habitat": 56,
     "energia": 70
    },
    "dimensoes_pct": {
     "terreno": 75,
     "materiais": 55,
-    "termico": 30,
+    "termico": 29,
     "luz": 100,
     "agua": 22,
     "poeira": 48,
@@ -2369,26 +2369,26 @@
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
-     "valor": 48,
+     "valor": 38,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": 0
     },
     "lst_noite_c": {
      "rotulo": "Temp. superficie minima",
-     "valor": 13,
+     "valor": 18,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": -90
     },
     "amplitude_termica_c": {
      "rotulo": "Amplitude termica (dT)",
-     "valor": 35,
+     "valor": 20,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": 90
     },
     "temp_media_c": {
@@ -2540,26 +2540,26 @@
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
-     "valor": 45,
+     "valor": 34,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": -5
     },
     "lst_noite_c": {
      "rotulo": "Temp. superficie minima",
-     "valor": 17,
+     "valor": 21,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": -90
     },
     "amplitude_termica_c": {
      "rotulo": "Amplitude termica (dT)",
-     "valor": 27,
+     "valor": 13,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": 85
     },
     "temp_media_c": {
@@ -2651,14 +2651,14 @@
     "geral": 44,
     "rover": 69,
     "astrobio": 15,
-    "isru": 36,
-    "habitat": 54,
-    "energia": 70
+    "isru": 35,
+    "habitat": 53,
+    "energia": 69
    },
    "dimensoes_pct": {
     "terreno": 74,
     "materiais": 46,
-    "termico": 32,
+    "termico": 29,
     "luz": 100,
     "agua": 0,
     "poeira": 47,
@@ -2711,26 +2711,26 @@
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
-     "valor": 40,
+     "valor": 34,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": -5
     },
     "lst_noite_c": {
      "rotulo": "Temp. superficie minima",
-     "valor": 11,
+     "valor": 19,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": -90
     },
     "amplitude_termica_c": {
      "rotulo": "Amplitude termica (dT)",
-     "valor": 30,
+     "valor": 15,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": 85
     },
     "temp_media_c": {
@@ -2820,16 +2820,16 @@
    "nota_pct": 43,
    "notas_perfil_pct": {
     "geral": 43,
-    "rover": 66,
-    "astrobio": 19,
+    "rover": 65,
+    "astrobio": 18,
     "isru": 38,
-    "habitat": 54,
-    "energia": 66
+    "habitat": 53,
+    "energia": 65
    },
    "dimensoes_pct": {
     "terreno": 73,
     "materiais": 56,
-    "termico": 38,
+    "termico": 33,
     "luz": 100,
     "agua": 0,
     "poeira": 21,
@@ -2882,26 +2882,26 @@
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
-     "valor": 33,
+     "valor": 27,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": 0
     },
     "lst_noite_c": {
      "rotulo": "Temp. superficie minima",
-     "valor": 1,
+     "valor": 14,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": -90
     },
     "amplitude_termica_c": {
      "rotulo": "Amplitude termica (dT)",
-     "valor": 32,
+     "valor": 13,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": 90
     },
     "temp_media_c": {
@@ -2991,16 +2991,16 @@
    "nota_pct": 43,
    "notas_perfil_pct": {
     "geral": 43,
-    "rover": 66,
-    "astrobio": 19,
+    "rover": 65,
+    "astrobio": 18,
     "isru": 38,
-    "habitat": 54,
-    "energia": 66
+    "habitat": 53,
+    "energia": 64
    },
    "dimensoes_pct": {
     "terreno": 74,
     "materiais": 57,
-    "termico": 37,
+    "termico": 32,
     "luz": 100,
     "agua": 0,
     "poeira": 21,
@@ -3053,26 +3053,26 @@
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
-     "valor": 33,
+     "valor": 30,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": 0
     },
     "lst_noite_c": {
      "rotulo": "Temp. superficie minima",
-     "valor": 3,
+     "valor": 16,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": -90
     },
     "amplitude_termica_c": {
      "rotulo": "Amplitude termica (dT)",
-     "valor": 30,
+     "valor": 14,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": 90
     },
     "temp_media_c": {
@@ -3162,16 +3162,16 @@
    "nota_pct": 43,
    "notas_perfil_pct": {
     "geral": 43,
-    "rover": 62,
+    "rover": 61,
     "astrobio": 15,
-    "isru": 38,
+    "isru": 37,
     "habitat": 53,
-    "energia": 59
+    "energia": 58
    },
    "dimensoes_pct": {
     "terreno": 72,
     "materiais": 36,
-    "termico": 8,
+    "termico": 4,
     "luz": 94,
     "agua": 0,
     "poeira": 32,
@@ -3224,26 +3224,26 @@
     },
     "lst_dia_c": {
      "rotulo": "Temp. superficie maxima",
-     "valor": 42,
+     "valor": 29,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": 110
     },
     "lst_noite_c": {
      "rotulo": "Temp. superficie minima",
-     "valor": 17,
+     "valor": 21,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": -170
     },
     "amplitude_termica_c": {
      "rotulo": "Amplitude termica (dT)",
-     "valor": 25,
+     "valor": 8,
      "unidade": "C",
      "status": "medido",
-     "fonte": "nasa_power",
+     "fonte": "myd11a2",
      "valor_alvo": 280
     },
     "temp_media_c": {
