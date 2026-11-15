@@ -414,6 +414,12 @@ def main():
     if os.path.exists(os.path.join(ENTRADA, "relevo_copernicus.csv")):
         relevo_cop = {r["local_id"]: r for r in ler_csv("relevo_copernicus.csv")}
 
+    # temperatura da superficie a 1 km (MODIS via ORNL DAAC), feita por modis_ornl.py.
+    # Prioridade: AppEEARS/notebook > ORNL > NASA POWER.
+    modis_ornl = {}
+    if os.path.exists(os.path.join(ENTRADA, "modis_ornl.csv")):
+        modis_ornl = {r["local_id"]: r for r in ler_csv("modis_ornl.csv")}
+
     terra = []
     for l in locais:
         vals = {}
@@ -433,6 +439,16 @@ def main():
         vals.update(prov.get(l["id"], {}))
         vals.update(carregar_power(l["id"]))
         vals.update(ndvi_mod13c2.get(l["id"], {}))
+        r = modis_ornl.get(l["id"])
+        if r:
+            for k, fonte, n, desc in (("lst_dia_c", "myd11a2", "n_datas_lst_dia", "LST de dia (Aqua ~13:30)"),
+                                      ("lst_noite_c", "myd11a2", "n_datas_lst_noite", "LST de noite (Aqua ~01:30)")):
+                if r[k] != "":
+                    vals[k] = {"valor": float(r[k]), "status": "medido", "fonte": fonte,
+                               "nota": f"{desc}, media de {r[n]} datas de {r['periodo']}, pixels de terra na caixa (ORNL DAAC)"}
+            if r["lst_dia_c"] != "" and r["lst_noite_c"] != "":
+                vals["amplitude_termica_c"] = {"valor": float(r["lst_dia_c"]) - float(r["lst_noite_c"]), "status": "medido",
+                                               "fonte": "myd11a2", "nota": "LST dia - LST noite (MYD11A2, ORNL DAAC)"}
         for k, v in externos.get(l["id"], {}).items():
             vals[k] = {"valor": v, "status": "medido", "fonte": fonte_ext[k], "nota": origem}
         elev = vals["elev_media_m"]["valor"]

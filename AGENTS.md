@@ -49,7 +49,8 @@ Cada item de `locais`: `id`, `posicao`, `nome`, `regiao`, `pais`, `papel`, `lat`
 | Dado | Fonte | Situação |
 |---|---|---|
 | Relevo (elevação, desnível, declividade, rugosidade, áreas < 8° e < 15°) | NASA SRTMGL30 v002; na Antártida, Copernicus DEM GLO-90 agregado para 30" (`relevo_copernicus.py` → `entrada/relevo_copernicus.csv`) | **medido** |
-| Temperatura da superfície (TS, TS_MAX, TS_MIN) e do ar a 2 m (T2M, T2M_RANGE), albedo, poeira (AOD 550 nm), vento, chuva | NASA POWER (MERRA-2, CERES), médias 2001–2025 | **medido**; respostas salvas em `entrada/nasa_power/` |
+| Temperatura da superfície de dia e de noite | NASA MYD11A2 v061 (Aqua, 1 km, ~13:30 e ~01:30), 2024, pixels de terra na caixa, via ORNL DAAC (`modis_ornl.py` → `entrada/modis_ornl.csv`, sem login) | **medido** |
+| Temperatura média da superfície (TS) e do ar a 2 m (T2M, T2M_RANGE), albedo, poeira (AOD 550 nm), vento, chuva | NASA POWER (MERRA-2, CERES), médias 2001–2025 | **medido**; respostas salvas em `entrada/nasa_power/` |
 | Vegetação (NDVI) | NASA MOD13C2 v061, 0,05°, 72 meses (2020–2025), LP DAAC | **medido** |
 | Iluminação | geometria solar pela latitude | **calculado** |
 | Geologia, gelo, subsolo, vida | tags com referência bibliográfica | **tags** |
@@ -58,14 +59,15 @@ Cada item de `locais`: `id`, `posicao`, `nome`, `regiao`, `pais`, `papel`, `lat`
 Pontos em aberto, que precisam ser ditos com honestidade na apresentação:
 
 - **Único valor provisório:** o NDVI da McMurdo Dry Valleys (o MOD13C2 não cobre a Antártida; ficou 0, deserto polar). O relevo da Dry Valleys vem do Copernicus DEM GLO-90 (o SRTM30 não cobre a Antártida).
-- **AppEEARS:** a task `a92258f5…` (MOD13A2 e MODIS de 1 km) ainda está pendente. Quando chegar, rodar `python3 dados/essenciais/gerar_dados.py --appeears PASTA`; ela substitui NDVI, temperatura e albedo (prioridade: AppEEARS/notebook > NASA POWER e MOD13C2 > provisório).
+- **AppEEARS:** a task `a92258f5…` (MOD13A2 e MODIS de 1 km) ainda está pendente. Enquanto isso, a temperatura da superfície vem do MYD11A2 pelo ORNL DAAC. Quando chegar, rodar `python3 dados/essenciais/gerar_dados.py --appeears PASTA`; ela substitui NDVI, temperatura e albedo (prioridade: AppEEARS/notebook > ORNL MODIS > NASA POWER e MOD13C2 > provisório). O albedo continua o da POWER (o MCD43 não está no ORNL e o carrinho não tem sensor de albedo).
 - **Coordenadas do Artemis III:** as 9 regiões candidatas (NASA, out/2024) estão **aproximadas** (±1°, campo `coord_aprox`) e precisam ser conferidas no mapa oficial.
 - **Albedo regional:** a célula da POWER mistura o local com o entorno (Lençóis 0,10 por causa do mar; Mauna Kea 0,08; Dry Valleys 0,56 por causa do gelo). Melhora com o AppEEARS (MCD43A3, 1 km).
 - **Pressão em Marte:** os 5 alvos usam 0,65 kPa (MEDA, Jezero). Gale, Arcadia e Oxia variam entre ~0,6 e 0,9 kPa pela altitude; falta uma fonte por local.
 - **Luz na Lua:** a dimensão luz usa `sol_max_graus`, `frac_sol_baixo` e `frac_tempo_sol` ("Tempo com Sol": geometria solar na Terra; `iluminacao_frac` do LOLA, com relevo, na Lua). O `frac_ano_sol_continuo` ("Ano com Sol 24 h") saiu da nota, porque com horizonte plano dava 0% nas bordas lunares reais.
 - **Validação:** cada análogo clássico tem `alvos_literatura` em `entrada/locais_terra.json`; o teste é a posição dele no ranking desse alvo (`validacao_referencias.alvo_da_literatura`). Hoje os cinco ficam entre os 6 primeiros de 18.
 - **Shackleton:** a mínima é a da borda (−200 °C); o fundo em sombra permanente (−230 °C) fica só na nota. A amplitude é sempre a máxima menos a mínima.
-- **Mauna Kea:** a célula da POWER mistura o cume com as encostas e o mar, então a temperatura do ar (~21 °C) fica muito acima da do cume (~0 °C). Locais pequenos (Lonar, Dallol) também ficam com valores regionais.
+- **Mauna Kea:** a temperatura da superfície já é a do MODIS (pixels de terra; noite ~4 °C). Mas a temperatura do **ar** (`temp_ar_c`, comparada com o sensor do carrinho) continua a da célula da POWER, que mistura o cume com as encostas e o mar (~21 °C, contra ~0 °C no cume). Locais pequenos (Lonar, Dallol) têm o mesmo problema no ar.
+- **Temperatura: POWER x MODIS:** na POWER, máxima e mínima são os extremos de cada mês; no MODIS, um dia típico (13:30) e uma noite típica (01:30), só com céu limpo, como a máxima e a mínima de um dia na Lua e em Marte. Nos locais polares a amplitude fica em 2–3 °C, porque na noite polar não há dia. Trocar uma fonte pela outra mudou as notas em no máximo 1 ponto, sem mudar rankings.
 
 Regenerar tudo:
 
@@ -73,6 +75,7 @@ Regenerar tudo:
 pip3 install numpy                                         # o gerar_dados.py precisa do numpy
 python3 dados/essenciais/gerar_dados.py                    # refaz com o que está em entrada/ (só numpy)
 python3 dados/essenciais/relevo_copernicus.py              # relevo da Antártida (pip3 install tifffile imagecodecs)
+python3 dados/essenciais/modis_ornl.py                     # temperatura MODIS 1 km pelo ORNL DAAC (~20 min, com cache)
 python3 dados/essenciais/gerar_dados.py --baixar-power     # baixa de novo a NASA POWER
 python3 dados/essenciais/gerar_dados.py --appeears PASTA   # CSVs de Point Sample do AppEEARS
 EARTHDATA_TOKEN_FILE=token.txt python3 dados/essenciais/ndvi_mod13c2.py 2020 2025
