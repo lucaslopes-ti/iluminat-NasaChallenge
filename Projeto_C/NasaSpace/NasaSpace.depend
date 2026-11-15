@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1794704057 source:d:\documentos\nasa hackaton\iluminat-nasachallenge\projeto_c\nasaspace\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Bibliotecas/cJSON.h"
+
+1794702689 d:\documentos\nasa hackaton\iluminat-nasachallenge\projeto_c\nasaspace\bibliotecas\cjson.h
+	<stddef.h>
+
+1794703476 source:d:\documentos\nasa hackaton\iluminat-nasachallenge\projeto_c\nasaspace\cjson.c
+	<string.h>
+	<stdio.h>
+	<math.h>
+	<stdlib.h>
+	<limits.h>
+	<ctype.h>
+	<float.h>
+	<locale.h>
+	"Bibliotecas/cJSON.h"
+
