@@ -26,14 +26,14 @@ web/
   Scripts/Javascript/Scoring.js  índice de analogia (média ponderada por dimensão)
   Scripts/css/principal.css  estilos (desktop, tablet e celular)
   data/alvos.json            alvos da Lua e de Marte, dimensões, perfis de missão
-  data/locais.json           locais da Terra (EXEMPLO até chegar a saída do notebook)
+  data/locais.json           locais da Terra com as notas reais (gerado por tools/gerar_dados_site.py)
   Assets/Textures/           texturas equiretangulares (Terra, Marte, Lua)
   lib/three/                 three.js r170 + OrbitControls, local (sem CDN, funciona offline)
 ```
 
 ## Formato dos dados
 
-`data/locais.json` segue o formato que o notebook `01_dados_terra` grava (uma linha por local: `id`, `nome`, `regiao`, `papel`, `tipo`, `lat`, `lon`, caixas e indicadores como `elev_media_m`, `declividade_media`, `t2m_c`, `chuva_anual_mm`, `ndvi_medio`, `emit_mineral_dominante`). O site usa os indicadores que existirem e ignora os que faltarem.
+`data/locais.json` tem uma linha por local: `id`, `nome_en`, `regiao`, `cidade`, `lat`, `lon`, `coord_aprox`, `notas[alvo][dimensão]` (0 a 1), `analogia` (works/breaks) e indicadores como `elev_media_m`, `declividade_media`, `temp_media_c`, `lst_dia_c`, `chuva_anual_mm`, `aod_medio`, `ndvi_medio`. `fontes_valores` marca os valores que não foram medidos (aparecem como "est."). O site usa os indicadores que existirem e ignora os que faltarem.
 
 Para o ranking, cada local precisa de notas por alvo. Há duas formas, o site aceita qualquer uma:
 
@@ -48,19 +48,24 @@ ou só a nota geral, `"nota_shackleton": 0.61` (aí os pesos do perfil não muda
 
 Campos opcionais que o site mostra: `tipo_en` (descrição em inglês), `analogia` com listas `works` e `breaks` por alvo (`"analogia": {"shackleton": {...}}`) ou por corpo (`"moon"`, `"mars"`). Gravidade, atmosfera e radiação aparecem sempre em "breaks" (vêm de `alvos.json`).
 
-Enquanto algum local tiver `"exemplo": true` ou `"modo_teste": true`, o site mostra o selo **Sample data**. As notas de hoje são valores de exemplo, não resultados.
+Se algum local tiver `"exemplo": true` ou `"modo_teste": true`, o site mostra o selo **Sample data**. Com os dados reais o selo some.
 
-Para trocar pelos dados reais: rodar o notebook, acrescentar as notas (notebook 04 de similaridade) e substituir `data/locais.json`.
+Os dados vêm de `dados/essenciais/` (notas reais de 18 locais × 16 alvos). Para atualizar depois de rodar `dados/essenciais/gerar_dados.py`:
+
+```
+python3 web/tools/gerar_dados_site.py
+```
+
+Ele reescreve `data/alvos.json` e `data/locais.json` em inglês, usando `web/tools/traducao_en.json` (texto novo sem tradução aparece no aviso).
 
 ## Texturas e créditos
 
 | Arquivo | Fonte |
 |---|---|
 | `earth.jpg` | NASA Blue Marble (NASA Earth Observatory), cópia de 4096 px dos exemplos do three-globe, reduzida para 2048 px |
-| `mars.jpg` | NASA 3D Resources, "Images and Textures/Mars" (domínio público) |
-| `moon.jpg` | Textura de exemplo do three.js, **provisória** |
-
-**Pendente:** trocar `moon.jpg` pelo NASA SVS CGI Moon Kit (`lroc_color_poles_2k.jpg`, LRO LROC + LOLA, com os polos corretos): https://svs.gsfc.nasa.gov/4720. Basta salvar com o mesmo nome em `Assets/Textures/`.
+| `moon_8k.jpg`, `moon_4k.jpg` | NASA SVS CGI Moon Kit (`lroc_color_poles_8k`, LRO LROC), via github.com/nasa/virgo; relevo sombreado leve calculado do LRO LOLA LDEM 16 ppd (`ldem_16_uint`). 8k no computador, 4k no celular |
+| `moon_bump.jpg` | Relevo local (LOLA LDEM 16 ppd menos a média de ~30 px), para o `bumpMap` |
+| `mars_4k.jpg`, `mars_normal_4k.jpg` | NASA 3D Resources, modelo Mars 5672 (cor e normal map, 4k), girado 180° para começar em 180°W |
 
 Os modelos `.glb` da pasta `Site/Assets/Models/` (da equipe) não são usados aqui: a textura deles vem em formato de cubo (não equiretangular), o da Terra tem nuvens que escondem os locais e pesa 19 MB, o que deixaria o site lento no celular.
 

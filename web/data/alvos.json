@@ -1,74 +1,541 @@
 {
-  "dimensoes": [
-    { "id": "terrain",    "label": "Terrain & slope",       "icon": "terrain" },
-    { "id": "materials",  "label": "Materials & mineralogy", "icon": "materials" },
-    { "id": "thermal",    "label": "Thermal extremes",      "icon": "thermal" },
-    { "id": "water_ice",  "label": "Water & ice",           "icon": "ice" },
-    { "id": "dust",       "label": "Dust & wind",           "icon": "dust" },
-    { "id": "biology",    "label": "Habitability",          "icon": "bio" },
-    { "id": "operations", "label": "Operations & access",   "icon": "ops" }
-  ],
-  "perfis": [
-    { "id": "general",   "label": "General (equal weights)", "pesos": { "terrain": 1, "materials": 1, "thermal": 1, "water_ice": 1, "dust": 1, "biology": 1, "operations": 1 } },
-    { "id": "rover",     "label": "Rover & mobility test",   "pesos": { "terrain": 3, "materials": 1, "thermal": 1, "water_ice": 0, "dust": 2, "biology": 0, "operations": 2 } },
-    { "id": "astrobio",  "label": "Astrobiology",            "pesos": { "terrain": 0, "materials": 2, "thermal": 1, "water_ice": 2, "dust": 0, "biology": 3, "operations": 1 } },
-    { "id": "isru",      "label": "Ice & ISRU",              "pesos": { "terrain": 1, "materials": 2, "thermal": 2, "water_ice": 3, "dust": 0, "biology": 0, "operations": 1 } },
-    { "id": "habitat",   "label": "Habitat & construction",  "pesos": { "terrain": 2, "materials": 2, "thermal": 2, "water_ice": 1, "dust": 1, "biology": 0, "operations": 3 } }
-  ],
-  "sempre_quebra": [
-    "Gravity: Earth 1 g vs Moon 0.17 g / Mars 0.38 g",
-    "Atmosphere: Earth 101 kPa vs lunar vacuum / 0.6 kPa CO₂ on Mars",
-    "Radiation: Earth's magnetic field and air block most cosmic rays and UV-C"
-  ],
-  "alvos": [
-    {
-      "id": "shackleton", "corpo": "moon", "nome": "Shackleton crater rim",
-      "regiao": "Lunar south pole", "lat": -89.67, "lon": 129.8,
-      "resumo": "Near-permanent sunlight on the rim and permanently shadowed floor that traps water ice. Prime Artemis base region.",
-      "indicadores": { "Illumination": "up to ~90% of the year (rim)", "Surface temp.": "−230 °C (shadow) to −50 °C", "Slope": "mostly < 15° on the rim", "Resource": "water ice in shadowed floor" },
-      "fontes": ["LRO LOLA (topography, illumination)", "LRO Diviner (temperature)", "LRO LAMP / LEND (ice)"]
-    },
-    {
-      "id": "malapert", "corpo": "moon", "nome": "Malapert Massif",
-      "regiao": "Lunar south pole", "lat": -86.0, "lon": 0.0,
-      "resumo": "A 5 km-high massif with long sunlight periods and direct line-of-sight to Earth for communications. Artemis III candidate region.",
-      "indicadores": { "Illumination": "high, long sunlit periods", "Surface temp.": "−170 °C to −50 °C", "Slope": "steep flanks, flat summit", "Earth visibility": "near-continuous" },
-      "fontes": ["LRO LOLA (topography)", "LRO Diviner (temperature)"]
-    },
-    {
-      "id": "haworth", "corpo": "moon", "nome": "Haworth crater",
-      "regiao": "Lunar south pole", "lat": -87.4, "lon": -4.0,
-      "resumo": "Large permanently shadowed crater, one of the best cold traps for volatile ices near the south pole.",
-      "indicadores": { "Illumination": "permanent shadow on the floor", "Surface temp.": "below −200 °C", "Slope": "steep crater walls", "Resource": "likely water ice" },
-      "fontes": ["LRO LOLA", "LRO Diviner", "LRO LAMP"]
-    },
-    {
-      "id": "marius", "corpo": "moon", "nome": "Marius Hills skylight",
-      "regiao": "Oceanus Procellarum", "lat": 14.1, "lon": -56.8,
-      "resumo": "A pit opening into a probable lava tube: natural radiation and thermal shelter for a future base.",
-      "indicadores": { "Feature": "~65 m wide pit", "Geology": "basaltic lava plains", "Subsurface temp.": "stable, about −20 °C", "Use": "shelter, cave exploration" },
-      "fontes": ["SELENE/Kaguya TC (JAXA)", "LRO LROC NAC"]
-    },
-    {
-      "id": "jezero", "corpo": "mars", "nome": "Jezero crater",
-      "regiao": "Isidis Planitia rim", "lat": 18.38, "lon": 77.58,
-      "resumo": "Ancient lake delta explored by Perseverance: clays, carbonates and sediments that may preserve biosignatures.",
-      "indicadores": { "Surface temp.": "−90 °C to −10 °C", "Pressure": "~0.6 kPa CO₂", "Geology": "delta, clays, carbonates", "Dust": "seasonal dust storms" },
-      "fontes": ["MRO CTX / HiRISE", "MRO CRISM (minerals)", "MGS MOLA (topography)", "Mars Odyssey THEMIS"]
-    },
-    {
-      "id": "gale", "corpo": "mars", "nome": "Gale crater",
-      "regiao": "Aeolis Mons (Mt. Sharp)", "lat": -5.4, "lon": 137.8,
-      "resumo": "Layered sedimentary mountain studied by Curiosity, with clay, sulfate and iron-oxide layers and active dunes.",
-      "indicadores": { "Surface temp.": "−80 °C to +10 °C", "Geology": "layered sediments, sulfates", "Dust": "active Bagnold dunes", "Slope": "gentle plains, steep mound" },
-      "fontes": ["MRO HiRISE", "MRO CRISM", "MGS MOLA"]
-    },
-    {
-      "id": "arcadia", "corpo": "mars", "nome": "Arcadia Planitia",
-      "regiao": "Northern plains", "lat": 45.0, "lon": -170.0,
-      "resumo": "Flat lowland with shallow buried water ice, a leading candidate for human landing and ice mining.",
-      "indicadores": { "Surface temp.": "−110 °C to −20 °C", "Terrain": "very flat, smooth", "Resource": "ice within ~1 m depth", "Landing": "low elevation = more braking air" },
-      "fontes": ["MRO SHARAD (radar)", "Mars Odyssey GRS/neutron", "MGS MOLA"]
-    }
-  ]
+ "gerado_de": "dados/essenciais/analogos_completo.json (versão 2, 2026-11-15)",
+ "dimensoes": [
+  {
+   "id": "terreno",
+   "label": "Terrain & slope"
+  },
+  {
+   "id": "materiais",
+   "label": "Materials & mineralogy"
+  },
+  {
+   "id": "termico",
+   "label": "Thermal extremes"
+  },
+  {
+   "id": "luz",
+   "label": "Illumination"
+  },
+  {
+   "id": "agua",
+   "label": "Water & ice"
+  },
+  {
+   "id": "poeira",
+   "label": "Dust & wind"
+  },
+  {
+   "id": "biologia",
+   "label": "Habitability"
+  },
+  {
+   "id": "subsolo",
+   "label": "Subsurface & caves"
+  },
+  {
+   "id": "operacoes",
+   "label": "Landing & mobility"
+  }
+ ],
+ "perfis": [
+  {
+   "id": "general",
+   "label": "General (equal weights)",
+   "pesos": {
+    "terreno": 1,
+    "materiais": 1,
+    "termico": 1,
+    "luz": 1,
+    "agua": 1,
+    "poeira": 1,
+    "biologia": 1,
+    "subsolo": 1,
+    "operacoes": 1
+   }
+  },
+  {
+   "id": "rover",
+   "label": "Rover & mobility test",
+   "pesos": {
+    "terreno": 3,
+    "materiais": 1,
+    "termico": 1,
+    "luz": 0,
+    "agua": 0,
+    "poeira": 2,
+    "biologia": 0,
+    "subsolo": 0,
+    "operacoes": 3
+   }
+  },
+  {
+   "id": "astrobio",
+   "label": "Astrobiology",
+   "pesos": {
+    "terreno": 0,
+    "materiais": 3,
+    "termico": 1,
+    "luz": 0,
+    "agua": 3,
+    "poeira": 0,
+    "biologia": 3,
+    "subsolo": 1,
+    "operacoes": 0
+   }
+  },
+  {
+   "id": "isru",
+   "label": "Ice & ISRU",
+   "pesos": {
+    "terreno": 1,
+    "materiais": 2,
+    "termico": 2,
+    "luz": 1,
+    "agua": 3,
+    "poeira": 0,
+    "biologia": 0,
+    "subsolo": 2,
+    "operacoes": 1
+   }
+  },
+  {
+   "id": "habitat",
+   "label": "Habitat & construction",
+   "pesos": {
+    "terreno": 2,
+    "materiais": 2,
+    "termico": 2,
+    "luz": 2,
+    "agua": 1,
+    "poeira": 1,
+    "biologia": 0,
+    "subsolo": 2,
+    "operacoes": 2
+   }
+  },
+  {
+   "id": "energy",
+   "label": "Base solar power",
+   "pesos": {
+    "terreno": 1,
+    "materiais": 0,
+    "termico": 2,
+    "luz": 3,
+    "agua": 0,
+    "poeira": 2,
+    "biologia": 0,
+    "subsolo": 0,
+    "operacoes": 1
+   }
+  }
+ ],
+ "sempre_quebra": [
+  "Gravity: Earth 1 g; Moon 0.17 g; Mars 0.38 g",
+  "Atmosphere: Earth 101 kPa; Moon vacuum; Mars 0.6 kPa of CO₂",
+  "Radiation: Earth's magnetic field and air block cosmic rays and UV-C",
+  "Day length: Moon 29.5 Earth days; Mars 24 h 39 min"
+ ],
+ "alvos": [
+  {
+   "id": "shackleton",
+   "corpo": "moon",
+   "nome": "Shackleton crater rim",
+   "regiao": "Lunar south pole",
+   "lat": -89.67,
+   "lon": 129.78,
+   "coord_aprox": false,
+   "papel": "base_permanente",
+   "missao": "Long-standing Artemis base region (Shackleton–de Gerlache connecting ridge)",
+   "resumo": "Near-continuous sunlight on the rim and a permanently shadowed floor that traps water ice. The classic spot for a permanent base.",
+   "indicadores": {
+    "Surface temp.": "−230 to −50 °C",
+    "Sunlight": "~85% of the time",
+    "Mean slope": "10.0°",
+    "Albedo": "0.15",
+    "Gravity": "0.17 g"
+   },
+   "fontes": [
+    "LRO Lunar Orbiter Laser Altimeter",
+    "LRO Diviner Lunar Radiometer",
+    "LRO LAMP"
+   ]
+  },
+  {
+   "id": "haworth",
+   "corpo": "moon",
+   "nome": "Haworth",
+   "regiao": "Lunar south pole",
+   "lat": -87.4,
+   "lon": -5.0,
+   "coord_aprox": true,
+   "papel": "artemis_iii",
+   "missao": "One of the 9 Artemis III candidate landing regions (NASA, Oct 2024)",
+   "resumo": "Large crater with a permanently shadowed floor, one of the best cold traps for ice near the pole.",
+   "indicadores": {
+    "Surface temp.": "−200 to −50 °C",
+    "Sunlight": "~60% of the time",
+    "Mean slope": "9.0°",
+    "Albedo": "0.15",
+    "Gravity": "0.17 g"
+   },
+   "fontes": [
+    "LRO Lunar Orbiter Laser Altimeter",
+    "LRO Diviner Lunar Radiometer",
+    "NASA"
+   ]
+  },
+  {
+   "id": "malapert",
+   "corpo": "moon",
+   "nome": "Malapert Massif",
+   "regiao": "Lunar south pole",
+   "lat": -86.0,
+   "lon": 2.9,
+   "coord_aprox": true,
+   "papel": "artemis_iii",
+   "missao": "One of the 9 Artemis III candidate landing regions (NASA, Oct 2024)",
+   "resumo": "A ~5 km-high massif with long sunlit periods and direct line of sight to Earth for communications.",
+   "indicadores": {
+    "Surface temp.": "−200 to −50 °C",
+    "Sunlight": "~70% of the time",
+    "Mean slope": "12.0°",
+    "Albedo": "0.15",
+    "Gravity": "0.17 g"
+   },
+   "fontes": [
+    "LRO Lunar Orbiter Laser Altimeter",
+    "LRO Diviner Lunar Radiometer",
+    "NASA"
+   ]
+  },
+  {
+   "id": "mons_mouton_plateau",
+   "corpo": "moon",
+   "nome": "Mons Mouton Plateau",
+   "regiao": "Lunar south pole",
+   "lat": -84.5,
+   "lon": 33.0,
+   "coord_aprox": true,
+   "papel": "artemis_iii",
+   "missao": "One of the 9 Artemis III candidate landing regions (NASA, Oct 2024)",
+   "resumo": "High, fairly flat plateau on top of Mons Mouton, with good lighting.",
+   "indicadores": {
+    "Surface temp.": "−200 to −50 °C",
+    "Sunlight": "~65% of the time",
+    "Mean slope": "5.0°",
+    "Albedo": "0.15",
+    "Gravity": "0.17 g"
+   },
+   "fontes": [
+    "LRO Lunar Orbiter Laser Altimeter",
+    "LRO Diviner Lunar Radiometer",
+    "NASA"
+   ]
+  },
+  {
+   "id": "mons_mouton",
+   "corpo": "moon",
+   "nome": "Mons Mouton",
+   "regiao": "Lunar south pole",
+   "lat": -84.8,
+   "lon": 29.2,
+   "coord_aprox": true,
+   "papel": "artemis_iii",
+   "missao": "One of the 9 Artemis III candidate landing regions (NASA, Oct 2024); IM-2 landing (2025)",
+   "resumo": "Flat-topped mountain between Malapert and Nobile, a commercial robotic landing target.",
+   "indicadores": {
+    "Surface temp.": "−200 to −50 °C",
+    "Sunlight": "~60% of the time",
+    "Mean slope": "7.0°",
+    "Albedo": "0.15",
+    "Gravity": "0.17 g"
+   },
+   "fontes": [
+    "LRO Lunar Orbiter Laser Altimeter",
+    "LRO Diviner Lunar Radiometer",
+    "NASA"
+   ]
+  },
+  {
+   "id": "nobile_rim_1",
+   "corpo": "moon",
+   "nome": "Nobile Rim 1",
+   "regiao": "Lunar south pole",
+   "lat": -85.4,
+   "lon": 37.0,
+   "coord_aprox": true,
+   "papel": "artemis_iii",
+   "missao": "One of the 9 Artemis III candidate landing regions (NASA, Oct 2024)",
+   "resumo": "Rim of Nobile crater, next to permanently shadowed regions studied for ice.",
+   "indicadores": {
+    "Surface temp.": "−200 to −50 °C",
+    "Sunlight": "~60% of the time",
+    "Mean slope": "9.0°",
+    "Albedo": "0.15",
+    "Gravity": "0.17 g"
+   },
+   "fontes": [
+    "LRO Lunar Orbiter Laser Altimeter",
+    "LRO Diviner Lunar Radiometer",
+    "NASA"
+   ]
+  },
+  {
+   "id": "nobile_rim_2",
+   "corpo": "moon",
+   "nome": "Nobile Rim 2",
+   "regiao": "Lunar south pole",
+   "lat": -84.6,
+   "lon": 62.0,
+   "coord_aprox": true,
+   "papel": "artemis_iii",
+   "missao": "One of the 9 Artemis III candidate landing regions (NASA, Oct 2024)",
+   "resumo": "Another stretch of the Nobile rim, with access to cold craters.",
+   "indicadores": {
+    "Surface temp.": "−200 to −50 °C",
+    "Sunlight": "~55% of the time",
+    "Mean slope": "9.0°",
+    "Albedo": "0.15",
+    "Gravity": "0.17 g"
+   },
+   "fontes": [
+    "LRO Lunar Orbiter Laser Altimeter",
+    "LRO Diviner Lunar Radiometer",
+    "NASA"
+   ]
+  },
+  {
+   "id": "de_gerlache_rim_2",
+   "corpo": "moon",
+   "nome": "de Gerlache Rim 2",
+   "regiao": "Lunar south pole",
+   "lat": -88.6,
+   "lon": -70.0,
+   "coord_aprox": true,
+   "papel": "artemis_iii",
+   "missao": "One of the 9 Artemis III candidate landing regions (NASA, Oct 2024)",
+   "resumo": "Rim of de Gerlache crater, next to Shackleton, with high illumination.",
+   "indicadores": {
+    "Surface temp.": "−200 to −50 °C",
+    "Sunlight": "~75% of the time",
+    "Mean slope": "9.0°",
+    "Albedo": "0.15",
+    "Gravity": "0.17 g"
+   },
+   "fontes": [
+    "LRO Lunar Orbiter Laser Altimeter",
+    "LRO Diviner Lunar Radiometer",
+    "NASA"
+   ]
+  },
+  {
+   "id": "slater_plain",
+   "corpo": "moon",
+   "nome": "Slater Plain",
+   "regiao": "Lunar south pole",
+   "lat": -87.8,
+   "lon": -115.0,
+   "coord_aprox": true,
+   "papel": "artemis_iii",
+   "missao": "One of the 9 Artemis III candidate landing regions (NASA, Oct 2024)",
+   "resumo": "Fairly flat area near Slater crater, good for a safe landing.",
+   "indicadores": {
+    "Surface temp.": "−200 to −50 °C",
+    "Sunlight": "~55% of the time",
+    "Mean slope": "5.0°",
+    "Albedo": "0.15",
+    "Gravity": "0.17 g"
+   },
+   "fontes": [
+    "LRO Lunar Orbiter Laser Altimeter",
+    "LRO Diviner Lunar Radiometer",
+    "NASA"
+   ]
+  },
+  {
+   "id": "cabeus_b_peak",
+   "corpo": "moon",
+   "nome": "Peak near Cabeus B",
+   "regiao": "Lunar south pole",
+   "lat": -84.0,
+   "lon": -50.0,
+   "coord_aprox": true,
+   "papel": "artemis_iii",
+   "missao": "One of the 9 Artemis III candidate landing regions (NASA, Oct 2024); near where LCROSS found ice (Cabeus, 2009)",
+   "resumo": "Sunlit peak near Cabeus, the crater where the LCROSS impact confirmed water.",
+   "indicadores": {
+    "Surface temp.": "−200 to −50 °C",
+    "Sunlight": "~60% of the time",
+    "Mean slope": "10.0°",
+    "Albedo": "0.15",
+    "Gravity": "0.17 g"
+   },
+   "fontes": [
+    "LRO Lunar Orbiter Laser Altimeter",
+    "LRO Diviner Lunar Radiometer",
+    "LCROSS",
+    "NASA"
+   ]
+  },
+  {
+   "id": "marius",
+   "corpo": "moon",
+   "nome": "Marius Hills skylight",
+   "regiao": "Oceanus Procellarum",
+   "lat": 14.1,
+   "lon": -56.8,
+   "coord_aprox": false,
+   "papel": "abrigo_subsolo",
+   "missao": "Pit found by SELENE/Kaguya (JAXA); candidate lava-tube shelter",
+   "resumo": "A ~65 m opening into a likely lava tube: natural shelter from radiation and temperature swings.",
+   "indicadores": {
+    "Surface temp.": "−170 to 110 °C",
+    "Sunlight": "~50% of the time",
+    "Mean slope": "3.0°",
+    "Albedo": "0.07",
+    "Gravity": "0.17 g"
+   },
+   "fontes": [
+    "SELENE/Kaguya Terrain Camera",
+    "LRO Camera",
+    "LRO Diviner Lunar Radiometer"
+   ]
+  },
+  {
+   "id": "jezero",
+   "corpo": "mars",
+   "nome": "Jezero crater",
+   "regiao": "Isidis Planitia rim",
+   "lat": 18.38,
+   "lon": 77.58,
+   "coord_aprox": false,
+   "papel": "ciencia_robotica",
+   "missao": "Perseverance landing site (NASA, 2021); samples for Mars Sample Return",
+   "resumo": "Ancient lake with a delta: clays, carbonates and sediments that may preserve biosignatures.",
+   "indicadores": {
+    "Surface temp.": "−90 to −10 °C",
+    "Sun height": "up to 90°",
+    "Mean slope": "5.0°",
+    "Albedo": "0.18",
+    "Dust (AOD)": "0.6",
+    "Air pressure": "0.65 kPa",
+    "Gravity": "0.38 g"
+   },
+   "fontes": [
+    "MGS Mars Orbiter Laser Altimeter MEGDR",
+    "MRO CRISM",
+    "Mars 2020 MEDA",
+    "Mars 2020 opacidade da poeira em Jezero",
+    "MGS Thermal Emission Spectrometer albedo bolometrico"
+   ]
+  },
+  {
+   "id": "gale",
+   "corpo": "mars",
+   "nome": "Gale crater (Mt. Sharp)",
+   "regiao": "Aeolis Mons",
+   "lat": -5.4,
+   "lon": 137.8,
+   "coord_aprox": false,
+   "papel": "ciencia_robotica",
+   "missao": "Curiosity (NASA, since 2012)",
+   "resumo": "Layered sedimentary mountain with clay, sulfate and hematite, and active dunes.",
+   "indicadores": {
+    "Surface temp.": "−85 to 0 °C",
+    "Sun height": "up to 90°",
+    "Mean slope": "6.0°",
+    "Albedo": "0.20",
+    "Dust (AOD)": "0.5",
+    "Air pressure": "0.65 kPa",
+    "Gravity": "0.38 g"
+   },
+   "fontes": [
+    "MGS Mars Orbiter Laser Altimeter MEGDR",
+    "MRO CRISM",
+    "Curiosity REMS",
+    "MGS Thermal Emission Spectrometer albedo bolometrico"
+   ]
+  },
+  {
+   "id": "meridiani",
+   "corpo": "mars",
+   "nome": "Meridiani Planum",
+   "regiao": "Terra Meridiani",
+   "lat": -1.95,
+   "lon": -5.53,
+   "coord_aprox": false,
+   "papel": "ciencia_robotica",
+   "missao": "Opportunity (NASA, 2004–2018): hematite and jarosite, signs of acidic water",
+   "resumo": "Plain with hematite spherules and jarosite: an ancient acidic, iron-rich water environment.",
+   "indicadores": {
+    "Surface temp.": "−90 to 0 °C",
+    "Sun height": "up to 90°",
+    "Mean slope": "1.0°",
+    "Albedo": "0.14",
+    "Dust (AOD)": "0.6",
+    "Air pressure": "0.65 kPa",
+    "Gravity": "0.38 g"
+   },
+   "fontes": [
+    "MGS Mars Orbiter Laser Altimeter MEGDR",
+    "MGS Thermal Emission Spectrometer albedo bolometrico",
+    "Opportunity Mini-TES"
+   ]
+  },
+  {
+   "id": "arcadia",
+   "corpo": "mars",
+   "nome": "Arcadia Planitia",
+   "regiao": "Northern plains",
+   "lat": 45.0,
+   "lon": -170.0,
+   "coord_aprox": true,
+   "papel": "pouso_humano",
+   "missao": "Human landing candidate thanks to shallow ice (NASA SWIM map)",
+   "resumo": "Low plain with water ice less than ~1 m deep: a candidate for human landing and ice mining.",
+   "indicadores": {
+    "Surface temp.": "−110 to −20 °C",
+    "Sun height": "up to 70°",
+    "Mean slope": "1.0°",
+    "Albedo": "0.20",
+    "Dust (AOD)": "0.6",
+    "Air pressure": "0.65 kPa",
+    "Gravity": "0.38 g"
+   },
+   "fontes": [
+    "MGS Mars Orbiter Laser Altimeter MEGDR",
+    "NASA Subsurface Water Ice Mapping",
+    "MRO SHARAD",
+    "MGS Thermal Emission Spectrometer albedo bolometrico"
+   ]
+  },
+  {
+   "id": "oxia",
+   "corpo": "mars",
+   "nome": "Oxia Planum",
+   "regiao": "Chryse Planitia rim",
+   "lat": 18.2,
+   "lon": -24.6,
+   "coord_aprox": true,
+   "papel": "ciencia_robotica",
+   "missao": "Landing site of the Rosalind Franklin rover (ESA, ExoMars)",
+   "resumo": "Plain with nearly 4-billion-year-old iron- and magnesium-rich clays, chosen to search for signs of life.",
+   "indicadores": {
+    "Surface temp.": "−90 to −5 °C",
+    "Sun height": "up to 90°",
+    "Mean slope": "2.0°",
+    "Albedo": "0.20",
+    "Dust (AOD)": "0.6",
+    "Air pressure": "0.65 kPa",
+    "Gravity": "0.38 g"
+   },
+   "fontes": [
+    "MGS Mars Orbiter Laser Altimeter MEGDR",
+    "MRO CRISM",
+    "ESA ExoMars",
+    "MGS Thermal Emission Spectrometer albedo bolometrico"
+   ]
+  }
+ ]
 }

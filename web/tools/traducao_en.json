@@ -1,0 +1,170 @@
+{
+  "_sobre": "Textos em inglês para o site. Chave = texto em português de dados/essenciais/analogos_completo.json. Texto novo sem tradução aparece em português e o gerar_dados_site.py avisa.",
+  "paises": {
+    "China": "China", "Irã": "Iran", "Chile": "Chile", "Etiópia": "Ethiopia", "Brasil": "BR", "Canadá": "Canada",
+    "Noruega": "Norway", "Espanha": "Spain", "EUA": "USA", "Índia": "India", "Antártida": "Antarctica"
+  },
+  "regioes": {
+    "Andaluzia": "Andalusia", "Havaí": "Hawaiʻi", "Terra de Vitória": "Victoria Land",
+    "Polo sul lunar": "Lunar south pole", "Borda de Isidis Planitia": "Isidis Planitia rim",
+    "Planícies do norte": "Northern plains", "Borda de Chryse Planitia": "Chryse Planitia rim"
+  },
+  "cidades": { "Ilha Devon": "Devon Island", "Estação McMurdo": "McMurdo Station" },
+  "textos": {
+    "Bacia alta (~2.800 m), fria e seca, com sais e yardangs": "High (~2,800 m), cold, dry basin with salts and yardangs",
+    "Lago antigo que secou e deixou sais e sulfatos, como em Gale": "Ancient lake that dried out leaving salts and sulfates, as in Gale",
+    "Frio, seco, alto e com muita radiação UV": "Cold, dry, high and with strong UV",
+    "Pressão do ar ~70 kPa, muito acima de Marte": "Air pressure ~70 kPa, far above Mars",
+    "Pouca cratera de impacto": "Few impact craters",
+
+    "Yardangs gigantes esculpidos pelo vento e algumas das maiores temperaturas de superfície já medidas pelo MODIS": "Giant wind-carved yardangs and some of the highest surface temperatures MODIS has measured",
+    "Yardangs como os de Medusae Fossae em Marte": "Yardangs like those of Medusae Fossae on Mars",
+    "Quase sem vida e sem vegetação": "Almost lifeless, no vegetation",
+    "Calor extremo, o oposto de Marte": "Extreme heat, the opposite of Mars",
+    "Acesso remoto": "Remote access",
+
+    "Núcleo hiperárido, o lugar não polar mais seco da Terra": "Hyperarid core, the driest non-polar place on Earth",
+    "Solo quase estéril com percloratos, como os achados pela Phoenix em Marte": "Nearly sterile soil with perchlorates, like those Phoenix found on Mars",
+    "Seco e com UV muito forte": "Dry, with very strong UV",
+    "Temperatura média alta": "High mean temperature",
+    "Neblina costeira traz umidade": "Coastal fog brings moisture",
+
+    "Fontes hidrotermais hiperácidas e salinas abaixo do nível do mar": "Hyperacidic, salty hot springs below sea level",
+    "Salmouras ácidas com ferro e sulfatos, como o ambiente antigo de Meridiani": "Acidic iron- and sulfate-rich brines, like ancient Meridiani",
+    "Mostra o limite da vida: algumas poças são estéreis": "Shows the limit of life: some pools are sterile",
+    "Calor de ~35 °C de média": "Mean heat of ~35 °C",
+    "Atividade vulcânica atual": "Active volcanism",
+
+    "Campo de dunas costeiras com lagoas temporárias": "Coastal dune field with seasonal lagoons",
+    "Dunas ativas e água efêmera entre elas, como se supõe no passado de Marte": "Active dunes with short-lived water between them, as proposed for early Mars",
+    "Areia solta para testar rodas (o Spirit ficou preso em areia)": "Loose sand to test wheels (Spirit got stuck in sand)",
+    "Chuva alta (~1.400 mm/ano, NASA POWER)": "High rainfall (~1,400 mm/yr, NASA POWER)",
+    "Areia de quartzo, não basáltica": "Quartz sand, not basaltic",
+
+    "Cratera de impacto de ~23 km em deserto polar": "~23 km impact crater in a polar desert",
+    "Cratera em deserto polar com permafrost": "Crater in a polar desert with permafrost",
+    "Sol rasante e dia polar": "Low sun and polar day",
+    "Rocha de carbonato, não basalto": "Carbonate rock, not basalt",
+    "Verão com degelo": "Summer thaw",
+
+    "Platô de arenito semiárido com solo exposto": "Semi-arid sandstone plateau with bare soil",
+    "Poeira e sujeira em painéis solares, como nos rovers de Marte": "Dust on solar panels, as on Mars rovers",
+    "Solo exposto e sol forte": "Bare soil and strong sun",
+    "Ainda chove ~500 mm por ano (NASA POWER)": "Still ~500 mm of rain a year (NASA POWER)",
+    "Caatinga cobre parte do solo": "Caatinga scrub covers part of the ground",
+
+    "Voçorocas e solo nu: o maior núcleo de desertificação do Brasil": "Gullies and bare soil: Brazil's largest desertification core",
+    "Solo nu avermelhado e ravinas, parecidos com terrenos erodidos de Marte": "Bare reddish soil and ravines, like eroded Martian terrain",
+    "Erosão rápida que pode ser medida com satélite": "Fast erosion that satellites can measure",
+    "Clima com estação chuvosa forte": "Strong rainy season",
+    "A erosão aqui é por água corrente, que em Marte só existiu no passado": "Erosion here is by running water, which on Mars existed only in the past",
+
+    "Vulcões com glóbulos de carbonato em basalto, dentro de permafrost ártico": "Volcanoes with carbonate globules in basalt, inside Arctic permafrost",
+    "Carbonatos em basalto como os do meteorito marciano ALH84001 e os de Jezero": "Carbonates in basalt like those in Martian meteorite ALH84001 and at Jezero",
+    "Sol de meia-noite e noite polar: luz rasante como no polo sul lunar": "Midnight sun and polar night: low light like the lunar south pole",
+    "Gelo, neve e mar em volta": "Ice, snow and sea all around",
+    "Acesso só por barco": "Reachable only by boat",
+
+    "Rio ácido rico em ferro e sulfatos": "Acidic river rich in iron and sulfates",
+    "Jarosita e hematita, os minerais de Meridiani": "Jarosite and hematite, the Meridiani minerals",
+    "Vida em água ácida e no subsolo (projeto MARTE)": "Life in acidic water and underground (MARTE project)",
+    "Mineração e cidade em volta": "Mining and a town around it",
+    "Clima mediterrâneo": "Mediterranean climate",
+
+    "Vulcão basáltico com cones de escória e cinza": "Basaltic volcano with cinder and ash cones",
+    "A cinza do Pu'u Nene deu origem ao simulante de solo marciano JSC Mars-1": "Pu'u Nene ash became the JSC Mars-1 Martian soil simulant",
+    "Testes de ISRU (extração de oxigênio) da NASA com regolito vulcânico": "NASA ISRU (oxygen extraction) tests with volcanic regolith",
+    "Ar mais denso e úmido": "Denser, wetter air",
+    "Gelo e neve no inverno": "Ice and snow in winter",
+
+    "Cratera jovem (~1,8 km) em basalto do Deccan, com lago salino alcalino": "Young (~1.8 km) crater in Deccan basalt with a salty alkaline lake",
+    "Uma das poucas crateras em basalto bem preservadas, como as da Lua e de Marte": "One of few well-preserved craters in basalt, like those on the Moon and Mars",
+    "Lago salino na cratera lembra os lagos antigos de Jezero e Gale": "Salt lake in the crater recalls the ancient lakes of Jezero and Gale",
+    "Monções e vegetação densa na borda": "Monsoons and dense vegetation on the rim",
+    "Cratera pequena": "Small crater",
+
+    "Cratera complexa de ~13 km com anel central, em rocha sedimentar": "~13 km complex crater with a central ring, in sedimentary rock",
+    "Anel central e borda muito bem expostos, como em crateras complexas de Marte": "Central ring and rim very well exposed, as in complex Martian craters",
+    "Cerrado seco no inverno deixa a rocha à vista": "Dry-season cerrado leaves the rock exposed",
+    "Rocha sedimentar, não basalto": "Sedimentary rock, not basalt",
+    "Estação chuvosa forte": "Strong rainy season",
+
+    "Maior estrutura de impacto da América do Sul (~40 km), com núcleo de granito soerguido": "South America's largest impact structure (~40 km), with an uplifted granite core",
+    "Escala de cratera grande, comparável a crateras de pouso em Marte": "Large crater scale, comparable to Mars landing craters",
+    "Núcleo soerguido mostra rocha profunda trazida à superfície, como picos centrais lunares": "Uplifted core brings deep rock to the surface, like lunar central peaks",
+    "Muito erodida (~250 milhões de anos)": "Heavily eroded (~250 million years old)",
+    "Vegetação de cerrado e pastagem": "Cerrado and pasture cover",
+
+    "Cratera de impacto complexa de ~12 km em basalto": "~12 km complex impact crater in basalt",
+    "Impacto em basalto, a rocha dos mares lunares e da crosta marciana": "Impact into basalt, the rock of the lunar maria and the Martian crust",
+    "Feições de choque e brechas em rocha vulcânica, raras no mundo": "Shock features and breccias in volcanic rock, rare worldwide",
+    "Clima úmido e vegetação cobrem a rocha": "Humid climate and vegetation cover the rock",
+    "Erosão intensa apagou parte da borda": "Strong erosion has erased part of the rim",
+
+    "Cratera de impacto de ~9,5 km em basalto": "~9.5 km impact crater in basalt",
+    "Segundo impacto em basalto na mesma província: permite comparar duas crateras": "A second basalt impact in the same province: two craters to compare",
+    "Brechas de impacto em basalto acessíveis": "Accessible impact breccias in basalt",
+    "Cidade e lavouras dentro da cratera": "Town and farmland inside the crater",
+    "Clima úmido subtropical": "Humid subtropical climate",
+
+    "Platôs de canga (crosta de ferro) com mais de 1.000 cavernas": "Canga (iron crust) plateaus with over 1,000 caves",
+    "Hematita e goethita, os óxidos que dão a cor de Marte e que o Opportunity achou em Meridiani": "Hematite and goethite, the oxides that color Mars and that Opportunity found at Meridiani",
+    "Cavernas para treinar exploração subterrânea, como fossos e tubos de lava": "Caves to train underground exploration, like pits and lava tubes",
+    "Floresta úmida em volta": "Rainforest all around",
+    "Cavernas em ferro, não tubos de lava": "Caves in iron rock, not lava tubes",
+
+    "Deserto polar sem gelo, com permafrost e lagos salgados": "Ice-free polar desert with permafrost and salt lakes",
+    "O lugar mais frio e seco da Terra: gelo enterrado como em Arcadia": "The coldest, driest place on Earth: buried ice like Arcadia",
+    "Noite polar e sol rasante, como no polo sul lunar": "Polar night and low sun, like the lunar south pole",
+    "Ainda está a -20 °C em média, longe de -200 °C": "Still about −20 °C on average, far from −200 °C",
+    "Acesso só por avião": "Reachable only by plane",
+
+    "Borda com sol quase contínuo e fundo em sombra permanente que guarda gelo de água. Local clássico para uma base permanente.": "Near-continuous sunlight on the rim and a permanently shadowed floor that traps water ice. The classic spot for a permanent base.",
+    "Grande cratera com fundo em sombra permanente, uma das melhores armadilhas frias de gelo perto do polo.": "Large crater with a permanently shadowed floor, one of the best cold traps for ice near the pole.",
+    "Maciço de ~5 km de altura com longos períodos de sol e visada direta para a Terra (comunicação).": "A ~5 km-high massif with long sunlit periods and direct line of sight to Earth for communications.",
+    "Platô alto e relativamente plano no topo de Mons Mouton, com boa iluminação.": "High, fairly flat plateau on top of Mons Mouton, with good lighting.",
+    "Montanha de topo plano entre Malapert e Nobile, alvo de pouso robótico comercial.": "Flat-topped mountain between Malapert and Nobile, a commercial robotic landing target.",
+    "Borda da cratera Nobile, junto a regiões em sombra permanente estudadas para gelo.": "Rim of Nobile crater, next to permanently shadowed regions studied for ice.",
+    "Outro trecho da borda de Nobile, com acesso a crateras frias.": "Another stretch of the Nobile rim, with access to cold craters.",
+    "Borda da cratera de Gerlache, vizinha de Shackleton, com alta iluminação.": "Rim of de Gerlache crater, next to Shackleton, with high illumination.",
+    "Área relativamente plana perto da cratera Slater, boa para pouso seguro.": "Fairly flat area near Slater crater, good for a safe landing.",
+    "Pico iluminado perto de Cabeus, cratera onde o impacto do LCROSS confirmou água.": "Sunlit peak near Cabeus, the crater where the LCROSS impact confirmed water.",
+    "Abertura de ~65 m para um provável tubo de lava: abrigo natural contra radiação e variação térmica.": "A ~65 m opening into a likely lava tube: natural shelter from radiation and temperature swings.",
+    "Antigo lago com delta: argilas, carbonatos e sedimentos que podem guardar bioassinaturas.": "Ancient lake with a delta: clays, carbonates and sediments that may preserve biosignatures.",
+    "Montanha sedimentar em camadas com argila, sulfato e hematita, e dunas ativas.": "Layered sedimentary mountain with clay, sulfate and hematite, and active dunes.",
+    "Planície com esférulas de hematita e jarosita: um antigo ambiente de água ácida e rica em ferro.": "Plain with hematite spherules and jarosite: an ancient acidic, iron-rich water environment.",
+    "Planície baixa com gelo de água a menos de ~1 m de profundidade: candidata a pouso humano e mineração de gelo.": "Low plain with water ice less than ~1 m deep: a candidate for human landing and ice mining.",
+    "Planície com argilas ricas em ferro e magnésio de quase 4 bilhões de anos, escolhida para buscar sinais de vida.": "Plain with nearly 4-billion-year-old iron- and magnesium-rich clays, chosen to search for signs of life.",
+
+    "Região histórica das propostas de base do Artemis (crista de ligação Shackleton–de Gerlache)": "Long-standing Artemis base region (Shackleton–de Gerlache connecting ridge)",
+    "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024)": "One of the 9 Artemis III candidate landing regions (NASA, Oct 2024)",
+    "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024); pouso do IM-2 (2025)": "One of the 9 Artemis III candidate landing regions (NASA, Oct 2024); IM-2 landing (2025)",
+    "Uma das 9 regiões candidatas ao pouso do Artemis III (NASA, out/2024); perto de onde o LCROSS achou gelo (Cabeus, 2009)": "One of the 9 Artemis III candidate landing regions (NASA, Oct 2024); near where LCROSS found ice (Cabeus, 2009)",
+    "Fosso descoberto pela SELENE/Kaguya (JAXA); candidato a abrigo em tubo de lava": "Pit found by SELENE/Kaguya (JAXA); candidate lava-tube shelter",
+    "Pouso do Perseverance (NASA, 2021); coleta de amostras para o Mars Sample Return": "Perseverance landing site (NASA, 2021); samples for Mars Sample Return",
+    "Curiosity (NASA, desde 2012)": "Curiosity (NASA, since 2012)",
+    "Opportunity (NASA, 2004–2018): hematita e jarosita, sinais de água ácida": "Opportunity (NASA, 2004–2018): hematite and jarosite, signs of acidic water",
+    "Candidata a pouso humano por ter gelo raso (mapa SWIM da NASA)": "Human landing candidate thanks to shallow ice (NASA SWIM map)",
+    "Local de pouso do rover Rosalind Franklin (ESA, ExoMars)": "Landing site of the Rosalind Franklin rover (ESA, ExoMars)",
+
+    "Gravidade: Terra 1 g; Lua 0,17 g; Marte 0,38 g": "Gravity: Earth 1 g; Moon 0.17 g; Mars 0.38 g",
+    "Atmosfera: Terra 101 kPa; Lua vácuo; Marte 0,6 kPa de CO2": "Atmosphere: Earth 101 kPa; Moon vacuum; Mars 0.6 kPa of CO₂",
+    "Radiação: o campo magnético e o ar da Terra bloqueiam raios cósmicos e UV-C": "Radiation: Earth's magnetic field and air block cosmic rays and UV-C",
+    "Duração do dia: Lua 29,5 dias terrestres; Marte 24 h 39 min": "Day length: Moon 29.5 Earth days; Mars 24 h 39 min"
+  },
+  "nomes_curtos": {
+    "qaidam": "Qaidam", "lut": "Lut Desert", "atacama": "Atacama", "dallol": "Dallol", "lencois": "Lençóis",
+    "haughton": "Haughton", "raso_catarina": "Raso da Catarina", "gilbues": "Gilbués", "svalbard": "Svalbard",
+    "rio_tinto": "Río Tinto", "mauna_kea": "Mauna Kea", "lonar": "Lonar", "cangalha": "Cangalha",
+    "araguainha": "Araguainha", "vargeao": "Vargeão", "vista_alegre": "Vista Alegre", "carajas": "Carajás",
+    "dry_valleys": "McMurdo"
+  },
+  "perfis": {
+    "geral": ["general", "General (equal weights)"],
+    "rover": ["rover", "Rover & mobility test"],
+    "astrobio": ["astrobio", "Astrobiology"],
+    "isru": ["isru", "Ice & ISRU"],
+    "habitat": ["habitat", "Habitat & construction"],
+    "energia": ["energy", "Base solar power"]
+  }
+}
