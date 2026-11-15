@@ -60,6 +60,8 @@ VARIAVEIS = {
     "lst_noite_c":             ("Temp. superficie minima", "C", 0),
     "amplitude_termica_c":     ("Amplitude termica (dT)", "C", 0),
     "temp_media_c":            ("Temp. superficie media", "C", 0),
+    "temp_ar_c":               ("Temp. do ar a 2 m", "C", 0),
+    "amplitude_ar_c":          ("Variacao diaria do ar", "C", 0),
     "temp_subsolo_c":          ("Temp. no subsolo", "C", 0),
     "ndvi_medio":              ("Vegetacao (NDVI)", "indice", 2),
     "albedo_medio":            ("Albedo", "fracao", 2),
@@ -213,6 +215,8 @@ def carregar_power(lid):
         "lst_noite_c": (tmin, "TS_MIN: minima da temperatura da superficie, media dos 12 meses (MERRA-2)"),
         "amplitude_termica_c": (None if tmax is None or tmin is None else tmax - tmin, "TS_MAX - TS_MIN"),
         "temp_media_c": (p["TS"]["ANN"], "TS: temperatura da superficie, media anual (MERRA-2)"),
+        "temp_ar_c": (p["T2M"]["ANN"], "T2M: temperatura do ar a 2 m, media anual (MERRA-2); compara com o sensor do carrinho"),
+        "amplitude_ar_c": (p["T2M_RANGE"]["ANN"], "T2M_RANGE: variacao diaria tipica do ar a 2 m, media anual (MERRA-2)"),
         "albedo_medio": (p["ALLSKY_SRF_ALB"]["ANN"], "ALLSKY_SRF_ALB: albedo da superficie, ceu real (CERES SYN1deg)"),
         "aod_medio": (p["AOD_55"]["ANN"], "AOD_55: profundidade optica de aerossol em 550 nm (MERRA-2)"),
         "chuva_anual_mm": (p["PRECTOTCORR"]["ANN"] * 365.25, "PRECTOTCORR: chuva corrigida, media anual (MERRA-2/GPM)"),
@@ -541,7 +545,7 @@ def gerar_saidas(terra, alvos, dims, perfis, cfg, criterios, fontes, resultados,
 
     # ---------------- tela_carrinho.json (compacto, para o ESP32 / C)
     chaves = ["elev_media_m", "declividade_media", "frac_decliv_8", "sol_max_graus", "frac_ano_sol_continuo",
-              "lst_dia_c", "lst_noite_c", "amplitude_termica_c", "ndvi_medio", "albedo_medio", "aod_medio",
+              "lst_dia_c", "lst_noite_c", "amplitude_termica_c", "temp_media_c", "temp_ar_c", "amplitude_ar_c", "ndvi_medio", "albedo_medio", "aod_medio",
               "vento_10m_ms", "chuva_anual_mm", "pressao_kpa"]
     tela = {
         "projeto": "Illuminat Horizontes", "versao_dados": 2, "gerado_em": hoje, "legenda_status": legenda,

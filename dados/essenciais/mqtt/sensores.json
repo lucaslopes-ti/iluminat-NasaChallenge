@@ -41,11 +41,13 @@
    "nome": "Temperatura",
    "unidade": "C",
    "campos": [
+    "temp_ar_c",
+    "amplitude_ar_c",
     "lst_dia_c",
     "lst_noite_c"
    ],
    "comparacao": "direta",
-   "texto": "Compare com a maxima e a minima de superficie do local e do alvo."
+   "texto": "O sensor mede o ar: compare com temp_ar_c (NASA POWER T2M) do local. Lua e Marte so tem temperatura de superficie (lst_dia_c/lst_noite_c); na Lua nao ha ar."
   },
   "tilt": {
    "nome": "Inclinacao",

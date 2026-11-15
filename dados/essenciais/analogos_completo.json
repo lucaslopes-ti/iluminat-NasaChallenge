@@ -4451,6 +4451,22 @@
      "fonte": "nasa_power",
      "nota": "TS: temperatura da superficie, media anual (MERRA-2)"
     },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": 4,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M: temperatura do ar a 2 m, media anual (MERRA-2); compara com o sensor do carrinho"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 13,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M_RANGE: variacao diaria tipica do ar a 2 m, media anual (MERRA-2)"
+    },
     "albedo_medio": {
      "rotulo": "Albedo",
      "valor": 0.28,
@@ -5078,6 +5094,22 @@
      "fonte": "nasa_power",
      "nota": "TS: temperatura da superficie, media anual (MERRA-2)"
     },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": 26,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M: temperatura do ar a 2 m, media anual (MERRA-2); compara com o sensor do carrinho"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 15,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M_RANGE: variacao diaria tipica do ar a 2 m, media anual (MERRA-2)"
+    },
     "albedo_medio": {
      "rotulo": "Albedo",
      "valor": 0.21,
@@ -5702,6 +5734,22 @@
      "status": "medido",
      "fonte": "nasa_power",
      "nota": "TS: temperatura da superficie, media anual (MERRA-2)"
+    },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": 17,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M: temperatura do ar a 2 m, media anual (MERRA-2); compara com o sensor do carrinho"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 15,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M_RANGE: variacao diaria tipica do ar a 2 m, media anual (MERRA-2)"
     },
     "albedo_medio": {
      "rotulo": "Albedo",
@@ -6332,6 +6380,22 @@
      "fonte": "nasa_power",
      "nota": "TS: temperatura da superficie, media anual (MERRA-2)"
     },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": 26,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M: temperatura do ar a 2 m, media anual (MERRA-2); compara com o sensor do carrinho"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 12,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M_RANGE: variacao diaria tipica do ar a 2 m, media anual (MERRA-2)"
+    },
     "albedo_medio": {
      "rotulo": "Albedo",
      "valor": 0.16,
@@ -6948,6 +7012,22 @@
      "status": "medido",
      "fonte": "nasa_power",
      "nota": "TS: temperatura da superficie, media anual (MERRA-2)"
+    },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": 27,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M: temperatura do ar a 2 m, media anual (MERRA-2); compara com o sensor do carrinho"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 5,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M_RANGE: variacao diaria tipica do ar a 2 m, media anual (MERRA-2)"
     },
     "albedo_medio": {
      "rotulo": "Albedo",
@@ -7579,6 +7659,22 @@
      "fonte": "nasa_power",
      "nota": "TS: temperatura da superficie, media anual (MERRA-2)"
     },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": -14,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M: temperatura do ar a 2 m, media anual (MERRA-2); compara com o sensor do carrinho"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 5,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M_RANGE: variacao diaria tipica do ar a 2 m, media anual (MERRA-2)"
+    },
     "albedo_medio": {
      "rotulo": "Albedo",
      "valor": 0.46,
@@ -8197,6 +8293,22 @@
      "status": "medido",
      "fonte": "nasa_power",
      "nota": "TS: temperatura da superficie, media anual (MERRA-2)"
+    },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": 26,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M: temperatura do ar a 2 m, media anual (MERRA-2); compara com o sensor do carrinho"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 13,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M_RANGE: variacao diaria tipica do ar a 2 m, media anual (MERRA-2)"
     },
     "albedo_medio": {
      "rotulo": "Albedo",
@@ -8817,6 +8929,22 @@
      "status": "medido",
      "fonte": "nasa_power",
      "nota": "TS: temperatura da superficie, media anual (MERRA-2)"
+    },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": 26,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M: temperatura do ar a 2 m, media anual (MERRA-2); compara com o sensor do carrinho"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 11,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M_RANGE: variacao diaria tipica do ar a 2 m, media anual (MERRA-2)"
     },
     "albedo_medio": {
      "rotulo": "Albedo",
@@ -9444,6 +9572,22 @@
      "fonte": "nasa_power",
      "nota": "TS: temperatura da superficie, media anual (MERRA-2)"
     },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": -8,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M: temperatura do ar a 2 m, media anual (MERRA-2); compara com o sensor do carrinho"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 4,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M_RANGE: variacao diaria tipica do ar a 2 m, media anual (MERRA-2)"
+    },
     "albedo_medio": {
      "rotulo": "Albedo",
      "valor": 0.54,
@@ -10069,6 +10213,22 @@
      "status": "medido",
      "fonte": "nasa_power",
      "nota": "TS: temperatura da superficie, media anual (MERRA-2)"
+    },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": 18,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M: temperatura do ar a 2 m, media anual (MERRA-2); compara com o sensor do carrinho"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 13,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M_RANGE: variacao diaria tipica do ar a 2 m, media anual (MERRA-2)"
     },
     "albedo_medio": {
      "rotulo": "Albedo",
@@ -10696,6 +10856,22 @@
      "fonte": "nasa_power",
      "nota": "TS: temperatura da superficie, media anual (MERRA-2)"
     },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": 21,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M: temperatura do ar a 2 m, media anual (MERRA-2); compara com o sensor do carrinho"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 5,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M_RANGE: variacao diaria tipica do ar a 2 m, media anual (MERRA-2)"
+    },
     "albedo_medio": {
      "rotulo": "Albedo",
      "valor": 0.08,
@@ -11322,6 +11498,22 @@
      "fonte": "nasa_power",
      "nota": "TS: temperatura da superficie, media anual (MERRA-2)"
     },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": 26,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M: temperatura do ar a 2 m, media anual (MERRA-2); compara com o sensor do carrinho"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 13,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M_RANGE: variacao diaria tipica do ar a 2 m, media anual (MERRA-2)"
+    },
     "albedo_medio": {
      "rotulo": "Albedo",
      "valor": 0.12,
@@ -11944,6 +12136,22 @@
      "status": "medido",
      "fonte": "nasa_power",
      "nota": "TS: temperatura da superficie, media anual (MERRA-2)"
+    },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": 27,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M: temperatura do ar a 2 m, media anual (MERRA-2); compara com o sensor do carrinho"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 10,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M_RANGE: variacao diaria tipica do ar a 2 m, media anual (MERRA-2)"
     },
     "albedo_medio": {
      "rotulo": "Albedo",
@@ -12569,6 +12777,22 @@
      "fonte": "nasa_power",
      "nota": "TS: temperatura da superficie, media anual (MERRA-2)"
     },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": 24,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M: temperatura do ar a 2 m, media anual (MERRA-2); compara com o sensor do carrinho"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 11,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M_RANGE: variacao diaria tipica do ar a 2 m, media anual (MERRA-2)"
+    },
     "albedo_medio": {
      "rotulo": "Albedo",
      "valor": 0.16,
@@ -13191,6 +13415,22 @@
      "fonte": "nasa_power",
      "nota": "TS: temperatura da superficie, media anual (MERRA-2)"
     },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": 18,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M: temperatura do ar a 2 m, media anual (MERRA-2); compara com o sensor do carrinho"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 10,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M_RANGE: variacao diaria tipica do ar a 2 m, media anual (MERRA-2)"
+    },
     "albedo_medio": {
      "rotulo": "Albedo",
      "valor": 0.14,
@@ -13807,6 +14047,22 @@
      "status": "medido",
      "fonte": "nasa_power",
      "nota": "TS: temperatura da superficie, media anual (MERRA-2)"
+    },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": 19,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M: temperatura do ar a 2 m, media anual (MERRA-2); compara com o sensor do carrinho"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 11,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M_RANGE: variacao diaria tipica do ar a 2 m, media anual (MERRA-2)"
     },
     "albedo_medio": {
      "rotulo": "Albedo",
@@ -14428,6 +14684,22 @@
      "status": "medido",
      "fonte": "nasa_power",
      "nota": "TS: temperatura da superficie, media anual (MERRA-2)"
+    },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": 26,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M: temperatura do ar a 2 m, media anual (MERRA-2); compara com o sensor do carrinho"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 9,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M_RANGE: variacao diaria tipica do ar a 2 m, media anual (MERRA-2)"
     },
     "albedo_medio": {
      "rotulo": "Albedo",
@@ -15058,6 +15330,22 @@
      "status": "medido",
      "fonte": "nasa_power",
      "nota": "TS: temperatura da superficie, media anual (MERRA-2)"
+    },
+    "temp_ar_c": {
+     "rotulo": "Temp. do ar a 2 m",
+     "valor": -27,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M: temperatura do ar a 2 m, media anual (MERRA-2); compara com o sensor do carrinho"
+    },
+    "amplitude_ar_c": {
+     "rotulo": "Variacao diaria do ar",
+     "valor": 6,
+     "unidade": "C",
+     "status": "medido",
+     "fonte": "nasa_power",
+     "nota": "T2M_RANGE: variacao diaria tipica do ar a 2 m, media anual (MERRA-2)"
     },
     "albedo_medio": {
      "rotulo": "Albedo",
