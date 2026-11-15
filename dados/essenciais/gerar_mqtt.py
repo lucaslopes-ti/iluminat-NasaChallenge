@@ -38,6 +38,13 @@ SENSORES = {
               "texto": "Terreno mais rugoso = mais vibracao nas rodas."},
     "slip":  {"nome": "Patinagem", "unidade": "%", "campos": [], "comparacao": "qualitativa",
               "texto": "Areia solta prende rodas (o Spirit ficou preso em Marte)."},
+    # sensores do carrinho de teste da equipe (DHT, ultrassonico e LDR)
+    "umid":  {"nome": "Umidade do ar", "unidade": "%", "campos": ["chuva_anual_mm"], "comparacao": "qualitativa",
+              "texto": "Ar umido = local chuvoso; na Lua nao ha ar e em Marte a umidade e quase zero."},
+    "dist":  {"nome": "Obstaculo", "unidade": "cm", "campos": ["rugosidade_tri_m"], "comparacao": "qualitativa",
+              "texto": "Distancia ate a rocha ou parede mais proxima: terreno rugoso pede desvios, como nos rovers."},
+    "luz":   {"nome": "Luz (LDR)", "unidade": "", "campos": ["insolacao_toa_wm2", "sol_max_graus"], "comparacao": "relativa",
+              "texto": "Valor do LDR de 0 a 1023, sem unidade fisica: compare se a luz sobe ou desce."},
 }
 
 CAMPOS_PERFIL = ["declividade_media", "frac_decliv_8", "rugosidade_tri_m", "lst_dia_c", "lst_noite_c",

@@ -19,12 +19,26 @@ Dois caminhos levam os dados do carrinho até a seção "Field rover" do site. O
 
 Pode mandar só as chaves que tiver; as outras aparecem como "–".
 
+A ponte também entende o texto do sketch de teste da equipe (9600 baud), uma linha por sensor:
+
+```
+Umidade: 52.30%  |  Temperatura: 28.40°C
+Distancia: 23 cm
+Luminosidade (LDR): 548
+```
+
+Cada ciclo vira `{"umid":52.3,"temp":28.4,"dist":23,"luz":548}` (umidade do ar em %, distância do obstáculo em cm, LDR de 0 a 1023). Rode com `--baud 9600`.
+
+O ESP32 não é usado no projeto.
+
+**Instalar no Mac (Python do Homebrew):** `pip3 install` dá erro `externally-managed-environment`. Use
+`python3 -m pip install --user --break-system-packages pyserial paho-mqtt` (instala só para o seu usuário, sem mexer no Homebrew).
+
 O carrinho usa um **Arduino** (Uno/Nano) para os sensores, e o Arduino manda uma linha por segundo pela USB. No começo do `arduino_carrinho.ino`, escolha os sensores que você ligou (`TEMP_SENSOR` LM35/DHT22/DS18B20, `USAR_PMS5003`, `USAR_PATINAGEM` etc.). Os desligados não entram na linha.
 
 1. **MQTT pelo computador (principal):** grave `arduino_carrinho` no Arduino, ligue na USB e rode `python3 firmware/ponte_serial_mqtt.py --local lencois` (antes, `pip install pyserial paho-mqtt`). A ponte publica cada linha em `illuminat-horizontes/carrinho` e o perfil do local, retido, em `illuminat-horizontes/local`. Clique em **Wi-Fi** no site e em **Connect**. Feche o Monitor Serial da IDE antes, porque só um programa abre a porta.
 2. **USB direto no site:** grave `arduino_carrinho` no Arduino, ligue no computador e clique em **USB** no site (Chrome ou Edge, 115200 baud).
 3. **Bluetooth pelo computador:** ligue um HC-05/HC-06 na Serial de hardware do Arduino (ligação no topo do `arduino_carrinho.ino`) e mude o módulo para 115200 com `AT+UART=115200,0,0`. Pareie com o computador (PIN `1234` ou `0000`): ele vira uma porta serial (`/dev/cu.HC-05` no Mac; no Windows, a COM de "Saída"). Rode a ponte com essa porta: `python3 firmware/ponte_serial_mqtt.py --porta /dev/cu.HC-05 --local lencois`. A tela em C (`Projeto_C/NasaSpace`) faz isso sozinho depois da escolha.
-4. **Wi-Fi sem computador:** grave `arduino_carrinho` no Arduino e `esp32_ponte_mqtt` no ESP32, que só faz a ponte (preencha a rede Wi-Fi). Clique em **Wi-Fi** no site e em **Connect**. O broker e o tópico precisam ser iguais nos dois lados.
 
 Para um broker com senha (HiveMQ Cloud), a ponte aceita `--broker`, `--porta-mqtt 8883 --tls` e `--usuario`, e a senha vai na variável `MQTT_SENHA`.
 
