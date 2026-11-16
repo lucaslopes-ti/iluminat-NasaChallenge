@@ -77,6 +77,8 @@ O carrinho manda uma linha JSON por leitura (`{"temp":24.1,"pm25":14,"solar":410
 - **Web:** o computador onde o Arduino está ligado roda `firmware/ponte_serial_mqtt.py` (ou `controle_carrinho.py`) e publica no broker MQTT; o site assina pelo WebSocket (`lib/mqtt/mqtt.esm.js`, mqtt.js 5.10.4, MIT). O site já abre ouvindo esse tópico.
 - **USB:** Arduino ligado neste computador; o site lê pela Web Serial (Chrome ou Edge, 9600 baud).
 
+O site também assina `illuminat-horizontes/local` (perfil retido que a ponte publica com `--local <id>`) e `illuminat-horizontes/selecao` (escolha da tela em C) e troca sozinho para o local e o alvo escolhidos no terminal.
+
 Não há mais modo Demo: a tabela só mostra o que vem do carrinho de verdade.
 
 Código do Arduino e da ponte: pasta `firmware/` na raiz do repositório.

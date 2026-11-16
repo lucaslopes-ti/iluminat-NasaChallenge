@@ -21,6 +21,7 @@ export class Station {
     this.log = [];               // every reading of this session, for the CSV download
     this.solarMax = null;        // brightest solar reading so far = "clear sky" reference
     this.onChange = () => {};
+    this.onChoice = () => {};    // site/target chosen in the terminal (MQTT)
     this._stop = null;
     setInterval(() => this._checkStale(), 2000);
   }
@@ -38,13 +39,28 @@ export class Station {
       this._set('mqtt', 'error', 'Could not load MQTT: ' + err.message);
       return;
     }
+    // the bridge (--local <id>) and the C app also publish, retained, which site and target
+    // were chosen in the terminal: <base>/local and <base>/selecao. The page follows them.
+    const base = topic.includes('/') ? topic.slice(0, topic.lastIndexOf('/')) : topic;
+    const choiceTopics = [`${base}/local`, `${base}/selecao`];
     client.on('connect', () => {
+      client.subscribe(choiceTopics, () => {});
       client.subscribe(topic, (err) => {
         if (err) this._set('mqtt', 'error', 'Subscribe failed: ' + err.message);
         else this._set('mqtt', 'waiting', `Connected. Waiting for ${topic}`);
       });
     });
-    client.on('message', (_t, payload) => this._parse(payload.toString()));
+    client.on('message', (t, payload) => {
+      if (!choiceTopics.includes(t)) return this._parse(payload.toString());
+      let obj;
+      try { obj = JSON.parse(payload.toString()); } catch { return; }
+      // <base>/local is a site profile ({id, alvo, corpo, ...});
+      // <base>/selecao is the C app's choice ({corpo, alvo, local, ...})
+      const choice = t.endsWith('/local')
+        ? { kind: 'local', site: obj.id, target: obj.alvo, body: obj.corpo }
+        : { kind: 'selecao', site: obj.local, target: obj.alvo, body: obj.corpo };
+      if (choice.site || choice.target) this.onChoice(choice);
+    });
     client.on('reconnect', () => this._set('mqtt', 'connecting', `Cannot reach ${broker}. Retrying…`));
     client.on('error', (err) => this._set('mqtt', 'error', err.message));
     this._stop = () => new Promise((res) => client.end(true, {}, res));

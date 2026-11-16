@@ -104,7 +104,7 @@ Sensores → Arduino Uno/Nano (sem Wi-Fi) → Bluetooth HC-05 (ou USB), 1 linha 
 - **Mensagem:** `{"temp":24.1,"uv":6.2,"pm25":14,"solar":410,"soil":22,"tilt":3.4,"vib":0.08,"slip":5}`. Manter estas chaves. Chaves ausentes aparecem como "–".
 - O sensor `temp` mede o **ar** e é comparado com `temp_ar_c` (NASA POWER T2M).
 - Broker padrão: `broker.hivemq.com` (público, aberto). Para a apresentação, usar um tópico só da equipe ou HiveMQ Cloud com `--tls`, `--usuario` e `MQTT_SENHA`.
-- Outros caminhos: USB direto no site (Web Serial, Chrome/Edge, 9600 baud). **O modo Demo saiu (16/11):** o site só tem Web (MQTT, conecta sozinho ao abrir) e USB.
+- Outros caminhos: USB direto no site (Web Serial, Chrome/Edge, 9600 baud). **O modo Demo saiu (16/11):** o site só tem Web (MQTT, conecta sozinho ao abrir) e USB. O site também segue o local/alvo escolhido no terminal: assina `illuminat-horizontes/local` e `illuminat-horizontes/selecao` (a escolha da tela em C ganha do alvo padrão do perfil).
 - Rodar a ponte: `pip install pyserial paho-mqtt` e `python3 firmware/ponte_serial_mqtt.py --porta /dev/cu.usbserial-21130 --baud 9600 --local lencois` (fechar o Monitor Serial antes).
 - Tela em C com o cabo: `./bin/Debug/nasaspace /dev/cu.usbserial-21130 9600` (2º argumento = baud; `PONTE_PYTHON` escolhe o Python). No Mac: `python3 -m pip install --user --break-system-packages pyserial paho-mqtt`.
 - Gravar o sketch: `arduino-cli compile --fqbn arduino:avr:uno firmware/carrinho_motores && arduino-cli upload -p /dev/cu.usbserial-21130 --fqbn arduino:avr:uno firmware/carrinho_motores` (bibliotecas "DHT sensor library" e "Adafruit Unified Sensor"). Nada ligado no D0 ao gravar.
