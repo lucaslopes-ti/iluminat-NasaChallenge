@@ -57,7 +57,7 @@ O arquivo `entrada/criterios_base.json` resume os critérios e diz como testar c
 
 ## Dimensões e nota
 
-São 9 dimensões, as 7 do plano mais **iluminação** e **subsolo**:
+São 9 dimensões, as 7 do plano inicial mais **iluminação** e **subsolo**:
 
 terreno · materiais · temperatura · iluminação · água e gelo · poeira e vento · vida · subsolo · pouso e mobilidade
 

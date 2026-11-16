@@ -115,7 +115,7 @@ NASA Blue Marble (Terra), NASA SVS CGI Moon Kit (mosaico de cor do LRO LROC, com
 | `web/` | site three.js em inglês (prévia na branch `gh-pages`) | [web/README.md](../web/README.md) |
 | `Projeto_C/NasaSpace/` | tela em C: Lua/Marte → alvo → top 3 → tela do local → MQTT → carrinho ao vivo | abrir `NasaSpace.cbp` no Code::Blocks |
 | `firmware/` | sketch do Arduino e ponte USB → MQTT (sem ESP32 e sem Bluetooth) | [firmware/README.md](../firmware/README.md) |
-| `docs/` | plano completo (escopo, fontes, métrica, cronograma) | [docs/plano-gemeo-digital-analogos.md](plano-gemeo-digital-analogos.md) |
+| `docs/` | prints do site e este README em português | [README em inglês](../README.md) |
 
 ### Tela em C
 

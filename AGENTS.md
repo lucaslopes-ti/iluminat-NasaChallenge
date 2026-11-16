@@ -4,7 +4,7 @@ Este arquivo é lido pelo agente do Antigravity (AGENTS.md) e pelo Claude Code (
 
 ## O projeto
 
-- **Nome:** Illuminat Horizontes (nome da equipe e do site). O nome antigo, "AnaloGêmeo" / "gêmeo digital", ainda aparece no plano em `docs/`, mas não deve ser usado em texto novo. O `README.md` da raiz é em inglês (para os jurados); a versão em português fica em `docs/README.pt-BR.md`.
+- **Nome:** Illuminat Horizontes (nome da equipe e do site). O nome antigo, "AnaloGêmeo" / "gêmeo digital", não deve ser usado em texto novo. O `README.md` da raiz é em inglês (para os jurados); a versão em português fica em `docs/README.pt-BR.md`.
 - **Evento:** NASA Space Apps Challenge 2026, desafio *"Identify Earth Locations that Analog the Permanent Moon Base Locations and Mars"*.
 - **Ideia:** comparar **18 locais da Terra** com **16 alvos na Lua e em Marte** em **9 dimensões** (terreno, materiais, temperatura, iluminação, água e gelo, poeira e vento, vida, subsolo, pouso e mobilidade) e dar uma **nota de similaridade**, o IAP (Índice de Analogia Planetária, 0 a 100). Para cada local, mostramos onde a analogia funciona, onde quebra e o que dá para testar ali.
 - **Nota:** indicador numérico `S = exp(−(Terra − alvo)² / (2σ²))` (σ em `dados/essenciais/entrada/dimensoes.json`), Jaccard para as tags, média por dimensão e média ponderada pelo **perfil de missão** (geral, rover, astrobiologia, gelo/ISRU, base e construção, energia solar).
@@ -27,7 +27,7 @@ Este arquivo é lido pelo agente do Antigravity (AGENTS.md) e pelo Claude Code (
 
 | Pasta | O que tem |
 |---|---|
-| `docs/` | `plano-gemeo-digital-analogos.md`: plano completo (escopo, fontes, métrica, cronograma). |
+| `docs/` | `img/` (prints do site usados no README) e `README.pt-BR.md`. O plano (`plano-gemeo-digital-analogos.md`) saiu do repositório a pedido do Lucas (16/11); a cópia fica nos arquivos do projeto. |
 | `web/` | **Nosso site** (three.js r170 local, sem CDN). `Main.js`, `Scripts/Javascript/Globe.js`, `Scoring.js`, `Station.js` (carrinho por MQTT, USB ou Demo), `data/alvos.json` e `data/locais.json` (gerados), `tools/gerar_dados_site.py` + `tools/traducao_en.json`. Ver `web/README.md`. |
 | `Site/` | Site de outros colaboradores. **Não editar.** |
 | `dados/essenciais/` | Dados de analogia prontos. `tela_carrinho.json` (~70 KB, para a tela em C; o centro são as listas `alvos` e `locais`), `analogos_completo.json` (tudo), CSVs (`ranking.csv`, `notas_dimensoes.csv`, `criterios_terra.csv`, `medidas_*.csv`), `entrada/` (dados de partida editáveis), `gerar_dados.py`, `gerar_mqtt.py`, `ndvi_mod13c2.py`. Ver `dados/essenciais/README.md`. |
@@ -115,4 +115,4 @@ Sensores → Arduino Uno/Nano (sem Wi-Fi) → Bluetooth HC-05 (ou USB), 1 linha 
 2. Quando a task do AppEEARS terminar, rodar `--appeears`, depois `gerar_mqtt.py` e `web/tools/gerar_dados_site.py`.
 3. Tela em C (`Projeto_C/NasaSpace`): testar no Windows (Code::Blocks + Mosquitto no PATH) e com o HC-05 pareado. O modo ao vivo (`mosquitto_sub` em `illuminat-horizontes/carrinho`, coluna "Agora") já funciona; `MQTT_BROKER=localhost` testa com um Mosquitto local.
 4. Montar o carrinho com os sensores escolhidos no topo de `arduino_carrinho.ino` e testar o fluxo completo até o site.
-5. Preparar a apresentação e o vídeo seguindo a história em 3 atos do plano (`docs/`).
+5. Preparar a apresentação e o vídeo seguindo a história em 3 atos do plano (fora do repositório).
