@@ -69,13 +69,14 @@ Ele reescreve `data/alvos.json` e `data/locais.json` em inglês, usando `web/too
 
 Os modelos `.glb` da pasta `Site/Assets/Models/` (da equipe) não são usados aqui: a textura deles vem em formato de cubo (não equiretangular), o da Terra tem nuvens que escondem os locais e pesa 19 MB, o que deixaria o site lento no celular.
 
-## Carrinho (Arduino + ESP32)
+## Carrinho (Arduino no cabo USB)
 
 Abaixo dos globos há a seção "Field rover", com uma tabela que compara a leitura do carrinho agora, o análogo da Terra selecionado e o alvo na Lua ou em Marte. As medidas e os valores de referência dos alvos ficam em `data/estacao.json`.
 
 O carrinho manda uma linha JSON por leitura (`{"temp":24.1,"pm25":14,"solar":410,"tilt":3.4}`) por um destes caminhos:
-- **Wi-Fi:** ESP32 publica no broker MQTT; o site assina pelo WebSocket (`lib/mqtt/mqtt.esm.js`, mqtt.js 5.10.4, MIT).
-- **USB:** Arduino ligado no computador; o site lê pela Web Serial (Chrome ou Edge).
-- **Demo:** leituras simuladas, usado quando nada está ligado.
+- **Web:** o computador onde o Arduino está ligado roda `firmware/ponte_serial_mqtt.py` (ou `controle_carrinho.py`) e publica no broker MQTT; o site assina pelo WebSocket (`lib/mqtt/mqtt.esm.js`, mqtt.js 5.10.4, MIT). O site já abre ouvindo esse tópico.
+- **USB:** Arduino ligado neste computador; o site lê pela Web Serial (Chrome ou Edge, 9600 baud).
 
-Código de exemplo do Arduino e do ESP32: pasta `firmware/` na raiz do repositório.
+Não há mais modo Demo: a tabela só mostra o que vem do carrinho de verdade.
+
+Código do Arduino e da ponte: pasta `firmware/` na raiz do repositório.
