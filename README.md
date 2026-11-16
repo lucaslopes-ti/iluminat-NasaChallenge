@@ -136,7 +136,7 @@ Globe textures: NASA Blue Marble, NASA SVS CGI Moon Kit (LROC + LOLA), NASA 3D R
 | [`dados/srtm30/`](dados/srtm30/), [`dados/copernicus_dem/`](dados/copernicus_dem/), [`dados/mola/`](dados/mola/) | Raw tiles and caches used by the scripts. |
 | [`firmware/`](firmware/) | Arduino sketches and the USB → MQTT bridge. |
 | [`Projeto_C/NasaSpace/`](Projeto_C/NasaSpace/) | The C terminal app (Code::Blocks). |
-| [`docs/`](docs/) | Project plan, screenshots and a [Portuguese version of this README](docs/README.pt-BR.md). |
+| [`docs/`](docs/) | Screenshots and a [Portuguese version of this README](docs/README.pt-BR.md). |
 | `Site/` | A separate site built by other team members. |
 
 Most code comments and folder names are in Portuguese; the site itself is in English.
