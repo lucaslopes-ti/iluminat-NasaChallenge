@@ -92,6 +92,7 @@ async function init() {
 
   buildProfile();
   initStation();
+  initRoverGallery();
 
   const deepLink = location.hash.length > 1;
   const [hb, ht, hs] = location.hash.replace('#', '').split('/');
@@ -183,6 +184,42 @@ function followTerminal(c) {
   if (target.corpo !== state.body) setBody(target.corpo, { targetId: target.id, siteId });
   else if (target.id !== state.targetId) selectTarget(target.id, { siteId, focus: true });
   else if (siteId && siteId !== state.siteId) selectSite(siteId, { focus: true });
+}
+
+// photo carousel under the rover table: scroll-snap track, arrows, dots, centre slide highlighted
+function initRoverGallery() {
+  const root = $('roverGallery');
+  if (!root) return;
+  const track = root.querySelector('.rg-track');
+  const slides = [...track.querySelectorAll('.rg-slide')];
+  const dots = root.querySelector('.rg-dots');
+  dots.innerHTML = slides.map((_, i) => `<button type="button" role="tab" aria-label="Photo ${i + 1}"></button>`).join('');
+  const dotBtns = [...dots.children];
+  let cur = 0;
+  const go = (i) => {
+    cur = (i + slides.length) % slides.length;
+    const s = slides[cur];
+    track.scrollTo({ left: s.offsetLeft - (track.clientWidth - s.offsetWidth) / 2, behavior: reduceMotion ? 'auto' : 'smooth' });
+  };
+  const mark = () => {
+    const mid = track.scrollLeft + track.clientWidth / 2;
+    let best = 0, bd = Infinity;
+    slides.forEach((s, i) => { const d = Math.abs(s.offsetLeft + s.offsetWidth / 2 - mid); if (d < bd) { bd = d; best = i; } });
+    cur = best;
+    slides.forEach((s, i) => s.classList.toggle('on', i === best));
+    dotBtns.forEach((b, i) => b.setAttribute('aria-selected', String(i === best)));
+  };
+  dotBtns.forEach((b, i) => { b.onclick = () => go(i); });
+  root.querySelectorAll('.rg-nav button').forEach((b) => { b.onclick = () => go(cur + Number(b.dataset.dir)); });
+  slides.forEach((s, i) => { s.onclick = () => go(i); });
+  track.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); e.stopPropagation(); go(cur + (e.key === 'ArrowRight' ? 1 : -1)); }
+  });
+  let raf = 0;
+  track.addEventListener('scroll', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(mark); }, { passive: true });
+  window.addEventListener('resize', mark);
+  slides.forEach((s) => s.querySelector('img').addEventListener('load', mark));
+  mark();
 }
 
 function syncModes(mode) {

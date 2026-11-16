@@ -141,6 +141,17 @@
         <tbody id="stBody"></tbody>
       </table>
     </div>
+    <div class="rover-gallery" id="roverGallery" aria-roledescription="carousel" aria-label="Photos of our rover">
+      <div class="rg-head"><span class="kicker">The rover in the lab</span>
+        <div class="rg-nav"><button class="ghost round small" type="button" data-dir="-1" aria-label="Previous photo">‹</button><button class="ghost round small" type="button" data-dir="1" aria-label="Next photo">›</button></div>
+      </div>
+      <div class="rg-track" tabindex="0">
+        <figure class="rg-slide"><img src="Assets/Rover/rover-1.jpg" width="720" height="1281" loading="lazy" decoding="async" alt="Our rover: Arduino, motor driver, ultrasonic sensor and four yellow wheels on an acrylic chassis"><figcaption>Arduino Uno, H-bridge, DHT, HC-SR04 and LDR</figcaption></figure>
+        <figure class="rg-slide"><img src="Assets/Rover/rover-2.jpg" width="720" height="1281" loading="lazy" decoding="async" alt="Front view of the rover with the ultrasonic sensor on a mast"><figcaption>The ultrasonic "eyes" measure the nearest obstacle</figcaption></figure>
+        <figure class="rg-slide"><img src="Assets/Rover/rover-3.jpg" width="202" height="360" loading="lazy" decoding="async" alt="The rover on a desk in front of a monitor showing this site"><figcaption>Live: the rover's readings on this site</figcaption></figure>
+      </div>
+      <div class="rg-dots" role="tablist" aria-label="Choose a photo"></div>
+    </div>
     <p class="fine">The rover sends one JSON line per second, for example <code>{"temp":26.3,"umid":53.2,"dist":85,"luz":334}</code>, over the USB cable. The computer it is plugged into relays each line by MQTT (Web button), or you can plug the cable into this computer (USB button). Code is in the <code>firmware/</code> folder of the repository.</p>
   </section>
 
