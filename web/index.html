@@ -122,8 +122,7 @@
           CSV
         </button>
         <div class="seg small" id="stModes" role="group" aria-label="Rover connection">
-          <button data-mode="demo" aria-pressed="false">Demo</button>
-          <button data-mode="mqtt" aria-pressed="false">Wi-Fi</button>
+          <button data-mode="mqtt" aria-pressed="false" title="Readings the Python bridge publishes over MQTT">Web</button>
           <button data-mode="usb" aria-pressed="false">USB</button>
         </div>
       </div>
@@ -142,7 +141,7 @@
         <tbody id="stBody"></tbody>
       </table>
     </div>
-    <p class="fine">The rover sends one JSON line per second, for example <code>{"temp":26.3,"umid":53.2,"dist":85,"luz":334}</code>, over the USB cable. The computer it is plugged into relays each line by MQTT (Wi-Fi button), or you can plug the cable into this computer (USB button). Code is in the <code>firmware/</code> folder of the repository.</p>
+    <p class="fine">The rover sends one JSON line per second, for example <code>{"temp":26.3,"umid":53.2,"dist":85,"luz":334}</code>, over the USB cable. The computer it is plugged into relays each line by MQTT (Web button), or you can plug the cable into this computer (USB button). Code is in the <code>firmware/</code> folder of the repository.</p>
   </section>
 
   <!-- details drawer -->

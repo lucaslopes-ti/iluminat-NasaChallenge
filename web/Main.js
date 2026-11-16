@@ -151,7 +151,6 @@ function initStation() {
     b.onclick = () => {
       const m = b.dataset.mode;
       $('stMqtt').hidden = m !== 'mqtt';
-      if (m === 'demo') { store.set('st-mode', 'demo'); station.startDemo(); }
       if (m === 'usb') station.connectUsb(stCfg.serial_baud);
       if (m === 'mqtt') { syncModes('mqtt'); $('stBroker').focus(); }
     };
@@ -163,8 +162,9 @@ function initStation() {
     store.set('st-broker', broker); store.set('st-topic', topic); store.set('st-mode', 'mqtt');
     station.connectMqtt(broker, topic);
   };
-  if (store.get('st-mode') === 'mqtt') station.connectMqtt($('stBroker').value, $('stTopic').value);
-  else station.startDemo();
+  // no simulated data: listen on the team's MQTT topic right away, so whatever the bridge
+  // (ponte_serial_mqtt.py / controle_carrinho.py) publishes from the rover shows up here
+  station.connectMqtt($('stBroker').value, $('stTopic').value);
 }
 
 function syncModes(mode) {
@@ -176,8 +176,8 @@ function renderStation() {
   const { mode, status, detail } = station;
   syncModes(mode);
   const live = status === 'live';
-  const text = live ? (mode === 'demo' ? 'Demo' : mode === 'usb' ? 'Live · USB' : 'Live · Wi-Fi') : ST_LABEL[status];
-  $('stStatus').dataset.status = live && mode === 'demo' ? 'demo' : status;
+  const text = live ? (mode === 'usb' ? 'Live · USB' : 'Live · Web') : ST_LABEL[status];
+  $('stStatus').dataset.status = status;
   $('stStatusText').textContent = text;
   $('roverDot').dataset.status = $('stStatus').dataset.status;
   $('stDetail').textContent = detail;
@@ -259,8 +259,31 @@ function renderTargetChips(targets, activeId) {
     + (more > 0 ? `<button class="chip more" type="button" data-more>+${more} more</button>` : '');
   $('targetChips').querySelectorAll('button[data-id]').forEach((b) => { b.onclick = () => selectTarget(b.dataset.id, { focus: true }); });
   const mb = $('targetChips').querySelector('[data-more]');
-  if (mb) mb.onclick = () => { const sel = $('targetSelect'); try { sel.showPicker(); } catch { sel.focus(); } };
+  if (mb) mb.onclick = (e) => { e.stopPropagation(); toggleTargetMenu(targets, mb); };
   fitChips($('targetChips'), targets.length);
+}
+
+// "+N more" opens a small list with every target of this body (showPicker on the hidden
+// <select> did nothing in Safari/Firefox and in some Chrome builds)
+function toggleTargetMenu(targets, anchor) {
+  let menu = $('targetMenu');
+  if (menu) { menu.remove(); return; }
+  menu = document.createElement('div');
+  menu.id = 'targetMenu';
+  menu.className = 'target-menu';
+  menu.setAttribute('role', 'listbox');
+  menu.setAttribute('aria-label', 'All targets');
+  menu.innerHTML = targets.map((t) =>
+    `<button type="button" role="option" data-id="${t.id}" aria-selected="${t.id === state.targetId}">${esc(t.nome)}</button>`).join('');
+  anchor.closest('.world').appendChild(menu);
+  menu.querySelectorAll('button').forEach((b) => { b.onclick = () => { menu.remove(); selectTarget(b.dataset.id, { focus: true }); }; });
+  const close = (ev) => {
+    if (!document.body.contains(menu)) return document.removeEventListener('pointerdown', close, true);
+    if (!menu.contains(ev.target) && ev.target !== anchor) { menu.remove(); document.removeEventListener('pointerdown', close, true); }
+  };
+  document.addEventListener('pointerdown', close, true);
+  document.addEventListener('keydown', function onKey(ev) { if (ev.key === "Escape") { menu.remove(); document.removeEventListener("keydown", onKey); } });
+  menu.querySelector('[aria-selected="true"]')?.scrollIntoView({ block: 'nearest' });
 }
 
 // drop chips from the end (never the selected one) until the row fits; the "+N" chip counts them

@@ -4,7 +4,7 @@
 //   {"temp":24.1,"uv":6.2,"pm25":14,"solar":410,"soil":22,"tilt":3.4,"vib":0.08,"slip":5}
 // Missing keys are fine. Sources: MQTT over WebSocket (published by the computer the
 // Arduino is plugged into: firmware/controle_carrinho.py or ponte_serial_mqtt.py),
-// USB serial straight into this page (Chrome/Edge) and a built-in demo.
+// or USB serial straight into this page (Chrome/Edge). No simulated data.
 
 const HISTORY = 60;          // points kept per measure (sparklines)
 const STALE_MS = 10000;      // no message for this long -> "waiting"
@@ -12,7 +12,7 @@ const STALE_MS = 10000;      // no message for this long -> "waiting"
 export class Station {
   constructor(measureIds) {
     this.ids = measureIds;
-    this.mode = 'off';           // off | demo | mqtt | usb
+    this.mode = 'off';           // off | mqtt | usb
     this.status = 'off';         // off | connecting | live | waiting | error
     this.detail = '';
     this.latest = {};
@@ -26,33 +26,6 @@ export class Station {
   }
 
   get supportsUsb() { return 'serial' in navigator; }
-
-  async startDemo() {
-    await this.stop();
-    this._set('demo', 'live', 'Simulated readings with a dust storm every minute');
-    let t = 0;
-    const tick = () => {
-      t += 1;
-      const storm = Math.max(0, Math.sin((t % 60) / 60 * Math.PI * 2 - 1.2)); // 0..1
-      const n = (a) => (Math.random() - 0.5) * a;
-      this.ingest({
-        temp: 27 + 2 * Math.sin(t / 40) + n(0.4),
-        umid: 48 - 6 * storm + n(1),
-        dist: Math.max(4, 120 + 90 * Math.sin(t / 9) + n(6)),
-        luz: Math.max(0, 700 * (1 - 0.7 * storm) + n(12)),
-        uv: Math.max(0, 7.5 * (1 - 0.8 * storm) + n(0.3)),
-        pm25: 12 + 260 * storm * storm + n(4),
-        solar: Math.max(0, 520 * (1 - 0.75 * storm) + n(15)),
-        soil: 18 + n(1),
-        tilt: 4 + 6 * Math.abs(Math.sin(t / 7)) + n(0.8),
-        vib: 0.05 + 0.12 * Math.abs(Math.sin(t / 3)) + n(0.02),
-        slip: 6 + 14 * storm + n(2),
-      });
-    };
-    tick();
-    const id = setInterval(tick, 1000);
-    this._stop = () => clearInterval(id);
-  }
 
   async connectMqtt(broker, topic) {
     await this.stop();
@@ -144,7 +117,7 @@ export class Station {
     this.log.push(row);
     if (this.log.length > 20000) this.log.shift();
     if (Number.isFinite(this.latest.solar) && obj.solar != null) this.solarMax = Math.max(this.solarMax ?? 0, this.latest.solar);
-    if (this.status !== 'live') this._set(this.mode, 'live', this.mode === 'demo' ? this.detail : 'Receiving data');
+    if (this.status !== 'live') this._set(this.mode, 'live', 'Receiving data');
     else this.onChange();
   }
 
@@ -174,7 +147,7 @@ export class Station {
   }
 
   _checkStale() {
-    if (this.status === 'live' && this.mode !== 'demo' && Date.now() - this.lastAt > STALE_MS) {
+    if (this.status === 'live' && Date.now() - this.lastAt > STALE_MS) {
       this._set(this.mode, 'waiting', 'No data in the last 10 s');
     }
   }

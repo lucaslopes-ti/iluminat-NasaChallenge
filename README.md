@@ -1,145 +1,150 @@
 # Illuminat Horizontes
 
-Projeto para o NASA Space Apps Challenge 2026, desafio *"Identify Earth Locations that Analog the Permanent Moon Base Locations and Mars"*.
+**Where on Earth can we train for the Moon and Mars?**
 
-Comparamos **18 locais da Terra** com **16 alvos na Lua e em Marte** (as regiões candidatas do Artemis III, crateras polares, Marius Hills, Jezero, Gale, Meridiani, Arcadia e Oxia) em **9 dimensões**: terreno, materiais, temperatura, iluminação, água e gelo, poeira e vento, vida, subsolo, e pouso e mobilidade. Cada par recebe uma nota de 0 a 100, o **IAP (Índice de Analogia Planetária)**. Para cada local mostramos onde a analogia funciona, onde ela quebra e o que dá para testar ali com um carrinho de sensores.
+Our entry for the NASA Space Apps Challenge 2026, challenge *Identify Earth Locations that Analog the Permanent Moon Base Locations and Mars*.
 
-O diferencial são os locais brasileiros pouco estudados (Lençóis Maranhenses, Raso da Catarina, Gilbués, Cangalha, Araguainha, Vargeão, Vista Alegre e Carajás), avaliados ao lado dos análogos clássicos (Atacama, Haughton, Mauna Kea, Río Tinto e Vales Secos de McMurdo), que servem para validar o método.
+We compare **18 places on Earth** with **16 targets on the Moon and Mars** across **9 dimensions** and give every pair a similarity score from 0 to 100. For each place we say where the analogy holds, where it breaks, and what you could actually test there. A small Arduino rover takes live readings in the field and puts them next to the NASA data.
 
-## Como funciona
+**Live site:** https://lucaslopes-ti.github.io/iluminat-NasaChallenge/
+**Demo (slides):** https://canva.link/0sw8fdnj7fn8epy
 
-```
-dados NASA e Copernicus ──> dados/essenciais/gerar_dados.py ──> notas (IAP) por local x alvo
-                                                                 │
-                       ┌─────────────────────────────────────────┼──────────────────────┐
-                       v                                         v                      v
-               site three.js (web/)                    tela em C (Projeto_C)     mensagens MQTT
-                       ^                                         ^
-                       └──────────── MQTT ───────────────────────┤
-                                                                 │
-   sensores -> Arduino -> Bluetooth (HC-05) -> ponte_serial_mqtt.py (no computador)
-```
+![Moon target next to its best Earth analog](docs/img/site-moon.jpg)
 
-- **Nota:** cada indicador numérico vira `S = exp(−(Terra − alvo)² / (2σ²))`; as tags (geologia, gelo, cavernas) usam Jaccard. A nota da dimensão é a média dos indicadores, e o IAP é a média ponderada das dimensões pelo **perfil de missão** (geral, rover, astrobiologia, gelo/ISRU, base e construção, energia solar).
-- **O que sempre quebra:** gravidade, atmosfera, radiação e duração do dia. Isso aparece em todos os locais.
-
-## Resultados
-
-| Posição | Local | IAP | Melhor alvo |
-|---|---|---|---|
-| 1 | Bacia de Qaidam (China) | 68 | Oxia Planum |
-| 2 | Deserto de Lut (Irã) | 66 | Oxia Planum |
-| 3 | Atacama (Chile) | 66 | Oxia Planum |
-| 4 | Vales Secos de McMurdo (Antártida) | 65 | Pico perto de Cabeus B |
-| 7 | **Lençóis Maranhenses (Brasil)** | 55 | Meridiani Planum |
-
-**Validação.** Cada análogo clássico deve ficar bem colocado no alvo que a literatura associa a ele. Entre os 18 locais:
-
-| Referência | Alvo da literatura | Posição |
-|---|---|---|
-| Haughton | Marte e Lua (Haughton-Mars Project) | 2º |
-| Atacama | Marte (solos com perclorato) | 3º |
-| Mauna Kea | Lua (testes de ISRU PISCES) | 4º |
-| Río Tinto | Meridiani (jarosita e hematita) | 6º |
-| Vales Secos de McMurdo | Marte (deserto frio, permafrost) | 6º |
-
-Os locais novos que aparecem ao lado deles, como Lençóis, ganham credibilidade.
-
-## Dados usados (para os slides)
-
-Só fontes da NASA e do Copernicus; os valores de Lua e Marte vêm de missões da NASA, com dois casos da ESA e da JAXA citados como referência. Todo valor leva **status** e **fonte** (produto, versão, DOI, resolução e data de acesso), em `dados/essenciais/entrada/fontes.csv`.
-
-**Em números:** 18 locais × 16 alvos = **288 comparações**. São 800 valores: 468 da Terra (305 medidos por satélite ou modelo, 126 calculados por física, 36 de referência, 1 provisório) e 332 da Lua e de Marte (247 publicados por missões, 85 calculados). Além disso, 167 tags de geologia, gelo, subsolo e vida, com 25 referências bibliográficas.
-
-### Terra: medido por satélite e modelo
-
-| Dado | Produto (versão) | Missão / fonte | Resolução | Período | DOI ou referência |
-|---|---|---|---|---|---|
-| Relevo: altitude, desnível, declividade, rugosidade, área plana | SRTMGL30 v002 | NASA SRTM (LP DAAC) | 30" (~1 km) | 2000 | doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002 |
-| Relevo da Antártida (Dry Valleys) | Copernicus DEM GLO-90 | ESA / Copernicus (TanDEM-X) | 90 m, agregado para ~1 km | 2011–2015 | doi:10.5270/ESA-c5d3d65 |
-| Temperatura da superfície de dia (~13:30) e de noite (~01:30) | MYD11A2 v061 | NASA Aqua MODIS (recorte do ORNL DAAC) | 1 km, 8 dias | 2024 (46 compostos) | doi:10.5067/MODIS/MYD11A2.061 |
-| Vegetação (NDVI) | MOD13C2 v061 | NASA Terra MODIS (LP DAAC) | 0,05° (~5 km), mensal | 2020–2025 (72 meses) | doi:10.5067/MODIS/MOD13C2.061 |
-| Temperatura do ar a 2 m, chuva, poeira (AOD 550 nm), vento, albedo, temperatura média da superfície | NASA POWER v2.10.1 (T2M, T2M_RANGE, PRECTOTCORR, AOD_55, WS10M, ALLSKY_SRF_ALB, TS) | NASA Langley (MERRA-2 e CERES) | 0,5° × 0,625° | médias 2001–2025 | power.larc.nasa.gov |
-
-### Lua e Marte: valores publicados por missões
-
-| Missão / instrumento | O que entrou | Referência |
-|---|---|---|
-| LRO LOLA (laser altímetro) | relevo, declividade e **iluminação com relevo** dos alvos polares | Zuber et al. 2012, *Nature*; Mazarico et al. 2011, *Icarus* |
-| LRO Diviner (radiômetro) | temperatura da superfície da Lua | Paige et al. 2010, *Science* |
-| MGS MOLA (laser altímetro) | relevo e declividade de Marte; altitude de cada alvo para a pressão (MEGDR, 4 pixels/grau) | Smith et al. 2001, *JGR* |
-| MGS TES | albedo de Marte | Christensen et al. 2001, *JGR* |
-| Mars 2020 MEDA e câmeras | temperatura em Jezero; pressão de 625 a 761 Pa (média diária) em Jezero, base da pressão dos alvos de Marte; opacidade da poeira | Rodríguez-Manfredi et al. 2023, *Nat. Geosci.*; Sánchez-Lavega et al. 2023, *JGR Planets*; Lemmon et al. 2022, *GRL* |
-| MSL REMS | temperatura e poeira em Gale | Gómez-Elvira et al. 2012, *Space Sci. Rev.* |
-| MER Mini-TES | temperatura em Meridiani | Smith et al. 2006, *JGR* |
-| MRO MCS | temperatura em Arcadia e Oxia | Kleinböhl et al. 2009, *JGR* |
-| SELENE/Kaguya TC (JAXA) | profundidade do fosso de Marius Hills | Haruyama et al. 2009, *GRL* |
-
-### Contexto e tags (geologia, gelo, subsolo)
-
-| Fonte | Para quê |
+| Mars: Jezero vs. its closest Earth twin | Click the score: why it matches, and where it breaks |
 |---|---|
-| NASA, regiões candidatas do Artemis III (out/2024); Gazetteer of Planetary Nomenclature (USGS/IAU); LPSC 2025 (Mahanti et al., Sánchez-Lozano et al., Samaddar et al.); mosaicos NAC da LROC | os 9 alvos lunares de pouso e as coordenadas deles |
-| LRO LAMP e LEND; LCROSS | gelo nas crateras em sombra permanente (Cabeus) |
-| LRO LROC | imagens e geologia lunar |
-| MRO CRISM | minerais hidratados em Marte (Jezero, Meridiani, Oxia) |
-| NASA SWIM v2 e MRO SHARAD | gelo raso em Arcadia Planitia |
-| ESA ExoMars | escolha de Oxia Planum |
-| Artigos de campo dos análogos (Haughton-Mars Project, PISCES, Navarro-González et al. 2003, Fernández-Remolar et al. 2005, Doran et al.) | tags dos locais da Terra e o alvo da literatura usado na validação |
+| ![Mars view](docs/img/site-mars.jpg) | ![Details panel](docs/img/site-details.jpg) |
 
-### Calculado por física
+## The idea
 
-- **Geometria solar:** altura máxima do Sol, Sol baixo, dias com Sol 24 h, noite polar, Sol no topo da atmosfera e tempo com Sol, pela latitude e pela obliquidade (Terra 23,44°, Marte 25,19°, Lua 1,54°).
-- **Pressão do ar na Terra:** pela altitude (atmosfera padrão).
-- **Gravidade e duração do dia:** NASA Planetary Fact Sheets.
+Analog sites like Atacama or Haughton Crater are great, but they were picked mostly by experience, and nobody can say *how* good an analog they are, or for *what*. We wanted a number you can argue with.
 
-### Imagens do site
+- **Earth sites (18):** the classic analogs (Atacama, Haughton, Mauna Kea, Río Tinto, McMurdo Dry Valleys) plus places that get little attention, including eight in Brazil: Lençóis Maranhenses, Raso da Catarina, Gilbués, Serra da Cangalha, Araguainha, Vargeão, Vista Alegre and the Carajás iron caves. Also Qaidam Basin, Lut Desert, Dallol, Svalbard and Lonar.
+- **Targets (16):** the nine Artemis III candidate regions, Shackleton, a Marius Hills skylight, and Jezero, Gale, Meridiani, Arcadia and Oxia on Mars.
+- **Dimensions (9):** terrain, surface materials, temperature, illumination, water and ice, dust and wind, habitability, subsurface, landing and mobility.
+- **Mission profiles (6):** general, rover testing, astrobiology, ice/ISRU, base construction, solar power. Each one weights the dimensions differently, so the same place can rank high for a rover test and low for astrobiology.
 
-NASA Blue Marble (Terra), NASA SVS CGI Moon Kit (mosaico de cor do LRO LROC, com relevo do LOLA), NASA 3D Resources (Marte, Viking/MGS) e relevo da Terra do SRTM30. Créditos completos em [web/README.md](web/README.md).
+### How the score works
 
-### Limitações que dizemos na apresentação
-
-- A temperatura do ar, o albedo, a chuva e a poeira vêm de células de ~50 km da NASA POWER. No Mauna Kea, o ar fica uns 20 °C acima do cume.
-- As regiões do Artemis III foram conferidas com o Gazetteer de nomenclatura planetária (USGS/IAU) e com resumos do LPSC 2025. Duas usam locais de pouso publicados e Peak near Cabeus B usa o mosaico da LROC feito para a região; as outras ficam na borda ou no planalto da feição que dá nome à região (±0,5°).
-- A pressão de Marte vem de uma medida só (MEDA, em Jezero), ajustada pela altitude MOLA de cada alvo, sem a variação das estações (~25%).
-- O NDVI da Dry Valleys é provisório (0), porque o MOD13C2 não cobre a Antártida.
-- Os valores de Lua e Marte são números publicados e aproximados, não recortes processados por nós.
-
-## Partes do projeto
-
-| Pasta | O que tem | Como usar |
-|---|---|---|
-| `dados/essenciais/` | dados de entrada, `gerar_dados.py` e as saídas (`analogos_completo.json`, CSVs, MQTT) | [dados/essenciais/README.md](dados/essenciais/README.md) |
-| `web/` | site three.js em inglês (prévia na branch `gh-pages`) | [web/README.md](web/README.md) |
-| `Projeto_C/NasaSpace/` | tela em C: Lua/Marte → alvo → top 3 → tela do local → MQTT → carrinho ao vivo | abrir `NasaSpace.cbp` no Code::Blocks |
-| `firmware/` | sketch do Arduino e ponte USB/Bluetooth → MQTT (sem ESP32) | [firmware/README.md](firmware/README.md) |
-| `docs/` | plano completo (escopo, fontes, métrica, cronograma) | [docs/plano-gemeo-digital-analogos.md](docs/plano-gemeo-digital-analogos.md) |
-
-### Tela em C
-
-1. O usuário escolhe Lua ou Marte, depois o alvo, e vê os 3 locais da Terra mais parecidos.
-2. A tela do local mostra três tabelas: **Terra x alvo**, as **9 dimensões** e o **carrinho ao vivo** (cada sensor ao lado do valor do local e do alvo, com o jeito certo de comparar).
-3. A escolha vai por MQTT para `illuminat-horizontes/selecao`, a ponte do carrinho liga pelo Bluetooth e a tela passa a mostrar as leituras na coluna "Agora".
-
-Precisa do Mosquitto (`mosquitto_pub` e `mosquitto_sub`) no PATH e de `pip install pyserial paho-mqtt` para a ponte. A porta Bluetooth vai como argumento: `NasaSpace COM7` no Windows ou `./NasaSpace /dev/cu.HC-05` no Mac.
-
-### Carrinho
-
-Os sensores ficam num **Arduino Uno/Nano**, que manda uma linha JSON por segundo:
+Every numeric indicator (slope, roughness, day/night temperature, sun elevation, dust optical depth, pressure...) becomes a similarity
 
 ```
-{"temp":24.1,"uv":6.2,"pm25":14,"solar":410,"soil":22,"tilt":3.4,"vib":0.08,"slip":5}
+S = exp( -(earth - target)^2 / (2 σ^2) )
 ```
 
-A linha sai pelo USB e por um **HC-05** (Bluetooth) ao mesmo tempo. No computador, `firmware/ponte_serial_mqtt.py` publica as leituras em `illuminat-horizontes/carrinho`, e o site e a tela em C assinam esse tópico. Sem carrinho, o site tem um modo Demo.
+with one σ per indicator, chosen so that "half as similar" means something physical (σ values in `dados/essenciais/entrada/dimensoes.json`). Categorical traits like geology, ice or caves are tags compared with Jaccard. A dimension is the mean of its indicators, and the final score is the profile-weighted mean of the dimensions.
 
-## Regenerar os dados
+Some things never match and we say so on every site: **gravity, atmosphere, radiation and day length.**
+
+### Results (general profile)
+
+| # | Earth site | Score | Best target |
+|---|---|---|---|
+| 1 | Qaidam Basin, China | 68 | Oxia Planum |
+| 2 | Lut Desert, Iran | 66 | Oxia Planum |
+| 3 | Atacama, Chile | 66 | Oxia Planum |
+| 4 | McMurdo Dry Valleys, Antarctica | 65 | Peak near Cabeus B |
+| 5 | Dallol, Ethiopia | 59 | Meridiani Planum |
+| 7 | **Lençóis Maranhenses, Brazil** | 55 (77 for rover tests) | Meridiani Planum |
+
+**Sanity check.** If the method is any good, the well-known analogs should rank high for the target the literature links them to. Out of 18 sites they come in at: Haughton 2nd, Atacama 3rd, Mauna Kea 4th, Río Tinto 6th, Dry Valleys 6th. That gives some confidence to the new sites that show up next to them, like Qaidam, Lut and Lençóis.
+
+## How it fits together
+
+```
+ NASA + Copernicus data ──> dados/essenciais/gerar_dados.py ──> score for every site × target
+                                                                  │
+                         ┌────────────────────────────────────────┼─────────────────────┐
+                         v                                        v                     v
+                three.js site (web/)                  C terminal app (Projeto_C)   per-site MQTT messages
+                         ^                                        ^
+                         └───────────── MQTT ─────────────────────┤
+                                                                  │
+   sensors ─> Arduino Uno ─> USB cable ─> ponte_serial_mqtt.py / controle_carrinho.py (laptop)
+```
+
+1. **Data:** Python scripts pull Earth data from NASA services, combine it with published Moon and Mars values and write the scores to JSON and CSV.
+2. **Site:** two globes side by side (Moon or Mars on the left, Earth on the right). Pick a target, see the ranked Earth analogs, click the score for the radar chart and the "works / breaks" list.
+3. **Rover:** an Arduino reads air temperature, humidity, distance to obstacles and light. It talks to a laptop over USB. A small Python bridge forwards each reading to MQTT, and both the site (**Web** button) and the C app show it live next to the Earth site and the target. The site can also read the rover directly over USB (Web Serial, Chrome/Edge).
+4. **C app:** a terminal program for the team's laptop: choose Moon or Mars, a target, see the top 3 analogs, open a site, then drive the rover and watch its sensors.
+
+## Running it
+
+**Site**, any static server:
+
+```
+cd web
+python3 -m http.server 8000      # then open http://localhost:8000
+```
+
+**Regenerate the data** (only needs numpy):
 
 ```
 pip3 install numpy
-python3 dados/essenciais/gerar_dados.py          # notas a partir de dados/essenciais/entrada/
-python3 dados/essenciais/gerar_mqtt.py           # mensagens MQTT por local
-python3 web/tools/gerar_dados_site.py            # dados do site, em inglês
+python3 dados/essenciais/gerar_dados.py      # scores from dados/essenciais/entrada/
+python3 dados/essenciais/gerar_mqtt.py       # MQTT messages per site
+python3 web/tools/gerar_dados_site.py        # English data for the site
 ```
 
-Os scripts que baixam dados (NASA POWER, MOD13C2, Copernicus DEM, MODIS pelo ORNL e AppEEARS) estão descritos em [dados/essenciais/README.md](dados/essenciais/README.md).
+The download scripts (NASA POWER, MOD13C2, Copernicus DEM, MODIS via ORNL DAAC, AppEEARS) are described in [dados/essenciais/README.md](dados/essenciais/README.md).
+
+**Rover:**
+
+```
+arduino-cli compile --fqbn arduino:avr:uno firmware/carrinho_motores
+arduino-cli upload  -p <port> --fqbn arduino:avr:uno firmware/carrinho_motores
+pip install pyserial paho-mqtt
+python3 firmware/ponte_serial_mqtt.py --porta <port> --baud 9600 --local lencois
+```
+
+Then open the site, scroll to **Field rover** and press **Web**. Wiring and protocol are in [firmware/README.md](firmware/README.md).
+
+**C app:** open `Projeto_C/NasaSpace/NasaSpace.cbp` in Code::Blocks, or run `./bin/Debug/nasaspace <port> 9600`. It needs Mosquitto (`mosquitto_pub`, `mosquitto_sub`) on the PATH.
+
+## Data sources
+
+Earth data comes only from NASA and Copernicus. Every value in the dataset carries a **status** (measured, calculated, reference, provisional) and a **source** (product, version, DOI, resolution, access date), listed in `dados/essenciais/entrada/fontes.csv`.
+
+| What | Product | Source |
+|---|---|---|
+| Elevation, relief, slope, roughness, flat area | SRTMGL30 v002 (doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002) | NASA LP DAAC |
+| Antarctic relief (Dry Valleys) | Copernicus DEM GLO-90 | ESA / Copernicus |
+| Day (~13:30) and night (~01:30) surface temperature | MYD11A2 v061, 1 km, 2024 | NASA Aqua MODIS via ORNL DAAC |
+| Vegetation (NDVI) | MOD13C2 v061, 2020–2025 | NASA Terra MODIS, LP DAAC |
+| Air temperature, rain, dust (AOD 550 nm), wind, albedo | NASA POWER (MERRA-2, CERES), 2001–2025 means | NASA Langley |
+| Moon terrain, illumination, temperature | LRO LOLA, LRO Diviner, LROC | NASA |
+| Mars terrain, albedo, pressure, temperature | MGS MOLA and TES, Mars 2020 MEDA, MSL REMS, MER Mini-TES, MRO MCS, CRISM, SWIM/SHARAD | NASA |
+| Artemis III regions | NASA (Oct 2024), USGS/IAU Gazetteer of Planetary Nomenclature, LPSC 2025 abstracts | |
+
+Globe textures: NASA Blue Marble, NASA SVS CGI Moon Kit (LROC + LOLA), NASA 3D Resources (Mars) and our own SRTM30 relief. Full credits in [web/README.md](web/README.md). In numbers: 288 site–target pairs built on 800 values (305 measured by satellite or model, 247 published by missions, the rest calculated or referenced) and 167 tags backed by 25 papers.
+
+## Where the analogy breaks (and where our data is weak)
+
+- Gravity, vacuum or thin CO₂ atmosphere, radiation and day length can't be reproduced anywhere on Earth. These show up on every site.
+- NASA POWER cells are about 50 km wide, so small or steep sites mix with their surroundings. On Mauna Kea the air temperature comes out roughly 20 °C warmer than the summit.
+- Moon and Mars numbers are published values, not data we processed pixel by pixel.
+- Some Artemis III region centers are approximate (on the rim or plateau of the named feature), because NASA only published them as a map.
+- Mars pressure is one measurement (MEDA at Jezero) adjusted by MOLA altitude, without seasonal change.
+- One value is still provisional: NDVI for the Dry Valleys, which MOD13C2 doesn't cover (set to 0, polar desert).
+
+## Repository layout
+
+| Folder | What's inside |
+|---|---|
+| [`web/`](web/) | The site (three.js, no build step). |
+| [`dados/essenciais/`](dados/essenciais/) | Input data, scoring script and outputs (`analogos_completo.json`, CSVs, MQTT messages). |
+| [`dados/srtm30/`](dados/srtm30/), [`dados/copernicus_dem/`](dados/copernicus_dem/), [`dados/mola/`](dados/mola/) | Raw tiles and caches used by the scripts. |
+| [`firmware/`](firmware/) | Arduino sketches and the USB → MQTT bridge. |
+| [`Projeto_C/NasaSpace/`](Projeto_C/NasaSpace/) | The C terminal app (Code::Blocks). |
+| [`docs/`](docs/) | Project plan, screenshots and a [Portuguese version of this README](docs/README.pt-BR.md). |
+| `Site/` | A separate site built by other team members. |
+
+Most code comments and folder names are in Portuguese; the site itself is in English.
+
+## Use of AI
+
+We used AI coding assistants (Claude Code and Google Antigravity) to help write and review parts of the site, the data scripts, the C app and this documentation. `AGENTS.md` and `CLAUDE.md` are the context files we gave those assistants. The idea, the choice of sites and targets, the scoring method, the hardware and the decisions about data sources are the team's, and every number in the dataset points back to a NASA or Copernicus source that can be checked.
+
+## Team
+
+Illuminat Horizontes, NASA Space Apps Challenge 2026.

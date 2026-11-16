@@ -4,7 +4,7 @@ Este arquivo é lido pelo agente do Antigravity (AGENTS.md) e pelo Claude Code (
 
 ## O projeto
 
-- **Nome:** Illuminat Horizontes (nome da equipe e do site). O nome antigo, "AnaloGêmeo" / "gêmeo digital", ainda aparece no `README.md` e no plano em `docs/`, mas não deve ser usado em texto novo.
+- **Nome:** Illuminat Horizontes (nome da equipe e do site). O nome antigo, "AnaloGêmeo" / "gêmeo digital", ainda aparece no plano em `docs/`, mas não deve ser usado em texto novo. O `README.md` da raiz é em inglês (para os jurados); a versão em português fica em `docs/README.pt-BR.md`.
 - **Evento:** NASA Space Apps Challenge 2026, desafio *"Identify Earth Locations that Analog the Permanent Moon Base Locations and Mars"*.
 - **Ideia:** comparar **18 locais da Terra** com **16 alvos na Lua e em Marte** em **9 dimensões** (terreno, materiais, temperatura, iluminação, água e gelo, poeira e vento, vida, subsolo, pouso e mobilidade) e dar uma **nota de similaridade**, o IAP (Índice de Analogia Planetária, 0 a 100). Para cada local, mostramos onde a analogia funciona, onde quebra e o que dá para testar ali.
 - **Nota:** indicador numérico `S = exp(−(Terra − alvo)² / (2σ²))` (σ em `dados/essenciais/entrada/dimensoes.json`), Jaccard para as tags, média por dimensão e média ponderada pelo **perfil de missão** (geral, rover, astrobiologia, gelo/ISRU, base e construção, energia solar).
@@ -99,12 +99,12 @@ Sensores → Arduino Uno/Nano (sem Wi-Fi) → Bluetooth HC-05 (ou USB), 1 linha 
 - **Decisão (15/11):** o carrinho fala com o computador **só pelo cabo USB**. **Sem Bluetooth e sem ESP32.** O Arduino Uno roda `firmware/carrinho_motores/carrinho_motores.ino`: motores (ponte H) + sensores, a 9600 baud.
 - **Ligações do carrinho:** ponte H IN1→D11, IN2→D10 (motor A, OUT1/OUT2), IN3→D9, IN4→D8 (motor B, OUT3/OUT4), jumpers ENA/ENB no lugar, GND comum, pilha ≥7 V no 12V da ponte, 5V da ponte solto com o cabo. Os dois motores andam juntos (OUT1 e OUT3 com o mesmo sinal). DHT (22 ou 11, detecta sozinho) no D6, HC-SR04 TRIG D4 / ECHO D5, LDR no A0. D0/D1 livres.
 - **Protocolo no cabo:** o computador manda uma letra (F frente, T trás, P parar, 0–9 velocidade, ? estado, L/R teste de um motor); o Arduino responde `{"cmd":..,"sentido":..,"vel":..}` e, a cada 1 s, `{"temp":..,"umid":..,"dist":..,"luz":..}`. Sem comando por 1,5 s, os motores param.
-- **Tela em C:** depois da escolha do local, o menu tem 1) dirigir (W/S/espaço/0–9/Q, com a tabela Carrinho ao vivo atualizando pelo `controle.log`) e 2) sensores ao vivo pela ponte MQTT. Nos dois casos as leituras vão para o MQTT (`illuminat-horizontes/carrinho`): o `controle_carrinho.py` também publica, então o site (Wi-Fi → Connect) mostra o mesmo que a tela em C enquanto se dirige. Os dois usam a mesma porta, um de cada vez.
-- **Site, seção Field rover:** as linhas são as medidas com `"carrinho": true` em `web/data/estacao.json` (temp, umid, dist, luz), mais qualquer outra que receba dado (o Demo manda todas). USB direto no site a 9600 baud (`serial_baud`).
+- **Tela em C:** depois da escolha do local, o menu tem 1) dirigir (W/S/espaço/0–9/Q, com a tabela Carrinho ao vivo atualizando pelo `controle.log`) e 2) sensores ao vivo pela ponte MQTT. Nos dois casos as leituras vão para o MQTT (`illuminat-horizontes/carrinho`): o `controle_carrinho.py` também publica, então o site (botão Web) mostra o mesmo que a tela em C enquanto se dirige. Os dois usam a mesma porta, um de cada vez.
+- **Site, seção Field rover:** as linhas são as medidas com `"carrinho": true` em `web/data/estacao.json` (temp, umid, dist, luz), mais qualquer outra que receba dado. USB direto no site a 9600 baud (`serial_baud`).
 - **Mensagem:** `{"temp":24.1,"uv":6.2,"pm25":14,"solar":410,"soil":22,"tilt":3.4,"vib":0.08,"slip":5}`. Manter estas chaves. Chaves ausentes aparecem como "–".
 - O sensor `temp` mede o **ar** e é comparado com `temp_ar_c` (NASA POWER T2M).
 - Broker padrão: `broker.hivemq.com` (público, aberto). Para a apresentação, usar um tópico só da equipe ou HiveMQ Cloud com `--tls`, `--usuario` e `MQTT_SENHA`.
-- Outros caminhos: USB direto no site (Web Serial, Chrome/Edge, 9600 baud) e modo **Demo** (leituras simuladas, tempestade de poeira a cada minuto).
+- Outros caminhos: USB direto no site (Web Serial, Chrome/Edge, 9600 baud). **O modo Demo saiu (16/11):** o site só tem Web (MQTT, conecta sozinho ao abrir) e USB.
 - Rodar a ponte: `pip install pyserial paho-mqtt` e `python3 firmware/ponte_serial_mqtt.py --porta /dev/cu.usbserial-21130 --baud 9600 --local lencois` (fechar o Monitor Serial antes).
 - Tela em C com o cabo: `./bin/Debug/nasaspace /dev/cu.usbserial-21130 9600` (2º argumento = baud; `PONTE_PYTHON` escolhe o Python). No Mac: `python3 -m pip install --user --break-system-packages pyserial paho-mqtt`.
 - Gravar o sketch: `arduino-cli compile --fqbn arduino:avr:uno firmware/carrinho_motores && arduino-cli upload -p /dev/cu.usbserial-21130 --fqbn arduino:avr:uno firmware/carrinho_motores` (bibliotecas "DHT sensor library" e "Adafruit Unified Sensor"). Nada ligado no D0 ao gravar.
@@ -115,5 +115,4 @@ Sensores → Arduino Uno/Nano (sem Wi-Fi) → Bluetooth HC-05 (ou USB), 1 linha 
 2. Quando a task do AppEEARS terminar, rodar `--appeears`, depois `gerar_mqtt.py` e `web/tools/gerar_dados_site.py`.
 3. Tela em C (`Projeto_C/NasaSpace`): testar no Windows (Code::Blocks + Mosquitto no PATH) e com o HC-05 pareado. O modo ao vivo (`mosquitto_sub` em `illuminat-horizontes/carrinho`, coluna "Agora") já funciona; `MQTT_BROKER=localhost` testa com um Mosquitto local.
 4. Montar o carrinho com os sensores escolhidos no topo de `arduino_carrinho.ino` e testar o fluxo completo até o site.
-5. Atualizar o `README.md` com o nome Illuminat Horizontes e o fluxo com Arduino.
-6. Preparar a apresentação e o vídeo seguindo a história em 3 atos do plano (`docs/`).
+5. Preparar a apresentação e o vídeo seguindo a história em 3 atos do plano (`docs/`).
