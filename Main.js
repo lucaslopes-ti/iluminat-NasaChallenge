@@ -137,6 +137,7 @@ const ST_LABEL = { off: 'Offline', connecting: 'Connecting…', waiting: 'Waitin
 function initStation() {
   station = new Station(stCfg.medidas.map((m) => m.id));
   station.onChange = renderStation;
+  station.onChoice = followTerminal;
   $('stBroker').value = store.get('st-broker') || stCfg.mqtt.broker;
   $('stTopic').value = store.get('st-topic') || stCfg.mqtt.topico;
   $('roverBtn').onclick = () => $('station').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
@@ -165,6 +166,23 @@ function initStation() {
   // no simulated data: listen on the team's MQTT topic right away, so whatever the bridge
   // (ponte_serial_mqtt.py / controle_carrinho.py) publishes from the rover shows up here
   station.connectMqtt($('stBroker').value, $('stTopic').value);
+}
+
+// The site and target picked in the terminal (bridge --local <id>, or the C app's menu)
+// arrive by MQTT; switch the globes to them. The C app's choice carries the target the
+// user picked, so it wins over the bridge profile's default target for the same site.
+let lastSelecao = null;
+function followTerminal(c) {
+  if (c.kind === 'selecao') lastSelecao = c;
+  else if (lastSelecao && lastSelecao.site === c.site) c = lastSelecao;
+  const site = sites.find((x) => x.id === c.site);
+  let target = cfg.alvos.find((a) => a.id === c.target);
+  if (!target && !site) return;
+  if (!target) target = cfg.alvos.find((a) => a.id === state.targetId);
+  const siteId = site ? site.id : null;
+  if (target.corpo !== state.body) setBody(target.corpo, { targetId: target.id, siteId });
+  else if (target.id !== state.targetId) selectTarget(target.id, { siteId, focus: true });
+  else if (siteId && siteId !== state.siteId) selectSite(siteId, { focus: true });
 }
 
 function syncModes(mode) {
