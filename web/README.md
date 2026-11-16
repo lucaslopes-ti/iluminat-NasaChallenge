@@ -50,7 +50,7 @@ Campos opcionais que o site mostra: `tipo_en` (descrição em inglês), `analogi
 
 Se algum local tiver `"exemplo": true` ou `"modo_teste": true`, o site mostra o selo **Sample data**. Com os dados reais o selo some.
 
-Os dados vêm de `dados/essenciais/` (notas reais de 18 locais × 16 alvos). Para atualizar depois de rodar `dados/essenciais/gerar_dados.py`:
+Os dados vêm de `dados/essenciais/` (notas reais de 17 locais × 16 alvos). Para atualizar depois de rodar `dados/essenciais/gerar_dados.py`:
 
 ```
 python3 web/tools/gerar_dados_site.py

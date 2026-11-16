@@ -4,7 +4,7 @@
 
 Projeto para o NASA Space Apps Challenge 2026, desafio *"Identify Earth Locations that Analog the Permanent Moon Base Locations and Mars"*.
 
-Comparamos **18 locais da Terra** com **16 alvos na Lua e em Marte** (as regiões candidatas do Artemis III, crateras polares, Marius Hills, Jezero, Gale, Meridiani, Arcadia e Oxia) em **9 dimensões**: terreno, materiais, temperatura, iluminação, água e gelo, poeira e vento, vida, subsolo, e pouso e mobilidade. Cada par recebe uma nota de 0 a 100, o **IAP (Índice de Analogia Planetária)**. Para cada local mostramos onde a analogia funciona, onde ela quebra e o que dá para testar ali com um carrinho de sensores.
+Comparamos **17 locais da Terra** com **16 alvos na Lua e em Marte** (as regiões candidatas do Artemis III, crateras polares, Marius Hills, Jezero, Gale, Meridiani, Arcadia e Oxia) em **9 dimensões**: terreno, materiais, temperatura, iluminação, água e gelo, poeira e vento, vida, subsolo, e pouso e mobilidade. Cada par recebe uma nota de 0 a 100, o **IAP (Índice de Analogia Planetária)**. Para cada local mostramos onde a analogia funciona, onde ela quebra e o que dá para testar ali com um carrinho de sensores.
 
 O diferencial são os locais brasileiros pouco estudados (Lençóis Maranhenses, Raso da Catarina, Gilbués, Cangalha, Araguainha, Vargeão, Vista Alegre e Carajás), avaliados ao lado dos análogos clássicos (Atacama, Haughton, Mauna Kea, Río Tinto e Vales Secos de McMurdo), que servem para validar o método.
 
@@ -29,21 +29,21 @@ dados NASA e Copernicus ──> dados/essenciais/gerar_dados.py ──> notas (I
 
 | Posição | Local | IAP | Melhor alvo |
 |---|---|---|---|
-| 1 | Bacia de Qaidam (China) | 68 | Oxia Planum |
-| 2 | Deserto de Lut (Irã) | 66 | Oxia Planum |
-| 3 | Atacama (Chile) | 66 | Oxia Planum |
-| 4 | Vales Secos de McMurdo (Antártida) | 65 | Pico perto de Cabeus B |
-| 7 | **Lençóis Maranhenses (Brasil)** | 55 | Meridiani Planum |
+| 1 | Deserto de Lut (Irã) | 66 | Oxia Planum |
+| 2 | Atacama (Chile) | 66 | Oxia Planum |
+| 3 | Vales Secos de McMurdo (Antártida) | 65 | Pico perto de Cabeus B |
+| 4 | Dallol (Etiópia) | 59 | Meridiani Planum |
+| 6 | **Lençóis Maranhenses (Brasil)** | 55 (77 no perfil rover, o maior de todos) | Meridiani Planum |
 
-**Validação.** Cada análogo clássico deve ficar bem colocado no alvo que a literatura associa a ele. Entre os 18 locais:
+**Validação.** Cada análogo clássico deve ficar bem colocado no alvo que a literatura associa a ele. Entre os 17 locais:
 
 | Referência | Alvo da literatura | Posição |
 |---|---|---|
+| Atacama | Marte (solos com perclorato) | 2º |
 | Haughton | Marte e Lua (Haughton-Mars Project) | 2º |
-| Atacama | Marte (solos com perclorato) | 3º |
 | Mauna Kea | Lua (testes de ISRU PISCES) | 4º |
-| Río Tinto | Meridiani (jarosita e hematita) | 6º |
-| Vales Secos de McMurdo | Marte (deserto frio, permafrost) | 6º |
+| Río Tinto | Meridiani (jarosita e hematita) | 5º |
+| Vales Secos de McMurdo | Marte (deserto frio, permafrost) | 5º |
 
 Os locais novos que aparecem ao lado deles, como Lençóis, ganham credibilidade.
 
@@ -51,7 +51,7 @@ Os locais novos que aparecem ao lado deles, como Lençóis, ganham credibilidade
 
 Só fontes da NASA e do Copernicus; os valores de Lua e Marte vêm de missões da NASA, com dois casos da ESA e da JAXA citados como referência. Todo valor leva **status** e **fonte** (produto, versão, DOI, resolução e data de acesso), em `dados/essenciais/entrada/fontes.csv`.
 
-**Em números:** 18 locais × 16 alvos = **288 comparações**. São 800 valores: 468 da Terra (305 medidos por satélite ou modelo, 126 calculados por física, 36 de referência, 1 provisório) e 332 da Lua e de Marte (247 publicados por missões, 85 calculados). Além disso, 167 tags de geologia, gelo, subsolo e vida, com 25 referências bibliográficas.
+**Em números:** 17 locais × 16 alvos = **272 comparações**. São 774 valores: 442 da Terra (288 medidos por satélite ou modelo, 119 calculados por física, 34 de referência, 1 provisório) e 332 da Lua e de Marte (243 publicados por missões, 89 calculados). Além disso, 154 tags de geologia, gelo, subsolo e vida, com 24 referências bibliográficas.
 
 ### Terra: medido por satélite e modelo
 

@@ -1,7 +1,7 @@
 {
   "_sobre": "Textos em inglês para o site. Chave = texto em português de dados/essenciais/analogos_completo.json. Texto novo sem tradução aparece em português e o gerar_dados_site.py avisa.",
   "paises": {
-    "China": "China", "Irã": "Iran", "Chile": "Chile", "Etiópia": "Ethiopia", "Brasil": "BR", "Canadá": "Canada",
+    "Irã": "Iran", "Chile": "Chile", "Etiópia": "Ethiopia", "Brasil": "BR", "Canadá": "Canada",
     "Noruega": "Norway", "Espanha": "Spain", "EUA": "USA", "Índia": "India", "Antártida": "Antarctica"
   },
   "regioes": {
@@ -153,7 +153,7 @@
     "Duração do dia: Lua 29,5 dias terrestres; Marte 24 h 39 min": "Day length: Moon 29.5 Earth days; Mars 24 h 39 min"
   },
   "nomes_curtos": {
-    "qaidam": "Qaidam", "lut": "Lut Desert", "atacama": "Atacama", "dallol": "Dallol", "lencois": "Lençóis",
+    "lut": "Lut Desert", "atacama": "Atacama", "dallol": "Dallol", "lencois": "Lençóis",
     "haughton": "Haughton", "raso_catarina": "Raso da Catarina", "gilbues": "Gilbués", "svalbard": "Svalbard",
     "rio_tinto": "Río Tinto", "mauna_kea": "Mauna Kea", "lonar": "Lonar", "cangalha": "Cangalha",
     "araguainha": "Araguainha", "vargeao": "Vargeão", "vista_alegre": "Vista Alegre", "carajas": "Carajás",

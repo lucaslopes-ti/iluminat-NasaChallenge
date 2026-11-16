@@ -285,32 +285,6 @@ dallol,vento_10m_ms,3.5,m/s,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECT
 dallol,pressao_kpa,102.75,kPa,calculado,fisica,-,NASA Planetary Fact Sheets,atmosfera padrao pela altitude
 dallol,gravidade_g,1.0,g,referencia,fisica,-,NASA Planetary Fact Sheets,
 dallol,dia_local_h,24.0,h,referencia,fisica,-,NASA Planetary Fact Sheets,
-qaidam,elev_media_m,2752,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 celulas de ~1 km na caixa do local
-qaidam,elev_relativa_m,-203,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 celulas de ~1 km na caixa do local
-qaidam,declividade_media,0.3,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 celulas de ~1 km na caixa do local
-qaidam,rugosidade_tri_m,13.4,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 celulas de ~1 km na caixa do local
-qaidam,frac_decliv_8,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 celulas de ~1 km na caixa do local
-qaidam,frac_transitavel_15,1.0,fracao,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,2304 celulas de ~1 km na caixa do local
-qaidam,sol_max_graus,74.8,graus,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
-qaidam,frac_sol_baixo,0.15,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
-qaidam,frac_ano_sol_continuo,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
-qaidam,frac_ano_noite_continua,0.0,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
-qaidam,frac_tempo_sol,0.5,fracao,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
-qaidam,insolacao_toa_wm2,334,W/m2,calculado,calculo_solar,-,formulas de declinacao solar; obliquidade Terra 23.44 / Marte 25.19 / Lua 1.54 graus,horizonte plano
-qaidam,ndvi_medio,0.05,indice,medido,mod13c2,MOD13C2 v061 (CMG 0.05 Deg Monthly NDVI),doi:10.5067/MODIS/MOD13C2.061,"media de 72 meses (2020-2025) na caixa do local (CMG 0,05 grau)"
-qaidam,lst_dia_c,26,C,medido,myd11a2,MYD11A2 v061 (LST_Day_1km / LST_Night_1km),doi:10.5067/MODIS/MYD11A2.061 (recorte: ORNL DAAC doi:10.3334/ORNLDAAC/1379),"LST de dia (Aqua ~13:30), media de 46 datas de 2024, pixels de terra na caixa (ORNL DAAC)"
-qaidam,lst_noite_c,-5,C,medido,myd11a2,MYD11A2 v061 (LST_Day_1km / LST_Night_1km),doi:10.5067/MODIS/MYD11A2.061 (recorte: ORNL DAAC doi:10.3334/ORNLDAAC/1379),"LST de noite (Aqua ~01:30), media de 46 datas de 2024, pixels de terra na caixa (ORNL DAAC)"
-qaidam,amplitude_termica_c,31,C,medido,myd11a2,MYD11A2 v061 (LST_Day_1km / LST_Night_1km),doi:10.5067/MODIS/MYD11A2.061 (recorte: ORNL DAAC doi:10.3334/ORNLDAAC/1379),"LST dia - LST noite (MYD11A2, ORNL DAAC)"
-qaidam,temp_media_c,5,C,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,"TS: temperatura da superficie, media anual (MERRA-2)"
-qaidam,temp_ar_c,4,C,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,"T2M: temperatura do ar a 2 m, media anual (MERRA-2); compara com o sensor do carrinho"
-qaidam,amplitude_ar_c,13,C,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,"T2M_RANGE: variacao diaria tipica do ar a 2 m, media anual (MERRA-2)"
-qaidam,albedo_medio,0.28,fracao,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,"ALLSKY_SRF_ALB: albedo da superficie, ceu real (CERES SYN1deg)"
-qaidam,aod_medio,0.23,adimensional,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,AOD_55: profundidade optica de aerossol em 550 nm (MERRA-2)
-qaidam,chuva_anual_mm,29,mm,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,"PRECTOTCORR: chuva corrigida, media anual (MERRA-2/GPM)"
-qaidam,vento_10m_ms,4.0,m/s,medido,nasa_power,TS / TS_MAX / TS_MIN / T2M / PRECTOTCORR / ALLSKY_SRF_ALB / AOD_55 / WS10M,NASA Langley POWER Project (power.larc.nasa.gov) v2.10.1,"WS10M: vento a 10 m, media anual (MERRA-2)"
-qaidam,pressao_kpa,73.0,kPa,calculado,fisica,-,NASA Planetary Fact Sheets,atmosfera padrao pela altitude
-qaidam,gravidade_g,1.0,g,referencia,fisica,-,NASA Planetary Fact Sheets,
-qaidam,dia_local_h,24.0,h,referencia,fisica,-,NASA Planetary Fact Sheets,
 svalbard,elev_media_m,318,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,566 celulas de ~1 km na caixa do local
 svalbard,elev_relativa_m,-999,m,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,566 celulas de ~1 km na caixa do local
 svalbard,declividade_media,13.8,graus,medido,srtmgl30,SRTMGL30 v002,doi:10.5067/MEaSUREs/SRTM/SRTMGL30.002,566 celulas de ~1 km na caixa do local
