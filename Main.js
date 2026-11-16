@@ -210,7 +210,6 @@ function initRoverGallery() {
     dotBtns.forEach((b, i) => b.setAttribute('aria-selected', String(i === best)));
   };
   dotBtns.forEach((b, i) => { b.onclick = () => go(i); });
-  root.querySelectorAll('.rg-nav button').forEach((b) => { b.onclick = () => go(cur + Number(b.dataset.dir)); });
   slides.forEach((s, i) => { s.onclick = () => go(i); });
   track.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); e.stopPropagation(); go(cur + (e.key === 'ArrowRight' ? 1 : -1)); }
