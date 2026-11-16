@@ -1,7 +1,7 @@
 {
  "projeto": "Illuminat Horizontes",
  "versao_dados": 2,
- "gerado_em": "2026-11-15",
+ "gerado_em": "2026-11-16",
  "legenda_status": {
   "medido": "medido por satelite/modelo da NASA e processado neste repositorio",
   "calculado": "calculado por fisica (geometria solar, pressao pela altitude)",
@@ -10,12 +10,12 @@
   "sem_dado": "sem cobertura no produto usado"
  },
  "destaque": "lencois",
- "destaque_geral": "qaidam",
- "destaque_descoberta": "qaidam",
+ "destaque_geral": "lut",
+ "destaque_descoberta": "lut",
  "destaque_por_perfil": {
-  "geral": "qaidam",
+  "geral": "lut",
   "rover": "lencois",
-  "astrobio": "qaidam",
+  "astrobio": "dry_valleys",
   "isru": "atacama",
   "habitat": "atacama",
   "energia": "lencois"
@@ -26,9 +26,9 @@
   "iap": 65
  },
  "destaque_marte": {
-  "local": "qaidam",
+  "local": "lut",
   "alvo": "oxia",
-  "iap": 68
+  "iap": 66
  },
  "melhor_analogo_por_alvo": {
   "shackleton": "dry_valleys",
@@ -42,11 +42,11 @@
   "slater_plain": "dry_valleys",
   "cabeus_b_peak": "dry_valleys",
   "marius": "atacama",
-  "jezero": "qaidam",
+  "jezero": "lut",
   "gale": "lut",
   "meridiani": "lut",
-  "arcadia": "qaidam",
-  "oxia": "qaidam"
+  "arcadia": "lut",
+  "oxia": "lut"
  },
  "perfis": [
   {
@@ -239,179 +239,8 @@
  ],
  "locais": [
   {
-   "id": "qaidam",
-   "posicao": 1,
-   "nome": "Bacia de Qaidam (yardangs de Lenghu)",
-   "regiao": "Qinghai",
-   "pais": "China",
-   "papel": "descoberta",
-   "lat": 38.6,
-   "lon": 93.0,
-   "feicao": "Bacia alta (~2.800 m), fria e seca, com sais e yardangs",
-   "dados_completos": true,
-   "alvo": "oxia",
-   "alvo_nome": "Oxia Planum",
-   "corpo": "mars",
-   "nota_pct": 68,
-   "notas_perfil_pct": {
-    "geral": 68,
-    "rover": 76,
-    "astrobio": 54,
-    "isru": 60,
-    "habitat": 69,
-    "energia": 73
-   },
-   "dimensoes_pct": {
-    "terreno": 86,
-    "materiais": 45,
-    "termico": 42,
-    "luz": 91,
-    "agua": 50,
-    "poeira": 57,
-    "biologia": 72,
-    "subsolo": null,
-    "operacoes": 99
-   },
-   "funciona": "Lago antigo que secou e deixou sais e sulfatos, como em Gale",
-   "quebra": "Pressão do ar ~70 kPa, muito acima de Marte",
-   "teste": "Mapear sais e sulfatos com espectrômetro (EMIT/ASTER)",
-   "dados": {
-    "elev_media_m": {
-     "rotulo": "Elevacao media",
-     "valor": 2752,
-     "unidade": "m",
-     "status": "medido",
-     "fonte": "srtmgl30"
-    },
-    "declividade_media": {
-     "rotulo": "Declividade media",
-     "valor": 0.3,
-     "unidade": "graus",
-     "status": "medido",
-     "fonte": "srtmgl30",
-     "valor_alvo": 2.0
-    },
-    "frac_decliv_8": {
-     "rotulo": "Area com declividade < 8 graus",
-     "valor": 1.0,
-     "unidade": "fracao",
-     "status": "medido",
-     "fonte": "srtmgl30",
-     "valor_alvo": 0.95
-    },
-    "sol_max_graus": {
-     "rotulo": "Altura maxima do Sol",
-     "valor": 74.8,
-     "unidade": "graus",
-     "status": "calculado",
-     "fonte": "calculo_solar",
-     "valor_alvo": 89.9
-    },
-    "frac_ano_sol_continuo": {
-     "rotulo": "Ano com Sol 24 h",
-     "valor": 0.0,
-     "unidade": "fracao",
-     "status": "calculado",
-     "fonte": "calculo_solar",
-     "valor_alvo": 0.0
-    },
-    "lst_dia_c": {
-     "rotulo": "Temp. superficie maxima",
-     "valor": 26,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "myd11a2",
-     "valor_alvo": -5
-    },
-    "lst_noite_c": {
-     "rotulo": "Temp. superficie minima",
-     "valor": -5,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "myd11a2",
-     "valor_alvo": -90
-    },
-    "amplitude_termica_c": {
-     "rotulo": "Amplitude termica (dT)",
-     "valor": 31,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "myd11a2",
-     "valor_alvo": 85
-    },
-    "temp_media_c": {
-     "rotulo": "Temp. superficie media",
-     "valor": 5,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power"
-    },
-    "temp_ar_c": {
-     "rotulo": "Temp. do ar a 2 m",
-     "valor": 4,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power"
-    },
-    "amplitude_ar_c": {
-     "rotulo": "Variacao diaria do ar",
-     "valor": 13,
-     "unidade": "C",
-     "status": "medido",
-     "fonte": "nasa_power"
-    },
-    "ndvi_medio": {
-     "rotulo": "Vegetacao (NDVI)",
-     "valor": 0.05,
-     "unidade": "indice",
-     "status": "medido",
-     "fonte": "mod13c2",
-     "valor_alvo": 0.0
-    },
-    "albedo_medio": {
-     "rotulo": "Albedo",
-     "valor": 0.28,
-     "unidade": "fracao",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": 0.2
-    },
-    "aod_medio": {
-     "rotulo": "Poeira/aerossol (AOD)",
-     "valor": 0.23,
-     "unidade": "adimensional",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": 0.6
-    },
-    "vento_10m_ms": {
-     "rotulo": "Vento a 10 m",
-     "valor": 4.0,
-     "unidade": "m/s",
-     "status": "medido",
-     "fonte": "nasa_power"
-    },
-    "chuva_anual_mm": {
-     "rotulo": "Chuva anual",
-     "valor": 29,
-     "unidade": "mm",
-     "status": "medido",
-     "fonte": "nasa_power",
-     "valor_alvo": 0
-    },
-    "pressao_kpa": {
-     "rotulo": "Pressao do ar",
-     "valor": 73.0,
-     "unidade": "kPa",
-     "status": "calculado",
-     "fonte": "fisica",
-     "valor_alvo": 0.72
-    }
-   }
-  },
-  {
    "id": "lut",
-   "posicao": 2,
+   "posicao": 1,
    "nome": "Deserto de Lut (yardangs)",
    "regiao": "Kerman",
    "pais": "Irã",
@@ -582,7 +411,7 @@
   },
   {
    "id": "atacama",
-   "posicao": 3,
+   "posicao": 2,
    "nome": "Atacama (Yungay)",
    "regiao": "Antofagasta",
    "pais": "Chile",
@@ -753,7 +582,7 @@
   },
   {
    "id": "dry_valleys",
-   "posicao": 4,
+   "posicao": 3,
    "nome": "Vales Secos de McMurdo",
    "regiao": "Terra de Vitória",
    "pais": "Antártida",
@@ -924,7 +753,7 @@
   },
   {
    "id": "dallol",
-   "posicao": 5,
+   "posicao": 4,
    "nome": "Dallol (Depressão de Danakil)",
    "regiao": "Afar",
    "pais": "Etiópia",
@@ -1095,7 +924,7 @@
   },
   {
    "id": "haughton",
-   "posicao": 6,
+   "posicao": 5,
    "nome": "Cratera de Haughton",
    "regiao": "Nunavut",
    "pais": "Canadá",
@@ -1266,7 +1095,7 @@
   },
   {
    "id": "lencois",
-   "posicao": 7,
+   "posicao": 6,
    "nome": "Lençóis Maranhenses",
    "regiao": "MA",
    "pais": "Brasil",
@@ -1437,7 +1266,7 @@
   },
   {
    "id": "svalbard",
-   "posicao": 8,
+   "posicao": 7,
    "nome": "Bockfjorden, Svalbard",
    "regiao": "Svalbard",
    "pais": "Noruega",
@@ -1608,7 +1437,7 @@
   },
   {
    "id": "raso_catarina",
-   "posicao": 9,
+   "posicao": 8,
    "nome": "Raso da Catarina",
    "regiao": "BA",
    "pais": "Brasil",
@@ -1779,7 +1608,7 @@
   },
   {
    "id": "gilbues",
-   "posicao": 10,
+   "posicao": 9,
    "nome": "Núcleo de desertificação de Gilbués",
    "regiao": "PI",
    "pais": "Brasil",
@@ -1950,7 +1779,7 @@
   },
   {
    "id": "rio_tinto",
-   "posicao": 11,
+   "posicao": 10,
    "nome": "Río Tinto",
    "regiao": "Andaluzia",
    "pais": "Espanha",
@@ -2121,7 +1950,7 @@
   },
   {
    "id": "mauna_kea",
-   "posicao": 12,
+   "posicao": 11,
    "nome": "Mauna Kea",
    "regiao": "Havaí",
    "pais": "EUA",
@@ -2292,7 +2121,7 @@
   },
   {
    "id": "lonar",
-   "posicao": 13,
+   "posicao": 12,
    "nome": "Cratera de Lonar",
    "regiao": "Maharashtra",
    "pais": "Índia",
@@ -2463,7 +2292,7 @@
   },
   {
    "id": "cangalha",
-   "posicao": 14,
+   "posicao": 13,
    "nome": "Serra da Cangalha",
    "regiao": "TO",
    "pais": "Brasil",
@@ -2634,7 +2463,7 @@
   },
   {
    "id": "araguainha",
-   "posicao": 15,
+   "posicao": 14,
    "nome": "Domo de Araguainha",
    "regiao": "MT/GO",
    "pais": "Brasil",
@@ -2805,7 +2634,7 @@
   },
   {
    "id": "vargeao",
-   "posicao": 16,
+   "posicao": 15,
    "nome": "Domo de Vargeão",
    "regiao": "SC",
    "pais": "Brasil",
@@ -2976,7 +2805,7 @@
   },
   {
    "id": "vista_alegre",
-   "posicao": 17,
+   "posicao": 16,
    "nome": "Cratera de Vista Alegre",
    "regiao": "PR",
    "pais": "Brasil",
@@ -3147,7 +2976,7 @@
   },
   {
    "id": "carajas",
-   "posicao": 18,
+   "posicao": 17,
    "nome": "Serra Norte de Carajás (cavernas)",
    "regiao": "PA",
    "pais": "Brasil",

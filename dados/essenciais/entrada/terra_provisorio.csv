@@ -15,5 +15,4 @@ lonar,ndvi_medio,0.4,indice,provisorio,mod13a2,estimativa; substituir pelo MOD13
 gilbues,ndvi_medio,0.3,indice,provisorio,mod13a2,estimativa; substituir pelo MOD13A2 do AppEEARS (task a92258f5)
 lut,ndvi_medio,0.02,indice,provisorio,mod13a2,estimativa; substituir pelo MOD13A2 do AppEEARS (task a92258f5)
 dallol,ndvi_medio,0.0,indice,provisorio,mod13a2,estimativa; substituir pelo MOD13A2 do AppEEARS (task a92258f5)
-qaidam,ndvi_medio,0.03,indice,provisorio,mod13a2,estimativa; substituir pelo MOD13A2 do AppEEARS (task a92258f5)
 svalbard,ndvi_medio,0.1,indice,provisorio,mod13a2,estimativa; substituir pelo MOD13A2 do AppEEARS (task a92258f5)

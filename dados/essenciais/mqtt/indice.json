@@ -2,13 +2,6 @@
  "destaque": "lencois",
  "locais": [
   {
-   "id": "qaidam",
-   "nome": "Bacia de Qaidam (yardangs de Lenghu)",
-   "alvo": "oxia",
-   "nota_pct": 68,
-   "papel": "descoberta"
-  },
-  {
    "id": "lut",
    "nome": "Deserto de Lut (yardangs)",
    "alvo": "oxia",

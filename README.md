@@ -1,10 +1,12 @@
+<p align="center"><img src="docs/img/wordmark.svg" alt="Illuminat Horizontes" width="640"></p>
+
 # Illuminat Horizontes
 
 **Where on Earth can we train for the Moon and Mars?**
 
 Our entry for the NASA Space Apps Challenge 2026, challenge *Identify Earth Locations that Analog the Permanent Moon Base Locations and Mars*.
 
-We compare **18 places on Earth** with **16 targets on the Moon and Mars** across **9 dimensions** and give every pair a similarity score from 0 to 100. For each place we say where the analogy holds, where it breaks, and what you could actually test there. A small Arduino rover takes live readings in the field and puts them next to the NASA data.
+We compare **17 places on Earth** with **16 targets on the Moon and Mars** across **9 dimensions** and give every pair a similarity score from 0 to 100. For each place we say where the analogy holds, where it breaks, and what you could actually test there. A small Arduino rover takes live readings in the field and puts them next to the NASA data.
 
 **Live site:** https://lucaslopes-ti.github.io/iluminat-NasaChallenge/
 **Demo (slides):** https://canva.link/0sw8fdnj7fn8epy
@@ -19,7 +21,7 @@ We compare **18 places on Earth** with **16 targets on the Moon and Mars** acros
 
 Analog sites like Atacama or Haughton Crater are great, but they were picked mostly by experience, and nobody can say *how* good an analog they are, or for *what*. We wanted a number you can argue with.
 
-- **Earth sites (18):** the classic analogs (Atacama, Haughton, Mauna Kea, Río Tinto, McMurdo Dry Valleys) plus places that get little attention, including eight in Brazil: Lençóis Maranhenses, Raso da Catarina, Gilbués, Serra da Cangalha, Araguainha, Vargeão, Vista Alegre and the Carajás iron caves. Also Qaidam Basin, Lut Desert, Dallol, Svalbard and Lonar.
+- **Earth sites (17):** the classic analogs (Atacama, Haughton, Mauna Kea, Río Tinto, McMurdo Dry Valleys) plus places that get little attention, including eight in Brazil: Lençóis Maranhenses, Raso da Catarina, Gilbués, Serra da Cangalha, Araguainha, Vargeão, Vista Alegre and the Carajás iron caves. Also the Lut Desert, Dallol, Svalbard and Lonar.
 - **Targets (16):** the nine Artemis III candidate regions, Shackleton, a Marius Hills skylight, and Jezero, Gale, Meridiani, Arcadia and Oxia on Mars.
 - **Dimensions (9):** terrain, surface materials, temperature, illumination, water and ice, dust and wind, habitability, subsurface, landing and mobility.
 - **Mission profiles (6):** general, rover testing, astrobiology, ice/ISRU, base construction, solar power. Each one weights the dimensions differently, so the same place can rank high for a rover test and low for astrobiology.
@@ -40,14 +42,14 @@ Some things never match and we say so on every site: **gravity, atmosphere, radi
 
 | # | Earth site | Score | Best target |
 |---|---|---|---|
-| 1 | Qaidam Basin, China | 68 | Oxia Planum |
-| 2 | Lut Desert, Iran | 66 | Oxia Planum |
-| 3 | Atacama, Chile | 66 | Oxia Planum |
-| 4 | McMurdo Dry Valleys, Antarctica | 65 | Peak near Cabeus B |
-| 5 | Dallol, Ethiopia | 59 | Meridiani Planum |
-| 7 | **Lençóis Maranhenses, Brazil** | 55 (77 for rover tests) | Meridiani Planum |
+| 1 | Lut Desert, Iran | 66 | Oxia Planum |
+| 2 | Atacama, Chile | 66 | Oxia Planum |
+| 3 | McMurdo Dry Valleys, Antarctica | 65 | Peak near Cabeus B |
+| 4 | Dallol, Ethiopia | 59 | Meridiani Planum |
+| 5 | Haughton Crater, Canada | 56 | Arcadia Planitia |
+| 6 | **Lençóis Maranhenses, Brazil** | 55 (77 for rover tests, the best of all sites) | Meridiani Planum |
 
-**Sanity check.** If the method is any good, the well-known analogs should rank high for the target the literature links them to. Out of 18 sites they come in at: Haughton 2nd, Atacama 3rd, Mauna Kea 4th, Río Tinto 6th, Dry Valleys 6th. That gives some confidence to the new sites that show up next to them, like Qaidam, Lut and Lençóis.
+**Sanity check.** If the method is any good, the well-known analogs should rank high for the target the literature links them to. Out of 17 sites they come in at: Atacama 2nd, Haughton 2nd, Mauna Kea 4th, Río Tinto 5th, Dry Valleys 5th. That gives some confidence to the new sites that show up next to them, like Lut, Dallol and Lençóis.
 
 ## How it fits together
 
@@ -116,7 +118,7 @@ Earth data comes only from NASA and Copernicus. Every value in the dataset carri
 | Mars terrain, albedo, pressure, temperature | MGS MOLA and TES, Mars 2020 MEDA, MSL REMS, MER Mini-TES, MRO MCS, CRISM, SWIM/SHARAD | NASA |
 | Artemis III regions | NASA (Oct 2024), USGS/IAU Gazetteer of Planetary Nomenclature, LPSC 2025 abstracts | |
 
-Globe textures: NASA Blue Marble, NASA SVS CGI Moon Kit (LROC + LOLA), NASA 3D Resources (Mars) and our own SRTM30 relief. Full credits in [web/README.md](web/README.md). In numbers: 288 site–target pairs built on 800 values (305 measured by satellite or model, 247 published by missions, the rest calculated or referenced) and 167 tags backed by 25 papers.
+Globe textures: NASA Blue Marble, NASA SVS CGI Moon Kit (LROC + LOLA), NASA 3D Resources (Mars) and our own SRTM30 relief. Full credits in [web/README.md](web/README.md). In numbers: 272 site–target pairs built on 774 values (288 measured by satellite or model, 243 published by missions, the rest calculated or referenced) and 154 tags backed by 24 papers.
 
 ## Where the analogy breaks (and where our data is weak)
 
@@ -147,4 +149,15 @@ We used AI coding assistants (Claude Code and Google Antigravity) to help write 
 
 ## Team
 
-Illuminat Horizontes, NASA Space Apps Challenge 2026.
+Illuminat Horizontes, NASA Space Apps Challenge 2026, Brazil.
+
+| Member | Space Apps profile |
+|---|---|
+| Geovane De Oliveira Espíndola (team owner) | @geovanespindolla |
+| Ariel Sobrinho Santana | @savien |
+| Sulivan Sérgio da Matta | @sulivansergio |
+| Lucas da Silva Lopes | @lucas.lopes |
+| Júlio Gabriel Rodrigues Fernandes | @arapaimagigas |
+| Leonardo Navarro Neves | @navarro137 |
+
+We aim to build solutions that meet the needs and challenges of space exploration while helping improve quality of life on Earth.

@@ -1,6 +1,6 @@
 # Dados de analogia do Illuminat Horizontes
 
-Esta pasta guarda os dados do projeto já prontos para uso. Ela compara **18 locais da Terra** com **16 alvos na Lua e em Marte** em **9 dimensões de analogia**, seguindo os critérios que a NASA usa para escolher onde pousar e onde montar uma base. Para cada local, diz o que funciona, onde a analogia quebra e o que dá para testar ali.
+Esta pasta guarda os dados do projeto já prontos para uso. Ela compara **17 locais da Terra** com **16 alvos na Lua e em Marte** em **9 dimensões de analogia**, seguindo os critérios que a NASA usa para escolher onde pousar e onde montar uma base. Para cada local, diz o que funciona, onde a analogia quebra e o que dá para testar ali.
 
 Os dados servem para três coisas:
 

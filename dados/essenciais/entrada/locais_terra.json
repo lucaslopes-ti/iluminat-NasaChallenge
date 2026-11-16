@@ -167,21 +167,6 @@
    "referencias": ["Belilla et al. 2019, Nature Ecology & Evolution", "Kotopoulou et al. 2019, ACS Earth Space Chem."]
   },
   {
-   "id": "qaidam", "nome": "Bacia de Qaidam (yardangs de Lenghu)", "nome_en": "Qaidam Basin", "regiao": "Qinghai", "pais": "China", "cidade": "Lenghu",
-   "papel": "descoberta", "lat": 38.6, "lon": 93.0, "caixa": [38.4, 38.8, 92.8, 93.2], "coord_aprox": true,
-   "feicao": "Bacia alta (~2.800 m), fria e seca, com sais e yardangs", "diametro_km": null,
-   "tags": {
-    "terreno": ["yardangs", "planicie"],
-    "materiais": ["sal_evaporito", "sulfato", "argila", "siltito"],
-    "agua": ["hiperarido", "salmoura", "lago_antigo"], "poeira": ["poeira_fina", "yardangs", "tempestade_poeira"], "biologia": ["esteril"], "subsolo": []
-   },
-   "processos": ["evaporação de lagos antigos", "erosão eólica"],
-   "funciona": ["Lago antigo que secou e deixou sais e sulfatos, como em Gale", "Frio, seco, alto e com muita radiação UV"],
-   "quebra": ["Pressão do ar ~70 kPa, muito acima de Marte", "Pouca cratera de impacto"],
-   "testes": ["Mapear sais e sulfatos com espectrômetro (EMIT/ASTER)", "Testar rover em yardangs"],
-   "referencias": ["Xiao et al. 2017, Earth-Science Reviews (Qaidam como análogo de Marte)"]
-  },
-  {
    "id": "svalbard", "nome": "Bockfjorden, Svalbard", "nome_en": "Bockfjorden, Svalbard", "regiao": "Svalbard", "pais": "Noruega", "cidade": "Ny-Ålesund",
    "papel": "descoberta", "lat": 79.43, "lon": 13.33, "caixa": [79.38, 79.48, 13.1, 13.56],
    "feicao": "Vulcões com glóbulos de carbonato em basalto, dentro de permafrost ártico", "diametro_km": null,
